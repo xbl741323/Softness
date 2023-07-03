@@ -1,24 +1,24 @@
-/**
- * 订单管理 交易订单
- */
 <template>
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">环卫人员管理</el-breadcrumb-item>
-      <el-breadcrumb-item>人员信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">游客管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>游客信息记录管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入姓名"></el-input>
+        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入游客编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.orderNo" placeholder="请选择性别"></el-select>
+        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入游客姓名"></el-input>
       </el-form-item>
       <el-form-item>
+        <el-select size="small" v-model="formInline.orderNo" placeholder="请选游客性别"></el-select>
+      </el-form-item>
+      <!-- <el-form-item>
         <el-select size="small" v-model="formInline.transId" placeholder="请选择工作状态"></el-select>
-      </el-form-item>
+      </el-form-item> -->
 
       <el-form-item>
         <el-button size="small" type="primary" icon="el-icon-search" @click="search">搜索</el-button>
@@ -29,15 +29,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="name" label="姓名" show-overflow-tooltip>
+      <el-table-column sortable prop="sightseerNo" label="游客编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="address" label="地址" show-overflow-tooltip>
+      <el-table-column sortable prop="sightseerName" label="游客姓名" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="gender" label="性别" show-overflow-tooltip>
+      <el-table-column sortable prop="sightseerGender" label="游客性别" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="age" label="年龄" show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column sortable prop="workStatus" label="工作状态" show-overflow-tooltip>
+      <el-table-column sortable prop="sightseerStatus" label="游客状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -52,25 +50,23 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <el-dialog title="环卫人员编辑" :visible.sync="addVisiable" width="30%" @click="closeDialog">
+    <!-- <el-dialog title="添加游客信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
+      <el-dialog title="编辑游客信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="姓名" prop="name">
-          <el-input size="small" v-model="addForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
+        <el-form-item label="游客编号" prop="sightseerName">
+          <el-input size="small" v-model="addForm.sightseerNo" auto-complete="off" placeholder="请输入游客编号"></el-input>
         </el-form-item>
-        <el-form-item label="地址" prop="address">
-          <el-input size="small" v-model="addForm.address" auto-complete="off" placeholder="请输入居住地址"></el-input>
+        <el-form-item label="游客姓名" prop="sightseerName">
+          <el-input size="small" v-model="addForm.sightseerName" auto-complete="off" placeholder="请输入游客姓名"></el-input>
         </el-form-item>
-        <el-form-item label="性别" prop="gender">
-          <el-select size="small" v-model="addForm.gender" auto-complete="off" placeholder="请选择性别">
+        <el-form-item label="游客性别" prop="sightseerGender">
+          <el-select size="small" v-model="addForm.sightseerGender" auto-complete="off" placeholder="请选择游客性别">
             <el-option label="男" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="年龄" prop="age">
-          <el-input size="small" v-model="addForm.age" auto-complete="off" placeholder="请输入年龄"></el-input>
-        </el-form-item>
-        <el-form-item label="工作状态" prop="status">
-          <el-select size="small" v-model="addForm.status" auto-complete="off" placeholder="请选择工作状态">
-              <el-option label="休息中" value="1"></el-option>
+        <el-form-item label="游客状态" prop="sightseerName">
+          <el-select size="small" v-model="addForm.sightseerStatus" auto-complete="off" placeholder="游客状态">
+              <el-option label="游览中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -89,21 +85,30 @@ export default {
   data() {
     return {
       addVisiable: false,
+      //  addForm:{
+      //  sightseerNo:'',
+      //  sightseerName:'',
+      //  address:'',
+      //  sightseerGender:'',
+      //  age:'',
+      //  sightseerStatus:''
+      // },
       addForm:{
-       name:'xxx',
+       sightseerNo:'VSxxxxxx',
+       sightseerName:'xxx',
        address:'安徽合肥xxx',
-       gender:'1',
+       sightseerGender:'1',
        age:'50',
-       status:'1'
+       sightseerStatus:'1'
       },
       rules: {
-        name: [
+        sightseerName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         address: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        gender: [
+        sightseerGender: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         age: [
@@ -142,7 +147,7 @@ export default {
       ],
       editForm: {
         id: '',
-        name: '',
+        sightseerName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -207,87 +212,52 @@ export default {
       let res = {
         code: 0,
         msg: null,
-        count: 23,
+        count: 5,
         data: [
           {
-            name:'xxx',
+            sightseerNo:'VSxxxxxx',
+            sightseerName:'xxx',
             address:"安徽合肥xxx",
-            gender:'男',
+            sightseerGender:'男',
             age: 50,
-            workStatus:"休息中",
+            sightseerStatus:"游览中",
             createTime: "2020-08-12"
           },
           {
-            name:'xxx',
+            sightseerNo:'VSxxxxxx',
+            sightseerName:'xxx',
             address:"安徽芜湖xxx",
-            gender:'男',
+            sightseerGender:'男',
             age: 50,
-            workStatus:"休息中",
-            createTime: "2022-10-12"
+            sightseerStatus:"游览中",
+            createTime: "2022-10-24"
           },
           {
-            name:'xxx',
+            sightseerNo:'VSxxxxxx',
+            sightseerName:'xxx',
             address:"安徽合肥xxx",
-            gender:'男',
+            sightseerGender:'男',
             age: 55,
-            workStatus:"休息中",
+            sightseerStatus:"游览中",
             createTime: "2022-01-12"
           },
           {
-            name:'xxx',
+            sightseerNo:'VSxxxxxx',
+            sightseerName:'xxx',
             address:"安徽合肥xxx",
-            gender:'女',
+            sightseerGender:'女',
             age: 40,
-            workStatus:"工作中",
-            createTime: "2022-10-12"
+            sightseerStatus:"离线中",
+            createTime: "2022-05-17"
           },
           {
-            name:'xxx',
+            sightseerNo:'VSxxxxxx',
+            sightseerName:'xxx',
             address:"安徽滁州xxx",
-            gender:'男',
+            sightseerGender:'男',
             age: 50,
-            workStatus:"休息中",
-            createTime: "2021-10-12"
-          },
-          {
-            name:'xxx',
-            address:"安徽合肥xxx",
-            gender:'男',
-            age: 44,
-            workStatus:"休息中",
-            createTime: "2022-10-12"
-          },
-          {
-            name:'xxx',
-            address:"安徽合肥xxx",
-            gender:'男',
-            age: 50,
-            workStatus:"工作中",
-            createTime: "2022-10-12"
-          },
-          {
-            name:'xxx',
-            address:"安徽合肥xxx",
-            gender:'男',
-            age: 50,
-            workStatus:"工作中",
-            createTime: "2022-10-12"
-          },
-          {
-            name:'xxx',
-            address:"安徽合肥xxx",
-            gender:'男',
-            age: 50,
-            workStatus:"工作中",
-            createTime: "2022-10-12"
-          },
-          {
-            name:'xxx',
-            address:"安徽合肥xxx",
-            gender:'男',
-            age: 50,
-            workStatus:"工作中",
-            createTime: "2022-10-12"
+            sightseerStatus:"游览中",
+            createTime: "2021-09-12"
           },
         ]
       }
@@ -405,9 +375,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formName) {
+    closeDialog(formsightseerName) {
       this.editFormVisible = false
-      this.$refs[formName].resetFields()
+      this.$refs[formsightseerName].resetFields()
     }
   }
 }

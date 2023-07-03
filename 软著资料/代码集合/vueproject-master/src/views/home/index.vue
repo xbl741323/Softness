@@ -1,6 +1,3 @@
-/**
-* 图表界面
-*/ 
 <template>
   <!-- 组件主盒子 -->
   <div class="stbox">
