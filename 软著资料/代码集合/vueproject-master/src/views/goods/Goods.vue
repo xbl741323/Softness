@@ -5,16 +5,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">环卫车辆管理</el-breadcrumb-item>
-      <el-breadcrumb-item>车辆信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">虚拟展品管理</el-breadcrumb-item>
+      <el-breadcrumb-item>虚拟展品信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
-      <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.deptName" placeholder="请输入车辆名称"></el-input>
+       <el-form-item label="搜索：">
+        <el-input size="small" v-model="formInline.virtuallyName" placeholder="请输入虚拟展品编号"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input size="small" v-model="formInline.virtuallyName" placeholder="请输入虚拟展品名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.deptNo" placeholder="请选择车辆类型">
+        <el-select size="small" v-model="formInline.virtuallyStatus" placeholder="请选择虚拟展品类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,15 +30,17 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="deptName" label="车辆名称">
+      <el-table-column sortable prop="virtuallyNo" label="虚拟展品编号">
       </el-table-column>
-      <el-table-column sortable prop="parentId" label="车辆类型">
+      <el-table-column sortable prop="virtuallyName" label="虚拟展品名称">
       </el-table-column>
-      <el-table-column sortable prop="deptNo" label="车辆状态" >
+      <el-table-column sortable prop="virtuallyType" label="虚拟展品类型">
       </el-table-column>
-      <el-table-column sortable prop="editTime" label="创建时间">
+      <el-table-column sortable prop="virtuallyStatus" label="虚拟展品状态" >
       </el-table-column>
-      <el-table-column sortable prop="editUser" label="创建人">
+      <el-table-column sortable prop="createime" label="创建时间">
+      </el-table-column>
+      <el-table-column sortable prop="creator" label="创建人">
       </el-table-column>
       <el-table-column align="center" label="操作">
         <template slot-scope="scope">
@@ -47,19 +52,23 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <el-dialog title="环卫车辆编辑" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
+    <el-dialog title="编辑虚拟展品" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
+      <!-- <el-dialog title="添加虚拟展品" :visible.sync="editFormVisible" width="30%" @click="closeDialog"> -->
       <el-form label-width="120px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="车辆名称" prop="deptName">
-          <el-input size="small" v-model="editForm.deptName" auto-complete="off" placeholder="请输入车辆名称"></el-input>
+        <el-form-item label="虚拟展品名称" prop="virtuallyName">
+          <el-input size="small" v-model="editForm.virtuallyNo" auto-complete="off" placeholder="请输入虚拟展品编号"></el-input>
         </el-form-item>
-        <el-form-item label="车辆类型" prop="deptName">
-          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择车辆类型">
-            <el-option label="垃圾车" value="1"></el-option>
+        <el-form-item label="虚拟展品名称" prop="virtuallyName">
+          <el-input size="small" v-model="editForm.virtuallyName" auto-complete="off" placeholder="请输入虚拟展品名称"></el-input>
+        </el-form-item>
+        <el-form-item label="虚拟展品类型" prop="virtuallyName">
+          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择虚拟展品类型">
+            <el-option label="艺术品虚拟展品" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="车辆状态" prop="deptName">
-          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择车辆状态">
-            <el-option label="运输中" value="1"></el-option>
+        <el-form-item label="虚拟展品状态" prop="virtuallyName">
+          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择虚拟展品状态">
+            <el-option label="展示中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -81,21 +90,29 @@ export default {
       fshow: false, //switch关闭
       loading: false, //是显示加载
       editFormVisible: false, //控制编辑页面显示与隐藏
-      title: '环卫车辆创建',
+      title: '环卫虚拟展品创建',
+      // editForm: {
+      //   virtuallyNo: '',
+      //   virtuallyName: '',
+      //   type:'',
+      //   status:'',
+      //   virtuallyStatus: '',
+      //   token: localStorage.getItem('logintoken')
+      // },
       editForm: {
-        deptId: '',
-        deptName: '',
+        virtuallyNo: 'VPxxxxxxxx',
+        virtuallyName: '',
         type:'1',
         status:'1',
-        deptNo: '',
+        virtuallyStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        deptName: [
+        virtuallyName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        deptNo: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
+        virtuallyStatus: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
       },
       formInline: {
         page: 1,
@@ -148,54 +165,44 @@ export default {
         count: 5,
         data: [
           {
-            addUser: null,
-            editUser: 'xxx',
-            addTime: 1521062371000,
-            editTime: '2022-12-23',
-            deptId: 2,
-            deptName: 'XX垃圾车',
-            deptNo: '运输中',
-            parentId: '垃圾车'
+            creator: 'xxx',
+            createime: '2022-12-23',
+            virtuallyNo: 'VPxxxxxxxx',
+            virtuallyName: 'XX艺术品虚拟展品',
+            virtuallyType: '艺术品虚拟展品',
+            virtuallyStatus: '展示中',
           },
           {
-            addUser: null,
-            editUser: 'xxx',
-            addTime: 1521063247000,
-            editTime: '2022-06-17',
-            deptId: 3,
-            deptName: 'XX洒水车',
-            deptNo: '休息中',
-            parentId: '洒水车'
+            creator: 'xxx',
+            createime: '2022-12-23',
+            virtuallyNo: 'VPxxxxxxxx',
+            virtuallyName: 'XX文物文化虚拟展品',
+            virtuallyType: '文物文化虚拟展品',
+            virtuallyStatus: '展示中',
           },
           {
-            addUser: null,
-            editUser: 'xxx',
-            addTime: 1526349555000,
-            editTime: '2022-10-21',
-            deptId: 12,
-            deptName: 'XX垃圾车',
-            deptNo: '运输中',
-            parentId: '垃圾车'
+            creator: 'xxx',
+            createime: '2022-12-23',
+            virtuallyNo: 'VPxxxxxxxx',
+            virtuallyName: 'XX科学探索虚拟展品',
+            virtuallyType: '科学探索虚拟展品',
+            virtuallyStatus: '展示中',
           },
           {
-            addUser: null,
-            editUser: 'xxx',
-            addTime: 1526373178000,
-            editTime: '2022-11-23',
-            deptId: 13,
-            deptName: 'XX环卫车',
-            deptNo: '休息中',
-            parentId: '环卫车'
+            creator: 'xxx',
+            createime: '2022-12-23',
+            virtuallyNo: 'VPxxxxxxxx',
+            virtuallyName: 'XX景观环境虚拟展品',
+            virtuallyType: '景观环境虚拟展品',
+            virtuallyStatus: '关闭中',
           },
           {
-            addUser: null,
-            editUser: 'xxx',
-            addTime: 1526453107000,
-            editTime: '2022-03-12',
-            deptId: 17,
-            deptName: 'XX扫路车',
-            deptNo: '运输中',
-            parentId: '扫路车'
+            creator: 'xxx',
+            createime: '2022-12-23',
+            virtuallyNo: 'VPxxxxxxxx',
+            virtuallyName: 'XX娱乐体验虚拟展品',
+            virtuallyType: '娱乐体验虚拟展品',
+            virtuallyStatus: '展示中',
           }
         ]
       }
@@ -246,13 +253,13 @@ export default {
       if (row != undefined && row != 'undefined') {
         this.title = '修改'
         this.editForm.deptId = row.deptId
-        this.editForm.deptName = row.deptName
-        this.editForm.deptNo = row.deptNo
+        this.editForm.virtuallyName = row.virtuallyName
+        this.editForm.virtuallyStatus = row.virtuallyStatus
       } else {
         this.title = '添加'
         this.editForm.deptId = ''
-        this.editForm.deptName = ''
-        this.editForm.deptNo = ''
+        this.editForm.virtuallyName = ''
+        this.editForm.virtuallyStatus = ''
       }
     },
     // 编辑、增加页面保存方法

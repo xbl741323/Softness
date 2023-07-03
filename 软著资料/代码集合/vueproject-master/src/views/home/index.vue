@@ -16,10 +16,10 @@
         <div class="stbgc">
           <el-row :gutter="23">
             <el-col :span="7">
-              <el-input size="small" v-model="machineNo" placeholder="请输入环卫车辆名称"></el-input>
+              <el-input size="small" v-model="machineNo" placeholder="请输入虚拟展品名称"></el-input>
             </el-col>
             <el-col :span="7">
-              <el-input size="small" v-model="machineNo" placeholder="请输入环卫人员名称"></el-input>
+              <el-select size="small" v-model="machineNo" placeholder="请选择虚拟展品类型"></el-select>
             </el-col>
             <el-col :span="1" class="stsearch">
               <el-button size="small" type="primary">搜索</el-button>
@@ -86,7 +86,7 @@ export default {
     return {
       machineNo: '',
       type: 'day',
-      //  环卫车辆运输总次数 
+      //  展厅客流量统计 
       SCEoption: {
         tooltip: {
           trigger: 'item',
@@ -94,7 +94,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '环卫车辆运输总次数',
+            name: '展厅客流量统计',
             icon: 'rect'
           }],
           top: 1,
@@ -150,7 +150,7 @@ export default {
           }
         },
         series: [{
-          name: '环卫车辆运输总次数',
+          name: '展厅客流量统计',
           type: 'bar',
           barGap: 0,
           data: [50000, 70000, 80000, 40000, 50000, 30000, 40000, 60000, 50000, 40000, 60000, 40000],
@@ -179,7 +179,7 @@ export default {
           }
         }]
       },
-      //  环卫车辆调度总数 
+      //  虚拟展品创建总次数 
       SUMoption: {
         tooltip: {
           trigger: 'item',
@@ -187,7 +187,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '环卫车辆调度总数',
+            name: '虚拟展品创建总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -243,7 +243,7 @@ export default {
           }
         },
         series: [{
-          name: '环卫车辆调度总数',
+          name: '虚拟展品创建总次数',
           //   type: 'bar',
           type: 'line',
           barGap: 0,
@@ -254,7 +254,7 @@ export default {
           }
         }]
       },
-      //  垃圾处理总量统计
+      //  展示效果调整总次数
       Clickoption: {
         tooltip: {
           trigger: 'item',
@@ -262,7 +262,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '垃圾处理总量统计',
+            name: '展示效果调整总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -318,7 +318,7 @@ export default {
           }
         },
         series: [{
-          name: '垃圾处理总量统计',
+          name: '展示效果调整总次数',
           type: 'bar',
           barGap: 0,
           data: [50000, 10000, 80000, 30000, 50000, 60000, 40000, 80000, 50000, 20000, 60000, 40000],
@@ -332,7 +332,7 @@ export default {
       payoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '环卫车辆占比统计',
+          text: '虚拟展品占比统计',
           left: 10,
           top: 5,
           textStyle: {
@@ -356,16 +356,18 @@ export default {
         },
         series: [
           {
-            name: '环卫车辆占比统计',
+            name: '虚拟展品占比统计',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: '垃圾车' },
-              { value: 310, name: '扫路车' },
-              { value: 274, name: '洒水车' },
-              { value: 235, name: '环卫车' },
-              { value: 100, name: '特种车' }
+              { value: 335, name: '艺术品虚拟展品' },
+              { value: 310, name: '文物文化虚拟展品' },
+              { value: 274, name: '科学探索虚拟展品' },
+              { value: 235, name: '景观环境虚拟展品' },
+              { value: 100, name: '教育培训虚拟展品' },
+              { value: 310, name: '娱乐体验虚拟展品' },
+              { value: 274, name: '人文社科虚拟展品' },
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -404,7 +406,7 @@ export default {
       payNumoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '垃圾场占比统计',
+          text: '展示效果调整总次数占比',
           left: 10,
           top: 5,
           textStyle: {
@@ -428,16 +430,18 @@ export default {
         },
         series: [
           {
-            name: '垃圾场占比统计',
+            name: '展示效果调整总次数占比',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: '城市垃圾填埋场' },
-              { value: 310, name: '城市垃圾焚烧场' },
-              { value: 274, name: '危险垃圾处理中心' },
-              { value: 235, name: '建筑垃圾处理场' },
-              { value: 100, name: '农村垃圾处理场' }
+              { value: 335, name: '视图调整' },
+              { value: 310, name: '光照调整' },
+              { value: 274, name: '环境设置' },
+              { value: 235, name: '交互模式' },
+              { value: 100, name: '特效和动画' },
+              { value: 100, name: '多屏展示' },
+              { value: 100, name: '多媒体嵌入' }
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -501,7 +505,7 @@ export default {
       this.chart = Chart.init(this.$refs.SUMEchart)
       this.chart.setOption(this.SUMoption)
     },
-    // 垃圾处理总量统计
+    // 展示效果调整总次数
     getClick() {
       this.chart = Chart.init(this.$refs.ClickEchart)
       this.chart.setOption(this.Clickoption)
