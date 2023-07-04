@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">医院信息管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>医生信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">3D显示设备管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>3D显示屏管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入医生信息编号"></el-input>
+        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入3D显示屏编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入医生信息姓名"></el-input>
+        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入3D显示屏名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.orderNo" placeholder="请选医生信息性别"></el-select>
+        <el-select size="small" v-model="formInline.orderNo" placeholder="请选择3D显示屏类型"></el-select>
       </el-form-item>
       <!-- <el-form-item>
         <el-select size="small" v-model="formInline.transId" placeholder="请选择工作状态"></el-select>
@@ -29,13 +29,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="doctorNo" label="医生信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="screenNo" label="3D显示屏编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="doctorName" label="医生信息姓名" show-overflow-tooltip>
+      <el-table-column sortable prop="screenName" label="3D显示屏名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="doctorGender" label="医生信息性别" show-overflow-tooltip>
+      <el-table-column sortable prop="screenType" label="3D显示屏类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="doctorStatus" label="医生信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="screenStatus" label="3D显示屏状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -50,23 +50,23 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <el-dialog title="添加医生信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
-      <!-- <el-dialog title="编辑医生信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
+    <!-- <el-dialog title="添加3D显示屏信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
+      <el-dialog title="编辑3D显示屏信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="医生信息编号" prop="doctorName">
-          <el-input size="small" v-model="addForm.doctorNo" auto-complete="off" placeholder="请输入医生信息编号"></el-input>
+        <el-form-item label="3D显示屏编号" prop="screenName">
+          <el-input size="small" v-model="addForm.screenNo" auto-complete="off" placeholder="请输入3D显示屏编号"></el-input>
         </el-form-item>
-        <el-form-item label="医生信息姓名" prop="doctorName">
-          <el-input size="small" v-model="addForm.doctorName" auto-complete="off" placeholder="请输入医生信息姓名"></el-input>
+        <el-form-item label="3D显示屏名称" prop="screenName">
+          <el-input size="small" v-model="addForm.screenName" auto-complete="off" placeholder="请输入3D显示屏名称"></el-input>
         </el-form-item>
-        <el-form-item label="医生信息性别" prop="doctorGender">
-          <el-select size="small" v-model="addForm.doctorGender" auto-complete="off" placeholder="请选择医生信息性别">
-            <el-option label="男" value="1"></el-option>
+        <el-form-item label="3D显示屏类型" prop="screenName">
+          <el-select size="small" v-model="addForm.screenType" auto-complete="off" placeholder="请选择3D显示屏类型">
+            <el-option label="3D立体显示器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="医生信息状态" prop="doctorName">
-          <el-select size="small" v-model="addForm.doctorStatus" auto-complete="off" placeholder="医生信息状态">
-              <el-option label="工作中" value="1"></el-option>
+        <el-form-item label="3D显示屏状态" prop="screenName">
+          <el-select size="small" v-model="addForm.screenStatus" auto-complete="off" placeholder="请选择3D显示屏状态">
+            <el-option label="使用中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -85,30 +85,32 @@ export default {
   data() {
     return {
       addVisiable: false,
-       addForm:{
-       doctorNo:'',
-       doctorName:'',
-       address:'',
-       doctorGender:'',
-       age:'',
-       doctorStatus:''
-      },
-      // addForm:{
-      //  doctorNo:'VDxxxxxx',
-      //  doctorName:'xxx',
-      //  address:'安徽合肥xxx',
-      //  doctorGender:'1',
-      //  age:'50',
-      //  doctorStatus:'1'
+      //  addForm:{
+      //  screenNo:'',
+      //  screenName:'',
+      //  screenType:'',
+      //  address:'',
+      //  screenGender:'',
+      //  age:'',
+      //  screenStatus:''
       // },
+      addForm:{
+       screenNo:'VDxxxxxx',
+       screenName:'xxx3D立体显示器',
+       address:'安徽合肥xxx',
+       screenGender:'1',
+       age:'50',
+       screenType:'1',
+       screenStatus:'1'
+      },
       rules: {
-        doctorName: [
+        screenName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         address: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        doctorGender: [
+        screenGender: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         age: [
@@ -147,7 +149,7 @@ export default {
       ],
       editForm: {
         id: '',
-        doctorName: '',
+        screenName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -215,48 +217,53 @@ export default {
         count: 5,
         data: [
           {
-            doctorNo:'VDxxxxxx',
-            doctorName:'xxx',
+            screenNo:'VDxxxxxx',
+            screenName:'xxx3D立体显示器',
+            screenType:'3D立体显示器',
             address:"安徽合肥xxx",
-            doctorGender:'男',
+            screenGender:'男',
             age: 50,
-            doctorStatus:"工作中",
+            screenStatus:"使用中",
             createTime: "2020-08-12"
           },
           {
-            doctorNo:'VDxxxxxx',
-            doctorName:'xxx',
+            screenNo:'VDxxxxxx',
+            screenName:'xxx3D投影仪',
+            screenType:'3D投影仪',
             address:"安徽芜湖xxx",
-            doctorGender:'男',
+            screenGender:'男',
             age: 50,
-            doctorStatus:"工作中",
+            screenStatus:"使用中",
             createTime: "2022-10-24"
           },
           {
-            doctorNo:'VDxxxxxx',
-            doctorName:'xxx',
+            screenNo:'VDxxxxxx',
+            screenName:'xxx自动立体视觉显示器',
+            screenType:'自动立体视觉显示器',
             address:"安徽合肥xxx",
-            doctorGender:'男',
+            screenGender:'男',
             age: 55,
-            doctorStatus:"工作中",
+            screenStatus:"使用中",
             createTime: "2022-01-12"
           },
           {
-            doctorNo:'VDxxxxxx',
-            doctorName:'xxx',
+            screenNo:'VDxxxxxx',
+            screenName:'xxx3D虚拟现实头显',
+            screenType:'3D虚拟现实头显',
             address:"安徽合肥xxx",
-            doctorGender:'女',
+            screenGender:'女',
             age: 40,
-            doctorStatus:"休息中",
+            screenStatus:"维护中",
             createTime: "2022-05-17"
           },
           {
-            doctorNo:'VDxxxxxx',
-            doctorName:'xxx',
+            screenNo:'VDxxxxxx',
+            screenName:'xxx3D立体显示器',
+            screenType:'3D立体显示器',
             address:"安徽滁州xxx",
-            doctorGender:'男',
+            screenGender:'男',
             age: 50,
-            doctorStatus:"工作中",
+            screenStatus:"使用中",
             createTime: "2021-09-12"
           },
         ]
@@ -375,9 +382,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formdoctorName) {
+    closeDialog(formscreenName) {
       this.editFormVisible = false
-      this.$refs[formdoctorName].resetFields()
+      this.$refs[formscreenName].resetFields()
     }
   }
 }

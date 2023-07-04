@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">3D地图管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>3D场景模拟管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">原设备管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>视频源管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.virtuallyName" placeholder="请输入3D场景模拟编号"></el-input>
+        <el-input size="small" v-model="formInline.virtuallySourceName" placeholder="请输入视频源编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.virtuallyName" placeholder="请输入3D场景模拟名称"></el-input>
+        <el-input size="small" v-model="formInline.virtuallySourceName" placeholder="请输入视频源名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.virtuallyStatus" placeholder="请选择3D场景模拟类型">
+        <el-select size="small" v-model="formInline.virtuallySourceStatus" placeholder="请选择视频源类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="virtuallyNo" label="3D场景模拟编号">
+      <el-table-column sortable prop="virtuallySourceNo" label="视频源编号">
       </el-table-column>
-      <el-table-column sortable prop="virtuallyName" label="3D场景模拟名称">
+      <el-table-column sortable prop="virtuallySourceName" label="视频源名称">
       </el-table-column>
-      <el-table-column sortable prop="virtuallyType" label="3D场景模拟类型">
+      <el-table-column sortable prop="virtuallySourceType" label="视频源类型">
       </el-table-column>
-      <el-table-column sortable prop="virtuallyStatus" label="3D场景模拟状态" >
+      <el-table-column sortable prop="virtuallySourceStatus" label="视频源状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -49,23 +49,23 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <!-- <el-dialog title="编辑3D场景模拟信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog"> -->
-      <el-dialog title="添加3D场景模拟信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
+    <el-dialog title="编辑视频源信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
+      <!-- <el-dialog title="添加视频源信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog"> -->
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="3D场景模拟名称" prop="virtuallyName">
-          <el-input size="small" v-model="editForm.virtuallyNo" auto-complete="off" placeholder="请输入3D场景模拟编号"></el-input>
+        <el-form-item label="视频源名称" prop="virtuallySourceName">
+          <el-input size="small" v-model="editForm.virtuallySourceNo" auto-complete="off" placeholder="请输入视频源编号"></el-input>
         </el-form-item>
-        <el-form-item label="3D场景模拟名称" prop="virtuallyName">
-          <el-input size="small" v-model="editForm.virtuallyName" auto-complete="off" placeholder="请输入3D场景模拟名称"></el-input>
+        <el-form-item label="视频源名称" prop="virtuallySourceName">
+          <el-input size="small" v-model="editForm.virtuallySourceName" auto-complete="off" placeholder="请输入视频源名称"></el-input>
         </el-form-item>
-        <el-form-item label="3D场景模拟类型" prop="virtuallyName">
-          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择3D场景模拟类型">
-            <el-option label="手术室" value="1"></el-option>
+        <el-form-item label="视频源类型" prop="virtuallySourceName">
+          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择视频源类型">
+            <el-option label="电脑" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="3D场景模拟状态" prop="virtuallyName">
-          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择3D场景模拟状态">
-            <el-option label="展示中" value="1"></el-option>
+        <el-form-item label="视频源状态" prop="virtuallySourceName">
+          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择视频源状态">
+            <el-option label="使用中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -87,29 +87,29 @@ export default {
       fshow: false, //switch关闭
       loading: false, //是显示加载
       editFormVisible: false, //控制编辑页面显示与隐藏
-      title: '环卫3D场景模拟创建',
+      title: '环卫视频源创建',
       editForm: {
-        virtuallyNo: '',
-        virtuallyName: '',
+        virtuallySourceNo: '',
+        virtuallySourceName: '',
         type:'',
         status:'',
-        virtuallyStatus: '',
+        virtuallySourceStatus: '',
         token: localStorage.getItem('logintoken')
       },
-      // editForm: {
-      //   virtuallyNo: 'VSxxxxxxxx',
-      //   virtuallyName: 'XX手术室',
-      //   type:'1',
-      //   status:'1',
-      //   virtuallyStatus: '',
-      //   token: localStorage.getItem('logintoken')
-      // },
+      editForm: {
+        virtuallySourceNo: 'VSxxxxxxxx',
+        virtuallySourceName: 'XX电脑',
+        type:'1',
+        status:'1',
+        virtuallySourceStatus: '',
+        token: localStorage.getItem('logintoken')
+      },
       // rules表单验证
       rules: {
-        virtuallyName: [
+        virtuallySourceName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        virtuallyStatus: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
+        virtuallySourceStatus: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
       },
       formInline: {
         page: 1,
@@ -164,42 +164,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VSxxxxxxxx',
-            virtuallyName: 'XX手术室',
-            virtuallyType: '手术室',
-            virtuallyStatus: '展示中',
+            virtuallySourceNo: 'VSxxxxxxxx',
+            virtuallySourceName: 'XX电脑',
+            virtuallySourceType: '电脑',
+            virtuallySourceStatus: '使用中',
           },
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VSxxxxxxxx',
-            virtuallyName: 'XX候诊区',
-            virtuallyType: '候诊区',
-            virtuallyStatus: '展示中',
+            virtuallySourceNo: 'VSxxxxxxxx',
+            virtuallySourceName: 'XX数字电视盒',
+            virtuallySourceType: '数字电视盒',
+            virtuallySourceStatus: '使用中',
           },
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VSxxxxxxxx',
-            virtuallyName: 'XX检查室',
-            virtuallyType: '检查室',
-            virtuallyStatus: '展示中',
+            virtuallySourceNo: 'VSxxxxxxxx',
+            virtuallySourceName: 'XX游戏机',
+            virtuallySourceType: '游戏机',
+            virtuallySourceStatus: '使用中',
           },
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VSxxxxxxxx',
-            virtuallyName: 'XX特定科室',
-            virtuallyType: '特定科室',
-            virtuallyStatus: '关闭中',
+            virtuallySourceNo: 'VSxxxxxxxx',
+            virtuallySourceName: 'XX流媒体平台',
+            virtuallySourceType: '流媒体平台',
+            virtuallySourceStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VSxxxxxxxx',
-            virtuallyName: 'XX病房',
-            virtuallyType: '病房',
-            virtuallyStatus: '展示中',
+            virtuallySourceNo: 'VSxxxxxxxx',
+            virtuallySourceName: 'XXDVD/蓝光播放器',
+            virtuallySourceType: 'DVD/蓝光播放器',
+            virtuallySourceStatus: '使用中',
           }
         ]
       }
@@ -250,13 +250,13 @@ export default {
       if (row != undefined && row != 'undefined') {
         this.title = '修改'
         this.editForm.deptId = row.deptId
-        this.editForm.virtuallyName = row.virtuallyName
-        this.editForm.virtuallyStatus = row.virtuallyStatus
+        this.editForm.virtuallySourceName = row.virtuallySourceName
+        this.editForm.virtuallySourceStatus = row.virtuallySourceStatus
       } else {
         this.title = '添加'
         this.editForm.deptId = ''
-        this.editForm.virtuallyName = ''
-        this.editForm.virtuallyStatus = ''
+        this.editForm.virtuallySourceName = ''
+        this.editForm.virtuallySourceStatus = ''
       }
     },
     // 编辑、增加页面保存方法

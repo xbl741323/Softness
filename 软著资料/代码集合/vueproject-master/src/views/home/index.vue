@@ -9,7 +9,7 @@
     <!-- 搜索，切换 -->
      <!-- 搜索，切换 -->
      <el-row :gutter="23">
-      <el-col :span="18">
+      <!-- <el-col :span="18">
         <div class="stbgc">
           <el-row :gutter="23">
             <el-col :span="7">
@@ -23,8 +23,8 @@
             </el-col>
           </el-row>
         </div>
-      </el-col>
-      <el-col :span="6">
+      </el-col> -->
+      <!-- <el-col :span="6">
         <div class="stbgc">
           <el-row>
             <el-col :span="8" class="text-c">
@@ -38,7 +38,7 @@
             </el-col>
           </el-row>
         </div>
-      </el-col>
+      </el-col> -->
     </el-row>
     <!-- 统计图 -->
     <el-row :gutter="23">
@@ -83,7 +83,7 @@ export default {
     return {
       machineNo: '',
       type: 'day',
-      //  3D就医系统用户使用次数统计 
+      //  视频源使用总次数 
       SCEoption: {
         tooltip: {
           trigger: 'item',
@@ -91,7 +91,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '3D就医系统用户使用次数统计',
+            name: '视频源使用总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -147,7 +147,7 @@ export default {
           }
         },
         series: [{
-          name: '3D就医系统用户使用次数统计',
+          name: '视频源使用总次数',
           type: 'bar',
           barGap: 0,
           data: [50000, 70000, 80000, 40000, 50000, 30000, 40000, 60000, 50000, 40000, 60000, 40000],
@@ -176,7 +176,7 @@ export default {
           }
         }]
       },
-      //  3D导航模块使用总次数 
+      //  3D深度感知功能使用总次数 
       SUMoption: {
         tooltip: {
           trigger: 'item',
@@ -184,7 +184,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '3D导航模块使用总次数',
+            name: '3D深度感知功能使用总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -240,7 +240,7 @@ export default {
           }
         },
         series: [{
-          name: '3D导航模块使用总次数',
+          name: '3D深度感知功能使用总次数',
           //   type: 'bar',
           type: 'line',
           barGap: 0,
@@ -251,7 +251,7 @@ export default {
           }
         }]
       },
-      //  语音交互模块使用总次数
+      //  3D显示屏使用总次数
       Clickoption: {
         tooltip: {
           trigger: 'item',
@@ -259,7 +259,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '语音交互模块使用总次数',
+            name: '3D显示屏使用总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -315,7 +315,7 @@ export default {
           }
         },
         series: [{
-          name: '语音交互模块使用总次数',
+          name: '3D显示屏使用总次数',
           type: 'bar',
           barGap: 0,
           data: [50000, 10000, 80000, 30000, 50000, 60000, 40000, 80000, 50000, 20000, 60000, 40000],
@@ -325,11 +325,11 @@ export default {
           }
         }]
       },
-      //  医院信息查询占比统计
+      //  视频源使用占比
       payoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '医院信息查询占比统计',
+          text: '视频源使用占比',
           left: 10,
           top: 5,
           textStyle: {
@@ -353,16 +353,16 @@ export default {
         },
         series: [
           {
-            name: '医院信息查询占比统计',
+            name: '视频源使用占比',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: '医院信息' },
-              { value: 310, name: '科室信息' },
-              { value: 274, name: '医生信息' },
-              { value: 235, name: '服务指南信息' },
-              { value: 100, name: '就医指南信息' },
+              { value: 435, name: '电脑' },
+              { value: 80, name: 'DVD/蓝光播放器' },
+              { value: 174, name: '数字电视盒' },
+              { value: 135, name: '游戏机' },
+              { value: 300, name: '流媒体平台' },
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -401,7 +401,7 @@ export default {
       payNumoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '导航模块使用占比',
+          text: '3D显示屏使用占比',
           left: 10,
           top: 5,
           textStyle: {
@@ -425,16 +425,15 @@ export default {
         },
         series: [
           {
-            name: '导航模块使用占比',
+            name: '3D显示屏使用占比',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: '目的地选择模块' },
-              { value: 310, name: '径规划和导航路线模块' },
-              { value: 274, name: '导航指示和语音导航模块' },
-              { value: 235, name: '路径选择和优化模块' },
-              { value: 100, name: '实时定位和位置显示模块' },
+              { value: 235, name: '3D立体显示器' },
+              { value: 250, name: '3D投影仪' },
+              { value: 174, name: '自动立体视觉显示器' },
+              { value: 85, name: '3D虚拟现实头显' },
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -498,7 +497,7 @@ export default {
       this.chart = Chart.init(this.$refs.SUMEchart)
       this.chart.setOption(this.SUMoption)
     },
-    // 语音交互模块使用总次数
+    // 3D显示屏使用总次数
     getClick() {
       this.chart = Chart.init(this.$refs.ClickEchart)
       this.chart.setOption(this.Clickoption)
