@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">虚拟展品管理</el-breadcrumb-item>
-      <el-breadcrumb-item>虚拟展品信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">3D地图管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>3D场景模拟管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.virtuallyName" placeholder="请输入虚拟展品编号"></el-input>
+        <el-input size="small" v-model="formInline.virtuallyName" placeholder="请输入3D场景模拟编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.virtuallyName" placeholder="请输入虚拟展品名称"></el-input>
+        <el-input size="small" v-model="formInline.virtuallyName" placeholder="请输入3D场景模拟名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.virtuallyStatus" placeholder="请选择虚拟展品类型">
+        <el-select size="small" v-model="formInline.virtuallyStatus" placeholder="请选择3D场景模拟类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="virtuallyNo" label="虚拟展品编号">
+      <el-table-column sortable prop="virtuallyNo" label="3D场景模拟编号">
       </el-table-column>
-      <el-table-column sortable prop="virtuallyName" label="虚拟展品名称">
+      <el-table-column sortable prop="virtuallyName" label="3D场景模拟名称">
       </el-table-column>
-      <el-table-column sortable prop="virtuallyType" label="虚拟展品类型">
+      <el-table-column sortable prop="virtuallyType" label="3D场景模拟类型">
       </el-table-column>
-      <el-table-column sortable prop="virtuallyStatus" label="虚拟展品状态" >
+      <el-table-column sortable prop="virtuallyStatus" label="3D场景模拟状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -49,22 +49,22 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <el-dialog title="编辑虚拟展品" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
-      <!-- <el-dialog title="添加虚拟展品" :visible.sync="editFormVisible" width="30%" @click="closeDialog"> -->
-      <el-form label-width="120px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="虚拟展品名称" prop="virtuallyName">
-          <el-input size="small" v-model="editForm.virtuallyNo" auto-complete="off" placeholder="请输入虚拟展品编号"></el-input>
+    <!-- <el-dialog title="编辑3D场景模拟信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog"> -->
+      <el-dialog title="添加3D场景模拟信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
+      <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
+        <el-form-item label="3D场景模拟名称" prop="virtuallyName">
+          <el-input size="small" v-model="editForm.virtuallyNo" auto-complete="off" placeholder="请输入3D场景模拟编号"></el-input>
         </el-form-item>
-        <el-form-item label="虚拟展品名称" prop="virtuallyName">
-          <el-input size="small" v-model="editForm.virtuallyName" auto-complete="off" placeholder="请输入虚拟展品名称"></el-input>
+        <el-form-item label="3D场景模拟名称" prop="virtuallyName">
+          <el-input size="small" v-model="editForm.virtuallyName" auto-complete="off" placeholder="请输入3D场景模拟名称"></el-input>
         </el-form-item>
-        <el-form-item label="虚拟展品类型" prop="virtuallyName">
-          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择虚拟展品类型">
-            <el-option label="艺术品虚拟展品" value="1"></el-option>
+        <el-form-item label="3D场景模拟类型" prop="virtuallyName">
+          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择3D场景模拟类型">
+            <el-option label="手术室" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="虚拟展品状态" prop="virtuallyName">
-          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择虚拟展品状态">
+        <el-form-item label="3D场景模拟状态" prop="virtuallyName">
+          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择3D场景模拟状态">
             <el-option label="展示中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -87,23 +87,23 @@ export default {
       fshow: false, //switch关闭
       loading: false, //是显示加载
       editFormVisible: false, //控制编辑页面显示与隐藏
-      title: '环卫虚拟展品创建',
-      // editForm: {
-      //   virtuallyNo: '',
-      //   virtuallyName: '',
-      //   type:'',
-      //   status:'',
-      //   virtuallyStatus: '',
-      //   token: localStorage.getItem('logintoken')
-      // },
+      title: '环卫3D场景模拟创建',
       editForm: {
-        virtuallyNo: 'VPxxxxxxxx',
+        virtuallyNo: '',
         virtuallyName: '',
-        type:'1',
-        status:'1',
+        type:'',
+        status:'',
         virtuallyStatus: '',
         token: localStorage.getItem('logintoken')
       },
+      // editForm: {
+      //   virtuallyNo: 'VSxxxxxxxx',
+      //   virtuallyName: 'XX手术室',
+      //   type:'1',
+      //   status:'1',
+      //   virtuallyStatus: '',
+      //   token: localStorage.getItem('logintoken')
+      // },
       // rules表单验证
       rules: {
         virtuallyName: [
@@ -164,41 +164,41 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VPxxxxxxxx',
-            virtuallyName: 'XX艺术品虚拟展品',
-            virtuallyType: '艺术品虚拟展品',
+            virtuallyNo: 'VSxxxxxxxx',
+            virtuallyName: 'XX手术室',
+            virtuallyType: '手术室',
             virtuallyStatus: '展示中',
           },
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VPxxxxxxxx',
-            virtuallyName: 'XX文物文化虚拟展品',
-            virtuallyType: '文物文化虚拟展品',
+            virtuallyNo: 'VSxxxxxxxx',
+            virtuallyName: 'XX候诊区',
+            virtuallyType: '候诊区',
             virtuallyStatus: '展示中',
           },
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VPxxxxxxxx',
-            virtuallyName: 'XX科学探索虚拟展品',
-            virtuallyType: '科学探索虚拟展品',
+            virtuallyNo: 'VSxxxxxxxx',
+            virtuallyName: 'XX检查室',
+            virtuallyType: '检查室',
             virtuallyStatus: '展示中',
           },
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VPxxxxxxxx',
-            virtuallyName: 'XX景观环境虚拟展品',
-            virtuallyType: '景观环境虚拟展品',
+            virtuallyNo: 'VSxxxxxxxx',
+            virtuallyName: 'XX特定科室',
+            virtuallyType: '特定科室',
             virtuallyStatus: '关闭中',
           },
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            virtuallyNo: 'VPxxxxxxxx',
-            virtuallyName: 'XX娱乐体验虚拟展品',
-            virtuallyType: '娱乐体验虚拟展品',
+            virtuallyNo: 'VSxxxxxxxx',
+            virtuallyName: 'XX病房',
+            virtuallyType: '病房',
             virtuallyStatus: '展示中',
           }
         ]

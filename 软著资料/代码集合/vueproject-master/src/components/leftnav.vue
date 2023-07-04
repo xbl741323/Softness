@@ -58,22 +58,22 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '虚拟展品管理',
+          menuname: '3D地图管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '虚拟展品信息管理',
+              menuname: '3D医院建筑和内部结构管理',
               hasThird: 'N',
-              url: 'goods/Goods',
+              url: 'goods/Goods5',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '虚拟展品分类管理',
+              menuname: '3D路径和指示牌管理',
               hasThird: 'N',
               url: 'goods/Goods1',
               menus: null
@@ -81,9 +81,25 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '虚拟展品导入导出管理',
+              menuname: '3D贴图和颜色表示管理',
               hasThird: 'N',
               url: 'goods/Goods2',
+              menus: null
+            },
+             {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '3D空间环境和设施管理',
+              hasThird: 'N',
+              url: 'goods/Goods2',
+              menus: null
+            },
+             {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '3D场景模拟管理',
+              hasThird: 'N',
+              url: 'goods/Goods',
               menus: null
             }
           ]
@@ -91,14 +107,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '游客管理模块',
+          menuname: '3D导航管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '游客信息记录管理',
+              menuname: '目的地选择界面管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -106,7 +122,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '游客身份验证管理',
+              menuname: '路径规划和导航路线管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -114,7 +130,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '预约管理',
+              menuname: '导航指示和语音导航管理',
               hasThird: 'N',
               url: 'pay/Order2',
               menus: null
@@ -122,7 +138,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '游客定位和追踪管理',
+              menuname: '路径选择和优化管理',
               hasThird: 'N',
               url: 'pay/Order2',
               menus: null
@@ -130,23 +146,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '游客导览和指引管理',
-              hasThird: 'N',
-              url: 'pay/Order2',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '时间和时长管理',
-              hasThird: 'N',
-              url: 'pay/Order2',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '互动和帮助管理',
+              menuname: '实时定位和位置显示管理',
               hasThird: 'N',
               url: 'pay/Order2',
               menus: null
@@ -156,22 +156,22 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '展示效果调整管理',
+          menuname: '语音交互管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '视图调整管理',
+              menuname: '语音识别管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order99',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '光照调整管理',
+              menuname: '自然语言理解管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -179,7 +179,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '环境设置管理',
+              menuname: '问题回答管理',
               hasThird: 'N',
               url: 'pay/Order2',
               menus: null
@@ -187,7 +187,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '交互模式管理',
+              menuname: '指导和建议管理',
               hasThird: 'N',
               url: 'pay/Order2',
               menus: null
@@ -195,23 +195,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '特效和动画管理',
-              hasThird: 'N',
-              url: 'pay/Order2',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '多屏展示管理',
-              hasThird: 'N',
-              url: 'pay/Order2',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '多媒体嵌入管理',
+              menuname: '请求操作和服务管理',
               hasThird: 'N',
               url: 'pay/Order2',
               menus: null
@@ -221,14 +205,46 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '用户界面管理模块',
+          menuname: '医院信息管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 159,
               icon: 'icon-provider-manage',
-              menuname: '系统操作日志',
+              menuname: '医院信息管理',
+              hasThird: 'N',
+              url: 'charts/statistics',
+              menus: null
+            },
+            {
+              menuid: 159,
+              icon: 'icon-provider-manage',
+              menuname: '科室信息管理',
+              hasThird: 'N',
+              url: 'charts/statistics',
+              menus: null
+            },
+            {
+              menuid: 159,
+              icon: 'icon-provider-manage',
+              menuname: '医生信息管理',
+              hasThird: 'N',
+              url: 'pay/Order',
+              menus: null
+            },
+            {
+              menuid: 159,
+              icon: 'icon-provider-manage',
+              menuname: '服务指南信息管理',
+              hasThird: 'N',
+              url: 'charts/statistics',
+              menus: null
+            },
+            {
+              menuid: 159,
+              icon: 'icon-provider-manage',
+              menuname: '就医指南信息管理',
               hasThird: 'N',
               url: 'charts/statistics',
               menus: null
@@ -245,7 +261,7 @@ export default {
             {
               menuid: 129,
               icon: 'icon-provider-manage',
-              menuname: '收运分类管理',
+              menuname: '用户行为分析管理',
               hasThird: 'N',
               url: 'machine/MachineConfig',
               menus: null
@@ -253,7 +269,7 @@ export default {
             {
               menuid: 175,
               icon: 'icon-provider-manage',
-              menuname: '垃圾站分类管理',
+              menuname: '数据可视化管理',
               hasThird: 'N',
               url: 'pay/Config',
               menus: null

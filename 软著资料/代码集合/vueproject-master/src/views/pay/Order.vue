@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">游客管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>游客信息记录管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">医院信息管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>医生信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入游客编号"></el-input>
+        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入医生信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入游客姓名"></el-input>
+        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入医生信息姓名"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.orderNo" placeholder="请选游客性别"></el-select>
+        <el-select size="small" v-model="formInline.orderNo" placeholder="请选医生信息性别"></el-select>
       </el-form-item>
       <!-- <el-form-item>
         <el-select size="small" v-model="formInline.transId" placeholder="请选择工作状态"></el-select>
@@ -29,13 +29,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="sightseerNo" label="游客编号" show-overflow-tooltip>
+      <el-table-column sortable prop="doctorNo" label="医生信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sightseerName" label="游客姓名" show-overflow-tooltip>
+      <el-table-column sortable prop="doctorName" label="医生信息姓名" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sightseerGender" label="游客性别" show-overflow-tooltip>
+      <el-table-column sortable prop="doctorGender" label="医生信息性别" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sightseerStatus" label="游客状态" show-overflow-tooltip>
+      <el-table-column sortable prop="doctorStatus" label="医生信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -50,23 +50,23 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <!-- <el-dialog title="添加游客信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
-      <el-dialog title="编辑游客信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
+    <el-dialog title="添加医生信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
+      <!-- <el-dialog title="编辑医生信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="游客编号" prop="sightseerName">
-          <el-input size="small" v-model="addForm.sightseerNo" auto-complete="off" placeholder="请输入游客编号"></el-input>
+        <el-form-item label="医生信息编号" prop="doctorName">
+          <el-input size="small" v-model="addForm.doctorNo" auto-complete="off" placeholder="请输入医生信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="游客姓名" prop="sightseerName">
-          <el-input size="small" v-model="addForm.sightseerName" auto-complete="off" placeholder="请输入游客姓名"></el-input>
+        <el-form-item label="医生信息姓名" prop="doctorName">
+          <el-input size="small" v-model="addForm.doctorName" auto-complete="off" placeholder="请输入医生信息姓名"></el-input>
         </el-form-item>
-        <el-form-item label="游客性别" prop="sightseerGender">
-          <el-select size="small" v-model="addForm.sightseerGender" auto-complete="off" placeholder="请选择游客性别">
+        <el-form-item label="医生信息性别" prop="doctorGender">
+          <el-select size="small" v-model="addForm.doctorGender" auto-complete="off" placeholder="请选择医生信息性别">
             <el-option label="男" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="游客状态" prop="sightseerName">
-          <el-select size="small" v-model="addForm.sightseerStatus" auto-complete="off" placeholder="游客状态">
-              <el-option label="游览中" value="1"></el-option>
+        <el-form-item label="医生信息状态" prop="doctorName">
+          <el-select size="small" v-model="addForm.doctorStatus" auto-complete="off" placeholder="医生信息状态">
+              <el-option label="工作中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -85,30 +85,30 @@ export default {
   data() {
     return {
       addVisiable: false,
-      //  addForm:{
-      //  sightseerNo:'',
-      //  sightseerName:'',
-      //  address:'',
-      //  sightseerGender:'',
-      //  age:'',
-      //  sightseerStatus:''
-      // },
-      addForm:{
-       sightseerNo:'VSxxxxxx',
-       sightseerName:'xxx',
-       address:'安徽合肥xxx',
-       sightseerGender:'1',
-       age:'50',
-       sightseerStatus:'1'
+       addForm:{
+       doctorNo:'',
+       doctorName:'',
+       address:'',
+       doctorGender:'',
+       age:'',
+       doctorStatus:''
       },
+      // addForm:{
+      //  doctorNo:'VDxxxxxx',
+      //  doctorName:'xxx',
+      //  address:'安徽合肥xxx',
+      //  doctorGender:'1',
+      //  age:'50',
+      //  doctorStatus:'1'
+      // },
       rules: {
-        sightseerName: [
+        doctorName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         address: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        sightseerGender: [
+        doctorGender: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         age: [
@@ -147,7 +147,7 @@ export default {
       ],
       editForm: {
         id: '',
-        sightseerName: '',
+        doctorName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -215,48 +215,48 @@ export default {
         count: 5,
         data: [
           {
-            sightseerNo:'VSxxxxxx',
-            sightseerName:'xxx',
+            doctorNo:'VDxxxxxx',
+            doctorName:'xxx',
             address:"安徽合肥xxx",
-            sightseerGender:'男',
+            doctorGender:'男',
             age: 50,
-            sightseerStatus:"游览中",
+            doctorStatus:"工作中",
             createTime: "2020-08-12"
           },
           {
-            sightseerNo:'VSxxxxxx',
-            sightseerName:'xxx',
+            doctorNo:'VDxxxxxx',
+            doctorName:'xxx',
             address:"安徽芜湖xxx",
-            sightseerGender:'男',
+            doctorGender:'男',
             age: 50,
-            sightseerStatus:"游览中",
+            doctorStatus:"工作中",
             createTime: "2022-10-24"
           },
           {
-            sightseerNo:'VSxxxxxx',
-            sightseerName:'xxx',
+            doctorNo:'VDxxxxxx',
+            doctorName:'xxx',
             address:"安徽合肥xxx",
-            sightseerGender:'男',
+            doctorGender:'男',
             age: 55,
-            sightseerStatus:"游览中",
+            doctorStatus:"工作中",
             createTime: "2022-01-12"
           },
           {
-            sightseerNo:'VSxxxxxx',
-            sightseerName:'xxx',
+            doctorNo:'VDxxxxxx',
+            doctorName:'xxx',
             address:"安徽合肥xxx",
-            sightseerGender:'女',
+            doctorGender:'女',
             age: 40,
-            sightseerStatus:"离线中",
+            doctorStatus:"休息中",
             createTime: "2022-05-17"
           },
           {
-            sightseerNo:'VSxxxxxx',
-            sightseerName:'xxx',
+            doctorNo:'VDxxxxxx',
+            doctorName:'xxx',
             address:"安徽滁州xxx",
-            sightseerGender:'男',
+            doctorGender:'男',
             age: 50,
-            sightseerStatus:"游览中",
+            doctorStatus:"工作中",
             createTime: "2021-09-12"
           },
         ]
@@ -375,9 +375,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formsightseerName) {
+    closeDialog(formdoctorName) {
       this.editFormVisible = false
-      this.$refs[formsightseerName].resetFields()
+      this.$refs[formdoctorName].resetFields()
     }
   }
 }

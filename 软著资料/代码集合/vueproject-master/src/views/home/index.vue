@@ -13,10 +13,10 @@
         <div class="stbgc">
           <el-row :gutter="23">
             <el-col :span="7">
-              <el-input size="small" v-model="machineNo" placeholder="请输入虚拟展品名称"></el-input>
+              <el-input size="small" v-model="machineNo" placeholder="请输入3D导航模块名称"></el-input>
             </el-col>
             <el-col :span="7">
-              <el-select size="small" v-model="machineNo" placeholder="请选择虚拟展品类型"></el-select>
+              <el-select size="small" v-model="machineNo" placeholder="请选择3D导航模块类型"></el-select>
             </el-col>
             <el-col :span="1" class="stsearch">
               <el-button size="small" type="primary">搜索</el-button>
@@ -83,7 +83,7 @@ export default {
     return {
       machineNo: '',
       type: 'day',
-      //  展厅客流量统计 
+      //  3D就医系统用户使用次数统计 
       SCEoption: {
         tooltip: {
           trigger: 'item',
@@ -91,7 +91,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '展厅客流量统计',
+            name: '3D就医系统用户使用次数统计',
             icon: 'rect'
           }],
           top: 1,
@@ -147,7 +147,7 @@ export default {
           }
         },
         series: [{
-          name: '展厅客流量统计',
+          name: '3D就医系统用户使用次数统计',
           type: 'bar',
           barGap: 0,
           data: [50000, 70000, 80000, 40000, 50000, 30000, 40000, 60000, 50000, 40000, 60000, 40000],
@@ -176,7 +176,7 @@ export default {
           }
         }]
       },
-      //  虚拟展品创建总次数 
+      //  3D导航模块使用总次数 
       SUMoption: {
         tooltip: {
           trigger: 'item',
@@ -184,7 +184,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '虚拟展品创建总次数',
+            name: '3D导航模块使用总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -240,7 +240,7 @@ export default {
           }
         },
         series: [{
-          name: '虚拟展品创建总次数',
+          name: '3D导航模块使用总次数',
           //   type: 'bar',
           type: 'line',
           barGap: 0,
@@ -251,7 +251,7 @@ export default {
           }
         }]
       },
-      //  展示效果调整总次数
+      //  语音交互模块使用总次数
       Clickoption: {
         tooltip: {
           trigger: 'item',
@@ -259,7 +259,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '展示效果调整总次数',
+            name: '语音交互模块使用总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -315,7 +315,7 @@ export default {
           }
         },
         series: [{
-          name: '展示效果调整总次数',
+          name: '语音交互模块使用总次数',
           type: 'bar',
           barGap: 0,
           data: [50000, 10000, 80000, 30000, 50000, 60000, 40000, 80000, 50000, 20000, 60000, 40000],
@@ -325,11 +325,11 @@ export default {
           }
         }]
       },
-      //  支付方式统计
+      //  医院信息查询占比统计
       payoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '虚拟展品占比统计',
+          text: '医院信息查询占比统计',
           left: 10,
           top: 5,
           textStyle: {
@@ -353,18 +353,16 @@ export default {
         },
         series: [
           {
-            name: '虚拟展品占比统计',
+            name: '医院信息查询占比统计',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: '艺术品虚拟展品' },
-              { value: 310, name: '文物文化虚拟展品' },
-              { value: 274, name: '科学探索虚拟展品' },
-              { value: 235, name: '景观环境虚拟展品' },
-              { value: 100, name: '教育培训虚拟展品' },
-              { value: 310, name: '娱乐体验虚拟展品' },
-              { value: 274, name: '人文社科虚拟展品' },
+              { value: 335, name: '医院信息' },
+              { value: 310, name: '科室信息' },
+              { value: 274, name: '医生信息' },
+              { value: 235, name: '服务指南信息' },
+              { value: 100, name: '就医指南信息' },
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -403,7 +401,7 @@ export default {
       payNumoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '展示效果调整总次数占比',
+          text: '导航模块使用占比',
           left: 10,
           top: 5,
           textStyle: {
@@ -427,18 +425,16 @@ export default {
         },
         series: [
           {
-            name: '展示效果调整总次数占比',
+            name: '导航模块使用占比',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: '视图调整' },
-              { value: 310, name: '光照调整' },
-              { value: 274, name: '环境设置' },
-              { value: 235, name: '交互模式' },
-              { value: 100, name: '特效和动画' },
-              { value: 100, name: '多屏展示' },
-              { value: 100, name: '多媒体嵌入' }
+              { value: 335, name: '目的地选择模块' },
+              { value: 310, name: '径规划和导航路线模块' },
+              { value: 274, name: '导航指示和语音导航模块' },
+              { value: 235, name: '路径选择和优化模块' },
+              { value: 100, name: '实时定位和位置显示模块' },
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -502,7 +498,7 @@ export default {
       this.chart = Chart.init(this.$refs.SUMEchart)
       this.chart.setOption(this.SUMoption)
     },
-    // 展示效果调整总次数
+    // 语音交互模块使用总次数
     getClick() {
       this.chart = Chart.init(this.$refs.ClickEchart)
       this.chart.setOption(this.Clickoption)
