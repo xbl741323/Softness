@@ -83,7 +83,7 @@ export default {
     return {
       machineNo: '',
       type: 'day',
-      //  视频源使用总次数 
+      //  场景模拟信息使用总次数 
       SCEoption: {
         tooltip: {
           trigger: 'item',
@@ -91,7 +91,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '视频源使用总次数',
+            name: '场景模拟信息使用总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -147,7 +147,7 @@ export default {
           }
         },
         series: [{
-          name: '视频源使用总次数',
+          name: '场景模拟信息使用总次数',
           type: 'bar',
           barGap: 0,
           data: [50000, 70000, 80000, 40000, 50000, 30000, 40000, 60000, 50000, 40000, 60000, 40000],
@@ -251,7 +251,7 @@ export default {
           }
         }]
       },
-      //  3D显示屏使用总次数
+      //  3D头戴显示器使用总次数
       Clickoption: {
         tooltip: {
           trigger: 'item',
@@ -259,7 +259,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '3D显示屏使用总次数',
+            name: '3D头戴显示器使用总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -315,7 +315,7 @@ export default {
           }
         },
         series: [{
-          name: '3D显示屏使用总次数',
+          name: '3D头戴显示器使用总次数',
           type: 'bar',
           barGap: 0,
           data: [50000, 10000, 80000, 30000, 50000, 60000, 40000, 80000, 50000, 20000, 60000, 40000],
@@ -325,11 +325,11 @@ export default {
           }
         }]
       },
-      //  视频源使用占比
+      //  导览内容占比
       payoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '视频源使用占比',
+          text: '导览内容占比',
           left: 10,
           top: 5,
           textStyle: {
@@ -353,16 +353,18 @@ export default {
         },
         series: [
           {
-            name: '视频源使用占比',
+            name: '导览内容占比',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 435, name: '电脑' },
-              { value: 80, name: 'DVD/蓝光播放器' },
-              { value: 174, name: '数字电视盒' },
-              { value: 135, name: '游戏机' },
-              { value: 300, name: '流媒体平台' },
+              { value: 435, name: '地点介绍' },
+              { value: 220, name: '展品介绍' },
+              { value: 174, name: '人物讲解' },
+              { value: 135, name: '文化传统' },
+              { value: 300, name: '交通和导览路线' },
+              { value: 135, name: '多媒体展示' },
+              { value: 230, name: '互动体验' },
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -401,7 +403,7 @@ export default {
       payNumoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '3D显示屏使用占比',
+          text: '场景模拟信息使用占比',
           left: 10,
           top: 5,
           textStyle: {
@@ -425,15 +427,17 @@ export default {
         },
         series: [
           {
-            name: '3D显示屏使用占比',
+            name: '场景模拟信息占比',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 235, name: '3D立体显示器' },
-              { value: 250, name: '3D投影仪' },
-              { value: 174, name: '自动立体视觉显示器' },
-              { value: 85, name: '3D虚拟现实头显' },
+              { value: 235, name: '场景描述' },
+              { value: 250, name: '视频和图像素材' },
+              { value: 174, name: '3D模型' },
+              { value: 85, name: '声音效果' },
+              { value: 85, name: '文字讲解和标签' },
+              { value: 85, name: '用户交互' }
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -497,7 +501,7 @@ export default {
       this.chart = Chart.init(this.$refs.SUMEchart)
       this.chart.setOption(this.SUMoption)
     },
-    // 3D显示屏使用总次数
+    // 3D头戴显示器使用总次数
     getClick() {
       this.chart = Chart.init(this.$refs.ClickEchart)
       this.chart.setOption(this.Clickoption)

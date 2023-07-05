@@ -3,8 +3,10 @@
 */ 
 <template>
   <el-menu default-active="2" :collapse="collapsed" collapse-transition router unique-opened class="el-menu-vertical-demo" background-color="#334157" text-color="#fff" active-text-color="#ffd04b">
-    <div class="logobox">
-      <img class="logoimg" src="../assets/img/logo.png" alt="">
+    <!-- <div class="logobox"> -->
+      <!-- <img class="logoimg" src="../assets/img/logo.png" alt=""> -->
+      <div class="logobox-title">
+      <!-- 3D虚拟导诉系统 -->
     </div>
     <el-submenu v-for="menu in allmenu" :key="menu.menuid" :index="menu.menuname">
       <template slot="title">
@@ -58,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '源设备管理模块',
+          menuname: '场景建模管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '视频源管理',
+              menuname: '场景模拟信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -73,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '音频源管理',
+              menuname: '场景构建管理',
               hasThird: 'N',
               url: 'goods/Goods111',
               menus: null
@@ -81,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '控制信号输出管理',
+              menuname: '光照和阴影效果管理',
               hasThird: 'N',
               url: 'goods/Goods112',
               menus: null
@@ -89,7 +91,23 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据输入接口管理',
+              menuname: '场景布局和组织管理',
+              hasThird: 'N',
+              url: 'goods/Goods112',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '动画和交互管理',
+              hasThird: 'N',
+              url: 'goods/Goods112',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '场景渲染和优化管理',
               hasThird: 'N',
               url: 'goods/Goods112',
               menus: null
@@ -99,14 +117,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '连接接口管理模块',
+          menuname: '导览管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: 'HDMI接口管理',
+              menuname: '导览内容管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -114,7 +132,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: 'DisplayPort接口管理',
+              menuname: '导览路线管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -122,7 +140,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: 'VGA接口管理',
+              menuname: '虚拟物品信息管理',
               hasThird: 'N',
               url: 'pay/Order12',
               menus: null
@@ -130,7 +148,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '光纤接口管理',
+              menuname: '语音和文字导览管理',
               hasThird: 'N',
               url: 'pay/Order12',
               menus: null
@@ -138,7 +156,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: 'USB接口管理',
+              menuname: '地理标记和位置管理',
               hasThird: 'N',
               url: 'pay/Order12',
               menus: null
@@ -146,7 +164,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '无线连接接口管理',
+              menuname: '交互式问答管理',
               hasThird: 'N',
               url: 'pay/Order12',
               menus: null
@@ -156,14 +174,14 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '3D转换器模块',
+          menuname: '用户交互管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '算法和技术管理',
+              menuname: '设备连接管理',
               hasThird: 'N',
               url: 'pay/Order199',
               menus: null
@@ -171,7 +189,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '深度感知功能管理',
+              menuname: '导览点选择管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -179,7 +197,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '视角调整功能管理',
+              menuname: '导览点浏览管理',
               hasThird: 'N',
               url: 'pay/Order12',
               menus: null
@@ -187,7 +205,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '格式转换功能管理',
+              menuname: '场景切换管理',
               hasThird: 'N',
               url: 'pay/Order12',
               menus: null
@@ -195,7 +213,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '3D效果调整功能管理',
+              menuname: '增强现实交互管理',
               hasThird: 'N',
               url: 'pay/Order12',
               menus: null
@@ -203,7 +221,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '实时转换功能管理',
+              menuname: '用户反馈收集管理',
               hasThird: 'N',
               url: 'pay/Order12',
               menus: null
@@ -213,14 +231,14 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '3D显示设备管理模块',
+          menuname: '虚拟导览员管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 159,
               icon: 'icon-provider-manage',
-              menuname: '3D显示屏管理',
+              menuname: '讲解和导引管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -228,7 +246,7 @@ export default {
             {
               menuid: 159,
               icon: 'icon-provider-manage',
-              menuname: '3D投影技术管理',
+              menuname: '语音识别和交互管理',
               hasThird: 'N',
               url: 'charts/statistics',
               menus: null
@@ -236,7 +254,7 @@ export default {
             {
               menuid: 159,
               icon: 'icon-provider-manage',
-              menuname: '3D滤光片管理',
+              menuname: '姿势和表情动画管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -244,7 +262,7 @@ export default {
             {
               menuid: 159,
               icon: 'icon-provider-manage',
-              menuname: '解码器管理',
+              menuname: '互动性管理',
               hasThird: 'N',
               url: 'charts/statistics',
               menus: null
@@ -252,15 +270,7 @@ export default {
             {
               menuid: 159,
               icon: 'icon-provider-manage',
-              menuname: '3D眼镜技术管理',
-              hasThird: 'N',
-              url: 'charts/statistics',
-              menus: null
-            },
-             {
-              menuid: 159,
-              icon: 'icon-provider-manage',
-              menuname: '3D音频技术管理',
+              menuname: '导览员个性化管理',
               hasThird: 'N',
               url: 'charts/statistics',
               menus: null
@@ -270,14 +280,14 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '控制器模块',
+          menuname: '虚拟现实设备模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 129,
               icon: 'icon-provider-manage',
-              menuname: '遥控器管理',
+              menuname: '头戴式显示器管理',
               hasThird: 'N',
               url: 'machine/MachineConfig',
               menus: null
@@ -285,7 +295,7 @@ export default {
             {
               menuid: 175,
               icon: 'icon-provider-manage',
-              menuname: '数据可视化管理',
+              menuname: '跟踪系统管理',
               hasThird: 'N',
               url: 'pay/Config',
               menus: null
@@ -411,5 +421,9 @@ export default {
 }
 .logoimg {
   height: 40px;
+}
+.logobox-title{
+  /* font-size: 14px; */
+  height: 50px;
 }
 </style>
