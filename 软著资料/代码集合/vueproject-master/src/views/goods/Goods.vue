@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">原设备管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>视频源管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">场景建模管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>场景模拟信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.virtuallySourceName" placeholder="请输入视频源编号"></el-input>
+        <el-input size="small" v-model="formInline.virtuallySourceName" placeholder="请输入场景模拟信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.virtuallySourceName" placeholder="请输入视频源名称"></el-input>
+        <el-input size="small" v-model="formInline.virtuallySourceName" placeholder="请输入场景模拟信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.virtuallySourceStatus" placeholder="请选择视频源类型">
+        <el-select size="small" v-model="formInline.virtuallySourceStatus" placeholder="请选择场景模拟信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="virtuallySourceNo" label="视频源编号">
+      <el-table-column sortable prop="virtuallySourceNo" label="场景模拟信息编号">
       </el-table-column>
-      <el-table-column sortable prop="virtuallySourceName" label="视频源名称">
+      <el-table-column sortable prop="virtuallySourceName" label="场景模拟信息名称">
       </el-table-column>
-      <el-table-column sortable prop="virtuallySourceType" label="视频源类型">
+      <el-table-column sortable prop="virtuallySourceType" label="场景模拟信息类型">
       </el-table-column>
-      <el-table-column sortable prop="virtuallySourceStatus" label="视频源状态" >
+      <el-table-column sortable prop="virtuallySourceStatus" label="场景模拟信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -49,22 +49,22 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <el-dialog title="编辑视频源信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
-      <!-- <el-dialog title="添加视频源信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog"> -->
+    <el-dialog title="编辑场景模拟信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
+      <!-- <el-dialog title="添加场景模拟信息" :visible.sync="editFormVisible" width="30%" @click="closeDialog"> -->
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="视频源名称" prop="virtuallySourceName">
-          <el-input size="small" v-model="editForm.virtuallySourceNo" auto-complete="off" placeholder="请输入视频源编号"></el-input>
+        <el-form-item label="场景模拟信息编号" prop="virtuallySourceName">
+          <el-input size="small" v-model="editForm.virtuallySourceNo" auto-complete="off" placeholder="请输入场景模拟信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="视频源名称" prop="virtuallySourceName">
-          <el-input size="small" v-model="editForm.virtuallySourceName" auto-complete="off" placeholder="请输入视频源名称"></el-input>
+        <el-form-item label="场景模拟信息名称" prop="virtuallySourceName">
+          <el-input size="small" v-model="editForm.virtuallySourceName" auto-complete="off" placeholder="请输入场景模拟信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="视频源类型" prop="virtuallySourceName">
-          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择视频源类型">
-            <el-option label="电脑" value="1"></el-option>
+        <el-form-item label="场景模拟信息类型" prop="virtuallySourceName">
+          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择场景模拟信息类型">
+            <el-option label="场景描述" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="视频源状态" prop="virtuallySourceName">
-          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择视频源状态">
+        <el-form-item label="场景模拟信息状态" prop="virtuallySourceName">
+          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择场景模拟信息状态">
             <el-option label="使用中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -87,7 +87,7 @@ export default {
       fshow: false, //switch关闭
       loading: false, //是显示加载
       editFormVisible: false, //控制编辑页面显示与隐藏
-      title: '环卫视频源创建',
+      title: '环卫场景模拟信息创建',
       editForm: {
         virtuallySourceNo: '',
         virtuallySourceName: '',
@@ -98,7 +98,7 @@ export default {
       },
       editForm: {
         virtuallySourceNo: 'VSxxxxxxxx',
-        virtuallySourceName: 'XX电脑',
+        virtuallySourceName: 'XX场景描述',
         type:'1',
         status:'1',
         virtuallySourceStatus: '',
@@ -165,40 +165,40 @@ export default {
             creator: 'xxx',
             createime: '2022-12-23',
             virtuallySourceNo: 'VSxxxxxxxx',
-            virtuallySourceName: 'XX电脑',
-            virtuallySourceType: '电脑',
+            virtuallySourceName: 'XX场景描述',
+            virtuallySourceType: '场景描述',
             virtuallySourceStatus: '使用中',
           },
           {
             creator: 'xxx',
-            createime: '2022-12-23',
+            createime: '2022-10-05',
             virtuallySourceNo: 'VSxxxxxxxx',
-            virtuallySourceName: 'XX数字电视盒',
-            virtuallySourceType: '数字电视盒',
+            virtuallySourceName: 'XX声音效果',
+            virtuallySourceType: '声音效果',
             virtuallySourceStatus: '使用中',
           },
           {
             creator: 'xxx',
-            createime: '2022-12-23',
+            createime: '2021-11-13',
             virtuallySourceNo: 'VSxxxxxxxx',
-            virtuallySourceName: 'XX游戏机',
-            virtuallySourceType: '游戏机',
+            virtuallySourceName: 'XX文字讲解和标签',
+            virtuallySourceType: '文字讲解和标签',
             virtuallySourceStatus: '使用中',
           },
           {
             creator: 'xxx',
-            createime: '2022-12-23',
+            createime: '2020-08-21',
             virtuallySourceNo: 'VSxxxxxxxx',
-            virtuallySourceName: 'XX流媒体平台',
-            virtuallySourceType: '流媒体平台',
+            virtuallySourceName: 'XX用户交互',
+            virtuallySourceType: '用户交互',
             virtuallySourceStatus: '维护中',
           },
           {
             creator: 'xxx',
-            createime: '2022-12-23',
+            createime: '2022-02-23',
             virtuallySourceNo: 'VSxxxxxxxx',
-            virtuallySourceName: 'XXDVD/蓝光播放器',
-            virtuallySourceType: 'DVD/蓝光播放器',
+            virtuallySourceName: 'XX场景描述',
+            virtuallySourceType: '场景描述',
             virtuallySourceStatus: '使用中',
           }
         ]

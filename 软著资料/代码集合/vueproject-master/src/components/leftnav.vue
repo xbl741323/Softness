@@ -126,7 +126,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '导览内容管理',
               hasThird: 'N',
-              url: 'pay/Order1',
+              url: 'pay/Order',
               menus: null
             },
             {
@@ -134,7 +134,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '导览路线管理',
               hasThird: 'N',
-              url: 'pay/Order11',
+              url: 'pay/Order111',
               menus: null
             },
             {
@@ -142,7 +142,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '虚拟物品信息管理',
               hasThird: 'N',
-              url: 'pay/Order12',
+              url: 'pay/Order112',
               menus: null
             },
             {
@@ -150,7 +150,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '语音和文字导览管理',
               hasThird: 'N',
-              url: 'pay/Order12',
+              url: 'pay/Order112',
               menus: null
             },
             {
@@ -158,7 +158,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '地理标记和位置管理',
               hasThird: 'N',
-              url: 'pay/Order12',
+              url: 'pay/Order112',
               menus: null
             },
              {
@@ -166,7 +166,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '交互式问答管理',
               hasThird: 'N',
-              url: 'pay/Order12',
+              url: 'pay/Order112',
               menus: null
             },
           ]
@@ -183,7 +183,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '设备连接管理',
               hasThird: 'N',
-              url: 'pay/Order199',
+              url: 'pay/Order1199',
               menus: null
             },
             {
@@ -191,7 +191,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '导览点选择管理',
               hasThird: 'N',
-              url: 'pay/Order11',
+              url: 'pay/Order111',
               menus: null
             },
             {
@@ -199,7 +199,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '导览点浏览管理',
               hasThird: 'N',
-              url: 'pay/Order12',
+              url: 'pay/Order112',
               menus: null
             },
             {
@@ -207,7 +207,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '场景切换管理',
               hasThird: 'N',
-              url: 'pay/Order12',
+              url: 'pay/Order112',
               menus: null
             },
             {
@@ -215,7 +215,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '增强现实交互管理',
               hasThird: 'N',
-              url: 'pay/Order12',
+              url: 'pay/Order112',
               menus: null
             },
             {
@@ -223,7 +223,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '用户反馈收集管理',
               hasThird: 'N',
-              url: 'pay/Order12',
+              url: 'pay/Order112',
               menus: null
             },
           ]
@@ -240,7 +240,7 @@ export default {
               icon: 'icon-provider-manage',
               menuname: '讲解和导引管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order1',
               menus: null
             },
             {
@@ -256,7 +256,7 @@ export default {
               icon: 'icon-provider-manage',
               menuname: '姿势和表情动画管理',
               hasThird: 'N',
-              url: 'pay/Order1',
+              url: 'pay/Order11',
               menus: null
             },
             {

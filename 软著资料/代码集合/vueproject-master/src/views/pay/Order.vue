@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">3D显示设备管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>3D显示屏管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">导览管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>导览内容管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入3D显示屏编号"></el-input>
+        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入导览内容编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入3D显示屏名称"></el-input>
+        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入导览内容名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.orderNo" placeholder="请选择3D显示屏类型"></el-select>
+        <el-select size="small" v-model="formInline.orderNo" placeholder="请选择导览内容类型"></el-select>
       </el-form-item>
       <!-- <el-form-item>
         <el-select size="small" v-model="formInline.transId" placeholder="请选择工作状态"></el-select>
@@ -29,13 +29,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="screenNo" label="3D显示屏编号" show-overflow-tooltip>
+      <el-table-column sortable prop="guideContentNo" label="导览内容编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="screenName" label="3D显示屏名称" show-overflow-tooltip>
+      <el-table-column sortable prop="guideContentName" label="导览内容名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="screenType" label="3D显示屏类型" show-overflow-tooltip>
+      <el-table-column sortable prop="guideContentType" label="导览内容类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="screenStatus" label="3D显示屏状态" show-overflow-tooltip>
+      <el-table-column sortable prop="guideContentStatus" label="导览内容状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -50,22 +50,22 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <!-- <el-dialog title="添加3D显示屏信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
-      <el-dialog title="编辑3D显示屏信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
+    <el-dialog title="添加导览内容信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
+      <!-- <el-dialog title="编辑导览内容信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="3D显示屏编号" prop="screenName">
-          <el-input size="small" v-model="addForm.screenNo" auto-complete="off" placeholder="请输入3D显示屏编号"></el-input>
+        <el-form-item label="导览内容编号" prop="guideContentName">
+          <el-input size="small" v-model="addForm.guideContentNo" auto-complete="off" placeholder="请输入导览内容编号"></el-input>
         </el-form-item>
-        <el-form-item label="3D显示屏名称" prop="screenName">
-          <el-input size="small" v-model="addForm.screenName" auto-complete="off" placeholder="请输入3D显示屏名称"></el-input>
+        <el-form-item label="导览内容名称" prop="guideContentName">
+          <el-input size="small" v-model="addForm.guideContentName" auto-complete="off" placeholder="请输入导览内容名称"></el-input>
         </el-form-item>
-        <el-form-item label="3D显示屏类型" prop="screenName">
-          <el-select size="small" v-model="addForm.screenType" auto-complete="off" placeholder="请选择3D显示屏类型">
-            <el-option label="3D立体显示器" value="1"></el-option>
+        <el-form-item label="导览内容类型" prop="guideContentName">
+          <el-select size="small" v-model="addForm.guideContentType" auto-complete="off" placeholder="请选择导览内容类型">
+            <el-option label="地点介绍" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="3D显示屏状态" prop="screenName">
-          <el-select size="small" v-model="addForm.screenStatus" auto-complete="off" placeholder="请选择3D显示屏状态">
+        <el-form-item label="导览内容状态" prop="guideContentName">
+          <el-select size="small" v-model="addForm.guideContentStatus" auto-complete="off" placeholder="请选择导览内容状态">
             <el-option label="使用中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -85,32 +85,32 @@ export default {
   data() {
     return {
       addVisiable: false,
-      //  addForm:{
-      //  screenNo:'',
-      //  screenName:'',
-      //  screenType:'',
-      //  address:'',
-      //  screenGender:'',
-      //  age:'',
-      //  screenStatus:''
-      // },
-      addForm:{
-       screenNo:'VDxxxxxx',
-       screenName:'xxx3D立体显示器',
-       address:'安徽合肥xxx',
-       screenGender:'1',
-       age:'50',
-       screenType:'1',
-       screenStatus:'1'
+       addForm:{
+       guideContentNo:'',
+       guideContentName:'',
+       guideContentType:'',
+       address:'',
+       guideContentGender:'',
+       age:'',
+       guideContentStatus:''
       },
+      // addForm:{
+      //  guideContentNo:'VDxxxxxx',
+      //  guideContentName:'xxx地点介绍',
+      //  address:'安徽合肥xxx',
+      //  guideContentGender:'1',
+      //  age:'50',
+      //  guideContentType:'1',
+      //  guideContentStatus:'1'
+      // },
       rules: {
-        screenName: [
+        guideContentName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         address: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        screenGender: [
+        guideContentGender: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         age: [
@@ -149,7 +149,7 @@ export default {
       ],
       editForm: {
         id: '',
-        screenName: '',
+        guideContentName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -217,53 +217,53 @@ export default {
         count: 5,
         data: [
           {
-            screenNo:'VDxxxxxx',
-            screenName:'xxx3D立体显示器',
-            screenType:'3D立体显示器',
+            guideContentNo:'VDxxxxxx',
+            guideContentName:'xxx地点介绍',
+            guideContentType:'地点介绍',
             address:"安徽合肥xxx",
-            screenGender:'男',
+            guideContentGender:'男',
             age: 50,
-            screenStatus:"使用中",
+            guideContentStatus:"使用中",
             createTime: "2020-08-12"
           },
           {
-            screenNo:'VDxxxxxx',
-            screenName:'xxx3D投影仪',
-            screenType:'3D投影仪',
+            guideContentNo:'VDxxxxxx',
+            guideContentName:'xxx展品介绍',
+            guideContentType:'展品介绍',
             address:"安徽芜湖xxx",
-            screenGender:'男',
+            guideContentGender:'男',
             age: 50,
-            screenStatus:"使用中",
+            guideContentStatus:"使用中",
             createTime: "2022-10-24"
           },
           {
-            screenNo:'VDxxxxxx',
-            screenName:'xxx自动立体视觉显示器',
-            screenType:'自动立体视觉显示器',
+            guideContentNo:'VDxxxxxx',
+            guideContentName:'xxx人物讲解',
+            guideContentType:'人物讲解',
             address:"安徽合肥xxx",
-            screenGender:'男',
+            guideContentGender:'男',
             age: 55,
-            screenStatus:"使用中",
+            guideContentStatus:"使用中",
             createTime: "2022-01-12"
           },
           {
-            screenNo:'VDxxxxxx',
-            screenName:'xxx3D虚拟现实头显',
-            screenType:'3D虚拟现实头显',
+            guideContentNo:'VDxxxxxx',
+            guideContentName:'xxx文化传统',
+            guideContentType:'文化传统',
             address:"安徽合肥xxx",
-            screenGender:'女',
+            guideContentGender:'女',
             age: 40,
-            screenStatus:"维护中",
+            guideContentStatus:"维护中",
             createTime: "2022-05-17"
           },
           {
-            screenNo:'VDxxxxxx',
-            screenName:'xxx3D立体显示器',
-            screenType:'3D立体显示器',
+            guideContentNo:'VDxxxxxx',
+            guideContentName:'xxx交通和导览路线',
+            guideContentType:'交通和导览路线',
             address:"安徽滁州xxx",
-            screenGender:'男',
+            guideContentGender:'男',
             age: 50,
-            screenStatus:"使用中",
+            guideContentStatus:"使用中",
             createTime: "2021-09-12"
           },
         ]
@@ -382,9 +382,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formscreenName) {
+    closeDialog(formguideContentName) {
       this.editFormVisible = false
-      this.$refs[formscreenName].resetFields()
+      this.$refs[formguideContentName].resetFields()
     }
   }
 }
