@@ -2,23 +2,20 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">导览管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>导览内容管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>勘探数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入导览内容编号"></el-input>
+        <el-input size="small" v-model="formInline.explorateNo" placeholder="请输入勘探数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.machineNo" placeholder="请输入导览内容名称"></el-input>
+        <el-input size="small" v-model="formInline.explorateName" placeholder="请输入勘探数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.orderNo" placeholder="请选择导览内容类型"></el-select>
+        <el-select size="small" v-model="formInline.explorateType" placeholder="请选择勘探数据类型"></el-select>
       </el-form-item>
-      <!-- <el-form-item>
-        <el-select size="small" v-model="formInline.transId" placeholder="请选择工作状态"></el-select>
-      </el-form-item> -->
 
       <el-form-item>
         <el-button size="small" type="primary" icon="el-icon-search" @click="search">搜索</el-button>
@@ -29,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="guideContentNo" label="导览内容编号" show-overflow-tooltip>
+      <el-table-column sortable prop="explorateNo" label="勘探数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="guideContentName" label="导览内容名称" show-overflow-tooltip>
+      <el-table-column sortable prop="explorateName" label="勘探数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="guideContentType" label="导览内容类型" show-overflow-tooltip>
+      <el-table-column sortable prop="explorateType" label="勘探数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="guideContentStatus" label="导览内容状态" show-overflow-tooltip>
+      <el-table-column sortable prop="explorateStatus" label="勘探数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -50,23 +47,23 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <el-dialog title="添加导览内容信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
-      <!-- <el-dialog title="编辑导览内容信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
+    <!-- <el-dialog title="添加勘探数据信息" :visible.sync="addVisiable" width="30%" @click="closeDialog"> -->
+      <el-dialog title="编辑勘探数据信息" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="导览内容编号" prop="guideContentName">
-          <el-input size="small" v-model="addForm.guideContentNo" auto-complete="off" placeholder="请输入导览内容编号"></el-input>
+        <el-form-item label="勘探数据编号" prop="explorateName">
+          <el-input size="small" v-model="addForm.explorateNo" auto-complete="off" placeholder="请输入勘探数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="导览内容名称" prop="guideContentName">
-          <el-input size="small" v-model="addForm.guideContentName" auto-complete="off" placeholder="请输入导览内容名称"></el-input>
+        <el-form-item label="勘探数据名称" prop="explorateName">
+          <el-input size="small" v-model="addForm.explorateName" auto-complete="off" placeholder="请输入勘探数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="导览内容类型" prop="guideContentName">
-          <el-select size="small" v-model="addForm.guideContentType" auto-complete="off" placeholder="请选择导览内容类型">
-            <el-option label="地点介绍" value="1"></el-option>
+        <el-form-item label="勘探数据类型" prop="explorateName">
+          <el-select size="small" v-model="addForm.explorateType" auto-complete="off" placeholder="请选择勘探数据类型">
+            <el-option label="地质调查数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="导览内容状态" prop="guideContentName">
-          <el-select size="small" v-model="addForm.guideContentStatus" auto-complete="off" placeholder="请选择导览内容状态">
-            <el-option label="使用中" value="1"></el-option>
+        <el-form-item label="勘探数据状态" prop="explorateName">
+          <el-select size="small" v-model="addForm.explorateStatus" auto-complete="off" placeholder="请选择勘探数据状态">
+            <el-option label="整合中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -86,31 +83,31 @@ export default {
     return {
       addVisiable: false,
        addForm:{
-       guideContentNo:'',
-       guideContentName:'',
-       guideContentType:'',
+       explorateNo:'',
+       explorateName:'',
+       explorateType:'',
        address:'',
-       guideContentGender:'',
+       explorateGender:'',
        age:'',
-       guideContentStatus:''
+       explorateStatus:''
       },
-      // addForm:{
-      //  guideContentNo:'VDxxxxxx',
-      //  guideContentName:'xxx地点介绍',
-      //  address:'安徽合肥xxx',
-      //  guideContentGender:'1',
-      //  age:'50',
-      //  guideContentType:'1',
-      //  guideContentStatus:'1'
-      // },
+      addForm:{
+       explorateNo:'VDxxxxxx',
+       explorateName:'xxx地质调查数据',
+       address:'安徽合肥xxx',
+       explorateGender:'1',
+       age:'50',
+       explorateType:'1',
+       explorateStatus:'1'
+      },
       rules: {
-        guideContentName: [
+        explorateName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         address: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        guideContentGender: [
+        explorateGender: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         age: [
@@ -149,7 +146,7 @@ export default {
       ],
       editForm: {
         id: '',
-        guideContentName: '',
+        explorateName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -217,53 +214,53 @@ export default {
         count: 5,
         data: [
           {
-            guideContentNo:'VDxxxxxx',
-            guideContentName:'xxx地点介绍',
-            guideContentType:'地点介绍',
+            explorateNo:'VDxxxxxx',
+            explorateName:'xxx地质调查数据',
+            explorateType:'地质调查数据',
             address:"安徽合肥xxx",
-            guideContentGender:'男',
+            explorateGender:'男',
             age: 50,
-            guideContentStatus:"使用中",
+            explorateStatus:"整合中",
             createTime: "2020-08-12"
           },
           {
-            guideContentNo:'VDxxxxxx',
-            guideContentName:'xxx展品介绍',
-            guideContentType:'展品介绍',
+            explorateNo:'VDxxxxxx',
+            explorateName:'xxx物探数据',
+            explorateType:'物探数据',
             address:"安徽芜湖xxx",
-            guideContentGender:'男',
+            explorateGender:'男',
             age: 50,
-            guideContentStatus:"使用中",
+            explorateStatus:"整合中",
             createTime: "2022-10-24"
           },
           {
-            guideContentNo:'VDxxxxxx',
-            guideContentName:'xxx人物讲解',
-            guideContentType:'人物讲解',
+            explorateNo:'VDxxxxxx',
+            explorateName:'xxx钻探数据',
+            explorateType:'钻探数据',
             address:"安徽合肥xxx",
-            guideContentGender:'男',
+            explorateGender:'男',
             age: 55,
-            guideContentStatus:"使用中",
+            explorateStatus:"整合中",
             createTime: "2022-01-12"
           },
           {
-            guideContentNo:'VDxxxxxx',
-            guideContentName:'xxx文化传统',
-            guideContentType:'文化传统',
+            explorateNo:'VDxxxxxx',
+            explorateName:'xxx化验数据',
+            explorateType:'化验数据',
             address:"安徽合肥xxx",
-            guideContentGender:'女',
+            explorateGender:'女',
             age: 40,
-            guideContentStatus:"维护中",
+            explorateStatus:"待整合",
             createTime: "2022-05-17"
           },
           {
-            guideContentNo:'VDxxxxxx',
-            guideContentName:'xxx交通和导览路线',
-            guideContentType:'交通和导览路线',
+            explorateNo:'VDxxxxxx',
+            explorateName:'xxx地球物理勘查数据',
+            explorateType:'地球物理勘查数据',
             address:"安徽滁州xxx",
-            guideContentGender:'男',
+            explorateGender:'男',
             age: 50,
-            guideContentStatus:"使用中",
+            explorateStatus:"整合中",
             createTime: "2021-09-12"
           },
         ]
@@ -382,9 +379,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formguideContentName) {
+    closeDialog(formexplorateName) {
       this.editFormVisible = false
-      this.$refs[formguideContentName].resetFields()
+      this.$refs[formexplorateName].resetFields()
     }
   }
 }
