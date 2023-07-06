@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>地质调查数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">项目管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>项目信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.geologyInfoName" placeholder="请输入地质调查数据编号"></el-input>
+        <el-input size="small" v-model="formInline.projectInfoName" placeholder="请输入项目信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.geologyInfoName" placeholder="请输入地质调查数据名称"></el-input>
+        <el-input size="small" v-model="formInline.projectInfoName" placeholder="请输入项目信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.geologyInfoStatus" placeholder="请选择地质调查数据类型">
+        <el-select size="small" v-model="formInline.projectInfoStatus" placeholder="请选择项目信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="geologyInfoNo" label="地质调查数据编号">
+      <el-table-column sortable prop="projectInfoNo" label="项目信息编号">
       </el-table-column>
-      <el-table-column sortable prop="geologyInfoName" label="地质调查数据名称">
+      <el-table-column sortable prop="projectInfoName" label="项目信息名称">
       </el-table-column>
-      <el-table-column sortable prop="geologyInfoType" label="地质调查数据类型">
+      <el-table-column sortable prop="projectInfoType" label="项目信息类型">
       </el-table-column>
-      <el-table-column sortable prop="geologyInfoStatus" label="地质调查数据状态" >
+      <el-table-column sortable prop="projectInfoStatus" label="项目信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -49,23 +49,22 @@
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
-    <!-- <el-dialog title="编辑地质调查数据" :visible.sync="editFormVisible" width="30%" @click="closeDialog"> -->
-      <el-dialog title="添加地质调查数据" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
+      <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="地质调查数据编号" prop="geologyInfoName">
-          <el-input size="small" v-model="editForm.geologyInfoNo" auto-complete="off" placeholder="请输入地质调查数据编号"></el-input>
+        <el-form-item label="项目信息编号" prop="projectInfoName">
+          <el-input size="small" v-model="editForm.projectInfoNo" auto-complete="off" placeholder="请输入项目信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="地质调查数据名称" prop="geologyInfoName">
-          <el-input size="small" v-model="editForm.geologyInfoName" auto-complete="off" placeholder="请输入地质调查数据名称"></el-input>
+        <el-form-item label="项目信息名称" prop="projectInfoName">
+          <el-input size="small" v-model="editForm.projectInfoName" auto-complete="off" placeholder="请输入项目信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="地质调查数据类型" prop="geologyInfoName">
-          <el-select size="small" v-model="editForm.type" auto-complete="off" placeholder="请选择地质调查数据类型">
-            <el-option label="地质剖面数据" value="1"></el-option>
+        <el-form-item label="项目信息类型" prop="projectInfoName">
+          <el-select size="small" v-model="editForm.projectInfoType" auto-complete="off" placeholder="请选择项目信息类型">
+            <el-option label="建筑和基础设施项目" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="地质调查数据状态" prop="geologyInfoName">
-          <el-select size="small" v-model="editForm.status" auto-complete="off" placeholder="请选择地质调查数据状态">
-            <el-option label="整合中" value="1"></el-option>
+        <el-form-item label="项目信息状态" prop="projectInfoName">
+          <el-select size="small" v-model="editForm.projectInfoStatus" auto-complete="off" placeholder="请选择项目信息状态">
+            <el-option label="处理中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -87,29 +86,21 @@ export default {
       fshow: false, //switch关闭
       loading: false, //是显示加载
       editFormVisible: false, //控制编辑页面显示与隐藏
-      title: '环卫地质调查数据创建',
+      title: '',
       editForm: {
-        geologyInfoNo: '',
-        geologyInfoName: '',
-        type:'',
+        projectInfoNo: '',
+        projectInfoName: '',
+        projectInfoType:'',
         status:'',
-        geologyInfoStatus: '',
+        projectInfoStatus: '',
         token: localStorage.getItem('logintoken')
       },
-      // editForm: {
-      //   geologyInfoNo: 'VSxxxxxxxx',
-      //   geologyInfoName: 'XX地质剖面数据',
-      //   type:'1',
-      //   status:'1',
-      //   geologyInfoStatus: '',
-      //   token: localStorage.getItem('logintoken')
-      // },
       // rules表单验证
       rules: {
-        geologyInfoName: [
+        projectInfoName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        geologyInfoStatus: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
+        projectInfoStatus: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
       },
       formInline: {
         page: 1,
@@ -164,42 +155,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            geologyInfoNo: 'VSxxxxxxxx',
-            geologyInfoName: 'XX地质剖面数据',
-            geologyInfoType: '地质剖面数据',
-            geologyInfoStatus: '整合中',
+            projectInfoNo: 'VSxxxxxxxx',
+            projectInfoName: 'XX建筑和基础设施项目',
+            projectInfoType: '建筑和基础设施项目',
+            projectInfoStatus: '处理中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            geologyInfoNo: 'VSxxxxxxxx',
-            geologyInfoName: 'XX岩石鉴定数据',
-            geologyInfoType: '岩石鉴定数据',
-            geologyInfoStatus: '整合中',
+            projectInfoNo: 'VSxxxxxxxx',
+            projectInfoName: 'XXIT和软件开发项目',
+            projectInfoType: 'IT和软件开发项目',
+            projectInfoStatus: '处理中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            geologyInfoNo: 'VSxxxxxxxx',
-            geologyInfoName: 'XX地球化学数据',
-            geologyInfoType: '地球化学数据',
-            geologyInfoStatus: '整合中',
+            projectInfoNo: 'VSxxxxxxxx',
+            projectInfoName: 'XX产品开发项目',
+            projectInfoType: '产品开发项目',
+            projectInfoStatus: '处理中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            geologyInfoNo: 'VSxxxxxxxx',
-            geologyInfoName: 'XX地球物理数据',
-            geologyInfoType: '地球物理数据',
-            geologyInfoStatus: '待整合',
+            projectInfoNo: 'VSxxxxxxxx',
+            projectInfoName: 'XX市场推广和营销项目',
+            projectInfoType: '市场推广和营销项目',
+            projectInfoStatus: '待处理',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            geologyInfoNo: 'VSxxxxxxxx',
-            geologyInfoName: 'XX地形地貌数据',
-            geologyInfoType: '地形地貌数据',
-            geologyInfoStatus: '整合中',
+            projectInfoNo: 'VSxxxxxxxx',
+            projectInfoName: 'XX研究和学术项目',
+            projectInfoType: '研究和学术项目',
+            projectInfoStatus: '处理中',
           }
         ]
       }
@@ -248,15 +239,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '修改'
-        this.editForm.deptId = row.deptId
-        this.editForm.geologyInfoName = row.geologyInfoName
-        this.editForm.geologyInfoStatus = row.geologyInfoStatus
+        this.title = '编辑项目信息'
+        this.editForm.projectInfoNo = row.projectInfoNo
+        this.editForm.projectInfoName = row.projectInfoName
+        this.editForm.projectInfoStatus = row.projectInfoStatus
+        this.editForm.projectInfoType = row.projectInfoType
       } else {
-        this.title = '添加'
-        this.editForm.deptId = ''
-        this.editForm.geologyInfoName = ''
-        this.editForm.geologyInfoStatus = ''
+        this.title = '添加项目信息'
+        this.editForm.projectInfoNo = ''
+        this.editForm.projectInfoName = ''
+        this.editForm.projectInfoStatus = ''
+        this.editForm.projectInfoType =''
       }
     },
     // 编辑、增加页面保存方法
