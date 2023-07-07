@@ -280,7 +280,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '统计分析模块',
+          menuname: '销售统计与分析模块',
           hasThird: null,
           url: null,
           menus: [

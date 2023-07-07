@@ -83,7 +83,7 @@ export default {
     return {
       machineNo: '',
       type: 'day',
-      //  项目录入总次数 
+      //  农产品信息录入总次数 
       SCEoption: {
         tooltip: {
           trigger: 'item',
@@ -91,7 +91,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '项目录入总次数',
+            name: '农产品信息录入总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -147,7 +147,7 @@ export default {
           }
         },
         series: [{
-          name: '项目录入总次数',
+          name: '农产品信息录入总次数',
           type: 'bar',
           barGap: 0,
           data: [50000, 70000, 80000, 40000, 50000, 30000, 40000, 60000, 50000, 40000, 60000, 40000],
@@ -176,7 +176,7 @@ export default {
           }
         }]
       },
-      //  人员信息录入总次数 
+      //  客户信息录入总次数 
       SUMoption: {
         tooltip: {
           trigger: 'item',
@@ -184,7 +184,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '人员信息录入总次数',
+            name: '客户信息录入总次数',
             icon: 'rect'
           }],
           top: 1,
@@ -240,7 +240,7 @@ export default {
           }
         },
         series: [{
-          name: '人员信息录入总次数',
+          name: '客户信息录入总次数',
           //   type: 'bar',
           type: 'line',
           barGap: 0,
@@ -251,7 +251,7 @@ export default {
           }
         }]
       },
-      //  资源录入总次数
+      //  成交量统计
       Clickoption: {
         tooltip: {
           trigger: 'item',
@@ -259,7 +259,7 @@ export default {
         },
         legend: {
           data: [{
-            name: '资源录入总次数',
+            name: '成交量统计',
             icon: 'rect'
           }],
           top: 1,
@@ -315,7 +315,7 @@ export default {
           }
         },
         series: [{
-          name: '资源录入总次数',
+          name: '成交量统计',
           type: 'bar',
           barGap: 0,
           data: [50000, 10000, 80000, 30000, 50000, 60000, 40000, 80000, 50000, 20000, 60000, 40000],
@@ -325,11 +325,11 @@ export default {
           }
         }]
       },
-      //  项目类型占比
+      //  农产品销售占比
       payoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '项目类型占比',
+          text: '农产品销售占比',
           left: 10,
           top: 5,
           textStyle: {
@@ -353,19 +353,17 @@ export default {
         },
         series: [
           {
-            name: '项目类型占比',
+            name: '农产品销售占比',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 415, name: '建筑和基础设施项目' },
-              { value: 220, name: 'IT和软件开发项目' },
-              { value: 174, name: '产品开发项目' },
-              { value: 135, name: '市场推广和营销项目' },
-              { value: 300, name: '活动和会议组织项目' },
-              { value: 105, name: '研究和学术项目' },
-              { value: 125, name: '社会公益项目' },
-              { value: 165, name: '新业务开拓项目' },
+              { value: 415, name: '作物类农产品' },
+              { value: 320, name: '畜牧类农产品' },
+              { value: 174, name: '农副产品' },
+              { value: 135, name: '有机农产品' },
+              { value: 200, name: '地理原产地农产品' },
+              { value: 105, name: '农产品加工品' },
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
@@ -503,7 +501,7 @@ export default {
       this.chart = Chart.init(this.$refs.SUMEchart)
       this.chart.setOption(this.SUMoption)
     },
-    // 资源录入总次数
+    // 成交量统计
     getClick() {
       this.chart = Chart.init(this.$refs.ClickEchart)
       this.chart.setOption(this.Clickoption)
