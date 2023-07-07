@@ -8,13 +8,13 @@
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.projectInfoName" placeholder="请输入农产品信息编号"></el-input>
+        <el-input size="small" v-model="formInline.farmProductName" placeholder="请输入农产品信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.projectInfoName" placeholder="请输入农产品信息名称"></el-input>
+        <el-input size="small" v-model="formInline.farmProductName" placeholder="请输入农产品信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.projectInfoStatus" placeholder="请选择农产品信息类型">
+        <el-select size="small" v-model="formInline.farmProductStatus" placeholder="请选择农产品信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="projectInfoNo" label="农产品信息编号">
+      <el-table-column sortable prop="farmProductNo" label="农产品信息编号">
       </el-table-column>
-      <el-table-column sortable prop="projectInfoName" label="农产品信息名称">
+      <el-table-column sortable prop="farmProductName" label="农产品信息名称">
       </el-table-column>
-      <el-table-column sortable prop="projectInfoType" label="农产品信息类型">
+      <el-table-column sortable prop="farmProductType" label="农产品信息类型">
       </el-table-column>
-      <el-table-column sortable prop="projectInfoStatus" label="农产品信息状态" >
+      <el-table-column sortable prop="farmProductStatus" label="农产品信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="农产品信息编号" prop="projectInfoName">
-          <el-input size="small" v-model="editForm.projectInfoNo" auto-complete="off" placeholder="请输入农产品信息编号"></el-input>
+        <el-form-item label="农产品信息编号" prop="farmProductName">
+          <el-input size="small" v-model="editForm.farmProductNo" auto-complete="off" placeholder="请输入农产品信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="农产品信息名称" prop="projectInfoName">
-          <el-input size="small" v-model="editForm.projectInfoName" auto-complete="off" placeholder="请输入农产品信息名称"></el-input>
+        <el-form-item label="农产品信息名称" prop="farmProductName">
+          <el-input size="small" v-model="editForm.farmProductName" auto-complete="off" placeholder="请输入农产品信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="农产品信息类型" prop="projectInfoName">
-          <el-select size="small" v-model="editForm.projectInfoType" auto-complete="off" placeholder="请选择农产品信息类型">
+        <el-form-item label="农产品信息类型" prop="farmProductName">
+          <el-select size="small" v-model="editForm.farmProductType" auto-complete="off" placeholder="请选择农产品信息类型">
             <el-option label="作物类农产品" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="农产品信息状态" prop="projectInfoName">
-          <el-select size="small" v-model="editForm.projectInfoStatus" auto-complete="off" placeholder="请选择农产品信息状态">
+        <el-form-item label="农产品信息状态" prop="farmProductName">
+          <el-select size="small" v-model="editForm.farmProductStatus" auto-complete="off" placeholder="请选择农产品信息状态">
             <el-option label="上架中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,19 +88,19 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        projectInfoNo: '',
-        projectInfoName: '',
-        projectInfoType:'',
+        farmProductNo: '',
+        farmProductName: '',
+        farmProductType:'',
         status:'',
-        projectInfoStatus: '',
+        farmProductStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        projectInfoName: [
+        farmProductName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        projectInfoStatus: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
+        farmProductStatus: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
       },
       formInline: {
         page: 1,
@@ -155,42 +155,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX作物类农产品',
-            projectInfoType: '作物类农产品',
-            projectInfoStatus: '上架中',
+            farmProductNo: 'VSxxxxxxxx',
+            farmProductName: 'XX作物类农产品',
+            farmProductType: '作物类农产品',
+            farmProductStatus: '上架中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX作物类农产品',
-            projectInfoType: '作物类农产品',
-            projectInfoStatus: '上架中',
+            farmProductNo: 'VSxxxxxxxx',
+            farmProductName: 'XX作物类农产品',
+            farmProductType: '作物类农产品',
+            farmProductStatus: '上架中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX畜牧类农产品',
-            projectInfoType: '畜牧类农产品',
-            projectInfoStatus: '上架中',
+            farmProductNo: 'VSxxxxxxxx',
+            farmProductName: 'XX畜牧类农产品',
+            farmProductType: '畜牧类农产品',
+            farmProductStatus: '上架中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX农副产品',
-            projectInfoType: '农副产品',
-            projectInfoStatus: '已下架',
+            farmProductNo: 'VSxxxxxxxx',
+            farmProductName: 'XX农副产品',
+            farmProductType: '农副产品',
+            farmProductStatus: '已下架',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX农产品加工品',
-            projectInfoType: '农产品加工品',
-            projectInfoStatus: '上架中',
+            farmProductNo: 'VSxxxxxxxx',
+            farmProductName: 'XX农产品加工品',
+            farmProductType: '农产品加工品',
+            farmProductStatus: '上架中',
           }
         ]
       }
@@ -240,16 +240,16 @@ export default {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
         this.title = '编辑农产品信息'
-        this.editForm.projectInfoNo = row.projectInfoNo
-        this.editForm.projectInfoName = row.projectInfoName
-        this.editForm.projectInfoStatus = row.projectInfoStatus
-        this.editForm.projectInfoType = row.projectInfoType
+        this.editForm.farmProductNo = row.farmProductNo
+        this.editForm.farmProductName = row.farmProductName
+        this.editForm.farmProductStatus = row.farmProductStatus
+        this.editForm.farmProductType = row.farmProductType
       } else {
         this.title = '添加农产品信息'
-        this.editForm.projectInfoNo = ''
-        this.editForm.projectInfoName = ''
-        this.editForm.projectInfoStatus = ''
-        this.editForm.projectInfoType =''
+        this.editForm.farmProductNo = ''
+        this.editForm.farmProductName = ''
+        this.editForm.farmProductStatus = ''
+        this.editForm.farmProductType =''
       }
     },
     // 编辑、增加页面保存方法

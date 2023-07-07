@@ -8,13 +8,13 @@
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.sourceInfoNo" placeholder="请输入订单信息编号"></el-input>
+        <el-input size="small" v-model="formInline.farmOrderNo" placeholder="请输入订单信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.sourceInfoName" placeholder="请输入订单信息名称"></el-input>
+        <el-input size="small" v-model="formInline.farmOrderName" placeholder="请输入订单信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.sourceInfoType" placeholder="请选择订单信息类型"></el-select>
+        <el-select size="small" v-model="formInline.farmOrderType" placeholder="请选择订单信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="sourceInfoNo" label="订单信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="farmOrderNo" label="订单信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sourceInfoName" label="订单信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="farmOrderName" label="订单信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sourceInfoType" label="订单信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="farmOrderType" label="订单信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sourceInfoStatus" label="订单信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="farmOrderStatus" label="订单信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -49,19 +49,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="订单信息编号" prop="sourceInfoName">
-          <el-input size="small" v-model="addForm.sourceInfoNo" auto-complete="off" placeholder="请输入订单信息编号"></el-input>
+        <el-form-item label="订单信息编号" prop="farmOrderName">
+          <el-input size="small" v-model="addForm.farmOrderNo" auto-complete="off" placeholder="请输入订单信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="订单信息名称" prop="sourceInfoName">
-          <el-input size="small" v-model="addForm.sourceInfoName" auto-complete="off" placeholder="请输入订单信息名称"></el-input>
+        <el-form-item label="订单信息名称" prop="farmOrderName">
+          <el-input size="small" v-model="addForm.farmOrderName" auto-complete="off" placeholder="请输入订单信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="订单信息类型" prop="sourceInfoName">
-          <el-select size="small" v-model="addForm.sourceInfoType" auto-complete="off" placeholder="请选择订单信息类型">
+        <el-form-item label="订单信息类型" prop="farmOrderName">
+          <el-select size="small" v-model="addForm.farmOrderType" auto-complete="off" placeholder="请选择订单信息类型">
             <el-option label="销售订单" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="订单信息状态" prop="sourceInfoName">
-          <el-select size="small" v-model="addForm.sourceInfoStatus" auto-complete="off" placeholder="请选择订单信息状态">
+        <el-form-item label="订单信息状态" prop="farmOrderName">
+          <el-select size="small" v-model="addForm.farmOrderStatus" auto-complete="off" placeholder="请选择订单信息状态">
             <el-option label="已完成" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -83,22 +83,22 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       sourceInfoNo:'',
-       sourceInfoName:'',
-       sourceInfoType:'',
+       farmOrderNo:'',
+       farmOrderName:'',
+       farmOrderType:'',
        address:'',
-       sourceInfoGender:'',
+       farmOrderGender:'',
        age:'',
-       sourceInfoStatus:''
+       farmOrderStatus:''
       },
       rules: {
-        sourceInfoName: [
+        farmOrderName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         address: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
-        sourceInfoGender: [
+        farmOrderGender: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
         age: [
@@ -137,7 +137,7 @@ export default {
       ],
       editForm: {
         id: '',
-        sourceInfoName: '',
+        farmOrderName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -205,53 +205,53 @@ export default {
         count: 5,
         data: [
           {
-            sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx销售订单',
-            sourceInfoType:'销售订单',
+            farmOrderNo:'VDxxxxxx',
+            farmOrderName:'xxx销售订单',
+            farmOrderType:'销售订单',
             address:"安徽合肥xxx",
-            sourceInfoGender:'男',
+            farmOrderGender:'男',
             age: 50,
-            sourceInfoStatus:"已完成",
+            farmOrderStatus:"已完成",
             createTime: "2020-08-12"
           },
           {
-            sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx采购订单',
-            sourceInfoType:'采购订单',
+            farmOrderNo:'VDxxxxxx',
+            farmOrderName:'xxx采购订单',
+            farmOrderType:'采购订单',
             address:"安徽芜湖xxx",
-            sourceInfoGender:'男',
+            farmOrderGender:'男',
             age: 50,
-            sourceInfoStatus:"已完成",
+            farmOrderStatus:"已完成",
             createTime: "2022-10-24"
           },
           {
-            sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx配送订单',
-            sourceInfoType:'配送订单',
+            farmOrderNo:'VDxxxxxx',
+            farmOrderName:'xxx配送订单',
+            farmOrderType:'配送订单',
             address:"安徽合肥xxx",
-            sourceInfoGender:'男',
+            farmOrderGender:'男',
             age: 55,
-            sourceInfoStatus:"已完成",
+            farmOrderStatus:"已完成",
             createTime: "2022-01-12"
           },
           {
-            sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx退货订单',
-            sourceInfoType:'退货订单',
+            farmOrderNo:'VDxxxxxx',
+            farmOrderName:'xxx退货订单',
+            farmOrderType:'退货订单',
             address:"安徽合肥xxx",
-            sourceInfoGender:'女',
+            farmOrderGender:'女',
             age: 40,
-            sourceInfoStatus:"已取消",
+            farmOrderStatus:"已取消",
             createTime: "2022-05-17"
           },
           {
-            sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx补货订单',
-            sourceInfoType:'补货订单',
+            farmOrderNo:'VDxxxxxx',
+            farmOrderName:'xxx补货订单',
+            farmOrderType:'补货订单',
             address:"安徽滁州xxx",
-            sourceInfoGender:'男',
+            farmOrderGender:'男',
             age: 50,
-            sourceInfoStatus:"已完成",
+            farmOrderStatus:"已完成",
             createTime: "2021-09-12"
           },
         ]
@@ -303,16 +303,16 @@ export default {
       this.addVisiable = true
       if(row!=null){
         this.title='编辑订单信息'
-        this.addForm.sourceInfoNo = row.sourceInfoNo
-        this.addForm.sourceInfoName = row.sourceInfoName
-        this.addForm.sourceInfoType = row.sourceInfoType
-        this.addForm.sourceInfoStatus = row.sourceInfoStatus
+        this.addForm.farmOrderNo = row.farmOrderNo
+        this.addForm.farmOrderName = row.farmOrderName
+        this.addForm.farmOrderType = row.farmOrderType
+        this.addForm.farmOrderStatus = row.farmOrderStatus
       }else{
         this.title='添加订单信息'
-        this.addForm.sourceInfoNo = ''
-        this.addForm.sourceInfoName = ''
-        this.addForm.sourceInfoType = ''
-        this.addForm.sourceInfoStatus = ''
+        this.addForm.farmOrderNo = ''
+        this.addForm.farmOrderName = ''
+        this.addForm.farmOrderType = ''
+        this.addForm.farmOrderStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -382,9 +382,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formsourceInfoName) {
+    closeDialog(formfarmOrderName) {
       this.editFormVisible = false
-      this.$refs[formsourceInfoName].resetFields()
+      this.$refs[formfarmOrderName].resetFields()
     }
   }
 }
