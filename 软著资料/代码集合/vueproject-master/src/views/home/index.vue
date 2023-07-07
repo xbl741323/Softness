@@ -402,7 +402,7 @@ export default {
       payNumoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '资源分类占比',
+          text: '客户分类占比',
           left: 10,
           top: 5,
           textStyle: {
@@ -426,18 +426,15 @@ export default {
         },
         series: [
           {
-            name: '资源分类占比',
+            name: '客户分类占比',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-              { value: 235, name: '项目资源' },
-              { value: 250, name: '文件资源' },
-              { value: 174, name: '团队资源' },
-              { value: 85, name: '协作资源' },
-              { value: 110, name: '成本资源' },
-              { value: 137, name: '绩效资源' },
-              { value: 107, name: '数据资源' }
+              { value: 235, name: '买家市场' },
+              { value: 250, name: '经销商' },
+              { value: 174, name: '批发商' },
+              { value: 85, name: '零售商' },
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {

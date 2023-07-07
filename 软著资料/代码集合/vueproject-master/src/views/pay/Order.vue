@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">资源管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>资源信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">订单管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>订单信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.sourceInfoNo" placeholder="请输入资源信息编号"></el-input>
+        <el-input size="small" v-model="formInline.sourceInfoNo" placeholder="请输入订单信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.sourceInfoName" placeholder="请输入资源信息名称"></el-input>
+        <el-input size="small" v-model="formInline.sourceInfoName" placeholder="请输入订单信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.sourceInfoType" placeholder="请选择资源信息类型"></el-select>
+        <el-select size="small" v-model="formInline.sourceInfoType" placeholder="请选择订单信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="sourceInfoNo" label="资源信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="sourceInfoNo" label="订单信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sourceInfoName" label="资源信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="sourceInfoName" label="订单信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sourceInfoType" label="资源信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="sourceInfoType" label="订单信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="sourceInfoStatus" label="资源信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="sourceInfoStatus" label="订单信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -49,20 +49,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="资源信息编号" prop="sourceInfoName">
-          <el-input size="small" v-model="addForm.sourceInfoNo" auto-complete="off" placeholder="请输入资源信息编号"></el-input>
+        <el-form-item label="订单信息编号" prop="sourceInfoName">
+          <el-input size="small" v-model="addForm.sourceInfoNo" auto-complete="off" placeholder="请输入订单信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="资源信息名称" prop="sourceInfoName">
-          <el-input size="small" v-model="addForm.sourceInfoName" auto-complete="off" placeholder="请输入资源信息名称"></el-input>
+        <el-form-item label="订单信息名称" prop="sourceInfoName">
+          <el-input size="small" v-model="addForm.sourceInfoName" auto-complete="off" placeholder="请输入订单信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="资源信息类型" prop="sourceInfoName">
-          <el-select size="small" v-model="addForm.sourceInfoType" auto-complete="off" placeholder="请选择资源信息类型">
-            <el-option label="项目资源" value="1"></el-option>
+        <el-form-item label="订单信息类型" prop="sourceInfoName">
+          <el-select size="small" v-model="addForm.sourceInfoType" auto-complete="off" placeholder="请选择订单信息类型">
+            <el-option label="销售订单" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="资源信息状态" prop="sourceInfoName">
-          <el-select size="small" v-model="addForm.sourceInfoStatus" auto-complete="off" placeholder="请选择资源信息状态">
-            <el-option label="处理中" value="1"></el-option>
+        <el-form-item label="订单信息状态" prop="sourceInfoName">
+          <el-select size="small" v-model="addForm.sourceInfoStatus" auto-complete="off" placeholder="请选择订单信息状态">
+            <el-option label="已完成" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -133,7 +133,7 @@ export default {
         { key: '退款进行中', value: 12 },
         { key: '退款成功', value: 13 },
         { key: '退款失败', value: 14 },
-        { key: '订单处理中', value: 10 }
+        { key: '订单已完成', value: 10 }
       ],
       editForm: {
         id: '',
@@ -206,52 +206,52 @@ export default {
         data: [
           {
             sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx项目资源',
-            sourceInfoType:'项目资源',
+            sourceInfoName:'xxx销售订单',
+            sourceInfoType:'销售订单',
             address:"安徽合肥xxx",
             sourceInfoGender:'男',
             age: 50,
-            sourceInfoStatus:"处理中",
+            sourceInfoStatus:"已完成",
             createTime: "2020-08-12"
           },
           {
             sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx文件资源',
-            sourceInfoType:'文件资源',
+            sourceInfoName:'xxx采购订单',
+            sourceInfoType:'采购订单',
             address:"安徽芜湖xxx",
             sourceInfoGender:'男',
             age: 50,
-            sourceInfoStatus:"处理中",
+            sourceInfoStatus:"已完成",
             createTime: "2022-10-24"
           },
           {
             sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx团队资源',
-            sourceInfoType:'团队资源',
+            sourceInfoName:'xxx配送订单',
+            sourceInfoType:'配送订单',
             address:"安徽合肥xxx",
             sourceInfoGender:'男',
             age: 55,
-            sourceInfoStatus:"处理中",
+            sourceInfoStatus:"已完成",
             createTime: "2022-01-12"
           },
           {
             sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx协作资源',
-            sourceInfoType:'协作资源',
+            sourceInfoName:'xxx退货订单',
+            sourceInfoType:'退货订单',
             address:"安徽合肥xxx",
             sourceInfoGender:'女',
             age: 40,
-            sourceInfoStatus:"待处理",
+            sourceInfoStatus:"已取消",
             createTime: "2022-05-17"
           },
           {
             sourceInfoNo:'VDxxxxxx',
-            sourceInfoName:'xxx成本资源',
-            sourceInfoType:'成本资源',
+            sourceInfoName:'xxx补货订单',
+            sourceInfoType:'补货订单',
             address:"安徽滁州xxx",
             sourceInfoGender:'男',
             age: 50,
-            sourceInfoStatus:"处理中",
+            sourceInfoStatus:"已完成",
             createTime: "2021-09-12"
           },
         ]
@@ -302,13 +302,13 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑资源信息'
+        this.title='编辑订单信息'
         this.addForm.sourceInfoNo = row.sourceInfoNo
         this.addForm.sourceInfoName = row.sourceInfoName
         this.addForm.sourceInfoType = row.sourceInfoType
         this.addForm.sourceInfoStatus = row.sourceInfoStatus
       }else{
-        this.title='添加资源信息'
+        this.title='添加订单信息'
         this.addForm.sourceInfoNo = ''
         this.addForm.sourceInfoName = ''
         this.addForm.sourceInfoType = ''

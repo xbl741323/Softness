@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">项目管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>项目信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">农产品管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>农产品信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.projectInfoName" placeholder="请输入项目信息编号"></el-input>
+        <el-input size="small" v-model="formInline.projectInfoName" placeholder="请输入农产品信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.projectInfoName" placeholder="请输入项目信息名称"></el-input>
+        <el-input size="small" v-model="formInline.projectInfoName" placeholder="请输入农产品信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.projectInfoStatus" placeholder="请选择项目信息类型">
+        <el-select size="small" v-model="formInline.projectInfoStatus" placeholder="请选择农产品信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="projectInfoNo" label="项目信息编号">
+      <el-table-column sortable prop="projectInfoNo" label="农产品信息编号">
       </el-table-column>
-      <el-table-column sortable prop="projectInfoName" label="项目信息名称">
+      <el-table-column sortable prop="projectInfoName" label="农产品信息名称">
       </el-table-column>
-      <el-table-column sortable prop="projectInfoType" label="项目信息类型">
+      <el-table-column sortable prop="projectInfoType" label="农产品信息类型">
       </el-table-column>
-      <el-table-column sortable prop="projectInfoStatus" label="项目信息状态" >
+      <el-table-column sortable prop="projectInfoStatus" label="农产品信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="项目信息编号" prop="projectInfoName">
-          <el-input size="small" v-model="editForm.projectInfoNo" auto-complete="off" placeholder="请输入项目信息编号"></el-input>
+        <el-form-item label="农产品信息编号" prop="projectInfoName">
+          <el-input size="small" v-model="editForm.projectInfoNo" auto-complete="off" placeholder="请输入农产品信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="项目信息名称" prop="projectInfoName">
-          <el-input size="small" v-model="editForm.projectInfoName" auto-complete="off" placeholder="请输入项目信息名称"></el-input>
+        <el-form-item label="农产品信息名称" prop="projectInfoName">
+          <el-input size="small" v-model="editForm.projectInfoName" auto-complete="off" placeholder="请输入农产品信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="项目信息类型" prop="projectInfoName">
-          <el-select size="small" v-model="editForm.projectInfoType" auto-complete="off" placeholder="请选择项目信息类型">
-            <el-option label="建筑和基础设施项目" value="1"></el-option>
+        <el-form-item label="农产品信息类型" prop="projectInfoName">
+          <el-select size="small" v-model="editForm.projectInfoType" auto-complete="off" placeholder="请选择农产品信息类型">
+            <el-option label="作物类农产品" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="项目信息状态" prop="projectInfoName">
-          <el-select size="small" v-model="editForm.projectInfoStatus" auto-complete="off" placeholder="请选择项目信息状态">
-            <el-option label="处理中" value="1"></el-option>
+        <el-form-item label="农产品信息状态" prop="projectInfoName">
+          <el-select size="small" v-model="editForm.projectInfoStatus" auto-complete="off" placeholder="请选择农产品信息状态">
+            <el-option label="上架中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -156,41 +156,41 @@ export default {
             creator: 'xxx',
             createime: '2022-12-23',
             projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX建筑和基础设施项目',
-            projectInfoType: '建筑和基础设施项目',
-            projectInfoStatus: '处理中',
+            projectInfoName: 'XX作物类农产品',
+            projectInfoType: '作物类农产品',
+            projectInfoStatus: '上架中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
             projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XXIT和软件开发项目',
-            projectInfoType: 'IT和软件开发项目',
-            projectInfoStatus: '处理中',
+            projectInfoName: 'XX作物类农产品',
+            projectInfoType: '作物类农产品',
+            projectInfoStatus: '上架中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
             projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX产品开发项目',
-            projectInfoType: '产品开发项目',
-            projectInfoStatus: '处理中',
+            projectInfoName: 'XX畜牧类农产品',
+            projectInfoType: '畜牧类农产品',
+            projectInfoStatus: '上架中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
             projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX市场推广和营销项目',
-            projectInfoType: '市场推广和营销项目',
-            projectInfoStatus: '待处理',
+            projectInfoName: 'XX农副产品',
+            projectInfoType: '农副产品',
+            projectInfoStatus: '已下架',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
             projectInfoNo: 'VSxxxxxxxx',
-            projectInfoName: 'XX研究和学术项目',
-            projectInfoType: '研究和学术项目',
-            projectInfoStatus: '处理中',
+            projectInfoName: 'XX农产品加工品',
+            projectInfoType: '农产品加工品',
+            projectInfoStatus: '上架中',
           }
         ]
       }
@@ -239,13 +239,13 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑项目信息'
+        this.title = '编辑农产品信息'
         this.editForm.projectInfoNo = row.projectInfoNo
         this.editForm.projectInfoName = row.projectInfoName
         this.editForm.projectInfoStatus = row.projectInfoStatus
         this.editForm.projectInfoType = row.projectInfoType
       } else {
-        this.title = '添加项目信息'
+        this.title = '添加农产品信息'
         this.editForm.projectInfoNo = ''
         this.editForm.projectInfoName = ''
         this.editForm.projectInfoStatus = ''
