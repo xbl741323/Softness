@@ -1,0 +1,135 @@
+<!--personal/pages/my-process/detail/contract-detail/index.wxml-->
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+<view class="audit" wx:if="{{contractInfo.taskStatus == 2 }}">
+  <van-icon name="warning" style="margin-right: 10rpx;" />
+  <text>审核未通过：{{contractInfo.auditReason}}</text>
+</view>
+<view class="contract-item">
+  <!-- 头部区域 -->
+  <view class="contract-head">
+    <view class="head-left">
+      <text>{{taskNo}}</text>
+      <image catchtap="copyText" data-text="{{taskNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view class="head-right">
+      <text class="{{contractInfo.taskStatus == 1 ? 'passdot' : contractInfo.taskStatus == 2 ? 'notpass' : 'wait'}}"></text>
+      <text>{{contractInfo.contractStatus}}</text>
+    </view>
+  </view>
+  <view class="contract-info" bindtap="viewDetail">
+    <text>合同编号：</text>
+    <text>{{contractInfo.contractNo}}</text>
+    <text>客户名称：</text>
+    <text>{{contractInfo.authName}}</text>
+    <text>地区：</text>
+    <text>{{contractInfo.area}}</text>
+    <text>签约时间：</text>
+    <text>{{contractInfo.signTime || '暂无数据'}}</text>
+    <text>合同金额：</text>
+    <text class="contract-price">{{orders.fixPrice(contractInfo.totalAmount) || '暂无数据'}}</text>
+  </view>
+</view>
+
+<!-- tab切换区域 -->
+<van-tabs ellipsis="{{false}}" color="#0082FC" title-active-color="#0082FC" active="{{ cTabIndex }}" bind:change="changeTab" lazy-render="{{false}}">
+  <van-tab wx:for="{{contractDetailTabList}}" wx:key="index" title="{{item}}"></van-tab>
+</van-tabs>
+
+<view wx:if="{{cTabIndex == 0}}">
+  <view class="basic-info">
+    <text>联系人</text>
+    <text>{{contractInfo.contactName}}</text>
+    <text>电话</text>
+    <text>{{contractInfo.mobile}}</text>
+    <text>签约人</text>
+    <text>{{contractInfo.signName}}</text>
+    <text>电话</text>
+    <text>{{contractInfo.signMobile}}</text>
+  </view>
+  <view class="clue-info">
+    <text>线索信息</text>
+    <view class="contract-line"></view>
+    <view class="basic-clue-info">
+      <text>线索编号</text>
+      <text>{{contractInfo.clueNo}}</text>
+      <text>业务员</text>
+      <text>{{contractInfo.clueSalesmanEmpName}}</text>
+      <text>创建时间</text>
+      <text>{{contractInfo.createTime}}</text>
+      <text>主合同附件</text>
+      <view>
+        <view class="url-contract" catchtap="checkContract" data-url="main" wx:if="{{auditType == 2}}">{{contractInfo.mainContractName}}</view>
+        <view class="url-contract" catchtap="checkContract" data-url="supplement" wx:if="{{auditType != 2}}">{{contractInfo.contractName}} </view>
+      </view>
+      <text wx:if="{{auditType == 2}}">补充协议附件</text>
+      <view wx:if="{{auditType == 2}}">
+        <view class="url-contract" catchtap="checkContract" data-url="supplement">{{contractInfo.contractName}} </view>
+      </view>
+      <text>合同备注</text>
+      <text>{{contractInfo.remark || '暂无备注'}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 订单信息 -->
+<view class="order-list" wx:if="{{cTabIndex == 1}}">
+  <view wx:if="{{orderList.length == 0}}">
+    <view class="empty-order">暂无数据</view>
+  </view>
+  <view wx:if="{{orderList.length > 0}}" wx:for="{{orderList}}" wx:key="index" class="order-info">
+    <view class="order-no">
+      <text>{{item.orderNo}}</text>
+      <image catchtap="copyText" data-text="{{item.orderNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view>
+      <view class="spu-name">
+        <text>{{item.spuName}}</text>
+        <text>x{{item.buyNum}}</text>
+      </view>
+      <view class="fee-info">
+        <text>代理费总价：</text>
+        <text>{{ orders.fixPrice(item.agentFee) || '0.00'}}</text>
+        <text>第三方费总价：</text>
+        <text>{{ orders.fixPrice(item.thirdFee) || '0.00'}}</text>
+        <text>官费总价：</text>
+        <text>{{ orders.fixPrice(item.govFee) || '0.00'}}</text>
+      </view>
+      <view class="line"></view>
+      <view class="total-amount">
+        <text>订单总价：</text>
+        <text class="price">￥{{ orders.fixPrice(item.totalAmount)}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="total">
+    <text>总价合计：</text>
+    <text class="price">￥{{ orders.fixPrice(totalAmount) }}</text>
+  </view>
+</view>
+
+<!-- 操作信息 -->
+<view wx:if="{{cTabIndex == 2}}" class="tab-info">
+  <view wx:if="{{auditLogsList.length == 0}}">
+    <view class="empty-order">暂无数据</view>
+  </view>
+  <view wx:if="{{auditLogsList.length > 0}}" wx:for="{{auditLogsList}}" wx:key="index" class="time-line">
+    <view>
+      <view class="current-time"></view>
+      <view class="vertical-line" wx:if="{{index != auditLogsList.length-1}}"></view>
+    </view>
+    <view class="operate">
+      <view class="operate-content">{{item.title}}</view>
+      <view class="operate-name">操作人：{{item.createByName}}</view>
+      <view class="operate-name">审批意见：{{item.auditReason || '-'}}</view>
+      <view class="operate-time">{{item.createTime}}</view>
+    </view>
+  </view>
+</view>
+<view class="operate-btn" wx:if="{{ contractInfo.taskStatus == 0}}">
+  <view bindtap="confirmRemark" data-operate="0">审核不通过</view>
+  <view bindtap="confirmRemark" data-operate="1">审核通过</view>
+</view>
+<van-dialog use-slot title="审核备注" show="{{ auditDialog }}" show-cancel-button before-close="{{onBeforeClose}}" bind:confirm="confirmAudit" bind:cancel="onClose">
+  <textarea value="{{auditRemark}}" bindblur="getAuditRemark" maxlength="100" class="common-item-textarea" placeholder="请输入审批意见"></textarea>
+  <view wx:if="{{auditRequired}}" class="phone-error-code">请输入审批意见</view>
+</van-dialog>

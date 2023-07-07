@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "footBar":"/components/product/footBar/footBar"
+    }
+}

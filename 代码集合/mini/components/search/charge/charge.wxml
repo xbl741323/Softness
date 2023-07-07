@@ -1,0 +1,4 @@
+<!--components/search/charge/charge.wxml-->
+<view class="scroll-item" wx:for="{{chargeList}}" wx:key="index" bindtap="changeNew" data-type="{{item}}">
+  <text class="{{newIndex == item.type? 'active-scroll-sty':''}}">{{item.title}}</text>
+</view>

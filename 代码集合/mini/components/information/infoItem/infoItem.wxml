@@ -1,0 +1,29 @@
+<!--components/information/infoItem/infoItem.wxml-->
+<import src="../wxParse/wxParse.wxml" />
+<view class="info-item">
+  <view class="info-box">
+    <text class="info-tag orange" wx:if="{{policyInfo.applyType == 1}}">{{policyInfo.applyName}}</text>
+    <text class="info-tag"  wx:if="{{policyInfo.applyType == 2}}">申报中</text>
+    <text class="info-tag grey"  wx:if="{{policyInfo.applyType == 3}}">已结束</text>
+    <text class="info-tag top"  wx:if="{{policyInfo.state == 0}}">置顶</text>
+    <text wx:if="{{isShow==2}}">{{policyInfo.title}}</text>
+    <view class="info-title">
+      <view wx:if="{{isShow==1}}">
+          <view wx:for="{{articleArray}}" wx:key="index">
+            <view class="center line-2-ellipsis">
+              <template is="wxParse" data="{{wxParseData:item}}" />
+            </view>
+        </view>
+      </view>
+    </view>
+    <image src="/image/info/right.png" class="info-icon"></image>
+  </view>
+  <view class="info-time">
+    <view>{{policyInfo.create_time}}</view>
+    <view wx:if="{{listIndex==1}}">
+      <image src="/image/common/icon_browse.png" mode="" class="info-view"/>
+      <text>{{policyInfo.page_views}}次</text>
+    </view>
+  </view>
+</view>
+<text class="info-line"></text>

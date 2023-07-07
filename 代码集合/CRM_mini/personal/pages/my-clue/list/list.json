@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的线索",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "clue-item": "/personal/components/my-clue/clue-item/clue-item",
+    "empty-page": "/personal/components/empty-page/empty-page",
+    "query-emp": "/components/common/query-emp/query-emp"
+  }
+}

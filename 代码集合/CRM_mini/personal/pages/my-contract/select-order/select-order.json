@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "选择订单",
+  "usingComponents": {
+    "empty-page": "/personal/components/empty-page/empty-page"
+  }
+}

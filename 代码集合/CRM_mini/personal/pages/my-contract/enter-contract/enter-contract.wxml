@@ -1,0 +1,190 @@
+<!--personal/pages/my-contract/enter-contract/enter-contract.wxml-->
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+<view class="contract-contain">
+  <!-- 线索信息 -->
+  <view class="common-contain">
+    <view class="common-label">
+      <text>线索信息</text>
+      <text bindtap="toSelectClue">{{clueInfo==null?'选择线索':'更换线索'}}</text>
+    </view>
+    <block wx:if="{{clueInfo!=null}}">
+      <view wx:for="{{clueLabelList}}" wx:key="index" class="common-clue-item">
+        <text class="common-item-label">{{item}}</text>
+        <view class="common-item-foot">
+          <block wx:if="{{index==0}}">
+            <text>{{clueInfo.clueNo}}</text>
+          </block>
+          <block wx:if="{{index==1}}">
+            <text wx:if="{{clueInfo.clueType==2}}">{{clueInfo.companyName}}</text>
+            <text wx:else>{{clueInfo.contactName}}</text>
+          </block>
+          <block wx:if="{{index==2}}">
+            <text wx:if="{{clueInfo.clueCompanyContactList}}">{{clueInfo.clueCompanyContactList[0].contactName}}</text>
+            <text wx:else>{{clueInfo.contactName}}</text>
+          </block>
+          <block wx:if="{{index==3}}">
+            <text wx:if="{{clueInfo.clueCompanyContactList}}">{{clueInfo.clueCompanyContactList[0].mobile}}</text>
+            <text wx:else>{{clueInfo.mobile}}</text>
+          </block>
+          <block wx:if="{{index==4}}">
+            <text>{{clueInfo.clueSalesmanEmpName}}</text>
+          </block>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="order-empty">
+        暂无数据
+      </view>
+    </block>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="common-contain">
+    <view class="common-label">
+      <text>
+        <text>订单信息</text>
+        <text>（{{orderList.length}}/20）</text>
+      </text>
+      <text bindtap="toSelectOrder">添加订单</text>
+    </view>
+    <block wx:if="{{orderList.length>0}}">
+      <view class="common-clue-item {{index==0?'first-clue-item':''}}" wx:for="{{orders.filterReturnList(orderList,showMore)}}" wx:key="index">
+        <text class="common-item-label">{{item.spuName}}</text>
+        <view class="common-item-foot">
+          <text>￥{{orders.fixPrice(item.totalAmount)}}</text>
+          <image data-item="{{item}}" bindtap="delProduct" class="common-item-close" src="/personal/image/my-order/icon_close@2x.png"></image>
+        </view>
+      </view>
+      <view bindtap="changeShowMore" wx:if="{{orderList.length>3}}" class="show-more">{{showMore?'收起':'展示更多'}}</view>
+    </block>
+    <block wx:else>
+      <view class="order-empty">
+        暂无数据
+      </view>
+    </block>
+  </view>
+
+  <!-- 合同信息 -->
+  <view class="common-contain">
+    <view class="common-label">
+      <text>合同信息</text>
+    </view>
+    <block wx:if="{{isEdit}}">
+      <view class="common-contract-item first-contract-item">
+        当前已获得合同编号：{{contractInfo.contractNo}}
+      </view>
+    </block>
+    <block wx:else>
+      <view bindtap="changeContractHead" data-index="{{index}}" class="common-contract-item {{index==0?'first-contract-item':''}}" wx:for="{{contractHeadList}}" wx:key="index">
+        <view class="pointer-contain">
+          <text class="contract-pointer {{activeContractIndex == index?'active-contract':''}}"></text>
+        </view>
+        <text>{{item.label + item.labelDesc}}</text>
+        <input maxlength="10" bindblur="changeHeadVal" wx:if="{{activeContractIndex==(contractHeadList.length-1)&&(activeContractIndex==index)}}" class="contact-long-input" type="text" placeholder="请输入合同编号抬头的大写字母" placeholder-class="p-sty" />
+      </view>
+    </block>
+  </view>
+
+  <!-- 签约人信息 -->
+  <view class="common-contain">
+    <view class="common-label">
+      <text>签约人信息</text>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-require">*</text>
+        <text class="common-item-label">联系人姓名</text>
+      </view>
+      <view class="common-item-foot">
+        <input maxlength="10" value="{{signManInfo.contactName}}" bindblur="changeSignInfo" data-type="0" class="contact-long-input" type="text" placeholder="请输入联系人姓名" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-require">*</text>
+        <text class="common-item-label">联系人电话</text>
+      </view>
+      <view class="common-item-foot">
+        <input value="{{signManInfo.contactPhone}}" bindblur="changeSignPhone" class="contact-long-input" type="number" placeholder="请输入联系人电话" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-require">*</text>
+        <text class="common-item-label">签约时间</text>
+      </view>
+      <view class="common-item-foot" bindtap="bindShow">
+        <text wx:if="{{signManInfo.signTime!=''}}">{{signManInfo.signTime}}</text>
+        <text wx:else class="no-val">请选择签约时间</text>
+        <image class="common-img-sty" src="/personal/image/my-clue/icon_drop-down@2x.png"></image>
+      </view>
+    </view>
+    <view class="common-item-column">
+      <view class="common-item-column-head">
+        <text class="common-item-label">订单备注</text>
+      </view>
+      <textarea value="{{signManInfo.orderRemark}}" bindblur="changeSignInfo" data-type="1" maxlength="100" class="common-item-textarea" placeholder="请输入合同备注，不超过100字" placeholder-class="p-sty"></textarea>
+    </view>
+  </view>
+
+  <!-- 下次跟进时间显示 -->
+  <action-sheet hidden="{{!showCalendar}}">
+    <van-datetime-picker type="datetime" value="{{ currentDate }}" bind:confirm="onConfirm" bind:cancel="onClose" min-date="{{ minDate }}" max-date="{{maxDate}}" formatter="{{ formatter }}" />
+  </action-sheet>
+
+  <!-- 合同附件 -->
+  <view class="common-contain">
+    <view class="common-file-label">
+      <view class="common-file-box">
+        <text>合同附件</text>
+        <text>格式为pdf.文件不超过20M</text>
+      </view>
+      <text wx:if="{{contractFileList.length==0}}" bindtap="chooseFile">选择文件</text>
+    </view>
+    <block wx:if="{{contractFileList.length>0}}">
+      <view class="common-clue-item {{index==0?'first-clue-item':''}}" wx:for="{{contractFileList}}" wx:key="index">
+        <text class="common-item-label">{{item.name}}</text>
+        <view class="common-item-foot">
+          <image bindtap="delContractFile" class="common-item-close" src="/personal/image/my-order/icon_close@2x.png"></image>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="order-empty small-sty">
+        暂无数据
+      </view>
+    </block>
+  </view>
+
+  <!-- 审批人信息 -->
+  <view class="common-contain">
+    <view class="approval-item">
+      <view class="common-item-head">
+        <text class="approval-item-text">审批人</text>
+      </view>
+      <view class="common-item-foot">
+        <block wx:if="{{approverList.length>0}}">
+          <picker bindchange="changeApprover" range-key="name" range="{{approverList}}">
+            <text wx:if="{{approverInfo.name!=''}}">{{approverInfo.name}}</text>
+            <text wx:else class="no-val">请选择审批人</text>
+            <image class="common-img-sty" src="/personal/image/my-clue/icon_drop-down@2x.png"></image>
+          </picker>
+        </block>
+        <view wx:else bindtap="showEmpSheet">
+          <text wx:if="{{approverInfo.name!=''}}">{{approverInfo.name}}</text>
+          <text wx:else class="no-val">请选择审批人</text>
+          <image class="common-img-sty" src="/personal/image/my-clue/icon_drop-down@2x.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 按钮区域 -->
+  <view class="common-btn">
+    <text bindtap="handelOperate" data-type="{{true}}">保存草稿</text>
+    <text bindtap="handelOperate" data-type="{{false}}">提交审核</text>
+  </view>
+</view>
+
+<!-- 弹出员工选择下拉框 -->
+<query-emp bind:selectEmp="selectEmp" id="query-emp" title="选择审批人"></query-emp>

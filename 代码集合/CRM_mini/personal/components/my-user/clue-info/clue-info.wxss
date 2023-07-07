@@ -1,0 +1,225 @@
+/* personal/components/my-user/clue-info/clue-info.wxss */
+/*
+  公共样式
+*/
+.clue-info-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-top: 24rpx;
+}
+
+.clue-info-title {
+  color: #333333;
+  display: flex;
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-bottom: 24rpx;
+}
+
+.mar-bot {
+  border-bottom: 2rpx solid #eaebef;
+  height: 50rpx;
+}
+
+.mar-top {
+  border-top: 2rpx solid #eaebef;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+}
+
+/*
+  公共样式-横向
+*/
+
+.clue-info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.clue-info-item>text:nth-of-type(1) {
+  display: inline-block;
+  min-width: 140rpx;
+  color: #7B7B7B;
+}
+
+.clue-info-item>text:nth-of-type(2) {
+  color: #555555;
+}
+
+.fix-title-sty {
+  width: 160rpx !important;
+}
+
+/*
+  公共样式-纵向
+*/
+
+.clue-info-column {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24rpx;
+}
+
+.clue-info-column>text:nth-of-type(1) {
+  color: #7B7B7B;
+  margin-bottom: 4rpx;
+}
+
+.clue-info-column>view:nth-of-type(1) {
+  color: #555555;
+}
+
+/*
+  公共样式-联系人信息
+*/
+
+.clue-info-contact {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24rpx;
+  color: #555555;
+}
+
+.contact-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.contact-job>text:nth-of-type(1) {
+  color: #7B7B7B;
+  margin-right: 16rpx;
+}
+
+.phone-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.contact-phone {
+  display: flex;
+  align-items: center;
+}
+
+.contact-phone>text {
+  margin-right: 16rpx;
+}
+
+.contact-phone>text:nth-of-type(1) {
+  color: #7B7B7B !important;
+}
+
+.contact-name>text:nth-of-type(1) {
+  color: #7B7B7B !important;
+  margin-right: 16rpx;
+}
+
+.certify-sty {
+  display: inline-block;
+  background: #c4e2ff;
+  color: #4ba8ff;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+  padding: 4rpx 8rpx;
+}
+
+/*
+  公共样式-财务及人员情况
+*/
+
+.clue-info-unit {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+  margin-left: -15rpx;
+}
+
+.unit-head {
+  flex: 2;
+  display: flex;
+}
+
+.unit-head>text:nth-of-type(1) {
+  display: inline-block;
+  text-align: right;
+  min-width: 180rpx;
+  margin-right: 40rpx;
+  color: #7B7B7B;
+}
+
+.unit-head>text:nth-of-type(2) {
+  color: #555555;
+}
+
+.unit-footer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.unit-footer>text:nth-of-type(1) {
+  margin-right: 40rpx;
+  color: #555555;
+}
+
+.unit-footer>text:nth-of-type(2) {
+  color: #7B7B7B;
+}
+
+/*
+  公共样式-人员信息
+*/
+
+.clue-info-man {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.clue-man-name {
+  flex: 1;
+  display: flex;
+  color: #7B7B7B;
+}
+
+.clue-man-name>text:nth-of-type(2) {
+  color: #555555;
+  margin-left: 24rpx;
+}
+
+.clue-man-phone {
+  flex: 1;
+  display: flex;
+  color: #7B7B7B;
+}
+
+.clue-man-phone>text:nth-of-type(2) {
+  color: #555555;
+  margin-left: 24rpx;
+}
+
+.text-sty {
+  color: #555555;
+}
+
+.auth-img {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+.license{
+  color: #0082FC;
+}
+
+.license text{
+  margin-left: 20rpx;
+}
+
+.common-img-sty {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 16rpx;
+}

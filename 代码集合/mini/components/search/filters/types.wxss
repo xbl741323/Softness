@@ -1,0 +1,15 @@
+/* components/search/filters/types.wxss */
+.scroll-item {
+  width: 100vw;
+  height: 96rpx;
+  line-height: 96rpx;
+  padding-left: 32rpx;
+  color: #555;
+  font-size: 28rpx;
+  border-bottom: 1px solid #f5f4f4;
+}
+.active-scroll-sty {
+  color: #42ABFE !important;
+  font-size: 28rpx !important;
+  font-weight: bold;
+}

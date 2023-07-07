@@ -1,0 +1,274 @@
+// 价格除100
+function priceFix(val) {
+  return (val / 100);
+}
+
+function returnFloat(value) {
+  var value = Math.round(parseFloat(value) * 100) / 100;
+  var xsd = value.toString().split(".");
+  if (xsd.length == 1) {
+    value = value.toString() + ".00";
+    return value;
+  }
+  if (xsd.length > 1) {
+    if (xsd[1].length < 2) {
+      value = value.toString() + "0";
+    }
+    return value;
+  }
+}
+
+function returnFloatData(value) {
+  var value = Math.round(parseFloat(value)) / 100;
+  var xsd = value.toString().split(".");
+  if (xsd.length == 1) {
+    value = value.toString() + ".00";
+    return value;
+  }
+  if (xsd.length > 1) {
+    if (xsd[1].length < 2) {
+      value = value.toString() + "0";
+    }
+    return value;
+  }
+}
+//判断是否属于
+function filterBelong (val,list){
+  if(list.indexOf(val)!=-1){
+    return true
+  } else {
+    return false
+  }
+}
+// 分类页面价格显示判断
+// 价格十万以内全显，10万以上(包含10万)，价格显示以万为单位(例如价格为112345，前台显示为11.2345万元，小数点精确到个位，最后一位为0时可以省略)
+function fixClassPrice(val) {
+  var fixPrice = parseInt(val * 100)
+  if (fixPrice < 10000000) {
+    return fixPrice / 100;
+  } else {
+    return (fixPrice / 1000000) + '万';
+  }
+}
+
+// 我的订单尾款状态
+function filterTailStatus(val) {
+  return val == 0 ? "待定" : val == 1 ? "待付款" : val == 2 ? "已结清" : val == 3 ? "无" : "";
+}
+
+// 我的订单状态
+function filterOrderStatus(value) {
+  return value == -5 ? '未通过' : value == -4 ? '待审核' : value == -2 ? '草稿' : value == -1 ? '未生效' : value == 0 ? '待付款' : value == 1 ? '待签约' : value == 2 ? '待开始' : value == 3 ? '进行中' : value == 4 ? '已完成' : value == 5 ? '已关闭' : value == 6 ? '已取消' : ''
+}
+
+// 课程订单状态
+function filterCourseOrderStatus(value) {
+  return value == 0 ? '待付款' : value == 1 ? '待付款' : value == 2 ? '已付款' : value == 4 ? '已取消' : ''
+}
+
+// 会员订单状态
+function filterMemberOrderStatus(orderStatus, validStart, validEnd) {
+  if (orderStatus == 0) {
+    return "待付款"
+  } else {
+    var date = getDate();
+    var yy = date.getFullYear();
+    var mm = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+    var dd = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    var currentDate = yy + '-' + mm + '-' + dd;
+    return currentDate < validStart ? "待生效" : currentDate < validEnd ? "已生效" : "已到期"
+  }
+}
+
+// 显示订单费用信息
+function filterPayAmount(num, price) {
+  return (num * price).toFixed(2)
+}
+
+// 显示价格信息（精确到小数点后两位）
+function fixPrice(price) {
+  if (price != null) {
+    return price == 0 ? '0.00' : price.toFixed(2)
+  }
+}
+
+// 显示订单费用总价信息
+function fixTotalAmount(payList) {
+  var totalAmount = 0
+  for (var i = 0; i <= payList.length - 1; i++) {
+    totalAmount = totalAmount + (payList[i].buyNum * payList[i].price)
+  }
+  return totalAmount == 0 ? '待定' : totalAmount.toFixed(2)
+}
+
+// 显示支付方式
+function filterPayWay(val) {
+  return val == 0 ? '支付宝' : val == 1 ? '对公转账' : val == 2 ? '微信' : '-'
+}
+
+function filterPayTypeInfo(val) {
+  return val == 0 ? '支付宝' : val == 1 ?
+    '对公转账' : val == 2 ? '微信' : '-'
+}
+
+// 显示支付状态
+function filterPayStatus(val) {
+  return val == 0 ? '待付款' : val == 1 ? '审核中' : val == 2 ? '支付成功' : val == 3 ? '支付失败' : '-'
+}
+
+// 转化退款状态
+function filterRefundStatus(value) {
+  return value == 1 ? '退款中' : value == 2 ? '退款中' : value == 3 ? '退款中' : value == 4 ? '退款成功' : value == -2 ? '/' : value == -1 ? '/' :  '暂无';
+}
+
+// 规格属性筛选值
+function filterAttribute(AttributeList, skuIndex) {
+  var arrOne = []
+  var arrTwo = []
+  arrOne = AttributeList[0]
+  var skuIndexList = skuIndex.split('_')
+  if (skuIndexList.length > 1) {
+    arrTwo = AttributeList[1]
+    return [arrOne[parseInt(skuIndexList[0])], arrTwo[parseInt(skuIndexList[1])]].join('+')
+  } else {
+    return arrOne[parseInt(skuIndexList[0])]
+  }
+}
+
+// 显示支付类型
+function filterPayType(val) {
+  return val == 1 ? '定金' : val == 2 ? '尾款' : val == 3 ? '一口价' : ''
+}
+
+// 显示费用类型
+function filterCostType(val) {
+  return val == 1 ? '代理费' : val == 2 ? '第三方费用' : val == 3 ? '官费' : '待定'
+}
+
+// 显示订单发起方式
+function filterOrderSource(val) {
+  return val == 1 ? '自主下单' : val == 2 ? '后台发起' : ''
+}
+
+// 显示任务完成类型
+function taskFinishType(val) {
+  if (val == 1) {
+    return "已完成(通过)"
+  } else if (val == 2) {
+    return "已完成(未通过)"
+  } else {
+    return "已完成"
+  }
+}
+
+// 显示任务状态
+function taskStatus(value) {
+  return value == 0 ? '待开始' : value == 1 ? '进行中' : value == -1 ? '已暂停' : value == 2 ? '已完成' : value == -2 ? '已关闭' : '';
+}
+
+// 返回特定数组
+function filterReturnList(list, status) {
+  if (status) {
+    return list
+  } else {
+    return list.slice(0, 3)
+  }
+}
+
+function flterOrder(orderInfo) {
+  if (orderInfo) {
+    if (orderInfo.orderStatus != 0) {} else {
+      if (orderInfo.tailStatus != 3) {} else if (orderInfo.changePriceStatus && orderInfo.changePriceStatus == 1) {
+        return false
+      } else {
+        return true
+      }
+    }
+  }
+}
+
+function filterstate(val) {
+  return val == 1 ? "高" : val == 2 ? "中" : val == 3 ? "低" : '-'
+}
+
+// 改价状态
+function filterChangePriceStatus(val) {
+  return val == 1 ? '待审核' : val == 2 ? '审核通过' : val == 3 ? '审核不通过' : ''
+}
+// (value="订单类型（1：产品；2：课程；3：课堂会员）"
+function filterorderType(val) {
+  if (val == 1) {
+    return "产品";
+  } else if (val == 2) {
+    return "课程";
+  } else if (val == 3) {
+    return "课堂会员";
+  }
+}
+
+function filtersData(val) {
+  if (val) {
+    return val;
+  } else {
+    return "暂无数据";
+  }
+}
+
+function filterPriority(val) {
+  if (val == 0) {
+    return '紧急'
+  } else if (val == 1) {
+    return '高'
+  } else if (val == 2) {
+    return '中'
+  } else {
+    return '低'
+  }
+}
+
+function taskStatus(val) {
+  if (val == 0) {
+    return '待开始'
+  } else if (val == 1) {
+    return "进行中"
+  } else if (val == 2) {
+    return "已完成"
+  } else if (val == -1) {
+    return "暂停"
+  } else if (val == -2) {
+    return "已关闭"
+  }
+}
+
+
+module.exports = {
+  flterOrder: flterOrder,
+  filterPriority: filterPriority,
+  filterstate: filterstate,
+  filtersData: filtersData,
+  filterBelong: filterBelong,
+  filterorderType: filterorderType,
+  returnFloatData: returnFloatData,
+  returnFloat: returnFloat,
+  filterPayTypeInfo: filterPayTypeInfo,
+  priceFix: priceFix,
+  fixClassPrice: fixClassPrice,
+  filterTailStatus: filterTailStatus,
+  filterOrderStatus: filterOrderStatus,
+  filterPayAmount: filterPayAmount,
+  filterPayWay: filterPayWay,
+  filterPayStatus: filterPayStatus,
+  filterRefundStatus: filterRefundStatus,
+  fixPrice: fixPrice,
+  fixTotalAmount: fixTotalAmount,
+  filterAttribute: filterAttribute,
+  filterPayType: filterPayType,
+  filterCostType: filterCostType,
+  filterOrderSource: filterOrderSource,
+  filterCourseOrderStatus: filterCourseOrderStatus,
+  filterMemberOrderStatus: filterMemberOrderStatus,
+  taskFinishType: taskFinishType,
+  taskStatus: taskStatus,
+  filterReturnList: filterReturnList,
+  filterChangePriceStatus: filterChangePriceStatus
+}

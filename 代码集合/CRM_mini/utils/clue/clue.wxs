@@ -1,0 +1,48 @@
+/**
+ * 线索相关过滤器
+ */
+
+// 过滤空数据
+function filterNull(val) {
+  return val == null || val == '' ? "暂无数据" : val;
+}
+
+// 过滤附件名大于10
+function filterFileName(val, num) {
+  var newValue = ''
+  if (val != '') {
+    newValue = val.length > num ? val.slice(0, num) + '...' : val
+  } else {
+    newValue = '暂无数据'
+  }
+  return newValue;
+}
+
+// 线索创建方式
+function createType(val) {
+  return val == true ? "用户转化" : val == false ? "手动创建" : "不详";
+}
+
+// 线索类型
+function clueType(val) {
+  return val == 1 ? "个人" : val == 2 ? "单位" : "不详";
+}
+
+// 线索状态
+function clueStatus(val) {
+  return val == 0 ? "正常" : val == 1 ? "失效" : (val == 2 || val == 3) ? "公海" : ""
+}
+
+// 线索状态(包含公海)
+function clueSeaStatus(val) {
+  return val == 0 ? "正常" : val == 1 ? "失效" : val == 2 ? "部门公海" : val == 3 ? "集团公海" : ""
+}
+module.exports = {
+
+  filterNull: filterNull,
+  createType: createType,
+  clueType: clueType,
+  clueStatus: clueStatus,
+  clueSeaStatus: clueSeaStatus,
+  filterFileName: filterFileName
+}

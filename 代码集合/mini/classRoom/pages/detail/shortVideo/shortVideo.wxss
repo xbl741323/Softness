@@ -1,0 +1,115 @@
+/* classRoom/pages/detail/shortVideo/shortVideo.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.short-detail {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-list {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-item {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-item-info {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-list video {
+  width: 100%;
+  height: 100%;
+}
+
+.video-info {
+  width: 90%;
+  position: absolute;
+  bottom: 100rpx;
+  left: 0;
+  padding-left: 40rpx;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-info>text:nth-of-type(1) {
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+
+.video-desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-desc>text:nth-of-type(1) {
+  font-size: 24rpx;
+  width: 702rpx;
+}
+
+.hide-video-desc {
+  height: 100rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.show-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-top: 4rpx;
+}
+
+.show-btn image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.show-btn>text:nth-of-type(2) {
+  width: 10rpx;
+  height: 10rpx;
+  border-top: 2rpx solid #ffffff;
+  border-right: 2rpx solid #ffffff;
+  margin-left: 8rpx;
+}
+
+.video-desc>text:nth-of-type(2) {
+  font-size: 24rpx;
+}
+
+.btn-pointer {
+  transform: rotate(-45deg);
+}
+
+.active-btn-pointer {
+  transform: rotate(135deg);
+}
+
+.video-progress {
+  width: 100%;
+  margin: 0 !important;
+  margin-top: 20rpx;
+}
+
+/*
+ 控制滑块不显示
+*/
+.wx-slider-thumb {
+  display: none;
+}

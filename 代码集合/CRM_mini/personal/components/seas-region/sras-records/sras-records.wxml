@@ -1,0 +1,97 @@
+
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+
+<view class="order-records" >
+  <van-dropdown-menu custom-class="out-drop-sty" active-color="#0082FC">
+    <!-- 产品订单 -->
+    <van-dropdown-item bind:change="changeOrder" value="{{ filters.orderType }}" options="{{ orderTypeList }}" />
+    <!-- 全部类型 -->
+    <van-dropdown-item bind:change="changeAllType" value="{{ filters.allType }}" options="{{ allTypeList }}" />
+    <!-- 筛选 -->
+    <van-dropdown-item id="item" title="筛选" bindtap="">
+      <block>
+        <view class="order-choice">
+          <view class="choice-header">
+            <text class="choice-header-left">筛选</text>
+            <text class="choice-header-right" bindtap="onCloseMenu">取消</text>
+          </view>
+          <!-- 开始创建时间 -->
+          <view class="order-item">
+            <view class="order-item-head">
+              <text class="required-sty"></text>
+              <text>起始创建时间</text>
+            </view>
+            <view class="order-item-foot" bindtap="bindStartShow">
+              <text wx:if="{{filters.startTime!=null}}">{{filters.startTime}}</text>
+              <text wx:else>请输入起始创建时间区检索</text>
+              <text class="pointer-sty"></text>
+            </view>
+          </view>
+          <!-- 结束创建时间 -->
+          <view class="order-item">
+            <view class="order-item-head">
+              <text class="required-sty"></text>
+              <text>结束创建时间</text>
+            </view>
+            <view class="order-item-foot" bindtap="bindEndShow">
+              <text wx:if="{{filters.endTime!=null}}">{{filters.endTime}}</text>
+              <text wx:else>请输入结束创建时间区检索</text>
+              <text class="pointer-sty"></text>
+            </view>
+          </view>
+          <!-- 关键字 -->
+          <view class="order-item">
+            <view class="order-item-head">
+              <text class="required-sty"></text>
+              <text>关键字</text>
+            </view>
+            <view class="order-item-foot">
+              <input value="{{filters.keyWords}}" bindblur="changeInput" data-type="0" class="input-sty" placeholder-class="p-sty" type="text" placeholder="请输入产品名称/订单编号/线索编号" />
+            </view>
+          </view>
+        </view>
+        <!-- 订单状态 -->
+        <view class="order-status">
+          <view class="order-status-title"><text 
+        class="blue-circular"></text> <text>订单状态</text></view>
+          <view class="status-btns">
+            <van-button wx:for="{{statusList}}" wx:key="index" type="primary" class="order-status-btn {{filterOrderValue==item.value?'active-sty':''}}" bindtap="changeOrderStatus" data-item="{{item}}">{{item.text}}</van-button>
+          
+          </view>
+      
+        </view>
+        <!-- 尾款状态 -->
+        <view class="order-status">
+          <view class="order-status-title"><text class="blue-circular"></text> <text>尾款状态</text></view>
+          <view class="status-btns">
+            <van-button wx:for="{{tatusList}}" wx:key="index" type="primary" class="order-status-btn {{filterTailValue==item.value?'active-sty':''}}" bindtap="changeTailStatus" data-item="{{item}}">{{item.text}}</van-button>
+          </view>
+        </view>
+        <view class="common-btn">
+          <block>
+            <text bindtap="resetBtn">重置</text>
+            <text bindtap="okBtn">确定</text>
+          </block>
+        </view>
+      </block>
+    </van-dropdown-item>
+  </van-dropdown-menu>
+  <!-- 开始创建时间-时间显示 -->
+  <action-sheet hidden="{{!showStartTime}}">
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="onConfirmStart" bind:cancel="closeStartTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </action-sheet>
+  <!-- 结束时间-时间显示 -->
+  <action-sheet hidden="{{!showEndTime}}">
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="onConfirmEnd" bind:cancel="closeEndTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </action-sheet>
+  <!-- 订单列表 -->
+
+    <order-item bind:refresh="refresh" wx:for="{{orderList}}" wx:key="idnex" orderInfo="{{item}}" pageFrom="0" disabled="{{false}}"></order-item>
+
+
+    <view class="empty-page" wx:if="{{orderList.length==0}}">
+      <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
+      <text>暂无相关数据</text>
+    </view>
+
+</view>

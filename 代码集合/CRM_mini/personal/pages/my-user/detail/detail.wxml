@@ -1,0 +1,179 @@
+<!--personal/pages/my-user/detail/detail.wxml-->
+<wxs src="/utils/clue/clue.wxs" module="tools"></wxs>
+<view class="user-detail">
+  <view class="user-btn" wx:if="{{active == 0}}">
+    <view bindtap="toFollow" class="{{btnStatus == 1?'text-sty':''}}">跟进</view>
+    <view bindtap="toAllot" class="{{btnStatus == 2?'text-sty':''}}">分配</view>
+  </view>
+  <swiper  wx:if="{{active == 0}}" class="swiper-bg" indicator-dots="2" indicator-color="#EAEBEF" indicator-active-color="#61BAFF">
+    <swiper-item>
+      <view class="user-head hei">
+        <view class="user-head-title">
+          <view wx:if="{{userType == 2}}" class="user-unit-name">
+            <text>{{tools.filterNull(userDetailInfo.companyName)}}</text> 
+            <image wx:if="{{userDetailInfo.transactionNo}}" src="/personal/image/common/certified_unit.png" class="auth-img"/>
+            <image wx:else src="/personal/image/common/certified_unit_low.png" class="auth-img"/>
+          </view>
+          <view class="user-head-name"> 
+            <text wx:if="{{userType == 1}}">{{tools.filterNull(userDetailInfo.personName)}}</text> 
+            <text wx:if="{{userType == 0}}"></text> 
+            <text class="{{userType == 0 ? 'bold':'' }} user-right-text">{{tools.filterNull(userDetailInfo.username)}}</text> 
+          </view>
+        </view>
+        <view class="user-head-no">
+          <view>
+            <text>主体ID：</text>
+            <text>{{tools.filterNull(userDetailInfo.userNo)}}</text>
+          </view>
+        </view>
+        <view class="user-head-no">
+          <view>
+            <text>联系人：</text>
+            <text>{{tools.filterNull(userDetailInfo.personName)}}</text>
+          </view>
+        </view>
+        <view class="user-head-no">
+          <view>
+            <text>联系方式：</text>
+            <text>{{tools.filterNull(userDetailInfo.mobile)}}</text>
+          </view>
+        </view>
+        <view class="user-head-no">
+          <view>
+            <text>行业类型：</text>
+            <text>{{tools.filterNull(userDetailInfo.diyIndustryFilter)}}</text>
+          </view>
+        </view>
+        <view class="user-head-no">
+          <view>
+            <text>地区：</text>
+            <text>{{tools.filterNull(userDetailInfo.diyOrgAddressFilter)}}</text>
+          </view>
+        </view>
+        <view class="user-head-no">
+          <view>
+            <text>最近用户登录：</text>
+            <text>{{tools.filterNull(clueInfo.lastUserLoginTime)}}</text>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item >
+      <view class="user-head hei">
+      <view class="user-head-title">
+        <view class="user-head-name">
+          <text>{{tools.filterNull(userDetailInfo.clueNo)}}</text>
+          <image wx:if="{{userDetailInfo.isAutoConversion}}" class="common-certify-sty" src="/personal/image/my-clue/icon_activation@2x.png"></image>
+        </view>
+        <image bindtap="copyText" wx:if="{{userDetailInfo.clueNo!=null}}" data-text="{{userDetailInfo.clueNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+      </view>
+      <view class="user-head-no">
+        <view>
+          <text>客服：</text>
+          <text>{{tools.filterNull(userDetailInfo.customerServerName)}}</text>
+        </view>
+      </view>
+      <view class="user-head-no">
+        <view>
+          <text>推广归属：</text>
+          <text>{{tools.filterNull(userDetailInfo.promoteAttributionName)}}</text>
+        </view>
+      </view>
+      <view class="user-head-no">
+        <view>
+          <text>成交状态：</text>
+          <text>{{userDetailInfo.transactionId == true ? '是' : '否'}}</text>
+        </view>
+      </view>
+      <view class="user-head-no">
+        <view>
+          <text>最近线索跟进：</text>
+          <text>{{tools.filterNull(userDetailInfo.lastClueFollowTime)}}</text>
+        </view>
+      </view>
+      <view class="user-head-no">
+        <view>
+          <text>最近用户跟进：</text>
+          <text>{{tools.filterNull(userDetailInfo.lastUserFollowTime)}}</text>
+        </view>
+      </view>
+      <view class="user-head-no">
+        <view>
+          <text>最近签约时间：</text>
+          <text>{{tools.filterNull(userDetailInfo.lastSignTime)}}</text>
+        </view>
+      </view>
+      <view class="user-head-no">
+        <view>
+          <text>备注：</text>
+          <van-icon name="edit"  bind:click="openRemark"/>
+          <text decode="{{true}}">&nbsp;&nbsp;</text>
+          <text wx:if="{{userDetailInfo.remark==null}}"></text>
+          <text wx:else>{{tools.filterFileName(userDetailInfo.remark,18)}}</text>
+        </view>
+      </view>
+    </view>
+   </swiper-item>
+  </swiper>
+  <!-- 编辑备注弹窗 -->
+  <van-popup show="{{ remarkDialog }}" round bind:close="closeRemark">
+    <view class="user-remark">
+      <view class="user-remark-title">备注</view>
+      <view class="user-remark-content">
+        <textarea value="{{remark}}" bindinput="changeInput" data-type="1" maxlength="100" class="user-remark-textarea" placeholder-class="p-sty" placeholder="请输入100字以内的备注"></textarea>
+      </view>
+      <view class="user-remark-btn">
+        <view class="user-remark-cancel" bindtap="closeRemark">取消</view>
+        <view class="user-remark-confirm" bindtap="confirmRemark">确认</view>
+      </view>
+    </view>
+  </van-popup>
+  <!-- 分配客服弹窗 -->
+  <van-popup show="{{ allotDialog }}" round bind:close="closeAllot" closeable>
+    <view class="allot-box">
+      <view class="allot-title">分配客服</view>
+      <view class="allot-content">
+        <view class="allot-inp">
+          <text>请选择客服</text>
+          <picker bindchange="changeCustomer" range-key="name" range="{{customerList}}">
+            <view class="allot-input">{{customerName}}</view>
+            <image src="/personal/image/my-clue/icon_drop-down@2x.png"></image>
+          </picker>
+        </view>
+        <view class="allot-btn">
+          <view bindtap="allotCustom">确定</view>
+          <view bindtap="closeAllot">取消</view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+  <!-- tab栏切换 -->
+  <view class="user-tab {{active!=0?'fixed-sty':''}}">
+    <van-tabs active="{{ active }}" color="#0082FC" lazy-render="{{false}}" bind:change="changeTab">
+      <van-tab title="用户信息" name="0"></van-tab>
+      <van-tab title="订单记录" name="1"></van-tab>
+      <van-tab title="用户日志" name="2"></van-tab>
+      <van-tab title="用户关注" name="3"></van-tab>
+      <van-tab title="维护记录" name="4"></van-tab>
+    </van-tabs>
+  </view>
+  <view>
+    <view>
+      <view class="user-btns" wx:if="{{active == 0 && userType!=0}}">
+        <view class="user-reg-btn {{activeStatus == 0?'text-sty':''}}" bindtap="showRegister">注册信息</view>
+        <view class="user-clue-btn {{activeStatus == 1?'text-sty':''}}"  bindtap="showClue">线索信息</view>
+      </view>
+      <!-- 用户信息 -->
+      <user-info wx:if="{{active == 0 && activeStatus == 0}}" clueInfo="{{clueInfo}}" registerInfo="{{registerInfo}}" userDetailInfo="{{userDetailInfo}}" userType="{{userType}}" bindrefresh="refresh"></user-info>
+      <clue-info wx:if="{{active == 0 && activeStatus == 1 && showChild}}" clueInfo="{{clueInfo}}" clueType="{{clueType}}" transInfo="{{transInfo}}"></clue-info>
+    </view>
+    <!-- 订单记录 -->
+    <order-records id="order" wx:if="{{active == 1}}" userId="{{userId}}"></order-records>
+    <!-- 用户日志 -->
+    <user-log wx:if="{{active == 2}}"></user-log>
+    <!-- 用户关注 -->
+    <user-follow  id="follow" wx:if="{{active == 3}}" userId="{{userId}}"></user-follow>
+    <!-- 维护记录 -->
+    <maintenance-records id="maintenance" wx:if="{{active == 4}}" userId="{{userId}}" userType="{{userType}}"></maintenance-records>
+  </view>
+</view>

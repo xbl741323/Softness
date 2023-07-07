@@ -1,0 +1,18 @@
+<!--additional/pages/take-photo/take-photo.wxml-->
+<wxs src="/utils/common/filters.wxs" module="utils"></wxs>
+<view class="main-sty">
+  <canvas class="cavan-member-sty" canvas-id="member-share"></canvas>
+  <!-- 生成打卡定位图 -->
+  <view id="draw-member-contain" class="member-cover" wx:if="{{imgUrl!=''}}">
+    <image class="img-sty" data-type="image" data-url="{{imgUrl}}" src="{{imgUrl}}"></image>
+    <view class="member-code-contain" data-background='rgba(0, 0, 0, 0.5)' data-type='text'>
+      <text class="member-text" data-type="text" data-text="{{utils.formatTime()}}">{{utils.formatTime()}}</text>
+      <text class="member-text" data-type="text" data-text="{{name}}">{{name}}</text>
+    </view>
+  </view>
+  <view class="btn-contain" wx:if="{{imgUrl!=''}}">
+    <button class="btn-sty" type="primary" bindtap="choosePhoto">重新拍照</button>
+    <button class="btn-sty" type="primary" bindtap="submit">确定提交</button>
+  </view>
+  <button wx:if="{{imgUrl==''}}" class="btn-sty" id='take-photo' type="primary" bindtap="choosePhoto">拍照</button>
+</view>

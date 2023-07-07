@@ -1,0 +1,415 @@
+/* personal/pages/my-process/detail/transfer-detail/transfer-detail.wxss */
+page {
+  background: #F5F7FB;
+}
+
+.noPass{
+  width: 654rpx;
+  margin: 24rpx auto 0;
+  padding: 32rpx 24rpx;
+  background-color: #FFF0EB;
+  border-radius: 45rpx;
+  color: #FC561F;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 28rpx;
+  word-wrap:break-word;
+}
+
+.process-item {
+  width: 654rpx;
+  background: #ffffff;
+  margin: 0 auto;
+  padding: 32rpx 24rpx;
+  border-radius: 10px;
+  margin-bottom: 24rpx;
+  margin-top: 24rpx;
+}
+.color-b{
+  background: #28C445 !important;
+}
+.color-c{
+  background: #ff0000 !important;
+}
+/*
+  订单编号—状态
+*/
+.process-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.head-left {
+  display: flex;
+  align-items: center;
+}
+
+.head-left>text:nth-of-type(1) {
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.head-right {
+  display: flex;
+  align-items: center;
+}
+
+.head-right>text:nth-of-type(1) {
+  display: inline-block;
+  width: 12rpx;
+  height: 12rpx;
+  background: #0989e8;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+
+.head-right>text:nth-of-type(2) {
+  color: #555555;
+  font-size: 28rpx;
+}
+
+/*
+  产品名称—数量
+*/
+.process-name {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin-top: 32rpx;
+  font-size: 28rpx;
+}
+
+.process-name>text:nth-of-type(1) {
+  color: #7B7B7B;
+}
+
+.process-name>text:nth-of-type(2) {
+  color: #555555;
+}
+
+
+.common-contain {
+  display: flex;
+  align-items: center;
+  color: #7B7B7B;
+  font-size: 28rpx;
+  margin-top: 16rpx;
+}
+
+
+/*
+  按钮区域
+*/
+
+.btn-contain {
+  border-top: 2rpx solid #EAEBEF;
+  display: flex;
+  justify-content: space-between;
+  padding: 32rpx 0 0 0;
+  margin-top: 24rpx;
+}
+
+.btn-left {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.btn-left>text:nth-of-type(1) {
+  color: #333333;
+}
+
+.btn-left>text:nth-of-type(2) {
+  color: #28acf2;
+}
+
+.process-cpmc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-right {
+  display: flex;
+  align-items: center;
+  color: #0082FC;
+  font-size: 28rpx;
+}
+
+.btn-right>text {
+  margin-left: 24rpx;
+}
+
+/*
+  公共样式
+*/
+.common-img-sty {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+
+.disabled-sty {
+  color: #B4B4B4 !important;
+}
+
+.disabled-bg-sty {
+  background: #EAECF1 !important;
+}
+
+.disabled-price-sty {
+  color: #555555 !important;
+}
+
+.tail-sty {
+  color: #FAB042;
+}
+
+/* 
+  订单信息
+*/
+.order-list {
+  padding: 20rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+
+.order-info {
+  width: 100%;
+}
+
+.order-no {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+.order-no text{
+  font-size: 28rpx;
+  color: #333;
+}
+.line {
+  width: 100%;
+  border-bottom: 1px solid #EAEBEF;
+  margin: 20rpx auto;
+}
+
+.spu-name {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  margin-bottom: 20rpx;
+  color: #555555;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.spu-name :first-child {
+  font-size: 28rpx;
+  color: #333;
+}
+.spu-name :nth-child(2n) {
+  text-align: right;
+}
+
+.spec {
+  font-size: 24rpx;
+  background: #C4E2FF;
+  padding: 4rpx 16rpx;
+  margin-right: 16rpx;
+  border-radius: 8rpx;
+  color: #4BA8FF;
+}
+
+.fee-info {
+  display: flex;
+  margin-top: 20rpx;
+  color: #EAEBEF;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  flex-direction: column;
+}
+
+.fee-item {
+  display: flex;
+  justify-content: space-between;
+  color: #7B7B7B;
+}
+.fee-num{
+  color: #555555;
+}
+
+.total-amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}
+.width-45{
+  width: 45%;
+  font-size: 28rpx;
+}
+.width-55{
+  font-size: 28rpx;
+  width: 55%;
+}
+.width-55 view{
+  margin: 16rpx
+}
+.price{
+  color: #FA7A42;
+}
+
+.audit {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #ECEEEF;
+  box-shadow: -6rpx -6rpx 8rpx 0px rgba(0, 0, 0, 0.03);
+}
+
+.audit-button {
+  display: inline-block;
+  height: 80rpx;
+  background-color: #0f89fc;
+  width: 50%;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  padding-bottom: 24rpx;
+  margin: 0 !important;
+}
+.noButton{
+  color: #0f89fc;
+  background-color: #fff;
+}
+
+.audit-button:last-child {
+  margin-left: 30rpx;
+}
+
+/* 
+转账凭证
+ */
+
+.transfer-pdf{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.transfer-pdf-img{
+  width: 150rpx;
+  height: 180rpx;
+}
+
+.transfer-pdf-text{
+  color: red;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+
+.transfer-img{
+  width: 650rpx;
+  height: 450rpx;
+}
+
+/* 
+操作记录
+*/
+
+.time-line {
+  display: grid;
+  grid-template-columns: 12% 88%;
+  margin: 20rpx;
+}
+
+.current-time {
+  width: 32rpx;
+  height: 32rpx;
+  background: #0082fc;
+  border-radius: 50%;
+  float: right;
+  margin-right: -16rpx;
+}
+
+.operate {
+  display: block;
+  padding-left: 40rpx;
+  font-size: 28rpx;
+}
+
+.vertical-line {
+  height: 110%;
+  border-right: 1px dashed #D9D9D9;
+}
+
+.operate-content {
+  font-weight: 550;
+  color: #555555;
+}
+
+.operate-name {
+  margin: 20rpx 0;
+  color: #555555;
+}
+
+.operate-time {
+  color: #B4B4B4;
+}
+
+.no-popup {
+  padding: 20rpx 0 300rpx 20rpx;
+}
+
+.no-code {
+  width: 170rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  padding: 0;
+  margin-left: 20rpx;
+  background-color: #fff;
+}
+
+.no-font {
+  font-size: 24rpx;
+  margin: 30rpx;
+  color: #888;
+}
+.no-reson{
+  margin-bottom: 0;
+  margin-top: 50rpx;
+  font-size: 28rpx;
+  color: #646566;
+}
+.no-reson2{
+  font-size: 24rpx;
+  color: #888;
+  margin-top: 10rpx;
+  margin-bottom: 0;
+}
+.pointer-sty {
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 3rpx solid #969799;
+  border-right: 3rpx solid #969799;
+  transform: rotate(45deg);
+  margin-left: 8rpx;
+  margin-right: 14rpx;
+}
+
+.strong-sty {
+  color: #969799 !important;
+  font-size: 14px !important;
+}
+.toAuditBtn{
+  background-color: #0082fc !important;
+  width: 80%;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  color: #fff;
+}

@@ -1,0 +1,28 @@
+/* search/pages/nodata/nodata.wxss */
+.nodata {
+  width: 100%;
+  color: #A3CAF6;
+  font-size: 24rpx;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50%;
+}
+
+.nodata image {
+  width: 223rpx;
+  height: 198rpx;
+  margin-bottom: 30rpx
+}
+
+.no-data-desc {
+  margin-top: 6rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-data-desc>text:nth-of-type(2) {
+  color: #333333;
+  border-bottom: 2rpx solid #F4F4F4;
+  margin: 0 4rpx;
+}

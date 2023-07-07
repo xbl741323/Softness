@@ -1,0 +1,72 @@
+<!--order/pages/launch/launch.wxml-->
+<view class="wraps">
+  <head title="确认订单信息"></head>
+  <view class="body-info">
+    <view class="goods-info">
+      <view class="card-title">商品信息</view>
+      <view class="snapshot">
+        <image src="{{imageUrl+orderInfo.url}}"></image>
+        <view class="info-shot">
+          <view class="line-1-ellipsis color-3">{{orderInfo.spuName}}</view>
+          <view class="line-1-ellipsis">{{orderInfo.spec}}</view>
+          <view class="line-1-ellipsis">类型：{{orderInfo.categoryName}}</view>
+        </view>
+        <view class="total-info">
+          <view>￥{{orderInfo.totalAmount/orderInfo.buyNum}}</view>
+          <view>x {{orderInfo.buyNum}}</view>
+        </view>
+      </view>
+      <view class="fee-info">
+        <view class="flex">
+          <view class="fee-left-title">服务费</view>
+          <view>
+            <view class="txt-right">
+              <text class="tip-icon desipost-bg" wx:if="{{feeInfo.hasDeposit}}">定金</text>
+              <text class="price-show bold-txt">￥{{feeInfo.hasDeposit ? feeInfo.deposit : feeInfo.dueDeposit}}</text>
+            </view>
+            <view class="tail-show" wx:if="{{feeInfo.hasTail}}">尾款：￥{{feeInfo.tailPrice}}</view>
+          </view>
+        </view>
+        <view class="flex" wx:if="{{feeInfo.hasOffical}}">
+          <view class="fee-left-title">官费</view>
+          <view class="price-show bold-txt">￥{{feeInfo.offical}}</view>
+        </view>
+        <view class="flex">
+          <view class="fee-left-title">购买数量</view>
+          <view class="bold-txt">{{orderInfo.buyNum}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="subject-info">
+      <view class="card-title">主体信息</view>
+      <view class="info-item">
+        <text>{{subjectInfos.userType==1?'签约人姓名':'公司名称'}}：</text>
+        <text>{{subjectInfos.userType==1?subjectInfos.personName:subjectInfos.companyName}}</text>
+      </view>
+      <view class="info-item" wx:if="{{subjectInfos.personNameStatus!='未认证'}}">
+        <text>{{subjectInfos.userType==1?'身份证号码':'统一社会信用代码'}}：</text>
+        <view class="right-info">
+          <text>{{subjectInfos.userType==1?subjectInfos.idCard:subjectInfos.organization}}</text>
+          <text class="tip-icon {{subjectInfos.organizationStatus=='未认证'?'gray-tip':'status-success-icon' }}">{{subjectInfos.userType=='2'?subjectInfos.organizationStatus:subjectInfos.personNameStatus}}</text>
+        </view>
+      </view>
+      <view class="info-item">
+        <text>签约人手机号：</text>
+        <view class="right-info">
+          <text>{{subjectInfos.mobile}}</text>
+          <text class="tip-icon {{subjectInfos.mobileStatus=='未授权'?'gray-tip':'status-success-icon' }}">{{subjectInfos.mobileStatus}}</text>
+        </view>
+      </view>
+      <view class="info-item" wx:if="{{subjectInfos.username}}">
+        <text>主体账号：</text>
+        <text>{{subjectInfos.username}}</text>
+      </view>
+      <!-- <view class="info-item mar-bo-short horizon-center" wx:if="{{subjectInfos.msg}}">
+        <text class="tips">您登录的账号与订单中的账号不一致，请退出当前账号重新确认</text>
+        <view class="login-btn">去重新登录</view>
+      </view> -->
+    </view>
+    <view class="tips tips-gray">请确保订单信息的正确性，方可正常下单支付</view>
+    <view class="bottom-btn" bindtap="confimInfo">确认信息</view>
+  </view>
+</view>

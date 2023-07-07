@@ -1,0 +1,22 @@
+<!--classRoom/pages/class-study/class-study.wxml-->
+<view class="class-study">
+  <!-- 导航切换 -->
+  <view class="tab-contain">
+    <view class="tab-item" wx:for="{{tabList}}" wx:key="index" bindtap="changeTab" data-index="{{index}}">
+      <text class="{{cTabIndex==index?'active-tab-sty':''}}">{{item}}</text>
+      <text class="{{cTabIndex==index?'active-tab-bg':''}}"></text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="class-contain">
+    <block wx:if="{{cTabIndex == 0}}">
+      <!-- 学习记录 -->
+      <record-item wx:for="{{recordList}}" recordInfo="{{item}}" wx:key="index"></record-item>
+    </block>
+    <block wx:else>
+      <!-- 最近浏览 -->
+      <browse-item courseInfo="{{item}}" wx:for="{{browseList}}" wx:key="index"></browse-item>
+    </block>
+  </view>
+</view>

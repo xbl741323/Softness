@@ -1,0 +1,16 @@
+function cutCourseTitle(status, title) {
+  if (title !== '' && title !== null) {
+    return status == true ? title.slice(0, 11) : title.slice(11);
+  }
+}
+
+function getTitleLength(val) {
+  if (val !== '' && val !== null) {
+    return val.length;
+  }
+}
+
+module.exports = {
+  cutCourseTitle: cutCourseTitle,
+  getTitleLength: getTitleLength
+}

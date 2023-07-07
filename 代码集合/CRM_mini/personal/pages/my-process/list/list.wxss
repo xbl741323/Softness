@@ -1,0 +1,495 @@
+/* personal/pages/my-collection/home/home.wxss */
+/* personal/pages/customer/search-list/search-list.wxss */
+page {
+  background: #F5F7FB;
+
+}
+
+.select-sty {
+  background: rgba(0, 0, 0, 0) !important;
+  height: 80rpx !important;
+  font-size: 24rpx !important;
+  border-radius: 40rpx !important;
+  margin: 0 12rpx 0 8rpx;
+}
+
+.select-title-sty {
+  font-size: 26rpx !important;
+}
+
+.my-process {
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+搜索框和背景区域
+*/
+
+.top-fixed {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200rpx;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2rpx solid #f7f5f5;
+}
+.refund-fixed{
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #FFFFFF;
+  padding-bottom: 28rpx;
+}
+.search-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.dropdown-menu {
+  width: 100%;
+  margin-top: 20rpx;
+}
+.refund-box{
+  margin-top: 60rpx;
+}
+
+.search-contain {
+  display: flex;
+  width: 640rpx;
+  align-items: center;
+  height: 72rpx;
+  background: #ffffff;
+  border-radius: 36rpx;
+  border: 2rpx solid #36A6FE;
+}
+
+.search-contain-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-contain-left text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 118rpx;
+  margin-left: 30rpx;
+  margin-right: 0rpx;
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.search-contain-left image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.lang-sty {
+  width: 2rpx;
+  height: 40rpx;
+  background: #707070;
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+}
+
+.search-contain-right {
+  display: flex;
+  align-items: center;
+}
+
+.search-contain-right image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.search-contain-right input {
+  width: 420rpx;
+  display: inline-block;
+  color: #666666;
+  font-size: 28rpx;
+  margin-left: 8rpx;
+}
+
+.active-input-sty {
+  width: 400rpx !important;
+  font-size: 23rpx !important;
+}
+
+.fixed-search {
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-left: 12rpx;
+  padding: 20rpx 0;
+}
+
+.close-icon {
+  position: absolute;
+  right: 110rpx;
+  z-index: 999 !important;
+}
+
+/*
+  线索信息卡片列表
+*/
+.process-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30rpx 24rpx;
+  margin-top: 205rpx;
+}
+
+.clue-item {
+
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20rpx;
+  padding: 32rpx 24rpx 0 24rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+/*
+  头部区域
+*/
+.clue-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clue-head>text:nth-of-type(2) {
+  font-size: 24rpx;
+}
+
+/*
+  内容区域
+*/
+.clue-info {
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.clue-info-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.unit-state {
+
+  font-size: 28rpx;
+  color: #555555;
+  line-height: 54rpx;
+}
+
+.unit-state-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clue-info-name>text:nth-of-type(1) {
+  display: inline-block;
+  font-weight: bold;
+  width: 300rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.daichuliren {
+  line-height: 50px;
+  font-size: 15px;
+  width: 144px;
+  text-align: center;
+  color: #323233;
+}
+
+.complex-sty{
+  width: 110px !important;
+}
+
+.changepricesty {
+  line-height: 50px;
+  font-size: 15px;
+  width: 84px;
+  text-align: center;
+  color: #323233;
+}
+
+.primary-sty {
+  line-height: 50px;
+  font-size: 15px;
+  width: 125px;
+  text-align: center;
+  color: #323233;
+}
+
+.daichulirentype {
+  line-height: 50px;
+  font-size: 15px;
+  width: 101px;
+  text-align: center;
+  color: #323233;
+}
+
+.sanjiao {
+  display: inline-block;
+  /*宽高为0*/
+  width: 0;
+  height: 0;
+  border-top: 4px solid #323233;
+  border-bottom: 4px solid #fff;
+  border-left: 4px solid #fff;
+  border-right: 4px solid #fff;
+  margin-left: 3px;
+}
+
+.clue-info-contact {
+  display: flex;
+  align-items: center;
+  color: #B4B4B4;
+}
+
+.over-name-sty {
+  display: inline-block;
+  max-width: 120rpx;
+  margin-right: 8rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* components/common/query-emp/query-emp.wxss */
+
+.query-emp {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600rpx;
+  background: #ffffff;
+  padding: 60rpx 0 24rpx 0;
+  position: relative;
+  z-index: 9999 !important;
+}
+
+.search-sty {
+  width: 100%;
+  position: absolute;
+  top: 60rpx;
+  z-index: 888 !important;
+}
+
+.query-emp-head {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #555555;
+  background: #ffffff;
+  z-index: 999 !important;
+  top: 24rpx;
+}
+
+.query-emp-head>text:nth-of-type(1) {
+  margin-left: 24rpx;
+}
+
+.query-emp-head>text:nth-of-type(3) {
+  margin-right: 24rpx;
+}
+
+/*
+  查询结果列表
+*/
+
+.emp-list {
+  width: 100%;
+  height: inherit;
+  color: #555555;
+  z-index: 1 !important;
+}
+
+.emp-item {
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+
+.emp-item>text:nth-of-type(1) {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.emp-item>text:nth-of-type(2) {
+  flex: 1;
+  text-align: center;
+}
+
+.emp-item>text:nth-of-type(3) {
+  flex: 1;
+  margin-right: 24rpx;
+  text-align: center;
+}
+
+.indicator-sty {
+  height: 80rpx !important;
+}
+
+.picker-sty {
+  width: 100%;
+  height: 100% !important;
+}
+
+.pickViewColumn {
+  margin-top: -100rpx;
+}
+
+.empty-sty {
+  height: 360rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.phone-call {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+
+.clue-info-area {
+  margin-top: 24rpx;
+  color: #555555;
+}
+
+.clue-info-label {
+  margin-top: 24rpx;
+  /* display: flex; */
+  line-height: 56rpx;
+  align-items: center;
+  color: #555555;
+}
+
+.clue-info-label image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
+}
+
+/*
+  按钮区域
+*/
+.clue-btn {
+  height: 92rpx;
+  border-top: 2rpx solid #EAEBEF;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.clue-btn>text {
+  color: #0082FC;
+  margin-right: 24rpx;
+}
+
+/*
+  公共样式区域
+*/
+.common-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12rpx;
+  height: 48rpx;
+  background: #008dff;
+  border-radius: 8rpx;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  margin-right: 16rpx;
+}
+
+.depart-bg-sty {
+  background: #FEBE3D;
+}
+
+.group-bg-sty {
+  background: #8CC029;
+}
+
+/* personal/components/empty-page/empty-page.wxss */
+.empty-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50%;
+}
+
+.active-empty-sty {
+  margin-top: 70% !important;
+}
+
+.empty-page>image {
+  width: 320rpx;
+  height: 224rpx;
+}
+
+.empty-page>text:nth-of-type(1) {
+  margin: 12rpx 0;
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.empty-page>text:nth-of-type(2) {
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.empty-page>view {
+  margin-top: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 344rpx;
+  height: 80rpx;
+  background: #0082fc;
+  border-radius: 20rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+}
+
+/*
+  列表信息卡片列表
+*/
+.audit-list {
+  width: 654rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 240rpx;
+  padding: 0 24rpx;
+}

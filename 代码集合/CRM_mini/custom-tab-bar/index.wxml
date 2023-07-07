@@ -1,0 +1,7 @@
+<!--custom-tab-bar/index.wxml-->
+<view class="tab-bar-contain {{system == 'ios'?'ios-sty':''}}">
+  <view bindtap="changeTab" data-item="{{item}}" class="tab-bar-item {{selected == item.id?'active-tab-sty':''}}" wx:for="{{tabList}}" wx:key="index">
+    <image class="tab-image" src="{{selected == item.id?item.selectImgUrl:item.imgUrl}}"></image>
+    <text class="tab-text">{{item.title}}</text>
+  </view>
+</view>

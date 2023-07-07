@@ -1,0 +1,22 @@
+/* components/search/filters/area.wxss */
+.area-box{
+  display: flex;
+  align-items: baseline;
+}
+.province{
+  border-right: 1px solid #F9FAFE;
+}
+.province, .city{
+  width: 50%;
+  max-height: 400px;
+  overflow: scroll;
+}
+.item{
+  color: #555;
+  font-size: 28rpx;
+  padding: 24rpx;
+  border-bottom: 1px solid #F9FAFE;
+}
+.choosed{
+  color: #42ABFE;
+}

@@ -1,0 +1,28 @@
+<!--personal/pages/my-contract/select-clue/select-clue.wxml-->
+<view class="my-clue">
+  <!-- 顶部搜索栏 -->
+  <view class="top-fixed">
+    <view class="search-contain">
+      <view class="search-contain-left" bindtap="changeType">
+        <text>{{clueType == 2?"单位":"个人"}}</text>
+        <image src="/image/common/area_icon.png"></image>
+      </view>
+      <text class="lang-sty"></text>
+      <view class="search-contain-right">
+        <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+        <input class="{{keyWords!=''?'active-input-sty':''}}" value="{{keyWords}}" bindconfirm="searchList" bindinput="changeKeywords" placeholder="请输入联系人/单位名称/线索编号" type="text" />
+        <van-icon bindtap="clearKerword" wx:if="{{keyWords!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+      </view>
+    </view>
+    <text bindtap="searchList" class="fixed-search">搜索</text>
+  </view>
+
+  <!-- 线索信息卡片列表 -->
+  <view class="clue-list" wx:if="{{clueList.length>0&&loading}}">
+    <view bindtap="selectClue" data-item="{{item}}" wx:for="{{clueList}}" wx:key="index">
+      <clue-item clueInfo="{{item}}" clueType="{{clueType}}" isPerson="{{isPerson}}" bind:refresh="refresh"></clue-item>
+    </view>
+  </view>
+  <!-- 无数据页面展示 -->
+  <empty-page wx:if="{{clueList.length==0&&loading}}" pageForm="{{2}}"></empty-page>
+</view>

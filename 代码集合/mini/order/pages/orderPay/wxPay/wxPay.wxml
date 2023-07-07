@@ -1,0 +1,3 @@
+<!--order/pages/orderPay/wxPay/wxPay.wxml-->
+<!-- 公共导航栏组件 -->
+<navBar type="{{types}}" url="{{urls}}" bind:close-dialog="leavePage" from="{{from}}" navTitle="卧涛收银台"></navBar>

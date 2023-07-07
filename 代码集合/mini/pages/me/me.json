@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "Tips":"/components/personal/rzTip/rzTip",
+    "classes":"/components/personal/myClass/myClass",
+    "wxFocus":"/components/common/wxFocus/wxFocus"
+  }
+}

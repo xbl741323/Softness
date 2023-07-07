@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "head":"/components/common/head/head"
+  },
+  "navigationStyle": "custom"
+}

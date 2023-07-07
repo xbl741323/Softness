@@ -1,0 +1,49 @@
+<!--components/personal/accountLogin/accountLogin.wxml-->
+<view>
+  <view class="form">
+    <view class="account {{accountError?'error':''}}">
+      <text class="label-width">账号名</text>
+      <input class="accountinput" bindblur="checkAccount" bindinput="getAccount" placeholder-class="holder-style" placeholder="4~16位纯字母(或字母+数字组合)" />
+    </view>
+    <view wx:if="{{accountError}}" class="accountError">{{error[0]}}</view>
+    <view class="pwd {{pwdError?'error':''}}">
+      <text class="label-width">登录密码</text>
+      <input password="{{passwordType}}" bindinput="getPwd" class="pwdinput" bindblur="checkPassword" placeholder-class="holder-style" placeholder="6~16位字母＋数字或符号的密码" />
+      <image src="{{defaultType ? '/image/index/hide_eye.png': '/image/index/show_eye.png'}}" class="img" bindtap="eyeStatus"></image>
+    </view>
+    <view wx:if="{{pwdError}}" class="accountError">{{error[1]}}</view>
+  </view>
+  <view class="forget-pwd" bindtap="findPwd">忘记密码？</view>
+  <button bindtap="accountLogin" class="loginBtn">登录</button>
+
+  <!-- 未注册提示窗 -->
+  <view class="popup" hidden="{{mask}}">
+    <view class="mask" catchtap="closeMask"></view>
+    <view class="popup_main">
+      <view class="pop-title">
+        <text>提示</text>
+        <image bindtap="closeMask" class="close-ico" src="/image/common/close_icon@2x.png"></image>
+      </view>
+      <view class="user-item">
+        <text class="user-item-text">该账号尚未注册，请先去注册一个账号吧~</text>
+      </view>
+      <view class="go-register" bindtap="goRegister">去注册></view>
+    </view>
+  </view>
+
+  <!-- 验证码弹窗 -->
+  <view class="popup" hidden="{{codeMask}}">
+    <view class="mask"></view>
+    <view class="verify_main">
+      <view class="verify-title">
+        <text>请输入图中的验证码</text>
+        <image class="verify-icon" src="/image/common/close_icon@2x.png" bindtap="closeCodeDialog"></image>
+      </view>
+      <view class="verify-item">
+        <input type="text" bindblur="checkCaptchaCode" bindinput="getCaptchaCode" placeholder="请输入右图中的验证码" class="verify-input" />
+        <image src="data:image/jpeg;base64,{{verifyData}}" class="verify-img" bindtap="getCode"></image>
+      </view>
+      <button class="verify-btn" bindtap="accountLogin" disabled="{{submitBtn}}">确定</button>
+    </view>
+  </view>
+</view>

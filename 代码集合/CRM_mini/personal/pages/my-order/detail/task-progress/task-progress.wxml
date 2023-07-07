@@ -1,0 +1,15 @@
+<!--personal/pages/my-order/detail/task-progress/task-progress.wxml-->
+<view class="task-progress">
+  <!-- 任务编号 -->
+  <view class="task-no">
+    <text bindtap="setOriginalData">任务编号：</text>
+    <text>{{taskNo}}</text>
+  </view>
+  <!-- 任务进度过程 -->
+  <view class="progress-list">
+    <view class="no-progress" wx:if="{{isShow}}">
+    <text>该任务暂无进度!</text>
+    </view>
+    <van-steps wx:else desc-class="link-sty" steps="{{steps }}" active="{{ active }}" direction="vertical" active-color="#0082FC" />
+  </view>
+</view>

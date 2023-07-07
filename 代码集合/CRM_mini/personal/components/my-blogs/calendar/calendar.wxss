@@ -1,0 +1,119 @@
+.component {
+  background: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20rpx;
+  border-top: 1px solid #eee;
+}
+
+.daybox {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee;
+}
+
+.day {
+  position: relative;
+  width: 107rpx;
+  height: 107rpx;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 2;
+  color: rgba(0, 0, 0, 0.9);
+  border: 4rpx solid #fff;
+}
+
+.day:nth-child(7n),
+.day:nth-child(7n-1) {
+  color: #d3d5d8;
+}
+
+.day-checked {
+  border: 4rpx solid #0082FC !important;
+  border-radius: 10rpx;
+}
+
+.day-bg {
+  color: #9aa5b9 !important;
+}
+
+.point {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #0989e8;
+  margin: 0 auto;
+  margin-top: 5rpx;
+}
+
+.head-right {
+  position: absolute;
+  left: 45%;
+  top: 45%;
+
+}
+
+.head-right>text:nth-of-type(1) {
+  display: inline-block;
+  width: 12rpx;
+  height: 12rpx;
+  background: #0989e8;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+
+.head-right>text:nth-of-type(2) {
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.color-b {
+  background: #FF8800 !important;
+}
+
+.color-c {
+  background: #ff0000 !important;
+}
+
+.color-a {
+  background: #03a103 !important;
+}
+
+.color-d {
+  background: rgb(168, 167, 167) !important;
+}
+
+/* 添加样式修改 */
+.week-list {
+  margin: 4rpx 0 10rpx 0;
+}
+
+.week-item {
+  display: inline-block;
+  width: 107rpx;
+  line-height: 2;
+  color: #333333;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.pointer-left {
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.pointer-date {
+  width: 240rpx;
+  color: #333333;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.pointer-right {
+  color: #333333;
+  font-size: 28rpx;
+}

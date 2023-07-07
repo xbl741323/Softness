@@ -1,0 +1,6 @@
+<!--personal/components/my-user/user-log/user-log.wxml-->
+<view class="user-log">
+  <view class="user-log-card">
+    用户日志
+  </view>
+</view>

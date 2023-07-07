@@ -1,0 +1,54 @@
+<!--personal/components/my-task/indent-item/indent-item.wxml-->
+<view class="indicator-class">
+  <view>
+    <view>订单编号：</view>
+    <view>{{indentList.orderNo}} <image catchtap="copyText" data-text="{{indentList.orderNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+  </view>
+  <view>
+    <view>线索编号：</view>
+    <view>{{indentList.clueNo}} <image catchtap="copyText" data-text="{{indentList.clueNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+  </view>
+  <view>
+    <view>订单归属：</view>
+    <view>{{indentList.belongName}}</view>
+  </view>
+  <view>
+    <view>线索归属：</view>
+    <view>{{indentList.clueAttributionEmpName}}</view>
+  </view>
+  <view>
+    <view>线索归属方：</view>
+    <view>{{clueType.partnerId==0? "卧涛集团":clueType.partnerDeptName }}</view>
+  </view>
+  <view>
+    <view>业务员：</view>
+    <view>{{indentList.clueSalesmanEmpName}}</view>
+  </view>
+  <view class="border"></view>
+  <view>
+    <view>合同编号：</view>
+    <view>{{indentList.contractNo}}
+      <image catchtap="copyText" data-text="{{indentList.contractNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+  </view>
+  <view>
+    <view>客户联系人：</view>
+    <view>{{indentList.contactName}}{{indentList.contactMobile}} </view>
+  </view>
+  <view>
+    <view>客户签约人：</view>
+    <view>{{indentList.signName}}{{indentList.signMobile}} </view>
+  </view>
+  <view>
+    <view>签约时间：</view>
+    <view>{{indentList.contractTime}}</view>
+  </view>
+  <view>
+    <view class="border"></view>
+    <view bindtap="checkContract" class="attachment">
+      <view>查看附件</view>
+    </view>
+  </view>
+</view>

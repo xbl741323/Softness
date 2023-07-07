@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "用户详情",
+  "usingComponents": {
+    "user-info": "/personal/components/my-user/user-info/user-info",
+    "clue-info": "/personal/components/my-user/clue-info/clue-info",
+    "user-log": "/personal/components/my-user/user-log/user-log",
+    "user-follow": "/personal/components/my-user/user-follow/user-follow",
+    "maintenance-records": "/personal/components/my-user/maintenance-records/maintenance-records",
+    "order-records": "/personal/components/my-clue/order-records/order-records",
+    "query-emp": "/components/common/query-emp/query-emp"
+  }
+}

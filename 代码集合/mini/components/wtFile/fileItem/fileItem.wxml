@@ -1,0 +1,23 @@
+<!--components/wtFile/fileItem/fileItem.wxml-->
+<import src="../../information/wxParse/wxParse.wxml" />
+<view class="fileItem">
+  <view class="main">
+    <image src="{{iconUrl[fileInfo.file_type]}}" mode="" class="icon-position"/>
+    <text class="text-position" wx:if="{{fileInfo.is_pay == 1}}">付费</text>
+    <image src="{{imageUrl + fileInfo.file_image_url}}" mode="" class="priview"/>
+    <view class="title" wx:if="{{isShow==2}}">{{fileInfo.file_name}}</view>
+    <view class="info-title">
+      <view wx:if="{{isShow==1}}">
+          <view wx:for="{{articleArray}}" wx:key="index">
+            <view class="center">
+              <template is="wxParse" data="{{wxParseData:item}}" />
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class="position-download" wx:if="{{fileInfo.download_times > 0}}">
+      <image src="../../../image/file/icon-download-line@2x.png" mode=""/>
+      <text>{{fileInfo.download_times}}</text>
+    </view>
+  </view>
+</view>

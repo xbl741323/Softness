@@ -1,0 +1,96 @@
+/* components/common/query-emp/query-emp.wxss */
+
+.query-emp {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600rpx;
+  background: #ffffff;
+  padding: 60rpx 0 24rpx 0;
+  position: relative;
+  z-index: 9999 !important;
+}
+
+.search-sty {
+  width: 100%;
+  position: absolute;
+  top: 60rpx;
+  z-index: 888 !important;
+}
+
+.query-emp-head {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #555555;
+  background: #ffffff;
+  z-index: 999 !important;
+  top: 24rpx;
+}
+
+.query-emp-head>text:nth-of-type(1) {
+  margin-left: 24rpx;
+}
+
+.query-emp-head>text:nth-of-type(3) {
+  margin-right: 24rpx;
+}
+
+/*
+  查询结果列表
+*/
+
+.emp-list {
+  width: 100%;
+  height: inherit;
+  color: #555555;
+  z-index: 1 !important;
+}
+
+.emp-item {
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+
+.emp-item>text:nth-of-type(1) {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.emp-item>text:nth-of-type(2) {
+  flex: 1;
+  text-align: center;
+}
+
+.emp-item>text:nth-of-type(3) {
+  flex: 1;
+  margin-right: 24rpx;
+  text-align: center;
+}
+
+.indicator-sty {
+  height: 80rpx !important;
+}
+
+.picker-sty {
+  width: 100%;
+  height: 100% !important;
+}
+
+.pickViewColumn {
+  margin-top: -100rpx;
+}
+
+.empty-sty {
+  height: 360rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+}

@@ -1,0 +1,47 @@
+/* personal/components/my-clue/user-item/user-item.wxss */
+.user-box {
+  width: 702rpx;
+  height: 336rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  margin-top: 18rpx;
+  margin-bottom: 8rpx;
+  position: relative;
+}
+
+.user-item {
+  display: flex;
+  margin-left: 30rpx;
+  padding-top: 24rpx;
+}
+
+.user-title {
+  display: inline-block;
+  width: 170rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN, Source Han Sans CN-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #7b7b7b;
+}
+
+.user-content {
+  display: inline-block;
+  width: 450rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN, Source Han Sans CN-Regular;
+  font-weight: 400;
+  color: #555555;
+}
+
+.user-img {
+  position: absolute;
+  top: 22rpx;
+  right: 22rpx;
+  width: 36rpx;
+  height: 36rpx;
+}

@@ -1,0 +1,37 @@
+/* components/payWays/pays.wxss */
+.pay-way {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
+  margin-top: 24rpx;
+}
+.pay-title{
+  color: #333333;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.pay-desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40rpx;
+}
+.check-sty image {
+  width: 32rpx;
+  height: 32rpx;
+}
+.pay-img {
+  display: flex;
+}
+.pay-img image {
+  width: 48rpx;
+  height: 48rpx;
+}
+.pay-img text {
+  color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  margin-left: 16rpx;
+}

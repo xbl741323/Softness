@@ -1,0 +1,154 @@
+/* personal/components/my-order/class-member-item/class-member-item.wxss */
+.product-item {
+  width: 654rpx;
+  background: #ffffff;
+  margin: 0 auto;
+  padding: 32rpx 24rpx;
+  border-radius: 10px;
+  margin-bottom: 24rpx;
+}
+
+/*
+  订单编号—状态
+*/
+.product-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.head-left {
+  display: flex;
+  align-items: center;
+}
+
+.head-left>text:nth-of-type(1) {
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.head-right {
+  display: flex;
+  align-items: center;
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.head-right>text:nth-of-type(1) {
+  margin-right: 12rpx;
+}
+
+/*
+  产品名称—数量
+*/
+.product-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32rpx;
+  font-size: 28rpx;
+}
+
+.product-name>text:nth-of-type(1) {
+  color: #333333;
+  font-weight: bold;
+}
+
+.product-name>text:nth-of-type(2) {
+  color: #7B7B7B;
+}
+
+
+/* 
+  客户名称/尾款状态/创建时间
+*/
+.common-contain {
+  display: flex;
+  align-items: center;
+  color: #7B7B7B;
+  font-size: 28rpx;
+  margin-top: 16rpx;
+}
+
+
+/*
+  按钮区域
+*/
+
+.btn-contain {
+  border-top: 2rpx solid #EAEBEF;
+  display: flex;
+  justify-content: flex-end;
+  padding: 32rpx 0 0 0;
+  margin-top: 24rpx;
+}
+
+.btn-right {
+  display: flex;
+  align-items: center;
+  color: #0082FC;
+  font-size: 28rpx;
+}
+
+
+/*
+  公共样式
+*/
+.common-img-sty {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+
+.price-sty {
+  color: #FA7A42 !important;
+  font-size: 32rpx !important;
+  font-weight: bold !important;
+}
+
+.strong-sty {
+  color: #333333 !important;
+  font-weight: bold;
+}
+
+.overflow-sty {
+  display: inline-block;
+  width: 500rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.order-belong {
+  color: #333333;
+  padding-top: 24rpx;
+  border-top: 2rpx solid #EAEBEF !important;
+  font-weight: bold;
+}
+
+.gray-sty {
+  color: #B4B4B4;
+  font-weight: normal !important;
+}
+
+.vip-sty {
+  display: inline-block;
+  text-align: center;
+  padding: 4rpx 2rpx;
+  width: 68rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  background: #0082fc;
+  border-radius: 8rpx;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  margin-left: 8rpx;
+  font-weight: normal !important;
+}
+
+.blue-sty {
+  color: #0082FC;
+}
+
+.orange-sty {
+  color: #FF6D27;
+}

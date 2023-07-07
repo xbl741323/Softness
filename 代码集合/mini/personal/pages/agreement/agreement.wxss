@@ -1,0 +1,10 @@
+/* personal/pages/agreement/agreement.wxss */
+.agreement{
+  margin:44rpx 16rpx;
+  font-family: "Source Han Sans CN" ;
+}
+.agreement view{
+  text-indent:2em;
+  font-size: 26rpx;
+  line-height: 50rpx;
+}

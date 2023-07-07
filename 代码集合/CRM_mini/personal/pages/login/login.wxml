@@ -1,0 +1,38 @@
+<!--personal/pages/login/login.wxml-->
+<view class="phone-login">
+  <!-- 登录logo -->
+  <image class="bg-sty" src="/personal/image/login/wotao_icon@2x.png"></image>
+
+  <!-- 登录表单 -->
+  <view class="login-form">
+    <view class="login-text">
+      <text>登录CRM</text>
+      <text></text>
+    </view>
+    <view class="login-input {{numberError==true?'error-input':''}}">
+      <text>账户名称</text>
+      <view class="input-contain">
+        <input bindinput="getNumber" placeholder-class="p-sty" placeholder="请输入员工工号" />
+        <text wx:if="{{numberError}}" class="phone-error-code">请输入员工工号</text>
+      </view>
+    </view>
+    <view class="login-input {{pwdError==true?'error-input':''}}">
+      <text>账户密码</text>
+      <view class="input-contain">
+        <input class="pwd-input" maxlength="16" password="{{pwdStatus}}" bindinput="getPwd" placeholder-class="p-sty" placeholder="请输入账户密码" />
+        <van-icon size="17" catchtap="changePwdStatus" name="{{pwdStatus?'closed-eye':'eye-o'}}" class="pwd-sty" />
+        <text wx:if="{{pwdError}}" class="phone-error-code">请输入账户密码（至少6位）</text>
+      </view>
+    </view>
+    <view class="login-btn" bindtap="empLogin">登录</view>
+    <view class="wechat-btn" bindtap="wxLogin">
+      <text class="dash"></text>
+      <image src="/personal/image/login/icon_weixin.png" class="wechat-img"></image>
+      <text class="text">微信登录</text>
+      <text class="dash"></text>
+    </view>
+  </view>
+
+  <!-- 登录滑块 -->
+  <aj-captcha class="demo2" bind:verifySuccess="verifySuccess" opt="{{captchaOption}}"></aj-captcha>
+</view>

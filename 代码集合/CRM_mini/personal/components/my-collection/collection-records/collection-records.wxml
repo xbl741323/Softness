@@ -1,0 +1,54 @@
+<!--personal/components/my-clue/order-records/order-records.wxml-->
+<view class="order-records">
+  <van-dropdown-menu custom-class="out-drop-sty" active-color="#0082FC">
+    <!-- 产品订单 -->
+    <van-dropdown-item bind:change="changeOrder" title="回款时间" id="item">
+      <block>
+        <view class="order-choice">
+          <!-- 开始创建时间 -->
+          <view class="order-item">
+            <view class="order-item-head">
+              <text class="required-sty"></text>
+              <text>起始创建时间</text>
+            </view>
+            <view class="order-item-foot" bindtap="bindStartShow">
+              <text wx:if="{{filters.startReceiveTime!=null}}">{{filters.startReceiveTime}}</text>
+              <text wx:else>请输入起始创建时间区检索</text>
+              <text class="pointer-sty"></text>
+            </view>
+          </view>
+          <!-- 结束创建时间 -->
+          <view class="order-item">
+            <view class="order-item-head">
+              <text class="required-sty"></text>
+              <text>结束创建时间</text>
+            </view>
+            <view class="order-item-foot" bindtap="bindEndShow">
+              <text wx:if="{{filters.endReceiveTime!=null}}">{{filters.endReceiveTime}}</text>
+              <text wx:else>请输入结束创建时间区检索</text>
+              <text class="pointer-sty"></text>
+            </view>
+          </view>
+        </view>
+        <view class="common-btn">
+          <block>
+            <text bindtap="resetBtn">重置</text>
+            <text bindtap="okBtn">确定</text>
+          </block>
+        </view>
+      </block>
+    </van-dropdown-item>
+    <!-- 筛选 -->
+    <van-dropdown-item  bind:change="changeOrder" options="{{ receiveDirection }}" value="{{ filters.payType }}">
+
+    </van-dropdown-item>
+  </van-dropdown-menu>
+  <!-- 开始创建时间-时间显示 -->
+  <action-sheet hidden="{{!showStartTime}}">
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="onConfirmStart" bind:cancel="closeStartTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </action-sheet>
+  <!-- 结束时间-时间显示 -->
+  <action-sheet hidden="{{!showEndTime}}">
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="onConfirmEnd" bind:cancel="closeEndTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </action-sheet>
+</view>

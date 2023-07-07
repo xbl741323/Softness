@@ -1,0 +1,7 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+      "head":"/components/common/head/head",
+      "pays":"/components/payWays/pays"
+    }
+}

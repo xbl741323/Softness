@@ -1,0 +1,171 @@
+/* personal/pages/my-order/select-product/select-product.wxss */
+.select-product {
+  width: 100%;
+  padding-bottom: 200rpx;
+  padding-top: 270rpx;
+}
+
+.fixed-sty {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  z-index: 999 !important;
+}
+
+/*
+搜索框和背景区域
+*/
+
+.top-fixed {
+  width: 100%;
+  margin: 24rpx 0 24rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24rpx 0;
+  border-top: 2rpx solid #EFF0F3;
+  background: #ffffff;
+}
+
+.search-contain {
+  display: flex;
+  width: 640rpx;
+  align-items: center;
+  height: 72rpx;
+  background: #ffffff;
+  border-radius: 36rpx;
+  border: 2rpx solid #36A6FE;
+}
+
+.search-contain image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 32rpx;
+}
+
+.search-contain input {
+  width: 500rpx;
+  display: inline-block;
+  color: #666666;
+  font-size: 28rpx;
+  margin-left: 8rpx;
+}
+
+.active-input-sty {
+  width: 470rpx !important;
+}
+
+.fixed-search {
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-left: 12rpx;
+  padding: 20rpx 0;
+}
+
+/*
+  已选产品显示区域
+*/
+.selected-product-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-item {
+  height: 72rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24rpx;
+  color: #7B7B7B;
+  font-size: 24rpx;
+  border-top: 2rpx solid #F9FBFC;
+}
+
+.selected-item>text:nth-of-type(1) {
+  width: 630rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.selected-item image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 36rpx;
+}
+
+/*
+  产品列表显示区域
+*/
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #555555;
+  font-size: 28rpx;
+  margin-bottom: 12rpx;
+  height: 96rpx;
+  border-bottom: 2rpx solid #F9FBFC;
+  padding-left: 24rpx;
+  padding-right: 20rpx;
+}
+
+.center-sty {
+  display: inline-block;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.active-first-sty {
+  border-top: 2rpx solid #F9FBFC;
+}
+
+.over-text {
+  margin-left: 16rpx;
+}
+
+.check-sty {
+  transform: scale(0.7) !important;
+  margin-top: 4rpx;
+  margin-left: 12rpx;
+}
+
+/*
+  确认按钮区域
+*/
+.confirm-contain {
+  width: 100%;
+  height: 160rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2rpx solid #F9FBFC;
+}
+
+.confirm-btn {
+  display: inline-block;
+  width: 656rpx;
+  height: 88rpx;
+  text-align: center;
+  background: #0082fc;
+  border-radius: 44rpx;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  line-height: 30rpx;
+}
+
+.close-icon {
+  position: absolute;
+  right: 110rpx;
+  z-index: 999 !important;
+}

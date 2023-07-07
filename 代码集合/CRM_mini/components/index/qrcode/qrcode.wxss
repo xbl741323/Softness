@@ -1,0 +1,39 @@
+/* components/index/qrcode/qrcode.wxss */
+.qrcode-box {
+  width: 560rpx;
+  height: 780rpx;
+  background-color:transparent !important;
+}
+.qrcode-img {
+  width: 560rpx;
+  height: 560rpx;
+}
+.qrcode-info {
+  margin-top: 24rpx;
+  width: 100%;
+  height: 180rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.qrcode-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 440rpx;
+  height: 96rpx;
+  background: #1e4bdb;
+  border-radius: 48rpx;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN, Source Han Sans CN-Regular;
+  font-weight: 400;
+  color: #ffffff;
+}
+.qrcode-close {
+  margin-top: 24rpx;
+  width: 64rpx;
+  height: 64rpx;
+}
+

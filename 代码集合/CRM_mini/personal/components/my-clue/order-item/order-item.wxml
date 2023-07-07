@@ -1,0 +1,56 @@
+<!--personal/components/my-clue/order-item/order-item.wxml-->
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+  <view class="product-item">
+  <!-- 订单编号—状态 -->
+  <view class="product-head">
+    <view class="head-left">
+      <text>{{orderInfo.orderNo}}</text>
+      <image catchtap="copyText" data-text="{{orderInfo.orderNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view class="head-right">
+      <text></text>
+      <text>{{orders.filterOrderStatus(orderInfo.orderStatus)}}</text>
+    </view>
+  </view>
+  <view bindtap="toOrderDetail">
+    <!-- 产品名称—数量 -->
+    <view class="product-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">{{orderInfo.spuName}}</text>
+      <text>x{{orderInfo.buyNum}}</text>
+    </view>
+    <!-- 规格属性 -->
+    <view class="product-attribute {{disabled==true?'disabled-sty':''}}">
+      <text class="{{disabled==true?'disabled-sty disabled-bg-sty':''}}">{{orderInfo.spec}}</text>
+    </view>
+    <!-- 客户名称 -->
+    <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+      <text>客户名称：</text>
+      <text>{{orderInfo.subjectName}}</text>
+    </view>
+
+    <!-- 订单时间显示 -->
+    <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+      <!-- 待生效/草稿/已失效订单状态显示创建时间 -->
+      <block wx:if="{{(pageFrom == 4)&&(orderInfo.orderStatus != -1&&orderInfo.orderStatus != -2&&orderInfo.orderStatus != -3)}}">
+        <text>签约时间：</text>
+        <text>{{orderInfo.contractTime||'-'}}</text>
+      </block>
+      <!-- 其他订单状态显示签约时间 -->
+      <block wx:else>
+        <text>创建时间：</text>
+        <text>{{orderInfo.createTime}}</text>
+      </block>
+    </view>
+  </view>
+  <!-- 按钮区域 -->
+  <view class="btn-contain">
+    <view class="btn-left">
+      <text>总价：</text>
+      <text wx:if="{{orderInfo.tailStatus == 0}}">待定</text>
+      <text wx:else class="{{disabled==true?'disabled-price-sty':''}}">￥{{orders.fixPrice(orderInfo.totalAmount)}}</text>
+    </view>
+    <view class="btn-right" wx:if="{{pageFrom == 0}}">
+      <text catchtap="toOrderDetail">查看</text>
+    </view>
+  </view>
+</view>

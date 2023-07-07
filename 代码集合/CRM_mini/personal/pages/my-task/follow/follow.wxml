@@ -1,0 +1,57 @@
+<!--personal/pages/my-clue/follow/follow.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<view class="generate-order">
+  <view class="generate-head">
+    <!-- 线索名称 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty"></text>
+        <text class="common-bold-sty">任务名称</text>
+      </view>
+      <view class="order-item-foot">
+        <text class="common-bold-sty">{{taskInfo.spuName}}</text>
+        <text></text>
+      </view>
+    </view>
+    <!-- 跟进方式 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text>跟进方式</text>
+      </view>
+      <view class="order-item-foot">
+        <picker bindchange="changeFollowType" range-key="name" range="{{followTypeList}}">
+          <text wx:if="{{followInfo.followType == null}}">请选择</text>
+          <text class="strong-sty" wx:else>{{followInfo.followType}}</text>
+          <text class="pointer-sty"></text>
+        </picker>
+      </view>
+    </view>
+    <!-- 跟进内容 -->
+    <view class="column-sty">
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text>跟进内容</text>
+      </view>
+      <view class="order-item-foot">
+        <textarea value="{{followInfo.followContent}}" bindblur="changeInput" data-type="1" maxlength="500" class="common-item-textarea" placeholder-class="p-sty" placeholder="请输入500字以内的跟进内容"></textarea>
+      </view>
+    </view>
+  </view>
+  <!-- 添加附件 -->
+  <view class="column-sty">
+    <view class="order-item-head">
+      <text class="required-sty"></text>
+      <text>添加附件（{{fileList.length}}/5）</text>
+    </view>
+    <view class="upload-foot">
+      <van-uploader accept="image" multiple="{{true}}" max-count="5" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" deletable="{{true}}" />
+    </view>
+  </view>
+  <!-- 操作按钮区域 -->
+  <view class="btn-contain">
+    <view class="submit-btn" bindtap="throttleSubmit">
+      提交跟进
+    </view>
+  </view>
+</view>

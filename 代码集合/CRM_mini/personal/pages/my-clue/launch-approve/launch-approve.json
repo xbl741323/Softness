@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发起认证",
+  "usingComponents": {
+    "user-item": "/personal/components/my-clue/user-item/user-item"
+  }
+}

@@ -1,0 +1,64 @@
+<!--personal/components/my-clue/modify/modify-invoice/modify-invoice.wxml-->
+<view class="modify-basic" hidden="{{showStatus}}">
+  <!-- 开票信息 -->
+  <view class="basic-type">
+    <text class="basic-type-title">开票信息</text>
+  </view>
+
+  <!-- 单位基础信息 -->
+  <view class="common-contain">
+    <view class="common-item {{clueType==2?'disable-bg':''}}">
+      <view class="common-item-head">
+        <text class="common-item-label">单位名称</text>
+      </view>
+      <view class="common-item-foot">
+        <input value="{{billingInfo.unitName}}" disabled="{{clueType==2?true:false}}" bindblur="changeInput" data-type="0" class="contact-long-input" type="text" placeholder="{{clueType==2?'由基本信息获取，无需填写':'请输入单位名称'}}" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item {{clueType==2?'disable-bg':''}}">
+      <view class="common-item-head">
+        <text class="common-item-label">发票税号</text>
+      </view>
+      <view class="common-item-foot">
+        <input value="{{billingInfo.billingNumber}}" disabled="{{clueType==2?true:false}}" bindinput="changeInput" data-type="1" class="contact-long-input" type="text" placeholder="{{clueType==2?'由基本信息获取，无需填写':'请输入发票税号'}}" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item-column">
+      <view class="common-item-column-head">
+        <text class="common-item-label">注册地址</text>
+      </view>
+      <textarea value="{{billingInfo.registerAddress}}" bindblur="changeInput" data-type="2" maxlength="100" class="common-item-textarea" placeholder="请输入100字以内的地址信息" placeholder-class="p-sty"></textarea>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-item-label">注册电话</text>
+      </view>
+      <view class="common-item-foot">
+        <input value="{{billingInfo.registerPhone}}" bindblur="changeInput" data-type="3" class="contact-long-input" type="number" placeholder="请输入注册电话" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-item-label">开户银行</text>
+      </view>
+      <view class="common-item-foot">
+        <input value="{{billingInfo.depositBank}}" bindblur="changeInput" data-type="4" class="contact-long-input" type="text" placeholder="请输入开户银行" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-item-label">银行账号</text>
+      </view>
+      <view class="common-item-foot">
+        <input value="{{billingInfo.bankAccountNo}}" bindinput="changeInput" data-type="5" class="contact-long-input" type="text" placeholder="请输入银行账号" placeholder-class="p-sty" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 按钮区域 -->
+  <view class="common-btn">
+    <text bindtap="handelOperate" data-num="3">上一步</text>
+    <text wx:if="{{operateType == 0}}" bindtap="handelOperate" data-num="4">直接创建</text>
+    <text wx:if="{{operateType == 1}}" bindtap="handelOperate" data-num="5">保存</text>
+  </view>
+</view>

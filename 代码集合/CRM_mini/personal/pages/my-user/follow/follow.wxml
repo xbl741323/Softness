@@ -1,0 +1,71 @@
+<!--personal/pages/my-user/follow/follow.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<view class="generate-order">
+  <view class="generate-head">
+    <!-- 线索名称 -->
+    <view class="order-item-foot">
+      <text class="common-bold-sty">{{clueInfo.clueName}}</text>
+      <text></text>
+    </view>
+
+    <!-- 跟进方式 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text>跟进方式</text>
+      </view>
+      <view class="order-item-foot">
+        <picker bindchange="changeFollowType" range-key="name" range="{{followTypeList}}">
+          <text wx:if="{{followInfo.followType == null}}">请选择</text>
+          <text class="strong-sty" wx:else>{{followInfo.followType}}</text>
+          <text class="pointer-sty"></text>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 跟进内容 -->
+    <view class="column-sty">
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text>跟进内容</text>
+      </view>
+      <view class="order-item-foot">
+        <textarea value="{{followInfo.followContent}}" bindblur="changeInput" data-type="1" maxlength="500" class="common-item-textarea" placeholder-class="p-sty" placeholder="请输入500字以内的跟进内容"></textarea>
+      </view>
+    </view>
+  </view>
+
+   <!-- 附件 -->
+   <view class="column-sty">
+    <view class="order-item-head">
+      <text>附件</text>
+    </view>
+    <view class="upload-foot">
+      <van-uploader accept="image" multiple="{{true}}" max-count="5" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" deletable="{{true}}" />
+    </view>
+  </view>
+
+  <!-- 下次跟进时间 -->
+  <view class="order-item">
+    <view class="order-item-head">
+      <text>下次跟进时间</text>
+    </view>
+    <view class="order-item-foot" bindtap="bindShow">
+      <text class="strong-sty" wx:if="{{followInfo.followTime!=''&&followInfo.followTime!=null}}">{{followInfo.followTime}}</text>
+      <text wx:else>请选择</text>
+      <text class="pointer-sty"></text>
+    </view>
+  </view>
+
+  <!-- 下次跟进时间显示 -->
+  <action-sheet hidden="{{!showCalendar}}">
+    <van-datetime-picker value="{{ currentDate }}" bind:confirm="onConfirm" bind:cancel="onClose" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </action-sheet>
+
+  <!-- 操作按钮区域 -->
+  <view class="btn-contain">
+    <view class="submit-btn" bindtap="throttleSubmit">
+      确定
+    </view>
+  </view>
+</view>

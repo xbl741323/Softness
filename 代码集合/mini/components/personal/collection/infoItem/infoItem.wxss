@@ -1,0 +1,23 @@
+/* components/personal/collection/infoItem/infoItem.wxss */
+.infoItem{
+  padding: 32rpx 15rpx;
+  border-bottom: 2rpx solid #F4F4F4;
+}
+
+.infoItem-title{
+  color: #000;
+  font-weight: 700;
+  font-size: 32rpx;
+  margin-bottom: 5rpx;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /* 超出几行省略 */
+  overflow: hidden;
+}
+
+.infoItem-time{
+  font-weight: 26rpx;
+  color: #999999;
+}

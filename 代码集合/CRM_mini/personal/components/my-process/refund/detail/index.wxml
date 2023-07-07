@@ -1,0 +1,68 @@
+<!--personal/components/my-process/refund/detail/index.wxml-->
+<wxs src="/utils/refund/refund.wxs" module="refundWxs"></wxs>
+<view class="basic-info">  
+  <view>基本信息</view>
+  <swiper class="swiper-sty" current="{{index}}" bindchange="bindchange">
+    <swiper-item>
+      <view class="contract-info" bindtap="viewDetail">
+        <text>退款金额：</text>
+        <text>{{processData.refundAmount}}</text>        
+      <!-- <view class="newcontract-info">
+      </view> -->
+        <text>退款类型：</text>
+        <view wx:if="{{processData.doubleUniqueArr && processData.taskStatus != -1}}" class="delete-blank">
+          <view wx:for="{{processData.doubleUniqueArr}}" wx:key="index" class="type-item color-5">
+              {{refundWxs.filterCostType(item.costTypeId)}}
+              {{item.payTypeId == 1 ?'(定金)':item.payTypeId == 2 ?'(尾款)':''}}
+            <text wx:if="{{index != processData.doubleUniqueArr.length-1}}">,</text>
+          </view>
+        </view>
+        <text wx:else>{{processData.taskStatus == -1 || processData.refundStatus == -1 ? '暂无':'待分配'}}</text>
+        <text>退款原因：</text>
+        <text>{{ refundWxs.refundReason(processData.refundReason)}}</text>
+        <text>电商编号： </text>
+        <text>{{processData.thirdOrderNo || '/'}}</text>
+        <text>退款截图： </text>
+        <text wx:if="{{processData.refundPicUrl}}" catchtap="previewImg" class="view-pic">点击查看截图</text>
+        <text wx:else>/</text>
+        <text>问题描述（用户选填）：</text>
+        <view class="txt-box">          
+          <text class="over-hidden">{{processData.description || '/'}}</text>
+          <text wx:if="{{processData.description.length>27}}" class="click-more" catchtap="viewMore" data-info="{{processData.description}}">查看更多>></text>     
+        </view>   
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="contract-info" bindtap="viewDetail">      
+        <text>主体ID：</text>
+        <text>{{processData.userNo}}</text>
+        <text>用户名称：</text>
+        <text>{{processData.accountName}}</text>
+        <text>联系人：</text>
+        <text>{{processData.accountName}}{{processData.accountMobile}}</text>
+        <text>线索归属：</text>
+        <text>{{processData.clueAttributionEmpName}}</text>
+        <text>订单归属：</text>
+        <text>{{processData.belongName}}</text>
+        <text>业务员：</text>
+        <text>{{processData.clueSalesmanEmpName}}</text>
+        <text>发起时间：</text>
+        <text>{{processData.createTime }}</text>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+<view class="dot-sty-box">
+  <view class="dot-sty">
+    <view class="{{index == 0 ? 'dot-sty-state' : 'dot-sty-item' }}"></view>
+    <view class="{{index == 1 ? 'dot-sty-state' : 'dot-sty-item' }}"></view>
+  </view>
+</view>
+<van-popup show="{{ morePop }}" bind:close="closePop" round>
+  <view class="pop-box">
+    <view class="pop-innner">
+      <view>问题描述（用户选填）：</view>
+      <view class="desc-txt">{{processData.description}}</view>
+    </view>
+  </view>
+</van-popup>

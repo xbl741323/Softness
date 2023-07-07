@@ -1,0 +1,16 @@
+<!--components/personal/rzTip/rzTip.wxml-->
+<view class="rz-tip">
+  <view class="tip-content">
+    <image class="tip-image" src="/image/me/rz.png"></image>
+    <view class="tip-desc">
+      <view class="tip-title">认证提示</view>
+      <view class="tip-main">
+        <text class="tip-text">检测您存在待认证的订单，</text>
+        <text class="tip-text">为了不影响您的订单进度，</text>
+        <text class="tip-text">请尽快完成认证吧~</text>
+      </view>
+      <view class="tip-btn" bindtap="toRz">好的，去认证</view>
+      <view class="think" bindtap="cancel">再想想</view>
+    </view>
+  </view>
+</view>

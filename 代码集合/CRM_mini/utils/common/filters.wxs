@@ -1,0 +1,45 @@
+function returnList(start, end, list) {
+  return list.slice(start, end)
+}
+
+function returnLength(list) {
+  return list.length;
+}
+
+function userTypeFilter(val) {
+  return val == 2 ? '单位' : val == 1 ? '个人' : val == 0 ? '未认证' : ''
+}
+
+function filterSource(val) {
+  return val == "1" ? 'PC端' : val == "2" ? '小程序' : val == "3" ? '移动端' : ''
+}
+
+function filterWxBind(val) {
+  return val == true ? '已绑定' : '未绑定'
+}
+
+function filterWxFollow(val) {
+  return val == true ? '已关注' : '未关注'
+}
+
+// 获取当前时间
+function formatTime() {
+  var date = getDate()
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  var hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+  var minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+  var second = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+  return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ":" + second
+}
+
+module.exports = {
+  returnLength: returnLength,
+  returnList: returnList,
+  userTypeFilter: userTypeFilter,
+  filterSource: filterSource,
+  filterWxBind: filterWxBind,
+  filterWxFollow: filterWxFollow,
+  formatTime: formatTime
+}

@@ -1,0 +1,47 @@
+/* personal/pages/toggleCity/toggleCity.wxss */
+.search{
+  width:100%;
+  height:100rpx;
+  background:#eee;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size:28rpx
+}
+.input{
+  background:#fff;
+  width:70%;
+  height:60rpx;
+  border-radius:30rpx;
+  margin-right:20rpx;
+  text-align: center;
+}
+.cancle{
+  color:#36A6FE;
+}
+.staticCity{
+  padding:20rpx 20rpx;
+  font-size:28rpx;
+}
+.city-code{ 
+  padding:0rpx 20rpx;
+  font-size:26rpx; 
+  height:50rpx;
+  background:#eee;
+  line-height: 50rpx;
+}
+.city-item{
+  padding:0rpx 20rpx;
+  font-size:26rpx;
+  height:80rpx;
+  line-height: 80rpx;
+}
+.search-city{
+  padding:10rpx 30rpx;
+  font-size:26rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  background-color: #fff;
+  color: #333;
+  border-bottom: 1rpx solid #EBEEF5;
+}

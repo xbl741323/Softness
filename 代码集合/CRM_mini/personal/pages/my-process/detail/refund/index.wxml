@@ -1,0 +1,9 @@
+<!--personal/pages/my-process/detail/refund/index.wxml-->
+<view>  
+  <top-tips processData="{{detailData}}"></top-tips>
+  <refund-detail processData="{{detailData}}"></refund-detail>
+  <detail-tab processData="{{detailData}}" logList="{{logList}}" refundFeeData="{{refundFeeData}}" taskData="{{taskData}}"></detail-tab>
+  <view class="bottom-note">
+    审核请到后台pc端操作
+  </view>
+</view>

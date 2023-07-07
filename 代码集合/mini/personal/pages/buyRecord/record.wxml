@@ -1,0 +1,24 @@
+<!--personal/pages/buyRecord/record.wxml-->
+<view class="class-wrap">
+  <head title="购买记录"></head>
+  <view class="record-cont">
+    <view wx:for="{{list}}" wx:key="index" class="list-item {{item.aging=='overdue'?'unvalid':'invalid'}}">
+      <view class="top-line">
+        <text class="records-title">课堂会员</text>
+        <view class="top-right">
+          <text class="price-style">￥{{item.orderAmount}}</text>
+          <view class="tip-bg {{item.aging+'-status'}}">
+            <text wx:if="{{item.aging=='wait'}}">待生效</text>
+            <text wx:if="{{item.aging=='active'}}">已生效</text>
+            <text wx:if="{{item.aging=='overdue'}}">已到期</text>
+          </view>
+        </view>
+      </view>
+      <view class="time-info">
+        <view wx:if="{{item.validStart}}"><text>有效期：</text>{{item.validStart}}-{{item.validEnd}}</view>
+        <view><text>购买时间：</text>{{item.updateTime}}</view>
+      </view>
+    </view>
+    <view class="no-more" wx:if="{{noMore}}">暂无更多数据了...</view>
+  </view>
+</view>

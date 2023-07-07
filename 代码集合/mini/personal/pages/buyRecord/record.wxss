@@ -1,0 +1,94 @@
+/* personal/pages/buyRecord/record.wxss */
+.class-wrap{
+  width: 100%;
+  height: 100vh;
+  background: #F5F7FB;
+  position: relative;
+}
+.record-cont{
+  width: 92%;
+  padding: 210rpx 4% 40rpx 4%;
+  background: #F5F7FB;
+}
+.list-item{
+  width: 100%;
+  height: 228rpx;
+  border-radius: 20rpx;
+  margin-bottom: 24rpx;
+}
+.unvalid{
+  background-image: url('//static-tst.wotao.com/filebase/75191c0807644bdda3232c642d2e8dd4.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.invalid{
+  background-image: url('//static-tst.wotao.com/filebase/1202481b9ef948b4847582dd4b0c2e99.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.top-line{
+  width: 96%;
+  padding: 24rpx 0 40rpx 4%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.records-title{
+  color: #36A6FE;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.unvalid .records-title, .unvalid .price-style{
+  color: #999;
+}
+.no-more{
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  background: #F5F7FB;
+  padding: 0 0 68rpx 0;
+}
+.top-right{
+  flex: 1;
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+.price-style{
+  color: #FF6D27;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-right: 24rpx;
+}
+.tip-bg{
+  width: 124rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 24rpx;
+  border-radius: 10px 0px 0px 10px;
+}
+.wait-status{
+  background: #fff6f2;
+  color: #FF6D27;
+}
+.overdue-status{
+  background: #E3E2E2;
+  color: #FFF;
+}
+.active-status{
+  background: #36A6FE;
+  color: #FFF;
+}
+.time-info{
+  font-size: 28rpx;
+  color: #555;
+  width: 96%;
+  margin-left: 4%;
+}
+.time-info text{
+  color: #999;
+  line-height: 48rpx;
+}

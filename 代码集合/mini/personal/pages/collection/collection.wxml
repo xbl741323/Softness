@@ -1,0 +1,93 @@
+<!--personal/pages/collection/collection.wxml-->
+<!-- 回到顶部 -->
+<view wx:if="{{showTop}}">
+  <image class="toTop" bindtap="toTop" src="/image/common/icon_back@2x.png" />
+</view>
+<view class="collection">
+  <head title="我的收藏"></head>
+  <view id="top">
+    <!-- 产品类型tab -->
+    <view class="content-banner">
+      <!-- 收藏类型选项 -->
+      <view class="tab-contain">
+        <view wx:for="{{tabList}}" data-type="{{index}}" wx:key="index" class="tab-item">
+          <text class="{{index == activeTab?'activeTab':''}}" data-index="{{index}}" bindtap="handleTab">{{item}}</text>
+          <text class="{{index == activeTab?'blue-block':''}}"></text>
+        </view>
+      </view>
+      <!-- 产品状态选择 -->
+      <view class="tab-right">
+        <view class="status-main" bindtap="getStatus">
+          <text>{{statusName}}</text>
+          <view class="{{showOption==true?'down-choosed':'down'}}"></view>
+          <!-- 产品状态选择下拉框 -->
+          <view wx:if="{{showOption}}" class="status-content">
+            <text class="top-pointer"></text>
+            <view class="status-item {{deletedList==item.id?'choosedStatus':''}}" wx:for="{{statusList}}" wx:key="idx" bindtap="statusChange" data-myid="{{item.id}}">
+              <text>{{item.name}}</text>
+              <image wx:if="{{deletedList==item.id}}" src="../../../image/center/selected.png"></image>
+            </view>
+          </view>
+        </view>
+        <!-- 完成操作 -->
+        <view class="manage" bindtap="changeManage">{{isManage?"完成":"管理"}}</view>
+        </view>
+    </view>
+  </view>
+  <!-- 列表区域 -->
+  <view class="list">
+    <!-- 管理页面列表 -->
+    <view wx:if="{{isManage}}">
+      <view wx:if="{{collectionList.length>0}}">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="project-content-item" wx:for="{{collectionList}}" wx:key="idx" data-number="{{item.number}}">
+            <view class="item-checked">
+              <checkbox class="flex" value="{{activeTab==0 ? item.infoId : item.number}}" checked="{{item.checked}}" />
+            </view>
+            <!-- 资讯文档 -->
+            <infoItem productInfo="{{item}}" manageStatus="{{isManage}}" wx:if="{{activeTab==0}}"></infoItem>
+            <!-- 服务产品 -->
+            <supItem productInfo="{{item}}" manageStatus="{{isManage}}" wx:if="{{activeTab==1}}"></supItem>
+            <!-- 课程 -->
+            <classItem productInfo="{{item}}" manageStatus="{{isManage}}" wx:if="{{activeTab==2}}"></classItem>
+          </label>
+        </checkbox-group>
+        <view wx:if="{{!flag}}" class="loading {{isGlobal?'loading-global':''}}">正在加载中....</view>
+        <view wx:if="{{page>2 && page>total}}" class="loading {{isGlobal?'loading-global':''}}">没有更多数据啦！</view>
+        <!-- 固定foot -->
+        <view class="foot flex">
+          <label class="flex all" bindtap='selectAll'>
+            <checkbox class="flex" checked="{{selectilall}}" />
+            <text class="allSelect {{selectilall?'all-checked':''}}">全选</text>
+          </label>
+          <view class="flex" bindtap="delCollection">
+            <text class="del-btn">删除</text>
+          </view>
+        </view>
+      </view>
+      <view class="nodata" wx:else>
+        <!-- <image class="nodata-img" mode="aspectFit" src="/image/nodata/nocollection_center@2x.png"></image> -->
+        <view>暂无收藏数据</view>
+      </view>
+    </view>
+    <!-- 展示页面列表 -->
+    <view wx:else>
+      <view wx:if="{{collectionList.length>0}}">
+        <view bindtap="toProjectDetail" wx:for="{{collectionList}}" wx:key="idx" data-item="{{item}}">
+          <!-- 资讯文档 -->
+          <infoItem productInfo="{{item}}" manageStatus="{{isManage}}" wx:if="{{activeTab==0}}"></infoItem>
+          <!-- 服务产品 -->
+          <supItem productInfo="{{item}}" manageStatus="{{isManage}}" wx:if="{{activeTab==1}}"></supItem>
+          <!-- 课程 -->
+          <classItem productInfo="{{item}}" manageStatus="{{isManage}}" wx:if="{{activeTab==2}}"></classItem>
+        </view>
+        <view wx:if="{{!flag}}" class="loading {{isGlobal?'loading-global':''}}">正在加载中....</view>
+        <view wx:if="{{collectionList.length>7&&collectionList.length>=total}}" class="loading {{isGlobal?'loading-global':''}}">没有更多数据啦！</view>
+      </view>
+      <view class="nodata" wx:else>
+        <!-- <image class="nodata-img" mode="aspectFit" src="/image/nodata/nocollection_center@2x.png"></image> -->
+        <view>暂无收藏数据</view>
+      </view>
+    </view>
+  </view>
+</view>

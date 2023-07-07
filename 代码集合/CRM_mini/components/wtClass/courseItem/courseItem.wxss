@@ -1,0 +1,148 @@
+/* components/classRoom/courseItem/courseItem.wxss */
+.course-item {
+  width: 100%;
+  display: flex;
+  padding: 20rpx 24rpx 0rpx 24rpx;
+}
+
+.cover-img {
+  position: relative;
+  width: 246rpx;
+  height: 174rpx;
+  margin-right: 18rpx;
+  border-radius: 12rpx;
+}
+
+.try-see {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56rpx;
+  height: 33rpx;
+  background: #fa7a42;
+  border-radius: 10rpx 0px 10rpx 0px;
+  color: #FFFFFF;
+  font-size: 22rpx;
+}
+
+.course-item image{
+  width: 249rpx;
+  height: 166rpx;
+  border-radius: 12rpx;
+}
+
+.course-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.course-top-title {
+  display: flex;
+  align-items: center;
+}
+
+.course-title-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #663E05;
+  font-weight: bold;
+  font-size: 22rpx;
+  padding: 0 8rpx;
+  height: 33rpx;
+  background: #efca95;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.course-title-vip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #663E05;
+  font-weight: bold;
+  font-size: 22rpx;
+  height: 33rpx;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.course-title-price {
+  display: inline-block;
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+  width: 320rpx;
+}
+
+.course-desc-title {
+  width: 450rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.vip-label {
+  background: #EFCA95;
+  padding: 0 8rpx;
+  border-top-left-radius: 5rpx;
+  border-bottom-left-radius: 5rpx;
+}
+
+.vip-price {
+  background: #663E05;
+  color: #FFFFFF;
+  padding: 0 8rpx;
+  border-radius: 5rpx;
+}
+
+.course-desc {
+  width: 450rpx;
+  color: #888888;
+  font-size: 26rpx;
+  margin-top: 11rpx;
+  margin-bottom: 40rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.active-course-desc {
+  margin-bottom: 10rpx !important;
+}
+
+.course-price {
+  display: flex;
+  align-items: center;
+}
+
+.course-price>text:nth-of-type(1) {
+  color: #FA7A42;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.previous-price {
+  position: relative;
+  color: #888888;
+  font-size: 26rpx;
+  margin-left: 16rpx;
+}
+
+.previous-price>text:nth-of-type(2) {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2rpx;
+  background: #888888;
+}

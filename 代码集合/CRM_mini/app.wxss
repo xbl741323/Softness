@@ -1,0 +1,4 @@
+/**app.wxss**/
+.dis-bottom{
+  padding-bottom: 120rpx !important;
+}

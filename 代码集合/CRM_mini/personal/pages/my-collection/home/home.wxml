@@ -1,0 +1,26 @@
+<view class="my-clue">
+  <!-- 顶部搜索栏 -->
+  <view class="top-fixed">
+    <view class="search-contain">
+      <view class="search-contain-left" bindtap="changeType">
+      </view>
+      <view class="search-contain-right">
+        <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+        <input class="{{keyWords!=''?'active-input-sty':''}}" value="{{keyWords}}" bindconfirm="searchList" bindinput="changeKeywords" placeholder="请输入客户名称关键字/回款编号" type="text" />
+        <van-icon bindtap="clearKerword" wx:if="{{keyWords!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+      </view>
+    </view>
+    <text bindtap="searchList" class="fixed-search">搜索</text>
+  </view>
+
+  <!-- 线索信息卡片列表 -->
+  <view class="clue-list">
+    <collection-records id="filter" clueType="{{clueType}}" clueList="{{clueList}}" bind:getfiltratedata="getfiltratedata" bind:changeType="changeType"></collection-records>
+    
+    <money-item wx:for="{{clueList}}" orderInfo="{{item}}" wx:key="index"  clueType="{{clueType}}" wx:if="{{clueList.length>0}}" getList="{{getList}}"></money-item>
+    <view class="empty-page" wx:if="{{clueList.length==0}}">
+    <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
+    <text>暂无相关数据</text>
+  </view>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<!--personal/pages/my-contract/list/index.wxml-->
+<view class="my-clue">
+  <!-- 顶部搜索栏 -->
+  <view class="top-fixed">
+    <view class="search-contain">
+      <view class="search-contain-left" bindtap="changeType">
+        <text>{{contractType == 2?"纸质":"电子"}}</text>
+        <image src="/image/common/area_icon.png"></image>
+      </view>
+      <text class="lang-sty"></text>
+      <view class="search-contain-right">
+        <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+        <input class="{{keyWords!=''?'active-input-sty':''}}" value="{{keyWords}}" bindconfirm="searchList" bindinput="changeKeywords" placeholder="客户名称/订单信息/合同编号/订单编号/合同备注" type="text" />
+        <van-icon bindtap="clearKerword" wx:if="{{keyWords!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+      </view>
+    </view>
+    <text bindtap="searchList" class="fixed-search">搜索</text>
+  </view>
+
+  <view>
+    <van-dropdown-menu class="out-drop-sty" active-color="#0082FC">
+      <van-dropdown-item wx:if="{{contractType == 2}}" bind:change="changeContract" value="{{ filters.taskStatus }}" options="{{ contractStatusList }}" />
+      <van-dropdown-item wx:if="{{contractType == 1}}" bind:change="changeContract" value="{{ filters.taskStatus }}" options="{{ elecContractStatus }}" />
+      <van-dropdown-item bind:change="changeOrder" value="{{ filters.categoryId }}" options="{{ orderStatusList }}" />
+    </van-dropdown-menu>
+  </view>
+
+  <!-- 线索信息卡片列表 -->
+  <view class="clue-list" wx:if="{{contractList.length>0 && loading}}">
+    <clue-item wx:for="{{contractList}}" wx:key="index" contractInfo="{{item}}" contractType="{{contractType}}" bind:refresh="refresh" bind:showAllot="showEmpSheet"></clue-item>
+  </view>
+  <!-- 无数据页面展示 -->
+  <!-- <empty-page wx:if="{{contractList.length==0 && loading}}"></empty-page> -->
+  <view class="empty-page" wx:if="{{contractList.length == 0}}">
+    <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
+    <text>未搜索到相关数据</text>
+  </view>
+  <!-- 录入合同按钮 -->
+  <view class="enter-btn-contain" wx:if="{{contractType==2}}">
+    <text class="enter-btn" bindtap="enterContract">录入合同</text>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+function refundReason(val) {
+  return val == '1' ? "下错单了" : val == '2' ? "付款金额错误" : val == '3' ? "付款方式错误" : val == '4' ? "服务终止" : val == '5' ? "其他" : "未知";
+}
+module.exports = {
+  refundReason: refundReason
+}

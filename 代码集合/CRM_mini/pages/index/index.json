@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "selected-promotion": "/components/index/selected-promotion/selected-promotion",
+    "qrcode": "/components/index/qrcode/qrcode"
+  }
+}

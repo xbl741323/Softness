@@ -1,0 +1,22 @@
+<!--components/personal/myClass/myClass.wxml-->
+<view class="my-class">
+  <view class="class-title">
+    <text>课程学习</text>
+    <view class="more-sty" bindtap="toMore">
+      <text>更多</text>
+      <text></text>
+    </view>
+  </view>
+  <scroll-view class="scroll-class-view" enhanced="{{true}}" show-scrollbar="{{false}}" scroll-x="true">
+    <view class="scroll-class">
+      <view class="scroll-class-item" bindtap="toClassDetail" data-item="{{item}}" wx:for="{{list}}" wx:key="index">
+        <image src="{{imageUrl+item.baseCoverUrl}}"></image>
+        <view class="my-class-title">{{item.baseTitle}}</view>
+        <!-- <view wx:if="{{item.percent == 0}}" class="class-desc">未开始学习</view>
+        <view wx:else class="class-desc">
+          已学<text class="pro-num">{{item.percent*100}}%</text>
+        </view> -->
+      </view>
+    </view>
+  </scroll-view>
+</view>

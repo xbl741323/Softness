@@ -1,0 +1,22 @@
+<!--components/index/otherItem/otherItem.wxml-->
+<wxs src="/utils/productdetails/productdetails.wxs" module="tools"></wxs>
+<view class="new-product-item" bindtap="toDetail">
+  <view class="new-image-contain">
+    <image wx:if="{{item.mediaUrl}}" src="{{imageUrl+item.mediaUrl}}"></image>
+    <image wx:else src="{{imageUrl+item.imageUrl}}"></image>
+  </view>
+  <view class="new-bottom">
+    <text class="new-title">{{item.spuTitle}}</text>
+    <text class="new-desc">{{item.spuSlogan}}</text>
+    <view class="new-price-contain" wx:if="{{categoryId!=1 && hot|| !hot}}">
+      <view class="price-main">
+        <view class="price-num" wx:if="{{!item.isOnline}}">面议</view>
+        <view wx:else>
+          <text wx:if="{{item.spuMinAmount == item.spuMaxAmount}}">￥{{tools.filterDecimalPrice(item.spuMinAmount)}}</text>
+          <text wx:else>￥{{tools.filterDecimalPrice(item.spuMinAmount)}}</text>
+          <text wx:if="{{item.spuMinAmount > item.spuMaxAmount}}" class="small-font-size">/起</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

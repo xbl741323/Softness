@@ -1,0 +1,16 @@
+<!--components/index/qrcode/qrcode.wxml-->
+<van-popup
+  show="{{ show }}"
+  bind:close="onClose"
+  custom-class="qrcode-box">
+   <view>
+    <image class="qrcode-img" src="{{url}}" show-menu-by-longpress="{{true}}"></image>
+   </view>
+   <view class="qrcode-info">
+    <view class="qrcode-btn">
+      <text>长按识别订阅</text>
+      <text>接收工作消息</text>
+    </view>
+    <image src="/image/index/icon_cha@2x.png" class="qrcode-close" bindtap="closePop"></image>
+   </view>
+</van-popup>

@@ -1,0 +1,14 @@
+<!--components/payWays/pays.wxml-->
+  <view class="pay-way">
+    <view class="pay-title">支付方式</view>
+    <view class="pay-desc" wx:for="{{payList}}" wx:key="index">
+      <view class="pay-img">
+        <image src="{{item.url}}"></image>
+        <text>{{item.title}}</text>
+      </view>
+      <view class="check-sty" bindtap="changePay" data-index="{{item.index}}">
+        <image wx:if="{{checkedIndex == item.index}}" src="/image/orders/checkd.png"></image>
+        <image wx:else src="/image/orders/uncheck_gray.png"></image>
+      </view>
+    </view>
+  </view>

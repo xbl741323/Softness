@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "order-item":"/personal/components/my-clue/order-item/order-item"
+  }
+}

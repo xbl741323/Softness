@@ -1,0 +1,38 @@
+<!--components/questions/richText/richText.wxml-->
+
+<view class="{{hidden ? 'hidden' : ''}}">
+  <mp-html id="text" content="{{item.content}}" selectable="true" show-img-menu="true" preview-img="true"/> 
+</view>
+<view>
+  <text class="more" wx:if="{{hidden}}" bindtap="handleMore">更多></text>
+</view>
+<view class="dialog" wx:if="{{showDialog}}">
+  <view class="main">
+    <view class="answerList">
+      <view class="answerList-item">
+        <image src="{{item.createByAvatar ? imageUrl + item.createByAvatar : '/image/me/morentouxiang.png'}}" mode=""/>
+        <view class="answerList-item-top-right">
+          <view class="item-name">
+            {{item.createByName}}
+          </view>
+          <view class="item-time">
+            {{item.createTime}} | {{item.upNum}}个点赞
+          </view>
+        </view>
+      </view>
+      <view class="caina" wx:if="{{item.acceptFlag == 1}}">
+        <image src="/image/questions/icon-collect@2x.png" mode=""/>
+        <text>已采纳</text>
+      </view>
+    </view>
+    <view class="content">
+      <mp-html content="{{item.content}}" selectable="true"  show-img-menu="true" class="aa"/> 
+    </view>
+    
+  </view>
+  <view class="button"bindtap="closeDialog">
+    我知道了
+  </view>
+</view>
+<view class="zhezhaoceng" catchtouchmove="preventTouchMove"  wx:if="{{showDialog}}"></view>
+

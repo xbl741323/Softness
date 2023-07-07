@@ -1,0 +1,31 @@
+<!--components/index/areaItem/areaItem.wxml-->
+<view class="global-tip" wx:if="{{areaDialog}}" bindtap="handleDialog"></view>
+<view class="area-dialog" wx:if="{{areaDialog}}">
+  <view class="area-attribute">
+    <view class="area-input">
+        <image src="../../../image/index/search_icon.png" class="img-sty" bindtap="goArea"></image>
+        <input
+          class="input-sty"
+          placeholder-class="input-sty"
+          type="text"
+          value="{{searchValue}}"
+          placeholder="请输入城市"
+          bindinput="searchCity"
+          bindconfirm="goArea"
+        />
+        <image src="../../../image/index/clear_button.png" class="close-sty" wx:if="{{searchValue!=''}}" bindtap="clearSearchValue"></image>
+    </view>
+    <view class="area-btn">
+      <view class="cancel-btn" bindtap="cancel">取消</view>
+      <view class="sure-btn" data-value="{{areaValue}}" bindtap="getArea">确定</view>
+    </view>
+    <picker-view indicator-style="height: 50px;" class="picker-box" value="{{areaValue}}" bindchange="bindChange">
+      <picker-view-column bindchange="changeProvince" value="{{pIndex}}">
+        <view wx:for="{{region}}" wx:key="index" class="picker-sty">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column  bindchange="changeCity" value="{{cIndex}}">
+        <view wx:for="{{region[areaValue[0]].children}}" wx:key="cindex" class="picker-sty">{{item.name}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>

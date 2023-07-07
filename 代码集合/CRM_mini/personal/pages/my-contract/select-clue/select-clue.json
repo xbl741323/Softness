@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "选择线索",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "clue-item": "/personal/components/my-contract/clue-item/clue-item",
+    "empty-page": "/personal/components/empty-page/empty-page"
+  }
+}

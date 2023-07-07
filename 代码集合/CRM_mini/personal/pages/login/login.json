@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "登录页面",
+  "usingComponents": {
+    "aj-captcha": "/personal/components/login/aj-captcha/index"
+  }
+}

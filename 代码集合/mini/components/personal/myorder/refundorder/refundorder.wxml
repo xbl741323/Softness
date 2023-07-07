@@ -1,0 +1,66 @@
+<!--components/personal/myorder/projectorder/projectorder.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<!-- 下单时间 -->
+<view class="order-top">
+  <view bindtap="copyTap" data-no="{{propertyitem.tmRefundNo}}">
+    <text class="create-time">退款编号: {{propertyitem.tmRefundNo}}</text>
+    <image class="copy-ico" src="https://static.wotao.com/icon/head/39a5a920c75246498b64061c8ff7b68b.png" alt=""/>
+  </view>  
+  <view class="create-status">
+    <!-- <text wx:if="{{refundStatus}}">{{tools.checkRefundStataus(propertyitem.refundStatus)}}</text> -->
+    <text class="refund-status">{{tools.checkRefundStataus(propertyitem.refundStatus)}}</text>
+  </view>
+</view>
+<!-- 订单内容 -->
+<view class="order-center" bindtap="toDetail" data-order="{{propertyitem}}">
+  <!-- 订单产品信息 -->
+  <view class="center-top">
+    <view class="img-container">
+      <image class="product-img" src="{{imageUrl+propertyitem.picUrl}}"></image>
+    </view>
+    <view class="order-desc">
+      <text class="desc-title">{{propertyitem.spuName}}</text>
+      <text class="desc-type">{{propertyitem.spec}}</text>
+      <text class="desc-type">类型：{{tools.productType(propertyitem.categoryId)}}</text>
+    </view>
+    <!-- 全部、待付款、服务中 -->
+    <view class="order-price">
+      <view class="price-value">
+        <text class="price-Symbol">￥{{propertyitem.totalAmount/propertyitem.buyNum}}</text>
+      </view>
+      <text class="price-count">x {{propertyitem.buyNum}}</text>
+    </view>
+  </view>
+  <!-- 订单价格 -->
+  <view>
+    <view class="center-foot" wx:if="{{propertyitem.serviceFee}}">
+      <view class="{{propertyitem.refundStatus != 4?'m-right-0':'orign-fee'}}">
+        <text class="service-fee">服务费 ￥{{propertyitem.serviceFee}}</text>
+      </view>
+      <view class="refund-fee" wx:if="{{propertyitem.refundStatus==4}}">
+        <text class="foot-Symbol">退款：￥</text>
+        <text class="big-price">{{propertyitem.serviceRefundFee}}</text>
+      </view>      
+    </view>
+    <view class="center-foot" wx:if="{{propertyitem.govFee}}">
+      <view class="{{propertyitem.refundStatus != 4?'m-right-0':'orign-fee'}}">
+        <text class="service-fee">官费 ￥{{propertyitem.govFee}}</text>
+      </view>
+      <view class="refund-fee" wx:if="{{propertyitem.refundStatus == 4}}">
+        <text class="foot-Symbol">退款：￥</text>
+        <text class="big-price">{{propertyitem.govRefundFee}}</text>
+      </view>      
+    </view>
+  </view>
+</view>
+<!-- 操作按钮 -->
+<view class="special-sty">
+  <view class="refund-txt">
+    <text class="foot-Symbol">退款：￥</text>
+    <text class="big-price">{{propertyitem.refundAmount}}</text>
+  </view>
+  <view class="order-foot">
+    <text wx:if="{{propertyitem.refundStep != 5 && (propertyitem.refundStatus==1 || propertyitem.refundStatus==2)}}" class="{{feeInfo.payStatus == 2?'diabaled-pay-btn':'pay-btn'}}" data-order="{{propertyitem.tmRefundId}}" bindtap="cancelRefundOperate">撤销退款</text>
+    <text class="general-btn" bindtap="toDetail" data-order="{{propertyitem}}">查看详情</text>
+  </view> 
+</view>

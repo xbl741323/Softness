@@ -1,0 +1,70 @@
+<!--personal/components/my-process/transfer-item/transfer-item.wxml-->
+<!-- 流程状态 (-2: 未通过，-1: 已撤销，1: 待审核，2: 审核中;3: 审核通过，4:已完成)" -->
+<wxs src="/utils/refund/refund.wxs" module="refundWxs"></wxs>
+<view class="process-item" catchtap="toDetail">
+  <!-- 订单编号—状态 -->
+  <view class="process-head">
+    <view class="head-left">
+      <text>{{listItem.refundNo}}</text>
+      <image catchtap="copyText" data-text="{{listItem.refundNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view class="head-right">
+      <text class="{{listItem.refundStatus == 4 ? 'color-b' : listItem.refundStatus == -2 || listItem.refundStatus == -1 ? 'color-c' : ''}}">
+      </text>
+      <text>{{refundWxs.refundStatus(listItem.refundStatus)}}</text>
+    </view>
+  </view>
+  <view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">订单编号：</text>
+      <view class="head-left">
+        <text>{{listItem.orderNo}}</text>        
+        <image catchtap="copyText" data-text="{{listItem.orderNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+      </view>
+    </view>
+    <view class="process-name">
+      <text>主体名称：</text>
+      <view class="delete-blank">
+        <view class="type-item color-5">
+          <text>{{listItem.userNo}} {{listItem.customerName}}</text>            
+        </view>
+      </view>
+    </view>
+    <view class="process-name">
+      <text>费用类型：</text>
+      <view wx:if="{{listItem.feeTypes && listItem.taskStatus != -1}}" class="delete-blank">
+        <view wx:for="{{listItem.feeTypes}}" wx:key="index" class="type-item color-5">
+          <text>{{refundWxs.filterCostType(item.costTypeId)}}</text>
+           <text> {{item.payTypeId == 1 ?'(定金)':item.payTypeId == 2 ?'(尾款)':''}}</text>
+          <text wx:if="{{index != listItem.feeTypes.length-1}}">,</text>
+        </view>
+      </view>
+      <text wx:else>{{listItem.taskStatus == -1  || listItem.refundStatus == -1 ? '暂无':'待分配'}}</text>
+    </view>
+    <view class="process-name">
+      <text>待处理人：</text>
+      <view wx:if="{{listItem.approvals && listItem.taskStatus != -1}}" class="delete-blank">
+        <view wx:for="{{listItem.approvals}}" wx:key="index">
+          <text class="color-5">{{item.handleByName}}</text>
+          <text wx:if="{{index != listItem.approvals.length-1}}">，</text>
+        </view>
+      </view>
+      <text wx:else>暂无</text>
+      <text wx:if="{{listItem.approvals && listItem.approvals.length>3}}">...</text>
+    </view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">发起时间：</text>
+      <text>{{listItem.createTime}}</text>
+    </view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">结束时间：</text>
+      <text>{{listItem.endTime || ""}}</text>
+    </view>
+  </view>
+  <!-- 按钮区域 -->
+  <view class="btn-contain">
+    <view class="btn-right">
+      <text catchtap="toDetail">查看</text>
+    </view>
+  </view>
+</view>

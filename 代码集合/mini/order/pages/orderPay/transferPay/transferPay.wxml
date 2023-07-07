@@ -1,0 +1,62 @@
+<!--personal/pages/transferPay/transferPay.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<!-- 公共导航栏组件 -->
+<navBar type="{{0}}" navTitle="卧涛收银台"></navBar>
+
+<view class="transfer-pay" style="margin-top: {{height}}rpx;">
+  <!-- 订单信息 -->
+  <view class="order-info">
+    <view class="order-desc">
+      <text>订单号：{{transferInfo.orderNo}}</text>
+      <text bindtap="copyText" class="copy_text" data-number="{{transferInfo.orderNo}}">复制</text>
+    </view>
+    <view class="order-price">
+      <text>应付：</text>
+      <text>￥{{transferInfo.tailstatusPayFlag?transferInfo.tailShould:transferInfo.totalPrice}}</text>
+    </view>
+  </view>
+
+  <!-- 转账银行账户信息 -->
+  <view class="back-info">
+    <text>转账银行账户信息</text>
+    <view class="back-table">
+      <view class="back-item" wx:for="{{backList}}" wx:key="index">
+        <text>{{item.title}}</text>
+        <view wx:if="{{index == 3}}">
+          <text>订单号:{{transferInfo.orderNo}}</text>
+          <!-- <text bindtap="copyText" class="copy_text" data-number="{{transferInfo.orderNo}}">复制</text> -->
+        </view>
+        <view wx:elif="{{index == 1}}">
+          <text>{{item.value}}</text>
+          <text bindtap="copyText" class="copy_text" data-number="{{item.value}}">复制</text>
+        </view>
+        <view wx:else>{{item.value}} </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 上传对公转账凭证 -->
+  <view class="transfer-info">
+    <view class="transfer-title">
+      <text>*</text>
+      <text>上传对公转账凭证</text>
+    </view>
+    <view class="transfer-upload" wx:if="{{transferImg==''}}" bindtap="upTransferImg">
+      <image src="/order/image/orders/upload.png"></image>
+      <text>点击上传文件</text>
+    </view>
+    <view class="transfer-upload" wx:else>
+      <image wx:if="{{fileType=='pdf'}}" class="upload-img pdf-image" bindtap="upTransferImg" src="https://static.wotao.com/icon/head/f9fefef4806f474a9cdab851d8fd6d4e.png" />
+      <image wx:else class="upload-img" src="{{imgUrl+transferImg}}" bindtap="upTransferImg"></image>
+    </view>
+  </view>
+
+  <!-- 温馨提示 -->
+  <view class="reminder">
+    <text>温馨提示：</text>
+    <text>{{remindText}}</text>
+  </view>
+</view>
+
+<!-- 提交按钮 -->
+<view class="submit-btn" bindtap="submitPay">提交</view>

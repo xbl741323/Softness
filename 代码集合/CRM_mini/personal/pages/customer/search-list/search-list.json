@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "查询客户",
+  "usingComponents": {
+    "clue-item": "/personal/components/my-clue/clue-item/clue-item",
+    "empty-page": "/personal/components/empty-page/empty-page",
+    "areaItem": "/components/product/areaItem/areaItem"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "录入合同",
+  "usingComponents": {
+    "query-emp": "/components/common/query-emp/query-emp"
+  }
+}

@@ -1,0 +1,36 @@
+<!--components/project/pricePanel/pricePanel.wxml-->
+<wxs src="/utils/common/filters.wxs" module="tools"></wxs>
+
+<view class="dialog-main">
+  <image class="close-btn" bindtap="closePriceDialog" src="/image/common/close_icon@2x.png"></image>
+  <view class="dialog-title">
+    <text class="title-desc">服务费（定金）</text>
+    <text class="title-unit">￥</text>
+    <text class="title-price">{{projectInfo.earnestMoney/100}}</text>
+  </view>
+  <view class="dialog-option" wx:if="{{projectInfo.policyGovfeeTypeList.length>0}}">
+    <view class="option-title">
+      <text>官费代缴</text>
+      <text bindtap="toAgencyFee" class="wen-sty">?</text>
+    </view>
+    <view class="option-list">
+      <view class="option-item {{agencyFeeType == index?'option-item-selected':''}}" wx:for="{{projectInfo.policyGovfeeTypeList}}" wx:key="index" data-optionIndex="{{index}}" bindtap="changeAgencyType">
+        <image wx:if="{{agencyFeeType == index}}" class="choosed-img" src="/image/details/duihao@2x.png"></image>
+        <view class="option-guanfei">{{item.typeName}}</view>
+        <view>
+          <text class="option-price-unit">￥</text>
+          <text class="option-price-value">{{item.typeFee/100}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="dialog-count">
+    <view class="count-title">数量</view>
+    <view class="count-choose">
+      <image class="count-btn" bindtap="reduceCount" src="/image/common/jian_icon@2x.png"></image>
+      <text class="count-value">{{productCount}}</text>
+      <image class="count-btn" bindtap="addCount" src="/image/common/jia_icon@2x.png"></image>
+    </view>
+  </view>
+  <view class="dialog-btn" bindtap="checkUser">确定</view>
+</view>

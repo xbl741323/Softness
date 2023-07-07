@@ -1,0 +1,26 @@
+<!--components/common/query-emp/query-emp.wxml-->
+<action-sheet hidden="{{show}}">
+  <view class="query-emp">
+    <view class="query-emp-head">
+      <text bindtap="close">取消</text>
+      <text>{{title}}</text>
+      <text bindtap="confirm">确认</text>
+    </view>
+    <van-search bind:blur="changeSearch" class="search-sty" value="{{ keyWord }}" placeholder="请输入员工姓名关键词搜索" />
+    <!-- 查询结果列表 -->
+    <view class="emp-list">
+      <picker-view wx:if="{{empList.length>0}}" indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="changePicker">
+        <picker-view-column class="pickViewColumn">
+          <view class="emp-item" wx:for="{{empList}}" wx:key="index">
+            <text>{{item.number}}</text>
+            <text>{{item.name}}</text>
+            <text>{{item.deptName}}</text>
+          </view>
+        </picker-view-column>
+      </picker-view>
+      <view wx:else class="empty-sty">
+        搜索结果为空，换个关键词再试试
+      </view>
+    </view>
+  </view>
+</action-sheet>

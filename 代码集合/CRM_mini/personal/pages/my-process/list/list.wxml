@@ -1,0 +1,132 @@
+<view class="my-process">
+  <view class="{{processType == 5 ? 'refund-fixed':'top-fixed'}}">
+    <view class="search-block">
+      <view class="search-contain">
+        <view class="search-contain-left">
+          <van-dropdown-menu custom-class='select-sty' title-class='select-title-sty' active-color="#0082FC">
+            <van-dropdown-item bind:change="changeProcessType" title-class='select-title-sty' value="{{ processType }}" options="{{ processTypeOptions }}" />
+          </van-dropdown-menu>
+        </view>
+        <text class="lang-sty"></text>
+        <view class="search-contain-right">
+          <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+          <input class="active-input-sty" value="{{keyWords}}" bindconfirm="searchList" bindinput="changeKeywords" placeholder="{{processType == 0 ? '流程编号/合同编号/客户名称/关键字' :  processType==1 ?'流程编号/订单编号/产品名称/客户名称': processType==2 ?'流程编号/订单编号/客户名称': processType==3 ?'请输入流程编号/线索编号/线索名称或信用代码' : processType== 5 ?'请输入流程编号/订单编号/主体名称' : '请输入流程编号/订单编号/主体名称'}}" type="text" />
+          <van-icon bindtap="clearKerword" wx:if="{{keyWords!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+        </view>
+      </view>
+      <text bindtap="searchList" class="fixed-search">搜索</text>
+    </view>
+    <van-dropdown-menu class="dropdown-menu" wx:if="{{processType!==2&&processType!==3&&processType!==4 && processType != 5}}" active-color="#0082FC">
+      <van-dropdown-item value="{{filters.type}}" options="{{ typeData}}" bind:change="changePType" />
+      <view class="daichuliren" bindtap="allot">
+        <text>{{empInfo.name}}</text>
+        <text class="sanjiao"></text>
+      </view>
+      <van-dropdown-item value="{{filters.orderType}}" options="{{processType == 0 ? contractOrderTrpe : orderTypeData}}" bind:change="changeOrderType" />
+    </van-dropdown-menu>
+    <van-dropdown-menu class="dropdown-menu" wx:if="{{processType==2}}" active-color="#0082FC">
+      <van-dropdown-item value="{{filters.changeType}}" options="{{changetypeData}}" bind:change="changePTypePrice" />
+      <van-dropdown-item value="{{filters.changeprice}}" options="{{changePriceData}}" bind:change="changeOrderpriceType" />
+      <view class="daichuliren complex-sty" bindtap="allot">
+        <text>{{empInfo.name}}</text>
+        <text class="sanjiao"></text>
+      </view>
+      <view class="changepricesty" bindtap="allotPrice">
+        <text>{{initiator.name}}</text>
+        <text class="sanjiao"></text>
+      </view>
+    </van-dropdown-menu>
+    <van-dropdown-menu class="dropdown-menu" wx:if="{{processType==3||processType==4}}" active-color="#0082FC">
+      <van-dropdown-item value="{{filters.primaryType}}" options="{{changePrimary}}" bind:change="changePTypePrice" />
+      <view class="daichuliren" bindtap="allot">
+        <text>{{empInfo.name}}</text>
+        <text class="sanjiao"></text>
+      </view>
+      <view class="primary-sty" bindtap="allotPrice">
+        <text>{{initiator.name}}</text>
+        <text class="sanjiao"></text>
+      </view>
+    </van-dropdown-menu>
+  </view>
+  <!--components/common/query-emp/query-emp.wxml-->
+  <action-sheet hidden="{{priceShow}}">
+    <view class="query-emp">
+      <view class="query-emp-head">
+        <text bindtap="priceClose">取消</text>
+        <text>{{title}}</text>
+        <text bindtap="priceConfirm">确认</text>
+      </view>
+      <van-search bind:blur="changePricekeySearch" class="search-sty" value="{{ pricekeyWords }}" placeholder="请输入员工姓名关键词搜索" />
+      <!-- 查询结果列表 -->
+      <view class="emp-list">
+        <picker-view wx:if="{{changempList.length>0}}" indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="changePicker">
+          <picker-view-column class="pickViewColumn">
+            <view class="emp-item" wx:for="{{changempList}}" wx:key="index">
+              <text>{{item.number}}</text>
+              <text>{{item.name}}</text>
+              <text>{{item.deptName}}</text>
+            </view>
+          </picker-view-column>
+        </picker-view>
+        <view wx:else class="empty-sty">
+          搜索结果为空，换个关键词再试试
+        </view>
+      </view>
+    </view>
+  </action-sheet>
+  <action-sheet hidden="{{show}}">
+    <view class="query-emp">
+      <view class="query-emp-head">
+        <text bindtap="close">取消</text>
+        <text>{{title}}</text>
+        <text bindtap="confirm">确认</text>
+      </view>
+      <van-search bind:blur="changeSearch" class="search-sty" value="{{ keyWord }}" placeholder="请输入员工姓名关键词搜索" />
+      <!-- 查询结果列表 -->
+      <view class="emp-list">
+        <picker-view wx:if="{{empList.length>0}}" indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="changePicker">
+          <picker-view-column class="pickViewColumn">
+            <view class="emp-item" wx:for="{{empList}}" wx:key="index">
+              <text>{{item.number}}</text>
+              <text>{{item.name}}</text>
+              <text>{{item.deptName}}</text>
+            </view>
+          </picker-view-column>
+        </picker-view>
+        <view wx:else class="empty-sty">
+          搜索结果为空，换个关键词再试试
+        </view>
+      </view>
+    </view>
+  </action-sheet>  
+  <view class="refund-box" wx:if="{{processType == 5}}">
+    <refund-list id="refund" empList="{{empList}}" bind:noMore="noMore" parentWord="{{keyWords}}"></refund-list>
+  </view>
+  <view class="process-list" wx:else>
+    <!-- 对公转账审批 -->
+    <block wx:if="{{processType == 1 && transferList.length>0}}">
+      <transfer-item wx:for="{{transferList}}" wx:key="index" processInfo="{{item}}"></transfer-item>
+    </block>
+    <!-- 合同审批 -->
+    <block class="audit-list" wx:elif="{{processType == 0 && contractList.length>0}}">
+      <contract-item wx:for="{{contractList}}" wx:key="index" contractInfo="{{item}}"></contract-item>
+    </block>
+    <!-- 改价审批 -->
+    <block class="audit-list" wx:elif="{{processType == 2 && changePickerList.length>0}}">
+      <change-item wx:for="{{changePickerList}}" wx:key="index" contractInfo="{{item}}"></change-item>
+    </block>
+    <block class="audit-list" wx:elif="{{processType == 3 && primaryList.length>0}}">
+      <primary-item wx:for="{{primaryList}}" wx:key="index" primaryInfo="{{item}}"></primary-item>
+    </block>
+    <!-- 开启任务 -->
+
+    <block class="audit-list" wx:elif="{{processType == 4 && openTaskList.length>0}}">
+      <task-item wx:for="{{openTaskList}}" wx:key="index" taskInfo="{{item}}"></task-item>
+    </block>
+    <!-- 无数据页面展示 -->
+    <view class="empty-page" wx:else>
+      <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
+      <text>未搜索到相关数据</text>
+    </view>
+  </view>  
+</view>

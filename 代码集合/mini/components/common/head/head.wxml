@@ -1,0 +1,5 @@
+<!--components/head/head.wxml-->
+<view class="head-nav" bindtap="backPage">
+  <image class="back-ico" src="/image/common/icon_return@2x.png"></image>
+  <text class="title-head">{{title}}</text>
+</view>

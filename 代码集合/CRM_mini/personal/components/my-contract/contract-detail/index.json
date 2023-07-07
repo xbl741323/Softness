@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "合同详情",
+  "enablePullDownRefresh": true,
+  "component": true,
+  "usingComponents": {
+    "clue-item": "/personal/components/my-contract/contract-item/index",
+    "empty-page": "/personal/components/empty-page/empty-page",
+    "query-emp": "/components/common/query-emp/query-emp"
+  }
+}

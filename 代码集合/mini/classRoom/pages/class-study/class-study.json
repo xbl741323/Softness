@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "课堂学习",
+  "usingComponents": {
+    "browse-item": "/classRoom/components/class-study/browse-item/browse-item",
+    "record-item": "/classRoom/components/class-study/record-item/record-item"
+  }
+}

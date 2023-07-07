@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "广场",
+  "usingComponents": {
+    "filterOption": "/components/information/filterOption/filterOption",
+    "courseItem": "/components/classRoom/courseItem/courseItem",
+    "infoItem": "/components/information/infoItem/infoItem",
+    "areaItem": "/components/index/areaItem/areaItem",
+    "questionItem": "/components/questions/questionsAnswers/questionItem",
+    "fileItem": "/components/wtFile/fileItem/fileItem"
+  }
+}

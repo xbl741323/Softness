@@ -1,0 +1,57 @@
+<!--personal/components/my-process/transfer-item/transfer-item.wxml-->
+<wxs src="/utils/process/process.wxs" module="process"></wxs>
+<view class="process-item" catchtap="toOrderDetail">
+  <!-- 订单编号—状态 -->
+  <view class="process-head">
+    <view class="head-left">
+      <text>{{processInfo.taskNo}}</text>
+      <image catchtap="copyText" data-text="{{processInfo.taskNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view class="head-right">
+      <text class="{{processInfo.taskStatus == 0 ? 'color-a' : processInfo.taskStatus == 1 ? ' color-b' : 'color-c' }}">
+      </text>
+      <text>{{process.processStatus(processInfo.taskStatus)}}</text>
+    </view>
+  </view>
+  <view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">订单编号：</text>
+      <text>{{processInfo.orderNo}}</text>
+    </view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">产品名称：</text>
+      <text class="process-cpmc">
+        <text class="process-spuName">{{processInfo.spuName}}</text>
+        <text class="process-categoryName">{{processInfo.categoryName}}</text>
+      </text>
+      
+    </view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">用户名称：</text>
+      <text>{{processInfo.userName}}</text>
+    </view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">待处理人：</text>
+      <text>{{processInfo.taskStatus != 0 ? "无" : processInfo.taskCurrentEmpName}}</text>
+    </view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">发起人：</text>
+      <text>{{processInfo.sponsorType=='1' ? "用户" : processInfo.sponsorName}}</text>
+    </view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">发起时间：</text>
+      <text>{{processInfo.createTime}}</text>
+    </view>
+    <view class="process-name">
+      <text class="{{disabled==true?'disabled-sty':''}}">处理时间：</text>
+      <text>{{processInfo.updateTime || ""}}</text>
+    </view>
+  </view>
+  <!-- 按钮区域 -->
+  <view class="btn-contain">
+    <view class="btn-left">
+      <text>转账金额：</text>
+      <text style="color: #FC561F" class="{{disabled==true?'disabled-price-sty':''}}">￥{{processInfo.amount}}</text>
+    </view>
+  </view>
+</view>

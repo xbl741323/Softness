@@ -1,0 +1,36 @@
+<!--personal/pages/questionsAnswer/questions/questions.wxml-->
+<head title="我的提问"></head>
+<view class="questions">
+  <!-- 条件筛选 -->
+  <view class="filter-list" style="top: {{height+88}}rpx;">
+    <view class="filter-item" wx:for="{{filterList}}" wx:key="index" data-item="{{item}}" bindtap="changeFilter">
+      <text class="item-title {{answerStatus == item.value ?'item-title-active':''}}">{{item.title + (item.value == 0 ? ('(' + waiteAnswerNum + ')') : item.value == 1 ? ('(' + answeredNum +')') : '')}}</text>
+      <text class="item-lang {{answerStatus == item.value?'item-lang-active':''}}"></text>
+    </view>
+  </view>
+  <view class="questionsList">
+    <view style='width:{{windowWidth}}px;height:{{windowHeight}}px' wx:if="{{total > 0}}">
+      <block wx:key="item" wx:for="{{questionsList}}">
+        <view data-index='{{index}}' class="custom_item" bindtouchstart="{{item.deleted==0 ? 'drawStart' : ''}}" bindtouchmove="{{item.deleted==0 ? 'drawMove' : ''}}" bindtouchend="{{item.deleted==0 ?  'drawEnd' : ''}}" style="right:{{item.right}}rpx">
+          <view class="{{item.deleted==0 && item.answerCount == 0 || item.deleted==1 ? 'question-item' : 'question-item1'}}" bindtap="toQuestionDetail" data-item="{{item}}">
+            <view class="question-item-left">
+              <view class="question-item-name">{{item.title}}</view>
+              <view class="question-item-time">
+                <text>{{item.answerCount}}回答 | </text>
+                <text>{{item.createTime}}</text>
+              </view>
+            </view>
+            <view class="question-item-right" wx:if="{{item.deleted==0 && item.answerCount == 0}}">
+            {{item.answerCount == 0 ? "等待解答" : ""}}
+            </view>
+            <view class="question-item-right delColor" wx:elif="{{item.deleted==1}}">已删除</view>
+          </view>
+          <view class="remove" bindtap="delItem" data-item="{{item}}" wx:if="{{item.deleted==0}}">删除</view>
+        </view>
+      </block>
+    </view>
+    <view class="noData" wx:if="{{total == 0}}">
+      暂无数据
+    </view>
+  </view>
+</view>

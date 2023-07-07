@@ -1,0 +1,58 @@
+<view bindtap="hide">
+  <view wx:if="{{showTop}}">
+    <image class="toTop" bindtap="toTop" src="/image/common/icon_back@2x.png" />
+  </view>
+
+  <view class="head {{isGlobal?'':'background'}}">
+    <!-- 全局搜索头部样式 -->
+    <view wx:if="{{isGlobal}}" class="{{searchCode==1?'input-global-border':''}}">
+      <view class="input-global" bindtap="toSearch">
+        <view class="input-left-global">
+          <image class="input-icon-global" src="/image/common/icon_search_home@2x.png" />
+          <input confirm-type="search" value="{{inputValue}}" class="search-content-global" placeholder-style="color:#B4B4B4;font-size:24rpx;text-align:left" placeholder="高企/专利/项目政策/成果评价" />
+        </view>
+        <view>
+          <view class="flex header-down-global">
+            <image class="down-icon-global" src="/image/common/icon_down_search_home@2x.png" />
+            <view>{{searchCode==1?"知识产权":"项目申报"}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 分类搜索头部样式 -->
+    <view wx:else style="z-index:99999">
+      <image class="head-img" src="/image/common/bg_search@2x.png" />
+      <view class="head-input">
+        <view class="input-left">
+          <image class="input-icon" src="/image/common/icon_search_home@2x.png" />
+          <input confirm-type="search" bindconfirm="confirmSearch" value="{{inputValue}}" focus bindinput="getInputValue" class="search-content" placeholder-style="color:#B4B4B4;font-size:24rpx;text-align:left" placeholder="请输入项目关键词" />
+        </view>
+        <image class="input-cancel" bindtap="cancelInput" wx:if="{{inputValue}}" src="/image/common/icon_cancel_search@2x.png" />
+      </view>
+    </view>
+    <!-- 项目申报切换banner -->
+    <banner wx:if="{{searchCode!=1}}" optionId="{{optionId}}" cityChoosed="{{cityChoosed}}" bannerList="{{bannerList}}" isGlobal="{{isGlobal}}" isShow="{{isShow}}" bindbannerChange="bannerChange" bindhotChange="hotChange" bindlastChange="lastChange" bindnumChange="numChange" bindcityChange="cityChange"></banner>
+  </view>
+  <!-- 列表区域 -->
+  <view wx-if="{{isShow}}" class="bg"></view>
+  <view class="{{isGlobal?'content-global':'content'}} {{searchCode==1?'property-content':''}}" style="{{'min-height:'+screenHight}}">
+    <view class="nodata" wx:if="{{noData}}">
+      <image class="nodata-img" src="/image/common/nodata_home@2x.png" />
+      <view>抱歉，暂无数据</view>
+      <view>换个姿势重新搜索</view>
+    </view>
+    <view wx:else>
+      <view wx:if="{{searchCode==1}}" data-number="{{item.id}}" bindtap="toPropertyDetail" wx:for="{{propertyList}}" wx:key="idx">
+        <!-- 知产item -->
+        <propertyItem propertyInfo="{{item}}"></propertyItem>
+      </view>
+      <view wx:if="{{searchCode!=1}}" wx:for="{{projectList}}" wx:key="idx">
+        <!-- 项目申报item -->
+        <projectItem projectInfo="{{item}}" pageFrom="{{1}}"></projectItem>
+      </view>
+    </view>
+    <view wx:if="{{!flag}}" class="loading {{isGlobal?'loading-global':''}}">正在加载中....</view>
+    <view wx:if="{{page>2 && page>total}}" class="loading {{isGlobal?'loading-global':''}}">没有更多数据啦！</view>
+  </view>
+
+</view>

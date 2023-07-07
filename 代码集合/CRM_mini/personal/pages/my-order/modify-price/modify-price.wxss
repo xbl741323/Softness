@@ -1,0 +1,142 @@
+/* personal/pages/my-order/modify-price/modify-price.wxss */
+page {
+  background: #F9FBFC;
+}
+
+.product-info {
+  width: 654rpx;
+  background: #ffffff;
+  padding: 0 24rpx 24rpx;
+  margin: 0 auto;
+  margin-top: 24rpx;
+  border-radius: 20rpx;
+}
+
+.common-title {
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #EAEBEF;
+  position: relative;
+}
+
+.common-title>text:nth-of-type(1) {
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 100%;
+  background: #0082FC;
+  margin-right: 16rpx;
+}
+
+.common-title>text:nth-of-type(2) {
+  font-weight: bold !important;
+  font-size: 28rpx;
+}
+
+.foot-status-sty {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  font-size: 28rpx;
+  color: #FAB042 !important;
+}
+
+.common-info {
+  min-height: 92rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #EAEBEF;
+}
+
+.required-sty {
+  color: #FF6D27 !important;
+  margin-right: 4rpx;
+}
+
+.common-info-head {
+  color: #7B7B7B;
+  font-size: 28rpx;
+}
+
+.common-info-foot {
+  color: #555555;
+  min-width: 300rpx;
+  text-align: right;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.pointer-right {
+  display: inline-block;
+  width: 14rpx;
+  height: 14rpx;
+  border-top: 2rpx solid #000000;
+  border-right: 2rpx solid #000000;
+  transform: rotate(45deg);
+  margin-left: 4rpx;
+  margin-top: 6rpx;
+}
+
+.column-sty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+  margin-top: 24rpx;
+  border-bottom: none !important;
+}
+
+.textarea-sty {
+  width: 630rpx;
+  height: 180rpx;
+  margin-top: 12rpx;
+  background: #F9FBFC;
+  padding: 16rpx 12rpx;
+}
+
+.input-sty {
+  text-align: left !important;
+}
+
+.p-sty {
+  color: #D9D9D9;
+}
+
+.step-sty {
+  color: #7B7B7B !important;
+}
+
+.plus-sty {
+  background: #0082FC !important;
+  color: #ffffff !important;
+}
+
+.disabled-plus-sty {
+  background: #F7F8FA !important;
+  color: #ccc !important;
+}
+
+.strong-sty {
+  color: #555555 !important;
+}
+
+/*
+ 保存修改
+*/
+.modify-sty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 654rpx;
+  height: 88rpx;
+  background: #0082fc;
+  border-radius: 44rpx;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  margin: 0 auto;
+  margin-top: 48rpx;
+}

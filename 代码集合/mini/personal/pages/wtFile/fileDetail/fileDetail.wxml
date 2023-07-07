@@ -1,0 +1,50 @@
+<!--personal/pages/wtFile/fileDetail/fileDetail.wxml-->
+<wxs src="../../../../utils/common/filters.wxs" module="tools"></wxs>
+<head title="卧涛文档"></head>
+<view class="fileDetail" wx:if="{{fileDetail.id}}">
+  <view class="info-title">
+    <view class="title-top">
+      <text>{{fileDetail.fileName}}</text>
+      <text class="payed" wx:if="{{payed}}">已购买</text>
+    </view>
+    <view class="info-icon">
+      <view class="info-item info-sty" wx:if="{{fileDetail.level}}">{{tools.filterLevel(fileDetail.level)}}</view>
+      <view class="info-item info-sty" wx:if="{{fileDetail.level}}">{{fileDetail.areaName}}</view>
+      <view class="info-item">
+        <image src="../../../../image/common/icon_calendar@2x.png" mode="" class="icon_a"/>
+        <text>{{fileDetail.createTime}}</text>
+      </view>
+      <view class="info-item" bindtap="handleDownload">
+        <image src="../../../../image/file/icon-download@2x.png" mode="" class="icon_b"/>
+        <text>下载</text>
+      </view>
+      <view class="info-item" bindtap="handleCollect">
+        <image src="../../../../image/common/icon_Collection@2x.png" mode="" class="icon_a" wx:if="{{!isCollected}}"/>
+        <image src="../../../../image/questions/icon-collect@2x.png" mode="" class="icon_a" wx:else/>
+        <text>{{isCollected ? "已收藏" : "收藏"}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 内容 -->
+  <view class="info-content">
+    <block wx:if="{{fileDetail.pages != 0}}">
+      <view wx:for="{{urlList}}" wx:key="item" class="preview-container">
+        <image src="{{item}}" mode="aspectFit" class="preview-img"/>
+      </view>
+    </block>
+    <view class="old-preview" wx:else>
+      <image src="/image/file/jpg-examine@2x.png" mode="aspectFit"/>
+      <text>文件暂不支持预览，请直接下载查看详情</text>
+    </view>
+  </view>
+  <view class="blur-box" wx:if="{{fileDetail.isPay == 1 && !payed}}">
+    <view class="pay-text">
+      <view bindtap="toPay">
+        试读已结束，付费{{tools.filterAmount(fileDetail.amount)}}元，查看<text wx:if="{{total != viewPage}}">剩余{{total - viewPage}}页</text>信息
+      </view>
+    </view>
+  </view>
+</view>
+<view class="nodata" wx:else>
+  暂无数据
+</view>

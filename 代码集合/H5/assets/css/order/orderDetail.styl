@@ -1,0 +1,537 @@
+.order-head
+  display: flex;
+  line-height: 50px;
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  z-index: 1;
+
+.order-head p
+  margin: 0 auto;
+  font-size: .427rem;
+
+.order-head img
+  margin: auto 0;
+  width: 15px;
+  height: 15px;
+  margin-left: 15px;
+
+.order-detail
+  min-height: 100vh;
+  background: #F4F4F4;
+  padding: 50px 0;
+  padding-bottom: 70px;
+  color: #333333;
+.order-title
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  span
+    font-size: .427rem;
+.order-status
+  width: 95%;
+  min-height: .533333rem;
+  margin: 0 auto;
+  margin-left:.426666rem;
+  text-align: center;
+  border-radius: 10px;
+  .prompt-box
+    text-align: center
+    .warning
+        width: .373333333rem
+        height: .373333333rem
+        line-height: .373333333rem
+        background: #FE9819
+        color: #fff
+        border-radius: 50%     
+        margin-right: .16rem   
+        display: inline-block;
+
+.order-status img
+  width: 1.0666rem;
+  height: 1.0666rem;
+
+.reason-title
+  font-size: .426666rem;
+  font-weight: 550;
+  margin-top: .33rem;
+  color: #333
+
+.reason-content
+  font-size: .32rem;
+  padding: .32rem 0;
+
+.step-status
+  width: 100px;
+  font-size: 14px;
+  text-align: center;
+
+.line
+  width: 1.4rem;
+  height: 1px;
+  margin: 0 -26px;
+  margin-top: .37333rem;
+  border-bottom: 1px solid #cdcdcd;
+
+.steps
+  width: 95%;
+  margin: .32rem auto;
+  background: #FFFFFF;
+  display: flex;
+  height: 115px;
+  padding: 16px 10px;
+  border-radius: 10px;
+
+.steps img
+  width: .74666rem;
+  height: .74666rem;
+
+.active-line
+  border-bottom: 1px solid #14cb1d;
+
+.time-title
+  font-size: .32rem;
+  font-weight: 550;
+  color: #999
+.step-now
+  color: #333
+.time
+  font-size: 10px;
+  -webkit-transform:scale(0.8);
+  color: #999999;
+
+.order-info
+  width: 95%;
+  margin: .32rem auto;
+  background: #FFFFFF;
+  border-radius: 10px;
+
+.amount
+  text-align: right; 
+  padding:0 .32rem;
+  padding-bottom: .32rem;
+  font-size: .426666rem;
+
+.info
+  display: grid;
+  grid-template-columns: 30% 50% 16%;
+  grid-gap: 8px;
+  margin-top: 20px;
+  padding: 0 .32rem;
+
+.order-info img,video
+  width: 2.56rem;
+  height: 1.84rem;
+
+.price
+  text-align: right;
+  color: #999999;
+
+.product-type
+  color: #999;
+  font-size: .32rem;
+  padding: 5px 0;
+  border-radius: 4px;
+
+.product-name
+  // height: 1.067rem;
+  font-size: .37333rem;
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal !important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical
+
+.product-num
+  text-align: right;
+  color: #999999;
+
+.price-num
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 12px;
+  margin-top: 15px;
+  line-height: .933rem;
+
+.price-num :nth-child(2n)
+  font-size: .32rem;
+  text-align: right;
+
+.price-num :nth-child(2n+1)
+  font-size: .37333rem;
+  color: #999999;
+
+.price-num img
+  width: 20px;
+  height: 20px;
+
+.order-num
+  color: #333333;
+  font-size: .32rem;
+  text-align: right;
+
+.pay-time
+  font-size: .37333rem;
+  color: #333333;
+  line-height: 1.22666rem;
+  padding: 0 .32rem;
+  border-bottom: 1px solid #F4F4F4;
+
+.operate
+  display:  flex;
+  justify-content: flex-end;
+  text-align: center;
+  padding: .32rem;
+  border-top: 1px solid #F4F4F4;
+.pay-btn
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+.bt-cancle
+  width: 76px;
+  height: 34px;
+  border-radius: 18px;
+  line-height: 32px;
+  border: 1px solid #999999;
+  color: #333;
+
+.bt-pay
+  height: 34px;
+  border-radius: 18px;
+  line-height: 32px;
+  margin-left: .32rem;
+  background: #36a6fe;
+  color: #fff;
+  border: 1px solid #ffffff;
+  padding: 0 10px;
+.bt-payrec
+  width: 76px;
+  height: 34px;
+  border-radius: 18px;
+  line-height: 32px;
+  margin-left: .32rem;
+  background: #ffffff;
+  color: #36a6fe;
+  border: 1px solid #ffffff;
+.pay-order-cancel
+  background: #FFFFFF;
+  color: #999999;
+  border: 1px solid #F4F4F4;
+
+.task-info
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  padding: .32rem;
+  margin-bottom: .32rem;
+  line-height: 20px;
+  border-bottom: 1px solid #F4F4F4;
+
+.deliverable
+  display: grid;
+  grid-template-columns: 24% 76%;
+  grid-gap:.12rem;
+.deliverable :nth-child(2n+1)
+  color: #666666;
+.round
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  margin-right: 5px;
+  background: #36A6FE;
+  border-radius: 50%;
+
+.task-status
+  display: flex;
+  cursor: pointer;
+  margin: auto 0;
+  margin-left: 15%;
+  color: #36A6FE;
+
+.schedule
+  width: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+
+.task-label
+  padding: 10px .32rem;
+  font-weight: 550;
+  border-bottom: 1px solid #F4F4F4;
+  font-size: .42rem;
+
+.close-img
+  position: absolute;
+  right: .32rem;
+  top: .32rem;
+  width: .32rem;
+  height: .32rem;
+
+.more-task
+  display:flex;
+  justify-content: center;
+  position: relative;
+  top: -6px;
+  padding: 10px 0;
+
+.down
+  display: flex;
+  font-size: .32rem;
+  color: #999999;
+
+.up
+  display: flex;
+  font-size: .32rem;
+  color: #999999;
+
+.more-task img
+  width: 8px;
+  height: 8px;
+  margin: auto 3px;
+
+.del-box
+  background: #FFFFFF;
+  position: fixed;
+  top: 25%;
+  left: 5%;
+  z-index: 9999;
+  width: 90%;
+  height: 178px;
+  border-radius: 5px;
+  color: #333333;
+  overflow: hidden;
+
+.del-box img
+  width: .32rem;
+  height: .32rem;
+  position: absolute;
+  right: 21px;
+  top: 21px;
+
+.del-title
+  font-size: 16px;
+  line-height: 48px;
+  background: #eef5f8;
+  text-align: center;
+  position: relative;
+
+.del-content
+  font-size: 16px;
+  padding: 20px 30px;
+
+.del-btn
+  margin-left: 15%;
+  text-align: center;
+  display: flex;
+
+.cancel-del-btn
+  width: 102px;
+  height: 35px;
+  margin-right: 20px;
+  border-radius: 3px;
+  font-size: 16px;
+  line-height: 35px;
+  text-align: center;
+  color: #FFFFFF;
+  background: #36A6FE;
+  cursor: pointer;
+
+.confirm-del-btn
+  color: #333333;
+  background: rgb(224,242,251);
+
+.address
+  width: 95%;
+  padding: .32rem;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-radius: 10px;
+
+.address img
+  width: .64rem;
+  height: .64rem;
+  margin: auto 0;
+
+.receiver
+  display: grid;
+  grid-template-columns: 10% 85%;
+  line-height: .48rem;
+
+.address-title
+  font-size: .4rem;
+  font-weight: 500;
+
+.namelimit
+  display: inline-block;
+  max-width: 2.5rem;
+  color: #999999;
+  margin: 0 .1rem;
+  line-height: .666667rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+
+.name
+  font-size: .37333rem;
+  color: #333333;
+  max-height: .6rem;
+
+.pay-progress
+  display: grid;
+  grid-template-columns: 5% 75% 20%;
+  font-size: .373333rem;
+
+.pay-line
+  width: 1px;
+  height: .8rem;
+  border-left: 1px solid #CECECE;
+  margin: -6px 0;
+  margin-left: .20rem;
+
+.bright-img
+  width: .42666rem !important;
+  height: .4266666rem !important;
+  margin: 0 auto;
+
+.dark-img
+  width: .26666rem !important;
+  height: .26666rem !important;
+  margin-left: .08rem;
+
+.service-fee
+  margin-left: 10px;
+
+.bright-fee
+  color: #FD651C;
+
+.dark-fee
+  color: #999999;
+
+.final-fee
+  margin-top: .4rem;
+
+.long-name
+  margin: .12rem 0
+
+.order-no
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin-top: .32rem
+
+.order-no p 
+  font-size: .37333333rem
+  color: #333
+
+.unit-price
+  display: grid;
+  grid-template-columns: 75% 25%;
+  line-height: .8rem;
+  font-size: .373333rem;
+
+.unit-price img
+  width: .53333rem;
+  height: .53333rem;
+
+.unit-price :nth-child(2n), .order-no :nth-child(2n)
+  text-align: right;
+  font-weight: 550
+
+.pay-status
+  text-align: right;
+
+.service-title
+  margin: .32rem 0;
+  font-size: .373333rem;
+
+.project-info
+  padding: .32rem;
+
+.project-amount
+  padding: .16rem .32rem;
+  border-top: 1px solid #F1F4F9;
+  border-bottom: 1px solid #F1F4F9;
+
+.default
+  color:#FFFFFF;
+  height: .5rem;
+  margin: auto 0;
+  font-size: .32rem;
+  border-radius:.10667rem;
+  padding: .05rem .16rem;
+  background:#36A6FE;
+
+.need-pay
+  font-weight: 600;
+.task
+  background: #FFFFFF;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 10px;
+.refund
+  display flex
+  justify-content: flex-end;
+  position :relative;
+  p
+    line-height: .8rem;
+    text-align: center;
+    width 80px
+    border: 1px solid #999999;
+    border-radius: .48rem;
+    margin: 10px 6px 10px 0;
+.area{
+  width: 96%;
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal !important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical
+}
+.invoice{
+    border: 1px solid #36a6fe !important;
+    color: #36a6fe !important;
+}
+.backgroudwhite{
+    background: #fff;
+}
+.backwhite{
+    background:none;
+}
+.viewcontract{
+    color: #36a6fe;
+    border-top: 1px solid #f4f4f4;
+    padding: 0.32rem;
+}
+.count{
+  display: grid;
+  grid-template-columns: 97% 3%;
+  padding: 15px 0 10px 0; 
+}
+.fee{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fee-item{
+  margin: 5px 0 10px 0;
+}
+.fee-price{
+  font-weight: 600;  
+}
+.dialog {
+  line-height: 0.8rem;
+  top: 39%;
+  height: 5rem;
+  div {
+    padding: 5px 0 7px 0
+    :deep(.el-radio) {
+      margin-right: 12px;
+    }
+  }
+}

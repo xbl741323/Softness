@@ -1,0 +1,113 @@
+/* personal/pages/phoneLogin/phoneLogin.wxss */
+.logo{
+  margin-top:100rpx;
+  margin-bottom:29rpx;
+  width:136rpx;
+  height:136rpx;
+}
+.form{
+  /* position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%); */
+  margin-top: 80rpx;
+  width:686rpx;
+  color:#333;
+  font-size: 28rpx
+}
+.text{
+  font-weight: bold;
+  color:#333
+}
+.phone{
+  margin:10rpx 0 40rpx 0;    
+  display:flex;
+  border-bottom: 1px solid #D9D9D9;
+  padding: 18rpx 0;
+  align-items: center
+}
+.phone image{
+  width: 28rpx;
+  height: 28rpx;
+  padding: 0 20rpx;
+}
+.errorLogin{
+  background:rgb(223, 223, 223)
+}
+.check{
+  margin-top:10rpx
+}
+.error{
+  border-bottom: 1px solid red;
+}
+.input{
+  padding:0 20rpx;
+  width: 78%;
+  font-size: 28rpx;
+  color: #333;
+}
+.short-width{
+  width: 50% !important;
+}
+.check-input{
+  margin-left:22rpx;
+  width:200rpx
+}
+.form button[type='primary'][plain] {
+  color: #36A6FE;
+  border-color: #36A6FE;
+}
+.form button:not([size='mini']) {
+  width: 210rpx;
+  padding:8rpx;
+  margin-right: 16rpx;
+  font-size:24rpx
+}
+.long-width{
+  width: 260rpx !important;
+}
+.agreement{
+  margin-top: 40rpx;
+  font-size: 24rpx;
+  color:#999;
+}
+.agreement-link{
+  color:#36A6FE
+}
+.checkbox .wx-checkbox-input {
+  width: 24rpx; /* 背景的宽 */
+  height: 24rpx; /* 背景的高 */  
+}
+.checkbox .wx-checkbox-input-disabled {
+  border-radius: 32rpx; /* 圆角 */
+  width: 32rpx; /* 背景的宽 */
+  height: 32rpx; /* 背景的高 */
+  background: #f3f3f3;
+  /* border: 1px solid rgba(201, 201, 201, 1); */
+}
+.checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #36A6FE;
+  border:0;
+}
+.checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 60%;
+  height: 30%;
+  border-left:2px solid #fff;
+  border-bottom:2px solid #fff;
+  content: '';
+  transform:rotate(-45deg) translate(0,-120%);
+}
+.loginBtn{
+  margin-top:90rpx;
+  width: 670rpx !important;
+  height: 80rpx;
+  font-size: 30rpx;
+  background: linear-gradient(to right, #55CAFE, #3A6DFB);
+  color: #fff;
+}
+.phoneError{
+  margin-top:-34rpx;
+  padding:0;
+  color:red;
+  font-size:24rpx
+}

@@ -1,0 +1,70 @@
+/* classRoom/components/class-study/record-item/record-item.wxss */
+.progress-item {
+  width: 100%;
+  display: flex;
+  padding: 0 24rpx;
+  height: 140rpx;
+  margin-top: 24rpx;
+}
+
+.progress-cover {
+  width: 246rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+}
+
+.progress-info {
+  width: 470rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.progress-title {
+  width: 450rpx;
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progress-desc {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #B4B4B4;
+  font-size: 24rpx;
+  margin: 16rpx 0 0 0;
+}
+
+.progress-desc text {
+  width: 410rpx;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progress-desc image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+.progress-count {
+  color: #888888;
+  font-size: 24rpx;
+  margin-top: 24rpx;
+}
+
+.count-info {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.count-info>text:nth-of-type(2) {
+  color: #36A6FE;
+}

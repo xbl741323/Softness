@@ -1,0 +1,213 @@
+function productType(val) {
+  return val == 1 ? "项目申报" : val == 2 ? "知识产权" : val == 7 ? "工商注册" : val == 8 ? "财税服务" : val == 9 ? "融资上市" : val == 10 ? "法律服务" : val == 11 ? "软件开发" : "未知";
+}
+
+function orderStatus(val) {
+  return val == 0 ? '待付款' : val == 1 ? '待签约' : val == 2 ? '服务中' : val == 3 ? '服务中' : val == 4 ? '已完成' : val == 5 ? '已关闭' : val == 6 ? '已取消' : val == 7 ? '已取消' : val == 8 ? '已删除' : val == 9 ? '待签约' : '';
+}
+function documentOrderStatus(val) {
+  return val == 0 ? '待付款' : val == 1 ? '已完成' : val == 2 ? '已取消' : val == 3 ? '已删除' :'未知';
+}
+function documentPayChannel(val) {
+  return val == 0 ? '支付宝' : val == 2 ? '微信' : '未知';
+}
+
+function toPenny(val){
+  return val.toFixed(2)
+}
+
+function periodUnit(val) {
+  return val == 'Years' ? '年' : val == '个月' ? '待分配' : val == 'Days' ? '天' : val == 'Hours' ? '小时' : '';
+}
+
+function priceFix(val) {
+  return (val / 100);
+}
+
+function priceFixReduce(val1, val2) {
+  var r = parseInt(val1) - parseInt(val2)
+  return (r / 100);
+}
+
+// 分类页面价格显示判断
+// 价格十万以内全显，10万以上(包含10万)，价格显示以万为单位(例如价格为112345，前台显示为11.2345万元，小数点精确到个位，最后一位为0时可以省略)
+function fixClassPrice(val) {
+  var fixPrice = parseInt(val * 100)
+  if (fixPrice < 10000000) {
+    return fixPrice / 100;
+  } else {
+    return (fixPrice / 1000000) + '万元';
+  }
+
+}
+//判断是否属于
+function filterBelong (val,data){
+  console.log(data,val,'=============');
+  if(data.indexOf(val)!=-1){
+    return true
+  } else {
+    return false
+  }
+}
+function tranferStatus(val) {
+  return val == 0 ? "审核中" : val == 1 ? "已通过" : val == 2 ? "未通过" : "";
+}
+
+function taskStatus(val) {
+  return val == 0 ? "待开始" : val == 1 ? "服务中" : val == 2 ? "冻结中" : val == 3 ? "已完成" : val == 4 ? "已关闭" : "";
+}
+
+function changeTask(end, list) {
+  if (list.length > 0) {
+    return list.slice(0, end)
+  }
+}
+
+function filterProgress(list) {
+  if (list.length > 0) {
+    var result = []
+    result = list.filter(function (item) {
+      return item.current == 1
+    })
+    return result[0].workProcessName
+  }
+}
+
+function returnFirst(val) {
+  if (val !== '' && val !== null) {
+    return val.slice(0, 1)
+  }
+}
+
+function returnImg(val) {
+  switch (parseInt(val)) {
+    case 1:
+      return "/image/orders/pic_zl@2x.png";
+    case 2:
+      return "/image/orders/pic_sb@2x.png";
+    case 3:
+      return "/image/orders/pic_bq@2x.png";
+    case 4:
+      return "/image/orders/pic_qt@2x.png";
+    default:
+      return "/image/orders/pic_zl@2x.png";
+  }
+}
+
+// 对项目申报列表价格进行判断
+function fixListPrice(info) {
+  // 未打开交易开关
+  // 1:未填写任何价格：显示面议
+  // 2:只填写定金：显示定金
+  // 3:只填写服务费原价：显示放大原价
+  // 4:只填写服务费现价：显示放大现价
+  // 5:原价和现价都填写，未填写订金：显示放大现价和划线原价（此处需要看效果，如效果不好则可以不显示划线原价）
+  // 6:定金和服务费（尾款）都有（无论有无原价）：只显示定金
+  var earnestMoney = ""
+  var nowFee = ""
+  var previousFee = ""
+  if (info.earnestMoney && info.earnestMoney !== null) {
+    earnestMoney = info.earnestMoney // 定金
+  }
+  if (info.nowFee && info.nowFee !== null) {
+    nowFee = info.nowFee // 服务费现价（现尾款）
+  }
+  if (info.previousFee && info.previousFee !== null) {
+    previousFee = info.previousFee // 服务费原价（原尾款）
+  }
+  if (earnestMoney == "" && nowFee == "" && previousFee == "") {
+    type = 1
+  } else if (earnestMoney !== "" && nowFee == "" && previousFee == "") {
+    type = 2
+  } else if (earnestMoney == "" && nowFee == "" && previousFee !== "") {
+    type = 3
+  } else if (earnestMoney == "" && nowFee !== "" && previousFee == "") {
+    type = 4
+  } else if (earnestMoney == "" && nowFee !== "" && previousFee !== "") {
+    type = 5
+  } else if (earnestMoney !== "" && nowFee !== "" && previousFee == "") {
+    type = 6
+  } else if (earnestMoney !== "" && nowFee == "" && previousFee !== "") {
+    type = 6
+  } else if (earnestMoney !== "" && nowFee !== "" && previousFee !== "") {
+    type = 6
+  }
+  return type
+}
+
+// 对项目申报详情价格进行判断
+function fixPriceType(info) {
+  // 未打开交易开关，无下单按钮
+  // 1:未填写任何价格：显示面议
+  // 2:只填写定金：显示定金
+  // 3:只填写服务费原价：显示原价（不划线）
+  // 4:只填写服务费现价：显示现价
+  // 5:原价和现价都填写，未填写订金：显示现价和划线原价
+  // 6:有定金和服务费现价：显示定金，现尾款
+  // 7:有定金和服务费原价：显示定金，原尾款（不划线）
+  // 8:定金、服务费原价和服务费现价都有：显示定金，现尾款放大和划线原尾款
+  var earnestMoney = ""
+  var nowFee = ""
+  var previousFee = ""
+  if (info.earnestMoney && info.earnestMoney !== null) {
+    earnestMoney = info.earnestMoney // 定金
+  }
+  if (info.nowFee && info.nowFee !== null) {
+    nowFee = info.nowFee // 服务费现价（现尾款）
+  }
+  if (info.previousFee && info.previousFee !== null) {
+    previousFee = info.previousFee // 服务费原价（原尾款）
+  }
+  var type = ""
+  if (earnestMoney == "" && nowFee == "" && previousFee == "") {
+    type = 1
+  } else if (earnestMoney !== "" && nowFee == "" && previousFee == "") {
+    type = 2
+  } else if (earnestMoney == "" && nowFee == "" && previousFee !== "") {
+    type = 3
+  } else if (earnestMoney == "" && nowFee !== "" && previousFee == "") {
+    type = 4
+  } else if (earnestMoney == "" && nowFee !== "" && previousFee !== "") {
+    type = 5
+  } else if (earnestMoney !== "" && nowFee !== "" && previousFee == "") {
+    type = 6
+  } else if (earnestMoney !== "" && nowFee == "" && previousFee !== "") {
+    type = 7
+  } else if (earnestMoney !== "" && nowFee !== "" && previousFee !== "") {
+    type = 8
+  }
+  return type
+}
+
+function checkStatus(val) {
+  return val == 0 ? '待付款' : val == 1 ? '待开始' : val == 2 ? '已付款' : ''
+}
+
+// 退款状态：0-退款中，1-退款完成，2-退款拒绝，5-退款关闭
+function checkRefundStataus(val) {
+  return val == -2 ? "退款拒绝" : val == -1 ? "退款关闭" : val == 1 ? "退款中" : val == 2 ? "退款中" : val == 3 ? "退款中" : val == 4 ? "退款完成" : '未知'
+}
+
+
+module.exports = {
+  filterBelong: filterBelong,
+  productType: productType,
+  orderStatus: orderStatus,
+  documentOrderStatus: documentOrderStatus,
+  documentPayChannel: documentPayChannel,
+  periodUnit: periodUnit,
+  priceFix: priceFix,
+  tranferStatus: tranferStatus,
+  taskStatus: taskStatus,
+  returnFirst: returnFirst,
+  returnImg: returnImg,
+  changeTask: changeTask,
+  filterProgress: filterProgress,
+  fixPriceType: fixPriceType,
+  fixListPrice: fixListPrice,
+  priceFixReduce: priceFixReduce,
+  checkStatus: checkStatus,
+  checkRefundStataus: checkRefundStataus,
+  fixClassPrice: fixClassPrice,
+  toPenny: toPenny,
+}

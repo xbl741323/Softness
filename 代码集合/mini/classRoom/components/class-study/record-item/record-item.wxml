@@ -1,0 +1,17 @@
+<!--classRoom/components/class-study/record-item/record-item.wxml-->
+<view class="progress-item" bindtap="toCourseDetail">
+  <image src="{{imageUrl+recordInfo.baseCoverUrl}}" class="progress-cover"></image>
+  <view class="progress-info">
+    <text class="progress-title">{{recordInfo.baseTitle}}</text>
+    <view class="progress-desc" wx:if="{{recordInfo.sectionName != null&&recordInfo.studiedNum != 0}}">
+      <image src="/classRoom/image/class-study/icon_record@2x.png"></image>
+      <text wx:if="{{recordInfo.sectionName!=null}}">上次学到：{{recordInfo.sectionName}}</text>
+      <text wx:else>上次学到：暂无数据</text>
+    </view>
+    <view class="progress-count">
+      <text wx:if="{{recordInfo.studiedNum == 0}}">未开始学习</text>
+      <text wx:if="{{(recordInfo.studiedNum > 0)&&(recordInfo.completedNum!=recordInfo.sectionNum)}}">正在学习</text>
+      <text wx:if="{{(recordInfo.completedNum!=0)&&(recordInfo.completedNum==recordInfo.sectionNum)}}">已学完</text>
+    </view>
+  </view>
+</view>

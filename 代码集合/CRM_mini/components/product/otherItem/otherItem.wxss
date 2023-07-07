@@ -1,0 +1,52 @@
+/* components/classify/otherItem/otherItem.wxss */
+.project-first {
+  background: #FFFFFF;
+}
+
+.project-item {
+  width: 100%;
+  /* border-bottom: 2rpx solid #E7E6EB; */
+  background: #FFFFFF;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30rpx 0 0 0;
+}
+
+.item-left {
+  width: 160rpx;
+  height: 114rpx;
+}
+
+.comon-sty {
+  width: 160rpx;
+  height: 114rpx;
+  border-radius: 10rpx;
+}
+
+.item-right {
+  width: 312rpx;
+  height: 91rpx;
+  margin-left: 12rpx;
+}
+
+.right-title {
+  width: 100%;
+  height: 58rpx;
+  line-height: 30rpx;
+  color: #111E34;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-weight: bold;
+}
+
+.right-price {
+  display: flex;
+  color: #FF6D27;
+  font-size: 24rpx;
+  margin-top: 4rpx;
+}

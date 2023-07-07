@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "注册",
+  "usingComponents": {
+    "Tips":"/components/personal/rzTip/rzTip"
+  }
+}

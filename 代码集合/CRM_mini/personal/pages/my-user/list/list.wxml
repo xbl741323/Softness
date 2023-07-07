@@ -1,0 +1,191 @@
+<!--personal/pages/my-user/list/list.wxml-->
+<wxs src="/utils/product/product.wxs" module="tools"></wxs>
+<wxs src="/utils/clue/clue.wxs" module="modes"></wxs>
+<view class="user-contain">
+  <view class="user-fixed">
+    <!-- 搜索框区域 -->
+    <block>
+      <view class="top-fixed">
+        <view class="search-contain">
+          <view class="search-contain-left" bindtap="changeType">
+            <text>{{userType == 2? "单位" : userType == 1 ? "个人" :"未认证"}}</text>
+            <image src="/image/common/area_icon.png"></image>
+          </view>
+          <view class="search-contain-right">
+            <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+            <input class="{{keyWord!=''?'active-input-sty':''}}" value="{{keyWord}}" bindconfirm="getAllUserList" bindinput="changeKeyword" placeholder="请根据信息搜索关键词" type="text" />
+            <van-icon bindtap="clearKeyword" wx:if="{{keyWord!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+          </view>
+        </view>
+        <text bindtap="getAllUserList" class="fixed-search">搜索</text>
+      </view>
+    </block>
+    <!-- 条件筛选区域 -->
+    <block wx:if="{{userType == 2}}">
+      <van-dropdown-menu custom-class="out-drop-sty" active-color="#0082FC"> 
+        <van-dropdown-item id="item" bind:close="getAllUserList"  title="{{filters.area}}" value="{{ filters.area }}" wx:if="{{userType!=0}}">
+          <van-cell>
+            <picker mode="multiSelector" bindchange="changeArea" bindcolumnchange="changeColumnArea" value="{{areaIndex}}" range="{{areaRange}}" range-key="{{'name'}}">
+              <text wx:if="{{filters.area!=''}}" class="common-long-sty">{{filters.area}}</text>
+              <text wx:else class="no-val">地区</text>
+            </picker>
+          </van-cell>
+        </van-dropdown-item>
+        <van-dropdown-item bind:change="changeAccountStatus"   value="{{ filters.accountStatus }}" options="{{ accountList }}"  class="{{userType == 0 ? 'active-input-sty':''}}"/>
+      </van-dropdown-menu>
+    </block>
+    <!-- 搜索栏 -->
+    <block wx:if="{{userType != 2}}">
+      <view class="search-bar-box" >
+        <view class="search-bar-con">
+          <text>客服</text>
+          <input 
+            type="text" 
+            placeholder="请输入员工姓名/工号" 
+            placeholder-class="txt-sty"
+            bindconfirm="getAllUserList" 
+            bindinput="changeCustomerServerName" 
+            value="{{customerServerName}}" 
+          />
+        </view>
+        <view class="search-bar-con">
+          <text>推广归属</text>
+          <input 
+            type="text" 
+            placeholder="请输入员工姓名/工号" 
+            placeholder-class="txt-sty"
+            bindconfirm="getAllUserList" 
+            bindinput="changePromoteAttributionName" 
+            value="{{promoteAttributionName}}" 
+          />
+        </view>
+        <view class="search-bar-btn">
+          <view></view>
+          <view bindtap="getAllUserList">查询</view>
+          <image src="/personal/image/common/icon-refresh@2x.png" bindtap="resetCon"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 底部固定栏 -->
+  <view class="user-bottom-fixed" wx:if="{{isBatch}}" bindtap="batchAllocation" data-status="{{batchStatus}}">
+    <view class="user-bottom-box">
+      <image src="/personal/image/common/icon_batch.png"></image>
+      <text>批量分配</text>
+    </view>
+  </view>
+  <view class="user-bottom-fixed" wx:if="{{isConfirm}}" bindtap="confirmAllocation">
+    <view class="user-bottom-box">
+      <image src="/personal/image/common/icon_batch.png"></image>
+      <text>确认分配</text>
+    </view>
+  </view>
+  <!-- 分配客服弹窗 -->
+  <van-popup show="{{ allotDialog }}" round bind:close="closeAllot" closeable>
+    <view class="allot-box">
+      <view class="allot-title">分配客服</view>
+      <view class="allot-content">
+        <view class="allot-inp">
+          <text>请选择客服</text>
+          <picker bindchange="changeCustomer" range-key="name" range="{{customerList}}">
+            <view class="allot-input">{{customerName}}</view>
+            <image src="/personal/image/my-clue/icon_drop-down@2x.png"></image>
+          </picker>
+        </view>
+        <view class="allot-btn">
+          <view bindtap="allotCustom">确定</view>
+          <view bindtap="closeAllot">取消</view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+  <!-- 内容展示区域 -->
+  <view class="user-list {{userType != 2 ? 'mar-top':''}}" wx:if="{{userList.length>0&&loading}}">
+    <block>
+      <view class="user-box" wx:for="{{userList}}" wx:key="index">
+        <van-checkbox class="user-check" wx:if="{{batchStatus==1}}"
+          value="{{item.checked}}"
+          checked-color="#1989FA"
+          shape="square"
+          bind:change="onChange"
+          data-item="{{item}}"
+          >  
+        </van-checkbox>
+        <view class="{{batchStatus==1 ? 'user-wid':'user-item'}}" bindtap="toUserDetail" data-item="{{item}}">
+          <!-- 用户编号—状态 -->
+          <view class="user-head">
+            <view class="head-left" wx:if="{{userType!=0}}">
+              <text wx:if="{{item.clueNo!=null}}">{{item.clueNo}}</text>
+              <text wx:else>暂无线索编号</text>
+              <image wx:if="{{item.clueNo!=null}}" catchtap="copyText" data-text="{{item.clueNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+            </view>
+            <view class="head-right">
+              <text></text>
+              <text>注册：{{tools.filterSlice(item.regCreateTime,0,16)}}</text>
+            </view>
+          </view>
+          <view>
+            <!-- 单位名称 -->
+            <view class="common-contain" wx:if="{{userType==2}}">
+              <text class="common-contain-text">单位名称：</text>
+              <text>{{modes.filterNull(item.companyName)}}</text>
+              <image wx:if="{{item.transactionNo}}" src="/personal/image/common/certified_unit.png" class="auth-img"/>
+              <image wx:else src="/personal/image/common/certified_unit_low.png" class="auth-img"/>
+            </view>
+            <!-- 姓名 -->
+            <view class="common-contain" wx:if="{{userType==1}}">
+              <text>姓名：</text>
+              <text>{{modes.filterNull(item.personName)}}</text>
+            </view>
+            <!-- 联系人 -->
+            <view class="common-contain" wx:if="{{userType!=1}}">
+              <text>联系人：</text>
+              <text>{{modes.filterNull(item.personName)}}</text>
+            </view>
+            <!-- 手机号 -->
+            <view class="common-contain">
+              <text>手机号：</text>
+              <text>{{modes.filterNull(item.mobile)}}</text>
+            </view>
+            <!-- 主体ID -->
+            <view class="common-contain">
+              <text>主体ID：</text>
+              <text>{{modes.filterNull(item.userNo)}}</text>
+            </view>
+            <!-- 用户名 -->
+            <view class="common-contain">
+              <text>用户名：</text>
+              <text>{{modes.filterNull(item.username)}}</text>
+            </view>
+            <!-- 登录ID -->
+            <view class="common-contain">
+              <text>登录ID：</text>
+              <text>{{modes.filterNull(item.accountNo)}}</text>
+            </view>
+            <!-- 地区 -->
+            <view class="common-contain">
+              <text>地区：</text>
+              <text>{{modes.filterNull(item.area)}}</text>
+            </view>
+            <!-- 客服 -->
+            <view class="common-contain">
+              <text>客服：</text>
+              <text>{{modes.filterNull(item.customerServerName)}}</text>
+            </view>
+            <!-- 推广归属 -->
+            <view class="common-contain">
+              <text>推广归属：</text>
+              <text>{{modes.filterNull(item.promoteAttributionName)}}</text>
+            </view>
+            <!-- 按钮区域 -->
+            <view class="btn-contain">
+              <text catchtap="followContent" data-item="{{item}}">跟进</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <empty-page wx:if="{{userList.length==0&&loading}}" pageForm="3"></empty-page>
+</view>

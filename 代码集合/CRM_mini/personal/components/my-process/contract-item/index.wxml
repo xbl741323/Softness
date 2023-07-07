@@ -1,0 +1,30 @@
+<!--personal/components/my-process/contract-item/index.wxml-->
+<view class="contract-item">
+  <!-- 头部区域 -->
+  <view class="contract-head">
+    <view class="head-left">
+      <text>{{contractInfo.taskNo}}</text>
+      <image catchtap="copyText" data-text="{{contractInfo.taskNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view class="head-right">
+      <text class="{{contractInfo.taskStatus == 1 ? 'passdot' : contractInfo.taskStatus == 2 ? 'notpass' : 'wait'}}"></text>
+      <text>{{contractInfo.contractStatus}}</text>
+    </view>
+  </view>
+  <view class="contract-info" bindtap="viewDetail">
+    <text>合同编号：</text>
+    <text>{{contractInfo.contractNo}}</text>
+    <text>客户名称：</text>
+    <text>{{contractInfo.authName}}</text>
+    <text>发起人：</text>
+    <text>{{contractInfo.createByName}}</text>
+    <text wx:if="{{contractInfo.taskStatus != 1}}">待处理人：</text>
+    <text wx:if="{{contractInfo.taskStatus != 1}}">{{contractInfo.handlerName}}</text>
+    <text>发起时间：</text>
+    <text>{{contractInfo.createTime || '暂无数据'}}</text>
+    <text>处理时间：</text>
+    <text>{{contractInfo.auditTime || '暂无数据'}}</text>
+  </view>
+</view>
+
+

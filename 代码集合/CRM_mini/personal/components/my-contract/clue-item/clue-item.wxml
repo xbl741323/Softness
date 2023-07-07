@@ -1,0 +1,38 @@
+<!--personal/components/my-clue/clue-item/clue-item.wxml-->
+<wxs src="/utils/clue/clue.wxs" module="tools"></wxs>
+<view class="clue-item">
+  <!-- 头部区域 -->
+  <view class="clue-head">
+    <text>{{clueInfo.clueNo}}</text>
+    <text>创建: {{clueInfo.createTime}}</text>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="clue-info">
+    <view class="clue-info-name">
+      <text wx:if="{{clueType == 2}}">{{clueInfo.companyName}}</text>
+      <text wx:else>{{clueInfo.contactName}}</text>
+      <view class="clue-info-contact">
+        <text class="over-name-sty" wx:if="{{clueType == 2}}">{{clueInfo.contactName}}</text>
+        <text>{{clueInfo.mobile}}</text>
+        <image wx:if="{{isPerson}}" catchtap="phoneCall" data-phone="{{clueInfo.mobile}}" class="phone-call" src="/personal/image/my-clue/icon_phone@2x.png"></image>
+      </view>
+    </view>
+    <view class="clue-info-area">{{clueInfo.area}}</view>
+    <view class="clue-info-label" wx:if="{{(clueInfo.isAutoConversion)||(clueInfo.clueStatusId&&clueInfo.clueStatusId!=0)||(clueInfo.clueStatusId&&clueInfo.clueStatusId!=0)}}">
+      <text>标签：</text>
+      <image wx:if="{{clueInfo.isAutoConversion}}" src="/personal/image/my-clue/icon_activation@2x.png"></image>
+      <block wx:if="{{isPerson}}">
+        <text class="common-tag" wx:if="{{clueInfo.clueStatusId&&clueInfo.clueStatusId!=0}}">{{tools.clueStatus(clueInfo.clueStatusId)}}</text>
+      </block>
+      <block wx:else>
+        <text class="common-tag {{clueInfo.clueStatusId==2?'depart-bg-sty':clueInfo.clueStatusId==3?'group-bg-sty':''}}" wx:if="{{clueInfo.clueStatusId&&clueInfo.clueStatusId!=0}}">{{tools.clueSeaStatus(clueInfo.clueStatusId)}}</text>
+      </block>
+    </view>
+    <view class="clue-info-belong">
+      <text>客户归属：{{clueInfo.clueUserEmpName == null?'无':clueInfo.clueUserEmpName}}</text>
+      <text>线索归属：{{clueInfo.clueAttributionEmpName}}</text>
+      <text>业务员：{{clueInfo.clueSalesmanEmpName}}</text>
+    </view>
+  </view>
+</view>

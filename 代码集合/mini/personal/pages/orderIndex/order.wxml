@@ -1,0 +1,24 @@
+<!--personal/pages/orderIndex/order.wxml-->
+<view class="order-wrap">
+  <navBar type="{{2}}" bgColor="{{true}}" navTitle="我的订单"></navBar>
+  <top top="{{topPosition}}" showTop="{{showTop}}"></top>
+  <view class="page-body" style="margin-top: {{height}}rpx;" id="orderBox">
+    <view class="order-nav" style="top: {{height}}rpx">
+      <view class="filter-item" wx:for="{{topNavs}}" wx:key="index" data-index="{{item.index}}" bindtap="changeIndex">
+        <text class="item-title {{checkIndex == item.index?'item-title-active':''}}">{{item.title}}</text>
+        <text class="note-num" wx:if="{{index == 0 && counts.all!= 0 || index == 1 && courseCounts.all != 0 || index == 2 && documentCounts.waitPay>0}}">
+          <block wx:if="{{index == 0}}">{{counts.all}}</block>
+          <block wx:if="{{index == 1}}">{{courseCounts.all}}</block>
+          <block wx:if="{{index == 2}}">{{documentCounts.waitPay}}</block>
+          <!-- {{ ? counts.all : courseCounts.all}} -->
+        </text>
+        <text class="item-lang {{checkIndex == item.index?'item-lang-active':''}}"></text>
+      </view>
+    </view>
+    <course wx:if="{{checkIndex == 1}}" orderType="{{checkIndex}}" bind:changeClass="changeClass" page="{{classPage}}" counts="{{courseCounts}}" id="class"></course>
+    <product wx:if="{{checkIndex == 0}}" bind:changePage="changePage" bind:childIndex="childIndex" counts="{{counts}}" options="{{urlOptions}}" page="{{proPage}}" top="{{topPosition}}" checkIndex="{{checkIndex}}" id="pro"></product>
+    <course wx:if="{{checkIndex == 2}}" fileChecked="{{fileChecked}}" bind:childIndex="childIndex" bind:changeDocument="changeDocument" counts="{{documentCounts}}" page="{{documentPage}}" orderType="{{checkIndex}}" id="document"></course>
+    <view class="no-more" wx:if="{{noMore}}">暂无更多数据了...</view>
+  </view>
+  <!-- && urlOptions.type -->
+</view>

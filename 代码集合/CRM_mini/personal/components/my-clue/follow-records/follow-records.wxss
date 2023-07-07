@@ -1,0 +1,69 @@
+/* personal/components/my-clue/follow-records/follow-records.wxss */
+.follow-records {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24rpx;
+}
+
+.follow-item {
+  background: #ffffff;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  border-radius: 20rpx;
+}
+
+.follow-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.follow-head {
+  display: flex;
+  align-items: center;
+}
+
+.follow-head image {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 100%;
+}
+
+.follow-head>text:nth-of-type(1) {
+  color: #333333;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+
+.follow-head>text:nth-of-type(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40rpx;
+  background: #f1f8ff;
+  border-radius: 8rpx;
+  color: #0082FC;
+  font-size: 24rpx;
+  padding: 0 14rpx;
+}
+
+.follow-time {
+  color: #B4B4B4;
+  font-size: 24rpx;
+}
+
+.follow-desc {
+  margin-top: 12rpx;
+  color: #555555;
+  line-height: 36rpx;
+  font-size: 24rpx;
+}
+
+.follow-desc-item {
+  margin-bottom: 10rpx;
+}
+
+.location-img-sty {
+  color: #0082FC;
+  margin-left: 10rpx;
+}

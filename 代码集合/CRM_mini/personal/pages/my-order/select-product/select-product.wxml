@@ -1,0 +1,50 @@
+<!--personal/pages/my-order/select-product/select-product.wxml-->
+<view class="select-product">
+  <view class="fixed-sty">
+    <!-- 产品类型tab区域 -->
+    <van-tabs ellipsis="{{false}}" color="#0082FC" active="{{ cTabIndex }}" bind:change="changeTab">
+      <van-tab wx:for="{{tabList}}" wx:key="index" title="{{item.categoryName}}"></van-tab>
+    </van-tabs>
+
+    <!-- 搜索框区域 -->
+    <view class="top-fixed">
+      <view class="search-contain">
+        <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+        <input class="{{keyWord!=''?'active-input-sty':''}}" value="{{keyWord}}" bindconfirm="getAllProList" bindinput="changeKeywords" placeholder="请输入产品编号或者产品名称关键字" type="text" />
+        <van-icon bindtap="clearKerword" wx:if="{{keyWord!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+      </view>
+      <text bindtap="getAllProList" class="fixed-search">搜索</text>
+    </view>
+  </view>
+
+  <!-- 已选产品显示区域 -->
+  <view class="selected-product-list">
+    <view class="selected-item" wx:for="{{selectedList}}" wx:key="index">
+      <text>{{item.spuTitle}}</text>
+      <image data-item="{{item}}" bindtap="delProduct" src="/personal/image/my-order/icon_close@2x.png"></image>
+    </view>
+  </view>
+
+  <!-- 产品列表显示区域 -->
+  <view class="product-list">
+    <checkbox-group bindchange="changeSelect">
+      <label wx:for="{{productList}}" wx:key="index">
+        <view class="product-item {{index==0?'active-first-sty':''}}">
+          <view class="center-sty">
+            <text>{{item.spuCode}}</text>
+            <text class="over-text">{{item.spuTitle}}</text>
+          </view>
+          <checkbox wx:if="{{item.checked}}" data-id="{{item.id}}" bindtap="changeOneSelect" color="#0082FC" class="check-sty" value="{{item.id}}" checked="{{item.checked}}" />
+          <checkbox wx:else color="#0082FC" class="check-sty" value="{{item.id}}" checked="{{item.checked}}" />
+        </view>
+      </label>
+    </checkbox-group>
+  </view>
+
+  <!-- 确认按钮区域 -->
+  <view class="confirm-contain">
+    <text class="confirm-btn" bindtap="confirmAdd">
+      确认添加
+    </text>
+  </view>
+</view>

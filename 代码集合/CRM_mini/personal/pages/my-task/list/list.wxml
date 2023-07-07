@@ -1,0 +1,244 @@
+<!--personal/pages/my-task/list/list.wxml-->
+<task-records id="task" bind:filtrate="filtrate"></task-records>
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+<wxs src="/utils/task/task.wxs" module="taskTools"></wxs>
+<van-checkbox-group value="{{ result }}" bind:change="onChange" wx:if="{{taskList.length>0}}">
+  <view wx:for="{{taskList}}" class="{{state ? 'btn-contain-box' :''}}" bindtap="{{!state?'detailList' :''}}" data-item="{{item}}" wx:key="index">
+    <van-checkbox name="{{item.id}}" wx:if="{{state}}" shape="square" disabled="{{item.taskStatus == 2 && btnNumTow == 2}}"></van-checkbox>
+    <view class="{{state ? 'product-item_1' :'product-item'}}">
+      <!-- 订单编号—状态 -->
+      <view class="product-head">
+        <view class="head-left">
+          <text>{{item.taskNo}}</text>
+          <image catchtap="copyText" data-text="{{item.taskNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+        </view>
+        <view class="head-right">
+          <text class="{{item.taskStatus ==1 ? 'btn-sty' : item.taskStatus==2 ?'btn-sty_2':'' }}"></text>
+          <text>{{ item.finishLabel? item.finishLabel:item.stepName}}</text>
+        </view>
+      </view>
+      <view bindtap="toOrderDetail">
+        <!-- 产品名称—数量 -->
+        <view class="product-name">
+          <text class="{{disabled==true?'disabled-sty':''}}">{{item.spuName}}</text>
+          <view class="{{item.priority ==1 ? 'btn-sty' : item.priority==2 ?'btn-sty_1':item.priority ==0 ? 'btn-sty':'' }}">{{orders.filterPriority(item.priority)}}</view>
+        </view>
+        <view class="product-attribute {{disabled==true?'disabled-sty':''}}">
+          <text class="{{disabled==true?'disabled-sty disabled-bg-sty':''}}">{{item.spec}}</text>
+        </view>
+        <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+          <text>客户名称：</text>
+          <text>{{item.subjectName}}</text>
+        </view>
+        <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+          <text>工程师：</text>
+          <text wx:for="{{item.trTaskEngineerList}}" wx:key="index"> <text wx:if="{{index!=0}}">，</text><text>{{item.engineerName}}</text></text>
+        </view>
+        <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+          <text>业务员：</text>
+          <text>{{item.clueSalesmanEmpName}}</text>
+        </view>
+        <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+          <text>交付物名称：</text>
+          <text>{{orders.filtersData(item.deliveryName)}}</text>
+        </view>
+        <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+          <text>交付时间：</text>
+          <text>{{orders.filtersData(item.deliveryTime)}}</text>
+        </view>
+        <!-- 专利申请号 -->
+        <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+          <text>专利申请号：</text>
+          <text>{{taskTools.filterPatentNo(item.patentApplicationNo)}}</text>
+        </view>
+        <view class="common-contain {{disabled==true?'disabled-sty':''}}">
+          <text>创建时间：</text>
+          <text>{{orders.filtersData(item.createTime)}}</text>
+        </view>
+      </view>
+      <!-- 按钮区域 -->
+      <view class="btn-contain" wx:if="{{!state}}">
+        <view class="btn-left"></view>
+        <view class="btn-right">
+          <text catchtap="toModifyOrder" data-item="{{item.id}}">优先级</text>
+          <text catchtap="checkContract" data-item="{{item}}" wx:if="{{item.taskStatus != 2 }}">提交进度</text>
+          <text class="disabled-color" wx:else>提交进度</text>
+          <text catchtap="confirmGenerateOrder" data-item="{{item}}">交付信息</text>
+          <text wx:if="{{!userInfo.isPartner}}" catchtap="handleConfirm" data-item="{{item}}" data-text="{{1}}">分配</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-checkbox-group>
+<view wx:if="{{taskList.length==0}}" class="empty-task-sty">
+  <empty-page pageForm="{{1}}"></empty-page>
+</view>
+<action-sheet hidden="{{priceShow}}">
+  <view class="query-emp">
+    <view class="query-emp-head">
+      <text bindtap="priceClose">取消</text>
+      <text>{{title}}</text>
+      <text bindtap="priceConfirm">确认</text>
+    </view>
+    <van-search bind:blur="changeSearch" bind:clear="showClear" class="search-sty" value="{{ pricekeyWords }}" placeholder="请输入员工姓名关键词搜索" />
+    <!-- 查询结果列表 -->
+    <view class="name_list_sty" wx:if="{{nameList.length}}">
+      <view wx:for="{{nameList}}" wx:for-item='info' wx:key="index" class="userInfo_sty">
+        <view>{{info.name}} {{info.number}}
+        </view>
+        <image bindtap="removerFun" data-info="{{info}}" class="icon_sty" src="../../../../image/tabbar/btn_remove_img.png" alt="" />
+      </view>
+    </view>
+    <view class="{{!nameList.length ? 'van-radio_sty' :''}}">
+      <van-radio-group value="{{ radio }}" bind:change="onChangeRadio" direction="horizontal">
+        <van-radio name="1"> 卧涛集团</van-radio>
+        <van-radio name="2" class="van-radio">合作机构</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="emp-list">
+      <view wx:if="{{changempList.length>0&&radio==1}}" indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="changePicker">
+        <scroll-view class="scroll-y" scroll-y="true">
+          <van-checkbox-group max="{{3}}" value="{{ resultUserInfo }}" bind:change="onUserChange">
+            <view class="emp-item" wx:for="{{changempList}}" wx:key="index">
+              <van-checkbox name="{{item.userId}}"> </van-checkbox>
+              <text>{{item.number}}</text>
+              <text>{{item.name}}</text>
+              <text>{{!item.deptName ? '/' : item.deptName}}</text>
+            </view>
+          </van-checkbox-group>
+        </scroll-view>
+      </view>
+      <view wx:if="{{changeRoleList.length>0&&radio==2}}" indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="changePicker">
+        <scroll-view class="scroll-y" scroll-y="true">
+          <van-checkbox-group max="{{3}}" value="{{ resultUserInfo }}" bind:change="onUserChange">
+            <view class="emp-item" wx:for="{{changeRoleList}}" wx:key="index">
+              <van-checkbox name="{{item.userId}}"> </van-checkbox>
+              <text>{{item.number}}</text>
+              <text>{{item.name}}</text>
+              <text class="partnerName">{{item.partnerName}}</text>
+            </view>
+          </van-checkbox-group>
+        </scroll-view>
+      </view>
+      <view wx:else class="empty-sty">
+        <van-loading wx:if="{{loading}}" size="24px">加载中...</van-loading>
+        <block wx:else> 搜索结果为空，换个关键词再试试</block>
+      </view>
+    </view>
+  </view>
+</action-sheet>
+<action-sheet hidden="{{priorityShow}}">
+  <view class="query-emp">
+    <view class="query-emp-head">
+      <text bindtap="priorityClose">取消</text>
+      <text>{{title}}</text>
+      <text bindtap="priorityConfirm">确认</text>
+    </view>
+    <!-- 查询结果列表 -->
+    <view class="emp-list">
+      <picker-view wx:if="{{getTaskOrderLsti.length>0}}" indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="changePicker">
+        <picker-view-column class="pickViewColumn">
+          <view class="priority-item" wx:for="{{getTaskOrderLsti}}" wx:key="index">
+            <view wx:if="{{item.stepName!=''}}">
+              <text>{{item.text}}</text>
+            </view>
+            <view wx:else>
+              <text wx:if="{{item.finishLabel=='完成' && endType == 'A'|| item.finishLabel=='完成' && endType == 'C'}}">{{item.finishLabel}}</text>
+              <text wx:if="{{item.finishLabel!='完成' && endType == 'B'|| item.finishLabel!='完成' && endType == 'C'}}">{{item.finishLabel}}</text>
+            </view>
+          </view>
+        </picker-view-column>
+      </picker-view>
+      <view wx:else class="empty-sty">
+        搜索结果为空，换个关键词再试试
+      </view>
+    </view>
+  </view>
+</action-sheet>
+<action-sheet hidden="{{batchShow}}">
+  <view class="query-emp_1">
+    <view wx:if="{{btnstate==2}}" class="textarea-sty">
+      <view class="schedule">
+        <view>
+          <view>当前选择：{{finishLabel.text}} </view>
+        </view>
+      </view>
+      <!-- 查询结果列表 -->
+      <textarea value="{{comment}}" bindblur="getAuditRemark" maxlength="100" class="common-item-textarea" placeholder="请输入审批意见"></textarea>
+    </view>
+    <picker-view wx:if="{{btnstate==1}}" indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="changeTabData">
+      <picker-view-column class="pickViewColumn">
+        <view class="priority-item" wx:for="{{getTaskOrderLsti}}" wx:key="index">
+          <!-- 条件判断 -->
+          <text>{{item.text}}</text>
+        </view>
+      </picker-view-column>
+    </picker-view>
+    <view class="query-emp-sub">
+      <view>
+        <view class="btn-sty-sub" bindtap="clickClong" data-item="1">
+          <view wx:if="{{btnstate==1}}" catchtap="batchClose">取消</view>
+          <view wx:else>上一步</view>
+        </view>
+        <view>
+          <view class="btn-sty-sub state">
+            <view wx:if="{{btnstate==1}}" bindtap="clickClong" data-item="2">下一步</view>
+            <view wx:else catchtap="batchConfirm">提交</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</action-sheet>
+<action-sheet hidden="{{scheduleShow}}">
+  <view class="query-emp">
+    <view class="query-emp-head">
+      <text bindtap="scheduleClose">取消</text>
+      <text>{{title}}</text>
+      <text bindtap="priorityConfirm">确认</text>
+    </view>
+    <!-- 查询结果列表 -->
+    <view class="emp-list">
+      <picker-view wx:if="{{priorityList.length>0}}" indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="changePicker">
+        <picker-view-column class="pickViewColumn">
+          <view class="priority-item" wx:for="{{priorityList}}" wx:key="index">
+            <text>{{item.text}}</text>
+          </view>
+        </picker-view-column>
+      </picker-view>
+      <view wx:else class="empty-sty">
+        搜索结果为空，换个关键词再试试
+      </view>
+    </view>
+  </view>
+</action-sheet>
+<!-- 提交进度 -->
+<view class="botton-pof" wx:if="{{taskList.length!==0}}">
+  <view class="botton-box" wx:if="{{btnNumOne==1 &&!userInfo.isPartner }}" bindtap="goToPage" data-item="1">
+    <view class="img-box">
+      <image class="btn_img" src="../../../../image/index/icon_distribution@2x.png "></image>
+    </view>
+    <view>批量分配</view>
+  </view>
+  <view wx:if="{{btnNumTow==2}}" bindtap="goToPage" data-item="2" class="botton-box">
+    <view class="img-box">
+      <image class="btn_img" src="../../../../image/index/icon_submit@2x.png"></image>
+    </view>
+    <view>批量提交</view>
+  </view>
+</view>
+<van-dialog id="van-dialog" show="{{Dialog}}" wx:if="{{Dialog}}" show-cancel-button before-close="{{onBeforeClose}}" bind:confirm="confirmAuditretuer" message="{{stepType == 2 ? '任务进度确定后不能修改，是否确定？' : '确定提交'}}" bind:cancel="onClose" title="{{stepType == 2 ? '任务进度' : '提示'}}" bind:cancel="onCloseUpop" confirm-button-color='#333' />
+<van-popup show="{{ changeMessage }}" position="bottom" custom-style="height: 20%;" bind:close="cahangeClose">
+  <view class="btn-change">
+    <view bindtap="changeItem">设置交付时间</view>
+    <view bindtap="changeName">设置交付物名称</view>
+  </view>
+</van-popup>
+<action-sheet hidden="{{!showStartTime}}">
+  <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="onConfirmStart" bind:cancel="closeStartTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+</action-sheet>
+<!-- 交付信息 -->
+<van-dialog use-slot title="审核备注" show="{{ auditDialog }}" show-cancel-button before-close="{{onBeforeClose}}" bind:confirm="confirmAudit" bind:cancel="onClose">
+  <textarea value="{{auditRemark}}" bindinput="changRemak" maxlength="30" class="common-item-textarea" placeholder="请输入交付物名称"></textarea>
+  <view wx:if="{{auditRequired}}" class="phone-error-code">请补全交付物名称后再试</view>
+</van-dialog>

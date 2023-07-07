@@ -1,0 +1,96 @@
+<!--personal/pages/customer/search-list/search-list.wxml-->
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+<view class="my-clue">
+  <!-- 顶部搜索栏 -->
+  <view class="top-fixed" catchtouchmove="touchMove">
+    <view class="area" bindtap="showPopup">
+      <image src="/image/common/icon_map.png"></image>
+      <text>{{areaName ? areaName : "地区"}}</text>
+      <image src="/image/common/area_icon.png"></image>
+    </view>
+    <view class="search">
+      <view class="search-contain">
+        <view class="search-contain-left" bindtap="changeType">
+          <text>{{clueType == 2?"单位":"个人"}}</text>
+          <image src="/image/common/area_icon.png"></image>
+        </view>
+        <text class="lang-sty"></text>
+        <view class="search-contain-right">
+          <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+          <input class="{{keyWords!=''?'active-input-sty':''}}" value="{{keyWords}}" bindconfirm="searchList" bindinput="changeKeywords" placeholder="{{clueType == 2?'请输入联系人/单位名称/线索编号':'请输入客户姓名/手机号/线索编号'}}" type="text" />
+          <van-icon bindtap="clearKerword" wx:if="{{keyWords!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+        </view>
+      </view>
+      <text bindtap="searchList" class="fixed-search">搜索</text>
+    </view>
+  </view>
+
+  <!-- 线索信息卡片列表 -->
+  <view class="clue-list" wx:if="{{clueList.length>0&&(keyWords!=''||areaPath!='')&&loading}}">
+    <clue-item wx:for="{{clueList}}" wx:key="index" clueInfo="{{item}}" clueType="{{clueType}}" isPerson="{{isPerson}}" value="{{item}}" bind:getOrderDetail="getOrderDetail"></clue-item>
+  </view>
+  <!-- 无数据页面展示 -->
+  <empty-page wx:if="{{clueList.length==0&&loading&&keyWords!=''&&showStatus}}"></empty-page>
+
+  <!-- 省市区弹窗  -->
+  <van-popup show="{{show}}" bind:close="onClose" position="bottom" custom-style="height: 55%;" round>
+    <view class="area-btn">
+      <view class="cancel-btn" bindtap="cancel">取消</view>
+      <view style="margin-left: 100rpx;">地区选择</view>
+      <view class="sure-btn">
+        <view class="chongzhi" bindtap="chongzhi">重置</view>
+        <view bindtap="submit">确定</view>
+      </view>
+    </view>
+    <picker-view indicator-class="indicator-sty" class="picker-sty" value="{{value}}" bindchange="bindChange" immediate-change="false">
+      <picker-view-column>
+        <view wx:for="{{areaList}}" wx:key="index" class="picker-item-sty">{{item.areaName}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{areaList[value[0]].children}}" wx:key="pIndex" class="picker-item-sty">{{item.areaName}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{areaList[value[0]].children[value[1]].children}}" wx:key="cIndex" class="picker-item-sty">{{item.areaName}}</view>
+      </picker-view-column>
+    </picker-view>
+  </van-popup>
+
+  <!-- 查看订单 -->
+  <van-popup show="{{orderShow}}" bind:close="onCloseOrder" position="bottom" custom-style="height: 80%;" round catchtouchmove='touchMove'>
+    <view class="orderShow">客户订单查看
+      <van-icon name="cross" bindtap="onCloseOrder" size="20" class="close" />
+    </view>
+    <scroll-view scroll-y="true" bindscrolltolower="scrollOrderList" style="height: 90%;" wx:if="{{orderDetail.length != 0}}" class="orderList">
+      <view wx:for="{{orderDetail}}" wx:key="index" class="orderDetail">
+        <view class="orderNo">
+          <view class="head-left">{{item.orderNo}}
+            <image catchtap="copyText" data-text="{{item.orderNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+          </view>
+          <view class="head-right">
+            <text></text>
+            <text>{{orders.filterOrderStatus(item.orderStatus)}}</text>
+          </view>
+        </view>
+        <view class="spuName">
+          <text>{{item.spuName}}</text>
+          <text style="color: #7B7B7B;font-weight: 400">x{{item.buyNum}}</text>
+        </view>
+        <view>主体名称：{{item.subjectName}}</view>
+        <view>尾款状态：{{orders.filterTailStatus(item.tailStatus)}}</view>
+        <view class="belongName">
+          <text>订单归属：{{item.belongName}}</text>
+          <text>线索归属：{{item.clueAttributionEmpName}}</text>
+          <text>业务员：{{item.clueSalesmanEmpName}}</text>
+        </view>
+        <view class="createTime ">创建时间：{{item.createTime}}</view>
+        <view class="orderTotal">订单总价：
+          <text>￥{{item.totalAmount}}</text>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:else class="empty-page {{pageForm == 1?'active-empty-sty':''}}">
+      <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
+      <text>暂无数据</text>
+    </view>
+  </van-popup>
+</view>

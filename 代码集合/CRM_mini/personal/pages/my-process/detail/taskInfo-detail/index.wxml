@@ -1,0 +1,92 @@
+<!--personal/pages/my-process/detail/contract-detail/index.wxml-->
+<wxs src="/utils/process/process.wxs" module="tools"></wxs>
+<view class="contract-item">
+  <!-- 头部区域 -->
+  <view class="contract-head">
+    <view class="head-left">
+      <text>{{taskNo}}</text>
+      <image catchtap="copyText" data-text="{{taskNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view class="head-right">
+      <text class="{{myTaskInfo.taskInfo.flowStatus == 0 ? 'wait' : myTaskInfo.taskInfo.flowStatus == 1 ? 'passdot' : 'notpass'}}"></text>
+      <text>{{tools.processStatus(myTaskInfo.taskInfo.flowStatus) }}</text>
+    </view>
+  </view>
+  <view class="contract-info" bindtap="viewDetail">
+    <text>客户信息</text>
+    <text></text>
+    <text>客户名称：</text>
+    <text>{{myTaskInfo.orderInfo.subjectName}}</text>
+    <text>线索编号：</text>
+    <text>{{myTaskInfo.orderInfo.clueNo}}</text>
+    <text>客户签约人：</text>
+    <text>{{myTaskInfo.orderInfo.signName}}</text>
+    <text>业务员：</text>
+    <text>{{myTaskInfo.orderInfo.clueSalesmanEmpName }}</text>
+    <text>流程创建时间：</text>
+    <text>{{myTaskInfo.taskInfo.createTime }}</text>
+    <text>备注：</text>
+    <text>{{myTaskInfo.taskInfo.remark||'暂无数据'}}</text>
+  </view>
+</view>
+<!-- tab切换区域 -->
+<van-tabs ellipsis="{{false}}" color="#0082FC" title-active-color="#0082FC" active="{{ cTabIndex }}" bind:change="changeTab" lazy-render="{{false}}">
+  <van-tab wx:for="{{contractDetailTabList}}" wx:key="index" title="{{item}}"></van-tab>
+</van-tabs>
+<view wx:if="{{cTabIndex == 0}}">
+  <view class="basic-info">
+    <text>订单编号：</text>
+    <text>{{myTaskInfo.orderInfo.orderNo}}</text>
+    <text>产品名称：</text>
+    <text>{{myTaskInfo.orderInfo.spuName}}</text>
+    <text>规格属性：</text>
+    <text>{{myTaskInfo.orderInfo.spec}}</text>
+    <text>数量：</text>
+    <text>{{myTaskInfo.orderInfo.buyNum}}</text>
+    <text>支付方式：</text>
+    <text>{{tools.filterPayType( orderFeeInfo[0].payType)}}</text>
+    <text>代理费单价：</text>
+    <text>{{tools.filterPrice(1,orderFeeInfo)}}</text>
+    <text>第三方费用单价：</text>
+    <text>{{tools.filterPrice(2,orderFeeInfo)}}</text>
+    <text>官费：</text>
+    <text>{{tools.filterPrice(3,orderFeeInfo)}}</text>
+    <text>订单总价：</text>
+    <text>{{myTaskInfo.orderInfo.totalAmount}}</text>
+    <text>付款状态：</text>
+    <text>{{tools.filterOrderStatus( myTaskInfo.orderInfo.orderStatus)}}</text>
+    <text>下单时间：</text>
+    <text>{{myTaskInfo.orderInfo.orderTime}}</text>
+  </view>
+</view>
+<!-- 操作信息 -->
+<view wx:if="{{cTabIndex == 1}}" class="tab-info">
+  <view wx:if="{{auditLogsList.length == 0}}">
+    <view class="empty-order">暂无数据</view>
+  </view>
+  <view wx:if="{{auditLogsList.length > 0}}" wx:for="{{auditLogsList}}" wx:key="index" class="time-line">
+    <view>
+      <view class="current-time"></view>
+      <view class="vertical-line" wx:if="{{index != auditLogsList.length-1}}"></view>
+    </view>
+    <view class="operate">
+      <view class="operate-content">{{item.title}}</view>
+      <view class="operate-name">操作人：{{item.createByName|| '暂无'}}</view>
+      <view class="operate-name">{{ item.auditState == null ? "备注：" : "审批意见：" }}  {{( item.auditReason ||  item.remark ) ?( item.auditReason ||  item.remark ) : "_"   }}</view>
+      <view class="operate-time">{{item.createTime}}</view>
+    </view>
+  </view>
+</view>
+<view class="operate-btn" wx:if="{{ myTaskInfo.taskInfo.flowStatus == 0 && userInfo.id==myTaskInfo.taskInfo.preAuditorId}}">
+  <view bindtap="confirmRemark" data-operate="0">审核不通过</view>
+  <view bindtap="confirmRemark" data-operate="1">审核通过</view>
+</view>
+<van-dialog use-slot title="审核备注" show="{{ auditDialog }}" show-cancel-button before-close="{{onBeforeClose}}" bind:confirm="submitAudit" bind:cancel="onClose">
+  <textarea value="{{auditRemark}}" bindblur="getAuditRemark" maxlength="100" class="common-item-textarea" placeholder="请输入审批意见"></textarea>
+  <view wx:if="{{auditRequired}}" class="phone-error-code">请输入审批意见</view>
+</van-dialog>
+<van-dialog use-slot show="{{hintDialog}}" title="提醒" id="van-dialog" show-cancel-button bind:confirm="confirmAudit" bind:cancel="onShut">
+  <view class="titleStr_sty">
+    {{titleStr}}
+  </view>
+</van-dialog>

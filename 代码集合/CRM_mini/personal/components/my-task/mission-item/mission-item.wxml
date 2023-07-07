@@ -1,0 +1,14 @@
+<!-- 操作信息 -->
+<view wx:for="{{logsList}}" wx:key="index" class="time-line">
+  <view>
+    <view class="current-time"></view>
+    <view class="vertical-line" wx:if="{{index != logsList.length-1}}"></view>
+  </view>
+  <view class="operate">
+    <view wx:if="{{item.finishLabel}}" class="operate-content">{{ item.finishLabel}}</view>
+    <view wx:else class="operate-content">{{item.stepName}}</view>
+    <view class="operate-name">操作人：{{item.createName}}</view>
+    <view class="operate-name" wx:if="{{item.description}}">备注：{{item.description}}</view>
+    <view class="operate-time">{{item.createTime}}</view>
+  </view>
+</view>

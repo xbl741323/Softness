@@ -1,0 +1,45 @@
+<!--personal/components/my-clue/follow-records/follow-records.wxml-->
+<view class="follow-records">
+  <view class="follow-item" wx:for="{{followList}}" wx:key="index" bindtap="toFollow" data-item="{{item}}">
+    <!-- 个人信息+跟进信息 -->
+    <view class="follow-info">
+      <view class="follow-head">
+        <text>{{item.operateEmpName}}</text>
+      </view>
+      <text class="follow-time">{{item.createTime}}</text>
+    </view>
+    <!-- 跟进描述 -->
+    <view class="follow-desc">
+      <view class="follow-desc-item">
+        <text>跟进方式：</text>
+        <text>{{item.followTypeName}}</text>
+      </view>
+      <view class="follow-desc-item">
+        <text>跟进内容：</text>
+        <text>{{item.followContent}}</text>
+      </view>
+      <view class="follow-desc-item" wx:if="{{(item.locationName!=null&&item.locationName!='')&&(item.followTypeId == (env == 'develop' ? 109 : env == 'trial' ? 58 : 58))}}">
+        <view>
+          <text>定位：{{item.locationName}}</text>
+          <text>-{{item.locationDetail}}</text>
+          <text class="location-img-sty" catchtap="previewImg" data-item="{{item}}">打卡照片</text>
+        </view>
+      </view>
+      <view class="follow-desc-item">
+        <text>跟进产品：</text>
+        <block wx:if="{{item.clueFollowSpuList.length>0}}">
+          <text wx:for="{{item.clueFollowSpuList}}" wx:key="cIndex" wx:for-index="cIndex" wx:for-item="cItem">
+            <text>{{cItem.followSpuName}}</text>
+            <text wx:if="{{cIndex!=item.clueFollowSpuList.length-1}}">，</text>
+          </text>
+        </block>
+        <text wx:else>-</text>
+      </view>
+      <view class="follow-desc-item">
+        <text>下次跟进时间：</text>
+        <text wx:if="{{item.nextFollowTime!=null&&item.nextFollowTime!=''}}">{{item.nextFollowTime}}</text>
+        <text wx:else>-</text>
+      </view>
+    </view>
+  </view>
+</view>

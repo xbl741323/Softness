@@ -1,0 +1,58 @@
+<!--personal/components/my-contract/contract-item/index.wxml-->
+<wxs src="/utils/clue/clue.wxs" module="tools"></wxs>
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+
+<view class="clue-item">
+  <van-swipe-cell right-width="{{ contractInfo.taskStatus == -1 || contractInfo.taskStatus == 2 ? 50 : 0 }}">
+    <!-- 头部区域 -->
+    <view class="contract-head">
+      <view class="head-left">
+        <text>{{contractInfo.contractNo}}</text>
+        <image catchtap="copyText" data-text="{{contractInfo.contractNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+      </view>
+      <view class="head-right">
+        <text class="{{(contractInfo.taskStatus == 1 || contractType == 1) ? 'passdot' : 'notpass'}}"></text>
+        <text wx:if="{{contractType == 2}}">{{contractInfo.contractStatus}}</text>
+        <text wx:if="{{contractType == 1}}">已签约</text>
+      </view>
+    </view>
+
+    <!-- 内容区域 -->
+    <view class="contract-info">
+      <view class="content-top" bindtap="toContractDetail">
+        <text>创建时间：</text>
+        <text>{{contractInfo.createTime}}</text>
+        <text>订单编号：</text>
+        <text class="order-type">{{contractInfo.orderNo || '暂无数据'}}</text>
+        <text>客户名称：</text>
+        <text>{{contractInfo.authName || '暂无数据'}}</text>
+        <text>地区：</text>
+        <text>{{contractInfo.area}}</text>
+        <text>合同备注：</text>
+        <text>{{contractInfo.remark || '暂无数据'}}</text>
+      </view>
+      <view class="line"></view>
+      <view class="content-bottom" bindtap="toContractDetail">
+        <text>订单信息：</text>
+        <text>{{ contractInfo.orderInfo || contractInfo.spuName || '暂无数据'}}</text>
+        <text>订单类型：</text>
+        <text class="order-type">{{ contractInfo.categoryId || '暂无数据'}}</text>
+        <text>合同金额：</text>
+        <text class="price">{{ orders.fixPrice(contractInfo.totalAmount) || '暂无数据'}}</text>
+        <text>签约时间</text>
+        <text>{{ contractInfo.signTime || '暂无数据'}}</text>
+      </view>
+      <view class="line"></view>
+      <view class="contract-btn">
+        <text bindtap="toContractDetail">查看</text>
+        <text bindtap="toEnterContract" wx:if="{{contractInfo.taskStatus == -1||contractInfo.taskStatus == 2}}">修改</text>
+        <text catchtap="checkContract" wx:if="{{contractInfo.taskStatus != -1}}">预览合同</text>
+        <text class="divider" wx:if="{{contractInfo.taskStatus == -1 || contractInfo.taskStatus == 2}}">|</text>
+        <text catchtap="deleteContract" class="delete-btn" wx:if="{{contractInfo.taskStatus == -1 || contractInfo.taskStatus == 2}}">删除</text>
+      </view>
+    </view>
+    <view slot="right" class="del-btn-sty" bindtap="deleteContract" data-index="{{index}}" wx:if="{{contractInfo.taskStatus == -1 || contractInfo.taskStatus == 2}}">
+      <van-icon name="delete-o" color="#ffffff" />
+    </view>
+  </van-swipe-cell>
+</view>

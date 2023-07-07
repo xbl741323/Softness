@@ -1,0 +1,24 @@
+<wxs src="/utils/myblogs/myblogs.wxs" module="tools"></wxs>
+<view>
+  <view class="add-blogs" bindtap="addBlogs">
+    <image class="add-sty" src="../../../../image/personal/icon_add@2x.png" alt="" />
+  </view>
+  <view class="blogs-sty" wx:for="{{ myLogList}}" wx:key="index">
+    <view class="dated">
+      <text>{{item.journalTime}} </text>
+      <text>{{item.week}}</text>
+    </view>
+    <view class="creation-time" bindtap="getBlogsItem" data-item="{{item}}">
+      <view>
+        <view class="blogs-name">{{userInfo.name}}</view>
+        <view class="journalTime-sty">创建时间：{{item.createTime}}</view>
+        <view class="text-sty">{{item.content}}</view>
+      </view>
+      <view wx:if="{{item.testList.length>0}}" class="preview-img-list">
+        <view wx:for="{{item.testList}}" wx:key="cIndex" wx:for-index="cIndex" wx:for-item="cItem">
+          <image catchtap="previewImg" data-url="{{cItem.url}}" class="preview-img" src="{{cItem.url}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

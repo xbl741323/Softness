@@ -1,0 +1,40 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"useDefineForClassFields": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"jsx": "preserve",
+		"sourceMap": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"lib": ["esnext", "dom"],
+		"baseUrl": ".",
+		"allowJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"allowSyntheticDefaultImports": true,
+		"strictFunctionTypes": false,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"experimentalDecorators": true,
+		"noImplicitAny": false, // 是否关闭 ts 2322 类型推导
+		"skipLibCheck": true,
+		"paths": {
+			"/@/*": ["./src/*"]
+		},
+		// "outDir": "./dist",
+		"types": [
+			"@intlify/unplugin-vue-i18n/types",
+			"vite/client",
+			"element-plus/global",
+			"@types/intro.js",
+			"@types/qrcode",
+			"vite-plugin-svg-icons/client",
+			"unplugin-vue-define-options/macros-global"
+		],
+		"typeRoots": ["./node_modules/@types/", "./types"]
+	},
+	"include": ["src/**/*", "types/**/*.d.ts", "mock/**/*.ts", "auto-imports.d.ts"],
+	"exclude": ["dist", "node_modules"]
+}

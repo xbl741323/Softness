@@ -1,0 +1,173 @@
+/* personal/components/my-contract/contract-item/index.wxss */
+.clue-item {
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20rpx;
+  padding: 32rpx 24rpx 0 24rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+/*
+  头部区域
+*/
+.contract-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.head-left {
+  display: flex;
+  align-items: center;
+}
+
+.head-left>text:nth-of-type(1) {
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.head-right {
+  display: flex;
+  align-items: center;
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.head-right>text:nth-of-type(1) {
+  margin-right: 12rpx;
+}
+
+.common-img-sty {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+.passdot{
+  width: 6px;
+  height: 6px;
+  background: #28c445;
+  border-radius: 50%;
+}
+
+.notpass{
+  width: 6px;
+  height: 6px;
+  background: #FA1B2A;
+  border-radius: 50%;
+}
+
+/*
+  内容区域
+*/
+.contract-info {
+  margin: 20rpx 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content-top{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-gap: 10rpx;
+  color: #7B7B7B;
+}
+.content-bottom{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-gap: 10rpx;
+  color: #7B7B7B;
+}
+
+.price{
+  color: #FC561F;
+}
+
+.order-type{
+  color: #0082FC;
+}
+
+.content-top :nth-child(2n){
+  text-align: right;
+  margin-right: 6rpx;
+}
+.content-bottom :nth-child(2n){
+  text-align: right;
+  margin-right: 6rpx;
+}
+
+.contract-btn{
+  text-align: right;
+}
+
+.contract-btn {
+  color: #0082FC;
+}
+.contract-btn :nth-child(n){
+  margin: 0 10rpx;
+}
+
+.divider{
+  color: #EAEBEF;
+}
+
+.delete-btn{
+  color: #FF6D27 !important;
+}
+
+.line{
+  width: 100%;
+  border-bottom: 1px solid #F5F7FB;
+  margin: 25rpx 0;
+}
+
+/*
+  按钮区域
+*/
+.clue-btn {
+  height: 92rpx;
+  border-top: 2rpx solid #EAEBEF;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.clue-btn text {
+  color: #0082FC;
+  margin-right: 24rpx;
+}
+
+.del-btn-sty {
+  width: 96rpx;
+  height: 100%;
+  background: #FF6D27;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4rpx;
+}
+
+/*
+  公共样式区域
+*/
+.common-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12rpx;
+  height: 48rpx;
+  background: #008dff;
+  border-radius: 8rpx;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  margin-right: 16rpx;
+}
+
+.depart-bg-sty {
+  background: #FEBE3D;
+}
+
+.group-bg-sty {
+  background: #8CC029;
+}

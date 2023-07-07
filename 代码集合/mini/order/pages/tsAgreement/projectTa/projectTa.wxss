@@ -1,0 +1,22 @@
+/* order/pages/tsAgreement/projectTa/projectTa.wxss */
+.ts-agreement {
+  padding: 24rpx;
+  font-size: 28rpx;
+  font-family: 宋体;
+}
+
+.ts-desc {
+  margin-bottom: 20rpx;
+  line-height: 56rpx;
+}
+
+.ts-desc-center {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.strong {
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}

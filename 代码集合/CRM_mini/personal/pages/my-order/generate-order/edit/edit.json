@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "修改订单",
+  "usingComponents": {
+    "product-info": "/personal/components/my-order/generate-order/product-info/product-info",
+    "audit-tip": "/personal/components/my-order/audit-tip/audit-tip"
+  }
+}

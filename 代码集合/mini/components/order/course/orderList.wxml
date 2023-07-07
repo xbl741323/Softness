@@ -1,0 +1,43 @@
+<!--components/order/class/order.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<view class="course-order">
+  <view class="course-nav" style="top: {{height+88}}rpx;">
+    <view class="course-item" wx:for="{{navs}}" wx:key="index" bindtap="chooseNav" data-idx="{{item.idx}}">
+      <text class="{{checked == item.idx ? 'checked':''}}">{{item.title}}</text>
+      <text wx:if="{{index == 1 && counts.waitPay != 0}}" class="note-num">{{ counts.waitPay>99 ? '99+' : counts.waitPay }}</text>
+      <text wx:if="{{checked == item.idx}}" class="item-line-active {{index == 1 ? 'right-20' : ''}}"></text>
+    </view>
+  </view>
+  <view class="list-body" wx:if="{{loading}}">
+    <view class="list-item" wx:for="{{list}}" wx:key="index" bindtap="toCourseDetail" data-item="{{item}}">
+      <view class="item-head flex-between">
+        <text>下单时间：{{item.createTime}}</text>
+        <text wx:if="{{orderType == 1}}">{{tools.classOrderStatus(item.orderStatus)}}</text>
+        <text wx:if="{{orderType == 2}}" class="'bold-status'{{item.orderStatus == 0 ? 'wait-pay':''}}">{{tools.documentOrderStatus(item.orderStatus)}}</text>
+      </view>
+      <view class="item-body flex-between">
+        <image wx:if="{{orderType == 1}}" class="order-img" src="{{imageUrl+item.baseCoverUrl}}"></image>
+        <view wx:if="{{orderType == 2}}" class="order-img file-img">
+          <image src="{{imageUrl+item.fileImageUrl}}"></image>
+          <image src="{{iconUrl[item.fileType]}}" mode="" class="icon-position"/>
+        </view>
+        <view class="order-info">
+          <view class="order-title">{{orderType == 2 ? item.fileName : item.baseTitle}}</view>
+          <view class="order-type" wx:if="{{orderType == 1}}">类型：课程</view>
+        </view>
+        <view wx:if="{{orderType == 2}}" class="file-price">￥{{tools.toPenny(item.price)}}</view>
+      </view>
+      <view class="order-price">
+        <text class="symbol" wx:if="{{orderType == 1 && item.orderStatus == 2 || orderType == 2 && item.orderStatus == 1}}">实付款 ￥</text>
+        <text class="symbol" wx:else>应付 ￥</text>
+        <text class="amount">{{orderType == 2 ? tools.toPenny(item.price) : item.orderAmount}}</text>
+      </view>
+      <view class="order-foot" wx:if="{{item.orderStatus != 1}}">
+        <view class="basic-btn bg-none" catchtap="cancleOrder" data-id="{{item.id}}" wx:if="{{orderType == 1 && (item.orderStatus == 0 || item.orderStatus == 3 || item.orderStatus == 1) || orderType == 2 && item.orderStatus == 0}}">取消订单</view>
+        <view class="basic-btn bg-none" catchtap="deleteOrder" data-id="{{item.id}}" wx:if="{{orderType == 1 && item.orderStatus == 4 || orderType == 2 && item.orderStatus == 2 }}">删除订单</view>
+        <view class="basic-btn bg-blue" catchtap="buyNow" data-item="{{item}}" wx:if="{{orderType == 1 && (item.orderStatus == 0 || item.orderStatus == 3 || item.orderStatus == 1) || orderType == 2 && item.orderStatus == 0}}">立即支付</view>
+      </view>
+    </view>
+  </view>
+  <noData wx:else></noData>
+</view>

@@ -1,0 +1,23 @@
+<!--classRoom/pages/detail/shortVideo/shortVideo.wxml-->
+<view class="short-detail">
+  <swiper bindchange="changeVideo" class="swiper-list" vertical="{{true}}" current="{{cVideoId}}">
+    <swiper-item item-id="{{item.id}}" class="swiper-item" wx:for="{{videoList}}" wx:key="index">
+      <view class="swiper-item-info" wx:if="{{cVideoId == index}}">
+        <video bindtimeupdate="bindtimeupdate" controls="{{true}}" play-btn-position="bottom" enable-play-gesture="{{true}}" show-play-btn="{{true}}" custom-cache="{{false}}" show-fullscreen-btn="{{false}}" autoplay="{{true}}" loop="{{true}}" src="{{cVideoUrl}}"></video>
+        <view class="video-info">
+          <text>{{item.title}}</text>
+          <view class="video-desc">
+            <text class="{{showDescStatus==false?'hide-video-desc':''}}">{{item.description}}</text>
+            <!-- 展开/收起按钮 -->
+            <view class="show-btn" wx:if="{{item.showBtn}}">
+              <text wx:if="{{!showDescStatus}}" bindtap="changeDesc" data-status="{{true}}">展开</text>
+              <text wx:if="{{showDescStatus}}" bindtap="changeDesc" data-status="{{false}}">收起</text>
+              <text class="{{showDescStatus==false?'active-btn-pointer':'btn-pointer'}}" data-status="{{showDescStatus==false?true:false}}" bindtap="changeDesc"></text>
+            </view>
+          </view>
+          <!-- 进度条 -->
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

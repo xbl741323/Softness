@@ -1,0 +1,2 @@
+<!--order/pages/officialAccount/officialAccount.wxml-->
+<web-view src="{{wxUrl}}"></web-view>

@@ -1,0 +1,87 @@
+<!--personal/components/my-user/user-follow/user-follow.wxml-->
+<wxs src="/utils/clue/clue.wxs" module="tools"></wxs>
+<wxs src="/utils/common/filters.wxs" module="modes"></wxs>
+<view class="user-info">
+  <!-- 搜索框区域 -->
+  <view class="top-fixed">
+    <view class="search-contain">
+      <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+      <input class="{{keyWord!=''?'active-input-sty':''}}" bindconfirm="getUserFollow" value="{{keyWord}}" bindinput="changeKeyword" placeholder="请输入类型/标题关键字" type="text" />
+      <van-icon bindtap="clearKeyword" wx:if="{{keyWord!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+    </view>
+    <text bindtap="getUserFollow" class="fixed-search">搜索</text>
+  </view>
+  <view class="user-info-card">
+      <van-dropdown-menu custom-class="out-drop-sty" active-color="#0082FC">
+        <van-dropdown-item id="item" title="操作时间" bindtap="">
+          <van-cell>
+            <view class="order-item">
+                <view class="order-item-head">
+                  <text class="required-sty"></text>
+                  <text>起始操作时间</text>
+                </view>
+                <view class="order-item-foot" bindtap="bindStartShow">
+                  <text wx:if="{{createTime!=''&&createTime!=null}}">{{createTime}}</text>
+                  <text wx:else>请输入起始操作时间区检索</text>
+                  <text class="pointer-sty"></text>
+                </view>
+              </view>
+          </van-cell>
+          <van-cell>
+            <view class="order-item">
+                <view class="order-item-head">
+                  <text class="required-sty"></text>
+                  <text>结束操作时间</text>
+                </view>
+                <view class="order-item-foot" bindtap="bindEndShow">
+                  <text wx:if="{{endTime!=''&&endTime!=null}}">{{endTime}}</text>
+                  <text wx:else>请输入结束操作时间区检索</text>
+                  <text class="pointer-sty"></text>
+                </view>
+              </view>
+          </van-cell>
+          <van-cell>
+            <view class="common-btn">
+              <block>
+                <text bindtap="resetBtn">重置</text>
+                <text bindtap="okBtn">确定</text>
+              </block>
+            </view> 
+          </van-cell>
+        </van-dropdown-item>
+      </van-dropdown-menu>
+  </view>
+  <block wx:if="{{dataList.length>0}}">
+    <view class="user-info-card" wx:for="{{dataList}}" wx:key="index">
+      <view class="user-info-title">收藏</view>
+      <view class="user-info-item">
+        <text>标题</text>
+        <text>{{tools.filterNull(item.spuTitle)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>IP地址</text>
+        <text>{{tools.filterNull(item.collectIp)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>端口</text>
+        <text>{{modes.filterSource(item.collectSource)}}</text>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="empty-page">
+      <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
+      <text>暂无相关数据</text>
+    </view> 
+  </block>
+
+   <!-- 开始创建时间-时间显示 -->
+   <action-sheet hidden="{{!showStartTime}}">
+    <van-datetime-picker type="datetime" value="{{ currentDate }}" bind:confirm="onConfirmStart" bind:cancel="closeStartTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </action-sheet>
+  <!-- 结束时间-时间显示 -->
+  <action-sheet hidden="{{!showEndTime}}">
+    <van-datetime-picker type="datetime" value="{{ currentDate }}" bind:confirm="onConfirmEnd" bind:cancel="closeEndTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </action-sheet>
+</view>
+

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "calendar": "/personal/components/my-blogs/calendar/calendar"
+  },
+  "navigationBarTitleText": "写日志"
+}

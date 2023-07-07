@@ -1,0 +1,18 @@
+<!--components/index/propertyItem/propertyItem.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<view class="new-product-item" bindtap="toDetail">
+  <image src="{{wtBaseUrl+imgList[item.type-1].url}}"></image>
+  <view class="new-bottom">
+    <text class="new-title">{{item.name}}</text>
+    <text class="new-desc">{{item.slogan}}</text>
+    <view class="new-price-contain">
+      <view class="price-main">
+        <view wx:if="{{item.nowFee!==''&&item.nowFee!==null}}">
+          <text>￥</text>
+          <text class="price-num">{{tools.priceFix(item.nowFee)}}</text>
+        </view>
+        <text wx:else class="price-num">面议</text>
+      </view>
+    </view>
+  </view>
+</view>

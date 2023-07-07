@@ -1,0 +1,162 @@
+<!--personal/pages/Settings/Settings.wxml-->
+<view class="setting" wx:if="{{loaded}}">
+
+  <head title="基本信息"></head>
+  <view class="block"></view>
+  <form action="">
+    <!-- 账户类型 -->
+    <view class="{{forms.userType=='1' || forms.userType=='2'?'to-top':''}} unit" wx:if="{{forms.userType=='1' || forms.userType=='2'}}">
+      <view>
+        <text class="required">*</text>
+        <text>账户类型</text>
+      </view>
+      <view class="title">
+        <view wx:if="{{forms.certifiedType==1}}" class="info-type bg-sty">初级认证</view>
+        <view wx:if="{{forms.certifiedType==2}}" class="info-type">高级认证</view>
+        <text class="title-text">{{accountList[forms.userType]}}</text>
+      </view>
+    </view>
+    <view class="block {{forms.userType!='1' && forms.userType!='2'?'to-top':''}}">
+      <text>单位信息</text>
+    </view>
+    <!-- 单位LOGO -->
+    <view bindtap="logoChange">
+      <view class="unit" style="height:112rpx">
+        <view>
+          <text class="required">*</text>
+          <text>头像</text>
+        </view>
+        <view class="orgName title">
+          <image class="headerIcon" wx:if="{{logoUrl}}" src="{{logoUrl}}"></image>
+          <image class="headerIcon" wx:elif="{{netImg}}" src="{{imageUrl+netImg}}"></image>
+          <image class="headerIcon" wx:else src="{{defaultImg}}"></image>
+          <text class="pointer-right"></text>
+        </view>
+      </view>
+      <view wx:if="{{logoError}}" class="error">{{error[0]}}</view>
+    </view>
+    <!-- 单位名称 -->
+    <view class="unit">
+      <view>
+        <text class="required">*</text>
+        <text>单位名称</text>
+      </view>
+      <view class="orgName title">
+        <input disabled="{{ authStatus =='1'&&forms.userType=='2' ? true : false}}" bindblur="checkOrdName" bindinput="getOrgName" class="orgName-input" value="{{forms.userType=='2'?forms.companyName:forms.diyOrgName}}" placeholder-style="color:#989898" placeholder="请填写小于50字的单位名称" maxlength="50" />
+      </view>
+    </view>
+    <view wx:if="{{orgNameError}}" class="error">{{error[1]}}</view>
+    <!-- 单位类型 -->
+    <picker bindchange="orgTypeTypeChange" value="{{orgTypeIndex}}" range-key="{{'name'}}" range="{{orgTypeList}}">
+      <view class="unit">
+        <view>
+          <text class="required">*</text>
+          <text>单位类型</text>
+        </view>
+        <view class="title">
+          <text class="title-text">{{forms.orgTypeName?forms.orgTypeName:'请选择单位类型'}}</text>
+          <text class="pointer-right"></text>
+        </view>
+      </view>
+    </picker>
+    <view wx:if="{{orgTypeError}}" class="error">{{error[2]}}</view>
+    <!-- 行业类型 -->
+    <view bindtap="showModel">
+      <view class="unit">
+        <view>
+          <text class="required">*</text>
+          <text>行业类型</text>
+        </view>
+        <view class="title">
+          <text class="title-text">{{forms.industryTypeName?forms.industryTypeName:'请选择行业类型'}}</text>
+          <text class="pointer-right"></text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{industryError}}" class="error">{{error[3]}}</view>
+    <!-- 所在地区 -->
+    <picker mode="multiSelector" bindchange="bindCustomPickerChange" bindcolumnchange="bindCustomPickerColumnChange" value="{{customIndex}}" range="{{onlyArray}}" range-key="{{'name'}}">
+      <view class="unit">
+        <view>
+          <text class="required">*</text>
+          <text>所在地</text>
+        </view>
+        <view class="title">
+          <text class="title-text">{{forms.areaName?forms.areaName:'请选择所在地区'}}</text>
+          <text class="pointer-right"></text>
+        </view>
+      </view>
+    </picker>
+    <view wx:if="{{areaError}}" class="error">{{error[4]}}</view>
+    <!-- 详细地址 -->
+    <!-- 202206需求不要单位人数等信息 -->
+    <!-- 联系人 -->
+    <view class="block">
+      <view> <text>授权人信息</text> </view>
+      <view wx:if="{{forms.certifiedType==1}}" class="info-type bg-sty">初级授权</view>
+      <view wx:if="{{forms.certifiedType==2}}" class="info-type">高级授权</view>
+      <view wx:if="{{forms.certifiedType==1}}" catchtap="toConfirm" class="goToAdvanced">去高级认证</view>
+    </view>
+    <view>
+      <view class="unit">
+        <view>
+          <text>联系人</text>
+        </view>
+        <view class="orgName title" wx:if="{{forms.authStatus=='0'}}">
+          <text>需要您提前认证个人信息</text>
+          <text class="to-confirm" catchtap="toConfirm">去认证</text>
+        </view>
+        <view wx:else class="orgName title"><text>{{forms.personName}}</text></view>
+      </view>
+    </view>
+    <!-- 手机号码 -->
+    <view>
+      <view class="unit">
+        <view>
+          <text class="required">*</text>
+          <text>手机号码</text>
+        </view>
+        <view class="orgName title">
+          <input type="number" disabled bindblur="checkPhone" bindinput="handlePhone" class="orgName-input" value="{{forms.mobile}}" placeholder-style="color:#989898" placeholder="请输入手机号码" maxlength="11" />
+        </view>
+      </view>
+      <view wx:if="{{phoneError&&!forms.mobile}}" class="error">{{error[8]}}</view>
+    </view>
+    <!-- 职务 -->
+    <view>
+      <view class="unit">
+        <view>
+          <text class="required">*</text>
+          <text>职务</text>
+        </view>
+        <view class="orgName title">
+          <input class="orgName-input" bindinput="getjobName" value="{{forms.job}}" placeholder-style="color:#989898" placeholder="请填写联系人职务，如业务经理" maxlength="50" />
+        </view>
+      </view>
+    </view>
+  </form>
+  <view class="tips">若需修改第三方授权信息请到卧涛网页端进行修改</view>
+  <view class="flex foot">
+    <view bindtap="submitForm">提交信息</view>
+  </view>
+</view>
+
+<!-- 行业类型多选底部弹框：渐深的背景层 -->
+<view class='{{bg}}' catchtap="hidden"> </view>
+<!-- 底部弹出层 -->
+<view class="element-wrapper" animation="{{animation}}">
+  <view class="element">
+    <text catchtap="hidden">取消</text>
+    <text class="right-bt" catchtap="industryTypeChange">确定</text>
+  </view>
+  <scroll-view scroll-y="true" show-scrollbar="{{scrollTop}}" enhanced style="height:360rpx;">
+    <checkbox-group bindchange="checkboxChange">
+      <label class="project-content-item flex" wx:for="{{industryTypeList}}" wx:key="idx">
+        <view class="item-checked">
+          <checkbox class="flex" value="{{item.id}}" checked="{{item.checked}}" disabled="{{item.disabled}}" />
+        </view>
+        <view class="item-name" style="color:{{item.checked?'#07C193':''}}">{{item.name}}</view>
+      </label>
+    </checkbox-group>
+  </scroll-view>
+</view>

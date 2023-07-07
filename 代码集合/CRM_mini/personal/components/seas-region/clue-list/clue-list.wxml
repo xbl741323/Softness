@@ -1,0 +1,29 @@
+<wxs src="/utils/clue/clue.wxs" module="tools"></wxs>
+
+<view class="clue-info-card" wx:for="{{clueInfo}}">
+  <view class="user-info clue-info-item">
+    <text class="user-name">{{item.clueNo}}</text>
+    <text class='clue-info-state' wx:if="{{item.isBind}}">已绑定</text>
+    <image bindtap="copyText" data-text="{{item.clueNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+  </view>
+  <view class="company">
+    <text>{{item.companyName}}</text>
+  </view>
+  <view class="clue-info-item">
+    <text>联系人:</text>
+    <text wx:for="{{item.clueCompanyContactList}}">{{item.contactName}} {{item.mobile}}</text>
+  </view>
+  <view class="clue-info-item">
+    <text bindtap="click">创建时间:</text>
+    <text>{{item.createTime}}</text>
+  </view>
+  <view class="clue-info-item">
+    <text>线索归属:</text>
+    <text>{{item.clueAttributionEmpName}}</text>
+  </view>
+  <view class="clue-info-item">
+    <text>业务员:</text>
+    <text>{{item.clueSalesmanEmpName}}</text>
+  </view>
+
+</view>

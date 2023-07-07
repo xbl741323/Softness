@@ -1,0 +1,71 @@
+<!--classRoom/pages/detail/info/info.wxml-->
+<wxs src="../../../../utils/common/filters.wxs" module="tools"></wxs>
+<import src="../wxParse/wxParse.wxml" />
+<view>
+  <view class="info-title">
+    <view>{{dataList.title}}</view>
+    <view class="info-icon">
+      <view class="info-item info-sty" wx:if="{{dataList.categoryId}}">{{tools.returnCate(dataList.categoryId)}}</view>
+      <view class="info-item">
+        <image src="../../../../image/common/icon_calendar@2x.png" mode="" class="icon_a"/>
+        <text>{{tools.returnList(0,10,dataList.createTime)}}</text>
+      </view>
+      <view class="info-item">
+        <image src="../../../../image/common/icon_browse@2x.png" mode="" class="icon_b"/>
+        <text>{{dataList.pageViews}}次</text>
+      </view>
+      <view class="info-item" bindtap="handleCollect">
+        <image src="../../../../image/common/icon_Collection@2x.png" mode="" class="icon_a" wx:if="{{!isCollected}}"/>
+        <image src="../../../../image/common/icon_Collection_yellow@2x.png" mode="" class="icon_a" wx:else/>
+        <text>{{isCollected ? "已收藏" : "收藏"}}</text>
+      </view>
+    </view>
+    <view class="info-type" wx:if="{{dataList.areaFullName}}">
+      <view class="info-i" wx:if="{{dataList.level}}">{{tools.filterLevel(dataList.level)}}</view>
+      <view class="info-i" wx:if="{{dataList.areaFullName}}">{{dataList.areaFullName}}</view>
+      <view class="info-i" wx:if="{{dataList.optionName}}">{{dataList.optionName}}</view>
+    </view>
+    <view class="info-time" wx:if="{{dataList.applyStartTime}}">申报起止日期：{{dataList.applyStartTime}}~{{dataList.applyEndTime}}</view>
+  </view>
+  <!-- 内容 -->
+  <view class="info-content" wx:for="{{articleArray}}" wx:key="index">
+    <view>
+      <template is="wxParse" data="{{wxParseData:item}}" />
+    </view>
+  </view>
+  <!-- 本文附件 -->
+  <view class="info-appendix" wx:if="{{dataList.filesList.length>0}}">
+    <text class="appendix-tit">本文附件</text>
+    <view class="appendix-list" >
+      <view wx:for="{{dataList.filesList}}" wx:key="index" bindtap="toFileDetail" data-item="{{item}}">
+        <view class="file_item">
+          <view class="file_main">
+            <image wx:if="{{tools.filterElement(fileTypeArr,item.fileType)}}" src="{{iconUrl[item.fileType]}}" class="file_icon"/>
+            <text class="file_text" wx:if="{{item.isPay == 1}}">付费</text>
+            <image src="{{imageUrl+item.fileImageUrl}}" mode="" class="file_priview"/>
+            <view class="file_title">{{item.fileName}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 推荐产品 -->
+  <view class="info-product"  wx:if="{{index==0&&prodList&&prodList.length>0}}">
+    <view>
+      <text class="pro_icon"></text>
+      <text class="pro_tit">推荐产品</text>
+    </view>
+    <view class="pro_list">
+      <view class="pro_item" wx:for="{{prodList}}" wx:key="index" bindtap="skipToSpecial" data-item="{{item}}">
+        <image src="{{imageUrl+item.imageUrl}}" mode=""/>
+        <text class="pro_title">{{item.spuTitle}}</text>
+        <text class="pro_price" wx:if="{{item.isOnline}}">
+          <text wx:if="{{item.spuMaxAmount==item.spuMinAmount}}">￥{{item.spuMinAmount}}</text>
+          <text wx:else>￥{{item.spuMinAmount}}起</text>
+          <text></text>
+        </text>
+        <text class="pro_price" wx:else>面议</text>
+      </view>
+    </view>
+  </view>
+</view>

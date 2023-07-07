@@ -1,0 +1,36 @@
+/* custom-tab-bar/index.wxss */
+
+.tab-bar-contain {
+  display: flex;
+  height: 98rpx;
+  background: #ffffff;
+  z-index: 99999;
+}
+
+.ios-sty {
+  padding-bottom: 26rpx !important;
+}
+
+.tab-bar-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 24rpx;
+  color: #A5A5A5;
+}
+
+.active-tab-sty {
+  color: #36A6FE;
+}
+
+.tab-image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-top: 8rpx;
+}
+
+.tab-text {
+  margin-top: 4rpx;
+}

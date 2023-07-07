@@ -1,0 +1,6 @@
+function getWeekDayByDate(yyyymmdd) {
+ 
+}
+module.exports = {
+  getWeekDayByDate: getWeekDayByDate
+}

@@ -1,0 +1,8 @@
+{
+
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "clue-item": "/personal/components/seas-region/clue-item/clue-item",
+    "empty-page": "/personal/components/empty-page/empty-page"
+  }
+}

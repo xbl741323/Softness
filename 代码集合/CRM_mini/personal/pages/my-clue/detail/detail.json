@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "线索详情",
+  "usingComponents": {
+    "clue-info": "/personal/components/my-clue/clue-info/clue-info",
+    "follow-records": "/personal/components/my-clue/follow-records/follow-records",
+    "query-emp": "/components/common/query-emp/query-emp",
+    "order-records": "/personal/components/my-clue/order-records/order-records"
+  }
+}

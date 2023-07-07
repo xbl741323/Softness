@@ -1,0 +1,8 @@
+/* personal/pages/my-clue/modify/modify.wxss */
+.modify-clue {
+  padding-bottom: 20rpx;
+}
+
+#van-toast {
+  text-align: center;
+}

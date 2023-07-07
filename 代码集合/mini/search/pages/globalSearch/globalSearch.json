@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "maskView": "/components/search/maskView/maskView",
+    "classify-selection": "/components/search/classifySelection/classifySelection",
+    "area": "/components/search/area/area",
+    "level": "/components/search/level/level",
+    "type": "/components/search/type/type",
+    "putunder": "/components/search/putunder/putunder",
+    "profession": "/components/search/profession/profession",
+    "charge": "/components/search/charge/charge",
+    "sort": "/components/search/sort/sort",
+    "most": "/components/search/filters/most",
+    "areaItem": "/components/index/areaItem/areaItem",
+    "courseItem": "/components/search/courseItem/courseItem"
+  }
+}

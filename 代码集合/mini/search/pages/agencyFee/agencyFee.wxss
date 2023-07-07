@@ -1,0 +1,5 @@
+/* search/pages/agencyFee/agencyFee.wxss */
+.agency-img{
+    width: 100%;
+    height: 1666rpx;
+}

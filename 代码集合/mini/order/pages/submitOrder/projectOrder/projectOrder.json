@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "确认订单",
+  "usingComponents": {
+    "projectInfo":"/components/order/submitOrder/projectInfo/projectInfo",
+    "addressItem":"/components/personal/addressInfo/addressInfo",
+    "navBar":"/components/common/navBar/navBar"
+  },
+  "navigationStyle": "custom"
+}

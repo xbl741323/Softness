@@ -1,0 +1,27 @@
+// 通信代码定义
+export const CODE_0 = 0; // 连接成功
+export const CODE_1 = 1; // 连接失败
+export const CODE_2 = 2; // 退款失败
+export const CODE_3 = 3; // 退款状态未名
+export const CODE_401 = 401; // 用户凭证已过期
+export const CODE_403 = 403; // 权限不足
+export const CODE_777 = 777; // 状态码
+export const CODE_1000 = 1000; // 连接成功
+export const CODE_1001 = 1001; // 连接失败
+export const CODE_1006 = 1006; // 短信验证码接口出错
+export const CODE_1003 = 1003; // 其他错误状态码返回
+export const CODE_2000 = 2000; // 其他错误状态码返回
+export const CODE_2001 = 2001; // 其他错误状态码返回
+export const CODE_2002 = 2002; // 其他错误状态码返回
+export const CODE_2003 = 2003; // 其他错误状态码返回
+export const CODE_2004 = 2004; // 其他错误状态码返回
+export const CODE_2005 = 2005; // 其他错误状态码返回
+export const CODE_2006 = 2006; // 其他错误状态码返回
+export const CODE_2007 = 2007; // 其他错误状态码返回
+export const CODE_2008 = 2008; // 其他错误状态码返回
+export const CODE_2009 = 2009; // 其他错误状态码返回
+export const CODE_2011 = 2011; // 其他错误状态码返回
+export const CODE_4002 = 4002; // 其他错误状态码返回
+export const CODE_40001 = 40001; // 其他错误状态码返回
+export const CODE_90002 = 90002; // 其他错误状态码返回
+export const CODE_90007 = 90007; // 其他错误状态码返回

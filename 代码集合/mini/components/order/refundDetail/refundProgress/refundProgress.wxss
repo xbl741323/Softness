@@ -1,0 +1,224 @@
+/* components/order/refundDetail/refundProgress/refundProgress.wxss */
+.refund-progress {
+  background: #ffffff;
+  padding: 32rpx 24rpx;
+  border-radius: 20rpx;
+}
+
+/* 退款拒绝
+*/
+.refund-refuse {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.refuse-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.refuse-time {
+  color: #333333;
+  font-size: 28rpx;
+  margin-top: 32rpx;
+  margin-bottom: 16rpx;
+}
+
+.refuse-reason {
+  color: #333333;
+  font-size: 28rpx;
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.refuse-reason>text:nth-of-type(1) {
+  width: 140rpx;
+}
+
+.refuse-reason>text:nth-of-type(2) {
+  display: flex;
+  width: 520rpx;
+}
+
+.refuse-desc {
+  color: #999999;
+  font-size: 24rpx;
+}
+
+/* 退款关闭
+*/
+.refund-close {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.close-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.close-time {
+  color: #333333;
+  font-size: 28rpx;
+  margin-top: 32rpx;
+  margin-bottom: 16rpx;
+}
+
+.close-desc {
+  color: #999999;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+
+/* 退款完成
+*/
+.refund-completed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.completed-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 32rpx;
+}
+
+.completed-title image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 12rpx;
+}
+
+.completed-time {
+  color: #333333;
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+}
+
+.completed-time:last-child {
+  margin-bottom: 0;
+}
+
+/* 退款中
+*/
+.refusing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.refusing-title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 32rpx;
+}
+
+.refusing-contain {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.left-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10rpx;
+  margin-right: 24rpx;
+}
+
+.left-progress>text:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  width: 20rpx;
+  height: 20rpx;
+  background: #0ad677;
+  border-radius: 20rpx;
+}
+
+.left-progress>text:nth-of-type(2) {
+  display: flex;
+  flex-direction: column;
+  width: 2rpx;
+  height: 198rpx;
+  background: #E4E4E4;
+}
+
+.left-progress>text:nth-of-type(3) {
+  display: flex;
+  flex-direction: column;
+  width: 20rpx;
+  height: 20rpx;
+  background: #E4E4E4;
+  border-radius: 20rpx;
+}
+
+.right-progress-desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.two-step {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 47rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.two-step-title {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 16rpx;
+  font-weight: bold;
+}
+
+.two-step-desc {
+  line-height: 36rpx;
+}
+
+.two-step-time {
+  margin-top: 16rpx;
+  color: #999999;
+}
+
+.one-step-title {
+  color: #999999;
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+}
+
+.one-step-time {
+  color: #999999;
+}
+
+.one-step {
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  color: #666666;
+}

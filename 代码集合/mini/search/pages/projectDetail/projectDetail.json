@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "产品详情",
+  "usingComponents": {
+    "pricePanel":"/components/project/pricePanel/pricePanel",
+    "priceInfo":"/components/project/priceInfo/priceInfo",
+    "footBar":"/components/product/footBar/footBar"
+  }
+}

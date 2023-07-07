@@ -1,0 +1,207 @@
+html {
+    font-family:  Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
+    font-size: 16px;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+/* app.html */
+.btn-custom-cancel {
+    float: right;
+    margin-left: 10px;
+  }
+
+  .login_wrapper .login .el-tabs__item {
+    font-size: 22px !important;
+  }
+
+  :-moz-placeholder {
+    /* padding-left: 10px; */
+    color: #999999;
+    font-family: Source Han Sans CN;
+  }
+
+  ::-moz-placeholder {
+    /* padding-left: 10px; */
+    color: #999999;
+    font-family: Source Han Sans CN;
+  }
+
+  ::-webkit-input-placeholder {
+    /* padding-left: 10px; */
+    color: #999999;
+    font-family: Source Han Sans CN;
+  }
+
+  :-ms-input-placeholder {
+    /* padding-left: 10px; */
+    color: #999999;
+    font-family: Source Han Sans CN;
+  }
+
+  .el-breadcrumb__inner a,
+  .el-breadcrumb__inner.is-link {
+    font-weight: normal !important;
+  }
+
+  .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+    font-weight: bold;
+    color: #000;
+  }
+
+  .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+    font-weight: bold;
+    color: #000;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  .el-breadcrumb__inner{
+    transition: 0.3s;
+  }
+  .el-breadcrumb__inner:hover{
+    color: #36A6FE !important;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+  li {list-style-type:none;}
+  
+
+.container {
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .title {
+    font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    display: block;
+    font-weight: 300;
+    font-size: 100px;
+    color: #35495e;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    font-weight: 300;
+    font-size: 42px;
+    color: #526488;
+    word-spacing: 5px;
+    padding-bottom: 15px;
+  }
+  
+  .links {
+    padding-top: 15px;
+  }
+  .icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+ .btn-custom-cancel {
+  float: right;
+  margin-left: 10px;
+}
+
+.login_wrapper .login .el-tabs__item {
+  font-size: 22px !important;
+}
+
+:-moz-placeholder {
+  /* padding-left: 10px; */
+  color: #999999;
+  font-family: Source Han Sans CN;
+}
+
+::-moz-placeholder {
+  /* padding-left: 10px; */
+  color: #999999;
+  font-family: Source Han Sans CN;
+}
+
+::-webkit-input-placeholder {
+  /* padding-left: 10px; */
+  color: #999999;
+  font-family: Source Han Sans CN;
+}
+
+:-ms-input-placeholder {
+  /* padding-left: 10px; */
+  color: #999999;
+  font-family: Source Han Sans CN;
+}
+
+.el-breadcrumb__inner a,
+.el-breadcrumb__inner.is-link {
+  font-weight: normal !important;
+}
+
+.el-breadcrumb__item:last-child .el-breadcrumb__inner {
+  font-weight: bold;
+  color: #000;
+}
+
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+  font-weight: bold;
+  color: #000;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.el-breadcrumb__inner{
+  transition: 0.3s;
+}
+.el-breadcrumb__inner:hover{
+  color: #36A6FE !important;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+li {list-style-type:none;}
+
+.el-loading-spinner .circular{
+  width: 42px;
+  height: 42px;
+  animation: loading-rotate 2s linear infinite;
+  display: none;
+}
+.el-loading-spinner{
+  background: url(assets/images/wotao_loading.gif) center center no-repeat;
+  background-size: 100%;
+  width: 188px !important;
+  height: 188px !important;
+  position: fixed !important;
+  top: 30% !important;
+  left: 45% !important;
+  z-index: -1 !important;
+}
+.el-loading-text{
+  margin-top: 190px !important;
+  color: #666666 !important;
+}

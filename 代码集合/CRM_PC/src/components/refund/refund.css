@@ -1,0 +1,347 @@
+.aaa {
+  width: 100%;
+  background: #ffffff;
+  margin-left: 10px;
+  padding: 20px 80px 20px 30px;
+}
+.aaa >>> .el-table th > .cell {
+  text-align: center;
+}
+
+.aaa >>> .el-table .cell {
+  text-align: center;
+}
+.ceshi {
+  position: relative;
+  left: 15px;
+  top: -4px;
+}
+.ccc {
+  color: #d1d1d1 !important;
+}
+.bottom-detail .el-tabs--border-card {
+  background: #fff;
+  border: 0;
+  border-top: 0.1px solid #dcdfe6;
+  box-shadow: 0 0 0 #fff;
+}
+.el-timeline-item__tail {
+  position: absolute;
+  left: 4px;
+  height: 120%;
+  border-left: 2px solid #e4e7ed;
+}
+.cell-blue {
+  color: #36a6fe;
+  cursor: pointer;
+}
+.contracts {
+  /* height: 100%; */
+  margin-bottom: 0;
+  background: #ffffff;
+}
+.note-fee{
+  text-align: right;
+  margin: 0 260px 10px 0;
+}
+.note-fee span{
+  margin-left: 30px;
+}
+.flex-justify{
+  display: flex;
+  justify-content: space-between;
+}
+.record-top {
+  margin-top: 16px;
+}
+.warning-txt{
+  color: red;
+}
+.success-txt{
+  color: green;
+}
+
+.order-noo{
+  font-size: 14.5px;
+  font-weight: bold;
+  position: relative;
+  color: #2c3e50;
+  line-height: 24px;
+}
+.person{
+  position: relative;
+  top: 3.5px;
+  object-fit: contain;
+}
+.txt-ing{
+  color: #333 !important;
+  font-weight: 550 !important;
+}
+.txt-ever{
+  color: #999 !important;
+}
+.txt-ing, .txt-ever{
+  font-size: 12px;
+  font-weight: 500;
+}
+.persontwo{
+  position: relative;
+  top: 5.5px;
+  object-fit: contain;
+}
+.belong{
+  display: inline-block;
+  width: 42px;
+  height: 1.8px;
+  background: #999;
+  position: relative;
+  top: -4px;
+  left: 5px;
+}
+.line-ing{
+  background: #36a6fe !important;
+}
+.dispicture{
+  width: 24px;
+  height: 24px;
+  position: relative;
+  top: 7px;
+  margin-left: 3px;
+}
+.circleBluec {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  border-radius: 50%;
+  position: relative;
+  background: #36a6fe;
+  top: -2px;
+  margin-right: 4px;
+}
+.circleRedc {
+  width: 6px;
+  height: 6px;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 4px;
+  top: -2px;
+  background: red;
+}
+.successc {
+  font-weight: bolder;
+  font-size: 12px;
+  color: green;
+  margin-right: 4px;
+}
+.details {
+  min-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+}
+.table {
+  margin-left: 20px;
+  width: 100%;
+}
+.refund-status{
+  margin-left: 20px;
+}
+.refund-status-txt{
+  font-size: 16px;
+  color: #333;
+}
+.top-detail {
+  /* margin-top: 20px; */
+  background: #fff;
+  padding-bottom: 15px;
+}
+.processnumber {
+  font-weight: 300;
+  font-size: 20px;
+  margin-left: -12px;
+}
+.choose-task{
+  margin-bottom: 20px;
+}
+.flex-left{
+  display: flex;
+  /* justify-content: flex-start;   */
+  align-items: center;
+}
+.top-detail tr {
+  height: 30px;
+  font-size: 14px;
+  text-align: left;
+}
+.top-detail td {
+  font-size: 14px;
+  color: #333;
+  width: 200px;
+}
+.top-detail th {
+  padding-top: 25px;
+}
+.topBtn {
+  padding: 25px;
+}
+.circle {
+  position: relative;
+  top: 2px;
+  margin-left: 5px;
+  width: 14px;
+}
+.delete {
+  margin-left: 30px;
+}
+.cell-blue {
+  display: inline-block;
+  color: #36a6fe;
+  cursor: pointer;
+  max-width: 140px;
+}
+.tabottom {
+  margin-bottom: 50px;
+}
+.bottom-detail {
+  margin-top: 16px;
+  background: #fff;
+}
+.list-header {
+  display: flex;
+  margin: 0 0;
+}
+.rectangle {
+  width: 5px;
+  height: 15px;
+  background: #0aa1ed;
+  border-radius: 3px;
+  padding: 0;
+}
+.text {
+  font-size: 14px;
+  padding: 10px 10px;
+  margin: 3px 0;
+}
+.process-record {
+  background: #fff;
+  margin-bottom: 30px;
+}
+.examine {
+  margin-top: 16px;
+  background: #fff;
+  margin-bottom: 80px;
+}
+.examine-content {
+  width: 800px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+.button {
+  margin: 30px;
+  text-align: center;
+}
+.unpassed {
+  margin-left: 50px;
+}
+.showBottom {
+  margin-bottom: 200px;
+}
+.achievecode:hover {
+  background: #ffffff;
+  color: #606266;
+  border-color: #dcdfe6;
+}
+.head-refund{
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.head-refund p{
+  font-weight: 550;
+}
+.refundDesc{
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.refundDesc p{
+  font-weight: 550;
+}
+.pay-record{
+  color: #36a6fe;
+  margin: 0;
+  cursor: pointer;
+}
+.pay-amount{
+  margin: 0;
+}
+.refund-success{
+  color: #36a6fe;
+  cursor: pointer;
+}
+.wait-handle{
+  color: red;
+  cursor: pointer;
+}
+.spa{
+  padding-left: 5px;
+  border-left: #36a6fe 3px solid;
+}
+.task-table{
+  margin-top: 10px;
+}
+.circleBlue{
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #36a6fe;
+  margin-right: 6px;
+  margin-top: 7px !important;
+}
+.schedule{
+  max-height: 520px;
+  overflow: auto;
+  /* display: grid;
+  grid-template-columns: repeat(2,1fr); */
+}
+.schedule span{
+  font-size: 14px;
+  font-weight: 600;
+}
+.to-start{
+  color: #FF6600;
+  font-weight: 600;
+}
+.in-service{
+  background: #f3ab03;
+}
+.success {
+  font-weight: bolder;
+  font-size: 12px;
+  display: inline-block;
+  color: green;
+  margin-top: 2px;
+  margin-right: 6px;
+}
+.process-name{
+  font-size: 14px;
+  font-weight: 550;
+  color: #000;
+}
+.operate-name{
+  color: #666;
+}
+.operate{
+  margin-left: 40px;
+}
+.image_fix_sty{
+  position: absolute;
+  top: 0;
+  z-index: 10000;
+}
+.el-image-viewer__close{
+  background: rgb(238, 235, 235) !important;
+}

@@ -1,0 +1,89 @@
+<!--personal/pages/my-order/detail/class-member/class-member.wxml-->
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+<view class="order-contain">
+  <!-- 订单信息 -->
+  <view class="order-info">
+    <view class="common-delive-sty hidden-border short-height">
+      <view class="common-delive-view">
+        <text>{{orderInfo.orderNo}}</text>
+        <image catchtap="copyText" data-text="{{orderInfo.orderNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+      </view>
+      <text class="small-font">{{orderInfo.createTime}}</text>
+    </view>
+    <view class="common-delive-sty no-height">
+      <text class="strong-sty overflow-sty" wx:if="{{pageForm == 1}}">{{orderInfo.baseTitle}}</text>
+      <text class="strong-sty" wx:if="{{pageForm == 2}}">卧涛课堂VIP</text>
+      <text wx:if="{{pageForm == 1}}">
+        <text>订单状态：</text>
+        <text class="{{orderInfo.orderStatus==2?'blue-sty':(orderInfo.orderStatus==0||orderInfo.orderStatus==1)?'orange-sty':''}}">{{orderInfo.deleted==1?'已删除':orders.filterCourseOrderStatus(orderInfo.orderStatus)}}</text>
+      </text>
+      <text wx:if="{{pageForm == 2}}">
+        <text>订单状态：</text>
+        <text class="{{orderInfo.orderStatus==2?'blue-sty':(orderInfo.orderStatus==0||orderInfo.orderStatus==1)?'orange-sty':''}}">{{orders.filterMemberOrderStatus(orderInfo.orderStatus,orderInfo.validStart,orderInfo.validEnd)}}</text>
+      </text>
+    </view>
+    <block wx:if="{{pageForm == 1}}">
+      <view class="common-line-sty top-sty strong-sty">
+        <text>{{orderInfo.authName}}</text>
+        <text class="vip-sty" wx:if="{{orderInfo.orderStatus==2}}">VIP</text>
+      </view>
+      <view class="common-line-sty">主体ID：{{orderInfo.userNo}}</view>
+      <view class="common-line-sty">联系人：{{orderInfo.accountSubject||'-'}}</view>
+      <view class="common-line-sty">联系电话：{{orderInfo.accountMobileNotSensitive}}</view>
+      <view class="common-line-sty">订单归属：{{orderInfo.belongName}}</view>
+    </block>
+    <block wx:else>
+      <view class="common-line-sty top-sty strong-sty">
+        <text wx:if="{{orderInfo.authName!=null}}">{{orderInfo.authName}}</text>
+        <text wx:else class="gray-sty">未填写单位/个人名称</text>
+        <text class="vip-sty" wx:if="{{orderInfo.orderStatus==2}}">VIP</text>
+      </view>
+      <view class="common-line-sty">主体ID：{{orderInfo.userNo}}</view>
+      <view class="common-line-sty">联系人：{{orderInfo.accountSubject||'-'}}</view>
+      <view class="common-line-sty">联系电话：{{orderInfo.accountMobileNotSensitive}}</view>
+      <view class="common-line-sty">订单归属：{{orderInfo.belongName}}</view>
+      <view class="common-line-sty add-border">
+        <text wx:if="{{orderInfo.validStart!=null}}">有效期：{{orderInfo.validStart}}至{{orderInfo.validEnd}}</text>
+        <text wx:else>有效期：-</text>
+      </view>
+    </block>
+  </view>
+  <!-- 订单支付信息 -->
+  <view class="pay-info">
+    <view class="common-delive-sty" wx:if="{{pageForm == 1}}">
+      <text>课程单价</text>
+      <text>{{orders.fixPrice(orderInfo.tradingCurrentPrice)}}</text>
+    </view>
+    <view class="common-delive-sty" wx:if="{{pageForm == 1}}">
+      <text>订单金额</text>
+      <text>{{orders.fixPrice(orderInfo.orderAmount)}}(VIP价)</text>
+    </view>
+    <view class="common-delive-sty" wx:if="{{pageForm == 1&&orderInfo.tradingThirdFee!=null&&orderInfo.tradingThirdFee!=0}}">
+      <text>第三方费用</text>
+      <text>{{orders.fixPrice(orderInfo.tradingThirdFee)}}</text>
+    </view>
+    <view class="common-delive-sty" wx:if="{{pageForm == 2}}">
+      <text>支付金额</text>
+      <text>{{orders.fixPrice(orderInfo.orderAmount)}}</text>
+    </view>
+    <view class="common-delive-sty">
+      <text>支付时间</text>
+      <text wx:if="{{orderInfo.payTime!=null}}">{{orderInfo.payTime}}</text>
+      <text wx:else>-</text>
+    </view>
+    <view class="common-delive-sty" wx:if="{{pageForm == 1}}">
+      <text>支付方式</text>
+      <text wx:if="{{orderInfo.payType!=null&&orderInfo.orderStatus==2}}">{{ orders.filterPayWay(orderInfo.payType)}}</text>
+      <text wx:else>-</text>
+    </view>
+    <view class="common-delive-sty" wx:if="{{pageForm == 2}}">
+      <text>支付方式</text>
+      <text wx:if="{{orderInfo.payType!=null&&orders.filterMemberOrderStatus(orderInfo.orderStatus)=='orders.filterMemberOrderStatus(orderInfo.orderStatus)'}}">{{ orders.filterPayWay(orderInfo.payType)}}</text>
+      <text wx:else>-</text>
+    </view>
+    <view class="common-delive-sty">
+      <text>支付状态</text>
+      <text>{{orders.filterPayStatus(orderInfo.payStatus)}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,164 @@
+/* personal/pages/order/search-order.wxss */
+page {
+  height: 100%;
+  background: #F5F7FB;
+}
+.search-order{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.order-tabs{
+  display: flex;
+}
+
+.order-header{
+  top: 0;
+  width: 100%;
+  position: fixed;
+  background: #F5F7FB;
+  display: flex;
+  flex-direction: column;
+}
+
+.out-drop-sty {
+  box-shadow: none !important;
+  height: 80rpx !important;
+  padding: 5rpx;
+}
+
+/*
+搜索框和背景区域
+*/
+
+.top-fixed {
+  width: 100%;
+  margin: 24rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2rpx solid #f7f5f5;
+}
+
+.search-contain {
+  display: flex;
+  width: 640rpx;
+  align-items: center;
+  height: 72rpx;
+  background: #ffffff;
+  border-radius: 36rpx;
+  border: 2rpx solid #36A6FE;
+}
+
+
+.search-contain image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 32rpx;
+}
+
+.search-contain input {
+  width: 500rpx;
+  display: inline-block;
+  color: #666666;
+  font-size: 28rpx;
+  margin-left: 8rpx;
+}
+
+.active-input-sty {
+  width: 450rpx !important;
+}
+
+.fixed-search {
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-left: 12rpx;
+  padding: 20rpx 0;
+}
+
+.close-icon {
+  position: absolute;
+  right: 110rpx;
+  z-index: 9 !important;
+}
+
+.button-group{
+  width: 100%;
+  display: flex;
+}
+
+.reset{
+  width: 50%;
+  height: 40rpx;
+  padding: 30rpx;
+  text-align: center;
+  color: #0F89FC;
+  margin-top: 20rpx;
+  border-top: 1px solid #E5E6EB;
+}
+
+.confirm{
+  width: 50%;
+  padding: 30rpx;
+  text-align: center;
+  background: #0F89FC;
+  color: #fff;
+  margin-top: 20rpx;
+  border-top: 1px solid #E5E6EB;
+}
+
+/* 列表 */
+.search-body{
+  margin-top: 220rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-item{
+  width: 94%;
+  margin: 10rpx 0;
+}
+.empty-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50%;
+}
+
+.active-empty-sty {
+  margin-top: 70% !important;
+}
+
+.empty-page>image {
+  width: 320rpx;
+  height: 224rpx;
+}
+
+.empty-page>text:nth-of-type(1) {
+  margin: 12rpx 0;
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.empty-page>text:nth-of-type(2) {
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.empty-page>view {
+  margin-top: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 344rpx;
+  height: 80rpx;
+  background: #0082fc;
+  border-radius: 20rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+}

@@ -1,0 +1,353 @@
+<!--pages/square.wxml-->
+<wxs src="/utils/common/filters.wxs" module="handles"></wxs>
+<view class="square-body">
+    <view class="square-nav">
+      <view class="square-item" wx:for="{{topNavs}}" wx:key="index" data-index="{{item.index}}" bindtap="changeIndex">
+        <text class="item-title {{checkIndex == item.index?'item-title-active':''}}">{{item.title}}</text>
+        <text class="item-lang {{checkIndex == item.index?'item-lang-active':''}}"></text>
+      </view>
+    </view>
+    <!-- 资讯广场 -->
+    <view wx:if="{{checkIndex==0}}" class="info-body">
+      <view class="question-button" bindtap="initiateQuestion" wx:if="{{listIndex == 2}}">提问</view>
+      <view class="info-nav">
+        <view class="filter-item-child" wx:for="{{list}}" wx:key="index" data-index="{{item.index}}" bindtap="changeChildIndex">
+          <text class="item-title-child {{listIndex == item.index?'item-title-active-child':''}}">{{item.title}}</text>
+          <text class="item-lang-child {{listIndex == item.index?'item-lang-active-child':''}}"></text>
+        </view>
+      </view>
+      <!-- 通知公告 -->
+      <view class="class-box" wx:if="{{listIndex==0}}">
+        <view class="view-courses">
+          <!-- 搜索页面 -->
+          <view class="top-fixed">
+            <view class="search-contain">
+              <view class="search-contain-left" bindtap="skipToArea">
+                <text>{{handles.handleStr(province)}}</text>
+                <image src="../../image/index/area_icon.png"></image>
+              </view>
+              <text class="lang-sty"></text>
+              <view class="search-contain-right">
+                <input bindinput="getKeyword" bindconfirm="getKeywords" placeholder-class="holder-style" placeholder="请输入关键词" />
+              </view>   
+            </view>
+            <text class="fixed-search" bindtap="handleSearch">搜索</text>
+          </view>
+          <!-- 筛选项 -->
+          <view class="filter-content {{openFilter?'global-tip':''}}" catchtouchmove="true" bindtap="closeShade">
+            <scroll-view scroll-x="true" class="filter-contain" enhanced="{{true}}" show-scrollbar="{{false}}">
+              <view class="filter-scroll">
+              <block wx:for="{{filterList}}" wx:key="index" >
+                <view class="filter-item" wx:if="{{item.attr}}" catchtap="changeType" data-id="{{item.id}}" data-item="{{item}}">
+                  <view class="filter-item">
+                    <text class="filter-scroll-sty" wx:if="{{item.id==4}}">{{handles.filterOption(item.name,7)}}</text>
+                    <text class="filter-scroll-sty" wx:elif="{{item.id==1||item.id==3}}">{{handles.filterOption(item.name,3)}}</text>
+                    <text class="filter-scroll-sty" wx:else>{{handles.filterOption(item.name,4)}}</text>
+                    <text class="filter-angle-sty"></text>
+                  </view>
+                </view>
+              </block> 
+              </view>
+            </scroll-view>
+            <view class="filter-list" wx:if="{{openFilter}}">
+              <view class="filtrate-wrapper">
+                <view class="filtrate-item">
+                  <view class="rank-item {{item.no==(chooseId==1?areaNo:chooseId==2?level:chooseId==3?putunder:chooseId==4?month:sort)?'chooseRank':''}}" wx:for="{{rankData}}" wx:key="index" bindtap="toggleRank" data-item="{{item}}">
+                    {{item.name}}
+                  </view>
+                </view>
+                <view class="filtrate-btn">
+                  <view class="filtrate-reset" bindtap="reset">重置</view>
+                  <view class="filtrate-submit" bindtap="handleSearch">搜索{{viewName}}</view>
+                </view>
+              </view>
+            </view>
+            
+          </view>
+          <!-- 通知公告列表 -->
+          <view class="view-course-list" wx:if="{{!noData}}">
+            <infoItem wx:for="{{policyList}}" bindtap="toPolicyDetail" data-item="{{item}}" policyInfo="{{item}}" wx:key="index"></infoItem>
+          </view>
+          <view class="view-course-list" wx:else>
+            <view class="no-more">暂无数据</view>
+          </view>
+        </view>
+      </view>
+      <!-- 行业资讯 -->
+      <view class="class-box" wx:if="{{listIndex==1}}">
+        <view class="view-courses">
+          <!-- 搜索页面 -->
+          <view class="top-fixed">
+            <view class="search-contain">
+              <view class="search-contain-left" bindtap="skipToArea">
+                <text>{{handles.handleStr(province)}}</text>
+                <image src="../../image/index/area_icon.png"></image>
+              </view>
+              <text class="lang-sty"></text>
+              <view class="search-contain-right">
+                <input bindinput="getKeyword" bindconfirm="getKeywords" placeholder-class="holder-style" placeholder="请输入关键词" />
+              </view>
+            </view>
+            <text class="fixed-search" bindtap="handleSearch">搜索</text>
+          </view>
+          <!-- 筛选项 -->
+          <view class="filter-content {{openFilter?'global-tip':''}}" catchtouchmove="true" bindtap="closeShade">
+            <scroll-view scroll-x="true" class="filter-contain" enhanced="{{true}}" show-scrollbar="{{false}}">
+              <view class="filter-scroll">
+              <block wx:for="{{viewList}}" wx:key="index" >
+                <view class="filter-item" wx:if="{{item.attr}}" catchtap="changeType" data-id="{{item.id}}" data-item="{{item}}">
+                  <view class="filter-item">
+                    <text class="filter-scroll-sty">{{item.name}}</text>
+                    <text class="filter-angle-sty"></text>
+                  </view>
+                </view>
+              </block> 
+              </view>
+            </scroll-view>
+            <view class="filter-list" wx:if="{{openFilter}}">
+              <view class="filtrate-wrapper">
+                <view class="filtrate-item">
+                  <view class="rank-item {{item.no==(chooseId==5?class:sort)?'chooseRank':''}}" wx:for="{{rankData}}" wx:key="index" bindtap="toggleRank" data-item="{{item}}">
+                    {{item.name}}
+                  </view>
+                </view>
+                <view class="filtrate-btn">
+                  <view class="filtrate-reset" bindtap="reset">重置</view>
+                  <view class="filtrate-submit" bindtap="handleSearch">搜索{{viewName}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- 行业资讯列表 -->
+          <view class="view-course-list" wx:if="{{!noData}}">
+              <infoItem wx:for="{{industryInfoList}}" bindtap="toPolicyDetail" data-item="{{item}}" policyInfo="{{item}}" wx:key="index" listIndex="{{listIndex}}"></infoItem>
+            </view>
+            <view class="view-course-list" wx:else>
+              <view class="no-more" >暂无数据</view>
+            </view>
+        </view>
+      </view>
+      <!-- 卧涛问答 -->
+      <view class="class-box" wx:if="{{listIndex==2}}">
+        <view class="view-courses">
+          <!-- 搜索页面 -->
+          <view class="top-fixed">
+            <view class="search-contain">
+              <view class="search-contain-right">
+                <input bindinput="getKeyword" bindconfirm="getKeywords" placeholder-class="holder-style" placeholder="请在此输入您的问题" class="input-class"/>
+              </view>
+            </view>
+            <text class="fixed-search" bindtap="handleSearch">搜索</text>
+          </view>
+          <!-- 筛选项 -->
+          <view class="filter-content {{openFilter?'global-tip':''}}" catchtouchmove="true" bindtap="closeShade">
+            <scroll-view scroll-x="true" class="filter-contain" enhanced="{{true}}" show-scrollbar="{{false}}">
+              <view class="filter-scroll">
+              <block wx:for="{{questionFilterList}}" wx:key="index" >
+                <view class="filter-item" wx:if="{{item.attr}}" catchtap="changeType" data-id="{{item.id}}" data-item="{{item}}">
+                  <view class="filter-item">
+                    <text class="filter-scroll-sty">{{item.name}}</text>
+                    <text class="filter-angle-sty"></text>
+                  </view>
+                </view>
+              </block> 
+              </view>
+            </scroll-view>
+            <view class="filter-list" wx:if="{{openFilter}}">
+              <view class="filtrate-wrapper">
+                <view class="filtrate-item">
+                  <view class="rank-item {{item.no==(chooseId==5?class:sort)?'chooseRank':''}}" wx:for="{{rankData}}" wx:key="index" bindtap="toggleRank" data-item="{{item}}">
+                    {{item.name}}
+                  </view>
+                </view>
+                <view class="filtrate-btn">
+                  <view class="filtrate-reset" bindtap="reset">重置</view>
+                  <view class="filtrate-submit" bindtap="handleSearch">搜索{{viewName}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- 卧涛问答 -->
+          <view class="view-course-list">
+            <questionItem wx:for="{{questionList}}" bindtap="toQuestionDetail" data-item="{{item}}" questionInfo="{{item}}" wx:key="index"></questionItem>
+          </view>
+          <!-- <view class="view-course-list" wx:else>
+            <view class="no-more" >暂无数据</view>
+          </view> -->
+        </view>
+      </view>
+      <!-- 卧涛文档 -->
+      <view class="class-box" wx:if="{{listIndex==3}}">
+        <view class="view-courses">
+          <!-- 搜索页面 -->
+          <view class="top-fixed">
+            <view class="search-contain">
+              <view class="search-contain-left" bindtap="skipToArea">
+                <!-- <text>{{handles.handleStr(province)}}</text>
+                <image src="../../image/index/area_icon.png"></image> -->
+              </view>
+              <view class="search-contain-right">
+                <input bindinput="getKeyword" bindconfirm="getKeywords" placeholder-class="holder-style" placeholder="请在此输入关键词" class="input-class"/>
+              </view>
+            </view>
+            <text class="fixed-search" bindtap="handleSearch">搜索</text>
+          </view>
+          <!-- 筛选项 -->
+          <view class="filter-content {{openFilter?'global-tip':''}}" catchtouchmove="true" bindtap="closeShade">
+            <scroll-view scroll-x="true" class="filter-contain" enhanced="{{true}}" show-scrollbar="{{false}}">
+              <view class="filter-scroll">
+              <block wx:for="{{fileFilterList}}" wx:key="index" >
+                <view class="filter-item" wx:if="{{item.attr}}" catchtap="changeType" data-id="{{item.id}}" data-item="{{item}}">
+                  <view class="filter-item">
+                    <text class="filter-scroll-sty">{{item.name}}</text>
+                    <text class="filter-angle-sty"></text>
+                  </view>
+                </view>
+              </block> 
+              </view>
+            </scroll-view>
+            <view class="filter-list" wx:if="{{openFilter}}">
+              <view class="filtrate-wrapper">
+                <view class="filtrate-item">
+                  <view class="rank-item {{item.no==(chooseId==5?class:sort)?'chooseRank':''}}" wx:for="{{rankData}}" wx:key="index" bindtap="toggleRank" data-item="{{item}}">
+                    {{item.name}}
+                  </view>
+                </view>
+                <view class="filtrate-btn">
+                  <view class="filtrate-reset" bindtap="reset">重置</view>
+                  <view class="filtrate-submit" bindtap="handleSearch">搜索{{viewName}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- 卧涛文档 -->
+          <view class="view-file-list">
+            <fileItem wx:for="{{fileList}}" bindtap="toFileDetail" data-item="{{item}}" fileInfo="{{item}}" wx:key="index" listIndex="{{listIndex}}"></fileItem>
+          </view>
+          <!-- <view class="view-course-list" wx:else>
+            <view class="no-more" >暂无数据</view>
+          </view> -->
+        </view>
+      </view>
+    </view>
+    <!-- 卧涛课堂 -->
+    <view wx:if="{{checkIndex==1}}" class="class-box"> 
+      <view class="class-room" wx:if="{{isLogin}}">
+        <!-- 轮播图+搜索框 -->
+        <view class="class-bg">
+          <!-- <view class="class-search">
+            <image src="/image/classRoom/sousuo_icon@2x.png"></image>
+            <input type="text" placeholder="请输入关键字" />
+          </view> -->
+          <!-- <swiper class="bg-img" autoplay indicator-dots="{{swiperList.length>1}}" indicator-color="#EAEBEF" indicator-active-color="#61BAFF"> -->
+            <!-- <swiper-item wx:for="{{swiperList}}" wx:key="index" data-item="{{item}}"> -->
+              <image class="bg-img" wx:for="{{swiperList}}" wx:key="index" data-item="{{item}}" src="{{item.imgUrl}}"></image>
+            <!-- </swiper-item> -->
+          <!-- </swiper> -->
+        </view>
+        <!-- 短视频 -->
+        <view class="short-video">
+          <view class="common-title">
+            <text></text>
+            <text>短视频</text>
+          </view>
+          <!-- 滑动区域 -->
+          <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" class="scroll-video-view" scroll-x="true">
+            <view class="scroll-video">
+              <view class="scroll-video-item" bindtap="toShortDetail" data-id="{{item.id}}" wx:for="{{shortList}}" wx:key="index">
+                <image wx:if="{{item.coverPicUrl!==''}}" src="{{imageUrl+item.coverPicUrl}}"></image>
+                <video wx:else src="{{imageUrl+item.videoUrl}}" controls="{{false}}" show-center-play-btn="{{false}}"></video>
+                <view class="play-contain">
+                  <image src="/image/classRoom/icon01_home@2x.png"></image>
+                  <text>{{item.videoTime}}</text>
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <!-- 免费专区 -->
+        <view class="free-zone" wx:if="{{freeList.length>0}}">
+          <view class="common-title">
+            <text></text>
+            <text>免费专区</text>
+            <!-- <view class="common-more">
+              <text>更多</text>
+              <text></text>
+            </view> -->
+          </view>
+          <!-- 免费专区列表 -->
+          <view class="free-list-contain">
+            <view class="free-list">
+              <view class="free-list-item {{index%2==0?'wrap-sty':'right-wrap-sty'}}" bindtap="toCourseDetail" data-id="{{item.id}}" wx:for="{{freeList}}" wx:key="index">
+                <image src="{{imageUrl+item.baseCoverUrl}}"></image>
+                <text>{{item.baseTitle}}</text>
+                <text>{{item.baseSlogan}}</text>
+                <text>免费</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- VIP免费专区 -->
+        <view class="vip-free-zone">
+          <view class="common-title">
+            <text></text>
+            <text>VIP免费专区</text>
+            <!-- <view class="common-more">
+              <text>更多</text>
+              <text></text>
+            </view> -->
+          </view>
+          <!-- VIP免费专区列表 -->
+          <view class="vip-free-main">
+            <view class="vip-free-contain">
+              <image class="vip-free-img" bindtap="toVip" src="{{temUrl}}"></image>
+              <view class="vip-free-list">
+                <view class="vip-free-item" bindtap="toCourseDetail" data-id="{{item.id}}" wx:for="{{vipFreeList}}" wx:key="index">
+                  <text>荐</text>
+                  <text>{{item.baseTitle}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 分类列表 -->
+        <view class="classify-list" wx:if="{{classifyList.length>0}}">
+          <!-- 分类切换 -->
+          <scroll-view scroll-x="true" class="scroll-contain" enhanced="{{true}}" show-scrollbar="{{false}}">
+            <view class="new-scroll">
+              <view class="scroll-item" wx:for="{{classifyList}}" wx:key="index" bindtap="changeNew" data-id="{{item.id}}">
+                <text class="{{plateId == item.id? 'active-scroll-sty':''}}">{{item.plateName}}</text>
+                <text wx:if="{{plateId == item.id}}"></text>
+              </view>
+            </view>
+          </scroll-view>
+          <!-- 课程列表 -->
+          <view class="course-list">
+            <courseItem wx:for="{{courseList}}" bindtap="toCourseDetail" data-id="{{item.id}}" courseInfo="{{item}}" wx:key="index"></courseItem>
+            <!-- <view class="more-course">
+              <text>更多课程</text>
+            </view> -->
+          </view>
+          <!-- 广告图片 -->
+          <!-- <image class="classify-img" src="{{temUrl}}"></image> -->
+        </view>
+        <!-- 精品课程 -->
+        <view class="quality-courses" wx:if="{{soloFeeList.length>0}}">
+          <view class="common-title">
+            <text></text>
+            <text>精品课程</text>
+            <!-- <view class="common-more">
+              <text>更多</text>
+              <text></text>
+            </view> -->
+          </view>
+          <!-- 课程列表 -->
+          <view class="quality-course-list">
+            <courseItem wx:for="{{soloFeeList}}" bindtap="toCourseDetail" data-id="{{item.id}}" courseInfo="{{item}}" wx:key="index"></courseItem>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>
+<!-- 省市区弹窗  -->
+<areaItem bind:getCityName="getCityName" bind:updateAreaNo="updateAreaNo" areaDialog="{{areaDialog}}" region="{{region}}" areaValue="{{areaValue}}"></areaItem>

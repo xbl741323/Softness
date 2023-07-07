@@ -1,0 +1,4 @@
+<!--components/search/level/level.wxml-->
+<view class="scroll-item" wx:for="{{levelList}}" wx:key="index" bindtap="changeNew" data-type="{{item}}">
+  <text class="{{newIndex == item.type? 'active-scroll-sty':''}}">{{item.title}}</text>
+</view>

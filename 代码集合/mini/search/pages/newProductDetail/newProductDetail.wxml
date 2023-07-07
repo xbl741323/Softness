@@ -1,0 +1,75 @@
+<!--search/pages/newProductDetail/newProductDetail.wxml-->
+<import src="../wxParse/wxParse.wxml" />
+<view class="new-product" wx:if="{{showAll}}">
+  <!-- 图片区域 -->
+  <view class="product-img">
+    <swiper class="bg-img" indicator-dots="{{coverUrls.length>1}}" indicator-color="#EAEBEF" indicator-active-color="#61BAFF">
+      <swiper-item wx:for="{{coverUrls}}" wx:key="idx">
+        <video custom-cache="{{false}}" controls="{{videoControl}}" wx:if="{{item.urlType=='mp4'||item.urlType=='avi'||item.urlType=='mov'}}" class="bg-img" src="{{imageUrl+item.url}}"></video>
+        <image wx:else class="bg-img" src="{{imageUrl+item.url}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 显示服务评价区域 -->
+  <view class="service-evaluate">
+    <view class="service-title">{{productInfo.name}}</view>
+    <view class="service-desc">{{productInfo.slogan}}</view>
+    <view class="service-intro">
+      <view class="intro-item" wx:for="{{introList}}" wx:key="index">
+        {{item}}
+      </view>
+    </view>
+    <view class="service-advise">
+      <view class="evaluate-item" wx:for="{{iconList}}" wx:key="index">
+        <image src="{{item.url}}"></image>
+        <text>{{item.name}}</text>
+        <text wx:if="{{index!==2}}"></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 固定导航头 -->
+  <view class="nav-bar" wx:if="{{showTabStatus}}">
+    <view class="nav-bar-item" wx:for="{{articleTitleArray}}" wx:key="index" bindtap="changeNav" data-index="{{index}}">
+      <text class="{{navBarIndex==index?'active-nav-sty':''}}">{{item.title}}</text>
+      <text wx:if="{{navBarIndex==index}}"></text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="product-content" id="productBox">
+    <view class="pc-item" id="{{'pc-item'+index}}" wx:for="{{articleArray}}" wx:key="index">
+      <!-- 标签标题区域 -->
+      <view class="pc-item-title">
+        <text></text>
+        <text>{{articleTitleArray[index].title}}</text>
+      </view>
+      <!-- 标签内容区域 -->
+      <view class="pc-item-content">
+        <view wx:if="{{item.tag == 'video'}}">
+          <template is="wxParseVideo" data="{{wxParseData:item}}" />
+        </view>
+        <view wx:else>
+          <template is="wxParse" data="{{wxParseData:item}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部按钮区域 -->
+  <view class="service-btn">
+    <!-- <view wx:if="{{isCollected==0}}" bindtap="handlCollection">
+      <image src="../../../search/image/details/collected.png"></image>
+      <text>已收藏</text>
+    </view> -->
+    <!-- <view wx:else bindtap="handlCollection">
+      <text>+ 加入收藏</text>
+    </view> -->
+    <footBar></footBar>
+    <view>
+      <text class="left-btn distance">面议</text>
+    </view>
+    <button open-type="contact" class="right-btn">立即咨询</button>
+  </view>
+</view>

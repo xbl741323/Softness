@@ -1,0 +1,145 @@
+/* personal/components/my-clue/clue-item/clue-item.wxss */
+.clue-item {
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20rpx;
+  padding: 32rpx 24rpx 0 24rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+/*
+  头部区域
+*/
+.clue-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clue-head>text:nth-of-type(2) {
+  font-size: 24rpx;
+}
+
+/*
+  内容区域
+*/
+.clue-info {
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.clue-info-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clue-info-name>text:nth-of-type(1) {
+  display: inline-block;
+  font-weight: bold;
+  width: 300rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.clue-info-contact {
+  display: flex;
+  align-items: center;
+  color: #B4B4B4;
+}
+
+.over-name-sty {
+  display: inline-block;
+  max-width: 120rpx;
+  margin-right: 8rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.phone-call {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+
+.clue-info-area {
+  margin-top: 24rpx;
+  color: #555555;
+}
+
+.clue-info-label {
+  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+  color: #555555;
+}
+
+.clue-info-label image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
+}
+
+.clue-info-belong {
+  margin: 24rpx 0 30rpx 0;
+  display: flex;
+  align-items: center;
+  color: #B4B4B4;
+  font-size: 26rpx;
+}
+
+.clue-info-belong>text {
+  white-space: nowrap;
+}
+
+.clue-info-belong>text:nth-of-type(2),
+.clue-info-belong>text:nth-of-type(3) {
+  margin-left: 10rpx;
+}
+
+/*
+  按钮区域
+*/
+.clue-btn {
+  height: 92rpx;
+  border-top: 2rpx solid #EAEBEF;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.clue-btn>text {
+  color: #0082FC;
+  margin-right: 24rpx;
+}
+
+/*
+  公共样式区域
+*/
+.common-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12rpx;
+  height: 48rpx;
+  background: #008dff;
+  border-radius: 8rpx;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  margin-right: 16rpx;
+}
+
+.depart-bg-sty {
+  background: #FEBE3D;
+}
+
+.group-bg-sty {
+  background: #8CC029;
+}

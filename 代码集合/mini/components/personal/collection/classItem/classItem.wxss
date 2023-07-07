@@ -1,0 +1,227 @@
+/* components/personal/collection/classItem/classItem.wxss */
+.property-first {
+    background: #FFFFFF;
+  }
+  
+  .property-item {
+    width: 100%;
+    border-bottom: 2rpx solid #e7e6eb;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30rpx 0;
+  }
+  
+  .item-left {
+    position: relative;
+    width: 200rpx;
+    height: 142rpx;
+    border-radius: 4rpx;
+  }
+  
+  .comon-sty {
+    width: 100%;
+    height: 100%;
+    border-radius: 8rpx;
+  }
+  
+  .item-right {
+    width: 474rpx;
+    height: 142rpx;
+    margin-left: 16rpx;
+  }
+  
+  .item-right-select {
+    width: 400rpx !important;
+  }
+  
+  .right-title {
+    color: #111E34;
+    font-size: 28rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+  }
+  
+  .right-desc {
+    color: #111E34;
+    font-size: 24rpx;
+    opacity: 0.5;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .right-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20rpx;
+  }
+  
+  .price-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    color: #FF6D27;
+  }
+  
+  .price-content>text:nth-of-type(1) {
+    font-size: 24rpx;
+    margin-bottom: 2rpx;
+  }
+  
+  .price-content>text:nth-of-type(2) {
+    font-size: 28rpx;
+  }
+  
+  .detail-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+  }
+  
+  .ask-btn-contain {
+    width: 128rpx !important;
+    height: 44rpx !important;
+    border: 2rpx solid #36a6fe;
+    border-radius: 24rpx;
+    font-size: 20rpx;
+    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .ask-btn {
+    width: 128rpx !important;
+    height: 44rpx !important;
+    border-radius: 24rpx;
+    background: #ffffff !important;
+    color: #36A6FE;
+    line-height: 44rpx;
+    font-size: 20rpx !important;
+    padding: 0 !important;
+    text-align: center;
+    font-weight: normal !important;
+  }
+  
+  .special-sty {
+    font-size: 28rpx !important;
+  }
+  
+  .disabled-sty {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100rpx;
+    height: 40rpx;
+    background: #aaa8a8;
+    opacity: 0.9;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 24rpx;
+    text-align: center;
+    line-height: 40rpx;
+  }
+  .try-see {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56rpx;
+    height: 33rpx;
+    background: #fa7a42;
+    border-radius: 10rpx 0px 10rpx 0px;
+    color: #FFFFFF;
+    font-size: 22rpx;
+  }
+
+  .previous-price {
+    position: relative;
+    color: #888888;
+    font-size: 26rpx;
+    margin-left: 16rpx;
+  }
+
+  .previous-price>text:nth-of-type(2) {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2rpx;
+    background: #888888;
+  }
+
+  .course-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .course-title-vip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #663E05;
+    font-weight: bold;
+    font-size: 20rpx;
+    height: 33rpx;
+    border-radius: 6rpx;
+    margin-right: 8rpx;
+    background: #efca95;
+  }
+
+  .course-title-price {
+    display: inline-block;
+    color: #333333;
+    font-weight: bold;
+    font-size: 28rpx;
+    max-width: 300rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #333333;
+    font-weight: bold;
+  }
+
+  .course-top-title {
+    display: flex;
+    align-items: center;
+  }
+
+  .vip-label {
+    background: #EFCA95;
+    padding: 2rpx 6rpx;
+    font-size: 16rpx;
+  }
+
+  .vip-price {
+    background: #663E05;
+    font-size: 20rpx;
+    color: #FFFFFF;
+    padding: 2rpx 6rpx;
+    border-radius: 4rpx;
+  }
+
+  .course-price {
+    display: flex;
+    align-items: center;
+  }
+  
+  .course-price>text:nth-of-type(1) {
+    color: #FA7A42;
+    font-weight: bold;
+    font-size: 28rpx;
+  }
+  

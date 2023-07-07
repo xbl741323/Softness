@@ -1,0 +1,174 @@
+<!--personal/components/my-order/generate-order/product-info/product-info.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<view class="product-info">
+  <!-- 产品信息 -->
+  <view class="common-item">
+    <view class="common-title">
+      <text></text>
+      <text>产品信息</text>
+    </view>
+    <view class="common-info-list">
+      <view class="common-info">
+        <view class="common-info-head">
+          <text class="required-sty">*</text>
+          <text>产品数量</text>
+        </view>
+        <view class="common-info-foot">
+          <van-stepper plus-class="plus-sty" input-class="step-sty" min="1" max="99" integer="true" disable-input="true" value="{{ productInfo.payInfo.productNum }}" bind:change="changeNum" />
+        </view>
+      </view>
+      <view class="common-info">
+        <view class="common-info-head">
+          <text class="required-sty">*</text>
+          <text>规格属性</text>
+        </view>
+        <picker wx:if="{{pageForm == 0}}" bindchange="changeAttribute" range-key="skuLabel" value="{{item.payInfo.attributeIndex}}" range="{{productInfo.tradeInfo.skuList}}">
+          <view class="common-info-foot" wx:if="{{productInfo.payInfo.cAttributeInfo.skuIndex}}">
+            <text class="{{pageForm==0?'strong-sty':''}}">{{tools.filterAttribute(productInfo.attributeList,productInfo.payInfo.cAttributeInfo.skuIndex)}}</text>
+            <text wx:if="{{pageForm == 0}}" class="pointer-sty {{pageForm==0?'strong-border':''}}"></text>
+          </view>
+        </picker>
+        <view wx:if="{{pageForm == 1}}" class="common-info-foot">
+          <text>{{productInfo.spec}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 支付信息 -->
+  <view class="common-item">
+    <view class="common-title">
+      <text></text>
+      <text>支付信息</text>
+    </view>
+    <view class="common-info-list">
+      <view class="common-info">
+        <view class="common-info-head">
+          <text class="required-sty">*</text>
+          <text>支付方式</text>
+        </view>
+        <picker bindchange="changePayWay" range-key="title" value="{{productInfo.payInfo.payWay}}" range="{{payWayList}}">
+          <view class="common-info-foot">
+            <text>{{productInfo.payInfo.payWay == 1?'一次性付款':'定金+尾款'}}</text>
+            <text class="pointer-sty"></text>
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <!-- 定金 -->
+  <view class="common-item" wx:if="{{productInfo.payInfo.payWay == 0}}">
+    <view class="common-title">
+      <text></text>
+      <text>定金</text>
+    </view>
+    <view class="common-info-list">
+      <view class="common-info">
+        <view class="common-info-head">
+          <text>代理费</text>
+        </view>
+        <view class="common-info-foot">
+          <input bindblur="changePrice" data-type="1" type="number" value="{{productInfo.payInfo.copyPayTypeInfo.depositTypeAgencyFee}}" />
+        </view>
+      </view>
+      <view class="common-info">
+        <view class="common-info-head">
+          <text>第三方费用</text>
+        </view>
+        <view class="common-info-foot">
+          <input bindblur="changePrice" data-type="2" type="number" value="{{productInfo.payInfo.copyPayTypeInfo.depositTypeThirdPartyFee}}" />
+        </view>
+      </view>
+      <view class="common-info">
+        <view class="common-info-head">
+          <text>官费</text>
+        </view>
+        <view class="common-info-foot">
+          <input bindblur="changePrice" data-type="3" type="number" value="{{productInfo.payInfo.copyPayTypeInfo.depositTypeOfficialFee}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 尾款 -->
+  <view class="common-item" wx:if="{{productInfo.payInfo.payWay == 0}}">
+    <view class="common-title">
+      <text></text>
+      <text>尾款</text>
+      <picker bindchange="changeFootStatus" range-key="title" value="{{productInfo.payInfo.footPayStatus}}" range="{{footStatusList}}">
+        <text class="foot-status-sty">{{productInfo.payInfo.footPayStatus==0?'尾款正常':'尾款待定'}}</text>
+      </picker>
+    </view>
+    <view class="common-info-list">
+      <view class="common-info">
+        <view class="common-info-head">
+          <text>代理费</text>
+        </view>
+        <view class="common-info-foot" wx:if="{{productInfo.payInfo.footPayStatus==0}}">
+          <input bindblur="changePrice" data-type="4" type="number" value="{{productInfo.payInfo.copyPayTypeInfo.finalTypeAgencyFee}}" />
+        </view>
+        <view class="common-info-foot" wx:else>
+          {{'-'}}
+        </view>
+      </view>
+      <view class="common-info">
+        <view class="common-info-head">
+          <text>第三方费用</text>
+        </view>
+        <view class="common-info-foot" wx:if="{{productInfo.payInfo.footPayStatus==0}}">
+          <input bindblur="changePrice" data-type="5" type="number" value="{{productInfo.payInfo.copyPayTypeInfo.finalTypeThirdPartyFee}}" />
+        </view>
+        <view class="common-info-foot" wx:else>
+          {{'-'}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 一口价 -->
+  <view class="common-item" wx:if="{{productInfo.payInfo.payWay == 1}}">
+    <view class="common-title">
+      <text></text>
+      <text>一口价</text>
+    </view>
+    <view class="common-info-list">
+      <view class="common-info">
+        <view class="common-info-head">
+          <text>代理费</text>
+        </view>
+        <view class="common-info-foot">
+          <input bindblur="changePrice" data-type="6" type="number" value="{{productInfo.payInfo.copyPayTypeInfo.dueTypeAgencyFee}}" />
+        </view>
+      </view>
+      <view class="common-info">
+        <view class="common-info-head">
+          <text>第三方费用</text>
+        </view>
+        <view class="common-info-foot">
+          <input bindblur="changePrice" data-type="7" type="number" value="{{productInfo.payInfo.copyPayTypeInfo.dueTypeThirdPartyFee}}" />
+        </view>
+      </view>
+      <view class="common-info">
+        <view class="common-info-head">
+          <text>官费</text>
+        </view>
+        <view class="common-info-foot">
+          <input bindblur="changePrice" data-type="8" type="number" value="{{productInfo.payInfo.copyPayTypeInfo.dueTypeOfficialFee}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 备注 -->
+  <view class="common-item">
+    <view class="common-info-list">
+      <view class="common-info column-sty">
+        <view class="common-info-head">
+          <text>订单备注</text>
+        </view>
+        <view class="common-info-foot input-sty" wx:if="{{pageForm == 0}}">
+          <textarea bindinput="changeRemark" class="textarea-sty" placeholder-class="p-sty" placeholder="请输入备注信息" maxlength="100"></textarea>
+        </view>
+        <view class="common-info-foot input-sty" wx:else>
+          <textarea value="{{orderRemark}}" bindinput="changeRemark" class="textarea-sty" placeholder-class="p-sty" placeholder="请输入备注信息" maxlength="100"></textarea>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

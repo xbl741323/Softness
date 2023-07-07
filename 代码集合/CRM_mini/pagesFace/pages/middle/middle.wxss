@@ -1,0 +1,30 @@
+.middle-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 250rpx;
+}
+.middle-page-icon {
+  width: 200rpx;
+  height: 160rpx;
+}
+.middle-page-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 0;
+  line-height: 42rpx;
+  font-size: 28rpx;
+  color: #595959;
+}
+.middle-page-button {
+  width: 332rpx !important;
+  height: 88rpx;
+  padding: 0;
+  line-height: 88rpx;
+  font-size: 34rpx;
+  font-weight: initial;
+  color: #fff;
+  border-radius: 16rpx;
+  background: #276EF9;
+}

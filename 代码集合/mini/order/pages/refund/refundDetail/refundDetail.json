@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "退款详情",
+  "usingComponents": {
+    "refundProgress":"/components/order/refundDetail/refundProgress/refundProgress",
+    "refundInfo":"/components/order/refundDetail/refundInfo/refundInfo"
+  }
+}

@@ -1,0 +1,48 @@
+<!--personal/pages/my-promotion/my-promotion.wxml-->
+<view class="my-promotion">
+  <view class="promotion-item" wx:for="{{promotionList}}" bindtap="changeTab" data-index="{{index}}" wx:key="index">
+    <text>{{item.title}}</text>
+    <text wx:if="{{index!=2}}" class="pointer-sty"></text>
+    <text wx:else class="copy-sty {{copyStatus==true?'copyed-sty':''}}" bindtap="copyText">{{copyStatus==true?'链接已复制':item.value}}</text>
+  </view>
+</view>
+<canvas class="canvans-sty" canvas-id="registerQrcode"></canvas>
+<canvas class="canvans-sty" canvas-id="memberQrcode"></canvas>
+<van-overlay show="{{showStatus}}">
+  <canvas wx:if="{{cIndex == 0}}" class="cavan-register-sty" canvas-id="register-share"></canvas>
+  <canvas wx:if="{{cIndex == 1}}" class="cavan-member-sty" canvas-id="member-share"></canvas>
+  <!-- 生成小程序注册推广图 -->
+  <view id="draw-register-contain" class="register-cover" wx:if="{{cIndex == 0}}">
+    <image class="register-bg" data-type="image" data-url="{{wxRegisterBg}}" mode="aspectFit" src="{{wxRegisterBg}}"></image>
+    <view class="register-code-box">
+      <image class="register-code" data-type="image" data-url="{{wxRegisterUrl}}" data-delay="1" mode="aspectFit" src="{{wxRegisterUrl}}"></image>
+      <view class="register-desc" data-type="text" data-text="{{userInfo.number}}">{{userInfo.number}}</view>
+    </view>
+  </view>
+  <!-- 生成课堂会员推广图 -->
+  <view id="draw-member-contain" class="member-cover" wx:if="{{cIndex == 1}}">
+    <image class="member-bg" data-type="image" data-url="{{wxMemberBg}}" mode="aspectFit" src="{{wxMemberBg}}"></image>
+    <view class="member-code-contain">
+      <text class="member-text" data-type="text" data-text="微信扫一扫">微信扫一扫</text>
+      <view class="member-code-box">
+        <image class="member-code" data-type="image" data-url="{{wxMemberUrl}}" data-delay="1" mode="aspectFit" src="{{wxMemberUrl}}"></image>
+      </view>
+      <text class="member-text" data-type="text" data-text="{{userInfo.number}}">{{userInfo.number}}</text>
+      <text class="member-text" data-type="text" data-text="成为卧涛课堂会员">成为卧涛课堂会员</text>
+    </view>
+  </view>
+  <!-- 分享按钮区域 -->
+  <view class="share-contain">
+    <view class="share-list">
+      <view class="share-item" bindtap="wxShare">
+        <image src="/personal/image/common/wx.png"></image>
+        <text>微信分享</text>
+      </view>
+      <view class="share-item" bindtap="saveImg">
+        <image src="/personal/image/common/picture.png"></image>
+        <text>保存图片</text>
+      </view>
+    </view>
+    <view class="cancel-sty" bindtap="close">取消</view>
+  </view>
+</van-overlay>

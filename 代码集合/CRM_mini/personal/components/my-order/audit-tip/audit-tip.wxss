@@ -1,0 +1,134 @@
+/* personal/components/my-order/audit-tip/audit-tip.wxss */
+.audit-tip {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  padding-top: 50rpx;
+  padding-bottom: 70rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-btn {
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+}
+
+.tip-desc {
+  width: 700rpx;
+  color: #333333;
+  font-size: 28rpx;
+  display: flex;
+  align-items: flex-start;
+}
+
+.tip-icon {
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 100%;
+  background-color: #FA7A42;
+  color: #ffffff;
+  text-align: center;
+  line-height: 24rpx;
+  font-size: 16rpx;
+  margin-right: 10rpx;
+  margin-top: 8rpx;
+}
+
+.tip-text {
+  width: 615rpx;
+  color: #333333;
+  font-size: 28rpx;
+  line-height: 42rpx;
+}
+
+.select-audit {
+  width: 700rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 96rpx;
+  border-bottom: 2rpx solid #EAEBEF;
+  padding-bottom: 20rpx;
+}
+
+.select-audit-right {
+  display: flex;
+  align-items: center;
+}
+
+.audit-man {
+  display: flex;
+  justify-content: flex-end;
+  width: 400rpx;
+  font-size: 28rpx;
+  color: #555555;
+  margin-right: 24rpx;
+}
+
+.hold-sty {
+  color: #B9B9B9 !important;
+}
+
+.select-audit>view:nth-of-type(1) {
+  color: #555555;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.tip-right-pointer {
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 2rpx solid rgba(0, 0, 0, 0.4);
+  border-right: 2rpx solid rgba(0, 0, 0, 0.4);
+  transform: rotate(45deg);
+}
+
+.order-remark {
+  width: 700rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 46rpx;
+}
+
+.order-remark>text:nth-of-type(1) {
+  color: #555555;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.textarea-sty {
+  width: 680rpx;
+  height: 180rpx;
+  background-color: #F9FBFC;
+  color: #555555;
+  font-size: 28rpx;
+  padding: 16rpx 10rpx 16rpx 20rpx;
+}
+
+.p-sty {
+  color: #B9B9B9;
+}
+
+.submit-btn {
+  margin-top: 100rpx;
+  width: 654rpx;
+  height: 88rpx;
+  background: #0082fc;
+  border-radius: 44rpx;
+  text-align: center;
+  line-height: 88rpx;
+  color: #FFFFFF;
+  font-size: 28rpx;
+}
+
+.common-require {
+  color: #FF6D27;
+  margin-right: 6rpx;
+}

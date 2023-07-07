@@ -1,0 +1,52 @@
+/* components/common/wxFocus/wxFocus.wxss */
+.wx-focus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 178rpx;
+  padding-bottom: 120rpx;
+}
+
+.focus-desc {
+  color: #AFB0B0;
+  font-size: 28rpx;
+  width: 60%;
+  text-align: center;
+  margin: 24rpx auto 0 auto; 
+}
+.com-name{
+  color: #36A6FE;
+}
+.handle-focus{
+  display: flex;
+  align-items: center;
+}
+.focus-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150rpx;
+  height: 50rpx;
+  color: #36A6FE;
+  font-size: 24rpx;
+  border: 2rpx solid #36A6FE;
+  border-radius: 12rpx;
+}
+.divide{
+  color: #E4E4E4;
+  padding: 0 24rpx;
+}
+.logo-txt{
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #f1f7fc;
+  border: 2rpx solid #c5e5fe;
+  border-radius: 50%;
+  font-size: 16rpx;
+  color: #36A6FE;
+  font-weight: 600;
+}

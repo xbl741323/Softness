@@ -1,0 +1,57 @@
+{
+  "name": "test-nuxt",
+  "version": "1.0.0",
+  "description": "My neat Nuxt.js project",
+  "author": "leaplearner",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "cross-env ENV=prod nuxt build",
+    "start": "cross-env ENV=prod nuxt start",
+    "generate": "cross-env PATH_TYPE=production nuxt generate",
+    "gray": "cross-env PATH_TYPE=gray nuxt generate",
+    "development": "cross-env ENV=dev nuxt generate",
+    "tst": "cross-env ENV=tst nuxt build",
+    "prod": "cross-env ENV=prod nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3336"
+    }
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.0",
+    "arale-qrcode": "^3.0.5",
+    "better-scroll": "^1.15.2",
+    "clipboard": "^2.0.10",
+    "cross-env": "^5.2.0",
+    "crypto-js": "^4.0.0",
+    "element-ui": "^2.14.0",
+    "koa": "^2.6.2",
+    "lodash": "^4.17.15",
+    "m-share": "^1.0.2",
+    "mint-ui": "^2.2.13",
+    "moment": "^2.25.3",
+    "nativeshare": "^2.1.4",
+    "nuxt": "^2.0.0",
+    "proxy": "^1.0.2",
+    "v-distpicker": "^1.2.7",
+    "vant": "^2.12.53",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-cropper": "^0.5.5",
+    "vue-i18n": "^8.21.0",
+    "vue-layer": "^1.2.0",
+    "vue-layer-mobile": "^1.0.0",
+    "@nuxtjs/eslint-config": "^2.0.0",
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/style-resources": "^1.2.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.1.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "nodemon": "^1.18.9",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2"
+  }
+}

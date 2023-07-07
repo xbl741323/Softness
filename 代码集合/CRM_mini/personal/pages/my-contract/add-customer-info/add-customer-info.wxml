@@ -1,0 +1,47 @@
+<!--personal/pages/my-contract/add-customer-info/add-customer-info.wxml-->
+<view class="contract-contain">
+  <!-- 客户信息 -->
+  <view class="common-contain">
+    <view class="common-label">
+      <text>客户信息</text>
+      <text>该单位客户需补充以下信息之一方可上传合同</text>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-item-label">法人姓名</text>
+      </view>
+      <view class="common-item-foot">
+        <input bindblur="changeInfo" data-type="0" class="contact-long-input" type="text" placeholder="请输入法人姓名" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-item-label">法人手机号</text>
+      </view>
+      <view class="common-item-foot">
+        <input bindblur="changeInfo" data-type="1" class="contact-long-input" type="number" placeholder="请输入法人手机号" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-item-label">财务主管姓名</text>
+      </view>
+      <view class="common-item-foot">
+        <input bindblur="changeInfo" data-type="2" class="contact-long-input" type="text" placeholder="请输入财务主管姓名" placeholder-class="p-sty" />
+      </view>
+    </view>
+    <view class="common-item">
+      <view class="common-item-head">
+        <text class="common-item-label">财务主管手机号</text>
+      </view>
+      <view class="common-item-foot">
+        <input bindblur="changeInfo" data-type="3" class="contact-long-input" type="number" placeholder="请输入财务主管手机号" placeholder-class="p-sty" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 按钮区域 -->
+  <view class="common-btn">
+    <text bindtap="validSubmit">确定</text>
+  </view>
+</view>

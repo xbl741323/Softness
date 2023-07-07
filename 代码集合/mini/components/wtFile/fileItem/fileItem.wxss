@@ -1,0 +1,92 @@
+/* components/wtFile/fileItem/fileItem.wxss */
+.fileItem{
+  display: inline-block;
+  padding: 20rpx;
+  font-size: 24rpx;
+  color: #5e5e5e;
+  padding-right: 60rpx;
+}
+
+.priview{
+  width: 160rpx;
+  height: 216rpx;
+  margin-bottom: 16rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid #EAEBEF;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.text-position{
+  position: absolute;
+  display: inline-block;
+  width: 74rpx;
+  height: 30rpx;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 30rpx;
+  background-color: #FF6D27;
+  border-radius: 50rpx;
+  color: #FCFCFC;
+  top: 186rpx;
+  left: 5rpx;
+}
+
+.icon-position{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  background: #fff;
+  top: 188rpx;
+  left: 132rpx;
+  border-radius: 8rpx;
+}
+
+.title{
+  width: 160rpx;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.position-download{
+  position: absolute;
+  color: #36A6FE;
+  top: 8rpx;
+  right: 8rpx;
+  display: flex;
+}
+
+.position-download image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 4rpx;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90%;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.info-title {
+  width: 160rpx;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  font-size: 24rpx;
+  text-align: center;
+}

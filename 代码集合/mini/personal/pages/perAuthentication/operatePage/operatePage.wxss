@@ -1,0 +1,94 @@
+/* personal/pages/perAuthentication/operatePage/operatePage.wxss */
+page {
+  background: #F4F4F4;
+}
+
+.operate-page {
+  display: flex;
+  flex-direction: column;
+  padding: 24rpx;
+}
+
+.operate-tip {
+  background: #ffffff;
+  margin-top: 200rpx;
+  padding: 40rpx 24rpx 40rpx;
+  margin-bottom: 24rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.tip-item {
+  margin-bottom: 12rpx;
+}
+
+.active-color-sty {
+  color: #FD651C;
+}
+
+.operate-contain {
+  background: #ffffff;
+  padding: 40rpx 24rpx 60rpx;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.operate-item {
+  height: 115rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.item-desc {
+  width: 170rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60rpx;
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-right: 20rpx;
+  padding-bottom: 4rpx;
+}
+.symbol {
+  color: red;
+}
+.input-contain {
+  display: flex;
+  flex-direction: column;
+}
+.operate-item input {
+  color: #333333;
+  width: 420rpx;
+  height: 60rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #cccc;
+  border-radius: 10rpx;
+}
+.validate-text-sty {
+  font-size: 24rpx;
+  color: red;
+  margin-top: 4rpx;
+}
+.operate-btn {
+  width: 654rpx;
+  height: 76rpx;
+  background: #36a6fe;
+  border-radius: 38rpx;
+  margin-top: 10rpx;
+  background: #36A6FE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #ffffff;
+}
+.p-sty {
+  color: #ccc;
+}

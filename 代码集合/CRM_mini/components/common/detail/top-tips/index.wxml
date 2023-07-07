@@ -1,0 +1,12 @@
+<!--components/common/detail/top-tips/index.wxml-->
+<wxs src="/utils/refund/refund.wxs" module="refundWxs"></wxs>
+<view class="cephalic">
+    <view class="head-left">
+      <text>{{processData.refundNo}}</text>
+      <image catchtap="copyText" data-no="{{processData.refundNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view class="head-right">
+        <text class="{{listItem.refundStatus == 4 ? 'color-b' : listItem.refundStatus == -2 || listItem.refundStatus == -1 ? 'color-c' : ''}}"></text>
+        <text>{{refundWxs.refundStatus(processData.refundStatus)}}</text>
+      </view>
+  </view>

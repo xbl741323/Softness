@@ -1,0 +1,20 @@
+<view >
+  <view class="search">  
+    <input class="input" value="{{cityName}}" confirm-type="search" bindconfirm="bindconfirm"  placeholder-style="text-align:center" focus bindinput="getCity" placeholder="请输入城市名称"/>
+    <text class="cancle" bindtap="reset">取消</text>
+  </view>
+  <block wx:if="{{cityName}}" class="staticCity">
+    <view class="search-city" wx:for="{{searchCity}}" data-type="{{item}}" wx:key="item" bindtap="refreshTo">{{item.name}}</view>
+  </block> 
+  <view wx:else>
+    <view class="staticCity cancle">
+      当前定位城市：{{staticCity}}
+    </view>
+    <view class="city">
+      <view  wx:for="{{cityList}}" wx:key="item">
+        <view class="city-code">{{index}}</view>
+        <view class="city-item" data-type="{{city}}" bindtap="refreshTo" wx:for="{{item}}" wx:key="idx" wx:for-item="city">{{city.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>

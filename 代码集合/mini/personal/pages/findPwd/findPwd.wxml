@@ -1,0 +1,71 @@
+<!--personal/pages/findPwd/findPwd.wxml-->
+<view class="wrap-box">
+  <head title="忘记密码"></head>
+  <view class="top-head">
+    <view class="phone_box">
+      <view class="text_box">
+        <text class="forget_pwd">忘记密码</text>
+        <text class="go_login" catchtap="goLogin">已有账号 去登录></text>
+      </view>
+      <!-- 手机号验证码校验 -->
+      <view class="input_box" wx:if="{{showStatus == 0}}">
+        <input type="number" placeholder-class="holder-style" bindblur="checkPhone" bindinput="getPhone"  placeholder="请输入注册时绑定的手机号" class="phone_input {{phoneError ?'phoneError':''}}"/>
+        <view wx:if="{{phoneError}}" class="phone_error">{{error[0]}}</view>
+        <view class="full-justified">
+          <input type="number" placeholder-class="holder-style" bindinput="getCode" bindchange="checkCode" placeholder="请输入手机验证码" class="code_input {{codeError ?'phoneError':''}}"/>
+          <button type="primary"  plain="true" catchtap="sendMsg" disabled="{{btnDisabled}}" class="msg_btn {{disabled ? 'disabled_btn':''}}">{{btnText}}</button>
+        </view>
+        <view wx:if="{{codeError}}" class="code_error">{{error[1]}}</view>
+        <!-- 下一步按钮 -->
+        <view class="next_btn" bindtap="toNext">下一步</view>
+        <!-- 联系客服 -->
+        <view class="contact_customer">
+          <text class="text_sty">手机号码不再使用，</text>
+          <navigator hover-class="none" class="contact_sty" open-type="navigate" url="../../../account/pages/approveFind/approveFind">身份认证找回密码 > </navigator>          
+        </view>
+      </view>
+      <!-- 选择关联账号并确认密码 -->
+      <view class="pwd_box"  wx:if="{{showStatus == 1}}">
+        <view class="select_box" hidden="{{selectData.length > 1 ? false : true}}">
+          <view class="select" catchtap="selectTap">
+            <text class="select_text">{{selectData[index].username}}</text>
+            <image class="select_img {{show&&'select_img_rotate'}}" src="/image/common/down.png"></image>   
+          </view>
+          <view class="option_box {{show?'shadow-box':'no-boder'}}" style="height:{{show?(selectData.length>5?400:selectData.length*80+20):0}}rpx;">  
+            <text class="option {{item.isManager==0?'gray-txt':''}}" style="{{index==selectData.length-1&&'border:0;'}}" wx:for="{{selectData}}" wx:key="userId" data-index="{{index}}" catchtap="optionTap">{{item.username}}{{item.isManager==0 ? '（非管理员账号）':''}}</text>
+            <!-- <text wx:if="{{item.isManager==1}}">非管理员账号</text> -->
+          </view>
+        </view>
+        <view class="pwd_inputbox">
+          <input password="{{pwdType}}" bindinput="getPwd" bindblur="checkPwd" placeholder="新密码(6~16位字母+数字/符号组合)" class="pwd_input {{pwdError ?'phoneError':''}}"/>
+          <image src="{{pwdDefault ? '/image/index/hide_eye.png': '/image/index/show_eye.png'}}" class="img_pwd" bindtap="pwdStatus"></image>
+          <view wx:if="{{pwdError}}" class="pwd_error">{{error[2]}}</view>
+        
+          <input password="{{confirmPwdType}}" bindinput="getConfirmPwd" bindblur="checkConfirmPwd" placeholder="再次确认新密码" class="pwd_input {{confirmpwdError ?'phoneError':''}}"/>
+          <image src="{{confirmPwdDefault ? '/image/index/hide_eye.png': '/image/index/show_eye.png'}}" class="img_confirm" bindtap="confirmPwdStatus"></image>
+          <view wx:if="{{confirmpwdError}}" class="confirmpwd_error">{{error[2]}}</view>
+        </view>
+        <!-- 修改密码按钮 -->
+        <view class="confirm_btn" bindtap="updatePwd">确认修改密码</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 修改密码 -->
+  <view></view>
+
+  <!-- 未注册提示框 -->
+  <view class="popup" hidden="{{mask}}">
+      <view class="mask"  catchtap="closeMask"></view>
+      <view class="popup_main">
+        <view class="pop-title">
+          <text>提示</text>
+          <image bindtap="closeMask" class="close-ico" src="/image/common/close_icon@2x.png"></image>
+        </view>
+        <view class="user-item">
+          <text class="user-item-text">该账号尚未关联卧涛账号，请先去注册一个账号吧~</text>
+        </view>
+        <view class="go-register" bindtap="goRegister">去注册></view>
+      </view>
+  </view>
+</view>

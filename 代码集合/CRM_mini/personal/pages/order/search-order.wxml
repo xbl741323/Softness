@@ -1,0 +1,55 @@
+<!--personal/pages/order/search-order.wxml-->
+<view class="search-order">
+  <view class="order-header">
+    <view class="order-tabs">
+      <view style="width: 75%;">
+        <van-tabs ellipsis="{{false}}" color="#0082FC" active="{{ cTabIndex }}" bind:change="changeTab" lazy-render="{{false}}">
+          <van-tab wx:for="{{tabList}}" wx:key="index" title="{{item}}"></van-tab>
+        </van-tabs>
+      </view>
+      <view style="width: 25%;">
+        <van-dropdown-menu active-color="#0082fc" custom-class="out-drop-sty">
+          <van-dropdown-item title="筛选" id="screen">
+            <!-- 产品订单筛选条件 -->
+            <view wx:if="{{cTabIndex == 0}}">
+              <van-cell-group inset>
+                <van-field value="{{clueBelongNo}}" label="线索归属" placeholder="请输入员工姓名/工号" data-id="clueBelongNo" bindchange="fieldChange" />
+              </van-cell-group>
+              <van-cell-group inset>
+                <van-field value="{{belongName}}" label="订单归属" placeholder="请输入员工姓名/工号" data-id="belongName" bindchange="fieldChange" />
+              </van-cell-group>
+              <van-cell-group inset>
+                <van-field value="{{salesBelonging}}" label="业务员" placeholder="请输入员工姓名/工号" data-id="salesBelonging" bindchange="fieldChange" />
+              </van-cell-group>
+            </view>
+            <!-- 课程/会员订单筛选条件 -->
+            <view wx:else>
+              <van-cell-group inset>
+                <van-field value="{{belongName}}" label="订单归属" placeholder="请输入员工姓名/工号" data-id="belongName" bindchange="fieldChange" />
+              </van-cell-group>
+            </view>
+            <view class="button-group">
+              <view bindtap="reset" class="reset">重置</view>
+              <view bindtap="confirm" class="confirm">确定</view>
+            </view>
+          </van-dropdown-item>
+        </van-dropdown-menu>
+      </view>
+    </view>
+    <view class="top-fixed">
+      <view class="search-contain">
+        <image src="/personal/image/my-clue/sousuo_icon@2x.png"></image>
+        <input class="{{keyWord!=''?'active-input-sty':''}}" bindconfirm="getAllOrderList" value="{{keyWord}}" bindinput="changeKeywords" placeholder="{{cTabIndex==0?'主体名称/产品名称关键字/订单编号':cTabIndex==1?'主体名称/课程名称/手机号/订单编号':cTabIndex==2?'主体名称/会员产品名称/手机号/订单编号':''}}" type="text" />
+        <van-icon bindtap="clearKerword" wx:if="{{keyWord!=''}}" class="close-icon" name="close" color="#7B7B7B" size="20px" />
+      </view>
+      <text bindtap="getAllOrderList" class="fixed-search">搜索</text>
+    </view>
+  </view>
+  <view class="search-body" wx:if="{{orderList.length > 0 && show}}">
+    <order-item wx:for="{{orderList}}" wx:key="index" orderInfo="{{item}}" type="{{cTabIndex}}" proTypeList="{{proTypeList}}" class="order-item"></order-item>
+  </view>
+  <view wx:elif="{{show}}" class="empty-page {{pageForm == 1?'active-empty-sty':''}}">
+    <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
+    <text>未搜索到相关数据</text>
+  </view>
+</view>

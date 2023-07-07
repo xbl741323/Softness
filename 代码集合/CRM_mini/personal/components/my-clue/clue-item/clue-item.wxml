@@ -1,0 +1,62 @@
+<!--personal/components/my-clue/clue-item/clue-item.wxml-->
+<wxs src="/utils/clue/clue.wxs" module="tools"></wxs>
+<view class="clue-item">
+  <!-- 头部区域 -->
+  <view class="clue-head">
+    <text>{{clueInfo.clueNo}}</text>
+    <text>创建: {{clueInfo.createTime}}</text>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="clue-info" bindtap="toClueDetail">
+    <view class="clue-info-name">
+      <view class="center-sty">
+        <text wx:if="{{clueType == 2}}">{{clueInfo.companyName}}</text>
+        <text wx:else>{{clueInfo.contactName}}</text>
+        <!-- 认证标签显示 -->
+        <block>
+          <image class="center-certify-sty" wx:if="{{clueType==1&&clueInfo.isAutoConversion}}" src="{{clueInfo.certifiedLabel==2?highCertifyImg:lowCertifyImg}}"></image>
+          <image class="center-certify-sty" wx:if="{{clueType==2&&clueInfo.certifiedLabel&&clueInfo.certifiedLabel!=0}}" src="{{clueInfo.certifiedLabel==2?highCertifyImg:lowCertifyImg}}"></image>
+        </block>
+      </view>
+      <view class="clue-info-contact">
+        <text class="over-name-sty" wx:if="{{clueType == 2}}">{{clueInfo.contactName}}</text>
+        <text>{{clueInfo.mobile}}</text>
+        <image wx:if="{{isPerson}}" catchtap="phoneCall" data-phone="{{clueInfo.mobile}}" class="phone-call" src="/personal/image/my-clue/icon_phone@2x.png"></image>
+      </view>
+    </view>
+    <view class="clue-info-area">{{clueInfo.area}}</view>
+    <view class="clue-info-label" wx:if="{{(clueInfo.clueStatusId&&clueInfo.clueStatusId!=0) && !userInfo.isPartner}}">
+      <text>标签：</text>
+      <text class="common-tag jigou" wx:if="{{clueInfo.clueStatusId == 4 && ! userInfo.isPartner}}">机构</text>
+      <block wx:if="{{isPerson}}">
+        <text class="common-tag" wx:if="{{clueInfo.clueStatusId&&clueInfo.clueStatusId!=0&&clueInfo.clueStatusId!=4}}">{{tools.clueStatus(clueInfo.clueStatusId)}}</text>
+      </block>
+      <block wx:else>
+        <text class="common-tag {{clueInfo.clueStatusId==2?'depart-bg-sty':clueInfo.clueStatusId==3?'group-bg-sty':''}}" wx:if="{{clueInfo.clueStatusId&&clueInfo.clueStatusId!=0&&clueInfo.clueStatusId!=4}}">{{tools.clueSeaStatus(clueInfo.clueStatusId)}}</text>
+      </block>
+    </view>
+    <view class="clue-info-label" wx:elif="{{clueInfo.clueStatusId == 1 && userInfo.isPartner}}">
+      <text>标签：</text>
+      <text class="common-tag">失效</text>
+    </view>
+    <view class="clue-info-belong">
+      <text>客户归属：{{clueInfo.clueUserEmpName == null?'无':clueInfo.clueUserEmpName}}</text>
+      <text>线索归属：{{clueInfo.clueAttributionEmpName}}</text>
+      <text>业务员：{{clueInfo.clueSalesmanEmpName}}</text>
+    </view>
+  </view>
+
+  <!-- 按钮区域 -->
+  <view class="clue-btn" wx:if="{{isPerson && !userInfo.isPartner}}">
+    <text wx:if="{{permissions.bt_enter_contract_my_flag&&isPerson&&(clueInfo.clueStatusId==0)&&(userInfo.id==clueInfo.clueSalesmanEmpId)}}" bindtap="enterContract">录入合同</text>
+    <text wx:if="{{permissions.bt_add_order&&(isPerson&&clueInfo.clueStatusId==0)&&((userInfo.id==clueInfo.clueSalesmanEmpId)||(userInfo.id==clueInfo.clueAttributionEmpId))}}" bindtap="validateProOrder">发起订单</text>
+    <text wx:if="{{permissions.bt_initiate_authentication&&clueInfo.clueStatusId==0&&((userInfo.id==clueInfo.clueSalesmanEmpId)||(userInfo.id==clueInfo.clueAttributionEmpId))&&clueInfo.certifiedLabel==0}}" bindtap="launchApprove" data-cluetype="{{clueType}}" data-info="{{clueInfo}}">发起认证</text>
+    <text bindtap="toFollow" wx:if="{{clueInfo.clueStatusId == 0}}">跟进</text>
+    <text wx:if="{{permissions.bt_receive_clue_my&&(clueInfo.clueStatusId == 2||clueInfo.clueStatusId == 3)}}" bindtap="receive">领取</text>
+    <text wx:if="{{clueInfo.clueStatusId == 1}}" bindtap="deleteClue">删除</text>
+  </view>
+  <view class="clue-btn" wx:else>
+    <text bindtap="throttleSubmit" wx:if="{{clueInfo.orderCount > 0}}">查看订单</text>
+  </view>
+</view>

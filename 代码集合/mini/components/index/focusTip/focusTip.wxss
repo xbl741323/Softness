@@ -1,0 +1,71 @@
+/* components/index/focusTip/focusTip.wxss */
+/*
+公众号关注提示弹窗
+*/
+page {
+  position: relative;
+}
+
+.wx-focus {
+  position: fixed;
+  bottom: 140rpx;
+  left: 0;
+  width: 702rpx;
+  height: 140rpx;
+  background: rgba(37, 38, 46, 0.90);
+  border-radius: 10rpx;
+  margin-left: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  z-index: 8000;
+}
+
+.wx-focus image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 24rpx;
+}
+
+.focus-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 20rpx;
+}
+
+.focus-desc>text:nth-of-type(2) {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.focus-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 117rpx;
+  height: 52rpx;
+  font-size: 24rpx;
+  background: #36a6fe;
+  border-radius: 26rpx;
+  margin-right: 70rpx;
+  padding: 0 10rpx;
+}
+.close-focus{
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+}
+.close-focus image{
+  width: 40rpx;
+  height: 40rpx;
+}

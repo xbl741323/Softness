@@ -1,0 +1,376 @@
+/* personal/pages/collection/collection.wxss */
+.navigation-text {
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.collection {
+  min-height: 100vh;
+}
+
+#top{
+  position: relative;
+  width: 100%;
+  margin-top: 180rpx;
+}
+
+.manage {
+  color: #333333;
+  font-size: 28rpx;
+  position: fixed;
+  right: 32rpx;
+}
+
+.status {
+  padding: 0 32rpx;
+  color: #3A414B;
+  font-size: 24rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+}
+
+.tab-right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-main {
+  position: relative;
+  height: 80rpx;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 24rpx;
+  margin-right: 116rpx;
+  color: #36A6FE;
+}
+
+.content-banner {
+  padding: 6rpx 32rpx 0 32rpx;
+  width: 750rpx;
+  height: 93rpx;
+  line-height: 90rpx;
+  border-top: 2rpx solid #F4F4F4;
+  border-bottom: 2rpx solid #F4F4F4;
+  color: #c4c4c4;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 10000;
+  background: #fff;
+}
+
+.tab-item {
+  position: relative;
+  color: #999999;
+  font-size: 32rpx;
+  margin-right: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.active-font {
+  color: #36A6FE !important;
+  font-weight: bold !important;
+  font-size: 36rpx !important;
+}
+
+.down {
+  width: 12rpx;
+  height: 12rpx;
+  margin-left: 16rpx;
+  border-top: 2rpx solid #36A6FE;
+  border-right: 2rpx solid #36A6FE;
+  transform: rotate(135deg);
+}
+
+.down-choosed {
+  margin-top: 8rpx;
+  width: 12rpx;
+  height: 12rpx;
+  margin-left: 16rpx;
+  border-top: 2rpx solid #36A6FE;
+  border-right: 2rpx solid #36A6FE;
+  transform: rotate(-45deg);
+}
+
+.choosed {
+  color: #122037;
+  font-weight: bolder;
+}
+
+
+.status-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 190rpx;
+  height: 269rpx;
+  bottom: -280rpx;
+  right: -10rpx;
+  padding: 0 24rpx;
+  background: #ffffff;
+  border: 2rpx solid #E4E4E4;
+  border-radius: 14rpx;
+  z-index: 1000;
+}
+
+.top-pointer {
+  position: absolute;
+  right: 30rpx;
+  top: -12rpx;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 4rpx;
+  background: #ffffff;
+  border: 2rpx solid #E4E4E4;
+  border-bottom: none !important;
+  border-right: none !important;
+  transform: rotate(45deg);
+}
+
+.select-bg {
+  position: absolute;
+  width: 190rpx;
+  height: 269rpx;
+  bottom: -280rpx;
+  right: -10rpx;
+}
+
+.status-item {
+  color: #333333;
+  font-size: 28rpx;
+  border-bottom: 2rpx solid #E4E4E4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.status-item image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.status-item:nth-of-type(3) {
+  border: none !important;
+}
+
+.choosedStatus {
+  color: #36A6FE !important;
+}
+
+
+.list {
+  padding: 90rpx 32rpx 32rpx;
+}
+
+.project-content-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.out-line {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 8rpx;
+  background: #DFEBFE;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.inline-img {
+  width: 64rpx;
+  height: 64rpx;
+  opacity: .8;
+}
+
+/* 管理列表样式 */
+.item-checked {
+  margin-right: 20rpx;
+}
+
+.project-content-item .wx-checkbox-input {
+  width: 28rpx;
+  /* 背景的宽 */
+  height: 28rpx;
+  /* 背景的高 */
+  border-radius: 20rpx;
+}
+
+.project-content-item .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #36A6FE;
+  border: 0;
+}
+
+.project-content-item .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 60%;
+  height: 30%;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: '';
+  transform: rotate(-45deg) translate(0, -120%);
+}
+
+.project-item-image {
+  width: 200rpx;
+  height: 142rpx;
+  border-radius: 2rpx;
+}
+
+.project-item-title {
+  margin-bottom: 14rpx;
+  max-width: 260rpx;
+  color: #3A414B;
+  font-size: 28rpx;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  /* 这里是超出几行省略 */
+  overflow: hidden;
+}
+
+.notActived {
+  width: 72rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  border-radius: 4rpx;
+  background: #D9D9D9;
+  color: #A1A6AE;
+  font-size: 16rpx;
+  margin-left: 16rpx;
+}
+
+.project-content-item-right {
+  margin-left: 32rpx;
+  color: #C4C4C4;
+  font-size: 24rpx;
+}
+
+.nodata {
+  margin-top: 160rpx;
+  color: #C4C4C4;
+  font-size: 22rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.nodata-img {
+  width: 293rpx;
+  height: 261rpx;
+}
+
+.loading {
+  width: 750rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.loading-global {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.foot {
+  background: #fff;
+  width: 750rpx;
+  height: 98rpx;
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #EAEBEF;
+  font-size: 26rpx;
+}
+
+.foot .wx-checkbox-input {
+  width: 28rpx;
+  /* 背景的宽 */
+  height: 28rpx;
+  /* 背景的高 */
+  border-radius: 20rpx;
+}
+
+.foot .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #36A6FE;
+  border: 0;
+}
+
+.foot .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 60%;
+  height: 30%;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: '';
+  transform: rotate(-45deg) translate(0, -120%);
+}
+
+.all {
+  margin-left: 32rpx;
+  color: #86898D;
+}
+
+.all-checked {
+  color: #36A6FE;
+}
+
+.foot-img {
+  margin-right: 10rpx;
+  width: 40rpx;
+  height: 40rpx
+}
+
+.tab-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allSelect {
+  color: #333333;
+  font-size: 32rpx;
+}
+
+.del-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 32rpx;
+  width: 128rpx;
+  height: 64rpx;
+  background: #FB322F;
+  color: #ffffff;
+  margin-right: 24rpx;
+}
+.activeTab{
+  color: #000;
+  font-weight: bold;
+}
+.blue-block{
+  display: inline-block;
+  width: 40rpx;
+  height: 8rpx;
+  background: #36a6fe;
+  border-radius: 8rpx;
+  position: absolute;
+  top: 75rpx;
+}

@@ -1,0 +1,10 @@
+<!--custom-tab-bar/index.wxml-->
+<view class="tab-bar-contain {{system == 'ios'?'ios-sty':''}}">
+  <view bindtap="changeTab" data-item="{{item}}" class="tab-bar-item {{selected == item.id?'active-tab-sty':''}}" wx:for="{{tabList}}" wx:key="index">
+    <button wx:if="{{item.id == 2 && isLogin}}" open-type="contact" catchtap="contact" size="mini" class="ask-btn">
+      <image class="zixun-sty" src="{{item.imgUrl}}"></image>
+    </button>
+    <image wx:else class="{{item.id == 2 ? 'zixun-sty':''}}" src="{{selected == item.id?item.selectImgUrl:item.imgUrl}}"></image>
+    <text wx:if="{{index!==2}}">{{item.title}}</text>
+  </view>
+</view>

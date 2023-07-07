@@ -1,0 +1,12 @@
+<!--personal/components/my-order/selector/selector.wxml-->
+<view class='select_box'>
+  <view class='select' catchtap='selectTap'>
+    <text class='select_text' wx:if="{{nameUser}}">{{nameUser}}</text>
+    <text class='select_text' wx:else>请选择待审核人</text>
+    <image class='select_img {{selectShow&&"select_img_rotate"}}' src='../../../image/common/add_circle_line.png' background-size="contain">
+    </image>
+  </view>
+  <view class='option_box' wx:if="{{selectShow}}" style='height:{{selectShow?(listData.length>5?325:listData.length*50):0}}rpx;'>
+    <text class='option' wx:for='{{listData}}' wx:key='index' data-index='{{index}}' catchtap='optionTap'>{{item.name}}</text>
+  </view>
+</view>

@@ -1,0 +1,128 @@
+<!--personal/pages/my-clue/follow/follow.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<view class="generate-order">
+  <view class="generate-head">
+    <!-- 跟进方式 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text>跟进方式</text>
+      </view>
+      <view class="order-item-foot">
+        <view>
+          <text wx:if="{{followInfo.followTypeName == null}}">请选择</text>
+          <text class="strong-sty" wx:else>{{followInfo.followTypeName}}</text>
+          <text class="pointer-sty"></text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 定位打卡只在跟进方式是见面拜访时才有 -->
+    <block wx:if="{{(followInfo.followTypeId==(env == 'develop' ? 109 : env == 'trial' ? 58 : 58))&&(locationInfo.addressName!=null&&locationInfo.addressName!='')}}">
+      <!-- 选择位置 -->
+      <view class="location-contain">
+        <view class="location-info">
+          <view class="location-top">
+            <van-icon name="location" color="#7B7B7B" />
+            <text class="location-name">{{locationInfo.addressName}}</text>
+          </view>
+          <text class="pointer-sty"></text>
+        </view>
+        <view class="location-desc">{{locationInfo.addressDetail}}</view>
+      </view>
+
+      <!-- 上传位置图片 -->
+      <view class="location-item">
+        <view class="order-item-head">
+          <text class="required-sty"></text>
+          <text>上传位置图片</text>
+        </view>
+        <view class="location-img" bindtap="checkTakePhoto">
+          <view class="delete-contain" wx:if="{{locationInfo.imgUrl!=''&&operateType==0}}" catchtap="deleteLocationImg">
+            <van-icon class="delete-icon" name="plus" color="#ffffff" />
+          </view>
+          <image mode="aspectFill" class="choose-image" wx:if="{{locationInfo.imgUrl!=''}}" src="{{imageURL+locationInfo.imgUrl}}"></image>
+          <image class="add-image" wx:if="{{locationInfo.imgUrl==''}}" src="../../../image/my-clue/camera.png"></image>
+        </view>
+      </view>
+    </block>
+
+    <!-- 请选择跟进产品 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty"></text>
+        <text>跟进产品</text>
+      </view>
+      <view class="order-item-foot">
+        <text class="{{selectProduct.length>0?'strong-sty':''}}">请选择跟进产品</text>
+        <text class="pointer-sty"></text>
+      </view>
+    </view>
+
+    <!-- 已选产品展示区域 -->
+    <view class="show-select-product" wx:if="{{selectProduct.length>0}}">
+      <view class="select-product-list" wx:for="{{selectProduct}}" wx:key="index">
+        <view class="select-product-item" data-item="{{item}}">
+          <text>{{item.spuTitle}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 其他产品 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty"></text>
+        <text>其他产品</text>
+      </view>
+      <view class="order-item-foot">
+        <input value="{{followInfo.otherSpu}}" disabled="true" bindblur="changeInput" data-type="0" class="input-sty" placeholder-class="p-sty" type="text" placeholder="请输入未找到的跟进产品名称" />
+      </view>
+    </view>
+
+    <!-- 跟进内容 -->
+    <view class="column-sty">
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text>跟进内容</text>
+      </view>
+      <view class="order-item-foot">
+        <textarea value="{{followInfo.followContent}}" disabled="true" bindblur="changeInput" data-type="1" maxlength="500" class="common-item-textarea" placeholder-class="p-sty" placeholder="请输入500字以内的跟进内容"></textarea>
+      </view>
+    </view>
+  </view>
+
+  <!-- 下次跟进时间 -->
+  <view class="order-item">
+    <view class="order-item-head">
+      <text class="required-sty"></text>
+      <text>下次跟进</text>
+    </view>
+    <view class="order-item-foot">
+      <text class="strong-sty" wx:if="{{followInfo.nextFollowTime!=''&&followInfo.nextFollowTime!=null}}">{{followInfo.nextFollowTime}}</text>
+      <text wx:else>请选择下次跟进时间</text>
+    </view>
+  </view>
+
+  <!-- 添加附件 -->
+  <view class="column-sty">
+    <view class="order-item-head">
+      <text class="required-sty"></text>
+      <text>添加附件</text>
+    </view>
+    <view class="upload-foot">
+      <van-uploader accept="image" multiple="{{true}}" max-count="5" file-list="{{ fileList }}" disabled="{{true}}" />
+    </view>
+  </view>
+
+  <!-- 下次跟进时间显示 -->
+  <action-sheet hidden="{{!showCalendar}}">
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="onConfirm" bind:cancel="onClose" />
+  </action-sheet>
+
+  <!-- 操作按钮区域 -->
+  <view class="btn-contain">
+    <view class="submit-btn">
+      提交跟进
+    </view>
+  </view>
+</view>

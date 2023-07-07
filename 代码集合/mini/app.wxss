@@ -1,0 +1,270 @@
+/**app.wxss**/
+page{
+  font-family:  Source Han Sans CN, Source Han Sans CN-Medium;
+}
+.container {
+  height: 100%;
+  font-family: "Source Han Sans CN";
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #122037;
+  padding: 0rpx 24rpx;
+}
+
+.navigation-container {
+  position: fixed;
+  padding: 0 32rpx;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.navigation-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navigation-title {
+  position: absolute;
+  left: 104px;
+  right: 104px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.back {
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #000;
+  border-left: 4rpx solid #000;
+  transform: rotate(-45deg);
+  margin-right: 10rpx
+}
+.line-1-ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.line-2-ellipsis{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  font-size: 28rpx;
+  -webkit-box-orient: vertical;
+}
+.loginBtn {
+  width: 670rpx !important;
+  /* height: 80rpx; */
+  font-weight: 500;
+  font-size: 30rpx;
+  background: linear-gradient(to right, #55CAFE, #3A6DFB);
+  color: #fff;
+}
+button[type=primary][plain] {
+  font-weight: 500 !important;
+}
+/* 表单输入模块 */
+.holder-style{
+  color: #B9B9B9;
+  font-size: 28rpx;
+}
+.label-width{
+  min-width: 128rpx;
+  /* text-align-last:justify; */
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 28rpx;
+}
+.height-48{
+  height: 48rpx;
+  line-height: 48rpx;
+}
+/* 去除按钮点击时的背景hover-class="btn-hover" */
+.btn-hover {
+  background: none
+}
+.head-dis-top{
+  padding-top: 220rpx;
+}
+/* 自定义状态栏 */
+.header-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  margin: 0 0;
+  z-index: 1;
+}
+
+.toTop {
+  width: 80rpx;
+  height: 80rpx;
+  position: fixed;
+  top: 70vh;
+  right: 20rpx;
+  z-index: 999;
+}
+.sign-desc{
+  font-size: 24rpx !important;
+  margin-left: 20rpx !important;
+  color: #999 !important;
+}
+/* 字超过宽度省略号显示 */
+.text-flow {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.me-focus {
+  margin-top: 100rpx;
+  /* margin-bottom: 100rpx; */
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.light-blue-txt{
+  color: #36A6FE !important;
+}
+
+/* 标题、更多 */
+.class-title{
+  display: flex;
+}
+.class-title :first-child{
+  flex: 1;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 600;
+}
+.more-txt{
+  font-size: 28rpx;
+  color: #BCBCBC;
+}
+.wraps{
+  background: #EEF1F2;
+  min-height: 100vh;
+}
+.popup{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+.mask{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.popup_main{
+  position: fixed;
+  width: 80%;
+  max-height: 700rpx;
+  top: 30%;
+  left: 0;
+  right: 0;
+  /* bottom: 0; */
+  margin: auto;
+  background: #fff;
+  border-radius: 12rpx;
+}
+.pop-title{
+  width: 100%;
+  min-height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-bottom: 2rpx solid #eee;
+  position: relative;
+  color: #555;
+  margin-bottom: 36rpx;
+}
+.close-ico{
+  position:absolute;
+  width: 30rpx;
+  height: 30rpx;
+  right: 24rpx;
+  top: 24rpx;  
+}
+.note-text{
+  font-size: 24rpx;
+  color: #ff0000;
+  margin: 0 24rpx;
+}
+.user-item{
+  padding: 20rpx 24rpx;
+  display: flex;
+  align-items: center;
+}
+.user-item image{
+  width: 24rpx;
+  height: 24rpx;
+  line-height: 40rpx;
+}
+.submit-btn{
+  width: 80%;
+  line-height: 72rpx;
+  text-align: center;
+  margin: 60rpx auto;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  background: #36a6fe;
+  color: #fff;
+}
+.small-font-size{
+  font-size: 20rpx;
+}
+.user-item text{
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 16rpx;
+  line-height: 40rpx;
+}
+.submit-btn{
+  width: 80%;
+  line-height: 72rpx;
+  text-align: center;
+  margin: 60rpx auto;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  background: #36a6fe;
+  color: #fff;
+}
+.more-circle-btn{
+  width: auto;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 60rpx 20rpx;
+  background: #0082FC;
+  border-radius: 40rpx;
+}
+.btn-text-white-14{
+  color: #fff;
+  text-align: center;
+  font-size: 28rpx;
+}
+.flex-top-align{
+  align-items: flex-start !important;
+}
+.flex-left{
+  display: flex;
+  justify-content: flex-start !important;
+  align-items: center;
+}

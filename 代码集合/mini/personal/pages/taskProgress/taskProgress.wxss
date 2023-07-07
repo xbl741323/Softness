@@ -1,0 +1,131 @@
+/* personal/pages/taskProgress/taskProgress.wxss */
+page {
+  background: #F4F4F4;
+}
+
+.progress-contain {
+  margin-top: 16rpx;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  padding: 40rpx;
+}
+
+.progress-name {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 28rpx;
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: normal;
+  padding-right: 40rpx;
+}
+
+.progress-name>text:nth-of-type(1) {
+  display: flex;
+  width: 180rpx;
+  font-weight: bold !important;
+}
+.progress-name>text:nth-of-type(2) {
+  display: flex;
+  width: 700rpx;
+}
+
+.process-list {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 16rpx;
+  padding-left: 10rpx;
+}
+
+.process-item {
+  position: relative;
+  display: flex;
+  height: 225rpx;
+}
+
+.img-cover {
+  width: 36rpx;
+  height: 36rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-cover>text {
+  display: inline-block;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 100%;
+  background: #E6E6E6;
+}
+
+.active-color {
+  background: #04D081 !important;
+}
+
+.process-desc {
+  display: flex;
+  flex-direction: column;
+  margin-left: 28rpx;
+}
+
+.process-desc>view:nth-of-type(1) {
+  color: #666666;
+  font-size: 28rpx;
+  margin-bottom: 6rpx;
+}
+
+.desc-one {
+  width: 600rpx;
+  color: #999999;
+  font-size: 24rpx;
+}
+
+.lang {
+  position: absolute;
+  top: -200rpx;
+  left: 16rpx;
+  width: 2rpx;
+  height: 212rpx;
+  border-right: 2rpx solid #E6E6E6;
+}
+
+.active-desc {
+  color: #333333 !important;
+  font-weight: bold;
+}
+
+.active-lang {
+  border-right: 2rpx solid #04D081 !important;
+}
+
+.task-time {
+  margin-top: 10rpx;
+  color: #C9C9C9;
+  font-size: 24rpx;
+}
+
+.start-sty {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.start-sty>text:nth-of-type(1) {
+  display: inline-block;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 100%;
+  background: #04D081;
+}
+
+.start-sty>text:nth-of-type(2) {
+  color: #333333;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+}

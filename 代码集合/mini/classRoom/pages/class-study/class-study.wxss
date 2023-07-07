@@ -1,0 +1,45 @@
+/* classRoom/pages/class-study/class-study.wxss */
+.class-study {
+  width: 100%;
+  padding-bottom: 40rpx;
+}
+
+.tab-contain {
+  display: flex;
+  width: 100%;
+  height: 88rpx;
+  background: #F5F7FB;
+  color: #666666;
+  font-size: 28rpx;
+}
+
+.tab-item {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-item>text:nth-of-type(2) {
+  display: inline-block;
+  width: 20rpx;
+  height: 8rpx;
+  border-radius: 4rpx;
+  margin-top: 12rpx;
+}
+
+.active-tab-sty {
+  color: #333333 !important;
+  font-weight: bold !important;
+}
+
+.active-tab-bg {
+  background: #36A6FE !important;
+}
+
+.class-contain {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,222 @@
+/* personal/components/my-clue/modify/modify-person/modify-person.wxss */
+page {
+  background: #F5F7FB;
+}
+
+.modify-basic {
+  padding-top: 124rpx;
+}
+
+/*
+  线索类型区域
+*/
+.basic-type {
+  width: 100%;
+  height: 100rpx;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+  position: fixed;
+  top: 0;
+}
+
+.basic-type-title {
+  color: #333333;
+  font-weight: bold;
+  font-size: 32rpx;
+  margin-left: 24rpx;
+}
+
+.basic-head {
+  margin-right: 24rpx;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+}
+
+/*
+  公共样式信息
+*/
+.common-img-sty {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 16rpx;
+}
+
+.common-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #EAEBEF;
+  padding-bottom: 20rpx;
+}
+
+.common-label>text:nth-of-type(1) {
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.common-label>text:nth-of-type(2) {
+  color: #7B7B7B;
+  font-size: 24rpx;
+}
+
+.hide-border {
+  border-bottom: none !important;
+}
+
+/*
+  公共样式信息-单项
+*/
+.common-contain {
+  width: 654rpx;
+  background: #ffffff;
+  margin: 0 24rpx 16rpx 24rpx;
+  padding: 8rpx 24rpx 24rpx 24rpx;
+  border-radius: 20rpx;
+}
+
+.common-item {
+  height: 88rpx;
+  border-bottom: 2rpx solid #eaebef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.common-item-head {
+  display: flex;
+}
+
+.common-require {
+  color: #FF6D27;
+}
+
+.common-item-label {
+  color: #7B7B7B;
+  font-size: 28rpx;
+}
+
+.common-item-foot {
+  display: flex;
+  align-items: center;
+  color: #7B7B7B;
+  font-size: 28rpx;
+}
+
+/*
+  公共样式信息-详细地址
+*/
+
+.common-item-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.common-item-column-head {
+  display: flex;
+  align-items: center;
+  margin: 24rpx 0 12rpx 0;
+}
+
+.common-item-textarea {
+  padding: 18rpx;
+  width: 618rpx;
+  height: 180rpx;
+  font-size: 28rpx;
+  color: #7B7B7B;
+  background: #F9FBFC;
+}
+
+/*
+  公共样式信息-联系人信息
+*/
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item-head {
+  height: 88rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #eaebef;
+}
+
+.contact-item-foot {
+  display: flex;
+  height: 88rpx;
+  border-bottom: 2rpx solid #eaebef;
+}
+
+.contact-info-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.contact-head-label {
+  display: flex;
+  align-items: center;
+}
+
+.contact-input {
+  width: 200rpx;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  color: #7B7B7B;
+}
+
+.contact-long-input {
+  width: 100%;
+  font-size: 28rpx;
+  color: #7B7B7B;
+  text-align: right;
+}
+
+.p-sty {
+  color: #D9D9D9;
+}
+
+/*
+  公共样式信息-按钮信息
+*/
+
+.common-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 32rpx;
+  margin-bottom: 48rpx;
+}
+
+.common-btn>text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 344rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 2rpx solid #0082fc;
+  border-radius: 20rpx;
+  color: #0082FC;
+  font-size: 28rpx;
+}
+
+.common-btn>text:nth-of-type(2) {
+  color: #FFFFFF !important;
+  background: #0082FC;
+  margin-left: 14rpx;
+}
+
+/*
+  未填写时字体颜色显示
+*/
+
+.no-val {
+  color: #D9D9D9 !important;
+}

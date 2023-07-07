@@ -1,0 +1,158 @@
+/* personal/pages/my-order/pay-voucher/pay-voucher.wxss */
+.pay-voucher-contain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 支付提示信息 */
+.pay-alert {
+  width: 702rpx;
+  height: 80rpx;
+  background-color: #E6F7FF;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #1890FF;
+  margin-top: 24rpx;
+}
+
+.pay-alert>text:nth-of-type(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 24rpx;
+  padding: 2rpx;
+  font-size: 20rpx;
+  background-color: #1890FF;
+  color: #ffffff;
+  margin-right: 16rpx;
+}
+
+/* 支付表单区域 */
+.pay-form-sty {
+  width: 702rpx;
+  background-color: #FBFCFE;
+  border-radius: 12rpx;
+  padding: 40rpx 0;
+  margin-top: 22rpx;
+}
+
+.pay-form-item {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  margin-bottom: 24rpx;
+  margin-left: 40rpx;
+}
+
+.pay-form-item>text:nth-of-type(1) {
+  color: #7B7B7B;
+}
+
+.pay-form-item>text:nth-of-type(2) {
+  color: #333333;
+}
+
+/* 支付凭证 */
+.pay-upload {
+  width: 702rpx;
+  margin-top: 48rpx;
+}
+
+.upload-img-contain {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  background-color: #F8F8F8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24rpx 0;
+}
+
+.upload-img-sty {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.required-sty {
+  color: #FA7A42 !important;
+}
+
+.required-label {
+  color: #7B7B7B;
+  font-size: 28rpx;
+  margin-left: 2rpx;
+}
+
+.upload-tip {
+  color: #A5A5A5;
+  font-size: 24rpx;
+}
+
+.size-sty {
+  color: #1890FF;
+}
+
+.show-img-sty {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.delete-contain {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0 0 0 35rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 4rpx;
+  right: 4rpx;
+  font-size: 30rpx;
+  transform: rotate(45deg);
+}
+
+/* 按钮区域 */
+.btn-contain {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 86rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.btn-contain>text:nth-of-type(1) {
+  flex: 1;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0F89FC;
+  border-top: 2rpx solid #E5E6EB;
+}
+
+.btn-contain>text:nth-of-type(2) {
+  flex: 1;
+  height: 100%;
+  background-color: #0F89FC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+}

@@ -1,0 +1,283 @@
+/* components/personal/submitOrder/projectInfo/projectInfo.wxss */
+.order-info {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333333;
+  font-size: 32rpx;
+  margin: 32rpx 0 20rpx 24rpx;
+  font-weight: bold;
+}
+
+.order-show-no {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333333;
+  font-size: 28rpx;
+  margin: 32rpx 0 0rpx 24rpx;
+  font-weight: bold;
+}
+
+.order-no-sty {
+  margin-right: 16rpx;
+}
+
+.create-time {
+  color: #333333;
+  font-size: 28rpx;
+  margin-left: 24rpx;
+}
+
+.create-status {
+  color: #FF6D27;
+  font-size: 32rpx;
+  margin-right: 24rpx;
+}
+
+.order-center {
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.center-top {
+  display: flex;
+  padding: 24rpx;
+  align-items: flex-start;
+}
+
+.img-container {
+  margin-right: 16rpx;
+}
+
+.product-img {
+  width: 192rpx;
+  height: 138rpx;
+}
+
+.order-desc {
+  width: 260rpx;
+  height: 138rpx;
+  margin-right: 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.desc-title {
+  width: 260rpx;
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.desc-type {
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 12rpx;
+}
+
+.order-price {
+  width: 160rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 14rpx;
+}
+
+.price-value {
+  color: #999999;
+  font-size: 30rpx;
+}
+
+.price-Symbol {
+  font-size: 24rpx;
+}
+
+.price-count {
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}
+
+.center-foot {
+  display: flex;
+  flex-direction: column;
+  color: #333333;
+  font-size: 32rpx;
+  margin: 30rpx 0 32rpx 0;
+  padding-top: 32rpx;
+  border-top: 2rpx solid #F1F4F9;
+}
+
+.center-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333333;
+  margin: 0 24rpx 34rpx 24rpx;
+}
+
+.center-item:last-of-type {
+  margin-bottom: 0 !important;
+  color: #FD651C;
+}
+
+.bold_center_sty {
+  color: #333333 !important;
+  font-weight: bold !important;
+}
+
+.center-item-title {
+  font-size: 28rpx;
+}
+
+.center-item-value {
+  font-size: 32rpx;
+}
+
+.btn-desc {
+  margin-left: 24rpx;
+  color: #333333;
+  font-size: 24rpx;
+}
+
+.audit-img {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 8rpx;
+}
+
+.audit-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-main {
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx 24rpx;
+}
+
+.service-fee-contain {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-title {
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 24rpx;
+}
+
+.service-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.service-item-desc {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 28rpx;
+  color: #FD651C;
+}
+
+.service-gray-sty {
+  color: #999999 !important;
+}
+
+.service-item-status {
+  font-size: 28rpx;
+  color: #FD651C;
+}
+
+.service-img {
+  position: relative;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lang-sty {
+  position: absolute;
+  top: 32rpx;
+  left: 16rpx;
+  width: 2rpx;
+  height: 50rpx;
+  background: #c2c2c2;
+}
+
+.lang-default-sty {
+  top: 20rpx;
+}
+
+.service-img image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.service-img-deault {
+  width: 20rpx !important;
+  height: 20rpx !important;
+}
+
+.item-name {
+  margin-right: 14rpx;
+}
+
+.item-symbol {
+  font-size: 24rpx;
+}
+
+.order-main-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.order-main-item:last-of-type {
+  margin-bottom: 0;
+}
+
+.order-main-item>text:nth-of-type(1) {
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.order-main-item>text:nth-of-type(2) {
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.order-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-count image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.order-count text {
+  display: flex;
+  color: #333333;
+  font-size: 32rpx;
+  width: 80rpx;
+  justify-content: center;
+  align-items: center;
+}

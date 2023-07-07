@@ -1,0 +1,124 @@
+<!--personal/pages/my-order/modify-price/modify-price.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<view class="product-info">
+  <view class="common-info">
+    <view class="common-info-head">
+      <text class="strong-sty">{{orderInfo.spuName}}</text>
+    </view>
+    <view class="common-info-foot strong-sty" wx:if="{{cFootIndex==1}}">
+      总价：￥{{tools.fixPrice(orderModifyInfo.totalAmount)}}
+    </view>
+    <view class="common-info-foot strong-sty" wx:else>
+      总价：待定
+    </view>
+  </view>
+  <!-- 产品信息 -->
+  <view class="common-item">
+    <view class="common-title">
+      <text></text>
+      <text>产品信息</text>
+    </view>
+    <view class="common-info-list">
+      <view class="common-info">
+        <view class="common-info-head">
+          <text class="required-sty">*</text>
+          <text>产品数量</text>
+        </view>
+        <view class="common-info-foot">
+          <van-stepper disabled="{{((orderInfo.orderStatus == 0||orderInfo.orderStatus == 1)&&(payDepositStatus == 0||payDepositStatus == 3))?false:true}}" value="{{orderModifyInfo.buyNum}}" plus-class="{{((orderInfo.orderStatus == 0||orderInfo.orderStatus == 1)&&(payDepositStatus == 0||payDepositStatus == 3))?'plus-sty ':'disabled-plus-sty'}}" input-class="step-sty" min="1" max="99" integer="true" disable-input="true" bind:change="changeNum" />
+        </view>
+      </view>
+      <view class="common-info">
+        <view class="common-info-head">
+          <text class="required-sty">*</text>
+          <text>规格属性</text>
+        </view>
+        <view class="common-info-foot">
+          {{orderInfo.spec}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 支付信息 -->
+  <view class="common-item">
+    <view class="common-title">
+      <text></text>
+      <text>支付信息</text>
+    </view>
+    <view class="common-info-list">
+      <view class="common-info">
+        <view class="common-info-head">
+          <text class="required-sty">*</text>
+          <text>支付方式</text>
+        </view>
+        <picker disabled="{{(orderInfo.orderStatus == 0||orderInfo.orderStatus == 1)&&(payDepositStatus == 0||payDepositStatus == 3) ? false :(orderInfo.orderStatus == 2&&orderInfo.payStatus===0&&cPayIndex==1)? true: true}}" bindchange="changePayWay" range-key="title" value="{{cPayIndex}}" range="{{payWayList}}">
+          <view class="common-info-foot">
+            <text>{{payWayList[cPayIndex].title}}</text>
+            <text wx:if="{{(orderInfo.orderStatus == 0||orderInfo.orderStatus == 1)&&(payDepositStatus == 0||payDepositStatus == 3)}}" class="pointer-right"></text>
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{cPayIndex == 0}}">
+    <!-- 定金 -->
+    <view class="common-item">
+      <view class="common-title">
+        <text></text>
+        <text>定金</text>
+      </view>
+      <view class="common-info-list">
+        <view class="common-info" wx:for="{{payDepositInfo.payCostList}}" wx:key="index">
+          <view class="common-info-head">
+            <text>{{tools.filterCostType(item.costTypeId)}}</text>
+          </view>
+          <view class="common-info-foot">
+            <input disabled="{{(orderInfo.orderStatus == 0||orderInfo.orderStatus == 1)&&(payDepositStatus == 0||payDepositStatus == 3) ? false : true}}" bindblur="changeDepositPrice" data-index="{{index}}" type="number" value="{{item.costAmount}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 尾款 -->
+    <view class="common-item">
+      <view class="common-title">
+        <text></text>
+        <text>尾款</text>
+        <picker bindchange="changeFootStatus" range-key="title" value="{{cFootIndex}}" range="{{footStatusList}}">
+          <text class="foot-status-sty">{{footStatusList[cFootIndex].title}}</text>
+        </picker>
+      </view>
+      <view class="common-info-list" wx:if="{{cFootIndex == 1}}">
+        <view class="common-info" wx:for="{{payFootInfo.payCostList}}" wx:key="index">
+          <view class="common-info-head">
+            <text>{{tools.filterCostType(item.costTypeId)}}</text>
+          </view>
+          <view class="common-info-foot">
+            <input disabled="{{(payFootStatus == 0||payFootStatus == 3) ? false : true}}" bindblur="changeFootPrice" data-index="{{index}}" type="number" value="{{item.costAmount}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- 一口价 -->
+    <view class="common-item">
+      <view class="common-info-list">
+        <view class="common-info" wx:for="{{payDisposableInfo.payCostList}}" wx:key="index">
+          <view class="common-info-head">
+            <text>{{tools.filterCostType(item.costTypeId)}}</text>
+          </view>
+          <view class="common-info-foot">
+            <input disabled="{{(orderInfo.payStatus===0&&orderInfo.orderStatus==2&&cPayIndex==1)?false:(orderInfo.orderStatus == 0||orderInfo.orderStatus == 1)&&(payDepositStatus == 0||payDepositStatus == 3) ? false : true}}" bindblur="changeDisposablePrice" data-index="{{index}}" type="number" value="{{item.costAmount}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- 保存修改 -->
+<view class="modify-sty" bindtap="validateModify">
+  保存修改
+</view>
+
+<!-- 审核弹窗 -->
+<audit-tip id="audit-tip" bind:submitAudit="submitAudit"></audit-tip>

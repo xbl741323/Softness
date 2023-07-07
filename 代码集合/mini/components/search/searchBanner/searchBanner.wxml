@@ -1,0 +1,22 @@
+<view class="{{isGlobal?'bannerTop-global':'bannerTop'}}">
+  <view class=" {{isGlobal?'banner-global':'banner'}} {{isShow?'no-radius':''}} ">    
+    <view  catchtap="checked" data-type="{{item}}" wx:for='{{bannerList}}' wx:key="idx" class="{{isGlobal?'banner-item-global':'banner-item'}} {{item.type==3?'no-right':''}}">
+      <view class="{{isShow&&choosedBanner==item.type?'banner-checked':''}}">{{item.name}}</view>
+      <view class="{{isShow&&choosedBanner==item.type?'down-choosed':'down'}} "></view>
+    </view>      
+  </view>
+  <!-- 下拉框选项列表 -->
+  <view wx:if="{{isShow}}">
+    <scroll-view class="{{isGlobal?'dialog-global':'dialog'}}" scroll-y>
+      <view catchtap="getProjectList" data-type="{{item}}"  class="show-list-item" wx:for="{{showList}}" wx:key="idx">
+        <view style="display:flex;align-items:center;">
+          <view class="{{optionId==item.id||bannerList[0].id==item.id||bannerList[2].id==item.id?'banner-checked':''}}">{{item.name}}</view>
+          <view wx:if="{{item.id && item.children}}" class="{{cityChoosed==item.id?'down-choosed':'down'}}"></view>
+        </view>
+        <view wx:if="{{cityChoosed==item.id && item.children}}" class="children">
+          <text catchtap="getProjectList" data-type="{{children}}" class="children-item {{bannerList[0].id==children.value || cityChoosed==children.value?'banner-checked':''}}" wx:for="{{item.children}}" wx:key="idx" wx:for-item="children">{{children.label}}</text>
+        </view>
+      </view>     
+    </scroll-view>    
+  </view>
+</view>

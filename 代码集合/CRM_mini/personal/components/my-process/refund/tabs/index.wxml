@@ -1,0 +1,102 @@
+<!--personal/components/my-process/refund/tabs/index.wxml-->
+ <!-- tab切换区域 -->
+<wxs src="/utils/refund/refund.wxs" module="refundWxs"></wxs>
+<van-tabs ellipsis="{{false}}" color="#0082FC" title-active-color="#0082FC" active="{{ cTabIndex }}" bind:change="changeTab" lazy-render="{{false}}">
+  <van-tab wx:for="{{tabList}}" wx:key="index" title="{{item}}"></van-tab>
+</van-tabs>
+<!-- 订单信息及退款信息 -->
+<view class="tab-item" wx:if="{{cTabIndex == 0}}">
+  <view class="item-block">
+    <view class="block-title">订单信息</view>
+    <view class="justify-box">
+      <text>订单时间</text>
+      <text>{{processData.orderTime}}</text>
+      <text>订单编号</text>
+      <text>{{processData.orderNo}}</text>
+      <text>电商编号</text>
+      <text>{{processData.thirdOrderNo || '/'}}</text>
+      <text>产品名称</text>
+      <text>{{processData.spuName}}</text>
+      <view class="price-list">
+        <view wx:for="{{processData.newPayTypeList}}" wx:key="index" class="padding-no">
+          <view wx:for="{{item}}" wx:for-item="child" wx:key="index" class="justify-box new-grid padding-no line-height-56">
+            <text>{{refundWxs.filterCostType(child.costType)}}{{child.payType == 1 ? '(定金)' : child.payType == 2 ? '(尾款)':''}}</text>
+            <text>{{child.price}}</text>
+          </view>
+        </view>
+      </view>
+      <view></view>
+      <text>数量</text>
+      <text>{{processData.buyNum}}</text>
+      <text>订单总价</text>
+      <text>{{processData.totalAmount}}</text>
+    </view>
+  </view>
+  <view class="item-block dis-top">
+    <view class="block-title">退款信息</view>
+    <view class="justify-box {{index != refundFeeData.length-1 ? 'bottom-border':''}}" wx:for="{{refundFeeData}}" wx:key="index">
+      <text>支付时间</text>
+      <text>{{item[0].payTime}}</text>
+      <text>支付方式</text>
+      <text>{{refundWxs.payTypeTransfer(item[0].payChannel)}}</text>
+      <text>退款类型</text>
+      <view class="flex-type">
+        <view wx:for="{{item[0].costTypes}}" wx:for-item="child" wx:key="index">
+          <text>{{refundWxs.filterCostType(child)}}</text>
+          <text wx:if="{{item[0].payTypeId != 3}}">{{item[0].payTypeId == 1 ? '(定金)' : item[0].payTypeId == 2 ? '(尾款)':'' }}</text>
+        </view>
+      </view>
+      <text>退款数量</text>
+      <text>{{item[0].refundNum}}</text>
+      <text>支付金额</text>
+      <text>{{item[0].payAmount}}</text>
+      <text>可退款总额</text>
+      <text>{{item[0].refundAmounts || '待分配'}}</text>
+      <text>退款状态</text>
+      <text>{{refundWxs.refundStatus(item[0].refundStatus)}}</text>
+    </view>
+  </view>
+</view>
+<view class="tab-item" wx:if="{{cTabIndex == 1}}">
+  <view class="item-block">
+    <view class="block-title">任务信息</view>
+    <view class="justify-box {{index != taskData.length-1 ? 'bottom-border':''}}" wx:for="{{taskData}}" wx:key="index">
+      <text>任务编号</text>
+      <text>{{item.taskNo}}</text>
+      <text>产品名称</text>
+      <text>{{item.spuName}}</text>
+      <text>交付物名称</text>
+      <text>{{item.deliveryName || '/'}}</text>
+      <text>工程师</text>
+      <text>{{item.trTaskEngineer.engineerName}}</text>
+      <text>计划交付时间</text>
+      <text>{{item.deliveryTime || '/'}}</text>
+      <text>完成时间</text>
+      <text>{{item.finishTime || '/'}}</text>
+      <text>任务进度</text>
+      <text>{{item.stepName}}</text>
+      <text>任务进度预处理</text>
+      <text>{{item.preFinishLabel || '/'}}</text>      
+    </view>
+  </view>  
+</view>
+<view wx:if="{{cTabIndex == 2}}" class="tab-item">
+  <view class="item-block">
+    <!-- 操作信息 -->
+    <view wx:for="{{logList}}" wx:key="index" class="time-line">
+      <view>
+        <view class="current-time"></view>
+        <view class="vertical-line" wx:if="{{index != logList.length-1}}"></view>
+      </view>
+      <view class="operate">
+        <view class="operate-content">
+          {{item.title}}
+          <text wx:if="{{item.auditState}}"></text>{{item.auditState == 1 ? '：审批通过' : item.auditState == 2 ? '：审批拒绝' :''}}
+        </view>
+        <view class="operate-name" wx:if="{{item.auditReason}}">审批备注：{{item.auditReason}}</view>
+        <view class="operate-name">操作人：{{item.createByName}}</view>
+        <view class="operate-time">操作时间：{{item.createTime}}</view>
+      </view>
+    </view>
+  </view>  
+</view>

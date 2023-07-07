@@ -1,0 +1,64 @@
+/* personal/components/my-order/task-info/task-info.wxss */
+.no-task {
+  padding: 50rpx 24rpx 6rpx 50rpx;
+  color: #555555;
+  font-size: 30rpx;
+}
+
+.no-task-item {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #0082FC;
+}
+
+.task-list {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx 24rpx 6rpx 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  color: #555555;
+  font-size: 28rpx;
+  margin-bottom: 48rpx;
+}
+.flex-dis{
+  display: flex;
+  align-items: center;
+}
+.circle{
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 12rpx;
+}
+.warning-circle{
+  border: 2rpx solid #f49422;
+  color: #f49422;  
+}
+.success-circle{
+  border: 2rpx solid #09be34;
+  color: #09be34;
+}
+.special-sty {
+  display: flex;
+  justify-content: flex-end !important;
+  align-items: center;
+}
+
+.list-total-sty {
+  margin-bottom: 28rpx !important;
+}
+
+/* .list-item>text:nth-of-type(2) {
+  font-weight: bold;
+} */
+.list-total-sty>text:nth-of-type(2) {
+  color: #0082FC;
+}

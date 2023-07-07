@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "卧涛网",
+  "usingComponents": {
+    "projectItem": "/components/index/projectItem/projectItem",
+    "propertyItem": "/components/index/propertyItem/propertyItem",
+    "otherItem": "/components/index/otherItem/otherItem",
+    "focusTip": "/components/index/focusTip/focusTip",
+    "areaItem": "/components/index/areaItem/areaItem"
+  }
+}

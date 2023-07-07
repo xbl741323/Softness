@@ -1,0 +1,13 @@
+{
+
+  "navigationBarTitleText": "客户详情",
+  "usingComponents": {
+
+    "clue-info": "/personal/components/seas-region/seas-info/sead-info",
+    "query-emp": "/components/common/query-emp/query-emp",
+    "billing-information": "/personal/components/seas-region/billing-information/billing-information",
+    "clue-list": "/personal/components/seas-region/clue-list/clue-list",
+    "sras-records": "/personal/components/seas-region/sras-records/sras-records"
+
+  }
+}

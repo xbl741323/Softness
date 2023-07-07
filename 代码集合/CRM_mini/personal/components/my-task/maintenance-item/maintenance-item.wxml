@@ -1,0 +1,69 @@
+<view>
+  <view>
+    <view class="clue-tab">
+      <van-tabs active="{{ active }}" color="#0082FC" lazy-render="{{false}}" bind:change="changeTab">
+        <van-tab title="客户跟进" name="0"></van-tab>
+        <van-tab title="分配和编辑" name="1"></van-tab>
+      </van-tabs>
+    </view>
+    <wxs src="/utils/order/order.wxs" module="orders"></wxs>
+    <!-- 基本信息 -->
+    <view wx:if="{{active==0}}">
+      <view class="search_sty">
+        <van-search bind:blur="changeSearch" class="search-sty" value="{{ pricekeyWords }}" placeholder="请输入员工姓名关键词搜索" />
+      </view>
+      <view wx:for="{{FollowUpListArr}}" wx:key="index" class="clue-info-card" bindtap="getLookAccessory" data-val="{{item}}">
+        <view class="clue-info-card" bindtap="getLookAccessory" data-val="{{item}}">
+          <view class="user-info follow-desc-item">
+            <view class="user-top">
+              <text class="user-name">{{item.operateEmpName}}</text>
+            </view>
+            <view class="followPeople">
+              <text>{{item.createName}} {{item.followTypeName}}</text>
+              <text class="created-time">{{item.createTime}}</text>
+            </view>
+          </view>
+          <view class="follow-desc-item">
+            <text>任务名称：</text>
+            <!-- <text>{{item.followTypeName==null ?'暂无数据':item.followTypeName}}</text> -->
+            <text>{{taskInfo.orderSpuName}}</text>
+          </view>
+          <view class="follow-desc-item">
+            <text>跟进内容：</text>
+            <text>{{item.followContent}}</text>
+          </view>
+          <view class="follow-desc-item" wx:if="{{(item.locationName!=null&&item.locationName!='')&&(item.followTypeId == (env == 'develop' ? 109 : env == 'trial' ? 58 : 58))}}">
+            <view>
+              <text>定位：{{item.locationName}}</text>
+              <text>-{{item.locationDetail}}</text>
+            </view>
+            <text class="location-img-sty" catchtap="previewImg" data-item="{{item}}">{{item.pictureUrl}}</text>
+          </view>
+          <view class="follow-desc-item">
+            <text>更新时间：</text>
+            <text>{{item.createTime}}</text>
+          </view>
+          <view class="sea-botton">
+            <text>编辑</text>
+          </view>
+        </view>
+        <view wx:if="{{FollowUpListArr.length==0}}" class="empty-page {{pageForm == 1?'active-empty-sty':''}}">
+          <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
+          <text>未搜索到相关数据</text>
+        </view>
+      </view>
+    </view>
+    <!-- 操作信息 -->
+    <view wx:if="{{active==1}}" wx:for="{{logsList}}" wx:key="index" class="time-line">
+      <view>
+        <view class="current-time"></view>
+        <view class="vertical-line" wx:if="{{index != logsList.length-1}}"></view>
+      </view>
+      <view class="operate">
+        <view class="operate-content">{{item.content}}</view>
+        <view class="operate-name">操作人：{{item.createByName}}</view>
+        <view class="operate-time">{{item.createTime}}</view>
+      </view>
+    </view>
+  </view>
+</view>

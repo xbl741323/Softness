@@ -1,0 +1,66 @@
+<!--personal/pages/wxlogin/wxlogin.wxml-->
+<view class="wx_login_box" wx:if="{{showStatus == 0}}">
+  <view class="wt_logo_box">
+    <view class="wt_logo">
+      <view class="wt_box">
+        <view>
+          <image  src="/personal/image/login/icon_logo.png" style="width: 142rpx;height: 142rpx;"></image>
+        </view>
+        <text class="logo_txt">卧涛CRM</text>
+      </view>
+    </view>
+  </view>
+  <view class="login_txt">
+    <view class="tip_txt1">登录后该应用将获取以下权限</view>
+    <view class="tip_txt2">获得你的微信公开信息（昵称、头像等）</view>
+  </view>
+  <view class="wxlogin_btn_box">
+    <view class="wxlogin_btn" bindtap="getUserProfile" wx:if="{{isUsed}}">登录</view>
+    <!-- <button wx:else bindtap="getUserProfile" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="text">微信登录</button> -->
+
+  </view>
+</view>
+<view class="phone-login"  wx:if="{{showStatus == 1}}">
+  <image class="bg-sty" src="/personal/image/login/wotao_icon@2x.png"></image>
+  <view class="login-form">
+    <view class="login-input {{numberError==true?'error-input':''}}">
+      <text>账户名称</text>
+      <view class="input-contain">
+        <input bindinput="getNumber" placeholder-class="p-sty" placeholder="请输入员工工号"/>
+        <text wx:if="{{numberError}}" class="phone-error-code">请输入员工工号</text>
+      </view>
+    </view>
+    <view class="login-input {{pwdError==true?'error-input':''}}">
+      <text>账户密码</text>
+      <view class="input-contain">
+        <input password="true" bindinput="getPwd" placeholder-class="p-sty" placeholder="请输入账户密码" bindblur="verifyNum"/>
+        <text wx:if="{{pwdError}}" class="phone-error-code">请输入账户密码（至少6位）</text>
+      </view>
+    </view>
+    <view class="login-input {{codeError==true?'error-input':''}}">
+      <text>验证码</text>
+      <view class="code_sty">
+        <input bindinput="getCode" bindfocus="verifyNum" placeholder-class="p-sty" placeholder="请输入验证码" class="msg_input"/>
+        <button bindtap="openSlide" disabled="{{btnDisabled&&!mobile}}" class="msg_btn">{{btnText}}</button>
+        <text wx:if="{{codeError}}" class="phone-error-code">请输入验证码</text>
+      </view>
+    </view>
+    <view class="login-btn" bindtap="empLogin">绑定并登录</view>
+  </view> 
+</view>
+<!-- 换绑弹窗 -->
+<van-popup show="{{ show }}" round bind:close="closeDialog" closeable>
+  <view class="bind-box">
+    <view class="bind-content">
+      <view class="bind-inp">
+        <text>该账户已绑定微信</text>
+      </view>
+      <view class="bind-btn">
+        <view bindtap="changeWxBind">换绑并登录</view>
+        <view bindtap="closeDialog">不换绑</view>
+      </view>
+    </view>
+  </view>
+</van-popup>
+<!-- 登录滑块 -->
+<aj-captcha class="demo2" bind:verifySuccess="verifySuccess" opt="{{captchaOption}}"></aj-captcha>

@@ -1,0 +1,19 @@
+<!--pages/classRoom/classRoom.wxml-->
+<view class="classify-list">
+  <!-- 分类切换 -->
+  <view class="fixed-content">
+    <scroll-view  class="scroll-contain" 	scroll-x="false" scroll-y="true" enhanced="{{true}}" show-scrollbar="{{false}}">
+      <view class="new-scroll">
+        <view class="scroll-item" wx:for="{{optionList}}" wx:key="index" bindtap="changeTab" data-id="{{item.id}}">
+          <text class="{{tabNo == item.id? 'active-scroll-sty':''}}">{{item.plateName}}</text>
+          <text wx:if="{{tabNo == item.id}}"></text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 课程列表 -->
+  <view class="course-list">
+    <courseItem wx:for="{{dataList}}" bindtap="toCourseDetail" data-id="{{item.id}}" data-baseshowstate="{{item.baseShowState}}" courseInfo="{{item}}" wx:key="index"></courseItem>
+    <view class="lading-tip" wx:if="{{dataList.length >= total && total >= 5}}">到底了哟，亲</view>
+  </view>
+</view>

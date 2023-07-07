@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "退款详情",
+  "usingComponents": {
+    "refund-detail":"/personal/components/my-process/refund/detail/index",
+    "detail-tab":"/personal/components/my-process/refund/tabs/index",
+    "top-tips": "/components/common/detail/top-tips/index"
+  }
+}

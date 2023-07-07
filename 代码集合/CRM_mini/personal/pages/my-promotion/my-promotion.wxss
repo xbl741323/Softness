@@ -1,0 +1,206 @@
+/* personal/pages/my-promotion/my-promotion.wxss */
+.my-promotion {
+  display: flex;
+  flex-direction: column;
+  padding: 16rpx 24rpx;
+}
+
+.promotion-item {
+  display: flex;
+  height: 92rpx;
+  justify-content: space-between;
+  align-items: center;
+  color: #7B7B7B;
+  font-size: 28rpx;
+  border-bottom: 2rpx solid #EAEBEF;
+}
+
+.pointer-sty {
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 2rpx solid #4d4d4d;
+  border-right: 2rpx solid #4d4d4d;
+  transform: rotate(45deg);
+}
+
+.copy-sty {
+  color: #0082FC;
+  font-size: 24rpx;
+  border-bottom: 2rpx solid #0082FC;
+  padding-bottom: 4rpx;
+}
+
+.copyed-sty {
+  color: #7B7B7B !important;
+  border-bottom: 2rpx solid #7B7B7B !important;
+}
+
+
+.canvans-sty {
+  width: 420rpx;
+  height: 420rpx;
+  position: absolute;
+  bottom: 10000rpx;
+}
+
+.cavan-register-sty {
+  width: 702rpx;
+  height: 770rpx;
+  position: absolute;
+  bottom: -10000rpx;
+}
+
+.cavan-member-sty {
+  width: 500rpx;
+  height: 1800rpx;
+  position: absolute;
+  bottom: -10000rpx;
+}
+
+/*
+  生成小程序注册推广图
+*/
+.register-cover {
+  height: 770rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20%;
+  font-family: Microsoft YaHei, Microsoft YaHei-Light
+}
+
+.register-bg {
+  width: 702rpx;
+  height: 770rpx;
+}
+
+.register-code-box {
+  top: 288rpx;
+  position: absolute;
+  margin: 0 auto;
+  margin-top: 4rpx;
+  margin-bottom: -8rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20rpx;
+}
+
+.register-code {
+  width: 370rpx;
+  height: 370rpx;
+}
+
+.register-desc {
+  width: 100%;
+  text-align: center;
+  color: #B4B4B4;
+  font-size: 16rpx;
+}
+
+/*
+  生成课堂会员推广图
+*/
+.member-cover {
+  width: 520rpx;
+  height: 1800rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+
+.member-bg {
+  width: 100%;
+  height: 1800rpx;
+}
+
+.member-code-contain {
+  width: 150rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.member-code-contain>text:nth-of-type(1) {
+  margin-bottom: 4rpx;
+}
+
+.member-text {
+  display: inline-block !important;
+  width: 100% !important;
+  text-align: center;
+  font-size: 14rpx;
+}
+
+.member-code-box {
+  margin-top: 4rpx;
+  margin-bottom: -8rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.member-code {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 2rpx;
+}
+
+/*
+  分享按钮区域
+*/
+.share-contain {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  padding-top: 46rpx;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.share-list {
+  display: flex;
+  align-items: center;
+}
+
+.share-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  font-size: 24rpx;
+}
+
+.share-item image {
+  width: 72rpx;
+  height: 72rpx;
+  margin-bottom: 16rpx;
+}
+
+.cancel-sty {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  font-size: 28rpx;
+  background: #F5F7FB;
+  margin-top: 40rpx;
+}

@@ -1,0 +1,276 @@
+/* personal/components/my-clue/clue-info/clue-info.wxss */
+
+/*
+  公共样式
+*/
+.clue-info-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-top: 24rpx;
+}
+
+.clue-info-title {
+  color: #333333;
+  display: flex;
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-bottom: 24rpx;
+}
+
+/*
+  公共样式-横向
+*/
+.clue-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.clue-info-item>text:nth-of-type(1) {
+  display: inline-block;
+  min-width: 140rpx;
+  color: #7B7B7B;
+}
+
+.clue-info-item>text:nth-of-type(2) {
+  color: #555555;
+}
+
+.fix-title-sty {
+  width: 160rpx !important;
+}
+
+/*
+  公共样式-纵向
+*/
+
+.clue-info-column {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24rpx;
+}
+
+.clue-info-column>text:nth-of-type(1) {
+  color: #7B7B7B;
+  margin-bottom: 4rpx;
+}
+
+.clue-info-column>view:nth-of-type(1) {
+  color: #555555;
+}
+
+/*
+  公共样式-联系人信息
+*/
+
+.clue-info-contact {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24rpx;
+  color: #555555;
+}
+
+.contact-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.contact-job>text:nth-of-type(1) {
+  color: #7B7B7B;
+  margin-right: 16rpx;
+}
+
+.phone-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.contact-phone {
+  display: flex;
+  align-items: center;
+}
+
+.contact-phone>text {
+  margin-right: 16rpx;
+  font-size: 28rpx;
+}
+
+.contact-phone>text:nth-of-type(1) {
+  color: #7B7B7B !important;
+}
+
+.contact-name>text:nth-of-type(1) {
+  color: #7B7B7B !important;
+  margin-right: 16rpx;
+}
+
+.certify-sty {
+  display: inline-block;
+  background: #0082FC;
+  color: #ffffff;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+  padding: 4rpx 8rpx;
+}
+
+/*
+  公共样式-财务及人员情况
+*/
+
+.clue-info-unit {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.unit-head {
+  flex: 2;
+  display: flex;
+}
+
+.unit-head>text:nth-of-type(1) {
+  display: inline-block;
+  text-align: right;
+  min-width: 180rpx;
+  margin-right: 40rpx;
+  color: #7B7B7B;
+}
+
+.unit-head>text:nth-of-type(2) {
+  color: #555555;
+}
+
+.unit-footer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.unit-footer>text:nth-of-type(1) {
+  margin-right: 40rpx;
+  color: #555555;
+}
+
+.unit-footer>text:nth-of-type(2) {
+  color: #7B7B7B;
+}
+
+/*
+  公共样式-人员信息
+*/
+
+.clue-info-man {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.clue-man-name {
+  flex: 1;
+  display: flex;
+  color: #7B7B7B;
+}
+
+.clue-man-name>text:nth-of-type(2) {
+  color: #555555;
+  margin-left: 24rpx;
+}
+
+.clue-man-phone {
+  flex: 1;
+  display: flex;
+  color: #7B7B7B;
+}
+
+.clue-man-phone>text:nth-of-type(2) {
+  color: #555555;
+  margin-left: 24rpx;
+}
+
+.clue-info-card-box {
+  display: flex;
+  justify-content: space-between;
+  margin: 16rpx 0rpx 0rpx 0rpx;
+  align-items: center;
+
+}
+
+.clue-info-card-box>view {
+  width: 172rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  text-align: center;
+  background-color: #ffffff !important;
+  color: #646566;
+  font-size: 24rpx;
+  border-radius: 12rpx;
+  margin-right: 4rpx;
+}
+
+.clue-info-card-tow {
+  display: flex;
+  margin: 16rpx 0rpx 0rpx 0rpx;
+  align-items: center;
+  height: 78rpx;
+  line-height: 78rpx;
+}
+
+.clue-info-card-tow>view {
+  width: 341rpx;
+  background-color: #ffffff !important;
+  color: #646566;
+  font-size: 24rpx;
+  border-radius: 12rpx;
+  margin-right: 4rpx;
+  text-align: center;
+}
+
+.clue-info-card-box>view:last-child {
+  margin-right: 0;
+}
+
+.btnstyle {
+  color: #0082FC;
+}
+
+
+.clue-info-item-botton {
+  margin-bottom: 24rpx;
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.center-certify-sty {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 10rpx;
+}
+
+.mobile-sty {
+  color: #7B7B7B;
+}
+
+.isAutoConversion-sty {
+  display: inline-block;
+  padding: 5rpx;
+  background-color: hsl(210deg 100% 63%);
+  border-radius: 20%;
+  color: #ffffff;
+}
+
+.license{
+  color: #0082FC;
+}
+
+.license text{
+  margin-left: 20rpx;
+}
+
+.common-img-sty {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 16rpx;
+}

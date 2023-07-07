@@ -1,0 +1,28 @@
+<!--product/pages/area-filter/area-filter.wxml-->
+<view>
+  <view class="staticCity cancle">
+    当前定位：{{staticCity}}
+  </view>
+  <view>
+    <input class="inp-sty" bindinput="bindinput" value="{{keyWords}}" type="text" placeholder-class="p-sty" placeholder="搜索想要的内容" />
+  </view>
+  <view class="option-box" wx:if="{{bindSource.length>0}}">
+    <scroll-view scroll-y="true" class="scrollview" hidden="{{hideScroll}}">
+      <view wx:for="{{bindSource}}" wx:key="index">
+        <view bindtap="itemtap" class="itemview" data-item="{{item}}">{{item.name}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="city" >
+    <view wx:for="{{provinceList}}" wx:key="index" style="position:relative">
+      <view  class="{{province==item.name?'dot-active':''}}"></view>
+      <view class="city-item" bindtap="refreshTo" data-item="{{item}}">
+        {{item.name}}
+      </view>
+    </view> 
+    <view class="btns" wx:if="{{isShow}}">
+      <view class="cancel-btn" bindtap="cancelChoice">取消</view>
+      <view class="confirm-btn" bindtap="confirmChoice">确认</view>
+    </view>
+  </view>
+</view>

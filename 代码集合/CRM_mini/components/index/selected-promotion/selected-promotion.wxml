@@ -1,0 +1,19 @@
+<!--components/index/selected-promotion/selected-promotion.wxml-->
+<view class="selected-promotion">
+  <!-- 公共样式 -->
+  <view class="common-title-sty">
+    <text>精选推广</text>
+    <text></text>
+  </view>
+  <view class="selected-list">
+    <view class="'selected-item' {{(index+1)%2==0?'active-selected-item':''}}" wx:for="{{selectedList}}" wx:key="index">
+      <image class="selected-bg" src="{{item.bgUrl}}"></image>
+      <view class="selected-item-info">
+        <image class="selected-icon" src="{{item.iconUrl}}"></image>
+        <text>{{item.title}}</text>
+        <text>{{item.desc}}</text>
+        <text bindtap="skipToPage" data-item="{{item}}">点击推广</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<!--personal/components/my-process/contract-item/index.wxml-->
+<wxs src="/utils/process/process.wxs" module="tools"></wxs>
+<wxs src='/utils/order/order.wxs' module="order"> </wxs>
+<view class="contract-item">
+  <!-- 头部区域 -->
+  <view class="contract-head">
+    <view class="head-left">
+      <text>{{contractInfo.flowNo}}</text>
+      <image catchtap="copyText" data-text="{{contractInfo.flowNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view class="head-right">
+      <text class="{{contractInfo.flowStatus == 2 ? 'passdot' : contractInfo.flowStatus == 3 ? 'notpass' : 'wait'}}"></text>
+      <text>{{tools.filterChangeStatus(contractInfo.flowStatus)}}</text>
+    </view>
+  </view>
+  <view class="contract-info" bindtap="viewDetail">
+    <view>
+      <text>订单编号：</text>
+      <text>{{contractInfo.orderNo}} </text>
+      <image catchtap="copyText" data-text="{{contractInfo.orderNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+    </view>
+    <view>
+      <text>订单类型：</text>
+      <text>{{order.filterorderType(contractInfo.orderType)}}</text>
+    </view>
+    <view>
+      <text>客户名称：</text>
+      <text>{{contractInfo.customerName || '暂无数据'}}</text>
+    </view>
+    <view><text>发起人：</text>
+      <text class="send-sty">{{contractInfo.createByName}}</text>
+    </view>
+    <view>
+      <text>待处理人：</text>
+      <text wx:if="{{contractInfo.flowStatus == 1}}">{{contractInfo.handleByName }}</text>
+      <text wx:else>-</text>
+    </view>
+    <view> <text>发起时间：</text>
+      <text>{{contractInfo.createTime || '暂无数据'}}</text>
+    </view>
+    <view> <text>处理时间：</text>
+      <text>{{contractInfo.handleTime || '暂无数据'}}</text>
+    </view>
+  </view>
+</view>

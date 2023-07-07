@@ -1,0 +1,150 @@
+/* search/pages/global/global.wxss */
+
+/*
+全局搜索框 
+*/
+.input-contain {
+  width: 702rpx;
+  height: 72rpx;
+  background: #ffffff;
+  border: 2rpx solid #36a6fe;
+  border-radius: 38rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.input-contain>input {
+  width: 501rpx;
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.active-input-sty {
+  width: 552rpx !important;
+}
+
+.btn-border {
+  padding: 8rpx;
+  z-index: 9999;
+}
+
+.clear-btn {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+
+.btn-click {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-click>text:nth-of-type(1) {
+  display: inline-block;
+  width: 2rpx;
+  height: 44rpx;
+  opacity: 0.4;
+  background: #36a6fe;
+  margin: 0 30rpx 0 20rpx;
+}
+
+.btn-click>image:nth-of-type(1) {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 40rpx;
+}
+
+/*
+历史搜索 
+*/
+.history-search {
+  display: flex;
+  flex-direction: column;
+  padding: 0 24rpx;
+  margin-top: 34rpx;
+}
+
+.search-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.search-title image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.search-list {
+  width: 100%;
+  margin-top: 24rpx;
+}
+
+.history-item {
+  display: inline-block;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0rpx 23rpx;
+  background: #f6f7f9;
+  border-radius: 30rpx;
+  color: #333333;
+  font-size: 28rpx;
+  margin-right: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 
+  热搜词 
+*/
+.hot-search {
+  display: flex;
+  flex-direction: column;
+  padding: 0 24rpx;
+  margin-top: 34rpx;
+}
+
+.hot-title {
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.hot-title view {
+  width: 83rpx;
+  height: 32rpx;
+  background: linear-gradient(180deg,#f1b046, #ed732c);
+  font-size: 24rpx;
+  font-family: Source Han Sans CN, Source Han Sans CN-Bold;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 12rpx 0 12rpx 0;
+  margin-left: 18rpx;
+}
+.hot-list {
+  width: 100%;
+  margin-top: 24rpx;
+}
+
+.hot-item {
+  display: inline-block;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0rpx 28rpx;
+  background: #f6f7f9;
+  border-radius: 30rpx;
+  color: #333333;
+  font-size: 28rpx;
+  margin-right: 12rpx;
+  margin-bottom: 32rpx;
+}

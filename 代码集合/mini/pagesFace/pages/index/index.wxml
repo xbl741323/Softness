@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="container box1">
+    <view class="title">
+     在当前小程序内打开实名/签署页面，刷脸跳转到公证签小程序
+    </view>
+    <input class="weui-input" maxlength="-1" placeholder="输入链接" value="{{url}}" bindinput="inputUrl"/>
+    <view class="btn-box">
+      <button class="weui-btn my-btn" type="primary" bindtap="goScanCode">扫描二维码</button>
+      <button class="weui-btn my-btn" type="primary" bindtap="goUrl">跳转</button>
+      <button class="weui-btn my-btn" bindtap="clearUrl">清空</button>
+    </view>
+  </view>
+</view>

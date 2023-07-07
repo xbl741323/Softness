@@ -1,0 +1,123 @@
+/* personal/components/my-process/refund/detail/index.wxss */
+.basic-info{
+  margin: 24rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  background: #fff;
+  border-radius: 16rpx;
+}
+.swiper-sty {
+  width: 700rpx;
+  height: 480rpx;
+}
+.contract-info {
+  margin-top: 20rpx;
+  display: grid;
+  grid-template-columns: 26% 70%;
+  grid-gap: 20rpx;
+  color: #555555;
+}
+.delete-blank{
+  margin: 0;
+  /* line-height: 40rpx; */
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: flex-end
+}
+.type-item{
+  padding: 0 !important;
+  display: flex;
+}
+.txt-box{
+  position: relative;
+}
+.over-hidden{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.click-more{
+  position: absolute;
+  right: 24rpx;
+  bottom: 0;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #3e97eb;
+  background: rgba(255, 255, 255, 0.9);
+  padding-left: 12rpx;
+  padding-right: 0 !important;
+}
+.view-pic{
+  color: #3e97eb;
+}
+.newcontract-info {
+  margin-top: 20rpx;
+  padding: 20rpx 20rpx 0 20rpx;
+  display: grid;
+  grid-template-columns: 27% 73%;
+  grid-gap: 20rpx;
+  color: #7b7b7b;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+
+.contract-info :nth-child(2n+1) {
+  color: #7B7B7B;
+}
+.contract-info :nth-child(2n) {
+  text-align: right;
+  padding-right: 24rpx;
+}
+.url-contract {
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  color: #0082FC !important;
+}
+.srt-sty {
+  font-size: 14px;
+  font-family: Source Han Sans CN, Source Han Sans CN-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #555555 !important;
+}
+.dot-sty-box{
+  margin-bottom: 24rpx;
+}
+.dot-sty {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 55rpx;
+}
+.dot-sty-item {
+  width: 8px;
+  height: 8px;
+  background: #e5e6e6;
+  border-radius: 50%;
+}
+.dot-sty-state {
+  width: 15px;
+  height: 8px;
+  background: #0082fc;
+  border-radius: 4px;
+}
+.pop-box{
+  width: 592rpx;
+  height: 500rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+.pop-innner{
+  margin: 24rpx;
+}
+.desc-txt{
+  margin: 16rpx 0 0 20rpx;
+  color: #555;
+  line-height: 32rpx;
+}

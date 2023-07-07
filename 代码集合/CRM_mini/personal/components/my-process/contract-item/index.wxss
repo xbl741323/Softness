@@ -1,0 +1,86 @@
+/* personal/components/my-process/contract-item/index.wxss */
+.contract-item {
+  background: #FBFCFE;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20rpx;
+  /* padding: 32rpx 24rpx 32rpx 24rpx; */
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+/*
+  头部区域
+*/
+.contract-head {
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.head-left {
+  display: flex;
+  align-items: center;
+}
+
+.head-left>text:nth-of-type(1) {
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.head-right {
+  display: flex;
+  align-items: center;
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.head-right>text:nth-of-type(1) {
+  margin-right: 12rpx;
+}
+
+.common-img-sty {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+.passdot{
+  width: 6px;
+  height: 6px;
+  background: #28c445;
+  border-radius: 50%;
+}
+
+.notpass{
+  width: 6px;
+  height: 6px;
+  background: #FA1B2A;
+  border-radius: 50%;
+}
+
+.wait{
+  width: 6px;
+  height: 6px;
+  background: #3C98FE;
+  border-radius: 50%;
+}
+
+.contract-info{
+  margin-top: 20rpx;
+  padding: 20rpx;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-gap: 20rpx;
+  color: #7B7B7B;
+  background: #FFFFFF;
+}
+
+.contract-line{
+  width: 100%;
+  margin: 20rpx auto;
+  border-bottom: 1px solid #EAEBEF;
+}
+
+.contract-info :nth-child(2n){
+  color: #555555;
+}

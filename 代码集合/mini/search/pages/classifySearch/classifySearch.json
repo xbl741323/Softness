@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "banner": "/components/search/searchBanner/searchBanner",
+    "projectItem":"/components/search/projectItem/projectItem",
+    "propertyItem":"/components/search/propertyItem/propertyItem"
+  }
+}

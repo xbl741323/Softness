@@ -1,0 +1,7 @@
+<!--components/common/navBar/navBar.wxml-->
+<view class="nav-bar {{bgColor?'bg-color' : ''}}" style="height: {{height}}rpx;">
+  <view class="nav-leave-content" bindtap="navLeave">
+    <text class="nav-leave"></text>
+  </view>
+  <view class="nav-title">{{navTitle}}</view>
+</view>

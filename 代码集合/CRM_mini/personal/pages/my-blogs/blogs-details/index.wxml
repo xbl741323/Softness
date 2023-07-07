@@ -1,0 +1,100 @@
+<!--personal/pages/my-clue/follow/follow.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<view class="generate-order">
+  <!-- 创建日志 -->
+  <block wx:if="{{status}}">
+    <view class="generate-head">
+      <!-- 下次跟进时间 -->
+      <view class="order-item">
+        <view class="order-item-head">
+          <text class="required-sty"></text>
+          <text>日志日期</text>
+        </view>
+        <view class="order-item-foot" wx:if="{{!logstate}}">
+          <text bindtap="bindShow" class="strong-sty" wx:if="{{detailObj.journalTime}}">{{detailObj.journalTime == todayTheTime ? '今天' : detailObj.journalTime }}</text>
+          <block wx:else>
+            <text class="strong-sty" bindtap="bindShow">{{todayTheTime == todayTheTime ? '今天':''}}</text>
+          </block>
+          <text class="pointer-sty" wx:if="{{!homeClick}}"></text>
+        </view>
+        <view class="order-item-foot" wx:if="{{logstate}}">
+          <text class="strong-sty">{{detailObj.journalTime==todayTheTime ? '今天' :detailObj.journalTime}}</text>
+        </view>
+      </view>
+      <!-- 跟进内容 -->
+      <view class="column-sty">
+        <view class="order-item-head">
+          <text class="required-sty">*</text>
+          <text>工作内容</text>
+        </view>
+        <view class="order-item-foot">
+          <textarea value="{{detailObj.content}}" bindblur="changeInput" data-type="1" maxlength="500" class="common-item-textarea {{detailObj.isEdit&&detailObj.isEdit==1?'gray-sty':''}}" placeholder-class="p-sty" placeholder="请输入500字以内的工作内容" wx:if="{{(detailObj.isEdit==0||status)&&(!editDisabled)}}" disabled="{{detailObj.isEdit&&detailObj.isEdit==1?true:false}}"></textarea>
+          <textarea value="{{detailObj.content}}" bindblur="changeInput" data-type="1" maxlength="500" class="common-item-textarea" placeholder-class="p-sty" placeholder="请输入500字以内的工作内容" wx:else disabled></textarea>
+        </view>
+      </view>
+    </view>
+    <!-- 添加附件 -->
+    <view class="column-sty">
+      <view class="order-item-head">
+        <text class="required-sty"></text>
+        <text>添加附件</text>
+      </view>
+      <view class="upload-foot">
+        <van-uploader wx:if="{{detailObj.isEdit==0}}" accept="image" multiple="{{true}}" max-count="4" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" deletable="{{true}}" />
+        <van-uploader wx:else accept="image" multiple="{{true}}" max-count="4" show-upload="{{detailObj.isEdit&&detailObj.isEdit==1?false:true}}" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" deletable="{{false}}" />
+      </view>
+    </view>
+    <van-popup show="{{ showCalendar }}" bind:close="onClose">
+      <view class="simple-calendar">
+        <calendar mydate="{{mydate}}" mylist="{{mylist}}" bind:mydatechange="handleDateClick" bind:myMonthchange="handleMonthClick" />
+      </view>
+    </van-popup>
+  </block>
+  <!-- 编辑日志 -->
+  <block wx:else>
+    <!-- 下次跟进时间 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty"></text>
+        <text>日志日期</text>
+      </view>
+      <view class="order-item-foot" wx:if="{{!logstate}}">
+        <text class="strong-sty" wx:if="{{detailObj.journalTime}}">{{detailObj.journalTime == todayTheTime ? '今天' : detailObj.journalTime }}</text>
+        <block wx:else>
+          <text class="strong-sty">{{todayTheTime == todayTheTime ? '今天':''}}</text>
+        </block>
+      </view>
+      <view class="order-item-foot" wx:if="{{logstate}}">
+        <text class="strong-sty">{{detailObj.journalTime==todayTheTime ? '今天' :detailObj.journalTime}}</text>
+      </view>
+    </view>
+    <view class="blogs-sty">
+      <view class="blogs-name"><text>{{userInfo.name}}</text></view>
+      <view class="creation-time">
+        <text>创建时间：</text>
+        <text>{{detailObj.createTime}}</text>
+      </view>
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text class="label-sty">工作内容</text>
+      </view>
+      <view class="content">
+        <textarea value="{{detailObj.content}}" bindblur="changeInput" data-type="1" maxlength="500" class="common-item-textarea gray-sty" placeholder-class="p-sty" placeholder="请输入500字以内的工作内容" disabled></textarea>
+      </view>
+      <view class="upload-foot" wx:if="{{fileList.length>0}}">
+        <van-uploader accept="image" multiple="{{true}}" max-count="4" show-upload="{{false}}" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" deletable="{{false}}" />
+      </view>
+    </view>
+  </block>
+  <view class="btn-contain" wx:if="{{detailObj.isEdit==0}}">
+    <view class="submit-btn" bindtap="throttleSubmit">
+      {{status ? "提交" :'编辑'}}
+    </view>
+  </view>
+  <view wx:elif="{{detailObj.isEdit==1}}"></view>
+  <view class="btn-contain" wx:else>
+    <view class="submit-btn" bindtap="throttleSubmit">
+      {{status ? "提交" :'编辑'}}
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+
+    "order-item":"/personal/components/seas-region/order-item/order-item"
+  }
+}

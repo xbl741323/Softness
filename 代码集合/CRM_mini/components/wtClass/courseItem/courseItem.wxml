@@ -1,0 +1,37 @@
+<!--components/classRoom/courseItem/courseItem.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<wxs src="/utils/wtClass/wtClass.wxs" module="courseTools"></wxs>
+<view class="course-item">
+  <!-- 封面区域 -->
+  <view class="cover-img">
+    <image src="{{imageUrl+courseInfo.baseCoverUrl}}"></image>
+    <text wx:if="{{courseInfo.trySeeSectionNumber>0}}" class="try-see">试看</text>
+  </view>
+  <view>
+    <!-- 标题 -->
+    <view class="course-title">
+      <view class="course-top-title">
+        <text class="course-title-vip" wx:if="{{courseInfo.tradingChargeType != 1}}">
+          <text class="vip-label" wx:if="{{(courseInfo.tradingChargeType == 2)||(courseInfo.tradingChargeType == 3)&&(courseInfo.tradingVipPrice!==0)}}">VIP</text>
+          <text class="vip-price" wx:if="{{courseInfo.tradingChargeType == 2}}">免费</text>
+          <text class="vip-price" wx:if="{{(courseInfo.tradingChargeType == 3)&&(courseInfo.tradingVipPrice!==0)}}">{{courseInfo.tradingThirdFeeState==1? (courseInfo.tradingVipPrice+courseInfo.tradingThirdFee):courseInfo.tradingVipPrice}}元</text>
+        </text>
+        <text class="course-title-price" wx:if="{{courseInfo.baseTitle}}">{{courseTools.cutCourseTitle(true,courseInfo.baseTitle)}}</text>
+      </view>
+      <view class="course-desc-title" wx:if="{{courseInfo.baseTitle&&courseTools.getTitleLength(courseInfo.baseTitle)>11}}">{{courseTools.cutCourseTitle(false,courseInfo.baseTitle)}}</view>
+    </view>
+    <!-- 广告语 -->
+    <view class="course-desc {{courseInfo.baseTitle&&courseTools.getTitleLength(courseInfo.baseTitle)>11?'active-course-desc':''}}">{{courseInfo.baseSlogan}}</view>
+    <!-- 价格 -->
+    <view class="course-price" wx:if="{{courseInfo.tradingChargeType != 1}}">
+      <text>￥{{courseInfo.tradingThirdFeeState==1? (courseInfo.tradingCurrentPrice+courseInfo.tradingThirdFee):courseInfo.tradingCurrentPrice}}元</text>
+      <view class="previous-price">
+        <text>￥{{courseInfo.tradingThirdFeeState==1? (courseInfo.tradingOriginalPrice+courseInfo.tradingThirdFee):courseInfo.tradingOriginalPrice}}元</text>
+        <text></text>
+      </view>
+    </view>
+    <view wx:else class="course-price">
+      <text>￥免费</text>
+    </view>
+  </view>
+</view>

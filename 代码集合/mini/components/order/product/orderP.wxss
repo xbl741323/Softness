@@ -1,0 +1,257 @@
+/* components/order/product/orderP.wxss */
+.orders {
+  display: flex;
+  flex-direction: column;
+  background: #F5F7FB;
+}
+
+.filter-list {
+  width: 100%;
+  height: 88rpx;
+  position: fixed;
+  left: 0;
+  /* top: 266rpx; */
+  background: #F5F7FB;
+  /* box-shadow: 6rpx 6rpx 8rpx 0px rgba(0, 0, 0, 0.03); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+.filter-item {
+  position: relative;
+  width: 20%;
+  height: 88rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-item:nth-of-type(4) {
+  flex: 1.5 !important;
+}
+
+.item-title {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.item-title-active {
+  color: #333;
+  font-weight: 600;
+}
+.note-num{
+  position: absolute;
+  top: 12rpx;
+  right: 0;
+  font-size: 20rpx;
+  color: #fff;
+  text-align: center;
+  background-color: #FE3636;
+  border-radius: 100rpx;
+  /* padding: 2rpx 10rpx; */
+  width: 44rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  border: 2rpx solid #fff;
+}
+.item-lang {
+  position: absolute;
+  bottom: 0;
+  width: 20rpx;
+  height: 8rpx;
+  border-radius: 4rpx;
+}
+
+.item-lang-active {
+  background: #36a6fe !important;
+}
+
+.order-list {
+  padding: 24rpx;
+  margin-top: 180rpx;
+}
+
+.order-item {
+  width: 100%;
+  padding-bottom: 24rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  margin-bottom: 24rpx;
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 92rpx;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.create-time {
+  color: #333333;
+  font-size: 28rpx;
+  margin-left: 24rpx;
+}
+
+.create-status {
+  color: #FF6D27;
+  font-size: 32rpx;
+  margin-right: 24rpx;
+}
+
+
+.center-top {
+  display: flex;
+  padding: 24rpx;
+}
+
+.img-container {
+  margin-right: 16rpx;
+}
+
+.product-img {
+  width: 192rpx;
+  height: 138rpx;
+}
+
+.order-desc {
+  width: 260rpx;
+  height: 138rpx;
+  margin-right: 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.desc-title {
+  width: 260rpx;
+  height: 75rpx;
+  margin-top: 12rpx;
+  color: #333333;
+  font-size: 28rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.desc-type {
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 12rpx;
+}
+
+.order-price {
+  width: 160rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 14rpx;
+}
+
+.price-value {
+  color: #999999;
+  font-size: 30rpx;
+}
+
+.price-Symbol {
+  font-size: 24rpx;
+}
+
+.price-count {
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}
+
+.center-foot {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 24rpx;
+  color: #333333;
+  font-size: 32rpx;
+}
+
+.foot-Symbol {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.order-foot {
+  display: flex;
+  font-size: 24rpx;
+  justify-content: flex-end !important;
+  align-items: center;
+  margin-top: 32rpx;
+  padding-top: 32rpx;
+  border-top: 1px solid #f4f4f4;
+}
+
+.order-foot-transfer {
+  display: flex;
+  font-size: 24rpx;
+  justify-content: flex-end !important;
+  align-items: center;
+}
+
+.cancel-btn {
+  width: 76px;
+  height: 34px;
+  border: 1px solid #999999;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333333;
+  margin-right: 24rpx;
+}
+
+.pay-btn {
+  width: 152rpx;
+  height: 68rpx;
+  background: #36a6fe;
+  border-radius: 34rpx;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 24rpx;
+}
+
+.diabaled-pay-btn {
+  width: 76px;
+  height: 34px;
+  border: 1px solid #F4F4F4;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999999;
+  margin-right: 24rpx;
+}
+
+.special-sty {
+  display: flex;
+  justify-content: space-between !important;
+}
+
+.btn-desc {
+  margin-left: 24rpx;
+  color: #333333;
+  font-size: 24rpx;
+}
+
+.audit-img {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 8rpx;
+}
+
+.audit-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

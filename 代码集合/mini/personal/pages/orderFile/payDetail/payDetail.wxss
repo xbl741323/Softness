@@ -1,0 +1,152 @@
+/* personal/pages/orderFile/payDetail/payDetail.wxss */
+.class-order{
+  width: 100%;
+  height: 100vh;
+  background: #F5F7FB;
+  position: relative;
+}
+.order-body{
+  width: 92%;
+  margin: 0 4%;
+  padding-top: 184rpx;
+}
+.goods-card{
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
+  margin-top: 24rpx;
+  position: relative;
+}
+.goods-cont{
+  display: flex;
+  margin-top: 12rpx;
+  align-items: end;
+}
+.card-title{
+  color: #333333;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.goods-img{
+  width: 160rpx;
+  height: 216rpx;
+  border-radius: 12rpx;
+  border: 2rpx solid #eaebef;
+  border-radius: 10rpx;
+}
+.goods-price{
+  font-size: 24rpx;
+  color: #999999;
+}
+.goods-desc{
+  margin-left: 2%;
+  width: 420rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  right: 50rpx;
+  top: 82rpx;
+}
+.goods-right{
+  display: flex;
+  flex-direction: column;
+}
+.goods-title{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #555;
+}
+.goods-type{
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 20rpx;
+}
+.goods-price{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.goods-price text{
+  font-size: 28rpx;
+}
+.price-title{
+  color: #B7B4B4;
+}
+.price-txt{
+  color: #555;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+.vip-price{
+  color: #FA7A42 !important;
+}
+.bottom-handle{
+  background: #fff;
+  width: 92%;
+  padding: 24rpx 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.icon-position{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  border-radius: 8rpx;
+  top: 270rpx;
+  left: 154rpx;
+}
+
+.goods-pay{
+  position: absolute;
+  right: 50rpx;
+  top: 200rpx;
+  color: #999999;
+  font-size: 24rpx;
+}
+
+.pay-btn{
+  width: 220rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 40rpx;
+  background: #36A6FE;
+}
+.pay-price{
+  font-size: 28rpx;
+}
+.pay-price text{
+  color: #FF6D27;
+}
+.big-price{
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.deal-line{
+  padding: 24rpx 0;
+  align-items: center;
+}
+.check-note{
+  font-size: 24rpx;
+  color: #999;
+}
+.deal-line image{
+  width: 28rpx;
+  height: 28rpx;
+  padding-right: 8rpx;
+}

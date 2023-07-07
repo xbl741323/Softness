@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "提交退款",
+  "usingComponents": {
+    "wxFocus":"/components/common/wxFocus/wxFocus"
+  }
+}

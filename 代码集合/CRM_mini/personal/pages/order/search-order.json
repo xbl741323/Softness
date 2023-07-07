@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "查询案例",
+  "usingComponents": {
+    "order-item": "/personal/components/search-order/order-item"
+  }
+}

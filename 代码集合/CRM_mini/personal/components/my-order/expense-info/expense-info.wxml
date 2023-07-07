@@ -1,0 +1,99 @@
+<!--personal/components/my-order/expense-info/expense-info.wxml-->
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+<wxs src="/utils/refund/refund.wxs" module="refundWxs"></wxs>
+<view class="expense-head">
+  <text></text>
+  <text wx:if="{{payList[0].payType == 1}}">定金</text>
+  <text wx:if="{{payList[0].payType == 2}}">尾款</text>
+  <text wx:if="{{payList[0].payType == 3}}">一次性付款</text>
+</view>
+<!-- 待生效/草稿/已失效订单状态费用显示样式 -->
+<view class="expense-info" wx:if="{{orderInfo.orderStatus == -1||orderInfo.orderStatus == -2||orderInfo.orderStatus == -3}}">
+  <block wx:for="{{payList}}" wx:key="index">
+    <view class="expense-info-item">
+      <block wx:if="{{item.payType == 2&&(item.costType == 4||item.costType == null)}}">
+        <view class="expense-item">
+          <text>代理费（单价）</text>
+          <text>-</text>
+        </view>
+        <view class="expense-item">
+          <text>第三方费用（单价）</text>
+          <text>-</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="expense-item">
+          <text wx:if="{{item.costType == 1}}">代理费（单价）</text>
+          <text wx:if="{{item.costType == 2}}">第三方费用（单价）</text>
+          <text wx:if="{{item.costType == 3}}">官费（单价）</text>
+          <text>{{orders.fixPrice(item.price)}}</text>
+        </view>
+      </block>
+    </view>
+  </block>
+  <view class="expense-item">
+    <text>数量</text>
+    <text wx:if="{{payList[0].buyNum!=null}}">x{{payList[0].buyNum}}</text>
+    <text wx:else>-</text>
+  </view>
+  <view class="expense-item expense-total-sty">
+    <text>总价</text>
+    <text>{{orders.fixTotalAmount(payList)}}</text>
+  </view>
+</view>
+<!-- 其他订单状态费用显示样式 -->
+<view class="expense-info" wx:else>
+  <block wx:for="{{payList}}" wx:key="index">
+    <block wx:if="{{item.payType == 2&&(item.costType == 4||item.costType == null)}}">
+      <view class="expense-item">
+        <text>代理费</text>
+        <text>-</text>
+      </view>
+      <view class="expense-item">
+        <text>第三方费用</text>
+        <text>-</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="expense-item">
+        <text wx:if="{{item.costType == 1}}">代理费</text>
+        <text wx:if="{{item.costType == 2}}">第三方费用</text>
+        <text wx:if="{{item.costType == 3}}">官费</text>
+        <text>{{orders.filterPayAmount(item.buyNum,item.price)}}</text>
+      </view>
+    </block>
+  </block>
+  <view class="expense-item">
+    <text>支付时间</text>
+    <text>{{payList[0].payTime||'-'}}</text>
+  </view>
+  <view class="expense-item">
+    <text>支付方式</text>
+    <text>{{orders.filterPayWay(payList[0].payChannel)}}</text>
+  </view>
+  <view class="expense-item">
+    <text>支付状态</text>
+    <text>{{orders.filterPayStatus(payList[0].payStatus)}}</text>
+  </view>
+  <view class="expense-item" wx:if="{{payList[0].payStatus==2}}">
+    <text>{{payList[0].payChannel == 1?'支付凭证':'流水号'}}</text>
+    <text class="check-sty" wx:if="{{payList[0].payChannel == 1}}" bindtap="showPayRecords">查看</text>
+    <text wx:else class="check-sty-no">{{payList[0].tradeNo}}</text>
+  </view>
+  <view class="expense-item">
+    <text>退款金额</text>
+    <text>{{payList[0].refundStatus == 4 ? refundAmount : orders.filterBelong(payList[0].refundStatus,[1,2,3]) ? '待分配':'暂无'}}</text>
+  </view>
+  <view class="expense-item">
+    <text>退款状态</text>
+    <text>{{orders.filterRefundStatus(payList[0].refundStatus)}}</text>
+  </view>
+</view>
+
+<!-- 展示付款记录 -->
+<van-overlay  wx:if="{{showPay}}" show="{{ showPay }}">
+  <view class="wrapper">
+    <view class="close-sty" bindtap="onClickHide">+</view>
+    <image src="{{imageUrl+payUrl}}" class="wrapper-img"></image>
+  </view>
+</van-overlay>

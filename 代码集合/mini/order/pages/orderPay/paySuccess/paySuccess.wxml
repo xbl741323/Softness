@@ -1,0 +1,19 @@
+<!--personal/pages/paySuccess/paySuccess.wxml-->
+<view class="pay-success">
+  <image src="/order/image/orders/pay_success.png"></image>
+  <text class="pay-desc">您的对公转账正在审核中</text>
+  <view>
+    <text>你可以随时进入“</text>
+    <text class="my-order" bindtap="toOrder">我的订单</text>
+    <text>”查看订单详情</text>
+  </view>
+
+  <view class="pay-btn" bindtap="toMe">
+    返回个人中心
+  </view>
+
+  <!-- 关注公众号提示 -->
+  <view class="me-focus">
+    <wxFocus id="wx"></wxFocus>
+  </view>
+</view>

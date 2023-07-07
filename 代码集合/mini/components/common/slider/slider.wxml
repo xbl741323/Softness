@@ -1,0 +1,8 @@
+<!--components/common/slider/slider.wxml-->
+<movable-area class="content {{status?'success-bg':''}}" style="width:{{area_width+'%'}}">
+    <text wx:if="{{status}}">验证成功</text>    
+    <text wx:else>请按住滑块，拖到最右边</text>    
+    <movable-view class="{{status?'success-block':'primary-block'}} box" style='width:{{box_width}}rpx' friction="{{100}}" direction="horizontal" x="{{x}}" damping="{{500}}" bindchange="drag" bindtouchend="dragOver">
+        <view class='movable-icon'></view>
+    </movable-view>
+</movable-area>

@@ -1,0 +1,45 @@
+<!--personal/pages/phoneLogin/phoneLogin.wxml-->
+<view class="container "> 
+  <image class="logo" src="/image/common/icon_login@2x.png"></image>
+  <text class="text" wx:if="{{pageFrom.from=='no-username'}}">由于系统更新，请先完善账号</text>
+  <text class="text" wx:else>卧涛商城</text>
+  <view class="form">
+    <view class="phone {{accountError?'error':''}}">
+      <text class="label-width">账号名</text>
+      <input class="input height-48" bindblur="checkAccount" value="{{account}}" bindinput="getAccount" placeholder="4~16位纯字母(或字母+数字组合)" placeholder-class="holder-style"/>
+    </view>
+    <view wx:if="{{accountError}}" class="phoneError">{{error[2]}}</view>
+    <view class="phone {{phoneError?'error':''}}">
+      <text class="label-width">手机号码</text>
+      <input type="number" class="input height-48" disabled="{{ pageFrom.mobile }}" value="{{pageFrom.mobile ? pageFrom.mobile : phoneNumber}}" bindblur="checkPhone" bindinput="getPhone" placeholder="请输入绑定的手机号码" placeholder-class="holder-style"/>
+    </view>
+    <view wx:if="{{phoneError}}" class="phoneError">{{error[0]}}</view>
+    <view class="phone check {{codeError?'error':''}}">
+      <text class="label-width">验证码</text>
+      <input bindinput="getCode" type="number" class="input height-48 short-width" bindblur="checkCode"  placeholder="请输入验证码" placeholder-class="holder-style"/>
+      <button type="primary" plain="true" bindtap="sendMsg" class="{{btnText.length>6?'long-width':''}}" disabled="{{btnDisabled&&!pageFrom.mobile}}">{{btnText}}</button>
+    </view>
+    <view wx:if="{{codeError}}" class="phoneError">{{error[1]}}</view>
+    <view class="phone {{passwordError?'error':''}}">
+      <text class="label-width">密码</text>
+      <input type="{{eyesOn ? 'text' : 'password'}}" class="input height-48" bindblur="checkPassword" value="{{password}}" bindinput="getword" placeholder="6~16位字母+数字或符号的组合密码" placeholder-class="holder-style"/>
+      <image src="{{eyesOn ? '/image/index/show_eye.png': '/image/index/hide_eye.png'}}" class="img" bindtap="eyeStatus"></image>
+    </view>
+    <view wx:if="{{wordError}}" class="phoneError">{{error[3]}}</view>
+    <view class="phone {{passwordError?'error':''}}">
+      <text class="label-width">确认密码</text>
+      <input type="{{eyesOnAgain ? 'text' : 'password'}}" class="input height-48" bindblur="checkPasswordAgain" value="{{passwordAgain}}" bindinput="getwordAgain" placeholder="6~16位字母+数字或符号的组合密码" placeholder-class="holder-style"/>
+      <image src="{{eyesOnAgain ? '/image/index/show_eye.png': '/image/index/hide_eye.png'}}" class="img" bindtap="eyeStatusAgain"></image>
+    </view>
+    <view wx:if="{{wordErrorAgain}}" class="phoneError">{{error[4]}}</view>
+    <view class="agreement">
+      <checkbox-group bindchange="checkboxChange">
+        <checkbox value="agree"  class="checkbox" color="#fff" />注册后自动登录
+      </checkbox-group>
+    </view>
+  </view> 
+  <button  bindtap="phoneRegist" class="loginBtn {{loginDisabled?'errorLogin':''}}">{{pageFrom.from=='no-username'? '确认' : '注册'}}</button>
+</view>
+<!-- 认证提示弹窗 -->
+<Tips bind:cancel='cancel' wx:if="{{tipStatus}}"></Tips>
+

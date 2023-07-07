@@ -1,0 +1,6 @@
+/* personal/pages/infoEmpty/empty.wxss */
+.emptey{
+  margin-top: 680rpx;
+  color: #bfbfbf;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "modify-basic": "/personal/components/my-clue/modify/modify-basic/modify-basic",
+    "modify-unit": "/personal/components/my-clue/modify/modify-unit/modify-unit",
+    "modify-person": "/personal/components/my-clue/modify/modify-person/modify-person",
+    "modify-invoice": "/personal/components/my-clue/modify/modify-invoice/modify-invoice"
+  }
+}

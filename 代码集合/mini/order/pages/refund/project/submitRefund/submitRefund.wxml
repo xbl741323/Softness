@@ -1,0 +1,113 @@
+<!--order/pages/refund/submitRefund/submitRefund.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<!-- 项目申报提交提款 -->
+<view class="refund-contain">
+  <!-- 退款商品信息 -->
+  <view class="refund-product refund-common">
+    <view>退款商品</view>
+    <view class="product-desc">
+      <view class="product-image">
+        <image src="{{imageUrl+refundInfo.coverUrl}}"></image>
+      </view>
+      <view class="product-info">
+        <view class="product-info-left">
+          <text>{{refundInfo.productName}}</text>
+          <text>类型：项目申报</text>
+        </view>
+        <view class="product-info-right">
+          <text>￥{{tools.priceFix(refundInfo.nowFee) }}</text>
+          <text>X {{refundCount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退款选择 -->
+  <view class="refund-select-main">
+    <!-- 选择数量 -->
+    <view class="count-main">
+      <view class="count-main-label">
+        <text>产品数量</text>
+        <text>*</text>
+      </view>
+      <view class="count-choose">
+        <image wx:if="{{!refundInfo.isWaitSign}}" class="count-btn" bindtap="reduceCount" src="/image/common/jian_icon@2x.png"></image>
+        <text class="count-value">{{refundCount}}</text>
+        <image wx:if="{{!refundInfo.isWaitSign}}" class="count-btn" bindtap="addCount" src="/image/common/jia_icon@2x.png"></image>
+      </view>
+    </view>
+    <!-- 退款选择 -->
+    <view class="refund-choose refund-common">
+      <view>
+        <text>退款选择</text>
+        <text>*</text>
+      </view>
+      <view class="choose-contain">
+        <view class="choose-item" wx:for="{{serviceList}}" wx:key="index">
+          <view class="choose-item-left" data-index="{{index}}" bindtap="selectFee">
+            <image wx:if="{{item.checked}}" src="/order/image/orders/checkd-light.png"></image>
+            <image wx:else src="/order/image/orders/uncheck_gray.png"></image>
+            <text class="service-fee-title">{{item.title}}</text>
+          </view>
+          <view class="choose-item-right">
+            <view wx:if="{{!item.checked}}" class="service-fee-value {{item.checked==true?'active-fee-value':''}}">
+              <text class="{{item.checked==true?'symbol-sty':''}}">￥</text>
+              <text>{{tools.priceFix(item.value)}}</text>
+            </view>
+            <view wx:else class="input-flex">
+              <text class="{{item.checked==true?'symbol-sty':''}}">￥</text>
+              <input type="number" disabled="{{refundInfo.isWaitSign}}" data-index="{{index}}" bindblur="changeFee" class="select-input" value="{{tools.priceFix(item.value)}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退款原因 -->
+  <view class="refund-reason refund-common">
+    <view>
+      <text>退款原因</text>
+      <text>*</text>
+    </view>
+    <view class="reason-select" bindtap="showAction">
+      <text wx:if="{{cReasonDesc==''}}">请选择</text>
+      <text>{{cReasonDesc}}</text>
+      <image src="/order/image/orders/pointer_right.png"></image>
+    </view>
+  </view>
+
+  <!-- 退款原因选择弹窗 -->
+  <action-sheet class="action-sty" hidden="{{show}}">
+    <view class="reson-action">
+      <image src="/order/image/orders/reason-close.png" bindtap="closeAction"></image>
+      <view class="reason-title">退款原因</view>
+      <view class="option-contain">
+        <view class="option-item" wx:for="{{optionList}}" wx:key="index" data-index="{{index}}" bindtap="selectOption">
+          <text>{{item.dropdownValue}}</text>
+          <image wx:if="{{item.checked}}" src="/order/image/orders/checkd-light.png"></image>
+          <image wx:else src="/order/image/orders/uncheck_gray.png"></image>
+        </view>
+      </view>
+      <view class="reason-btn" bindtap="submitReasonSelect">确定</view>
+    </view>
+  </action-sheet>
+
+  <!-- 退款说明 -->
+  <view class="refund-desc refund-common">
+    <view>退款说明</view>
+    <view class="desc-contain">
+      <textarea value="{{refundDesc}}" bindinput="changeDesc" maxlength="200" class="desc-textarea" type="textarea" placeholder="请详细填写申请说明" cols="30" rows="10"></textarea>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-btn-contain">
+    <view class="submit-btn" bindtap="validateSubmit">提交</view>
+  </view>
+
+  <!-- 关注公众号提示 -->
+  <view class="me-focus">
+    <wxFocus id="wx"></wxFocus>
+  </view>
+</view>

@@ -1,0 +1,119 @@
+<!--index.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<wxs src="/utils/common/filters.wxs" module="handles"></wxs>
+<view class="home-page">
+  <!-- 搜索框和背景区域 -->
+  <view class="home-search">
+    <image class="index-banner" src="{{bgUrl}}"></image>
+    <view class="top-fixed {{isShowSearchbar ? 'scroll-search-fixed':''}}">
+      <view class="search-contain">
+        <view class="search-contain-left" bindtap="skipToArea">
+          <text>{{handles.handleStr(province)}}</text>
+          <image src="../../image/index/area_icon.png"></image>
+        </view>
+        <text class="lang-sty"></text>
+        <view class="search-contain-right">
+          <view class="input-inner" bindtap="skipToGlobal">
+            <image src="../../image/index/search_icon.png"></image>
+            <input type="text" class="input-txt" value="{{keywords}}" />
+          </view>
+          <view class="search-btn" bindtap="skipToGlobal" data-to="btn">搜索</view>
+          <!-- <image class="search_icon" src="../../image/index/search_icon.png" bindtap="skipToGlobal"></image> -->
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 八大图标区域 -->
+  <view class="king-kong">
+    <view class="radius-box king-radius"></view>
+    <view class="home-eight">
+      <view class="eight-item" wx:for="{{eightList}}" wx:key="index" data-item="{{item}}" bindtap="skipToClassify">
+        <image src="{{item.imgUrl}}"></image>
+        <text class="icon-txt">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 精选服务区域 -->
+  <view class="home-special">
+    <view class="radius-box"></view>
+    <!-- 公共标题区域 -->
+    <view class="common-title">
+      <text>精选服务</text>
+      <text>帮您高效搞定需求</text>
+    </view>
+    <!-- 服务列表区域 -->
+    <view class="special-list">
+      <view class="special-item" wx:for="{{specialList}}" wx:key="index" data-item="{{item}}" bindtap="skipToSpecial">
+        <image src="{{item.bgUrl}}"></image>
+        <view class="special-content">
+          <text class="color-title special-title">{{item.title}}</text>
+          <text class="special-desc color-title">{{item.desc}}</text>
+          <view class="special-btn">立即办理</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="classroom">
+    <view class="class-title">
+      <text>卧涛课堂</text>
+      <view class="more-sty" catchtap="toClass">
+        <text>更多</text>
+        <text></text>
+      </view>
+    </view>
+    <view class="class-wotao">
+      <view class="short-video" bindtap="toShortDetail">
+        <image wx:if="{{shortUrl.coverPicUrl!==''}}" src="{{imageUrl+shortUrl.coverPicUrl}}"></image>
+        <video wx:else src="{{imageUrl+shortUrl.videoUrl}}" controls="{{false}}" show-center-play-btn="{{false}}"></video>
+        <view class="play-contain">
+          <image src="/image/classRoom/icon01_home@2x.png"></image>
+          <text>{{shortUrl.videoTime}}</text>
+        </view>
+      </view>
+      <view class="vip-free">
+        <image catchtap="toMember" class="vip-free-main" src="https://static-tst.wotao.com/icon/head/9ded28f1ded944519df7fa73d4f85823.png"></image>
+        <view class="free-list">
+          <view class="free-item" wx:for="{{vipFreeList}}" wx:key="index" bindtap="toCourseDetail" data-id="{{item.id}}">
+            <text class="recommended">荐</text>
+            <text class="vip-title">{{item.baseTitle}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 新产品区域区域 -->
+  <view class="home-new" id="productBox">
+    <!-- 产品类型 -->
+    <scroll-view scroll-x="true" class="scroll-contain {{isShowNavbar==true?'scroll-contain-fixed':''}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+      <view class="new-scroll">
+        <view class="scroll-item" wx:for="{{newList}}" wx:key="index" bindtap="changeNew" data-index="{{index}}">
+          <text class="scroll-title {{newIndex == index? 'active-scroll-sty':''}}">{{item.title}}</text>
+          <text wx:if="{{newIndex == index}}"></text>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:if="{{isShowNavbar}}" class="lang-bwt"></view>
+    <!-- 产品列表 -->
+    <view class="new-product-list" style="min-height:480px">
+      <view class="new-product-item" wx:for="{{newProductList}}" wx:key="index">
+        <!-- 其他五类新产品item -->
+        <otherItem item="{{item}}" index="{{categoryId}}"></otherItem>
+      </view>
+    </view>
+    <view class="lading-tip to-bottom" wx:if="{{newProductList.length>=total}}">到底了哟，亲</view>
+  </view>
+
+  <!-- 回到顶部 -->
+  <view wx:if="{{showTop}}">
+    <image class="toTop" bindtap="toTop" src="/image/common/icon_back@2x.png" />
+  </view>
+
+  <!-- 省市区弹窗  -->
+  <areaItem bind:getCityName="getCityName" areaDialog="{{areaDialog}}" region="{{region}}" areaValue="{{areaValue}}"></areaItem>
+  
+  <!-- 订阅消息 -->
+  <focusTip id="wx"></focusTip>
+
+</view>

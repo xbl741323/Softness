@@ -1,0 +1,164 @@
+<!--personal/pages/my-clue/follow/follow.wxml-->
+<wxs src="/utils/order/order.wxs" module="tools"></wxs>
+<wxs src="/utils/common/filters.wxs" module="utils"></wxs>
+<view class="generate-order" wx:if="{{!showPhoto}}">
+  <view class="generate-head">
+    <!-- 线索名称 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty"></text>
+        <text class="common-bold-sty">线索名称</text>
+      </view>
+      <view class="order-item-foot">
+        <text class="common-bold-sty">{{clueInfo.clueName}}</text>
+        <text></text>
+      </view>
+    </view>
+
+    <!-- 跟进方式 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text>跟进方式</text>
+      </view>
+      <view class="order-item-foot">
+        <picker bindchange="changeFollowType" range-key="name" range="{{followTypeList}}">
+          <text wx:if="{{followInfo.followType == null}}">请选择跟进方式</text>
+          <text class="strong-sty" wx:else>{{followInfo.followType}}</text>
+          <text class="pointer-sty"></text>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 定位打卡只在跟进方式是见面拜访时才有 -->
+    <block wx:if="{{(followInfo.followTypeId==(env == 'develop' ? 109 : env == 'trial' ? 58 : 58))}}">
+      <!-- 选择位置 -->
+      <view class="location-contain" bindtap="checkOperateFollow">
+        <view class="location-info">
+          <view class="location-top">
+            <van-icon name="location" color="#7B7B7B" />
+            <van-loading wx:if="{{locationInfo.addressName==''}}" type="spinner" size='15px' />
+            <text wx:if="{{locationInfo.addressName!=''}}" class="location-name">{{locationInfo.addressName}}</text>
+          </view>
+          <text class="pointer-sty"></text>
+        </view>
+        <text class="location-distance" wx:if="{{(operateType==0)||((operateType==1)&&(originalFollowTypeId!=(env == 'develop' ? 109 : env == 'trial' ? 58 : 58)))}}">(距您{{locationInfo.distance}}米)</text>
+        <view class="location-desc">{{locationInfo.addressDetail}}</view>
+      </view>
+
+      <!-- 上传位置图片 -->
+      <view class="location-item">
+        <view class="order-item-head">
+          <text class="required-sty">*</text>
+          <text>上传位置图片</text>
+        </view>
+        <view class="location-img" bindtap="checkTakePhoto">
+          <view class="delete-contain" wx:if="{{(locationInfo.imgUrl!=''&&operateType==0)||((locationInfo.imgUrl!='')&&(operateType==1)&&(originalFollowTypeId!=(env == 'develop' ? 109 : env == 'trial' ? 58 : 58)))}}" catchtap="deleteLocationImg">
+            <van-icon class="delete-icon" name="plus" color="#ffffff" />
+          </view>
+          <image mode="aspectFill" class="choose-image" wx:if="{{locationInfo.imgUrl!=''}}" src="{{imageURL+locationInfo.imgUrl}}"></image>
+          <image class="add-image" wx:if="{{locationInfo.imgUrl==''}}" src="../../../image/my-clue/camera.png"></image>
+        </view>
+      </view>
+    </block>
+
+    <!-- 请选择跟进产品 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty"></text>
+        <text>跟进产品</text>
+      </view>
+      <view class="order-item-foot" bindtap="toSelect">
+        <text class="{{selectProduct.length>0?'strong-sty':''}}">请选择跟进产品</text>
+        <text class="pointer-sty"></text>
+      </view>
+    </view>
+
+    <!-- 已选产品展示区域 -->
+    <view class="show-select-product" wx:if="{{selectProduct.length>0}}">
+      <view class="select-product-list" wx:for="{{selectProduct}}" wx:key="index">
+        <view class="select-product-item" data-item="{{item}}">
+          <text>{{item.spuTitle}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 其他产品 -->
+    <view class="order-item">
+      <view class="order-item-head">
+        <text class="required-sty"></text>
+        <text>其他产品</text>
+      </view>
+      <view class="order-item-foot">
+        <input value="{{followInfo.productOther}}" bindblur="changeInput" data-type="0" class="input-sty" placeholder-class="p-sty" type="text" placeholder="请输入未找到的跟进产品名称" />
+      </view>
+    </view>
+
+    <!-- 跟进内容 -->
+    <view class="column-sty">
+      <view class="order-item-head">
+        <text class="required-sty">*</text>
+        <text>跟进内容</text>
+      </view>
+      <view class="order-item-foot">
+        <textarea value="{{followInfo.followContent}}" bindblur="changeInput" data-type="1" maxlength="500" class="common-item-textarea" placeholder-class="p-sty" placeholder="请输入500字以内的跟进内容"></textarea>
+      </view>
+    </view>
+  </view>
+
+  <!-- 下次跟进时间 -->
+  <view class="order-item">
+    <view class="order-item-head">
+      <text class="required-sty"></text>
+      <text>下次跟进</text>
+    </view>
+    <view class="order-item-foot" bindtap="bindShow">
+      <text class="strong-sty" wx:if="{{followInfo.followTime!=''&&followInfo.followTime!=null}}">{{followInfo.followTime}}</text>
+      <text wx:else>请选择下次跟进时间</text>
+      <text class="pointer-sty"></text>
+    </view>
+  </view>
+
+  <!-- 添加附件 -->
+  <view class="column-sty">
+    <view class="order-item-head">
+      <text class="required-sty"></text>
+      <text>添加附件</text>
+    </view>
+    <view class="upload-foot">
+      <van-uploader accept="image" multiple="{{true}}" max-count="5" file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteFile" deletable="{{true}}" />
+    </view>
+  </view>
+
+  <!-- 下次跟进时间显示 -->
+  <action-sheet hidden="{{!showCalendar}}">
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="onConfirm" bind:cancel="onClose" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </action-sheet>
+
+  <!-- 操作按钮区域 -->
+  <view class="btn-contain">
+    <view wx:if="{{(operateType == 1)&&(userInfo.id!=followInfo.operateEmpId)}}" class="submit-btn {{'disabled-sty'}}">
+      提交跟进
+    </view>
+    <view wx:else class="submit-btn" bindtap="throttleSubmit">
+      提交跟进
+    </view>
+  </view>
+</view>
+
+<!-- 拍照区域 -->
+<view class="main-sty" wx:if="{{showPhoto}}">
+  <canvas class="cavan-member-sty" canvas-id="member-share"></canvas>
+  <!-- 生成打卡定位图 -->
+  <view id="draw-member-contain" class="member-cover" wx:if="{{imgUrl!=''}}">
+    <image class="img-sty" data-type="image" data-url="{{imgUrl}}" src="{{imgUrl}}"></image>
+    <view class="member-code-contain" data-background='rgba(0, 0, 0, 0.5)' data-type='text'>
+      <text class="member-text" data-type="text" data-text="{{utils.formatTime()}}">{{utils.formatTime()}}</text>
+      <text class="member-text" data-type="text" data-text="{{watermarkName}}">{{watermarkName}}</text>
+    </view>
+  </view>
+  <view class="photo-btn-contain" wx:if="{{imgUrl!=''&&!hideStatus}}">
+    <button class="btn-sty" type="primary" bindtap="choosePhoto">重新拍照</button>
+    <button class="btn-sty" type="primary" bindtap="submit">确定提交</button>
+  </view>
+</view>

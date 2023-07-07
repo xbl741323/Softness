@@ -1,0 +1,265 @@
+// 显示审批状态
+function processStatus(value) {
+  return value == 0 ? '待审核' : value == 1 ? '已通过' : value == 2 ? '未通过' : '';
+}
+// 显示审批状态
+function filterStatus(value) {
+  return value == 1 ? '待审核' : value == 2 ? '已通过' : value == 3 ? '未通过' : '';
+}
+
+function filterChangeStatus(value) {
+  return value == 1 ? '待审核' : value == 2 ? '已通过' : value == 3 ? '未通过' : '';
+}
+//  暂无数据
+function filterNull(value) {
+  return value == '' ? '暂无数据' : value == null ? '暂无数据' : value
+}
+// 显示订单类型状态
+function orderStatus(value) {
+  return value == 1 ? '项目申报' : value == 2 ? '知识产权' : value == 3 ? '专利' : value == 4 ? '版权' : value == 5 ? '商标' : value == 6 ? '其他' : value == 7 ? '工商注册' : value == 8 ? '财税服务' : value == 9 ? '融资上市' : value == 10 ? '法律服务' : value == 11 ? '软件开发' : '';
+}
+
+function filterPayType(val) {
+  if (val == 1) {
+    return "定金";
+  } else if (val == 2) {
+    return "尾款";
+  } else if (val == 3) {
+    return "一口价";
+  }
+}
+// 定金尾款价格返回
+function fixPrice(type, frontlist) {
+  var arr1 = [];
+  var arr2 = [];
+  if (
+    frontlist &&
+    frontlist[0] &&
+    frontlist[0].skuPayCostList
+  ) {
+    arr1 = frontlist[0].skuPayCostList;
+  }
+  if (
+    frontlist &&
+    frontlist[1] &&
+    frontlist[1].skuPayCostList
+  ) {
+    arr2 = frontlist[1].skuPayCostList;
+  }
+  var r1;
+  if (arr1) {
+    r1 = arr1.filter(function (item) {
+      return item.costTypeId == type;
+    });
+  }
+  var r2;
+  if (arr2) {
+    r2 = arr2.filter(function (item) {
+      return item.costTypeId == type;
+    });
+  }
+  var rmb1;
+  if (r1 && r1[0] && r1[0].costAmount) {
+    rmb1 = r1[0].costAmount;
+  } else {
+    rmb1 = 0;
+  }
+
+  var rmb2;
+  if (r2 && r2[0] && r2[0].costAmount) {
+    rmb2 = r2[0].costAmount;
+  } else {
+    rmb2 = 0;
+  }
+  var price = rmb2 + rmb1;
+  return price;
+}
+// 1585233264795324416
+function fixPayTypePrice(type, costType, frontlist) {
+  var r
+  if (frontlist) {
+    r = frontlist.filter(function (item) {
+      return item.payTypeId == type;
+    });
+  }
+  var arr1 = [];
+  if (r && r[0] && r[0].skuPayCostList) {
+    arr1 = r[0].skuPayCostList;
+  }
+  var r4 = arr1.filter(function (item) {
+    return item.costTypeId == 4;
+  });
+  if (r4.length > 0) {
+    return "待定";
+  } else {
+    var r2;
+    if (arr1) {
+      r2 = arr1.filter(function (item) {
+        return item.costTypeId == costType;
+      });
+    }
+    if (r2 && r2[0] && r2[0].costAmount) {
+      return r2[0].costAmount;
+    } else {
+      return 0;
+    }
+  }
+}
+
+function fixPayTypePriceQueen(type, costType, queenList) {
+  var r = queenList.filter(function (item) {
+    return item.payTypeId == type;
+  });
+  var arr1 = [];
+  if (r[0]) {
+    arr1 = r[0].payCostList;
+  }
+  var r2 = arr1.filter(function (item) {
+    return item.costTypeId == costType;
+  });
+  var r4 = arr1.filter(function (item) {
+    return item.costTypeId == 4;
+  });
+  if (r4.length > 0) {
+    return "待定";
+  } else {
+    if (r2[0]) {
+      return r2[0].costAmount;
+    } else {
+      return 0;
+    }
+  }
+}
+//改价后的定金尾款价格返回
+function fixPriceQueen(type, queenList) {
+  var arr1 = queenList[0].payCostList;
+  var arr2 = [];
+  if (queenList[1]) {
+    arr2 = queenList[1].payCostList;
+  }
+
+  var r1;
+  if (arr1) {
+    r1 = arr1.filter(function (item) {
+      return item.costTypeId == type;
+    });
+  }
+
+  var r2;
+  if (arr2) {
+    r2 = arr2.filter(function (item) {
+      return item.costTypeId == type;
+    });
+  }
+  var rmb1;
+  if (r1 && r1[0] && r1[0].costAmount) {
+    rmb1 = r1[0].costAmount;
+  } else {
+    rmb1 = 0;
+  }
+
+  var rmb2;
+  if (r2 && r2[0] && r2[0].costAmount) {
+    rmb2 = r2[0].costAmount;
+  } else {
+    rmb2 = 0;
+  }
+
+  var price = rmb2 + rmb1;
+
+  return price;
+}
+
+function getsummoenty(list, type, buyNum) {
+  if (type == 1 && list) {
+    var sum = 0;
+    list.forEach(function (item) {
+      if (item && item.skuPayCostList) {
+        item.skuPayCostList.forEach(function (val) {
+          sum += val.costAmount;
+        });
+      }
+    });
+    return sum * buyNum;
+  } else if (type == 2 && list) {
+    var num = 0;
+    list.forEach(function (item) {
+      if (item.payCostList) {
+        item.payCostList.forEach(function (val) {
+          num += val.costAmount;
+        });
+      }
+    });
+
+    return num * buyNum;
+  }
+}
+
+function filterPrice(val, list) {
+  var r1 = list.filter(function (item) {
+    return item.costType == val
+  })
+  if (r1 && r1[0]) {
+    return r1[0].price
+  }
+  return '-'
+}
+
+function filterStatus(val) {
+  if (val == 0) {
+    return "待审核";
+  } else if (val == 1) {
+    return "已通过";
+  } else if (val == 2) {
+    return "未通过";
+  }
+}
+
+function filterOrderStatus(val) {
+  if (val == -5) {
+    return "未通过";
+  } else if (val == -4) {
+    return "待审核";
+  } else if (val == -3) {
+    return "已失效";
+  } else if (val == -2) {
+    return "草稿";
+  } else if (val == -1) {
+    return "待生效";
+  } else if (val == 0) {
+    return "待付款";
+  } else if (val == 1) {
+    return "待签约";
+  } else if (val == 2) {
+    return "待开始";
+  } else if (val == 3) {
+    return "进行中";
+  } else if (val == 4) {
+    return "已完成";
+  } else if (val == 5) {
+    return "已关闭";
+  } else if (val == 6) {
+    return "已取消";
+  }
+}
+
+
+module.exports = {
+  processStatus: processStatus,
+  orderStatus: orderStatus,
+  filterStatus: filterStatus,
+  filterNull: filterNull,
+  filterChangeStatus: filterChangeStatus,
+  // 改价前
+  fixPayTypePrice: fixPayTypePrice,
+  fixPrice: fixPrice,
+  // 改价后
+  fixPayTypePriceQueen: fixPayTypePriceQueen,
+  fixPriceQueen: fixPriceQueen,
+  // 总价
+  getsummoenty: getsummoenty,
+  filterStatus: filterStatus,
+  filterPayType: filterPayType,
+  filterPrice: filterPrice,
+  filterOrderStatus: filterOrderStatus
+}

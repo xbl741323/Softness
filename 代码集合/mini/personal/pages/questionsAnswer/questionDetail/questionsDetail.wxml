@@ -1,0 +1,77 @@
+<!--personal/pages/questionsAnswer/questionDetail/questionsDetail.wxml-->
+<head title="卧涛问答"></head>
+<scroll-view class="page" scroll-y="{{true}}" class="questionDetail" wx:if="{{questionDetail.deleted != 1}}">
+  <view class="questionDetail-top">
+    <text class="biaoqian" wx:if="{{questionDetail.createBy == userInfo.accountId}}">我的提问</text>
+    <view class="questionDetail-title">
+      <text class="{{questionDetail.createBy == userInfo.accountId ? 'title' : 'title noIndent'}}">{{questionDetail.title}}</text>
+    </view>
+    <view class="questionDetail-description">
+    {{questionDetail.description}}
+    </view>
+    <view class="questionDetail-button">
+      <view class="questionDetail-button-left">
+        <text>{{questionDetail.createTime}}</text>
+        <text class="shuxian"> | </text>
+        <image src="/image/questions/icon_wenda@2x.png" mode=""/>
+        <text>{{answerTotal}}个回答</text>
+      </view>
+      <view class="questionDetail-button-right">
+        <image src="/image/questions/icon-sort@2x.png" bindtap="handleSort" mode="" data-sort="0" wx:if="{{sortField == 1}}"/>
+        <image src="/image/questions/icon-sort-xuanzhong@2x.png" mode="" wx:else/>
+        <image src="/image/questions/icon-hot@2x.png" bindtap="handleSort" mode="" data-sort="1" wx:if="{{sortField == 0}}"/>
+        <image src="/image/questions/icon-hot-xuanzhong@2x.png" mode="" wx:else/>
+        <image src="/image/questions/icon-delete@2x.png" mode="" bindtap="handleDel" wx:if="{{questionDetail.createBy == userInfo.accountId}}"/>
+        <!-- <image src="/image/questions/icon-delete-xuanzhong@2x.png" mode=""/> -->
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{answerList.length > 0}}">
+    <view wx:for="{{answerList}}" wx:key="item" class="answerList">
+      <view class="answerList-item">
+        <image src="{{item.createByAvatar ? imageUrl + item.createByAvatar : '/image/me/morentouxiang.png'}}" mode=""/>
+        <view class="answerList-item-top-right">
+          <view class="item-name">
+            {{item.createByName}}
+          </view>
+          <view class="item-time">
+            {{item.createTime}}
+          </view>
+        </view>
+      </view>
+      <richText item="{{item}}" class="answerList-item-content"></richText>
+      <view class="answerList-item-bottom">
+        <view class="button-class" bindtap="handleThumbsUp" data-item="{{item}}" data-type="1" data-index="{{index}}">
+          <image src="/image/questions/icon-like@2x.png" mode="" wx:if="{{item.clickType == 2 || !item.clickType}}"/>
+          <image src="/image/questions/icon-like-blue@2x.png" mode="" wx:if="{{item.clickType == 1}}"/>
+          <text>支持({{item.upNum}})</text>
+        </view>
+        <view class="button-class" bindtap="handleThumbsUp" data-item="{{item}}" data-type="2" data-index="{{index}}">
+          <image src="/image/questions/icon-dislike@2x.png" mode="" wx:if="{{item.clickType == 1 || !item.clickType}}"/>
+          <image src="/image/questions/icon-dislike-grey@2x.png" mode="" wx:if="{{item.clickType == 2}}"/>
+          <text>不支持({{item.lowNum}})</text>
+        </view>
+        <view class="button-class">
+          <view bindtap="handleAccept" data-item="{{item}}" data-index="{{index}}" wx:if="{{item.acceptFlag == 0 && questionDetail.createBy == userInfo.accountId}}">
+            <image src="/image/questions/icon-accept@2x.png" mode=""/>
+            <text>采纳</text>
+          </view>
+          <view wx:elif="{{item.acceptFlag == 1}}">
+            <image src="/image/questions/icon-collect@2x.png" mode=""/>
+            <text>已采纳</text>
+          </view>
+        </view>
+      </view>
+      <view class="hengxian"></view>
+    </view>
+  </block>
+  <view class="noAnswer" wx:else>
+    暂时无人回答
+  </view>
+  <view class="dixian" wx:if="{{answerTotal > 0 && pageNo > 1}}">
+    我是有底线的
+  </view>
+</scroll-view>
+<view class="noData" wx:if="{{questionDetail.deleted == 1}}">
+  暂无数据
+</view>

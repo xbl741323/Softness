@@ -1,0 +1,141 @@
+<!--personal/components/my-user/user-info/user-info.wxml-->
+<wxs src="/utils/clue/clue.wxs" module="tools"></wxs>
+<wxs src="/utils/common/filters.wxs" module="filters"></wxs>
+<view class="user-info">
+  <block wx:if="{{userType == 2}}">
+    <view class="user-info-card">
+      <view class="user-info-title mar-bot">注册信息</view>
+      <view class="user-info-item">
+        <text>账号类型</text>
+        <text>{{filters.userTypeFilter(userType)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>单位类型</text>
+        <text>{{registerInfo.diyOrgTypeFilter}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>社会信用代码</text>
+        <text>{{tools.filterNull(registerInfo.organization)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>认证时间</text>
+        <text>{{tools.filterNull(registerInfo.auditorTime)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>行业类型</text>
+        <text>{{registerInfo.diyIndustryFilter}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>注册来源</text>
+        <text>{{filters.filterSource(registerInfo.registerClient)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>注册时间</text>
+        <text>{{tools.filterNull(registerInfo.regCreateTime)}}</text>
+      </view>
+    </view>
+    <!-- 登录ID信息 -->
+    <view class="user-info-card" wx:for="{{registerInfo.accountList}}" wx:key="index">
+      <view class="user-info-title  mar-bot">登录ID信息</view>
+      <view class="login-sty">
+        <text>登录ID</text>
+        <image wx:if="{{item.authorizedType==2}}" src="/personal/image/common/certified_unit.png" class="auth-img"/>
+        <image wx:if="{{item.authorizedType==1}}" src="/personal/image/common/certified_unit_low.png" class="auth-img"/>
+        <text>{{tools.filterNull(item.accountNo)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>联系人</text>
+        <text>{{tools.filterNull(item.personName)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>职务</text>
+        <text>{{tools.filterNull(item.job)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>手机号</text>
+        <text>{{tools.filterNull(item.mobile)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>微信绑定</text>
+        <text>{{filters.filterWxBind(item.wxBindFlag)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>微信关注</text>
+        <text>{{filters.filterWxFollow(item.wxFollowFlag)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>状态</text>
+        <van-switch data-item="{{item}}" checked="{{ item.isDisabled == 0 }}" size="20px" bind:change="accountDisabled"/>
+      </view>
+      <view class="user-info-item">
+        <text>创建时间</text>
+        <text>{{tools.filterNull(item.createTime)}}</text>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="user-info-card">
+      <view class="user-info-item">
+        <text>账号类型</text>
+        <text>{{filters.userTypeFilter(userType)}}</text>
+      </view>
+      <view class="user-info-item" wx:if="{{userType==1}}">
+        <text>登录ID</text>
+        <text>{{tools.filterNull(userDetailInfo.accountNo)}}</text>
+      </view>
+      <view class="user-info-item" wx:if="{{userType==0}}">
+        <text>主体ID</text>
+        <text>{{tools.filterNull(userDetailInfo.userNo)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>姓名</text>
+        <text>{{tools.filterNull(registerInfo.personName)}}</text>
+      </view>
+      <view class="user-info-item"  wx:if="{{userType==1}}">
+        <text>职务</text>
+        <text>{{tools.filterNull(registerInfo.job)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>手机号</text>
+        <text>{{tools.filterNull(registerInfo.mobile)}}<text class="user-auth-btn" wx:if="{{userType==1&&clueInfo.isAutoConversion}}">已授权</text></text>
+      </view>
+      <view class="user-info-item">
+        <text>微信绑定</text>
+        <text>{{filters.filterWxBind(registerInfo.wxBindFlag)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>微信关注</text>
+        <text>{{filters.filterWxFollow(registerInfo.wxFollowFlag)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>单位名称</text>
+        <text>{{tools.filterNull(registerInfo.diyOrgName)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>单位类型</text>
+        <text>{{registerInfo.diyOrgTypeFilter}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>行业类型</text>
+        <text>{{registerInfo.diyIndustryFilter}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>注册时间</text>
+        <text>{{tools.filterNull(registerInfo.regCreateTime)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>注册来源</text>
+        <text>{{filters.filterSource(registerInfo.registerClient)}}</text>
+      </view>
+      <view class="user-info-item">
+        <text>所在地区</text>
+        <text>{{tools.filterNull(userDetailInfo.diyOrgAddressFilter)}}</text>
+      </view>
+      <view class="user-info-item"  wx:if="{{userType==1}}">
+        <text>认证时间</text>
+        <text>{{tools.filterNull(registerInfo.auditorTime)}}</text>
+      </view>
+    </view>
+  </block>
+</view>

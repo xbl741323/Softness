@@ -1,0 +1,136 @@
+/* pages/personal/personal.wxss */
+page {
+  position: relative;
+  background: #F4F6F8;
+}
+
+/*
+  背景区域
+*/
+
+.personal-bg {
+  width: 100%;
+  height: 474rpx;
+}
+
+.personal {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+  用户信息
+*/
+
+.user-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 48rpx 0;
+  position: relative;
+}
+
+.user-info image {
+  width: 112rpx;
+  height: 112rpx;
+  margin-left: 24rpx;
+  z-index: 99;
+  border-radius: 100%;
+}
+
+.user-info .take-photo {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: 50rpx;
+  left: 80rpx;
+}
+
+.info-desc {
+  display: flex;
+  flex-direction: column;
+  margin-left: 26rpx;
+}
+
+.info-desc>text:nth-of-type(1) {
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 6rpx;
+}
+
+.info-desc>text:nth-of-type(2) {
+  color: #BBCDFF;
+  font-size: 28rpx;
+}
+
+.gray-sty {
+  color: #A5A5A5;
+}
+
+/*
+  用户工作列表
+*/
+
+.work-list {
+  width: 638rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  padding: 0 32rpx;
+}
+
+.work-item {
+  height: 126rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #EAEBEF;
+}
+
+.work-item-desc {
+  width: 100%;
+  height: 126rpx;
+  display: flex;
+  align-items: center;
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.work-item-desc image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 24rpx;
+}
+
+.work-item-pointer {
+  display: inline-block;
+  width: 18rpx;
+  height: 18rpx;
+  border-top: 2rpx solid #888484;
+  border-right: 2rpx solid #888484;
+  transform: rotate(45deg);
+}
+
+/*
+  登录区域
+*/
+
+.login {
+  width: 656rpx;
+  height: 88rpx;
+  background: #0082fc;
+  border-radius: 44rpx;
+  box-shadow: 0px 6px 12px 0px rgba(70, 139, 240, 0.50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  margin-top: 32rpx;
+}

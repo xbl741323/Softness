@@ -1,0 +1,326 @@
+/* personal/pages/my-contract/enter-contract/enter-contract.wxss */
+page {
+  background: #F5F7FB;
+}
+
+.contract-contain {
+  padding-top: 24rpx;
+  padding-bottom: 30rpx;
+}
+
+.order-empty {
+  padding-top: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #D0D0D0;
+  font-size: 24rpx;
+  height: 130rpx;
+}
+
+.small-sty {
+  height: 80rpx !important;
+}
+
+.pointer-contain {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #D0D0D0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16rpx;
+}
+
+.contract-pointer {
+  display: inline-block;
+  width: 25rpx;
+  height: 25rpx;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.active-contract {
+  background: #0082fc !important;
+}
+
+.approval-item {
+  height: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.approval-item-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+/*
+  公共样式信息
+*/
+.common-img-sty {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 16rpx;
+}
+
+.common-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #EAEBEF;
+  padding-bottom: 20rpx;
+}
+
+.common-label>text:nth-of-type(1) {
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.common-label>text:nth-of-type(2) {
+  color: #0082FC;
+  font-size: 24rpx;
+}
+
+.common-file-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #EAEBEF;
+  padding-bottom: 20rpx;
+}
+
+.common-file-box {
+  display: flex;
+  align-items: center;
+}
+
+.common-file-box>text:nth-of-type(1) {
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.common-file-box>text:nth-of-type(2) {
+  color: #B4B4B4;
+  font-size: 24rpx;
+  margin-left: 16rpx;
+}
+
+.common-file-label>text:nth-of-type(1) {
+  color: #0082FC;
+  font-size: 24rpx;
+}
+
+/*
+  公共样式信息-单项
+*/
+.common-contain {
+  width: 654rpx;
+  background: #ffffff;
+  margin: 0 24rpx 16rpx 24rpx;
+  padding: 24rpx;
+  border-radius: 20rpx;
+}
+
+.common-item {
+  height: 88rpx;
+  border-bottom: 2rpx solid #efebea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.common-contract-item {
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.first-contract-item {
+  margin-top: 15rpx;
+}
+
+.common-clue-item {
+  height: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.first-clue-item {
+  margin-top: 15rpx;
+}
+
+.common-item-head {
+  display: flex;
+}
+
+.common-require {
+  color: #FF6D27;
+}
+
+.common-item-label {
+  color: #7B7B7B;
+  font-size: 28rpx;
+}
+
+.common-item-foot {
+  height: 60rpx;
+  line-height: 60rpx;
+  display: flex;
+  align-items: center;
+  color: #7B7B7B;
+  font-size: 28rpx;
+}
+
+.common-item-close {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+
+.common-long-sty {
+  display: inline-block;
+  width: 460rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+/*
+  公共样式信息-详细地址
+*/
+
+.common-item-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.common-item-column-head {
+  display: flex;
+  align-items: center;
+  margin: 24rpx 0 12rpx 0;
+}
+
+.common-item-textarea {
+  padding: 18rpx;
+  width: 618rpx;
+  height: 180rpx;
+  font-size: 28rpx;
+  color: #7B7B7B;
+  background: #F9FBFC;
+}
+
+/*
+  公共样式信息-联系人信息
+*/
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item-head {
+  height: 88rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #eaebef;
+}
+
+.contact-item-foot {
+  display: flex;
+  height: 88rpx;
+  border-bottom: 2rpx solid #efeeea;
+}
+
+.contact-info-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.contact-head-label {
+  display: flex;
+  align-items: center;
+}
+
+.contact-input {
+  width: 200rpx;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  color: #7B7B7B;
+}
+
+.contact-long-input {
+  width: 480rpx;
+  font-size: 28rpx;
+  color: #7B7B7B;
+  text-align: right;
+}
+
+.p-sty {
+  color: #D9D9D9;
+}
+
+/*
+  公共样式信息-按钮信息
+*/
+
+.common-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 32rpx;
+  margin-bottom: 48rpx;
+}
+
+.common-btn>text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 344rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 2rpx solid #0082fc;
+  border-radius: 20rpx;
+  color: #0082FC;
+  font-size: 28rpx;
+}
+
+.common-btn>text:nth-of-type(2) {
+  color: #FFFFFF !important;
+  background: #0082FC;
+  margin-left: 14rpx;
+}
+
+
+/*
+  未填写时字体颜色显示
+*/
+
+.no-val {
+  color: #D9D9D9 !important;
+}
+
+.disable-bg {
+  background: #FBFCFE !important;
+}
+
+.show-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  padding: 20rpx 0;
+  background-color: #F5F7FB;
+  color: #333333;
+  margin-top: 10rpx;
+}

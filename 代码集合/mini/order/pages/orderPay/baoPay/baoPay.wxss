@@ -1,0 +1,21 @@
+/* personal/pages/baoPay/baoPay.wxss */
+.bao-pay {
+  padding: 24rpx;
+}
+
+.bao-pay>view:nth-of-type(1) {
+  margin-top: 20%;
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.pay-contain {
+  display: flex;
+  flex-direction: column;
+  word-break: break-all
+}
+
+.pay-contain>text {
+  font-size: 32rpx;
+}

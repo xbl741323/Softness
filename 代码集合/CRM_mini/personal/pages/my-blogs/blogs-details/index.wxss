@@ -1,0 +1,444 @@
+/* personal/pages/my-clue/follow/follow.wxss */
+page {
+  background: #F5F7FB;
+  padding-bottom: 120rpx;
+}
+
+.generate-order {
+  background: #ffffff;
+
+}
+
+.order-item {
+  width: 702rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #EAEBEF;
+  font-size: 28rpx;
+  margin: 0 auto;
+}
+
+.order-item-head {
+  display: flex;
+  align-items: center;
+  color: #7B7B7B;
+}
+
+.order-item-foot {
+  display: flex;
+  align-items: center;
+  color: #D9D9D9;
+}
+
+.required-sty {
+  color: #FF6D27;
+}
+
+.pointer-sty {
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 2rpx solid #000000;
+  border-right: 2rpx solid #000000;
+  transform: rotate(45deg);
+  margin-left: 8rpx;
+}
+
+.generate-head {
+  padding-bottom: 24rpx;
+}
+
+/*
+  产品展示区域
+*/
+
+.show-select-product {
+  width: 100%;
+  background: #ffffff;
+  padding: 24rpx 0;
+}
+
+.select-product-list {
+  width: 702rpx;
+  background: #ffffff;
+  margin: 0 auto;
+  padding-bottom: 24rpx;
+}
+
+.select-product-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #555555;
+  margin: 0 auto;
+}
+
+.select-product-item>text:nth-of-type(1) {
+  font-size: 28rpx;
+}
+
+.select-product-item image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.select-product-foot {
+  display: flex;
+  align-items: center;
+}
+
+.select-product-foot>text:nth-of-type(1) {
+  margin-right: 16rpx;
+  font-size: 32rpx;
+}
+
+.show-menu-sty {
+  transform: rotate(180deg);
+}
+
+/*
+  操作按钮区域
+*/
+
+.btn-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #ffffff;
+  box-shadow: -6rpx -6rpx 8rpx 0 rgba(0, 0, 0, 0.03);
+  z-index: 1 !important;
+}
+
+
+.submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  width: 656rpx;
+  height: 88rpx;
+  background: #0082fc;
+  border-radius: 44rpx;
+}
+
+/*
+  公共样式区域
+*/
+.common-sty {
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.common-bold-sty {
+  font-weight: bold !important;
+  color: #333333 !important;
+}
+
+.certify-sty {
+  display: inline-block;
+  background: #0082FC;
+  color: #ffffff;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+  padding: 4rpx 8rpx;
+  margin-left: 8rpx;
+}
+
+/*
+  跟进内容
+*/
+.column-sty {
+  width: 704rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 28rpx;
+  margin: 0 auto;
+  margin-top: 32rpx;
+}
+
+.common-item-textarea {
+  margin-top: 16rpx;
+  padding: 18rpx;
+  width: 654rpx;
+  height: 400rpx;
+  font-size: 28rpx;
+  color: #555555;
+  background: #F9FBFC;
+}
+
+.upload-foot {
+  display: flex;
+  align-items: center;
+  color: #555555;
+  margin-top: 24rpx;
+}
+
+.p-sty {
+  color: #D9D9D9;
+}
+
+.input-sty {
+  font-size: 28rpx;
+  color: #555555;
+  text-align: right;
+}
+
+.calendar-sty {
+  z-index: 999 !important;
+}
+
+.strong-sty {
+  color: #555555 !important;
+}
+
+/* personal/components/my-blogs/blogs-item.wxss */
+.blogs-sty {
+  height: 100%;
+  padding: 0 3%;
+  padding-bottom: 32rpx;
+}
+
+.dated {
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: 700;
+  background-color: #F5F7FB;
+  padding: 24rpx 0 16rpx 0;
+}
+
+.blogs-name {
+  color: #333333;
+  font-size: 28rpx;
+  padding-top: 40rpx;
+}
+
+.creation-time {
+  color: #B4B4B4;
+  font-size: 24rpx;
+  margin-bottom: 36rpx;
+  margin-top: 4rpx;
+}
+
+.img-item {
+  width: 128rpx;
+  height: 128rpx;
+  margin-right: 8rpx;
+}
+
+.blogs-img {
+  margin-top: 24rpx;
+  display: flex;
+}
+
+.content {
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.content-item {
+  margin-bottom: 24rpx;
+}
+
+.text-sty {
+  height: 100rpx;
+  overflow: hidden
+}
+
+/* components/calendar/calendar.wxss */
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
+
+.calendar {
+  background-color: #fff;
+}
+
+.calendar .title {
+  font-size: 40rpx;
+  color: #333;
+  padding: 30rpx;
+  line-height: 60rpx;
+}
+
+.calendar .title .year-month {
+  margin-right: 20rpx;
+}
+
+.calendar .title .last-icon {
+  width: 0;
+  height: 0;
+  border-right: 24rpx solid #999;
+  border-top: 12rpx solid transparent;
+  border-bottom: 12rpx solid transparent;
+  margin-left: 10rpx;
+
+}
+
+.calendar .title .next-icon {
+  width: 0;
+  height: 0;
+  border-left: 24rpx solid #999;
+  border-top: 12rpx solid transparent;
+  border-bottom: 12rpx solid transparent;
+  margin-left: 40rpx;
+}
+
+.calendar .title .open {
+  background-color: #f6f6f6;
+  color: #999;
+  font-size: 22rpx;
+  line-height: 36rpx;
+  border-radius: 18rpx;
+  padding: 0 14rpx;
+}
+
+.calendar .calendar-week {
+  line-height: 40rpx;
+  padding: 0 25rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.calendar .calendar-week .view {
+  width: 100rpx;
+  text-align: center;
+}
+
+.calendar .calendar-main {
+  padding: 30rpx 25rpx;
+}
+
+.calendar .calendar-main .date-group {
+  transition: all 0.3s;
+  overflow: hidden;
+
+}
+
+.calendar .calendar-main .date-transform {
+  transition: all 0.3s;
+
+}
+
+.calendar .calendar-main .day {
+  position: relative;
+  width: 100rpx;
+  color: #666;
+  text-align: center;
+  height: 72rpx;
+}
+
+.calendar .calendar-main .day .bg {
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.calendar .calendar-main .day .select {
+  width: 56rpx;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  background: #409eff;
+  margin: 0 auto;
+}
+
+.calendar .calendar-main .day .other-month {
+  color: #ccc;
+}
+
+.calendar .calendar-main .day .spot {
+  width: 8rpx;
+  height: 8rpx;
+  background-color: #409eff;
+  border-radius: 50%;
+  margin: 6rpx auto 0;
+}
+
+.orange-date {
+  background-color: #e8e8e8;
+}
+
+.orange-data .default_normal-date {
+  color: #333;
+}
+
+.popup-sty {
+  width: 750rpx;
+  height: 700rpx;
+}
+
+.simple-calendar {
+  width: 750rpx;
+  padding: 5rpx;
+  border-radius: 50rpx;
+  height: 100%;
+}
+
+.gray-sty {
+  color: #A6A6A6;
+}
+
+.label-sty{
+  font-size: 28rpx;
+}

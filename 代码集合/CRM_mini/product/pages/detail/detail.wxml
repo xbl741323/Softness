@@ -1,0 +1,183 @@
+<!--product/pages/detail/detail.wxml-->
+<import src="../wxParse/wxParse.wxml" />
+<wxs src="/utils/product/product.wxs" module="tools"></wxs>
+<view class="global-tip" wx:if="{{showDialog==true}}" bindtap="handleDialog"></view>
+<view>
+  <!-- 图片区域 -->
+  <view class="product-img">
+    <swiper class="bg-img" indicator-dots="{{coverUrls.length>1}}" indicator-color="#EAEBEF" indicator-active-color="#61BAFF">
+      <swiper-item wx:for="{{coverUrls}}" wx:key="idx">
+        <video custom-cache="{{false}}" controls="{{videoControl}}" wx:if="{{item.urlType=='mp4'||item.urlType=='avi'||item.urlType=='mov'}}" class="bg-img" src="{{imageUrl+item.imageUrl}}"></video>
+        <image wx:else class="bg-img" src="{{imageUrl+item.imageUrl}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 服务费 -->
+  <view class="service-price">
+    <block wx:if="{{noSetPrice}}">
+      <view class="service-item item-name">该组合产品尚未设置价格</view>
+    </block>
+    <block wx:if="{{!baseInfo.isOnline && !noSetPrice}}">
+      <view class="service-item justify-left">
+        <view class="item-name">服务费</view>
+        <view class="item-price">面议</view>
+      </view>
+    </block>
+    <block wx:if="{{baseInfo.isOnline && !noSetPrice}}">
+      <!-- 一口价 -->
+      <block wx:if="{{choiceAttribute.dueTypeOfficialFee || choiceAttribute.dueTypeAgencyFee || choiceAttribute.dueTypeThirdPartyFee}}">
+        <view class="service-item justify-left">
+          <view class="item-name">服务费</view>
+          <view class="item-price"><text class="markyuan">￥</text>{{tools.filterViewprice(tools.filterOnePrice(choiceAttribute))}}</view>
+        </view>
+      </block>
+      <block wx:elif="{{choiceAttribute.noAttritube==true}}">
+        <view class="service-item justify-left">
+          <view class="item-name">服务费</view>
+          <view class="item-price">待定</view>
+        </view>
+      </block>
+      <!-- 定金+尾款 -->
+      <block wx:else>
+        <view class="service-item">
+          <view class="flex">
+            <view class="item-name">定金</view>
+            <view class="item-price"><text class="markyuan">￥</text>{{tools.filterViewprice(tools.filterdepositPrice(choiceAttribute))}}</view>
+          </view>
+          <view class="flex">
+            <view class="item-name">尾款</view>
+            <view class="item-price"><text class="markyuan">￥</text>{{tools.filterViewprice(tools.filterfinalPrice(choiceAttribute))}}</view>
+          </view>
+        </view>
+      </block>
+    </block>
+    <view class="area" wx:if="{{baseInfo.categoryId==1}}">
+      <view>
+        <view class="mb">地区</view>
+        <view class="attribute-txt">{{areas}}</view>
+      </view>
+      <view>
+        <view class="mb">归口</view>
+        <view class="attribute-txt">{{guikou}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 标题 -->
+  <view class="details">
+    <view class="productservice">
+      <view class="service-box">
+        <view class="product-title line-2-ellipsis">{{baseInfo.spuTitle}}</view>
+        <view class="product-sologan line-1-ellipsis">{{baseInfo.spuSlogan}}</view>
+        <view class="advantage">
+          <view wx:for="{{iconList}}" wx:key="index">
+            <image class="advantage-img" src="{{item.url}}" />
+            <text class="advantage-text">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="product-fee">
+      <view class="fee-detail" wx:if="{{choiceAttribute.depositTypeOfficialFee || choiceAttribute.dueTypeOfficialFee}}" bindtap="handleDialog">
+        <view>
+          <text class="guanfee">官费</text>
+          <text class="guanprice" wx:if="{{choiceAttribute.depositTypeOfficialFee}}">{{tools.filterViewprice(choiceAttribute.depositTypeOfficialFee)}}</text>
+          <text class="guanprice" wx:if="{{choiceAttribute.dueTypeOfficialFee}}">{{tools.filterViewprice(choiceAttribute.dueTypeOfficialFee)}}</text>
+        </view>
+        <image class="more" src="../../image/gengduo_icon@2x.png" />
+      </view>
+      <view class="fee-detail" bindtap="handleDialog">
+        <view>
+          <text class="guanfee">规格</text>
+          <text class="guanprice dark">{{attributeText}}</text>
+        </view>
+        <image class="more" src="../../image/gengduo_icon@2x.png" />
+      </view>
+    </view>
+  </view>
+  <!-- 固定导航头 -->
+  <view class="nav-bar" wx:if="{{showTabStatus}}">
+    <view class="nav-bar-item" wx:for="{{articleTitleArray}}" wx:key="index" bindtap="changeNav" data-index="{{index}}">
+      <text class="{{navBarIndex==index?'active-nav-sty':''}}">{{item.title}}</text>
+      <text wx:if="{{navBarIndex==index}}"></text>
+    </view>
+  </view>
+  <!-- 内容区域 -->
+  <view class="product-content" id="productBox">
+    <view class="pc-item" id="{{'pc-item'+index}}" wx:for="{{articleArray}}" wx:key="index">
+      <!-- 标签标题区域 -->
+      <view class="pc-item-title">
+        <text></text>
+        <text>{{articleTitleArray[index].title}}</text>
+      </view>
+      <!-- 标签内容区域 -->
+      <view class="pc-item-content">
+        <view wx:if="{{item.tag == 'video'}}">
+          <template is="wxParseVideo" data="{{wxParseData:item}}" />
+        </view>
+        <view wx:else>
+          <template is="wxParse" data="{{wxParseData:item}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 底部按钮区域 -->
+  <view class="foot" bindtap="toExtend">
+    <view class="foot-text">推广</view>
+  </view>
+  <!-- 弹框 -->
+  <view class="dialog" wx:if="{{showDialog==true}}">
+    <view class="attribute">
+      <view wx:for="{{dialogImgList}}" style="display:flex" wx:key="index">
+        <video class="popImg" custom-cache="{{false}}" controls="{{videoControl}}" wx:if="{{item.urlType=='mp4'||item.urlType=='avi'||item.urlType=='mov'}}" src="{{imageUrl + item.imageUrl}}" controls="controls"></video>
+        <image class="popImg" wx:else src="{{imageUrl + item.imageUrl}}" />
+        <view class="popfee" wx:if="{{!noSetPrice}}">
+          <view class="first">
+            <block wx:if="{{baseInfo.isOnline == false}}">
+              <text class="a">服务费</text>
+              <text class="b" style="font-size: 26rpx;">面议</text>
+            </block>
+            <block wx:if="{{baseInfo.isOnline == true}}">
+              <block wx:if="{{choiceAttribute.dueTypeOfficialFee || choiceAttribute.dueTypeThirdPartyFee || choiceAttribute.dueTypeAgencyFee}}">
+                <text class="a">服务费</text><text class="b"><text style="font-size:22rpx">￥</text>{{tools.filterViewprice(tools.filterOnePrice(choiceAttribute))}}</text>
+              </block>
+              <block wx:elif="{{choiceAttribute.noAttritube==true}}">
+                <text class="a">服务费</text>
+              </block>
+              <block wx:else>
+                <view>
+                  <text class="a">定金</text><text class="b"><text style="font-size:22rpx">￥</text>{{tools.filterViewprice(tools.filterdepositPrice(choiceAttribute))}}</text>
+                </view>
+                <view>
+                  <text class="a">尾款</text><text class="b"><text style="font-size:22rpx">￥</text>{{tools.filterViewprice(tools.filterfinalPrice(choiceAttribute))}}</text>
+                </view>
+              </block>
+            </block>
+          </view>
+          <view class="second" wx:if="{{ choiceAttribute.depositTypeOfficialFee || choiceAttribute.dueTypeOfficialFee}}">
+            <text class="a">官<text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>费</text><text class="b"><text style="font-size:22rpx">￥</text>
+              <block wx:if="{{choiceAttribute.depositTypeOfficialFee}}">{{tools.filterViewprice(choiceAttribute.depositTypeOfficialFee)}}</block>
+              <block wx:if="{{choiceAttribute.dueTypeOfficialFee}}">{{tools.filterViewprice(choiceAttribute.dueTypeOfficialFee)}}</block>
+            </text>
+          </view>
+        </view>
+        <view wx:else><text class="a">该组合产品尚未设置价格</text></view>
+      </view>
+      <block wx:if="{{transactionList.length==1}}">
+        <view class="attrleft">规格选择</view>
+        <view class="attrright">
+          <view class="attributeItem activeTip">{{attributeText}}</view>
+        </view>
+      </block>
+      <block wx:if="{{transactionList.length>1}}">
+        <view wx:for="{{attributeList}}" wx:for-index="parentIndex" wx:for-item="parentItem" wx:key="index">
+          <view class="attrleft">{{parentItem.key}}</view>
+          <view class="attrright">
+            <view wx:for="{{parentItem.value}}" wx:for-index="childIndex" wx:for-item="childItem" wx:key="index">
+              <view wx:if="{{tools.filterBelong(childItem,noPriceIndex)}}" data-parentIndex="{{parentIndex}}" data-childIndex="{{childIndex}}" bindtap="handleClick" class="attributeItem {{parentIndex==0 && tools.filterSlice(activeKey,0,1)==childIndex?'activeTip':''}} {{parentIndex==1 && tools.filterSlice(activeKey,2,3)==childIndex?'activeTip':''}}">{{childItem}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<!--components/common/wxFocus/wxFocus.wxml-->
+
+<view class="wx-focus" wx:if="{{!officialFocus}}">
+  <view bindtap="toOfficial" class="handle-focus">
+    <text class="logo-txt">WOTAO</text> 
+    <text class="divide">|</text>
+    <text class="focus-bottom">关注公众号</text>
+  </view>
+  <view class="focus-desc">
+    关注<text class="com-name">卧涛科技</text>公众号及时接收流程消息不错过任何重要信息！
+  </view>
+</view>

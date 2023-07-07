@@ -1,0 +1,26 @@
+<!--components/classify/otherItem/otherItem.wxml-->
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+<view class="project-first" bindtap="toDetail">
+  <view class="project-item">
+    <view class="item-left">
+      <view class="new-image-contain">
+        <block wx:if="{{projectInfo.mediaUrl&&projectInfo.mediaUrl !=''&&projectInfo.mediaUrl !=null}}">
+          <image class="comon-sty" src="{{imageUrl+projectInfo.mediaUrl}}"></image>
+        </block>
+        <block wx:else>
+          <video show-play-btn="{{false}}" show-center-play-btn="{{false}}" controls="{{false}}" class="comon-sty" wx:if="{{projectInfo.urlInfo.urlType == 1}}" src="{{imageUrl+projectInfo.imageUrl}}"></video>
+          <image class="comon-sty" wx:else src="{{imageUrl+projectInfo.imageUrl}}"></image>
+        </block>
+      </view>
+    </view>
+    <view class="item-right">
+      <view class="right-title">{{projectInfo.spuTitle}}</view>
+      <view class="right-price" wx:if="{{projectInfo.isOnline}}">
+        <text>￥</text>
+        <text>{{orders.fixClassPrice(projectInfo.spuMinAmount)}}</text>
+        <text wx:if="{{orders.priceFix(projectInfo.spuMinAmount) != orders.priceFix(projectInfo.spuMaxAmount)}}">起</text>
+      </view>
+      <view class="right-price" wx:if="{{!projectInfo.isOnline}}">面议</view>
+    </view>
+  </view>
+</view>

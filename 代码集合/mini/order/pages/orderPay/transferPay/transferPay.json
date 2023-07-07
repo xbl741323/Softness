@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "卧涛收银台",
+  "usingComponents": {
+    "navBar":"/components/common/navBar/navBar"
+  },
+  "navigationStyle": "custom"
+}

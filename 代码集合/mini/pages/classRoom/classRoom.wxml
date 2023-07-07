@@ -1,0 +1,122 @@
+<!--pages/classRoom/classRoom.wxml-->
+<view class="class-room" wx:if="{{isLogin}}">
+  <!-- 轮播图+搜索框 -->
+  <view class="class-bg">
+    <!-- <view class="class-search">
+      <image src="/image/classRoom/sousuo_icon@2x.png"></image>
+      <input type="text" placeholder="请输入关键字" />
+    </view> -->
+    <!-- <swiper class="bg-img" autoplay indicator-dots="{{swiperList.length>1}}" indicator-color="#EAEBEF" indicator-active-color="#61BAFF"> -->
+      <!-- <swiper-item wx:for="{{swiperList}}" wx:key="index" data-item="{{item}}"> -->
+        <image class="bg-img" wx:for="{{swiperList}}" wx:key="index" data-item="{{item}}" src="{{item.imgUrl}}"></image>
+      <!-- </swiper-item> -->
+    <!-- </swiper> -->
+  </view>
+
+  <!-- 短视频 -->
+  <view class="short-video">
+    <view class="common-title">
+      <text></text>
+      <text>短视频</text>
+    </view>
+    <!-- 滑动区域 -->
+    <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" class="scroll-video-view" scroll-x="true">
+      <view class="scroll-video">
+        <view class="scroll-video-item" bindtap="toShortDetail" data-id="{{item.id}}" wx:for="{{shortList}}" wx:key="index">
+          <image wx:if="{{item.coverPicUrl!==''}}" src="{{imageUrl+item.coverPicUrl}}"></image>
+          <video wx:else src="{{imageUrl+item.videoUrl}}" controls="{{false}}" show-center-play-btn="{{false}}"></video>
+          <view class="play-contain">
+            <image src="/image/classRoom/icon01_home@2x.png"></image>
+            <text>{{item.videoTime}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 免费专区 -->
+  <view class="free-zone" wx:if="{{freeList.length>0}}">
+    <view class="common-title">
+      <text></text>
+      <text>免费专区</text>
+      <!-- <view class="common-more">
+        <text>更多</text>
+        <text></text>
+      </view> -->
+    </view>
+    <!-- 免费专区列表 -->
+    <view class="free-list-contain">
+      <view class="free-list">
+        <view class="free-list-item {{index%2==0?'wrap-sty':'right-wrap-sty'}}" bindtap="toCourseDetail" data-id="{{item.id}}" wx:for="{{freeList}}" wx:key="index">
+          <image src="{{imageUrl+item.baseCoverUrl}}"></image>
+          <text>{{item.baseTitle}}</text>
+          <text>{{item.baseSlogan}}</text>
+          <text>免费</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- VIP免费专区 -->
+  <view class="vip-free-zone">
+    <view class="common-title">
+      <text></text>
+      <text>VIP免费专区</text>
+      <!-- <view class="common-more">
+        <text>更多</text>
+        <text></text>
+      </view> -->
+    </view>
+    <!-- VIP免费专区列表 -->
+    <view class="vip-free-main">
+      <view class="vip-free-contain">
+        <image class="vip-free-img" bindtap="toVip" src="{{temUrl}}"></image>
+        <view class="vip-free-list">
+          <view class="vip-free-item" bindtap="toCourseDetail" data-id="{{item.id}}" wx:for="{{vipFreeList}}" wx:key="index">
+            <text>荐</text>
+            <text>{{item.baseTitle}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类列表 -->
+  <view class="classify-list" wx:if="{{classifyList.length>0}}">
+    <!-- 分类切换 -->
+    <scroll-view scroll-x="true" class="scroll-contain" enhanced="{{true}}" show-scrollbar="{{false}}">
+      <view class="new-scroll">
+        <view class="scroll-item" wx:for="{{classifyList}}" wx:key="index" bindtap="changeNew" data-id="{{item.id}}">
+          <text class="{{plateId == item.id? 'active-scroll-sty':''}}">{{item.plateName}}</text>
+          <text wx:if="{{plateId == item.id}}"></text>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 课程列表 -->
+    <view class="course-list">
+      <courseItem wx:for="{{courseList}}" bindtap="toCourseDetail" data-id="{{item.id}}" courseInfo="{{item}}" wx:key="index"></courseItem>
+      <!-- <view class="more-course">
+        <text>更多课程</text>
+      </view> -->
+    </view>
+    <!-- 广告图片 -->
+    <!-- <image class="classify-img" src="{{temUrl}}"></image> -->
+  </view>
+
+  <!-- 精品课程 -->
+  <view class="quality-courses" wx:if="{{soloFeeList.length>0}}">
+    <view class="common-title">
+      <text></text>
+      <text>精品课程</text>
+      <!-- <view class="common-more">
+        <text>更多</text>
+        <text></text>
+      </view> -->
+    </view>
+    <!-- 课程列表 -->
+    <view class="quality-course-list">
+      <courseItem wx:for="{{soloFeeList}}" bindtap="toCourseDetail" data-id="{{item.id}}" courseInfo="{{item}}" wx:key="index"></courseItem>
+    </view>
+  </view>
+
+</view>

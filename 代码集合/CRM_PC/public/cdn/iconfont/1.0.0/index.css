@@ -1,0 +1,39 @@
+
+[class^="icon-"]{
+	font-family: "iconfont" !important;
+	/* 以下内容参照第三方图标库本身的规则 */
+	font-size: 18px !important;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.avue-icon-select__item i {
+  font-family: "iconfont" !important;
+  /* 以下内容参照第三方图标库本身的规则 */
+  font-size: 18px !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.el-menu-item [class^=icon-] {
+    margin-right: 5px;
+    width: 18px;
+    text-align: center !important;
+    font-size: 18px;
+}
+.el-submenu [class^=icon-] {
+    margin-right: 5px;
+    width: 18px;
+    text-align: center !important;
+    font-size: 18px;
+}
+.el-menu-item [class^=el-icon-] {
+  width: 18px !important;
+  text-align: center !important;
+  font-size: 18px !important;
+}
+.el-submenu [class^=el-icon-] {
+  width: 18px !important;
+  text-align: center !important;
+  font-size: 18px !important;
+}

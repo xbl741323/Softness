@@ -1,0 +1,92 @@
+<import src="../wxParse/wxParse.wxml" />
+<view wx:if="{{loading}}">
+  <view class="property-detail">
+    <!-- 回到顶部 -->
+    <view wx:if="{{showTop}}">
+      <image class="toTop" bindtap="toTop" src="/image/common/icon_back@2x.png" />
+    </view>
+
+    <!-- 顶部大banner图 -->
+    <view id="top">
+      <swiper wx:if="{{coverUrls.length>0}}" class="bg-img" indicator-dots="{{coverUrls.length>1}}" indicator-color="#EAEBEF" indicator-active-color="#61BAFF">
+        <block wx:for="{{coverUrls}}" wx:key="idx">
+          <swiper-item>
+            <video custom-cache="{{false}}" controls="{{videoControl}}" wx:if="{{item.urlType=='mp4'||item.urlType=='avi'||item.urlType=='mov'}}" class="bg-img" src="{{imageUrl+item.url}}"></video>
+            <image wx:else class="bg-img" src="{{imageUrl+item.url}}" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <image wx:else class="top-img" src="{{imageUrl+coverUrl}}" />
+      <!-- 价格显示区域 -->
+      <priceInfo categories="{{categories}}" projectInfo="{{projectInfo}}"></priceInfo>
+      <!-- 标题显示区域 -->
+      <view class="top-title">{{title}}</view>
+      <view class="top-desc">
+        好处：资金补助、减税、招投标加分等好处：资金补助、减税、招投标加分等
+      </view>
+    </view>
+  </view>
+
+  <!-- 显示服务评价区域 -->
+  <view class="block"></view>
+  <view class="service-evaluate">
+    <view class="evaluate-item" wx:for="{{iconList}}" wx:key="index">
+      <image src="{{item.url}}"></image>
+      <text>{{item.name}}</text>
+      <text wx:if="{{index!==2}}"></text>
+    </view>
+  </view>
+  <view class="block"></view>
+
+  <!-- 导航区域 -->
+  <view id="productBox">
+    <!-- 必须在fixed的元素包层父元素，否则会导致元素下划下不来 -->
+    <view class="navbar {{isShowNavbar?'navbar-fixed':''}}">
+      <view wx:for="{{bannerList}}" wx:key="index" wx:for-index="index" class="navbar-items">
+        <view class=" {{toViewid==item.id? 'navbar-item-active':''}}" bindtap="changeNavBar" data-myid="{{'list'+index}}" wx:for-item="item">
+          {{item.name}}
+        </view>
+        <view class="checked-border" wx:if="{{toViewid==item.id}}"></view>
+      </view>
+    </view>
+    <!-- 内容区域 -->
+    <view wx:if="{{isShowNavbar}}" style="height:80rpx"></view>
+    <view class="content ">
+      <view class="{{(toViewid=='list'+index && isShowNavbar)?'item-fixed':''}}" style="margin-bottom:16rpx" wx:for="{{articleArray}}" id="{{'list'+index}}" wx:key="index" wx:for-index="index">
+        <view class="flex content-title">
+          <image class="title-img" src="/search/image/details/label01_left_xiangmu@2x.png"></image>
+          <text wx:if="{{index==1}}">项目参数</text>
+          <text wx:elif="{{index==2}}">售后保障</text>
+          <text wx:else>项目详情</text>
+          <image class="title-img" src="/search/image/details/label01_right_xiangmu@2x.png"></image>
+        </view>
+        <view wx:if="{{item.tag == 'video'}}">
+          <template is="wxParseVideo" data="{{wxParseData:item}}" />
+        </view>
+        <view wx:else>
+          <template is="wxParse" data="{{wxParseData:item}}" />
+        </view>
+      </view>
+    </view>
+    <!-- 固定底部按钮 -->
+    <view class="foot">
+      <view bindtap="toIndex" class="foot-index">
+        <image class="foot-img" src="/search/image/details/icon_home_zhichan@2x.png" />
+        <view>首页</view>
+      </view>
+      <view bindtap="handlCollection" class="left-btn {{isCollected==0?'collected':'not-collected'}}">
+        <text wx:if="{{isCollected==0}}">已收藏</text>
+        <image wx:if="{{isCollected!=0}}" class="foot-icon" src="/search/image/details/icon_add_details@2x.png" />
+        <text wx:if="{{isCollected!=0}}">加入收藏</text>
+      </view>
+      <button open-type="contact" class="loginBtn" wx:if="{{projectInfo.isOnline == 0}}">立即咨询</button>
+      <button class="loginBtn" bindtap="showPanel" wx:if="{{projectInfo.isOnline == 1}}">立即下单</button>
+    </view>
+  </view>
+
+  <!-- 价格显示面板 -->
+  <action-sheet hidden="{{show}}">
+    <pricePanel id="panel" projectInfo="{{projectInfo}}" bind:changeShow="changeShow"></pricePanel>
+  </action-sheet>
+
+</view>

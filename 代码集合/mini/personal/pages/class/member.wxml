@@ -1,0 +1,87 @@
+<!--personal/pages/class/member.wxml-->
+<view class="class-wrap">
+<!-- 小程序自定义导航部分 -->
+  <head title="课堂会员"></head>
+  <!-- 页面主体 -->
+  <view class="body-cont">
+  <!-- 页面背景图 -->
+    <image class="bg-img" src="//static-tst.wotao.com/icon/head/ee95e44045b54567a9ae6b3abd342d26.png"></image>
+  <!-- 头部固定条 -->
+    <view class="fixed-nav">
+      <text>课堂会员</text>
+      <view class="dead-time">
+        <text>{{buyed ? vipInfo.vipExpireDate+'到期' : '您还未购买课堂会员'}}</text>
+        <button class="renewal" catchtap="buyVip">{{buyed ? '立即续费' : '立即购买'}}</button>
+      </view>
+    </view>
+    <!-- 页面主要内容 -->
+    <view class="class-cont">
+   
+      <!-- 课堂时间信息 -->
+      <view class="time-card {{buyed ? 'buy-bg' : 'gray-bg'}}">
+        <!-- 个人信息 -->
+        <view class="info-short">
+          <view class="img-box">
+            <image wx:if="{{headPortrait}}" src="{{imageURL+headPortrait}}"></image>
+            <image wx:else src="/image/me/header_center@2x.png"></image>
+          </view>
+          <view class="info-desc">
+            <view class="hello-user">
+              <view class="limited-width">{{accountNo}}</view> 
+              <view>，<text wx:if="{{buyed}}">会员</text>您好！</view>              
+            </view>
+            <view class="dead-time-text">
+              {{buyed ? vipInfo.vipExpireDate+'到期' : '您还未购买课堂会员'}}
+              <text wx:if="{{buyed}}" bindtap="toRecord"> | 购买记录 ></text>
+            </view> 
+          </view>
+        </view>
+        <view class="dead-time-down">
+          <button bindtap="buyVip" class="renewal">{{buyed ? '立即续费' : '立即购买'}}</button>
+        </view>
+      </view>    
+      <!-- 固定图片信息展示 -->
+      <view class="color-bg">
+        <image class="img-introduce advantage" src="//static-tst.wotao.com/icon/head/c838d3d54f2b42a0a1a3d4a541b0bcde.png"></image>
+        <!-- <image class="img-introduce rights" src="/personal/image/center/pic_quanyi@2x.png"></image>   
+        <image wx:if="{{!buyed}}" class="img-introduce be-member" src="/personal/image/center/pic_WTmember@2x.png"></image>    -->
+      </view>
+      <!-- 商品列表 -->
+      <view class="color-bg distance">
+        <image class="title-img" src="//static-tst.wotao.com/icon/head/b459851cc76c4010b7f197bf31b2ce03.png"></image>
+        <view class="member-goods">
+          <!-- <view class="goods-title">
+            <image src="/personal/image/center/icon_left@2x.png"></image>
+            <text>课堂会员价商品</text>
+            <image src="/personal/image/center/icon_left@2x.png"></image>
+          </view> -->
+          <view class="goods-item" wx:for="{{goodsList}}" wx:key="index" bindtap="toGoods" data-id="{{item.id}}">
+            <view class="left-img">
+              <image class="goods-pic" src="{{imageURL+item.baseCoverUrl}}"></image>
+              <image wx:if="{{item.trySeeSectionNumber>0}}" class="test-tip" src="/personal/image/center/icon_try@2x.png"></image>
+            </view>
+            <view class="goods-info">
+              <view class="item-title">
+                <image src="/personal/image/center/label_icon@2x.png"></image>
+                <view class="title-txt">{{item.baseTitle}}</view>
+              </view>
+              <view class="slogan">{{item.baseSlogan}}</view>
+              <!-- 标签 -->
+              <view wx:if="{{item.tips.length>0}}" class="tags">
+                <view wx:for="{{item.tips}}" wx:for-item="itemName" wx:key="index" class="tag-item">{{itemName}}</view>
+              </view>
+              <view>
+                <text class="goods-price">￥{{item.tradingCurrentPrice}}元</text>
+                <text class="goods-old-price">￥{{item.tradingOriginalPrice}}元</text>
+              </view>
+            </view>
+          </view>
+        </view>   
+      </view>  
+    </view>
+  </view>
+  <!-- 回到顶部 -->
+  <view wx:if="{{showTop}}">
+    <image class="toTop" bindtap="toTop" src="/image/common/icon_back@2x.png" />
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<!--personal/components/my-order/audit-tip/audit-tip.wxml-->
+<action-sheet hidden="{{show}}">
+  <!-- 提示头部 -->
+  <view class="audit-tip">
+    <view class="tip-desc">
+      <text class="tip-icon">!</text>
+      <text class="tip-text">订单发生了改价，需要先审核，请先选择审核人，审核通过后，方可发送客户</text>
+      <image bindtap="closeTip" class="close-btn" src="/personal/image/login/error_pointer.png"></image>
+    </view>
+    <!-- 审核人选择 -->
+    <view class="select-audit">
+      <view>
+        <text class="common-require">*</text>
+        <text>改价审核人</text>
+      </view>
+      <picker bindchange="changeAuditMan" range-key="name" range="{{auitManList}}">
+        <view class="select-audit-right">
+          <text wx:if="{{auditManInfo.name!=''}}" class="audit-man">{{auditManInfo.name}}</text>
+          <text wx:else class="audit-man hold-sty">请选择改价审核人</text>
+          <text class="tip-right-pointer"></text>
+        </view>
+      </picker>
+    </view>
+    <!-- 订单备注 -->
+    <view class="order-remark">
+      <text>改价备注</text>
+      <textarea value="{{auditRemark}}" bindblur="changeRemark" class="textarea-sty" placeholder-class="p-sty" placeholder="请输入改价备注，不超过100字" maxlength="100"></textarea>
+    </view>
+    <!-- 提交按钮 -->
+    <view class="submit-btn" bindtap="submitAudit">
+      提交审核
+    </view>
+  </view>
+</action-sheet>

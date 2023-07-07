@@ -1,0 +1,236 @@
+/* personal/components/my-contract/contract-detail/index.wxss */
+page {
+  background: #F5F7FB;
+}
+
+.contract-box{
+  width: 95%;
+  margin: 20rpx auto;
+  background: #FBFCFE;
+  border-radius: 20rpx;
+}
+
+.empty-order{
+  text-align: center;
+  margin: 30rpx 0;
+  color: #B4B4B4;
+}
+
+.audit{ 
+  color: #FC561F;
+  width: 95%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #FFF0EB;
+  margin: 10rpx auto;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.contract-detail-box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+}
+/*
+  头部区域
+*/
+
+.contract-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 20rpx;
+}
+
+.head-left {
+  display: flex;
+  align-items: center;
+}
+
+.head-left>text:nth-of-type(1) {
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.head-right {
+  display: flex;
+  align-items: center;
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.head-right>text:nth-of-type(1) {
+  margin-right: 12rpx;
+}
+
+.common-img-sty {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx;
+}
+
+.customer-info{
+  width: 95%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-gap: 20rpx;
+  color: #555555;
+  padding: 30rpx 20rpx;
+}
+.customer-info :nth-child(2n){
+  text-align: right;
+  padding-right: 10rpx;
+}
+
+.passdot{
+  width: 6px;
+  height: 6px;
+  background: #28c445;
+  border-radius: 50%;
+}
+
+.notpass{
+  width: 6px;
+  height: 6px;
+  background: #FA1B2A;
+  border-radius: 50%;
+}
+.price{
+  color: #FC561F;
+}
+
+.contract-info{
+  width: 95%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-gap: 20rpx;
+  color: #555555;
+  padding: 30rpx 20rpx;
+}
+
+.contract-info :nth-child(2n){
+  text-align: right;
+  margin-right: 10rpx;
+}
+
+.contract-file{
+  color: #0082FC;
+}
+
+/* 
+  订单信息
+*/
+.order-list{
+  padding: 20rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+
+.order-info{
+  width: 100%;
+}
+
+.order-no{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+
+.line{
+  width: 100%;
+  border-bottom: 1px solid #EAEBEF;
+  margin: 20rpx auto;
+}
+
+.spu-name{
+  display: grid;
+  grid-template-columns: 70% 30%;
+  margin-bottom: 20rpx;
+  color: #555555;
+  font-size: 28rpx;
+}
+.spu-name :nth-child(2n){
+  text-align: right;
+}
+
+.spec{
+  font-size: 24rpx;
+  background: #C4E2FF;
+  padding: 4rpx 16rpx;
+  margin-right: 16rpx;
+  border-radius: 8rpx;
+  color: #4BA8FF;
+}
+
+.fee-info{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-gap: 10rpx;
+  margin-top: 20rpx;
+  color: #EAEBEF;
+}
+.fee-info :nth-child(2n){
+  color: #555555 !important;
+}
+.total-amount{
+  display: flex;
+}
+
+.total{
+  position: fixed;
+  bottom: 0;
+  background: #FFFFFF;
+  height: 100rpx;
+  width: 100%;
+  margin-left: -10%;
+  padding-right: 10%;
+  line-height: 100rpx;
+  text-align: right;
+  font-weight: 550;
+}
+
+/* 
+操作记录
+*/
+
+.time-line{
+  display: grid;
+  grid-template-columns: 12% 88%;
+  margin: 20rpx;
+}
+
+.current-time{
+  width: 32rpx;
+  height: 32rpx;
+  background: #0082fc;
+  border-radius: 50%;
+  float: right;
+  margin-right: -16rpx;
+}
+
+.operate{
+  display: block;
+  padding-left: 40rpx;
+}
+
+.vertical-line{
+  height: 110%;
+  border-right: 1px dashed #D9D9D9;
+}
+
+.operate-content{
+  font-size: 28rpx;
+  font-weight: 550;
+  color: #555555;
+}
+
+.operate-name{
+  margin: 20rpx 0;
+  color: #555555;
+}
+
+.operate-time{
+  color: #B4B4B4;
+}

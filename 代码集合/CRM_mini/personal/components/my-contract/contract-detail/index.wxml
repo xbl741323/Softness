@@ -1,0 +1,112 @@
+<!--personal/components/my-contract/contract-detail/index.wxml-->
+<wxs src="/utils/order/order.wxs" module="orders"></wxs>
+<view class="contract-detail-box">
+  <view class="audit" wx:if="{{contractInfo.taskStatus == 2 }}">
+    <van-icon name="warning" style="margin-right: 10rpx;" />
+    <text>审核未通过：{{contractInfo.auditReason}}</text>
+  </view>
+  <view class="contract-box">
+    <view class="contract-head">
+      <view class="head-left">
+        <text>{{contractInfo.contractNo}}</text>
+        <image catchtap="copyText" data-text="{{contractInfo.contractNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+      </view>
+      <view class="head-right">
+        <text class="{{(contractInfo.taskStatus == 1 || contractType == 1)? 'passdot' : 'notpass'}}"></text>
+        <text wx:if="{{contractType == 2}}">{{contractInfo.contractStatus}}</text>
+        <text wx:if="{{contractType == 1}}">已签约</text>
+      </view>
+    </view>
+    <view class="customer-info">
+      <text>主体ID：</text>
+      <text>{{contractInfo.userNo}}</text>
+      <text>创建时间：</text>
+      <text>{{contractInfo.createTime}}</text>
+      <text>客户名称：</text>
+      <text>{{contractInfo.authName || '暂无数据'}}</text>
+      <text>地区：</text>
+      <text>{{contractInfo.area}}</text>
+      <text>合同金额</text>
+      <text class="price">{{orders.fixPrice(contractInfo.totalAmount) || '暂无数据'}}</text>
+    </view>
+  </view>
+  <!-- tab切换区域 -->
+  <van-tabs ellipsis="{{false}}" color="#0082FC" title-active-color="#0082FC" active="{{ cTabIndex }}" bind:change="changeTab" lazy-render="{{false}}">
+    <van-tab wx:if="{{ contractType == 2 }}" wx:for="{{tabList}}" wx:key="index" title="{{item}}"></van-tab>
+    <van-tab wx:if="{{ contractType == 1 }}" wx:for="{{elecTabList}}" wx:key="index" title="{{item}}"></van-tab>
+  </van-tabs>
+    <!-- 合同信息 -->
+  <view class="contract-box">
+    <view class="contract-info" wx:if="{{cTabIndex == 0}}">
+      <text>签约人：</text>
+      <text>{{contractInfo.signName || '暂无数据'}}</text>
+      <text>签约时间：</text>
+      <text>{{contractInfo.signTime || '暂无数据'}}</text>
+      <text>线索编号：</text>
+      <text>{{contractInfo.clueNo || '暂无数据'}}</text>
+      <text>联系人：</text>
+      <text>{{contractInfo.contactName || contractInfo.signName || '暂无数据'}}</text>
+      <text>业务员：</text>
+      <text>{{contractInfo.clueSalesmanEmpName || '暂无数据'}}</text>
+      <text>附件信息：</text>
+      <text class="contract-file" catchtap="checkContract">{{contractInfo.contractName}}</text>
+      <text>合同备注：</text>
+      <text>{{contractInfo.remark || '暂无备注'}}</text>
+    </view>
+    
+    <!-- 订单信息 -->
+    <view class="order-list" wx:if="{{cTabIndex == 1}}">
+      <view wx:if="{{orderList.length == 0}}">
+        <view class="empty-order">暂无数据</view>
+      </view>
+      <view wx:if="{{orderList.length > 0}}" wx:for="{{orderList}}" wx:key="index" class="order-info">
+        <view class="order-no">
+          <text>{{item.orderNo}}</text>
+          <image catchtap="copyText" data-text="{{item.orderNo}}" class="common-img-sty" src="/personal/image/my-clue/icon_duplicate@2x.png"></image>
+        </view>
+        <view class="line"></view>
+        <view>
+          <view class="spu-name">
+            <text>{{item.spuName}}</text>
+            <text>x{{item.buyNum}}</text>
+          </view>
+          <view>
+            <text class="spec">{{item.spec}}</text>
+          </view>
+          <view class="fee-info">
+            <text>代理费总价：</text>
+            <text>{{ orders.fixPrice(item.agentFee) || '0.00'}}</text>
+            <text>第三方费总价：</text>
+              <text>{{ orders.fixPrice(item.thirdFee) || '0.00'}}</text>
+            <text>官费总价：</text>
+              <text>{{ orders.fixPrice(item.govFee) || '0.00'}}</text>
+          </view>
+          <view class="line"></view>
+          <view class="total-amount">
+            <text>总价：</text>
+            <text class="price">￥{{ orders.fixPrice(item.totalAmount)}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="total">
+        <text>总价合计：</text>
+        <text class="price">￥{{ orders.fixPrice(totalAmount) }}</text>
+      </view>
+    </view>
+
+    <!-- 操作信息 -->
+    <view  wx:if="{{cTabIndex == 2 && contractType == 2}}">
+      <view wx:for="{{logsList}}" wx:key="index" class="time-line">
+        <view>
+          <view class="current-time"></view>
+          <view class="vertical-line" wx:if="{{index != logsList.length-1}}"></view>
+        </view>
+        <view class="operate">
+          <view class="operate-content">{{item.content}}</view>
+          <view class="operate-name">操作人：{{item.createByName}}</view>
+          <view class="operate-time">{{item.createTime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

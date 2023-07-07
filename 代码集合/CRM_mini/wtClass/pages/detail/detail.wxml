@@ -1,0 +1,153 @@
+<!--wtClass/pages/detail/course/course.wxml-->
+<!-- <wxs src="/utils/order/order.wxs" module="tools"></wxs> -->
+<wxs src="/utils/common/filters.wxs" module="tools"></wxs>
+<import src="../wxParse/wxParse.wxml" />
+<view class="course">
+  <!-- 视频区域 -->
+  <view class="course-video">
+    <image wx:if="{{!showVideo}}" class="play-sty" src="{{imageUrl+courseInfo.baseCoverUrl}}"></image>
+    <video bindcontrolstoggle="bindcontrolstoggle" id="myVideo" wx:else class="play-sty" autoplay object-fit="fill" poster="{{imageUrl+courseInfo.baseCoverUrl}}" src="{{cVideoUrl}}">
+      <view class="video-multiple-play" wx:if="{{VideoRateBtn}}">
+        <view bindtap="showVideoRate">倍速</view>
+        <view class="video-multiple-option" wx:if="{{videoRateStatus}}">
+          <text bindtap="changeRate" data-num="0.5">0.5 X</text>
+          <text bindtap="changeRate" data-num="1">1 X</text>
+          <text bindtap="changeRate" data-num="1.5">1.5 X</text>
+          <text bindtap="changeRate" data-num="2.0">2.0 X</text>
+        </view>
+      </view>
+    </video>
+    <view class="course-tab">
+      <view class="course-tab-item" wx:for="{{tabList}}" wx:key="index" bindtap="changeTab" data-index="{{index}}">
+        <text class="{{cIndex == index?'select-text-sty':''}}">{{item}}</text>
+        <text class="{{cIndex == index?'select-item':''}}"></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 课程介绍 -->
+  <view class="course-info" wx:if="{{cIndex == 0}}">
+    <view class="course-title">
+      <text>{{courseInfo.baseTitle}}</text>
+      <text>共{{courseNum}}节</text>
+    </view>
+    <view class="course-desc">{{courseInfo.baseSlogan}}</view>
+    <view class="free-price" wx:if="{{courseInfo.tradingChargeType==1}}">
+      <text>免费课程</text>
+    </view>
+    <view class="course-price-contain" wx:else>
+      <view class="price-contain">
+        <view class="now-fee" wx:if="{{courseInfo.tradingChargeType!=1}}">
+          <text>￥</text>
+          <text>{{courseInfo.tradingThirdFeeState==1? (courseInfo.tradingCurrentPrice+courseInfo.tradingThirdFee):courseInfo.tradingCurrentPrice}}</text>
+          <text>元</text>
+        </view>
+        <view class="previous-fee" wx:if="{{courseInfo.tradingChargeType!=1}}">
+          <text>￥{{courseInfo.tradingThirdFeeState==1? (courseInfo.tradingOriginalPrice+courseInfo.tradingThirdFee):courseInfo.tradingOriginalPrice}}元</text>
+          <text></text>
+        </view>
+        <view class="complete-free-fee" wx:if="{{courseInfo.tradingChargeType==1}}">
+          <text>￥</text>
+          <text>免费</text>
+        </view>
+        <view class="price-type" wx:if="{{courseInfo.tradingChargeType!=1}}">
+          <text wx:if="{{(courseInfo.tradingChargeType == 2)||(courseInfo.tradingChargeType == 3)&&(courseInfo.tradingVipPrice!==0)}}">VIP</text>
+          <text wx:if="{{courseInfo.tradingChargeType == 2}}">免费</text>
+          <text wx:if="{{(courseInfo.tradingChargeType == 3)&&(courseInfo.tradingVipPrice!==0)}}">{{courseInfo.tradingThirdFeeState==1? (courseInfo.tradingVipPrice+courseInfo.tradingThirdFee):courseInfo.tradingVipPrice}}元</text>
+        </view>
+      </view>
+    </view>
+    <!-- 课程简介 -->
+    <view class="course-intro">
+      <view class="intro-title">
+        <text></text>
+        <text>课程简介</text>
+      </view>
+      <!-- 编辑器内容 -->
+      <view class="intro-desc" id="{{'pc-item'+index}}" wx:for="{{articleArray}}" wx:key="index">
+        <view class="pc-item-content">
+          <view wx:if="{{item.tag == 'video'}}">
+            <template is="wxParseVideo" data="{{wxParseData:item}}" />
+          </view>
+          <view wx:else>
+            <template is="wxParse" data="{{wxParseData:item}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 课程目录 -->
+  <view class="course-catalogue" wx:if="{{cIndex == 1}}">
+    <view class="catalogue-item" wx:for="{{catalogueList}}" wx:for-item="pItem" wx:for-index="pIndex" wx:key="pIndex">
+      <view class="catalogue-title-contain" bindtap="changeCatalogue" data-index="{{pIndex}}">
+        <view class="catalogue-title">
+          <text>第{{pIndex+1}}章</text>
+          <text>{{pItem.sectionName}}</text>
+        </view>
+        <image class="{{pItem.showChildren==false?'hide-sty':''}}" src="/wtClass/image/detail/zhankai_icon@2x.png"></image>
+      </view>
+      <!-- 子级课程目录 -->
+      <view wx:if="{{pItem.showChildren}}" bindtap="getVideoInfo" data-info="{{item}}" class="catalogue-child" wx:for="{{pItem.child}}" wx:key="index">
+        <image class="video-play" src="/wtClass/image/detail/kechengshiping_icon@2x.png"></image>
+        <text class="catalogue-child-title">{{item.sectionName}}</text>
+        <view class="video-end" wx:if="{{courseInfo.tradingChargeType!=1}}">
+          <text class="view-btn" wx:if="{{item.trySeeState == 1}}">可试看</text>
+          <image wx:else class="video-lock" src="/wtClass/image/detail/suoding_icon@2x.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部固定栏 -->
+  <view class="course-tabbar">
+    <button  class="tab-btn" bindtap="toExtension" data-id="{{courseInfo.id}}" disabled="{{status}}">推广</button>
+  </view>
+
+</view>
+<!-- 推广 -->
+<view wx:if="{{extensionDialog}}" class="extension-sty">
+  <canvas hidden="{{showCanvas}}" class="cavan-sty" canvas-id="share"></canvas>
+  <canvas class="canvans-sty" canvas-id="myQrcode"></canvas>
+  <van-overlay show="{{ true }}" class="van-overlay-sty">
+    <view id="draw-contain" class="draw-contain">
+      <image class="draw-bg" data-type="image" data-url="{{shareBgUrl}}" src="{{shareBgUrl}}"></image>
+      <text class="title-sty" data-type="text" data-text="{{courseInfo.baseTitle}}">{{courseInfo.baseTitle}}</text>
+      <view class="draw_canvas" data-type="text" data-text="卧涛课堂">
+        <image class="draw-code-img" data-type="image" data-url="{{shareCodeUrl}}" data-delay="1" mode="aspectFit" src="{{shareCodeUrl}}"></image>
+      </view>
+      <view class="cour-content">
+        <view class="cour-no" data-type="text" data-text="{{userNo}}">{{userNo}}</view>
+        <view class="cour-name" wx:for="{{treeData}}" wx:key="index">
+          <view wx:if="{{index < 3}}">
+            <text class="cour-index" data-type="text" data-text="0{{index+1}}">0{{index+1}}</text>
+            <text wx:if="{{item.sectionName.length > 12}}" class="cour-title" data-type="text" data-text="{{tools.returnList(0,12,item.sectionName)}}"> {{tools.returnList(0,12,item.sectionName)}}</text>
+            <text wx:else class="cour-title" data-type="text" data-text="  {{item.sectionName}}"> {{item.sectionName}}</text>
+            <text wx:if="{{item.sectionName.length > 12 && item.showChild}}" class="cour-dot" data-type="text" data-text="...">...</text>
+            <view wx:if="{{item.child.length>0}}">
+              <view wx:for="{{item.child}}" wx:for-item="cItem" wx:key="cIndex">
+                <text wx:if="{{cItem.showChild}}" data-type="text" data-text="{{item.index}}.{{cItem.index}}" class="cour-section">{{item.index}}.{{cItem.index}}</text>
+                <text wx:if="{{cItem.showChild}}" class="cour-section" data-type="text" data-text="{{tools.returnList(0,12,cItem.sectionName)}}">{{tools.returnList(0,12,cItem.sectionName)}}</text>
+                <text wx:if="{{cItem.sectionName.length > 12 && cItem.showChild}}" class="cour-dot" data-type="text" data-text="...">...</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <image class="cover-url" data-type="image" data-url="{{imageUrl+courseInfo.baseCoverUrl}}" src="{{imageUrl+courseInfo.baseCoverUrl}}"></image>
+    </view>
+    <view class="popup-sty">
+      <view class="pop-sty">
+        <view class="draw-btn" bindtap="wxShare">
+          <image src="../../image/detail/wx.png" class="draw-logo"></image>
+          <text class="text-sty">分享</text>
+        </view>
+        <view class="draw-btn" bindtap="saveImg">
+          <image src="../../image/detail/picture.png" class="draw-logo"></image>
+          <text class="text-sty">保存图片</text>
+        </view>
+      </view>
+      <view class="cancel-btn" bindtap="cancel">取消</view>
+    </view>
+  </van-overlay>
+</view>

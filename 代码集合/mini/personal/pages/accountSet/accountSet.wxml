@@ -1,0 +1,15 @@
+<!--personal/pages/accountSet/accountSet.wxml-->
+<view class="account-set">
+  <view wx:if="{{(index==2&&userInfo.certificationStatus!='1')||(index!==2)}}" class="account-item {{index==2?'active-account-item':''}}" wx:for="{{optionList}}" wx:key="index" bindtap="skip" data-url="{{item.url}}">
+    <text>{{item.title}}</text>
+    <view class="account-info">
+      <text wx:if="{{index==0}}">去完善</text>
+      <text class="certified" wx:if="{{index==2&&!userInfo.certifiedType}}">{{userInfo.authStatus==0?'未认证':'已认证'}}</text>
+      <text class="certified" wx:if="{{index==2&&userInfo.certifiedType==1}}">已初级认证</text>
+      <text class="certified" wx:if="{{index==2&&userInfo.certifiedType==2 &&userInfo.userType==2}}">已高级认证</text>
+      <text class="certified" wx:if="{{index==2 &&userInfo.userType==1}}">{{userInfo.status==2? "已高级认证" : "未认证" }}</text>
+      <text class="pointer-right"></text>
+    </view>
+  </view>
+</view>
+<view class="out-btn" catchtap="layout">退出登录</view>

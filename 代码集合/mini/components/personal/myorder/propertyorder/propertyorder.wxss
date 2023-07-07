@@ -1,0 +1,224 @@
+/* components/personal/myorder/propertyorder/propertyorder.wxss */
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 92rpx;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.create-time {
+  color: #333333;
+  font-size: 28rpx;
+  margin-left: 24rpx;
+}
+
+.create-status {
+  color: #333333;
+  font-size: 32rpx;
+  margin-right: 24rpx;
+}
+
+.wait-certify {
+  color: #FD651C;
+  font-size: 24rpx;
+  margin-left: 4rpx;
+}
+
+
+.center-top {
+  display: flex;
+  padding: 24rpx;
+}
+
+.img-container {
+  margin-right: 16rpx;
+}
+
+.product-img {
+  width: 192rpx;
+  height: 138rpx;
+}
+
+.order-desc {
+  width: 260rpx;
+  height: 138rpx;
+  margin-right: 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.desc-title {
+  width: 260rpx;
+  max-height: 75rpx;
+  margin-top: 12rpx;
+  color: #333333;
+  font-size: 28rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.desc-type {
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 12rpx;
+}
+
+.order-price {
+  width: 160rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 14rpx;
+}
+
+.price-value {
+  color: #999999;
+  font-size: 30rpx;
+}
+
+.refund-price {
+  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: 14rpx;
+}
+
+.refund-value {
+  color: #333333;
+  font-size: 30rpx;
+  margin-bottom: 16rpx;
+}
+
+.refund-value-title {
+  font-size: 24rpx;
+}
+
+.refund-price-Symbol {
+  font-size: 20rpx;
+}
+
+.price-Symbol {
+  font-size: 24rpx;
+}
+
+.price-count {
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}
+
+.service-progress {
+  color: #FB322F;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.center-foot {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 24rpx;
+  color: #333333;
+  font-size: 32rpx;
+}
+
+.foot-Symbol {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.order-foot {
+  display: flex;
+  font-size: 24rpx;
+  justify-content: flex-end !important;
+  align-items: center;
+  margin-top: 14rpx;
+  padding-top: 32rpx;
+  border-top: 1px solid #f4f4f4;
+}
+
+.order-foot-transfer {
+  display: flex;
+  font-size: 24rpx;
+  justify-content: flex-end !important;
+  align-items: center;
+}
+
+.cancel-btn {
+  width: 76px;
+  height: 34px;
+  border: 1px solid #999999;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333333;
+  margin-right: 24rpx;
+}
+
+.pay-btn {
+  width: 152rpx;
+  height: 68rpx;
+  background: #36a6fe;
+  border-radius: 34rpx;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 24rpx;
+}
+
+.diabaled-pay-btn {
+  width: 76px;
+  height: 34px;
+  border: 1px solid #F4F4F4;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999999;
+  margin-right: 24rpx;
+}
+
+.special-sty {
+  display: flex;
+  justify-content: space-between !important;
+}
+
+.btn-desc {
+  margin-left: 24rpx;
+  color: #333333;
+  font-size: 24rpx;
+}
+
+.audit-img {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 8rpx;
+}
+
+.audit-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-fee {
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 8rpx;
+}
+
+.officical-fees {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.mt {
+  margin-top: 4rpx;
+}
