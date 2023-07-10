@@ -40,34 +40,34 @@ export default {
     let res = {
       success: true,
       data: [
-      {
-          menuid: 23,
-          icon: 'li-icon-xiangmuguanli',
-          menuname: '首页',
-          hasThird: null,
-          url: null,
-          menus: [
-            {
-              menuid: 5,
-              icon: 'icon-order-manage',
-              menuname: '工作台',
-              hasThird: 'N',
-              url: '/home/index',
-              menus: null
-            }
-          ]
-        },
+      // {
+      //     menuid: 23,
+      //     icon: 'li-icon-xiangmuguanli',
+      //     menuname: '首页',
+      //     hasThird: null,
+      //     url: null,
+      //     menus: [
+      //       {
+      //         menuid: 5,
+      //         icon: 'icon-order-manage',
+      //         menuname: '工作台',
+      //         hasThird: 'N',
+      //         url: '/home/index',
+      //         menus: null
+      //       }
+      //     ]
+      //   },
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '农产品管理模块',
+          menuname: '数据采集模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '农产品信息管理',
+              menuname: '传感器管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,49 +75,33 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '农产品生产信息管理',
+              menuname: '监测设备管理',
               hasThird: 'N',
-              url: 'goods/Goods111',
+              url: 'pay/Order',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '农产品质量信息管理',
+              menuname: '数据传输管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
             },
-             {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '农产品检测记录管理',
-              hasThird: 'N',
-              url: 'goods/Goods112',
-              menus: null
-            },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '农产品价格信息管理',
+              menuname: '数据质量控制管理',
               hasThird: 'N',
-              url: 'goods/Goods112',
+              url: 'pay/Order1',
               menus: null
             },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '农产品库存信息管理',
-              hasThird: 'N',
-              url: 'goods/Goods112',
-              menus: null
-            }
           ]
         },
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '订单管理模块',
+          menuname: '故障诊断模块',
           hasThird: null,
           url: null,
           menus: [
@@ -126,7 +110,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '订单信息管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order1',
               menus: null
             },
             {
@@ -174,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '客户管理模块',
+          menuname: '报警与提示模块',
           hasThird: null,
           url: null,
           menus: [
@@ -231,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '物流管理模块',
+          menuname: '数据记录与存储模块',
           hasThird: null,
           url: null,
           menus: [
@@ -280,7 +264,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '销售统计与分析模块',
+          menuname: '数据处理与分析模块',
           hasThird: null,
           url: null,
           menus: [
