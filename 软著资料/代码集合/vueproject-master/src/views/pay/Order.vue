@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">视频采集和预处理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>视频数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">报警管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>报警信号管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.deviceNo" placeholder="请输入视频数据编号"></el-input>
+        <el-input size="small" v-model="formInline.alarmSignalNo" placeholder="请输入报警信号编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入视频数据名称"></el-input>
+        <el-input size="small" v-model="formInline.alarmSignalName" placeholder="请输入报警信号名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.deviceType" placeholder="请选择视频数据类型"></el-select>
+        <el-select size="small" v-model="formInline.alarmSignalType" placeholder="请选择报警信号类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="deviceNo" label="视频数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="alarmSignalNo" label="报警信号编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceName" label="视频数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="alarmSignalName" label="报警信号名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceType" label="视频数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="alarmSignalType" label="报警信号类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceStatus" label="视频数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="alarmSignalStatus" label="报警信号状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -49,19 +49,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="视频数据编号" prop="deviceName">
-          <el-input size="small" v-model="addForm.deviceNo" auto-complete="off" placeholder="请输入视频数据编号"></el-input>
+        <el-form-item label="报警信号编号" prop="alarmSignalNo">
+          <el-input size="small" v-model="addForm.alarmSignalNo" auto-complete="off" placeholder="请输入报警信号编号"></el-input>
         </el-form-item>
-        <el-form-item label="视频数据名称" prop="deviceName">
-          <el-input size="small" v-model="addForm.deviceName" auto-complete="off" placeholder="请输入视频数据名称"></el-input>
+        <el-form-item label="报警信号名称" prop="alarmSignalName">
+          <el-input size="small" v-model="addForm.alarmSignalName" auto-complete="off" placeholder="请输入报警信号名称"></el-input>
         </el-form-item>
-        <el-form-item label="视频数据类型" prop="deviceName">
-          <el-select size="small" v-model="addForm.deviceType" auto-complete="off" placeholder="请选择视频数据类型">
-            <el-option label="RGB视频" value="1"></el-option>
+        <el-form-item label="报警信号类型" prop="alarmSignalType">
+          <el-select size="small" v-model="addForm.alarmSignalType" auto-complete="off" placeholder="请选择报警信号类型">
+            <el-option label="入侵报警" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="视频数据状态" prop="deviceName">
-          <el-select size="small" v-model="addForm.deviceStatus" auto-complete="off" placeholder="请选择视频数据状态">
+        <el-form-item label="报警信号状态" prop="alarmSignalStatus">
+          <el-select size="small" v-model="addForm.alarmSignalStatus" auto-complete="off" placeholder="请选择报警信号状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -83,29 +83,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       deviceNo:'',
-       deviceName:'',
-       deviceType:'',
+       alarmSignalNo:'',
+       alarmSignalName:'',
+       alarmSignalType:'',
        address:'',
-       deviceGender:'',
+       alarmSignalGender:'',
        age:'',
-       deviceStatus:''
+       alarmSignalStatus:''
       },
       rules: {
-        deviceName: [
-          { required: true, message: '请输入部门名称', trigger: 'blur' }
+        alarmSignalNo: [
+          { required: true, message: '请输入报警信号编号', trigger: 'blur' }
         ],
-        address: [
-          { required: true, message: '请输入部门名称', trigger: 'blur' }
+        alarmSignalName: [
+          { required: true, message: '请输入报警信号名称', trigger: 'blur' }
         ],
-        deviceGender: [
-          { required: true, message: '请输入部门名称', trigger: 'blur' }
+        alarmSignalType: [
+          { required: true, message: '请选择报警信号类型', trigger: 'blur' }
         ],
-        age: [
-          { required: true, message: '请输入部门名称', trigger: 'blur' }
-        ],
-        status: [
-          { required: true, message: '请输入部门名称', trigger: 'blur' }
+        alarmSignalStatus: [
+          { required: true, message: '请选择报警信号状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -113,7 +110,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        deviceName: '',
+        alarmSignalName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -141,8 +138,8 @@ export default {
         ids: '',
         token: localStorage.getItem('logintoken')
       },
-      userparm: [], //搜索权限
-      listData: [], //用户数据
+      userparm: [], 
+      listData: [], 
       // 分页参数
       pageparm: {
         currentPage: 1,
@@ -179,38 +176,38 @@ export default {
         count: 5,
         data: [
           {
-            deviceNo:'VDxxxxxx',
-            deviceName:'xxxRGB视频',
-            deviceType:'RGB视频',
-            deviceStatus:"有效状态",
+            alarmSignalNo:'VDxxxxxx',
+            alarmSignalName:'xxx入侵报警',
+            alarmSignalType:'入侵报警',
+            alarmSignalStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            deviceNo:'VDxxxxxx',
-            deviceName:'xxxRGB视频',
-            deviceType:'RGB视频',
-            deviceStatus:"有效状态",
+            alarmSignalNo:'VDxxxxxx',
+            alarmSignalName:'xxx入侵报警',
+            alarmSignalType:'入侵报警',
+            alarmSignalStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            deviceNo:'VDxxxxxx',
-            deviceName:'xxxRGB视频',
-            deviceType:'RGB视频',
-            deviceStatus:"有效状态",
+            alarmSignalNo:'VDxxxxxx',
+            alarmSignalName:'xxx入侵报警',
+            alarmSignalType:'入侵报警',
+            alarmSignalStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            deviceNo:'VDxxxxxx',
-            deviceName:'xxx灰度视频',
-            deviceType:'灰度视频',
-            deviceStatus:"失效状态",
+            alarmSignalNo:'VDxxxxxx',
+            alarmSignalName:'xxx紧急求救报警',
+            alarmSignalType:'紧急求救报警',
+            alarmSignalStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            deviceNo:'VDxxxxxx',
-            deviceName:'xxx灰度视频',
-            deviceType:'灰度视频',
-            deviceStatus:"有效状态",
+            alarmSignalNo:'VDxxxxxx',
+            alarmSignalName:'xxx紧急求救报警',
+            alarmSignalType:'紧急求救报警',
+            alarmSignalStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -261,17 +258,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑视频数据'
-        this.addForm.deviceNo = row.deviceNo
-        this.addForm.deviceName = row.deviceName
-        this.addForm.deviceType = row.deviceType
-        this.addForm.deviceStatus = row.deviceStatus
+        this.title='编辑报警信号'
+        this.addForm.alarmSignalNo = row.alarmSignalNo
+        this.addForm.alarmSignalName = row.alarmSignalName
+        this.addForm.alarmSignalType = row.alarmSignalType
+        this.addForm.alarmSignalStatus = row.alarmSignalStatus
       }else{
-        this.title='添加视频数据'
-        this.addForm.deviceNo = ''
-        this.addForm.deviceName = ''
-        this.addForm.deviceType = ''
-        this.addForm.deviceStatus = ''
+        this.title='添加报警信号'
+        this.addForm.alarmSignalNo = ''
+        this.addForm.alarmSignalName = ''
+        this.addForm.alarmSignalType = ''
+        this.addForm.alarmSignalStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -341,9 +338,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formdeviceName) {
+    closeDialog(formalarmSignalName) {
       this.editFormVisible = false
-      this.$refs[formdeviceName].resetFields()
+      this.$refs[formalarmSignalName].resetFields()
     }
   }
 }

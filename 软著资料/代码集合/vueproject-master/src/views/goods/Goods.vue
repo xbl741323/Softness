@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">视频采集和预处理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>视频源管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">设备管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>设备信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.videoSoucreName" placeholder="请输入视频源编号"></el-input>
+        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.videoSoucreName" placeholder="请输入视频源名称"></el-input>
+        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.videoSoucreStatus" placeholder="请选择视频源类型">
+        <el-select size="small" v-model="formInline.deviceStatus" placeholder="请选择设备信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="videoSoucreNo" label="视频源编号">
+      <el-table-column sortable prop="deviceNo" label="设备信息编号">
       </el-table-column>
-      <el-table-column sortable prop="videoSoucreName" label="视频源名称">
+      <el-table-column sortable prop="deviceName" label="设备信息名称">
       </el-table-column>
-      <el-table-column sortable prop="videoSoucreType" label="视频源类型">
+      <el-table-column sortable prop="deviceType" label="设备信息类型">
       </el-table-column>
-      <el-table-column sortable prop="videoSoucreStatus" label="视频源状态" >
+      <el-table-column sortable prop="deviceStatus" label="设备信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="视频源编号" prop="videoSoucreName">
-          <el-input size="small" v-model="editForm.videoSoucreNo" auto-complete="off" placeholder="请输入视频源编号"></el-input>
+        <el-form-item label="设备信息编号" prop="deviceNo">
+          <el-input size="small" v-model="editForm.deviceNo" auto-complete="off" placeholder="请输入设备信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="视频源名称" prop="videoSoucreName">
-          <el-input size="small" v-model="editForm.videoSoucreName" auto-complete="off" placeholder="请输入视频源名称"></el-input>
+        <el-form-item label="设备信息名称" prop="deviceName">
+          <el-input size="small" v-model="editForm.deviceName" auto-complete="off" placeholder="请输入设备信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="视频源类型" prop="videoSoucreName">
-          <el-select size="small" v-model="editForm.videoSoucreType" auto-complete="off" placeholder="请选择视频源类型">
-            <el-option label="网络摄像头" value="1"></el-option>
+        <el-form-item label="设备信息类型" prop="deviceType">
+          <el-select size="small" v-model="editForm.deviceType" auto-complete="off" placeholder="请选择设备信息类型">
+            <el-option label="摄像头" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="视频源状态" prop="videoSoucreName">
-          <el-select size="small" v-model="editForm.videoSoucreStatus" auto-complete="off" placeholder="请选择视频源状态">
+        <el-form-item label="设备信息状态" prop="deviceStatus">
+          <el-select size="small" v-model="editForm.deviceStatus" auto-complete="off" placeholder="请选择设备信息状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,20 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        videoSoucreNo: '',
-        videoSoucreName: '',
-        videoSoucreType:'',
+        deviceNo: '',
+        deviceName: '',
+        deviceType:'',
         status:'',
-        videoSoucreStatus: '',
+        deviceStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        videoSoucreName: [
-          { required: true, message: '请输入视频源编号', trigger: 'blur' },
-          { required: true, message: '请输入视频源名称', trigger: 'blur' },
-          { required: true, message: '请选择视频源类型', trigger: 'blur' },
-          { required: true, message: '请选择视频源状态', trigger: 'blur' }
+        deviceNo: [
+          { required: true, message: '请输入设备信息编号', trigger: 'blur' }
+        ],
+        deviceName: [
+          { required: true, message: '请输入设备信息名称', trigger: 'blur' }
+        ],
+        deviceType: [
+          { required: true, message: '请选择设备信息类型', trigger: 'blur' }
+        ],
+        deviceStatus: [
+          { required: true, message: '请选择设备信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -155,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            videoSoucreNo: 'VSxxxxxxxx',
-            videoSoucreName: 'XX网络摄像头',
-            videoSoucreType: '网络摄像头',
-            videoSoucreStatus: '有效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XX摄像头',
+            deviceType: '摄像头',
+            deviceStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            videoSoucreNo: 'VSxxxxxxxx',
-            videoSoucreName: 'XX网络摄像头',
-            videoSoucreType: '网络摄像头',
-            videoSoucreStatus: '有效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XX摄像头',
+            deviceType: '摄像头',
+            deviceStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            videoSoucreNo: 'VSxxxxxxxx',
-            videoSoucreName: 'XX网络摄像头',
-            videoSoucreType: '网络摄像头',
-            videoSoucreStatus: '有效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XX摄像头',
+            deviceType: '摄像头',
+            deviceStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            videoSoucreNo: 'VSxxxxxxxx',
-            videoSoucreName: 'XX视频文件',
-            videoSoucreType: '视频文件',
-            videoSoucreStatus: '失效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XX报警器',
+            deviceType: '报警器',
+            deviceStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            videoSoucreNo: 'VSxxxxxxxx',
-            videoSoucreName: 'XX视频文件',
-            videoSoucreType: '视频文件',
-            videoSoucreStatus: '有效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XX报警器',
+            deviceType: '报警器',
+            deviceStatus: '有效状态',
           }
         ]
       }
@@ -239,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑视频源'
-        this.editForm.videoSoucreNo = row.videoSoucreNo
-        this.editForm.videoSoucreName = row.videoSoucreName
-        this.editForm.videoSoucreStatus = row.videoSoucreStatus
-        this.editForm.videoSoucreType = row.videoSoucreType
+        this.title = '编辑设备信息'
+        this.editForm.deviceNo = row.deviceNo
+        this.editForm.deviceName = row.deviceName
+        this.editForm.deviceStatus = row.deviceStatus
+        this.editForm.deviceType = row.deviceType
       } else {
-        this.title = '添加视频源'
-        this.editForm.videoSoucreNo = ''
-        this.editForm.videoSoucreName = ''
-        this.editForm.videoSoucreStatus = ''
-        this.editForm.videoSoucreType =''
+        this.title = '添加设备信息'
+        this.editForm.deviceNo = ''
+        this.editForm.deviceName = ''
+        this.editForm.deviceStatus = ''
+        this.editForm.deviceType =''
       }
     },
     // 编辑、增加页面保存方法
