@@ -3,18 +3,18 @@
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>监测设备管理</el-breadcrumb-item>
+      <el-breadcrumb-item>检测设备管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.deviceNo" placeholder="请输入监测设备编号"></el-input>
+        <el-input size="small" v-model="formInline.deviceNo" placeholder="请输入检测设备编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入监测设备名称"></el-input>
+        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入检测设备名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.deviceType" placeholder="请选择监测设备类型"></el-select>
+        <el-select size="small" v-model="formInline.deviceType" placeholder="请选择检测设备类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="deviceNo" label="监测设备编号" show-overflow-tooltip>
+      <el-table-column sortable prop="deviceNo" label="检测设备编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceName" label="监测设备名称" show-overflow-tooltip>
+      <el-table-column sortable prop="deviceName" label="检测设备名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceType" label="监测设备类型" show-overflow-tooltip>
+      <el-table-column sortable prop="deviceType" label="检测设备类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceStatus" label="监测设备状态" show-overflow-tooltip>
+      <el-table-column sortable prop="deviceStatus" label="检测设备状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -49,19 +49,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="监测设备编号" prop="deviceName">
-          <el-input size="small" v-model="addForm.deviceNo" auto-complete="off" placeholder="请输入监测设备编号"></el-input>
+        <el-form-item label="检测设备编号" prop="deviceName">
+          <el-input size="small" v-model="addForm.deviceNo" auto-complete="off" placeholder="请输入检测设备编号"></el-input>
         </el-form-item>
-        <el-form-item label="监测设备名称" prop="deviceName">
-          <el-input size="small" v-model="addForm.deviceName" auto-complete="off" placeholder="请输入监测设备名称"></el-input>
+        <el-form-item label="检测设备名称" prop="deviceName">
+          <el-input size="small" v-model="addForm.deviceName" auto-complete="off" placeholder="请输入检测设备名称"></el-input>
         </el-form-item>
-        <el-form-item label="监测设备类型" prop="deviceName">
-          <el-select size="small" v-model="addForm.deviceType" auto-complete="off" placeholder="请选择监测设备类型">
+        <el-form-item label="检测设备类型" prop="deviceName">
+          <el-select size="small" v-model="addForm.deviceType" auto-complete="off" placeholder="请选择检测设备类型">
             <el-option label="泵站运行状态监测设备" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="监测设备状态" prop="deviceName">
-          <el-select size="small" v-model="addForm.deviceStatus" auto-complete="off" placeholder="请选择监测设备状态">
+        <el-form-item label="检测设备状态" prop="deviceName">
+          <el-select size="small" v-model="addForm.deviceStatus" auto-complete="off" placeholder="请选择检测设备状态">
             <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -111,6 +111,30 @@ export default {
       loading: false, //是显示加载
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '预览',
+      payType: [
+        { key: '请选择', value: 0 },
+        { key: '现金', value: 1 },
+        { key: '支付宝', value: 2 },
+        { key: '微信', value: 3 },
+        { key: 'POS通', value: 4 },
+        { key: '闪付', value: 5 },
+        { key: 'POS通C扫B', value: 6 },
+        { key: '银联二维码', value: 8 },
+        { key: '会员余额支付', value: 9 }
+      ],
+      payway: [
+        { key: '请选择', value: 0 },
+        { key: '初始化', value: 1 },
+        { key: '已支付', value: 2 },
+        { key: '出货成功', value: 3 },
+        { key: '出货失败', value: 4 },
+        { key: '订单超时', value: 5 },
+        { key: '退款初始化', value: 11 },
+        { key: '退款进行中', value: 12 },
+        { key: '退款成功', value: 13 },
+        { key: '退款失败', value: 14 },
+        { key: '订单运行中', value: 10 }
+      ],
       editForm: {
         id: '',
         deviceName: '',
@@ -189,29 +213,29 @@ export default {
           },
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx泵站运行状态监测设备',
-            deviceType:'泵站运行状态监测设备',
+            deviceName:'xxx采购订单',
+            deviceType:'采购订单',
             deviceStatus:"运行中",
             createTime: "2022-10-24"
           },
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx污泥浓度监测设备',
-            deviceType:'污泥浓度监测设备',
+            deviceName:'xxx配送订单',
+            deviceType:'配送订单',
             deviceStatus:"运行中",
             createTime: "2022-01-12"
           },
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx污泥浓度监测设备',
-            deviceType:'污泥浓度监测设备',
+            deviceName:'xxx退货订单',
+            deviceType:'退货订单',
             deviceStatus:"维护中",
             createTime: "2022-05-17"
           },
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx污泥浓度监测设备',
-            deviceType:'污泥浓度监测设备',
+            deviceName:'xxx补货订单',
+            deviceType:'补货订单',
             deviceStatus:"运行中",
             createTime: "2021-09-12"
           },
@@ -263,13 +287,13 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑监测设备'
+        this.title='编辑检测设备'
         this.addForm.deviceNo = row.deviceNo
         this.addForm.deviceName = row.deviceName
         this.addForm.deviceType = row.deviceType
         this.addForm.deviceStatus = row.deviceStatus
       }else{
-        this.title='添加监测设备'
+        this.title='添加检测设备'
         this.addForm.deviceNo = ''
         this.addForm.deviceName = ''
         this.addForm.deviceType = ''

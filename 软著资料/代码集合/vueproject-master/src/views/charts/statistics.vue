@@ -1,27 +1,18 @@
-/**
-* 图表界面
-*/ 
+ 
 <template>
-  <!-- 组件主盒子 -->
   <div class="stbox">
-    <!-- 面包屑导航 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>数据可视化</el-breadcrumb-item>
-    </el-breadcrumb>
-    <!-- 搜索，切换 -->
     <el-row :gutter="23">
       <el-col :span="18">
         <div class="stbgc">
           <el-row :gutter="23">
             <el-col :span="7">
-              <el-input size="small" v-model="machineNo" placeholder="请输入所属公司"></el-input>
+              <el-input size="small" v-model="machineNo" placeholder="请输入数据名称"></el-input>
             </el-col>
             <el-col :span="7">
-              <el-input size="small" v-model="machineNo" placeholder="请输入资产编号"></el-input>
+              <el-input size="small" v-model="machineNo" placeholder="请输入数据编号"></el-input>
             </el-col>
             <el-col :span="7">
-              <el-input size="small" v-model="machineNo" placeholder="请输入"></el-input>
+              <el-select size="small" v-model="machineNo" placeholder="请选择数据类型"></el-select>
             </el-col>
             <el-col :span="3" class="stsearch">
               <el-button size="small" type="primary">搜索</el-button>
@@ -88,7 +79,6 @@ export default {
     return {
       machineNo: '',
       type: 'day',
-      //  销售总笔数 
       SCEoption: {
         tooltip: {
           trigger: 'item',
@@ -96,7 +86,6 @@ export default {
         },
         legend: {
           data: [{
-            name: '销售总笔数',
             icon: 'rect'
           }],
           top: 1,
@@ -189,7 +178,6 @@ export default {
         },
         legend: {
           data: [{
-            name: '销售总金额',
             icon: 'rect'
           }],
           top: 1,
@@ -245,8 +233,6 @@ export default {
           }
         },
         series: [{
-          name: '销售总金额',
-          //   type: 'bar',
           type: 'line',
           barGap: 0,
           data: [50000, 70000, 80000, 40000, 50000, 30000, 40000, 60000, 50000, 40000, 60000, 40000],
@@ -264,7 +250,6 @@ export default {
         },
         legend: {
           data: [{
-            name: '总点击量',
             icon: 'rect'
           }],
           top: 1,
@@ -320,7 +305,6 @@ export default {
           }
         },
         series: [{
-          name: '总点击量',
           type: 'bar',
           barGap: 0,
           data: [50000, 10000, 80000, 30000, 50000, 60000, 40000, 80000, 50000, 20000, 60000, 40000],
@@ -330,11 +314,9 @@ export default {
           }
         }]
       },
-      //  支付方式统计
       payoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '支付方式统计(金额)',
           left: 10,
           top: 5,
           textStyle: {
@@ -358,17 +340,9 @@ export default {
         },
         series: [
           {
-            name: '支付方式统计(金额)',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
-            data: [
-              { value: 335, name: '支付宝' },
-              { value: 310, name: '银商二维码' },
-              { value: 274, name: '会员' },
-              { value: 235, name: '微信支付' },
-              { value: 100, name: 'Pos通' }
-            ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
               normal: {
@@ -406,7 +380,6 @@ export default {
       payNumoption: {
         backgroundColor: '#2c343c',
         title: {
-          text: '支付方式统计(笔数)',
           left: 10,
           top: 5,
           textStyle: {
@@ -430,17 +403,9 @@ export default {
         },
         series: [
           {
-            name: '支付方式统计(笔数)',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
-            data: [
-              { value: 335, name: '支付宝' },
-              { value: 310, name: '银商二维码' },
-              { value: 274, name: '会员' },
-              { value: 235, name: '微信支付' },
-              { value: 100, name: 'Pos通' }
-            ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
               normal: {
@@ -493,27 +458,22 @@ export default {
   },
   // 里面的函数只有调用才会执行
   methods: {
-    // 交易总笔数
     getSCE() {
       this.chart = Chart.init(this.$refs.SCEchart)
       this.chart.setOption(this.SCEoption)
     },
-    // 交易总金额
     getSUM() {
       this.chart = Chart.init(this.$refs.SUMEchart)
       this.chart.setOption(this.SUMoption)
     },
-    // 总点击量
     getClick() {
       this.chart = Chart.init(this.$refs.ClickEchart)
       this.chart.setOption(this.Clickoption)
     },
-    // 支付方式统计
     getpay() {
       this.chart = Chart.init(this.$refs.payEchart)
       this.chart.setOption(this.payoption)
     },
-    // 支付方式统计
     getpayNum() {
       this.chart = Chart.init(this.$refs.payNumEchart)
       this.chart.setOption(this.payNumoption)

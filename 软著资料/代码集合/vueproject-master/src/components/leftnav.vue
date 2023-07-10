@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据采集模块',
+          menuname: '实时监测模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '传感器管理',
+              menuname: '水泵状态监测管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '监测设备管理',
+              menuname: '水压监测管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据传输管理',
+              menuname: '供水流量监测管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -91,7 +91,23 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据质量控制管理',
+              menuname: '温度监测管理',
+              hasThird: 'N',
+              url: 'pay/Order1',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '故障监测与报警管理',
+              hasThird: 'N',
+              url: 'pay/Order1',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '实时数据显示管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -101,7 +117,7 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '故障诊断模块',
+          menuname: '运行调节模块',
           hasThird: null,
           url: null,
           menus: [
@@ -113,52 +129,12 @@ export default {
               url: 'pay/Order1',
               menus: null
             },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '订单审核管理',
-              hasThird: 'N',
-              url: 'pay/Order1111',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '订单流程管理',
-              hasThird: 'N',
-              url: 'pay/Order1112',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '订单统计与报表管理',
-              hasThird: 'N',
-              url: 'pay/Order1112',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '订单退货管理',
-              hasThird: 'N',
-              url: 'pay/Order1112',
-              menus: null
-            },
-             {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '订单支付管理',
-              hasThird: 'N',
-              url: 'pay/Order1112',
-              menus: null
-            },
           ]
         },
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '报警与提示模块',
+          menuname: '预测与优化模块',
           hasThird: null,
           url: null,
           menus: [
@@ -170,52 +146,12 @@ export default {
               url: 'pay/Order11199',
               menus: null
             },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '客户档案管理',
-              hasThird: 'N',
-              url: 'pay/Order1111',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '客户关系管理',
-              hasThird: 'N',
-              url: 'pay/Order1112',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '客户订单管理',
-              hasThird: 'N',
-              url: 'pay/Order1112',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '客户反馈记录管理',
-              hasThird: 'N',
-              url: 'pay/Order1112',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '客户统计与分析管理',
-              hasThird: 'N',
-              url: 'pay/Order1112',
-              menus: null
-            },
           ]
         },
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据记录与存储模块',
+          menuname: '远程监控与控制模块',
           hasThird: null,
           url: null,
           menus: [
@@ -227,44 +163,12 @@ export default {
               url: 'pay/Order11',
               menus: null
             },
-            {
-              menuid: 159,
-              icon: 'icon-provider-manage',
-              menuname: '语音识别和交互管理',
-              hasThird: 'N',
-              url: 'charts/statistics',
-              menus: null
-            },
-            {
-              menuid: 159,
-              icon: 'icon-provider-manage',
-              menuname: '姿势和表情动画管理',
-              hasThird: 'N',
-              url: 'pay/Order111',
-              menus: null
-            },
-            {
-              menuid: 159,
-              icon: 'icon-provider-manage',
-              menuname: '互动性管理',
-              hasThird: 'N',
-              url: 'charts/statistics',
-              menus: null
-            },
-            {
-              menuid: 159,
-              icon: 'icon-provider-manage',
-              menuname: '导览员个性化管理',
-              hasThird: 'N',
-              url: 'charts/statistics',
-              menus: null
-            }
           ]
         },
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据处理与分析模块',
+          menuname: '数据采集与处理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -276,14 +180,6 @@ export default {
               url: 'machine/MachineConfig',
               menus: null
             },
-            {
-              menuid: 175,
-              icon: 'icon-provider-manage',
-              menuname: '跟踪系统管理',
-              hasThird: 'N',
-              url: 'pay/Config',
-              menus: null
-            }
           ]
         },
         {
