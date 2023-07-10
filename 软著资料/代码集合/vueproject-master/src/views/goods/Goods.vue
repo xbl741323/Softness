@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>传感器管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">视频采集和预处理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>视频源管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.sensorName" placeholder="请输入传感器编号"></el-input>
+        <el-input size="small" v-model="formInline.videoSoucreName" placeholder="请输入视频源编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.sensorName" placeholder="请输入传感器名称"></el-input>
+        <el-input size="small" v-model="formInline.videoSoucreName" placeholder="请输入视频源名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.sensorStatus" placeholder="请选择传感器类型">
+        <el-select size="small" v-model="formInline.videoSoucreStatus" placeholder="请选择视频源类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="sensorNo" label="传感器编号">
+      <el-table-column sortable prop="videoSoucreNo" label="视频源编号">
       </el-table-column>
-      <el-table-column sortable prop="sensorName" label="传感器名称">
+      <el-table-column sortable prop="videoSoucreName" label="视频源名称">
       </el-table-column>
-      <el-table-column sortable prop="sensorType" label="传感器类型">
+      <el-table-column sortable prop="videoSoucreType" label="视频源类型">
       </el-table-column>
-      <el-table-column sortable prop="sensorStatus" label="传感器状态" >
+      <el-table-column sortable prop="videoSoucreStatus" label="视频源状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="传感器编号" prop="sensorName">
-          <el-input size="small" v-model="editForm.sensorNo" auto-complete="off" placeholder="请输入传感器编号"></el-input>
+        <el-form-item label="视频源编号" prop="videoSoucreName">
+          <el-input size="small" v-model="editForm.videoSoucreNo" auto-complete="off" placeholder="请输入视频源编号"></el-input>
         </el-form-item>
-        <el-form-item label="传感器名称" prop="sensorName">
-          <el-input size="small" v-model="editForm.sensorName" auto-complete="off" placeholder="请输入传感器名称"></el-input>
+        <el-form-item label="视频源名称" prop="videoSoucreName">
+          <el-input size="small" v-model="editForm.videoSoucreName" auto-complete="off" placeholder="请输入视频源名称"></el-input>
         </el-form-item>
-        <el-form-item label="传感器类型" prop="sensorName">
-          <el-select size="small" v-model="editForm.sensorType" auto-complete="off" placeholder="请选择传感器类型">
-            <el-option label="水流量传感器" value="1"></el-option>
+        <el-form-item label="视频源类型" prop="videoSoucreName">
+          <el-select size="small" v-model="editForm.videoSoucreType" auto-complete="off" placeholder="请选择视频源类型">
+            <el-option label="网络摄像头" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="传感器状态" prop="sensorName">
-          <el-select size="small" v-model="editForm.sensorStatus" auto-complete="off" placeholder="请选择传感器状态">
-            <el-option label="运行中" value="1"></el-option>
+        <el-form-item label="视频源状态" prop="videoSoucreName">
+          <el-select size="small" v-model="editForm.videoSoucreStatus" auto-complete="off" placeholder="请选择视频源状态">
+            <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,19 +88,21 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        sensorNo: '',
-        sensorName: '',
-        sensorType:'',
+        videoSoucreNo: '',
+        videoSoucreName: '',
+        videoSoucreType:'',
         status:'',
-        sensorStatus: '',
+        videoSoucreStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        sensorName: [
-          { required: true, message: '请输入部门名称', trigger: 'blur' }
+        videoSoucreName: [
+          { required: true, message: '请输入视频源编号', trigger: 'blur' },
+          { required: true, message: '请输入视频源名称', trigger: 'blur' },
+          { required: true, message: '请选择视频源类型', trigger: 'blur' },
+          { required: true, message: '请选择视频源状态', trigger: 'blur' }
         ],
-        sensorStatus: [{ required: true, message: '请输入部门代码', trigger: 'blur' }]
       },
       formInline: {
         page: 1,
@@ -109,13 +111,12 @@ export default {
         varName: '',
         token: localStorage.getItem('logintoken')
       },
-      // 删除部门
       seletedata: {
         ids: '',
         token: localStorage.getItem('logintoken')
       },
-      userparm: [], //搜索权限
-      listData: [], //用户数据
+      userparm: [], 
+      listData: [], 
       // 分页参数
       pageparm: {
         currentPage: 1,
@@ -143,7 +144,6 @@ export default {
    * 里面的方法只有被调用才会执行
    */
   methods: {
-    // 获取公司列表
     getdata(parameter) {
       this.loading = true
       // 模拟数据开始
@@ -155,42 +155,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XX水流量传感器',
-            sensorType: '水流量传感器',
-            sensorStatus: '运行中',
+            videoSoucreNo: 'VSxxxxxxxx',
+            videoSoucreName: 'XX网络摄像头',
+            videoSoucreType: '网络摄像头',
+            videoSoucreStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XX水流量传感器',
-            sensorType: '水流量传感器',
-            sensorStatus: '运行中',
+            videoSoucreNo: 'VSxxxxxxxx',
+            videoSoucreName: 'XX网络摄像头',
+            videoSoucreType: '网络摄像头',
+            videoSoucreStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XX水质参数传感器',
-            sensorType: '水质参数传感器',
-            sensorStatus: '运行中',
+            videoSoucreNo: 'VSxxxxxxxx',
+            videoSoucreName: 'XX网络摄像头',
+            videoSoucreType: '网络摄像头',
+            videoSoucreStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XX气体浓度传感器',
-            sensorType: '气体浓度传感器',
-            sensorStatus: '维护中',
+            videoSoucreNo: 'VSxxxxxxxx',
+            videoSoucreName: 'XX视频文件',
+            videoSoucreType: '视频文件',
+            videoSoucreStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XX农产品加工品',
-            sensorType: '气体浓度传感器',
-            sensorStatus: '运行中',
+            videoSoucreNo: 'VSxxxxxxxx',
+            videoSoucreName: 'XX视频文件',
+            videoSoucreType: '视频文件',
+            videoSoucreStatus: '有效状态',
           }
         ]
       }
@@ -239,17 +239,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑传感器'
-        this.editForm.sensorNo = row.sensorNo
-        this.editForm.sensorName = row.sensorName
-        this.editForm.sensorStatus = row.sensorStatus
-        this.editForm.sensorType = row.sensorType
+        this.title = '编辑视频源'
+        this.editForm.videoSoucreNo = row.videoSoucreNo
+        this.editForm.videoSoucreName = row.videoSoucreName
+        this.editForm.videoSoucreStatus = row.videoSoucreStatus
+        this.editForm.videoSoucreType = row.videoSoucreType
       } else {
-        this.title = '添加传感器'
-        this.editForm.sensorNo = ''
-        this.editForm.sensorName = ''
-        this.editForm.sensorStatus = ''
-        this.editForm.sensorType =''
+        this.title = '添加视频源'
+        this.editForm.videoSoucreNo = ''
+        this.editForm.videoSoucreName = ''
+        this.editForm.videoSoucreStatus = ''
+        this.editForm.videoSoucreType =''
       }
     },
     // 编辑、增加页面保存方法
@@ -264,7 +264,7 @@ export default {
                 this.getdata(this.formInline)
                 this.$message({
                   type: 'success',
-                  message: '公司保存成功！'
+                  message: '保存成功！'
                 })
               } else {
                 this.$message({
@@ -276,14 +276,14 @@ export default {
             .catch(err => {
               this.editFormVisible = false
               this.loading = false
-              this.$message.error('公司保存失败，请稍后再试！')
+              this.$message.error('保存失败，请稍后再试！')
             })
         } else {
           return false
         }
       })
     },
-    // 删除公司
+    // 删除
     deleteUser(index, row) {
       this.$confirm('确定要删除吗?', '信息', {
         confirmButtonText: '确定',
@@ -296,7 +296,7 @@ export default {
               if (res.success) {
                 this.$message({
                   type: 'success',
-                  message: '公司已删除!'
+                  message: '已删除!'
                 })
                 this.getdata(this.formInline)
               } else {
@@ -308,7 +308,7 @@ export default {
             })
             .catch(err => {
               this.loading = false
-              this.$message.error('公司删除失败，请稍后再试！')
+              this.$message.error('删除失败，请稍后再试！')
             })
         })
         .catch(() => {

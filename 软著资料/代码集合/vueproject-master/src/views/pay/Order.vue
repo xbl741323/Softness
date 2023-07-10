@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>检测设备管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">视频采集和预处理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>视频数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.deviceNo" placeholder="请输入检测设备编号"></el-input>
+        <el-input size="small" v-model="formInline.deviceNo" placeholder="请输入视频数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入检测设备名称"></el-input>
+        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入视频数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.deviceType" placeholder="请选择检测设备类型"></el-select>
+        <el-select size="small" v-model="formInline.deviceType" placeholder="请选择视频数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="deviceNo" label="检测设备编号" show-overflow-tooltip>
+      <el-table-column sortable prop="deviceNo" label="视频数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceName" label="检测设备名称" show-overflow-tooltip>
+      <el-table-column sortable prop="deviceName" label="视频数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceType" label="检测设备类型" show-overflow-tooltip>
+      <el-table-column sortable prop="deviceType" label="视频数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="deviceStatus" label="检测设备状态" show-overflow-tooltip>
+      <el-table-column sortable prop="deviceStatus" label="视频数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -49,20 +49,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="检测设备编号" prop="deviceName">
-          <el-input size="small" v-model="addForm.deviceNo" auto-complete="off" placeholder="请输入检测设备编号"></el-input>
+        <el-form-item label="视频数据编号" prop="deviceName">
+          <el-input size="small" v-model="addForm.deviceNo" auto-complete="off" placeholder="请输入视频数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="检测设备名称" prop="deviceName">
-          <el-input size="small" v-model="addForm.deviceName" auto-complete="off" placeholder="请输入检测设备名称"></el-input>
+        <el-form-item label="视频数据名称" prop="deviceName">
+          <el-input size="small" v-model="addForm.deviceName" auto-complete="off" placeholder="请输入视频数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="检测设备类型" prop="deviceName">
-          <el-select size="small" v-model="addForm.deviceType" auto-complete="off" placeholder="请选择检测设备类型">
-            <el-option label="泵站运行状态监测设备" value="1"></el-option>
+        <el-form-item label="视频数据类型" prop="deviceName">
+          <el-select size="small" v-model="addForm.deviceType" auto-complete="off" placeholder="请选择视频数据类型">
+            <el-option label="RGB视频" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="检测设备状态" prop="deviceName">
-          <el-select size="small" v-model="addForm.deviceStatus" auto-complete="off" placeholder="请选择检测设备状态">
-            <el-option label="运行中" value="1"></el-option>
+        <el-form-item label="视频数据状态" prop="deviceName">
+          <el-select size="small" v-model="addForm.deviceStatus" auto-complete="off" placeholder="请选择视频数据状态">
+            <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -111,30 +111,6 @@ export default {
       loading: false, //是显示加载
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '预览',
-      payType: [
-        { key: '请选择', value: 0 },
-        { key: '现金', value: 1 },
-        { key: '支付宝', value: 2 },
-        { key: '微信', value: 3 },
-        { key: 'POS通', value: 4 },
-        { key: '闪付', value: 5 },
-        { key: 'POS通C扫B', value: 6 },
-        { key: '银联二维码', value: 8 },
-        { key: '会员余额支付', value: 9 }
-      ],
-      payway: [
-        { key: '请选择', value: 0 },
-        { key: '初始化', value: 1 },
-        { key: '已支付', value: 2 },
-        { key: '出货成功', value: 3 },
-        { key: '出货失败', value: 4 },
-        { key: '订单超时', value: 5 },
-        { key: '退款初始化', value: 11 },
-        { key: '退款进行中', value: 12 },
-        { key: '退款成功', value: 13 },
-        { key: '退款失败', value: 14 },
-        { key: '订单运行中', value: 10 }
-      ],
       editForm: {
         id: '',
         deviceName: '',
@@ -161,7 +137,6 @@ export default {
         orderStatus: 0,
         token: localStorage.getItem('logintoken')
       },
-      // 删除部门
       seletedata: {
         ids: '',
         token: localStorage.getItem('logintoken')
@@ -195,7 +170,6 @@ export default {
    * 里面的方法只有被调用才会执行
    */
   methods: {
-    // 获取公司列表
     getdata(parameter) {
       this.loading = true
       // 模拟数据开始
@@ -206,37 +180,37 @@ export default {
         data: [
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx泵站运行状态监测设备',
-            deviceType:'泵站运行状态监测设备',
-            deviceStatus:"运行中",
+            deviceName:'xxxRGB视频',
+            deviceType:'RGB视频',
+            deviceStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx采购订单',
-            deviceType:'采购订单',
-            deviceStatus:"运行中",
+            deviceName:'xxxRGB视频',
+            deviceType:'RGB视频',
+            deviceStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx配送订单',
-            deviceType:'配送订单',
-            deviceStatus:"运行中",
+            deviceName:'xxxRGB视频',
+            deviceType:'RGB视频',
+            deviceStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx退货订单',
-            deviceType:'退货订单',
-            deviceStatus:"维护中",
+            deviceName:'xxx灰度视频',
+            deviceType:'灰度视频',
+            deviceStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
             deviceNo:'VDxxxxxx',
-            deviceName:'xxx补货订单',
-            deviceType:'补货订单',
-            deviceStatus:"运行中",
+            deviceName:'xxx灰度视频',
+            deviceType:'灰度视频',
+            deviceStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -287,13 +261,13 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑检测设备'
+        this.title='编辑视频数据'
         this.addForm.deviceNo = row.deviceNo
         this.addForm.deviceName = row.deviceName
         this.addForm.deviceType = row.deviceType
         this.addForm.deviceStatus = row.deviceStatus
       }else{
-        this.title='添加检测设备'
+        this.title='添加视频数据'
         this.addForm.deviceNo = ''
         this.addForm.deviceName = ''
         this.addForm.deviceType = ''
@@ -312,7 +286,7 @@ export default {
                 this.getdata(this.formInline)
                 this.$message({
                   type: 'success',
-                  message: '公司保存成功！'
+                  message: '保存成功！'
                 })
               } else {
                 this.$message({
@@ -331,7 +305,7 @@ export default {
         }
       })
     },
-    // 删除公司
+    // 删除
     deleteUser(index, row) {
       this.$confirm('确定要删除吗?', '信息', {
         confirmButtonText: '确定',
@@ -344,7 +318,7 @@ export default {
               if (res.success) {
                 this.$message({
                   type: 'success',
-                  message: '公司已删除!'
+                  message: '已删除!'
                 })
                 this.getdata(this.formInline)
               } else {
@@ -362,7 +336,7 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '维护中删除'
+            message: '失效状态删除'
           })
         })
     },
