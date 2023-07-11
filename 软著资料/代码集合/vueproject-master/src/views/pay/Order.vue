@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">材料管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>材料信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">商品查询销售模块</el-breadcrumb-item>
+      <el-breadcrumb-item>关键词信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.materialNo" placeholder="请输入材料信息编号"></el-input>
+        <el-input size="small" v-model="formInline.keywordNo" placeholder="请输入关键词信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.materialName" placeholder="请输入材料信息名称"></el-input>
+        <el-input size="small" v-model="formInline.keywordName" placeholder="请输入关键词信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.materialType" placeholder="请选择材料信息类型"></el-select>
+        <el-select size="small" v-model="formInline.keywordType" placeholder="请选择关键词信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,17 +26,16 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="materialNo" label="材料信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="keywordNo" label="关键词信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="materialName" label="材料信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="keywordName" label="关键词信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="materialType" label="材料信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="keywordType" label="关键词信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="materialStatus" label="材料信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="keywordStatus" label="关键词信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
-      
       <el-table-column align="center" label="操作">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.row)">编辑</el-button>
@@ -48,20 +47,20 @@
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
-      <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="材料信息编号" prop="materialNo">
-          <el-input size="small" v-model="addForm.materialNo" auto-complete="off" placeholder="请输入材料信息编号"></el-input>
+      <el-form label-width="140px" :model="addForm" :rules="rules" ref="editForm">
+        <el-form-item label="关键词信息编号" prop="keywordNo">
+          <el-input size="small" v-model="addForm.keywordNo" auto-complete="off" placeholder="请输入关键词信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="材料信息名称" prop="materialName">
-          <el-input size="small" v-model="addForm.materialName" auto-complete="off" placeholder="请输入材料信息名称"></el-input>
+        <el-form-item label="关键词信息名称" prop="keywordName">
+          <el-input size="small" v-model="addForm.keywordName" auto-complete="off" placeholder="请输入关键词信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="材料信息类型" prop="materialType">
-          <el-select size="small" v-model="addForm.materialType" auto-complete="off" placeholder="请选择材料信息类型">
-            <el-option label="建筑装饰材料" value="1"></el-option>
+        <el-form-item label="关键词信息类型" prop="keywordType">
+          <el-select size="small" v-model="addForm.keywordType" auto-complete="off" placeholder="请选择关键词信息类型">
+            <el-option label="商品名称相关" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="材料信息状态" prop="materialStatus">
-          <el-select size="small" v-model="addForm.materialStatus" auto-complete="off" placeholder="请选择材料信息状态">
+        <el-form-item label="关键词信息状态" prop="keywordStatus">
+          <el-select size="small" v-model="addForm.keywordStatus" auto-complete="off" placeholder="请选择关键词信息状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -83,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       materialNo:'',
-       materialName:'',
-       materialType:'',
+       keywordNo:'',
+       keywordName:'',
+       keywordType:'',
        address:'',
-       materialGender:'',
+       keywordGender:'',
        age:'',
-       materialStatus:''
+       keywordStatus:''
       },
       rules: {
-        materialNo: [
-          { required: true, message: '请输入材料信息编号', trigger: 'blur' }
+        keywordNo: [
+          { required: true, message: '请输入关键词信息编号', trigger: 'blur' }
         ],
-        materialName: [
-          { required: true, message: '请输入材料信息名称', trigger: 'blur' }
+        keywordName: [
+          { required: true, message: '请输入关键词信息名称', trigger: 'blur' }
         ],
-        materialType: [
-          { required: true, message: '请选择材料信息类型', trigger: 'blur' }
+        keywordType: [
+          { required: true, message: '请选择关键词信息类型', trigger: 'blur' }
         ],
-        materialStatus: [
-          { required: true, message: '请选择材料信息状态', trigger: 'blur' }
+        keywordStatus: [
+          { required: true, message: '请选择关键词信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -110,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        materialName: '',
+        keywordName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -176,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            materialNo:'VDxxxxxx',
-            materialName:'xxx建筑装饰材料',
-            materialType:'建筑装饰材料',
-            materialStatus:"有效状态",
+            keywordNo:'VDxxxxxx',
+            keywordName:'xxx商品名称相关',
+            keywordType:'商品名称相关',
+            keywordStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            materialNo:'VDxxxxxx',
-            materialName:'xxx建筑装饰材料',
-            materialType:'建筑装饰材料',
-            materialStatus:"有效状态",
+            keywordNo:'VDxxxxxx',
+            keywordName:'xxx商品名称相关',
+            keywordType:'商品名称相关',
+            keywordStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            materialNo:'VDxxxxxx',
-            materialName:'xxx建筑装饰材料',
-            materialType:'建筑装饰材料',
-            materialStatus:"有效状态",
+            keywordNo:'VDxxxxxx',
+            keywordName:'xxx商品名称相关',
+            keywordType:'商品名称相关',
+            keywordStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            materialNo:'VDxxxxxx',
-            materialName:'xxx结构材料',
-            materialType:'结构材料',
-            materialStatus:"失效状态",
+            keywordNo:'VDxxxxxx',
+            keywordName:'xxx商品类型相关',
+            keywordType:'商品类型相关',
+            keywordStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            materialNo:'VDxxxxxx',
-            materialName:'xxx结构材料',
-            materialType:'结构材料',
-            materialStatus:"有效状态",
+            keywordNo:'VDxxxxxx',
+            keywordName:'xxx商品类型相关',
+            keywordType:'商品类型相关',
+            keywordStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -258,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑材料信息'
-        this.addForm.materialNo = row.materialNo
-        this.addForm.materialName = row.materialName
-        this.addForm.materialType = row.materialType
-        this.addForm.materialStatus = row.materialStatus
+        this.title='编辑关键词信息'
+        this.addForm.keywordNo = row.keywordNo
+        this.addForm.keywordName = row.keywordName
+        this.addForm.keywordType = row.keywordType
+        this.addForm.keywordStatus = row.keywordStatus
       }else{
-        this.title='添加材料信息'
-        this.addForm.materialNo = ''
-        this.addForm.materialName = ''
-        this.addForm.materialType = ''
-        this.addForm.materialStatus = ''
+        this.title='添加关键词信息'
+        this.addForm.keywordNo = ''
+        this.addForm.keywordName = ''
+        this.addForm.keywordType = ''
+        this.addForm.keywordStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -338,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formmaterialName) {
+    closeDialog(formkeywordName) {
       this.editFormVisible = false
-      this.$refs[formmaterialName].resetFields()
+      this.$refs[formkeywordName].resetFields()
     }
   }
 }

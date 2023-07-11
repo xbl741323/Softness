@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">设备管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>设备信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">商品管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>商品信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息编号"></el-input>
+        <el-input size="small" v-model="formInline.goodsName" placeholder="请输入商品信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息名称"></el-input>
+        <el-input size="small" v-model="formInline.goodsName" placeholder="请输入商品信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.deviceStatus" placeholder="请选择设备信息类型">
+        <el-select size="small" v-model="formInline.goodsStatus" placeholder="请选择商品信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="deviceNo" label="设备信息编号">
+      <el-table-column sortable prop="goodsNo" label="商品信息编号">
       </el-table-column>
-      <el-table-column sortable prop="deviceName" label="设备信息名称">
+      <el-table-column sortable prop="goodsName" label="商品信息名称">
       </el-table-column>
-      <el-table-column sortable prop="deviceType" label="设备信息类型">
+      <el-table-column sortable prop="goodsType" label="商品信息类型">
       </el-table-column>
-      <el-table-column sortable prop="deviceStatus" label="设备信息状态" >
+      <el-table-column sortable prop="goodsStatus" label="商品信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="设备信息编号" prop="deviceNo">
-          <el-input size="small" v-model="editForm.deviceNo" auto-complete="off" placeholder="请输入设备信息编号"></el-input>
+        <el-form-item label="商品信息编号" prop="goodsNo">
+          <el-input size="small" v-model="editForm.goodsNo" auto-complete="off" placeholder="请输入商品信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="设备信息名称" prop="deviceName">
-          <el-input size="small" v-model="editForm.deviceName" auto-complete="off" placeholder="请输入设备信息名称"></el-input>
+        <el-form-item label="商品信息名称" prop="goodsName">
+          <el-input size="small" v-model="editForm.goodsName" auto-complete="off" placeholder="请输入商品信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="设备信息类型" prop="deviceType">
-          <el-select size="small" v-model="editForm.deviceType" auto-complete="off" placeholder="请选择设备信息类型">
-            <el-option label="建筑工程机械设备" value="1"></el-option>
+        <el-form-item label="商品信息类型" prop="goodsType">
+          <el-select size="small" v-model="editForm.goodsType" auto-complete="off" placeholder="请选择商品信息类型">
+            <el-option label="家居用品" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="设备信息状态" prop="deviceStatus">
-          <el-select size="small" v-model="editForm.deviceStatus" auto-complete="off" placeholder="请选择设备信息状态">
-            <el-option label="使用中" value="1"></el-option>
+        <el-form-item label="商品信息状态" prop="goodsStatus">
+          <el-select size="small" v-model="editForm.goodsStatus" auto-complete="off" placeholder="请选择商品信息状态">
+            <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        deviceNo: '',
-        deviceName: '',
-        deviceType:'',
+        goodsNo: '',
+        goodsName: '',
+        goodsType:'',
         status:'',
-        deviceStatus: '',
+        goodsStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        deviceNo: [
-          { required: true, message: '请输入设备信息编号', trigger: 'blur' }
+        goodsNo: [
+          { required: true, message: '请输入商品信息编号', trigger: 'blur' }
         ],
-        deviceName: [
-          { required: true, message: '请输入设备信息名称', trigger: 'blur' }
+        goodsName: [
+          { required: true, message: '请输入商品信息名称', trigger: 'blur' }
         ],
-        deviceType: [
-          { required: true, message: '请选择设备信息类型', trigger: 'blur' }
+        goodsType: [
+          { required: true, message: '请选择商品信息类型', trigger: 'blur' }
         ],
-        deviceStatus: [
-          { required: true, message: '请选择设备信息状态', trigger: 'blur' }
+        goodsStatus: [
+          { required: true, message: '请选择商品信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX建筑工程机械设备',
-            deviceType: '建筑工程机械设备',
-            deviceStatus: '使用中',
+            goodsNo: 'VSxxxxxxxx',
+            goodsName: 'XX家居用品',
+            goodsType: '家居用品',
+            goodsStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX建筑工程机械设备',
-            deviceType: '建筑工程机械设备',
-            deviceStatus: '使用中',
+            goodsNo: 'VSxxxxxxxx',
+            goodsName: 'XX家居用品',
+            goodsType: '家居用品',
+            goodsStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX建筑工程机械设备',
-            deviceType: '建筑工程机械设备',
-            deviceStatus: '使用中',
+            goodsNo: 'VSxxxxxxxx',
+            goodsName: 'XX家居用品',
+            goodsType: '家居用品',
+            goodsStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX施工工具和设备',
-            deviceType: '施工工具和设备',
-            deviceStatus: '维护中',
+            goodsNo: 'VSxxxxxxxx',
+            goodsName: 'XX食品饮料',
+            goodsType: '食品饮料',
+            goodsStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX施工工具和设备',
-            deviceType: '施工工具和设备',
-            deviceStatus: '使用中',
+            goodsNo: 'VSxxxxxxxx',
+            goodsName: 'XX食品饮料',
+            goodsType: '食品饮料',
+            goodsStatus: '有效状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑设备信息'
-        this.editForm.deviceNo = row.deviceNo
-        this.editForm.deviceName = row.deviceName
-        this.editForm.deviceStatus = row.deviceStatus
-        this.editForm.deviceType = row.deviceType
+        this.title = '编辑商品信息'
+        this.editForm.goodsNo = row.goodsNo
+        this.editForm.goodsName = row.goodsName
+        this.editForm.goodsStatus = row.goodsStatus
+        this.editForm.goodsType = row.goodsType
       } else {
-        this.title = '添加设备信息'
-        this.editForm.deviceNo = ''
-        this.editForm.deviceName = ''
-        this.editForm.deviceStatus = ''
-        this.editForm.deviceType =''
+        this.title = '添加商品信息'
+        this.editForm.goodsNo = ''
+        this.editForm.goodsName = ''
+        this.editForm.goodsStatus = ''
+        this.editForm.goodsType =''
       }
     },
     // 编辑、增加页面保存方法
