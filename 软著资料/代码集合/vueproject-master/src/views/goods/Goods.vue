@@ -59,12 +59,12 @@
         </el-form-item>
         <el-form-item label="设备信息类型" prop="deviceType">
           <el-select size="small" v-model="editForm.deviceType" auto-complete="off" placeholder="请选择设备信息类型">
-            <el-option label="摄像头" value="1"></el-option>
+            <el-option label="建筑工程机械设备" value="1"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="设备信息状态" prop="deviceStatus">
           <el-select size="small" v-model="editForm.deviceStatus" auto-complete="off" placeholder="请选择设备信息状态">
-            <el-option label="有效状态" value="1"></el-option>
+            <el-option label="使用中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -162,41 +162,41 @@ export default {
             creator: 'xxx',
             createime: '2022-12-23',
             deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX摄像头',
-            deviceType: '摄像头',
-            deviceStatus: '有效状态',
+            deviceName: 'XX建筑工程机械设备',
+            deviceType: '建筑工程机械设备',
+            deviceStatus: '使用中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
             deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX摄像头',
-            deviceType: '摄像头',
-            deviceStatus: '有效状态',
+            deviceName: 'XX建筑工程机械设备',
+            deviceType: '建筑工程机械设备',
+            deviceStatus: '使用中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
             deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX摄像头',
-            deviceType: '摄像头',
-            deviceStatus: '有效状态',
+            deviceName: 'XX建筑工程机械设备',
+            deviceType: '建筑工程机械设备',
+            deviceStatus: '使用中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
             deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX报警器',
-            deviceType: '报警器',
-            deviceStatus: '失效状态',
+            deviceName: 'XX施工工具和设备',
+            deviceType: '施工工具和设备',
+            deviceStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
             deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XX报警器',
-            deviceType: '报警器',
-            deviceStatus: '有效状态',
+            deviceName: 'XX施工工具和设备',
+            deviceType: '施工工具和设备',
+            deviceStatus: '使用中',
           }
         ]
       }

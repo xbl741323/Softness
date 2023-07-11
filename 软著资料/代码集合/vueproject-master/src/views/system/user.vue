@@ -1,14 +1,5 @@
-/**
- * 系统管理 用户管理
- */
 <template>
   <div>
-    <!-- 面包屑导航 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-    </el-breadcrumb>
-    <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
         <el-select size="small" v-model="formInline.isLock" placeholder="请选择">
@@ -26,14 +17,11 @@
       <el-form-item>
         <el-button size="small" type="primary" icon="el-icon-search" @click="search">搜索</el-button>
         <el-button size="small" type="primary" icon="el-icon-plus" @click="handleEdit()">添加</el-button>
-        <el-button size="small" type="primary" @click="handleunit()">部门设置</el-button>
       </el-form-item>
     </el-form>
     <!--列表-->
     <el-table size="small" @selection-change="selectChange" :data="userData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="50">
-      </el-table-column>
-      <el-table-column align="center" sortable prop="deptName" label="公司" width="120">
       </el-table-column>
       <el-table-column align="center" sortable prop="userName" label="用户名" width="120">
       </el-table-column>
@@ -43,16 +31,9 @@
       </el-table-column>
       <el-table-column align="center" sortable prop="userSex" label="性别" min-width="50">
       </el-table-column>
-      <el-table-column align="center" sortable prop="userEmail" label="邮件" min-width="120">
-      </el-table-column>
-      <el-table-column align="center" sortable prop="editTime" label="修改时间" min-width="120">
-        <template slot-scope="scope">
-          <div>{{scope.row.editTime|timestampToTime}}</div>
-        </template>
-      </el-table-column>
       <el-table-column align="center" sortable prop="isLock" label="状态" min-width="50">
         <template slot-scope="scope">
-          <el-switch v-model="scope.row.isLock=='N'?nshow:fshow" active-color="#13ce66" inactive-color="#ff4949" @change="editType(scope.$index, scope.row)">
+          <el-switch active-color="#13ce66" inactive-color="#ff4949" @change="editType(scope.$index, scope.row)">
           </el-switch>
         </template>
       </el-table-column>
@@ -62,7 +43,6 @@
           <el-button size="mini" type="danger" @click="deleteUser(scope.$index, scope.row)">删除</el-button>
           <el-button size="mini" type="success" @click="resetpwd(scope.$index, scope.row)">重置密码</el-button>
           <el-button size="mini" type="success" @click="dataAccess(scope.$index, scope.row)">数据权限</el-button>
-          <el-button size="mini" type="success" @click="offlineUser(scope.$index, scope.row)">下线</el-button>
           <el-button size="mini" type="success" @click="refreshCache(scope.$index, scope.row)">刷新缓存</el-button>
         </template>
       </el-table-column>
@@ -80,15 +60,12 @@
         </el-form-item>
         <el-form-item label="角色" prop="roleId">
           <el-select size="small" v-model="editForm.roleId" placeholder="请选择" class="userRole">
-            <el-option label="公司管理员" value="1"></el-option>
+            <el-option label="管理员" value="1"></el-option>
             <el-option label="普通用户" value="2"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="手机号" prop="userMobile">
           <el-input size="small" v-model="editForm.userMobile" placeholder="请输入手机号"></el-input>
-        </el-form-item>
-        <el-form-item label="邮件" prop="userEmail">
-          <el-input size="small" v-model="editForm.userEmail" placeholder="请输入邮箱地址"></el-input>
         </el-form-item>
         <el-form-item label="性别" prop="userSex">
           <el-radio v-model="editForm.userSex" label="男">男</el-radio>
@@ -158,7 +135,6 @@ export default {
         userSex: '',
         token: localStorage.getItem('logintoken')
       },
-      // 部门参数
       unitparm: {
         userIds: '',
         deptId: '',
@@ -184,15 +160,6 @@ export default {
             trigger: 'blur'
           }
         ],
-        userEmail: [
-          { required: true, message: '请输入邮箱', trigger: 'blur' },
-          {
-            pattern: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
-            required: true,
-            message: '请输入正确的邮箱',
-            trigger: 'blur'
-          }
-        ],
         userSex: [{ required: true, message: '请选择性别', trigger: 'blur' }]
       },
       // 删除用户
@@ -205,7 +172,6 @@ export default {
         userId: '',
         token: localStorage.getItem('logintoken')
       },
-      // 用户下线
       offline: {
         token: localStorage.getItem('logintoken')
       },
@@ -259,225 +225,6 @@ export default {
    * 里面的方法只有被调用才会执行
    */
   methods: {
-    // 获取数据方法
-    getdata(parameter) {
-      this.loading = true
-      // 模拟数据开始
-      let res = {
-        code: 0,
-        msg: null,
-        count: 12,
-        data: [
-          {
-            addUser: '1',
-            editUser: '1',
-            addTime: null,
-            editTime: 1527411068000,
-            userId: 1,
-            systemNo: 'pmd',
-            userName: 'root',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: '超级管理员',
-            userSex: '女',
-            userMobile: '138123456789',
-            userEmail: '111@qq.com',
-            isLock: 'N',
-            deptId: 1,
-            deptName: 'xxxx',
-            roleId: 1
-          },
-          {
-            addUser: '1',
-            editUser: '1',
-            addTime: null,
-            editTime: 1527410579000,
-            userId: 3,
-            systemNo: 'mc',
-            userName: 'zengzhuo',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: '系统管理员',
-            userSex: 'M',
-            userMobile: '18616988966',
-            userEmail: '222@qq.com',
-            isLock: 'N',
-            deptId: 2,
-            deptName: 'xxxx',
-            roleId: 101
-          },
-          {
-            addUser: '1',
-            editUser: '4',
-            addTime: null,
-            editTime: 1527411586000,
-            userId: 4,
-            systemNo: 'ec',
-            userName: 'admin',
-            userPassword: '59ba8b7dda9ff79186311a5a9fa155ca',
-            userRealName: '超级管理员',
-            userSex: '女',
-            userMobile: '138123456789',
-            userEmail: 'huangxuekun@founder.com',
-            isLock: 'N',
-            deptId: 2,
-            deptName: 'xxxx',
-            roleId: 3
-          },
-          {
-            addUser: null,
-            editUser: null,
-            addTime: 1526275128000,
-            editTime: 1526284402000,
-            userId: 28,
-            systemNo: null,
-            userName: 'eee111',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: '123111',
-            userSex: '男',
-            userMobile: '12354342345',
-            userEmail: '111232@qq.com',
-            isLock: 'N',
-            deptId: 4,
-            deptName: 'zxxxxx',
-            roleId: 1
-          },
-          {
-            addUser: null,
-            editUser: null,
-            addTime: 1526284533000,
-            editTime: 1526284533000,
-            userId: 37,
-            systemNo: null,
-            userName: 'ces',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: 'sesfg',
-            userSex: '男',
-            userMobile: '12312312312',
-            userEmail: '122111111',
-            isLock: 'N',
-            deptId: 1,
-            deptName: 'xxxx',
-            roleId: 1
-          },
-          {
-            addUser: null,
-            editUser: null,
-            addTime: 1526285228000,
-            editTime: 1526285228000,
-            userId: 43,
-            systemNo: null,
-            userName: '22',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: '22',
-            userSex: '男',
-            userMobile: '222',
-            userEmail: '222',
-            isLock: 'N',
-            deptId: 1,
-            deptName: 'xxxx',
-            roleId: 1
-          },
-          {
-            addUser: null,
-            editUser: null,
-            addTime: 1526448593000,
-            editTime: 1526448593000,
-            userId: 58,
-            systemNo: null,
-            userName: '1',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: '1',
-            userSex: '女',
-            userMobile: '13607118810',
-            userEmail: '1@qq.com',
-            isLock: 'N',
-            deptId: 1,
-            deptName: 'xxxx',
-            roleId: 1
-          },
-          {
-            addUser: null,
-            editUser: null,
-            addTime: 1526452698000,
-            editTime: 1526520341000,
-            userId: 60,
-            systemNo: null,
-            userName: '222222222',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: '222222222222',
-            userSex: '男',
-            userMobile: '13607118810',
-            userEmail: '111@qq.com',
-            isLock: 'N',
-            deptId: 1,
-            deptName: 'xxxx',
-            roleId: 1
-          },
-          {
-            addUser: null,
-            editUser: null,
-            addTime: 1526452731000,
-            editTime: 1526452731000,
-            userId: 61,
-            systemNo: null,
-            userName: '33333333333333',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: '4444444444444444444',
-            userSex: '女',
-            userMobile: '13607118810',
-            userEmail: 'qqq@qq.com',
-            isLock: 'N',
-            deptId: 1,
-            deptName: 'xxxx',
-            roleId: 2
-          },
-          {
-            addUser: null,
-            editUser: null,
-            addTime: 1526452756000,
-            editTime: 1527128981000,
-            userId: 62,
-            systemNo: null,
-            userName: '211111111',
-            userPassword: 'e10adc3949ba59abbe56e057f20f883e',
-            userRealName: '21111111111',
-            userSex: '男',
-            userMobile: '13601478451',
-            userEmail: '222222@qq.com',
-            isLock: 'N',
-            deptId: 17,
-            deptName: 'v',
-            roleId: 2
-          }
-        ]
-      }
-      this.loading = false
-      this.userData = res.data
-      // 分页赋值
-      this.pageparm.currentPage = this.formInline.page
-      this.pageparm.pageSize = this.formInline.limit
-      this.pageparm.total = res.count
-      // 模拟数据结束
-
-      /***
-       * 调用接口，注释上面模拟数据 取消下面注释
-       */
-      // 获取用户列表
-      // userList(parameter).then(res => {
-      //   this.loading = false
-      //   if (res.success == false) {
-      //     this.$message({
-      //       type: 'info',
-      //       message: res.msg
-      //     })
-      //   } else {
-      //     this.userData = res.data
-      //     // 分页赋值
-      //     this.pageparm.currentPage = this.formInline.page
-      //     this.pageparm.pageSize = this.formInline.limit
-      //     this.pageparm.total = res.count
-      //   }
-      // })
-    },
     // 分页插件事件
     callFather(parm) {
       this.formInline.page = parm.currentPage
@@ -621,7 +368,7 @@ export default {
           if (res.success) {
             this.$message({
               type: 'success',
-              message: '部门设置成功！'
+              message: '设置成功！'
             })
             this.getdata(this.formInline)
           } else {
@@ -633,7 +380,7 @@ export default {
         })
         .catch(err => {
           this.loading = false
-          this.$message.error('部门设置失败,请稍后再试！')
+          this.$message.error('设置失败,请稍后再试！')
         })
     },
     // 选择复选框事件
@@ -664,7 +411,7 @@ export default {
               if (res.success) {
                 this.$message({
                   type: 'success',
-                  message: '数据已删除!'
+                  message: '已删除!'
                 })
                 this.getdata(this.formInline)
               } else {
@@ -676,7 +423,7 @@ export default {
             })
             .catch(err => {
               this.loading = false
-              this.$message.error('数据删除失败，请稍后再试！')
+              this.$message.error('删除失败，请稍后再试！')
             })
         })
         .catch(() => {
@@ -712,14 +459,7 @@ export default {
             })
             .catch(err => {
               this.loading = false
-              this.$message.error('重置密码失败，请稍后再试！')
             })
-        })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: '取消重置密码！'
-          })
         })
     },
     // 数据权限
@@ -832,41 +572,6 @@ export default {
         .catch(err => {
           this.loading = false
           this.$message.error('权限保存失败，请稍后再试！')
-        })
-    },
-    // 下线用户
-    offlineUser(index, row) {
-      this.$confirm('确定要让' + row.userName + '用户下线吗?', '信息', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      })
-        .then(() => {
-          userExpireToken(row.userName)
-            .then(res => {
-              if (res.success) {
-                this.$message({
-                  type: 'success',
-                  message: '用户' + row.userName + '强制下线成功！'
-                })
-                this.getdata(this.formInline)
-              } else {
-                this.$message({
-                  type: 'info',
-                  message: res.msg
-                })
-              }
-            })
-            .catch(err => {
-              this.loading = false
-              this.$message.error('用户下线失败，请稍后再试！')
-            })
-        })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消'
-          })
         })
     },
     // 刷新缓存

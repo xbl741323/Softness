@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备配置和调整管理',
+              menuname: '设备档案管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备状态监测管理',
+              menuname: '设备维修管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备分组管理管理',
+              menuname: '设备库存管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -99,32 +99,24 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备维修和维护管理',
+              menuname: '设备调度和安排管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '设备版本管理',
-              hasThird: 'N',
-              url: 'pay/Order1',
-              menus: null
-            },
+            }
           ]
         },
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '报警管理模块',
+          menuname: '材料管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '报警信号管理',
+              menuname: '材料信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -132,7 +124,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '报警通知和推送管理',
+              menuname: '供应商管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -140,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '报警级别和优先级管理',
+              menuname: '采购管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -148,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '报警记录和日志管理',
+              menuname: '库存管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -156,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '报警记录和日志',
+              menuname: '出库管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -166,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '监控中心模块',
+          menuname: '合同管理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -183,7 +175,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '录像管理模块',
+          menuname: '项目管理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -200,7 +192,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据分析和统计模块',
+          menuname: '人力资源管理模块',
           hasThird: null,
           url: null,
           menus: [

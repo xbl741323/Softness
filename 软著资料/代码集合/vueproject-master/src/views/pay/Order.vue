@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">报警管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>报警信号管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">材料管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>材料信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.alarmSignalNo" placeholder="请输入报警信号编号"></el-input>
+        <el-input size="small" v-model="formInline.materialNo" placeholder="请输入材料信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.alarmSignalName" placeholder="请输入报警信号名称"></el-input>
+        <el-input size="small" v-model="formInline.materialName" placeholder="请输入材料信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.alarmSignalType" placeholder="请选择报警信号类型"></el-select>
+        <el-select size="small" v-model="formInline.materialType" placeholder="请选择材料信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="alarmSignalNo" label="报警信号编号" show-overflow-tooltip>
+      <el-table-column sortable prop="materialNo" label="材料信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="alarmSignalName" label="报警信号名称" show-overflow-tooltip>
+      <el-table-column sortable prop="materialName" label="材料信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="alarmSignalType" label="报警信号类型" show-overflow-tooltip>
+      <el-table-column sortable prop="materialType" label="材料信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="alarmSignalStatus" label="报警信号状态" show-overflow-tooltip>
+      <el-table-column sortable prop="materialStatus" label="材料信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -49,19 +49,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="120px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="报警信号编号" prop="alarmSignalNo">
-          <el-input size="small" v-model="addForm.alarmSignalNo" auto-complete="off" placeholder="请输入报警信号编号"></el-input>
+        <el-form-item label="材料信息编号" prop="materialNo">
+          <el-input size="small" v-model="addForm.materialNo" auto-complete="off" placeholder="请输入材料信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="报警信号名称" prop="alarmSignalName">
-          <el-input size="small" v-model="addForm.alarmSignalName" auto-complete="off" placeholder="请输入报警信号名称"></el-input>
+        <el-form-item label="材料信息名称" prop="materialName">
+          <el-input size="small" v-model="addForm.materialName" auto-complete="off" placeholder="请输入材料信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="报警信号类型" prop="alarmSignalType">
-          <el-select size="small" v-model="addForm.alarmSignalType" auto-complete="off" placeholder="请选择报警信号类型">
-            <el-option label="入侵报警" value="1"></el-option>
+        <el-form-item label="材料信息类型" prop="materialType">
+          <el-select size="small" v-model="addForm.materialType" auto-complete="off" placeholder="请选择材料信息类型">
+            <el-option label="建筑装饰材料" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="报警信号状态" prop="alarmSignalStatus">
-          <el-select size="small" v-model="addForm.alarmSignalStatus" auto-complete="off" placeholder="请选择报警信号状态">
+        <el-form-item label="材料信息状态" prop="materialStatus">
+          <el-select size="small" v-model="addForm.materialStatus" auto-complete="off" placeholder="请选择材料信息状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -83,26 +83,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       alarmSignalNo:'',
-       alarmSignalName:'',
-       alarmSignalType:'',
+       materialNo:'',
+       materialName:'',
+       materialType:'',
        address:'',
-       alarmSignalGender:'',
+       materialGender:'',
        age:'',
-       alarmSignalStatus:''
+       materialStatus:''
       },
       rules: {
-        alarmSignalNo: [
-          { required: true, message: '请输入报警信号编号', trigger: 'blur' }
+        materialNo: [
+          { required: true, message: '请输入材料信息编号', trigger: 'blur' }
         ],
-        alarmSignalName: [
-          { required: true, message: '请输入报警信号名称', trigger: 'blur' }
+        materialName: [
+          { required: true, message: '请输入材料信息名称', trigger: 'blur' }
         ],
-        alarmSignalType: [
-          { required: true, message: '请选择报警信号类型', trigger: 'blur' }
+        materialType: [
+          { required: true, message: '请选择材料信息类型', trigger: 'blur' }
         ],
-        alarmSignalStatus: [
-          { required: true, message: '请选择报警信号状态', trigger: 'blur' }
+        materialStatus: [
+          { required: true, message: '请选择材料信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -110,7 +110,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        alarmSignalName: '',
+        materialName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -176,38 +176,38 @@ export default {
         count: 5,
         data: [
           {
-            alarmSignalNo:'VDxxxxxx',
-            alarmSignalName:'xxx入侵报警',
-            alarmSignalType:'入侵报警',
-            alarmSignalStatus:"有效状态",
+            materialNo:'VDxxxxxx',
+            materialName:'xxx建筑装饰材料',
+            materialType:'建筑装饰材料',
+            materialStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            alarmSignalNo:'VDxxxxxx',
-            alarmSignalName:'xxx入侵报警',
-            alarmSignalType:'入侵报警',
-            alarmSignalStatus:"有效状态",
+            materialNo:'VDxxxxxx',
+            materialName:'xxx建筑装饰材料',
+            materialType:'建筑装饰材料',
+            materialStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            alarmSignalNo:'VDxxxxxx',
-            alarmSignalName:'xxx入侵报警',
-            alarmSignalType:'入侵报警',
-            alarmSignalStatus:"有效状态",
+            materialNo:'VDxxxxxx',
+            materialName:'xxx建筑装饰材料',
+            materialType:'建筑装饰材料',
+            materialStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            alarmSignalNo:'VDxxxxxx',
-            alarmSignalName:'xxx紧急求救报警',
-            alarmSignalType:'紧急求救报警',
-            alarmSignalStatus:"失效状态",
+            materialNo:'VDxxxxxx',
+            materialName:'xxx结构材料',
+            materialType:'结构材料',
+            materialStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            alarmSignalNo:'VDxxxxxx',
-            alarmSignalName:'xxx紧急求救报警',
-            alarmSignalType:'紧急求救报警',
-            alarmSignalStatus:"有效状态",
+            materialNo:'VDxxxxxx',
+            materialName:'xxx结构材料',
+            materialType:'结构材料',
+            materialStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -258,17 +258,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑报警信号'
-        this.addForm.alarmSignalNo = row.alarmSignalNo
-        this.addForm.alarmSignalName = row.alarmSignalName
-        this.addForm.alarmSignalType = row.alarmSignalType
-        this.addForm.alarmSignalStatus = row.alarmSignalStatus
+        this.title='编辑材料信息'
+        this.addForm.materialNo = row.materialNo
+        this.addForm.materialName = row.materialName
+        this.addForm.materialType = row.materialType
+        this.addForm.materialStatus = row.materialStatus
       }else{
-        this.title='添加报警信号'
-        this.addForm.alarmSignalNo = ''
-        this.addForm.alarmSignalName = ''
-        this.addForm.alarmSignalType = ''
-        this.addForm.alarmSignalStatus = ''
+        this.title='添加材料信息'
+        this.addForm.materialNo = ''
+        this.addForm.materialName = ''
+        this.addForm.materialType = ''
+        this.addForm.materialStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -338,9 +338,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formalarmSignalName) {
+    closeDialog(formmaterialName) {
       this.editFormVisible = false
-      this.$refs[formalarmSignalName].resetFields()
+      this.$refs[formmaterialName].resetFields()
     }
   }
 }
