@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">商品查询销售模块</el-breadcrumb-item>
-      <el-breadcrumb-item>关键词信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">审计管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>审计数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.keywordNo" placeholder="请输入关键词信息编号"></el-input>
+        <el-input size="small" v-model="formInline.auditNo" placeholder="请输入审计数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.keywordName" placeholder="请输入关键词信息名称"></el-input>
+        <el-input size="small" v-model="formInline.auditName" placeholder="请输入审计数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.keywordType" placeholder="请选择关键词信息类型"></el-select>
+        <el-select size="small" v-model="formInline.auditType" placeholder="请选择审计数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="keywordNo" label="关键词信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="auditNo" label="审计数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordName" label="关键词信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="auditName" label="审计数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordType" label="关键词信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="auditType" label="审计数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordStatus" label="关键词信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="auditStatus" label="审计数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="关键词信息编号" prop="keywordNo">
-          <el-input size="small" v-model="addForm.keywordNo" auto-complete="off" placeholder="请输入关键词信息编号"></el-input>
+        <el-form-item label="审计数据编号" prop="auditNo">
+          <el-input size="small" v-model="addForm.auditNo" auto-complete="off" placeholder="请输入审计数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="关键词信息名称" prop="keywordName">
-          <el-input size="small" v-model="addForm.keywordName" auto-complete="off" placeholder="请输入关键词信息名称"></el-input>
+        <el-form-item label="审计数据名称" prop="auditName">
+          <el-input size="small" v-model="addForm.auditName" auto-complete="off" placeholder="请输入审计数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="关键词信息类型" prop="keywordType">
-          <el-select size="small" v-model="addForm.keywordType" auto-complete="off" placeholder="请选择关键词信息类型">
-            <el-option label="商品名称相关" value="1"></el-option>
+        <el-form-item label="审计数据类型" prop="auditType">
+          <el-select size="small" v-model="addForm.auditType" auto-complete="off" placeholder="请选择审计数据类型">
+            <el-option label="就诊记录审计数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="关键词信息状态" prop="keywordStatus">
-          <el-select size="small" v-model="addForm.keywordStatus" auto-complete="off" placeholder="请选择关键词信息状态">
+        <el-form-item label="审计数据状态" prop="auditStatus">
+          <el-select size="small" v-model="addForm.auditStatus" auto-complete="off" placeholder="请选择审计数据状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       keywordNo:'',
-       keywordName:'',
-       keywordType:'',
+       auditNo:'',
+       auditName:'',
+       auditType:'',
        address:'',
-       keywordGender:'',
+       auditGender:'',
        age:'',
-       keywordStatus:''
+       auditStatus:''
       },
       rules: {
-        keywordNo: [
-          { required: true, message: '请输入关键词信息编号', trigger: 'blur' }
+        auditNo: [
+          { required: true, message: '请输入审计数据编号', trigger: 'blur' }
         ],
-        keywordName: [
-          { required: true, message: '请输入关键词信息名称', trigger: 'blur' }
+        auditName: [
+          { required: true, message: '请输入审计数据名称', trigger: 'blur' }
         ],
-        keywordType: [
-          { required: true, message: '请选择关键词信息类型', trigger: 'blur' }
+        auditType: [
+          { required: true, message: '请选择审计数据类型', trigger: 'blur' }
         ],
-        keywordStatus: [
-          { required: true, message: '请选择关键词信息状态', trigger: 'blur' }
+        auditStatus: [
+          { required: true, message: '请选择审计数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        keywordName: '',
+        auditName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            keywordNo:'VDxxxxxx',
-            keywordName:'xxx商品名称相关',
-            keywordType:'商品名称相关',
-            keywordStatus:"有效状态",
+            auditNo:'VDxxxxxx',
+            auditName:'xxx就诊记录审计数据',
+            auditType:'就诊记录审计数据',
+            auditStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            keywordNo:'VDxxxxxx',
-            keywordName:'xxx商品名称相关',
-            keywordType:'商品名称相关',
-            keywordStatus:"有效状态",
+            auditNo:'VDxxxxxx',
+            auditName:'xxx就诊记录审计数据',
+            auditType:'就诊记录审计数据',
+            auditStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            keywordNo:'VDxxxxxx',
-            keywordName:'xxx商品名称相关',
-            keywordType:'商品名称相关',
-            keywordStatus:"有效状态",
+            auditNo:'VDxxxxxx',
+            auditName:'xxx就诊记录审计数据',
+            auditType:'就诊记录审计数据',
+            auditStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            keywordNo:'VDxxxxxx',
-            keywordName:'xxx商品类型相关',
-            keywordType:'商品类型相关',
-            keywordStatus:"失效状态",
+            auditNo:'VDxxxxxx',
+            auditName:'xxx药物处方与用药审计数据',
+            auditType:'药物处方与用药审计数据',
+            auditStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            keywordNo:'VDxxxxxx',
-            keywordName:'xxx商品类型相关',
-            keywordType:'商品类型相关',
-            keywordStatus:"有效状态",
+            auditNo:'VDxxxxxx',
+            auditName:'xxx药物处方与用药审计数据',
+            auditType:'药物处方与用药审计数据',
+            auditStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑关键词信息'
-        this.addForm.keywordNo = row.keywordNo
-        this.addForm.keywordName = row.keywordName
-        this.addForm.keywordType = row.keywordType
-        this.addForm.keywordStatus = row.keywordStatus
+        this.title='编辑审计数据'
+        this.addForm.auditNo = row.auditNo
+        this.addForm.auditName = row.auditName
+        this.addForm.auditType = row.auditType
+        this.addForm.auditStatus = row.auditStatus
       }else{
-        this.title='添加关键词信息'
-        this.addForm.keywordNo = ''
-        this.addForm.keywordName = ''
-        this.addForm.keywordType = ''
-        this.addForm.keywordStatus = ''
+        this.title='添加审计数据'
+        this.addForm.auditNo = ''
+        this.addForm.auditName = ''
+        this.addForm.auditType = ''
+        this.addForm.auditStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formkeywordName) {
+    closeDialog(formauditName) {
       this.editFormVisible = false
-      this.$refs[formkeywordName].resetFields()
+      this.$refs[formauditName].resetFields()
     }
   }
 }

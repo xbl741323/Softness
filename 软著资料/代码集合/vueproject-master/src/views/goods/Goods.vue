@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">商品管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>商品信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">医疗管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>医疗数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.goodsName" placeholder="请输入商品信息编号"></el-input>
+        <el-input size="small" v-model="formInline.medicalName" placeholder="请输入医疗数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.goodsName" placeholder="请输入商品信息名称"></el-input>
+        <el-input size="small" v-model="formInline.medicalName" placeholder="请输入医疗数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.goodsStatus" placeholder="请选择商品信息类型">
+        <el-select size="small" v-model="formInline.medicalStatus" placeholder="请选择医疗数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="goodsNo" label="商品信息编号">
+      <el-table-column sortable prop="medicalNo" label="医疗数据编号">
       </el-table-column>
-      <el-table-column sortable prop="goodsName" label="商品信息名称">
+      <el-table-column sortable prop="medicalName" label="医疗数据名称">
       </el-table-column>
-      <el-table-column sortable prop="goodsType" label="商品信息类型">
+      <el-table-column sortable prop="medicalType" label="医疗数据类型">
       </el-table-column>
-      <el-table-column sortable prop="goodsStatus" label="商品信息状态" >
+      <el-table-column sortable prop="medicalStatus" label="医疗数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="商品信息编号" prop="goodsNo">
-          <el-input size="small" v-model="editForm.goodsNo" auto-complete="off" placeholder="请输入商品信息编号"></el-input>
+        <el-form-item label="医疗数据编号" prop="medicalNo">
+          <el-input size="small" v-model="editForm.medicalNo" auto-complete="off" placeholder="请输入医疗数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="商品信息名称" prop="goodsName">
-          <el-input size="small" v-model="editForm.goodsName" auto-complete="off" placeholder="请输入商品信息名称"></el-input>
+        <el-form-item label="医疗数据名称" prop="medicalName">
+          <el-input size="small" v-model="editForm.medicalName" auto-complete="off" placeholder="请输入医疗数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="商品信息类型" prop="goodsType">
-          <el-select size="small" v-model="editForm.goodsType" auto-complete="off" placeholder="请选择商品信息类型">
-            <el-option label="家居用品" value="1"></el-option>
+        <el-form-item label="医疗数据类型" prop="medicalType">
+          <el-select size="small" v-model="editForm.medicalType" auto-complete="off" placeholder="请选择医疗数据类型">
+            <el-option label="病历信息" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="商品信息状态" prop="goodsStatus">
-          <el-select size="small" v-model="editForm.goodsStatus" auto-complete="off" placeholder="请选择商品信息状态">
+        <el-form-item label="医疗数据状态" prop="medicalStatus">
+          <el-select size="small" v-model="editForm.medicalStatus" auto-complete="off" placeholder="请选择医疗数据状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        goodsNo: '',
-        goodsName: '',
-        goodsType:'',
+        medicalNo: '',
+        medicalName: '',
+        medicalType:'',
         status:'',
-        goodsStatus: '',
+        medicalStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        goodsNo: [
-          { required: true, message: '请输入商品信息编号', trigger: 'blur' }
+        medicalNo: [
+          { required: true, message: '请输入医疗数据编号', trigger: 'blur' }
         ],
-        goodsName: [
-          { required: true, message: '请输入商品信息名称', trigger: 'blur' }
+        medicalName: [
+          { required: true, message: '请输入医疗数据名称', trigger: 'blur' }
         ],
-        goodsType: [
-          { required: true, message: '请选择商品信息类型', trigger: 'blur' }
+        medicalType: [
+          { required: true, message: '请选择医疗数据类型', trigger: 'blur' }
         ],
-        goodsStatus: [
-          { required: true, message: '请选择商品信息状态', trigger: 'blur' }
+        medicalStatus: [
+          { required: true, message: '请选择医疗数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            goodsNo: 'VSxxxxxxxx',
-            goodsName: 'XX家居用品',
-            goodsType: '家居用品',
-            goodsStatus: '有效状态',
+            medicalNo: 'VSxxxxxxxx',
+            medicalName: 'XX病历信息',
+            medicalType: '病历信息',
+            medicalStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            goodsNo: 'VSxxxxxxxx',
-            goodsName: 'XX家居用品',
-            goodsType: '家居用品',
-            goodsStatus: '有效状态',
+            medicalNo: 'VSxxxxxxxx',
+            medicalName: 'XX病历信息',
+            medicalType: '病历信息',
+            medicalStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            goodsNo: 'VSxxxxxxxx',
-            goodsName: 'XX家居用品',
-            goodsType: '家居用品',
-            goodsStatus: '有效状态',
+            medicalNo: 'VSxxxxxxxx',
+            medicalName: 'XX病历信息',
+            medicalType: '病历信息',
+            medicalStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            goodsNo: 'VSxxxxxxxx',
-            goodsName: 'XX食品饮料',
-            goodsType: '食品饮料',
-            goodsStatus: '失效状态',
+            medicalNo: 'VSxxxxxxxx',
+            medicalName: 'XX医生诊断信息',
+            medicalType: '医生诊断信息',
+            medicalStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            goodsNo: 'VSxxxxxxxx',
-            goodsName: 'XX食品饮料',
-            goodsType: '食品饮料',
-            goodsStatus: '有效状态',
+            medicalNo: 'VSxxxxxxxx',
+            medicalName: 'XX医生诊断信息',
+            medicalType: '医生诊断信息',
+            medicalStatus: '有效状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑商品信息'
-        this.editForm.goodsNo = row.goodsNo
-        this.editForm.goodsName = row.goodsName
-        this.editForm.goodsStatus = row.goodsStatus
-        this.editForm.goodsType = row.goodsType
+        this.title = '编辑医疗数据'
+        this.editForm.medicalNo = row.medicalNo
+        this.editForm.medicalName = row.medicalName
+        this.editForm.medicalStatus = row.medicalStatus
+        this.editForm.medicalType = row.medicalType
       } else {
-        this.title = '添加商品信息'
-        this.editForm.goodsNo = ''
-        this.editForm.goodsName = ''
-        this.editForm.goodsStatus = ''
-        this.editForm.goodsType =''
+        this.title = '添加医疗数据'
+        this.editForm.medicalNo = ''
+        this.editForm.medicalName = ''
+        this.editForm.medicalStatus = ''
+        this.editForm.medicalType =''
       }
     },
     // 编辑、增加页面保存方法
