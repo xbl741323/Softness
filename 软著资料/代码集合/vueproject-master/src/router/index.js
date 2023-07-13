@@ -20,6 +20,7 @@ import MachineAisle from '@/views/machine/MachineAisle';
  */
 // 交易订单
 import Order from '@/views/pay/Order';
+import Order1 from '@/views/pay/Order1';
 /**
  * 系统管理
  */
@@ -116,7 +117,16 @@ export default new Router({
                 meta: {
                     requireAuth: true
                 }
-            }, {
+            },
+            {
+                path: '/pay/Order1',
+                name: '交易订单1',
+                component: Order1,
+                meta: {
+                    requireAuth: true
+                }
+            },
+            {
                 path: '/system/user',
                 name: '用户管理',
                 component: user,

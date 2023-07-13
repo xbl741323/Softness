@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">医疗管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>医疗数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">配方管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>配方数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.medicalName" placeholder="请输入医疗数据编号"></el-input>
+        <el-input size="small" v-model="formInline.formulaName" placeholder="请输入配方数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.medicalName" placeholder="请输入医疗数据名称"></el-input>
+        <el-input size="small" v-model="formInline.formulaName" placeholder="请输入配方数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.medicalStatus" placeholder="请选择医疗数据类型">
+        <el-select size="small" v-model="formInline.formulaStatus" placeholder="请选择配方数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="medicalNo" label="医疗数据编号">
+      <el-table-column sortable prop="formulaNo" label="配方数据编号">
       </el-table-column>
-      <el-table-column sortable prop="medicalName" label="医疗数据名称">
+      <el-table-column sortable prop="formulaName" label="配方数据名称">
       </el-table-column>
-      <el-table-column sortable prop="medicalType" label="医疗数据类型">
+      <el-table-column sortable prop="formulaType" label="配方数据类型">
       </el-table-column>
-      <el-table-column sortable prop="medicalStatus" label="医疗数据状态" >
+      <el-table-column sortable prop="formulaStatus" label="配方数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="医疗数据编号" prop="medicalNo">
-          <el-input size="small" v-model="editForm.medicalNo" auto-complete="off" placeholder="请输入医疗数据编号"></el-input>
+        <el-form-item label="配方数据编号" prop="formulaNo">
+          <el-input size="small" v-model="editForm.formulaNo" auto-complete="off" placeholder="请输入配方数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="医疗数据名称" prop="medicalName">
-          <el-input size="small" v-model="editForm.medicalName" auto-complete="off" placeholder="请输入医疗数据名称"></el-input>
+        <el-form-item label="配方数据名称" prop="formulaName">
+          <el-input size="small" v-model="editForm.formulaName" auto-complete="off" placeholder="请输入配方数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="医疗数据类型" prop="medicalType">
-          <el-select size="small" v-model="editForm.medicalType" auto-complete="off" placeholder="请选择医疗数据类型">
-            <el-option label="病历信息" value="1"></el-option>
+        <el-form-item label="配方数据类型" prop="formulaType">
+          <el-select size="small" v-model="editForm.formulaType" auto-complete="off" placeholder="请选择配方数据类型">
+            <el-option label="塑料配方" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="医疗数据状态" prop="medicalStatus">
-          <el-select size="small" v-model="editForm.medicalStatus" auto-complete="off" placeholder="请选择医疗数据状态">
+        <el-form-item label="配方数据状态" prop="formulaStatus">
+          <el-select size="small" v-model="editForm.formulaStatus" auto-complete="off" placeholder="请选择配方数据状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        medicalNo: '',
-        medicalName: '',
-        medicalType:'',
+        formulaNo: '',
+        formulaName: '',
+        formulaType:'',
         status:'',
-        medicalStatus: '',
+        formulaStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        medicalNo: [
-          { required: true, message: '请输入医疗数据编号', trigger: 'blur' }
+        formulaNo: [
+          { required: true, message: '请输入配方数据编号', trigger: 'blur' }
         ],
-        medicalName: [
-          { required: true, message: '请输入医疗数据名称', trigger: 'blur' }
+        formulaName: [
+          { required: true, message: '请输入配方数据名称', trigger: 'blur' }
         ],
-        medicalType: [
-          { required: true, message: '请选择医疗数据类型', trigger: 'blur' }
+        formulaType: [
+          { required: true, message: '请选择配方数据类型', trigger: 'blur' }
         ],
-        medicalStatus: [
-          { required: true, message: '请选择医疗数据状态', trigger: 'blur' }
+        formulaStatus: [
+          { required: true, message: '请选择配方数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            medicalNo: 'VSxxxxxxxx',
-            medicalName: 'XX病历信息',
-            medicalType: '病历信息',
-            medicalStatus: '有效状态',
+            formulaNo: 'VSxxxxxxxx',
+            formulaName: 'XX塑料配方',
+            formulaType: '塑料配方',
+            formulaStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            medicalNo: 'VSxxxxxxxx',
-            medicalName: 'XX病历信息',
-            medicalType: '病历信息',
-            medicalStatus: '有效状态',
+            formulaNo: 'VSxxxxxxxx',
+            formulaName: 'XX塑料配方',
+            formulaType: '塑料配方',
+            formulaStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            medicalNo: 'VSxxxxxxxx',
-            medicalName: 'XX病历信息',
-            medicalType: '病历信息',
-            medicalStatus: '有效状态',
+            formulaNo: 'VSxxxxxxxx',
+            formulaName: 'XX塑料配方',
+            formulaType: '塑料配方',
+            formulaStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            medicalNo: 'VSxxxxxxxx',
-            medicalName: 'XX医生诊断信息',
-            medicalType: '医生诊断信息',
-            medicalStatus: '失效状态',
+            formulaNo: 'VSxxxxxxxx',
+            formulaName: 'XX橡胶配方',
+            formulaType: '橡胶配方',
+            formulaStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            medicalNo: 'VSxxxxxxxx',
-            medicalName: 'XX医生诊断信息',
-            medicalType: '医生诊断信息',
-            medicalStatus: '有效状态',
+            formulaNo: 'VSxxxxxxxx',
+            formulaName: 'XX橡胶配方',
+            formulaType: '橡胶配方',
+            formulaStatus: '有效状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑医疗数据'
-        this.editForm.medicalNo = row.medicalNo
-        this.editForm.medicalName = row.medicalName
-        this.editForm.medicalStatus = row.medicalStatus
-        this.editForm.medicalType = row.medicalType
+        this.title = '编辑配方数据'
+        this.editForm.formulaNo = row.formulaNo
+        this.editForm.formulaName = row.formulaName
+        this.editForm.formulaStatus = row.formulaStatus
+        this.editForm.formulaType = row.formulaType
       } else {
-        this.title = '添加医疗数据'
-        this.editForm.medicalNo = ''
-        this.editForm.medicalName = ''
-        this.editForm.medicalStatus = ''
-        this.editForm.medicalType =''
+        this.title = '添加配方数据'
+        this.editForm.formulaNo = ''
+        this.editForm.formulaName = ''
+        this.editForm.formulaStatus = ''
+        this.editForm.formulaType =''
       }
     },
     // 编辑、增加页面保存方法

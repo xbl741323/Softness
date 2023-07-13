@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">配方查询模块</el-breadcrumb-item>
-      <el-breadcrumb-item>配方关键字信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">库存管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>库存信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.keywordInfoNo" placeholder="请输入配方关键字信息编号"></el-input>
+        <el-input size="small" v-model="formInline.inventoryNo" placeholder="请输入库存信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.keywordInfoName" placeholder="请输入配方关键字信息名称"></el-input>
+        <el-input size="small" v-model="formInline.inventoryName" placeholder="请输入库存信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.keywordInfoType" placeholder="请选择配方关键字信息类型"></el-select>
+        <el-select size="small" v-model="formInline.inventoryType" placeholder="请选择库存信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="keywordInfoNo" label="配方关键字信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="inventoryNo" label="库存信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordInfoName" label="配方关键字信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="inventoryName" label="库存信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordInfoType" label="配方关键字信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="inventoryType" label="库存信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordInfoStatus" label="配方关键字信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="inventoryStatus" label="库存信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -47,20 +47,20 @@
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
-      <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="配方关键字信息编号" prop="keywordInfoNo">
-          <el-input size="small" v-model="addForm.keywordInfoNo" auto-complete="off" placeholder="请输入配方关键字信息编号"></el-input>
+      <el-form label-width="140px" :model="addForm" :rules="rules" ref="editForm">
+        <el-form-item label="库存信息编号" prop="inventoryNo">
+          <el-input size="small" v-model="addForm.inventoryNo" auto-complete="off" placeholder="请输入库存信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="配方关键字信息名称" prop="keywordInfoName">
-          <el-input size="small" v-model="addForm.keywordInfoName" auto-complete="off" placeholder="请输入配方关键字信息名称"></el-input>
+        <el-form-item label="库存信息名称" prop="inventoryName">
+          <el-input size="small" v-model="addForm.inventoryName" auto-complete="off" placeholder="请输入库存信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="配方关键字信息类型" prop="keywordInfoType">
-          <el-select size="small" v-model="addForm.keywordInfoType" auto-complete="off" placeholder="请选择配方关键字信息类型">
-            <el-option label="聚合物A配方" value="1"></el-option>
+        <el-form-item label="库存信息类型" prop="inventoryType">
+          <el-select size="small" v-model="addForm.inventoryType" auto-complete="off" placeholder="请选择库存信息类型">
+            <el-option label="原材料库存" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="配方关键字信息状态" prop="keywordInfoStatus">
-          <el-select size="small" v-model="addForm.keywordInfoStatus" auto-complete="off" placeholder="请选择配方关键字信息状态">
+        <el-form-item label="库存信息状态" prop="inventoryStatus">
+          <el-select size="small" v-model="addForm.inventoryStatus" auto-complete="off" placeholder="请选择库存信息状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       keywordInfoNo:'',
-       keywordInfoName:'',
-       keywordInfoType:'',
+       inventoryNo:'',
+       inventoryName:'',
+       inventoryType:'',
        address:'',
-       keywordInfoGender:'',
+       inventoryGender:'',
        age:'',
-       keywordInfoStatus:''
+       inventoryStatus:''
       },
       rules: {
-        keywordInfoNo: [
-          { required: true, message: '请输入配方关键字信息编号', trigger: 'blur' }
+        inventoryNo: [
+          { required: true, message: '请输入库存信息编号', trigger: 'blur' }
         ],
-        keywordInfoName: [
-          { required: true, message: '请输入配方关键字信息名称', trigger: 'blur' }
+        inventoryName: [
+          { required: true, message: '请输入库存信息名称', trigger: 'blur' }
         ],
-        keywordInfoType: [
-          { required: true, message: '请选择配方关键字信息类型', trigger: 'blur' }
+        inventoryType: [
+          { required: true, message: '请选择库存信息类型', trigger: 'blur' }
         ],
-        keywordInfoStatus: [
-          { required: true, message: '请选择配方关键字信息状态', trigger: 'blur' }
+        inventoryStatus: [
+          { required: true, message: '请选择库存信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        keywordInfoName: '',
+        inventoryName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx聚合物A配方',
-            keywordInfoType:'聚合物A配方',
-            keywordInfoStatus:"有效状态",
+            inventoryNo:'VDxxxxxx',
+            inventoryName:'xxx原材料库存',
+            inventoryType:'原材料库存',
+            inventoryStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx聚合物A配方',
-            keywordInfoType:'聚合物A配方',
-            keywordInfoStatus:"有效状态",
+            inventoryNo:'VDxxxxxx',
+            inventoryName:'xxx原材料库存',
+            inventoryType:'原材料库存',
+            inventoryStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx聚合物A配方',
-            keywordInfoType:'聚合物A配方',
-            keywordInfoStatus:"有效状态",
+            inventoryNo:'VDxxxxxx',
+            inventoryName:'xxx原材料库存',
+            inventoryType:'原材料库存',
+            inventoryStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx塑料制品',
-            keywordInfoType:'塑料制品',
-            keywordInfoStatus:"失效状态",
+            inventoryNo:'VDxxxxxx',
+            inventoryName:'xxx成品库存',
+            inventoryType:'成品库存',
+            inventoryStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx塑料制品',
-            keywordInfoType:'塑料制品',
-            keywordInfoStatus:"有效状态",
+            inventoryNo:'VDxxxxxx',
+            inventoryName:'xxx成品库存',
+            inventoryType:'成品库存',
+            inventoryStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑配方关键字信息'
-        this.addForm.keywordInfoNo = row.keywordInfoNo
-        this.addForm.keywordInfoName = row.keywordInfoName
-        this.addForm.keywordInfoType = row.keywordInfoType
-        this.addForm.keywordInfoStatus = row.keywordInfoStatus
+        this.title='编辑库存信息'
+        this.addForm.inventoryNo = row.inventoryNo
+        this.addForm.inventoryName = row.inventoryName
+        this.addForm.inventoryType = row.inventoryType
+        this.addForm.inventoryStatus = row.inventoryStatus
       }else{
-        this.title='添加配方关键字信息'
-        this.addForm.keywordInfoNo = ''
-        this.addForm.keywordInfoName = ''
-        this.addForm.keywordInfoType = ''
-        this.addForm.keywordInfoStatus = ''
+        this.title='添加库存信息'
+        this.addForm.inventoryNo = ''
+        this.addForm.inventoryName = ''
+        this.addForm.inventoryType = ''
+        this.addForm.inventoryStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formkeywordInfoName) {
+    closeDialog(forminventoryName) {
       this.editFormVisible = false
-      this.$refs[formkeywordInfoName].resetFields()
+      this.$refs[forminventoryName].resetFields()
     }
   }
 }

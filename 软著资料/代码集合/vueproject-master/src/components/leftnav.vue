@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '医疗管理模块',
+          menuname: '配方管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '医疗数据管理',
+              menuname: '配方数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '患者信息管理',
+              menuname: '配方审核管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '健康记录管理',
+              menuname: '配方版本管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '诊断和治疗信息管理',
+              menuname: '配方变更记录管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '医生和医疗机构信息管理',
+              menuname: '配方推送和共享管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -107,7 +107,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '医疗费用和保险信息管理',
+              menuname: '配方导入和导出管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -117,14 +117,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '审计管理模块',
+          menuname: '配方查询模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '审计数据管理',
+              menuname: '配方关键字信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -132,7 +132,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '审计计划管理',
+              menuname: '配方条件查询管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '审计任务分配管理',
+              menuname: '配方分类查询管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '审计工作流程管理',
+              menuname: '配方详细信息查询管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -156,7 +156,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '审计报告管理',
+              menuname: '配方查询数据导出管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -166,14 +166,14 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '存证管理模块',
+          menuname: '库存管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '存证信息管理',
+              menuname: '库存信息管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -181,7 +181,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数字签名管理',
+              menuname: '库存盘点和调整管理',
               hasThird: 'N',
               url: 'pay/Order111199',
               menus: null
@@ -189,7 +189,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '存证审计管理',
+              menuname: '库存预警和储备管理',
               hasThird: 'N',
               url: 'pay/Order111199',
               menus: null
@@ -197,7 +197,15 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '存证时间戳管理',
+              menuname: '库存报表和统计管理',
+              hasThird: 'N',
+              url: 'pay/Order111199',
+              menus: null
+            },
+            {
+              menuid: 34,
+              icon: 'icon-order-manage',
+              menuname: '库存流转和调拨管理',
               hasThird: 'N',
               url: 'pay/Order111199',
               menus: null
@@ -207,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '异常监测和报警模块',
+          menuname: '质量控制模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +232,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '身份验证模块',
+          menuname: '生产管理模块',
           hasThird: null,
           url: null,
           menus: [
