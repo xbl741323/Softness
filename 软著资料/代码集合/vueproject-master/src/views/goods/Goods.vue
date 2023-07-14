@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">设备管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>设备信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">地理数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>地形数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息编号"></el-input>
+        <el-input size="small" v-model="formInline.terrainName" placeholder="请输入地形数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息名称"></el-input>
+        <el-input size="small" v-model="formInline.terrainName" placeholder="请输入地形数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.deviceStatus" placeholder="请选择设备信息类型">
+        <el-select size="small" v-model="formInline.terrainStatus" placeholder="请选择地形数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="deviceNo" label="设备信息编号">
+      <el-table-column sortable prop="terrainNo" label="地形数据编号">
       </el-table-column>
-      <el-table-column sortable prop="deviceName" label="设备信息名称">
+      <el-table-column sortable prop="terrainName" label="地形数据名称">
       </el-table-column>
-      <el-table-column sortable prop="deviceType" label="设备信息类型">
+      <el-table-column sortable prop="terrainType" label="地形数据类型">
       </el-table-column>
-      <el-table-column sortable prop="deviceStatus" label="设备信息状态" >
+      <el-table-column sortable prop="terrainStatus" label="地形数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="设备信息编号" prop="deviceNo">
-          <el-input size="small" v-model="editForm.deviceNo" auto-complete="off" placeholder="请输入设备信息编号"></el-input>
+        <el-form-item label="地形数据编号" prop="terrainNo">
+          <el-input size="small" v-model="editForm.terrainNo" auto-complete="off" placeholder="请输入地形数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="设备信息名称" prop="deviceName">
-          <el-input size="small" v-model="editForm.deviceName" auto-complete="off" placeholder="请输入设备信息名称"></el-input>
+        <el-form-item label="地形数据名称" prop="terrainName">
+          <el-input size="small" v-model="editForm.terrainName" auto-complete="off" placeholder="请输入地形数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="设备信息类型" prop="deviceType">
-          <el-select size="small" v-model="editForm.deviceType" auto-complete="off" placeholder="请选择设备信息类型">
-            <el-option label="加工设备" value="1"></el-option>
+        <el-form-item label="地形数据类型" prop="terrainType">
+          <el-select size="small" v-model="editForm.terrainType" auto-complete="off" placeholder="请选择地形数据类型">
+            <el-option label="地理空间数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="设备信息状态" prop="deviceStatus">
-          <el-select size="small" v-model="editForm.deviceStatus" auto-complete="off" placeholder="请选择设备信息状态">
-            <el-option label="运行中" value="1"></el-option>
+        <el-form-item label="地形数据状态" prop="terrainStatus">
+          <el-select size="small" v-model="editForm.terrainStatus" auto-complete="off" placeholder="请选择地形数据状态">
+            <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        deviceNo: '',
-        deviceName: '',
-        deviceType:'',
+        terrainNo: '',
+        terrainName: '',
+        terrainType:'',
         status:'',
-        deviceStatus: '',
+        terrainStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        deviceNo: [
-          { required: true, message: '请输入设备信息编号', trigger: 'blur' }
+        terrainNo: [
+          { required: true, message: '请输入地形数据编号', trigger: 'blur' }
         ],
-        deviceName: [
-          { required: true, message: '请输入设备信息名称', trigger: 'blur' }
+        terrainName: [
+          { required: true, message: '请输入地形数据名称', trigger: 'blur' }
         ],
-        deviceType: [
-          { required: true, message: '请选择设备信息类型', trigger: 'blur' }
+        terrainType: [
+          { required: true, message: '请选择地形数据类型', trigger: 'blur' }
         ],
-        deviceStatus: [
-          { required: true, message: '请选择设备信息状态', trigger: 'blur' }
+        terrainStatus: [
+          { required: true, message: '请选择地形数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXX加工设备',
-            deviceType: '加工设备',
-            deviceStatus: '运行中',
+            terrainNo: 'VSxxxxxxxx',
+            terrainName: 'XXX地理空间数据',
+            terrainType: '地理空间数据',
+            terrainStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXX加工设备',
-            deviceType: '加工设备',
-            deviceStatus: '运行中',
+            terrainNo: 'VSxxxxxxxx',
+            terrainName: 'XXX地理空间数据',
+            terrainType: '地理空间数据',
+            terrainStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXX加工设备',
-            deviceType: '加工设备',
-            deviceStatus: '运行中',
+            terrainNo: 'VSxxxxxxxx',
+            terrainName: 'XXX地理空间数据',
+            terrainType: '地理空间数据',
+            terrainStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXX组装设备',
-            deviceType: '组装设备',
-            deviceStatus: '失效状态',
+            terrainNo: 'VSxxxxxxxx',
+            terrainName: 'XXX数字高程模型',
+            terrainType: '数字高程模型',
+            terrainStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXX组装设备',
-            deviceType: '组装设备',
-            deviceStatus: '运行中',
+            terrainNo: 'VSxxxxxxxx',
+            terrainName: 'XXX数字高程模型',
+            terrainType: '数字高程模型',
+            terrainStatus: '有效状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑设备信息'
-        this.editForm.deviceNo = row.deviceNo
-        this.editForm.deviceName = row.deviceName
-        this.editForm.deviceStatus = row.deviceStatus
-        this.editForm.deviceType = row.deviceType
+        this.title = '编辑地形数据'
+        this.editForm.terrainNo = row.terrainNo
+        this.editForm.terrainName = row.terrainName
+        this.editForm.terrainStatus = row.terrainStatus
+        this.editForm.terrainType = row.terrainType
       } else {
-        this.title = '添加设备信息'
-        this.editForm.deviceNo = ''
-        this.editForm.deviceName = ''
-        this.editForm.deviceStatus = ''
-        this.editForm.deviceType =''
+        this.title = '添加地形数据'
+        this.editForm.terrainNo = ''
+        this.editForm.terrainName = ''
+        this.editForm.terrainStatus = ''
+        this.editForm.terrainType =''
       }
     },
     // 编辑、增加页面保存方法

@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '设备管理模块',
+          menuname: '地理数据管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备信息管理',
+              menuname: '地形数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,41 +75,33 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备分类和分组管理',
+              menuname: '地质勘探数据管理',
               hasThird: 'N',
-              url: 'pay/Order11',
+              url: 'pay/Order',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备故障报警管理',
+              menuname: '地理其它数据管理',
               hasThird: 'N',
-              url: 'pay/Order11',
+              url: 'pay/Order111',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备维修管理',
+              menuname: '地理标记和位置管理',
               hasThird: 'N',
-              url: 'pay/Order11',
+              url: 'pay/Order111',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备状态监测管理',
+              menuname: '地理数据分类管理',
               hasThird: 'N',
-              url: 'pay/Order11',
-              menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '设备报表和统计管理',
-              hasThird: 'N',
-              url: 'pay/Order11',
+              url: 'pay/Order111',
               menus: null
             },
           ]
@@ -117,63 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '维护管理模块',
+          menuname: '地理数据录入模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '维护信息管理',
-              hasThird: 'N',
-              url: 'pay/Order',
-              menus: null
-            },
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '维护提醒和通知管理',
-              hasThird: 'N',
-              url: 'pay/Order11',
-              menus: null
-            },
-             {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '维护任务分配管理',
-              hasThird: 'N',
-              url: 'pay/Order11',
-              menus: null
-            },
-             {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '维护工单管理',
-              hasThird: 'N',
-              url: 'pay/Order11',
-              menus: null
-            },
-             {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '维护费用管理',
-              hasThird: 'N',
-              url: 'pay/Order11',
-              menus: null
-            },
-          ]
-        },
-         {
-          menuid: 33,
-          icon: 'li-icon-xiangmuguanli',
-          menuname: '设备监控模块',
-          hasThird: null,
-          url: null,
-          menus: [
-            {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '库存信息管理',
+              menuname: '数据录入表单设计管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -181,33 +124,82 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '库存盘点和调整管理',
+              menuname: '数据录入界面管理',
               hasThird: 'N',
-              url: 'pay/Order111199',
+              url: 'pay/Order111',
+              menus: null
+            },
+             {
+              menuid: 34,
+              icon: 'icon-order-manage',
+              menuname: '数据验证和校验管理',
+              hasThird: 'N',
+              url: 'pay/Order111',
+              menus: null
+            },
+             {
+              menuid: 34,
+              icon: 'icon-order-manage',
+              menuname: '数据批量导入管理',
+              hasThird: 'N',
+              url: 'pay/Order111',
+              menus: null
+            },
+             {
+              menuid: 34,
+              icon: 'icon-order-manage',
+              menuname: '数据附件和图片上传管理',
+              hasThird: 'N',
+              url: 'pay/Order111',
+              menus: null
+            },
+          ]
+        },
+         {
+          menuid: 33,
+          icon: 'li-icon-xiangmuguanli',
+          menuname: '地理数据共享模块',
+          hasThird: null,
+          url: null,
+          menus: [
+            {
+              menuid: 34,
+              icon: 'icon-order-manage',
+              menuname: '数据共享设置管理',
+              hasThird: 'N',
+              url: 'pay/Order11',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '库存预警和储备管理',
+              menuname: '数据分享管理',
               hasThird: 'N',
-              url: 'pay/Order111199',
+              url: 'pay/Order1111199',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '库存报表和统计管理',
+              menuname: '数据访问控制管理',
               hasThird: 'N',
-              url: 'pay/Order111199',
+              url: 'pay/Order1111199',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '库存流转和调拨管理',
+              menuname: '数据协作管理',
               hasThird: 'N',
-              url: 'pay/Order111199',
+              url: 'pay/Order1111199',
+              menus: null
+            },
+            {
+              menuid: 34,
+              icon: 'icon-order-manage',
+              menuname: '数据隐私保护管理',
+              hasThird: 'N',
+              url: 'pay/Order1111199',
               menus: null
             },
           ]
@@ -215,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '生产计划模块',
+          menuname: '测量任务管理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +216,7 @@ export default {
               icon: 'icon-provider-manage',
               menuname: '讲解和导引管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
           ]
@@ -232,7 +224,24 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据分析模块',
+          menuname: '地理数据处理模块',
+          hasThird: null,
+          url: null,
+          menus: [
+            {
+              menuid: 129,
+              icon: 'icon-provider-manage',
+              menuname: '头戴式显示器管理',
+              hasThird: 'N',
+              url: 'machine/MachineConfig',
+              menus: null
+            },
+          ]
+        },
+        {
+          menuid: 128,
+          icon: 'li-icon-xiangmuguanli',
+          menuname: '地理数据分析模块',
           hasThird: null,
           url: null,
           menus: [

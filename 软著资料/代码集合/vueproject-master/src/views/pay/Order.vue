@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">维护管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>维护信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">地理数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>地质勘探数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.maintenanceNo" placeholder="请输入维护信息编号"></el-input>
+        <el-input size="small" v-model="formInline.geologyNo" placeholder="请输入地质勘探数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.maintenanceName" placeholder="请输入维护信息名称"></el-input>
+        <el-input size="small" v-model="formInline.geologyName" placeholder="请输入地质勘探数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.maintenanceType" placeholder="请选择维护信息类型"></el-select>
+        <el-select size="small" v-model="formInline.geologyType" placeholder="请选择地质勘探数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="maintenanceNo" label="维护信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="geologyNo" label="地质勘探数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="maintenanceName" label="维护信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="geologyName" label="地质勘探数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="maintenanceType" label="维护信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="geologyType" label="地质勘探数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="maintenanceStatus" label="维护信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="geologyStatus" label="地质勘探数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="维护信息编号" prop="maintenanceNo">
-          <el-input size="small" v-model="addForm.maintenanceNo" auto-complete="off" placeholder="请输入维护信息编号"></el-input>
+        <el-form-item label="地质勘探数据编号" prop="geologyNo">
+          <el-input size="small" v-model="addForm.geologyNo" auto-complete="off" placeholder="请输入地质勘探数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="维护信息名称" prop="maintenanceName">
-          <el-input size="small" v-model="addForm.maintenanceName" auto-complete="off" placeholder="请输入维护信息名称"></el-input>
+        <el-form-item label="地质勘探数据名称" prop="geologyName">
+          <el-input size="small" v-model="addForm.geologyName" auto-complete="off" placeholder="请输入地质勘探数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="维护信息类型" prop="maintenanceType">
-          <el-select size="small" v-model="addForm.maintenanceType" auto-complete="off" placeholder="请选择维护信息类型">
-            <el-option label="故障信息" value="1"></el-option>
+        <el-form-item label="地质勘探数据类型" prop="geologyType">
+          <el-select size="small" v-model="addForm.geologyType" auto-complete="off" placeholder="请选择地质勘探数据类型">
+            <el-option label="地质勘探数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="维护信息状态" prop="maintenanceStatus">
-          <el-select size="small" v-model="addForm.maintenanceStatus" auto-complete="off" placeholder="请选择维护信息状态">
-            <el-option label="处理中" value="1"></el-option>
+        <el-form-item label="地质勘探数据状态" prop="geologyStatus">
+          <el-select size="small" v-model="addForm.geologyStatus" auto-complete="off" placeholder="请选择地质勘探数据状态">
+            <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       maintenanceNo:'',
-       maintenanceName:'',
-       maintenanceType:'',
+       geologyNo:'',
+       geologyName:'',
+       geologyType:'',
        address:'',
-       maintenanceGender:'',
+       geologyGender:'',
        age:'',
-       maintenanceStatus:''
+       geologyStatus:''
       },
       rules: {
-        maintenanceNo: [
-          { required: true, message: '请输入维护信息编号', trigger: 'blur' }
+        geologyNo: [
+          { required: true, message: '请输入地质勘探数据编号', trigger: 'blur' }
         ],
-        maintenanceName: [
-          { required: true, message: '请输入维护信息名称', trigger: 'blur' }
+        geologyName: [
+          { required: true, message: '请输入地质勘探数据名称', trigger: 'blur' }
         ],
-        maintenanceType: [
-          { required: true, message: '请选择维护信息类型', trigger: 'blur' }
+        geologyType: [
+          { required: true, message: '请选择地质勘探数据类型', trigger: 'blur' }
         ],
-        maintenanceStatus: [
-          { required: true, message: '请选择维护信息状态', trigger: 'blur' }
+        geologyStatus: [
+          { required: true, message: '请选择地质勘探数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        maintenanceName: '',
+        geologyName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            maintenanceNo:'VCxxxxxx',
-            maintenanceName:'xxx故障信息',
-            maintenanceType:'故障信息',
-            maintenanceStatus:"处理中",
+            geologyNo:'VCxxxxxx',
+            geologyName:'xxx地质勘探数据',
+            geologyType:'地质勘探数据',
+            geologyStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            maintenanceNo:'VCxxxxxx',
-            maintenanceName:'xxx故障信息',
-            maintenanceType:'故障信息',
-            maintenanceStatus:"处理中",
+            geologyNo:'VCxxxxxx',
+            geologyName:'xxx地质勘探数据',
+            geologyType:'地质勘探数据',
+            geologyStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            maintenanceNo:'VCxxxxxx',
-            maintenanceName:'xxx故障信息',
-            maintenanceType:'故障信息',
-            maintenanceStatus:"处理中",
+            geologyNo:'VCxxxxxx',
+            geologyName:'xxx地质勘探数据',
+            geologyType:'地质勘探数据',
+            geologyStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            maintenanceNo:'VCxxxxxx',
-            maintenanceName:'xxx维修和备件信息',
-            maintenanceType:'维修和备件信息',
-            maintenanceStatus:"待处理",
+            geologyNo:'VCxxxxxx',
+            geologyName:'xxx天然气勘探数据',
+            geologyType:'天然气勘探数据',
+            geologyStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            maintenanceNo:'VCxxxxxx',
-            maintenanceName:'xxx维修和备件信息',
-            maintenanceType:'维修和备件信息',
-            maintenanceStatus:"处理中",
+            geologyNo:'VCxxxxxx',
+            geologyName:'xxx天然气勘探数据',
+            geologyType:'天然气勘探数据',
+            geologyStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑维护信息'
-        this.addForm.maintenanceNo = row.maintenanceNo
-        this.addForm.maintenanceName = row.maintenanceName
-        this.addForm.maintenanceType = row.maintenanceType
-        this.addForm.maintenanceStatus = row.maintenanceStatus
+        this.title='编辑地质勘探数据'
+        this.addForm.geologyNo = row.geologyNo
+        this.addForm.geologyName = row.geologyName
+        this.addForm.geologyType = row.geologyType
+        this.addForm.geologyStatus = row.geologyStatus
       }else{
-        this.title='添加维护信息'
-        this.addForm.maintenanceNo = ''
-        this.addForm.maintenanceName = ''
-        this.addForm.maintenanceType = ''
-        this.addForm.maintenanceStatus = ''
+        this.title='添加地质勘探数据'
+        this.addForm.geologyNo = ''
+        this.addForm.geologyName = ''
+        this.addForm.geologyType = ''
+        this.addForm.geologyStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '待处理删除'
+            message: '已失效删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formmaintenanceName) {
+    closeDialog(formgeologyName) {
       this.editFormVisible = false
-      this.$refs[formmaintenanceName].resetFields()
+      this.$refs[formgeologyName].resetFields()
     }
   }
 }
