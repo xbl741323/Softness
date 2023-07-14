@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">配方管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>配方数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">客户管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>客户信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.formulaName" placeholder="请输入配方数据编号"></el-input>
+        <el-input size="small" v-model="formInline.customerName" placeholder="请输入客户信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.formulaName" placeholder="请输入配方数据名称"></el-input>
+        <el-input size="small" v-model="formInline.customerName" placeholder="请输入客户信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.formulaStatus" placeholder="请选择配方数据类型">
+        <el-select size="small" v-model="formInline.customerStatus" placeholder="请选择客户信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="formulaNo" label="配方数据编号">
+      <el-table-column sortable prop="customerNo" label="客户信息编号">
       </el-table-column>
-      <el-table-column sortable prop="formulaName" label="配方数据名称">
+      <el-table-column sortable prop="customerName" label="客户信息名称">
       </el-table-column>
-      <el-table-column sortable prop="formulaType" label="配方数据类型">
+      <el-table-column sortable prop="customerType" label="客户信息类型">
       </el-table-column>
-      <el-table-column sortable prop="formulaStatus" label="配方数据状态" >
+      <el-table-column sortable prop="customerStatus" label="客户信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="配方数据编号" prop="formulaNo">
-          <el-input size="small" v-model="editForm.formulaNo" auto-complete="off" placeholder="请输入配方数据编号"></el-input>
+        <el-form-item label="客户信息编号" prop="customerNo">
+          <el-input size="small" v-model="editForm.customerNo" auto-complete="off" placeholder="请输入客户信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="配方数据名称" prop="formulaName">
-          <el-input size="small" v-model="editForm.formulaName" auto-complete="off" placeholder="请输入配方数据名称"></el-input>
+        <el-form-item label="客户信息名称" prop="customerName">
+          <el-input size="small" v-model="editForm.customerName" auto-complete="off" placeholder="请输入客户信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="配方数据类型" prop="formulaType">
-          <el-select size="small" v-model="editForm.formulaType" auto-complete="off" placeholder="请选择配方数据类型">
-            <el-option label="塑料配方" value="1"></el-option>
+        <el-form-item label="客户信息类型" prop="customerType">
+          <el-select size="small" v-model="editForm.customerType" auto-complete="off" placeholder="请选择客户信息类型">
+            <el-option label="个人" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="配方数据状态" prop="formulaStatus">
-          <el-select size="small" v-model="editForm.formulaStatus" auto-complete="off" placeholder="请选择配方数据状态">
+        <el-form-item label="客户信息状态" prop="customerStatus">
+          <el-select size="small" v-model="editForm.customerStatus" auto-complete="off" placeholder="请选择客户信息状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        formulaNo: '',
-        formulaName: '',
-        formulaType:'',
+        customerNo: '',
+        customerName: '',
+        customerType:'',
         status:'',
-        formulaStatus: '',
+        customerStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        formulaNo: [
-          { required: true, message: '请输入配方数据编号', trigger: 'blur' }
+        customerNo: [
+          { required: true, message: '请输入客户信息编号', trigger: 'blur' }
         ],
-        formulaName: [
-          { required: true, message: '请输入配方数据名称', trigger: 'blur' }
+        customerName: [
+          { required: true, message: '请输入客户信息名称', trigger: 'blur' }
         ],
-        formulaType: [
-          { required: true, message: '请选择配方数据类型', trigger: 'blur' }
+        customerType: [
+          { required: true, message: '请选择客户信息类型', trigger: 'blur' }
         ],
-        formulaStatus: [
-          { required: true, message: '请选择配方数据状态', trigger: 'blur' }
+        customerStatus: [
+          { required: true, message: '请选择客户信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            formulaNo: 'VSxxxxxxxx',
-            formulaName: 'XX塑料配方',
-            formulaType: '塑料配方',
-            formulaStatus: '有效状态',
+            customerNo: 'VSxxxxxxxx',
+            customerName: '李XX',
+            customerType: '个人',
+            customerStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            formulaNo: 'VSxxxxxxxx',
-            formulaName: 'XX塑料配方',
-            formulaType: '塑料配方',
-            formulaStatus: '有效状态',
+            customerNo: 'VSxxxxxxxx',
+            customerName: '王XX',
+            customerType: '个人',
+            customerStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            formulaNo: 'VSxxxxxxxx',
-            formulaName: 'XX塑料配方',
-            formulaType: '塑料配方',
-            formulaStatus: '有效状态',
+            customerNo: 'VSxxxxxxxx',
+            customerName: '王XX',
+            customerType: '个人',
+            customerStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            formulaNo: 'VSxxxxxxxx',
-            formulaName: 'XX橡胶配方',
-            formulaType: '橡胶配方',
-            formulaStatus: '失效状态',
+            customerNo: 'VSxxxxxxxx',
+            customerName: 'XXXX公司',
+            customerType: '企业',
+            customerStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            formulaNo: 'VSxxxxxxxx',
-            formulaName: 'XX橡胶配方',
-            formulaType: '橡胶配方',
-            formulaStatus: '有效状态',
+            customerNo: 'VSxxxxxxxx',
+            customerName: 'XXXX公司',
+            customerType: '企业',
+            customerStatus: '有效状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑配方数据'
-        this.editForm.formulaNo = row.formulaNo
-        this.editForm.formulaName = row.formulaName
-        this.editForm.formulaStatus = row.formulaStatus
-        this.editForm.formulaType = row.formulaType
+        this.title = '编辑客户信息'
+        this.editForm.customerNo = row.customerNo
+        this.editForm.customerName = row.customerName
+        this.editForm.customerStatus = row.customerStatus
+        this.editForm.customerType = row.customerType
       } else {
-        this.title = '添加配方数据'
-        this.editForm.formulaNo = ''
-        this.editForm.formulaName = ''
-        this.editForm.formulaStatus = ''
-        this.editForm.formulaType =''
+        this.title = '添加客户信息'
+        this.editForm.customerNo = ''
+        this.editForm.customerName = ''
+        this.editForm.customerStatus = ''
+        this.editForm.customerType =''
       }
     },
     // 编辑、增加页面保存方法

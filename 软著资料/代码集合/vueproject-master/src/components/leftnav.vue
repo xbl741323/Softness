@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '配方管理模块',
+          menuname: '客户管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '配方数据管理',
+              menuname: '客户信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '配方审核管理',
+              menuname: '客户分类管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '配方版本管理',
+              menuname: '客户关系管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '配方变更记录管理',
+              menuname: '客户活动管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '配方推送和共享管理',
+              menuname: '客户满意度调查管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -107,7 +107,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '配方导入和导出管理',
+              menuname: '客户潜力分析管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -117,14 +117,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '配方查询模块',
+          menuname: '投诉管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '配方关键字信息管理',
+              menuname: '投诉信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -132,7 +132,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '配方条件查询管理',
+              menuname: '投诉分类标记管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '配方分类查询管理',
+              menuname: '投诉受理管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '配方详细信息查询管理',
+              menuname: '投诉处理跟进管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -156,7 +156,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '配方查询数据导出管理',
+              menuname: '投诉满意度评价管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -166,7 +166,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '库存管理模块',
+          menuname: '维修管理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -215,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '质量控制模块',
+          menuname: '售后服务评价模块',
           hasThird: null,
           url: null,
           menus: [
@@ -232,7 +232,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '生产管理模块',
+          menuname: '售后服务统计模块',
           hasThird: null,
           url: null,
           menus: [

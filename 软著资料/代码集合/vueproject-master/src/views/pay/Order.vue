@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">配方查询模块</el-breadcrumb-item>
-      <el-breadcrumb-item>配方关键字信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">投诉管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>投诉信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.keywordInfoNo" placeholder="请输入配方关键字信息编号"></el-input>
+        <el-input size="small" v-model="formInline.complaintNo" placeholder="请输入投诉信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.keywordInfoName" placeholder="请输入配方关键字信息名称"></el-input>
+        <el-input size="small" v-model="formInline.complaintName" placeholder="请输入投诉信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.keywordInfoType" placeholder="请选择配方关键字信息类型"></el-select>
+        <el-select size="small" v-model="formInline.complaintType" placeholder="请选择投诉信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="keywordInfoNo" label="配方关键字信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="complaintNo" label="投诉信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordInfoName" label="配方关键字信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="complaintName" label="投诉信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordInfoType" label="配方关键字信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="complaintType" label="投诉信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="keywordInfoStatus" label="配方关键字信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="complaintStatus" label="投诉信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="配方关键字信息编号" prop="keywordInfoNo">
-          <el-input size="small" v-model="addForm.keywordInfoNo" auto-complete="off" placeholder="请输入配方关键字信息编号"></el-input>
+        <el-form-item label="投诉信息编号" prop="complaintNo">
+          <el-input size="small" v-model="addForm.complaintNo" auto-complete="off" placeholder="请输入投诉信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="配方关键字信息名称" prop="keywordInfoName">
-          <el-input size="small" v-model="addForm.keywordInfoName" auto-complete="off" placeholder="请输入配方关键字信息名称"></el-input>
+        <el-form-item label="投诉信息名称" prop="complaintName">
+          <el-input size="small" v-model="addForm.complaintName" auto-complete="off" placeholder="请输入投诉信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="配方关键字信息类型" prop="keywordInfoType">
-          <el-select size="small" v-model="addForm.keywordInfoType" auto-complete="off" placeholder="请选择配方关键字信息类型">
-            <el-option label="聚合物A配方" value="1"></el-option>
+        <el-form-item label="投诉信息类型" prop="complaintType">
+          <el-select size="small" v-model="addForm.complaintType" auto-complete="off" placeholder="请选择投诉信息类型">
+            <el-option label="售后维修问题" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="配方关键字信息状态" prop="keywordInfoStatus">
-          <el-select size="small" v-model="addForm.keywordInfoStatus" auto-complete="off" placeholder="请选择配方关键字信息状态">
+        <el-form-item label="投诉信息状态" prop="complaintStatus">
+          <el-select size="small" v-model="addForm.complaintStatus" auto-complete="off" placeholder="请选择投诉信息状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       keywordInfoNo:'',
-       keywordInfoName:'',
-       keywordInfoType:'',
+       complaintNo:'',
+       complaintName:'',
+       complaintType:'',
        address:'',
-       keywordInfoGender:'',
+       complaintGender:'',
        age:'',
-       keywordInfoStatus:''
+       complaintStatus:''
       },
       rules: {
-        keywordInfoNo: [
-          { required: true, message: '请输入配方关键字信息编号', trigger: 'blur' }
+        complaintNo: [
+          { required: true, message: '请输入投诉信息编号', trigger: 'blur' }
         ],
-        keywordInfoName: [
-          { required: true, message: '请输入配方关键字信息名称', trigger: 'blur' }
+        complaintName: [
+          { required: true, message: '请输入投诉信息名称', trigger: 'blur' }
         ],
-        keywordInfoType: [
-          { required: true, message: '请选择配方关键字信息类型', trigger: 'blur' }
+        complaintType: [
+          { required: true, message: '请选择投诉信息类型', trigger: 'blur' }
         ],
-        keywordInfoStatus: [
-          { required: true, message: '请选择配方关键字信息状态', trigger: 'blur' }
+        complaintStatus: [
+          { required: true, message: '请选择投诉信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        keywordInfoName: '',
+        complaintName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx聚合物A配方',
-            keywordInfoType:'聚合物A配方',
-            keywordInfoStatus:"有效状态",
+            complaintNo:'VCxxxxxx',
+            complaintName:'xxx售后维修问题',
+            complaintType:'售后维修问题',
+            complaintStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx聚合物A配方',
-            keywordInfoType:'聚合物A配方',
-            keywordInfoStatus:"有效状态",
+            complaintNo:'VCxxxxxx',
+            complaintName:'xxx售后维修问题',
+            complaintType:'售后维修问题',
+            complaintStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx聚合物A配方',
-            keywordInfoType:'聚合物A配方',
-            keywordInfoStatus:"有效状态",
+            complaintNo:'VCxxxxxx',
+            complaintName:'xxx售后维修问题',
+            complaintType:'售后维修问题',
+            complaintStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx塑料制品',
-            keywordInfoType:'塑料制品',
-            keywordInfoStatus:"失效状态",
+            complaintNo:'VCxxxxxx',
+            complaintName:'xxx服务态度问题',
+            complaintType:'服务态度问题',
+            complaintStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            keywordInfoNo:'VCxxxxxx',
-            keywordInfoName:'xxx塑料制品',
-            keywordInfoType:'塑料制品',
-            keywordInfoStatus:"有效状态",
+            complaintNo:'VCxxxxxx',
+            complaintName:'xxx服务态度问题',
+            complaintType:'服务态度问题',
+            complaintStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑配方关键字信息'
-        this.addForm.keywordInfoNo = row.keywordInfoNo
-        this.addForm.keywordInfoName = row.keywordInfoName
-        this.addForm.keywordInfoType = row.keywordInfoType
-        this.addForm.keywordInfoStatus = row.keywordInfoStatus
+        this.title='编辑投诉信息'
+        this.addForm.complaintNo = row.complaintNo
+        this.addForm.complaintName = row.complaintName
+        this.addForm.complaintType = row.complaintType
+        this.addForm.complaintStatus = row.complaintStatus
       }else{
-        this.title='添加配方关键字信息'
-        this.addForm.keywordInfoNo = ''
-        this.addForm.keywordInfoName = ''
-        this.addForm.keywordInfoType = ''
-        this.addForm.keywordInfoStatus = ''
+        this.title='添加投诉信息'
+        this.addForm.complaintNo = ''
+        this.addForm.complaintName = ''
+        this.addForm.complaintType = ''
+        this.addForm.complaintStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -294,7 +294,7 @@ export default {
             .catch(err => {
               this.editFormVisible = false
               this.loading = false
-              this.$message.error('支付配置信息保存失败，请稍后再试！')
+              this.$message.error('保存失败，请稍后再试！')
             })
         } else {
           return false
@@ -326,7 +326,7 @@ export default {
             })
             .catch(err => {
               this.loading = false
-              this.$message.error('支付配置信息删除失败，请稍后再试！')
+              this.$message.error('删除失败，请稍后再试！')
             })
         })
         .catch(() => {
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formkeywordInfoName) {
+    closeDialog(formcomplaintName) {
       this.editFormVisible = false
-      this.$refs[formkeywordInfoName].resetFields()
+      this.$refs[formcomplaintName].resetFields()
     }
   }
 }

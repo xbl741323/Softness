@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
     <el-form label-position="left" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm login-container">
-      <h3 class="title">星瞻地理数据测绘采集管理系统</h3>
+      <h3 class="title">售后服务管理系统</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="ruleForm.username" auto-complete="off" placeholder="请输入账号"></el-input>
       </el-form-item>
