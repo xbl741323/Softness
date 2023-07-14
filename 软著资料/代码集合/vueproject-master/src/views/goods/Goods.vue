@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">客户管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>客户信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">设备管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>设备信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.customerName" placeholder="请输入客户信息编号"></el-input>
+        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.customerName" placeholder="请输入客户信息名称"></el-input>
+        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.customerStatus" placeholder="请选择客户信息类型">
+        <el-select size="small" v-model="formInline.deviceStatus" placeholder="请选择设备信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="customerNo" label="客户信息编号">
+      <el-table-column sortable prop="deviceNo" label="设备信息编号">
       </el-table-column>
-      <el-table-column sortable prop="customerName" label="客户信息名称">
+      <el-table-column sortable prop="deviceName" label="设备信息名称">
       </el-table-column>
-      <el-table-column sortable prop="customerType" label="客户信息类型">
+      <el-table-column sortable prop="deviceType" label="设备信息类型">
       </el-table-column>
-      <el-table-column sortable prop="customerStatus" label="客户信息状态" >
+      <el-table-column sortable prop="deviceStatus" label="设备信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="客户信息编号" prop="customerNo">
-          <el-input size="small" v-model="editForm.customerNo" auto-complete="off" placeholder="请输入客户信息编号"></el-input>
+        <el-form-item label="设备信息编号" prop="deviceNo">
+          <el-input size="small" v-model="editForm.deviceNo" auto-complete="off" placeholder="请输入设备信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="客户信息名称" prop="customerName">
-          <el-input size="small" v-model="editForm.customerName" auto-complete="off" placeholder="请输入客户信息名称"></el-input>
+        <el-form-item label="设备信息名称" prop="deviceName">
+          <el-input size="small" v-model="editForm.deviceName" auto-complete="off" placeholder="请输入设备信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="客户信息类型" prop="customerType">
-          <el-select size="small" v-model="editForm.customerType" auto-complete="off" placeholder="请选择客户信息类型">
-            <el-option label="个人" value="1"></el-option>
+        <el-form-item label="设备信息类型" prop="deviceType">
+          <el-select size="small" v-model="editForm.deviceType" auto-complete="off" placeholder="请选择设备信息类型">
+            <el-option label="加工设备" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="客户信息状态" prop="customerStatus">
-          <el-select size="small" v-model="editForm.customerStatus" auto-complete="off" placeholder="请选择客户信息状态">
-            <el-option label="有效状态" value="1"></el-option>
+        <el-form-item label="设备信息状态" prop="deviceStatus">
+          <el-select size="small" v-model="editForm.deviceStatus" auto-complete="off" placeholder="请选择设备信息状态">
+            <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        customerNo: '',
-        customerName: '',
-        customerType:'',
+        deviceNo: '',
+        deviceName: '',
+        deviceType:'',
         status:'',
-        customerStatus: '',
+        deviceStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        customerNo: [
-          { required: true, message: '请输入客户信息编号', trigger: 'blur' }
+        deviceNo: [
+          { required: true, message: '请输入设备信息编号', trigger: 'blur' }
         ],
-        customerName: [
-          { required: true, message: '请输入客户信息名称', trigger: 'blur' }
+        deviceName: [
+          { required: true, message: '请输入设备信息名称', trigger: 'blur' }
         ],
-        customerType: [
-          { required: true, message: '请选择客户信息类型', trigger: 'blur' }
+        deviceType: [
+          { required: true, message: '请选择设备信息类型', trigger: 'blur' }
         ],
-        customerStatus: [
-          { required: true, message: '请选择客户信息状态', trigger: 'blur' }
+        deviceStatus: [
+          { required: true, message: '请选择设备信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            customerNo: 'VSxxxxxxxx',
-            customerName: '李XX',
-            customerType: '个人',
-            customerStatus: '有效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXX加工设备',
+            deviceType: '加工设备',
+            deviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            customerNo: 'VSxxxxxxxx',
-            customerName: '王XX',
-            customerType: '个人',
-            customerStatus: '有效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXX加工设备',
+            deviceType: '加工设备',
+            deviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            customerNo: 'VSxxxxxxxx',
-            customerName: '王XX',
-            customerType: '个人',
-            customerStatus: '有效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXX加工设备',
+            deviceType: '加工设备',
+            deviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            customerNo: 'VSxxxxxxxx',
-            customerName: 'XXXX公司',
-            customerType: '企业',
-            customerStatus: '失效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXX组装设备',
+            deviceType: '组装设备',
+            deviceStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            customerNo: 'VSxxxxxxxx',
-            customerName: 'XXXX公司',
-            customerType: '企业',
-            customerStatus: '有效状态',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXX组装设备',
+            deviceType: '组装设备',
+            deviceStatus: '运行中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑客户信息'
-        this.editForm.customerNo = row.customerNo
-        this.editForm.customerName = row.customerName
-        this.editForm.customerStatus = row.customerStatus
-        this.editForm.customerType = row.customerType
+        this.title = '编辑设备信息'
+        this.editForm.deviceNo = row.deviceNo
+        this.editForm.deviceName = row.deviceName
+        this.editForm.deviceStatus = row.deviceStatus
+        this.editForm.deviceType = row.deviceType
       } else {
-        this.title = '添加客户信息'
-        this.editForm.customerNo = ''
-        this.editForm.customerName = ''
-        this.editForm.customerStatus = ''
-        this.editForm.customerType =''
+        this.title = '添加设备信息'
+        this.editForm.deviceNo = ''
+        this.editForm.deviceName = ''
+        this.editForm.deviceStatus = ''
+        this.editForm.deviceType =''
       }
     },
     // 编辑、增加页面保存方法

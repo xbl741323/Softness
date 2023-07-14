@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '客户管理模块',
+          menuname: '设备管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '客户信息管理',
+              menuname: '设备信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '客户分类管理',
+              menuname: '设备分类和分组管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '客户关系管理',
+              menuname: '设备故障报警管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '客户活动管理',
+              menuname: '设备维修管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '客户满意度调查管理',
+              menuname: '设备状态监测管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -107,7 +107,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '客户潜力分析管理',
+              menuname: '设备报表和统计管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -117,14 +117,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '投诉管理模块',
+          menuname: '维护管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投诉信息管理',
+              menuname: '维护信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -132,7 +132,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投诉分类标记管理',
+              menuname: '维护提醒和通知管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投诉受理管理',
+              menuname: '维护任务分配管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投诉处理跟进管理',
+              menuname: '维护工单管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -156,7 +156,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投诉满意度评价管理',
+              menuname: '维护费用管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -166,7 +166,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '维修管理模块',
+          menuname: '设备监控模块',
           hasThird: null,
           url: null,
           menus: [
@@ -215,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '售后服务评价模块',
+          menuname: '生产计划模块',
           hasThird: null,
           url: null,
           menus: [
@@ -232,7 +232,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '售后服务统计模块',
+          menuname: '数据分析模块',
           hasThird: null,
           url: null,
           menus: [

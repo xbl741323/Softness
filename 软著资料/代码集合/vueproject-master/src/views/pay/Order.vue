@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">投诉管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>投诉信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">维护管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>维护信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.complaintNo" placeholder="请输入投诉信息编号"></el-input>
+        <el-input size="small" v-model="formInline.maintenanceNo" placeholder="请输入维护信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.complaintName" placeholder="请输入投诉信息名称"></el-input>
+        <el-input size="small" v-model="formInline.maintenanceName" placeholder="请输入维护信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.complaintType" placeholder="请选择投诉信息类型"></el-select>
+        <el-select size="small" v-model="formInline.maintenanceType" placeholder="请选择维护信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="complaintNo" label="投诉信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="maintenanceNo" label="维护信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="complaintName" label="投诉信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="maintenanceName" label="维护信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="complaintType" label="投诉信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="maintenanceType" label="维护信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="complaintStatus" label="投诉信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="maintenanceStatus" label="维护信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="投诉信息编号" prop="complaintNo">
-          <el-input size="small" v-model="addForm.complaintNo" auto-complete="off" placeholder="请输入投诉信息编号"></el-input>
+        <el-form-item label="维护信息编号" prop="maintenanceNo">
+          <el-input size="small" v-model="addForm.maintenanceNo" auto-complete="off" placeholder="请输入维护信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="投诉信息名称" prop="complaintName">
-          <el-input size="small" v-model="addForm.complaintName" auto-complete="off" placeholder="请输入投诉信息名称"></el-input>
+        <el-form-item label="维护信息名称" prop="maintenanceName">
+          <el-input size="small" v-model="addForm.maintenanceName" auto-complete="off" placeholder="请输入维护信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="投诉信息类型" prop="complaintType">
-          <el-select size="small" v-model="addForm.complaintType" auto-complete="off" placeholder="请选择投诉信息类型">
-            <el-option label="售后维修问题" value="1"></el-option>
+        <el-form-item label="维护信息类型" prop="maintenanceType">
+          <el-select size="small" v-model="addForm.maintenanceType" auto-complete="off" placeholder="请选择维护信息类型">
+            <el-option label="故障信息" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="投诉信息状态" prop="complaintStatus">
-          <el-select size="small" v-model="addForm.complaintStatus" auto-complete="off" placeholder="请选择投诉信息状态">
-            <el-option label="有效状态" value="1"></el-option>
+        <el-form-item label="维护信息状态" prop="maintenanceStatus">
+          <el-select size="small" v-model="addForm.maintenanceStatus" auto-complete="off" placeholder="请选择维护信息状态">
+            <el-option label="处理中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       complaintNo:'',
-       complaintName:'',
-       complaintType:'',
+       maintenanceNo:'',
+       maintenanceName:'',
+       maintenanceType:'',
        address:'',
-       complaintGender:'',
+       maintenanceGender:'',
        age:'',
-       complaintStatus:''
+       maintenanceStatus:''
       },
       rules: {
-        complaintNo: [
-          { required: true, message: '请输入投诉信息编号', trigger: 'blur' }
+        maintenanceNo: [
+          { required: true, message: '请输入维护信息编号', trigger: 'blur' }
         ],
-        complaintName: [
-          { required: true, message: '请输入投诉信息名称', trigger: 'blur' }
+        maintenanceName: [
+          { required: true, message: '请输入维护信息名称', trigger: 'blur' }
         ],
-        complaintType: [
-          { required: true, message: '请选择投诉信息类型', trigger: 'blur' }
+        maintenanceType: [
+          { required: true, message: '请选择维护信息类型', trigger: 'blur' }
         ],
-        complaintStatus: [
-          { required: true, message: '请选择投诉信息状态', trigger: 'blur' }
+        maintenanceStatus: [
+          { required: true, message: '请选择维护信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        complaintName: '',
+        maintenanceName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            complaintNo:'VCxxxxxx',
-            complaintName:'xxx售后维修问题',
-            complaintType:'售后维修问题',
-            complaintStatus:"有效状态",
+            maintenanceNo:'VCxxxxxx',
+            maintenanceName:'xxx故障信息',
+            maintenanceType:'故障信息',
+            maintenanceStatus:"处理中",
             createTime: "2020-08-12"
           },
           {
-            complaintNo:'VCxxxxxx',
-            complaintName:'xxx售后维修问题',
-            complaintType:'售后维修问题',
-            complaintStatus:"有效状态",
+            maintenanceNo:'VCxxxxxx',
+            maintenanceName:'xxx故障信息',
+            maintenanceType:'故障信息',
+            maintenanceStatus:"处理中",
             createTime: "2022-10-24"
           },
           {
-            complaintNo:'VCxxxxxx',
-            complaintName:'xxx售后维修问题',
-            complaintType:'售后维修问题',
-            complaintStatus:"有效状态",
+            maintenanceNo:'VCxxxxxx',
+            maintenanceName:'xxx故障信息',
+            maintenanceType:'故障信息',
+            maintenanceStatus:"处理中",
             createTime: "2022-01-12"
           },
           {
-            complaintNo:'VCxxxxxx',
-            complaintName:'xxx服务态度问题',
-            complaintType:'服务态度问题',
-            complaintStatus:"失效状态",
+            maintenanceNo:'VCxxxxxx',
+            maintenanceName:'xxx维修和备件信息',
+            maintenanceType:'维修和备件信息',
+            maintenanceStatus:"待处理",
             createTime: "2022-05-17"
           },
           {
-            complaintNo:'VCxxxxxx',
-            complaintName:'xxx服务态度问题',
-            complaintType:'服务态度问题',
-            complaintStatus:"有效状态",
+            maintenanceNo:'VCxxxxxx',
+            maintenanceName:'xxx维修和备件信息',
+            maintenanceType:'维修和备件信息',
+            maintenanceStatus:"处理中",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑投诉信息'
-        this.addForm.complaintNo = row.complaintNo
-        this.addForm.complaintName = row.complaintName
-        this.addForm.complaintType = row.complaintType
-        this.addForm.complaintStatus = row.complaintStatus
+        this.title='编辑维护信息'
+        this.addForm.maintenanceNo = row.maintenanceNo
+        this.addForm.maintenanceName = row.maintenanceName
+        this.addForm.maintenanceType = row.maintenanceType
+        this.addForm.maintenanceStatus = row.maintenanceStatus
       }else{
-        this.title='添加投诉信息'
-        this.addForm.complaintNo = ''
-        this.addForm.complaintName = ''
-        this.addForm.complaintType = ''
-        this.addForm.complaintStatus = ''
+        this.title='添加维护信息'
+        this.addForm.maintenanceNo = ''
+        this.addForm.maintenanceName = ''
+        this.addForm.maintenanceType = ''
+        this.addForm.maintenanceStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '失效状态删除'
+            message: '待处理删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formcomplaintName) {
+    closeDialog(formmaintenanceName) {
       this.editFormVisible = false
-      this.$refs[formcomplaintName].resetFields()
+      this.$refs[formmaintenanceName].resetFields()
     }
   }
 }
