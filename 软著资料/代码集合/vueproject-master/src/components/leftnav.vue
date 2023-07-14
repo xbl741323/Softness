@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '地理数据管理模块',
+          menuname: '数据管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '地形数据管理',
+              menuname: '国土数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '地质勘探数据管理',
+              menuname: '空间数据管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '地理其它数据管理',
+              menuname: '数据更新管理',
               hasThird: 'N',
               url: 'pay/Order111',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '地理标记和位置管理',
+              menuname: '数据备份管理',
               hasThird: 'N',
               url: 'pay/Order111',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '地理数据分类管理',
+              menuname: '数据安全管理',
               hasThird: 'N',
               url: 'pay/Order111',
               menus: null
@@ -109,7 +109,7 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '地理数据录入模块',
+          menuname: '数据采集模块',
           hasThird: null,
           url: null,
           menus: [
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '地理数据共享模块',
+          menuname: '数据处理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '测量任务管理模块',
+          menuname: '决策支持模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,24 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '地理数据处理模块',
-          hasThird: null,
-          url: null,
-          menus: [
-            {
-              menuid: 129,
-              icon: 'icon-provider-manage',
-              menuname: '头戴式显示器管理',
-              hasThird: 'N',
-              url: 'machine/MachineConfig',
-              menus: null
-            },
-          ]
-        },
-        {
-          menuid: 128,
-          icon: 'li-icon-xiangmuguanli',
-          menuname: '地理数据分析模块',
+          menuname: '数据分析模块',
           hasThird: null,
           url: null,
           menus: [

@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">地理数据管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>地质勘探数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>空间数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.geologyNo" placeholder="请输入地质勘探数据编号"></el-input>
+        <el-input size="small" v-model="formInline.spaceNo" placeholder="请输入空间数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.geologyName" placeholder="请输入地质勘探数据名称"></el-input>
+        <el-input size="small" v-model="formInline.spaceName" placeholder="请输入空间数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.geologyType" placeholder="请选择地质勘探数据类型"></el-select>
+        <el-select size="small" v-model="formInline.spaceType" placeholder="请选择空间数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="geologyNo" label="地质勘探数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="spaceNo" label="空间数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="geologyName" label="地质勘探数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="spaceName" label="空间数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="geologyType" label="地质勘探数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="spaceType" label="空间数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="geologyStatus" label="地质勘探数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="spaceStatus" label="空间数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="地质勘探数据编号" prop="geologyNo">
-          <el-input size="small" v-model="addForm.geologyNo" auto-complete="off" placeholder="请输入地质勘探数据编号"></el-input>
+        <el-form-item label="空间数据编号" prop="spaceNo">
+          <el-input size="small" v-model="addForm.spaceNo" auto-complete="off" placeholder="请输入空间数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="地质勘探数据名称" prop="geologyName">
-          <el-input size="small" v-model="addForm.geologyName" auto-complete="off" placeholder="请输入地质勘探数据名称"></el-input>
+        <el-form-item label="空间数据名称" prop="spaceName">
+          <el-input size="small" v-model="addForm.spaceName" auto-complete="off" placeholder="请输入空间数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="地质勘探数据类型" prop="geologyType">
-          <el-select size="small" v-model="addForm.geologyType" auto-complete="off" placeholder="请选择地质勘探数据类型">
-            <el-option label="地质勘探数据" value="1"></el-option>
+        <el-form-item label="空间数据类型" prop="spaceType">
+          <el-select size="small" v-model="addForm.spaceType" auto-complete="off" placeholder="请选择空间数据类型">
+            <el-option label="空间数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="地质勘探数据状态" prop="geologyStatus">
-          <el-select size="small" v-model="addForm.geologyStatus" auto-complete="off" placeholder="请选择地质勘探数据状态">
+        <el-form-item label="空间数据状态" prop="spaceStatus">
+          <el-select size="small" v-model="addForm.spaceStatus" auto-complete="off" placeholder="请选择空间数据状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       geologyNo:'',
-       geologyName:'',
-       geologyType:'',
+       spaceNo:'',
+       spaceName:'',
+       spaceType:'',
        address:'',
-       geologyGender:'',
+       spaceGender:'',
        age:'',
-       geologyStatus:''
+       spaceStatus:''
       },
       rules: {
-        geologyNo: [
-          { required: true, message: '请输入地质勘探数据编号', trigger: 'blur' }
+        spaceNo: [
+          { required: true, message: '请输入空间数据编号', trigger: 'blur' }
         ],
-        geologyName: [
-          { required: true, message: '请输入地质勘探数据名称', trigger: 'blur' }
+        spaceName: [
+          { required: true, message: '请输入空间数据名称', trigger: 'blur' }
         ],
-        geologyType: [
-          { required: true, message: '请选择地质勘探数据类型', trigger: 'blur' }
+        spaceType: [
+          { required: true, message: '请选择空间数据类型', trigger: 'blur' }
         ],
-        geologyStatus: [
-          { required: true, message: '请选择地质勘探数据状态', trigger: 'blur' }
+        spaceStatus: [
+          { required: true, message: '请选择空间数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        geologyName: '',
+        spaceName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            geologyNo:'VCxxxxxx',
-            geologyName:'xxx地质勘探数据',
-            geologyType:'地质勘探数据',
-            geologyStatus:"有效状态",
+            spaceNo:'VCxxxxxx',
+            spaceName:'xxx空间数据',
+            spaceType:'空间数据',
+            spaceStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            geologyNo:'VCxxxxxx',
-            geologyName:'xxx地质勘探数据',
-            geologyType:'地质勘探数据',
-            geologyStatus:"有效状态",
+            spaceNo:'VCxxxxxx',
+            spaceName:'xxx空间数据',
+            spaceType:'空间数据',
+            spaceStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            geologyNo:'VCxxxxxx',
-            geologyName:'xxx地质勘探数据',
-            geologyType:'地质勘探数据',
-            geologyStatus:"有效状态",
+            spaceNo:'VCxxxxxx',
+            spaceName:'xxx空间数据',
+            spaceType:'空间数据',
+            spaceStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            geologyNo:'VCxxxxxx',
-            geologyName:'xxx天然气勘探数据',
-            geologyType:'天然气勘探数据',
-            geologyStatus:"失效状态",
+            spaceNo:'VCxxxxxx',
+            spaceName:'xxx地形地貌数据',
+            spaceType:'地形地貌数据',
+            spaceStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            geologyNo:'VCxxxxxx',
-            geologyName:'xxx天然气勘探数据',
-            geologyType:'天然气勘探数据',
-            geologyStatus:"有效状态",
+            spaceNo:'VCxxxxxx',
+            spaceName:'xxx地形地貌数据',
+            spaceType:'地形地貌数据',
+            spaceStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑地质勘探数据'
-        this.addForm.geologyNo = row.geologyNo
-        this.addForm.geologyName = row.geologyName
-        this.addForm.geologyType = row.geologyType
-        this.addForm.geologyStatus = row.geologyStatus
+        this.title='编辑空间数据'
+        this.addForm.spaceNo = row.spaceNo
+        this.addForm.spaceName = row.spaceName
+        this.addForm.spaceType = row.spaceType
+        this.addForm.spaceStatus = row.spaceStatus
       }else{
-        this.title='添加地质勘探数据'
-        this.addForm.geologyNo = ''
-        this.addForm.geologyName = ''
-        this.addForm.geologyType = ''
-        this.addForm.geologyStatus = ''
+        this.title='添加空间数据'
+        this.addForm.spaceNo = ''
+        this.addForm.spaceName = ''
+        this.addForm.spaceType = ''
+        this.addForm.spaceStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formgeologyName) {
+    closeDialog(formspaceName) {
       this.editFormVisible = false
-      this.$refs[formgeologyName].resetFields()
+      this.$refs[formspaceName].resetFields()
     }
   }
 }

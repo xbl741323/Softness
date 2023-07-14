@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">地理数据管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>地形数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>国土数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.terrainName" placeholder="请输入地形数据编号"></el-input>
+        <el-input size="small" v-model="formInline.landName" placeholder="请输入国土数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.terrainName" placeholder="请输入地形数据名称"></el-input>
+        <el-input size="small" v-model="formInline.landName" placeholder="请输入国土数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.terrainStatus" placeholder="请选择地形数据类型">
+        <el-select size="small" v-model="formInline.landStatus" placeholder="请选择国土数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="terrainNo" label="地形数据编号">
+      <el-table-column sortable prop="landNo" label="国土数据编号">
       </el-table-column>
-      <el-table-column sortable prop="terrainName" label="地形数据名称">
+      <el-table-column sortable prop="landName" label="国土数据名称">
       </el-table-column>
-      <el-table-column sortable prop="terrainType" label="地形数据类型">
+      <el-table-column sortable prop="landType" label="国土数据类型">
       </el-table-column>
-      <el-table-column sortable prop="terrainStatus" label="地形数据状态" >
+      <el-table-column sortable prop="landStatus" label="国土数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="地形数据编号" prop="terrainNo">
-          <el-input size="small" v-model="editForm.terrainNo" auto-complete="off" placeholder="请输入地形数据编号"></el-input>
+        <el-form-item label="国土数据编号" prop="landNo">
+          <el-input size="small" v-model="editForm.landNo" auto-complete="off" placeholder="请输入国土数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="地形数据名称" prop="terrainName">
-          <el-input size="small" v-model="editForm.terrainName" auto-complete="off" placeholder="请输入地形数据名称"></el-input>
+        <el-form-item label="国土数据名称" prop="landName">
+          <el-input size="small" v-model="editForm.landName" auto-complete="off" placeholder="请输入国土数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="地形数据类型" prop="terrainType">
-          <el-select size="small" v-model="editForm.terrainType" auto-complete="off" placeholder="请选择地形数据类型">
-            <el-option label="地理空间数据" value="1"></el-option>
+        <el-form-item label="国土数据类型" prop="landType">
+          <el-select size="small" v-model="editForm.landType" auto-complete="off" placeholder="请选择国土数据类型">
+            <el-option label="土地资源数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="地形数据状态" prop="terrainStatus">
-          <el-select size="small" v-model="editForm.terrainStatus" auto-complete="off" placeholder="请选择地形数据状态">
+        <el-form-item label="国土数据状态" prop="landStatus">
+          <el-select size="small" v-model="editForm.landStatus" auto-complete="off" placeholder="请选择国土数据状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        terrainNo: '',
-        terrainName: '',
-        terrainType:'',
+        landNo: '',
+        landName: '',
+        landType:'',
         status:'',
-        terrainStatus: '',
+        landStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        terrainNo: [
-          { required: true, message: '请输入地形数据编号', trigger: 'blur' }
+        landNo: [
+          { required: true, message: '请输入国土数据编号', trigger: 'blur' }
         ],
-        terrainName: [
-          { required: true, message: '请输入地形数据名称', trigger: 'blur' }
+        landName: [
+          { required: true, message: '请输入国土数据名称', trigger: 'blur' }
         ],
-        terrainType: [
-          { required: true, message: '请选择地形数据类型', trigger: 'blur' }
+        landType: [
+          { required: true, message: '请选择国土数据类型', trigger: 'blur' }
         ],
-        terrainStatus: [
-          { required: true, message: '请选择地形数据状态', trigger: 'blur' }
+        landStatus: [
+          { required: true, message: '请选择国土数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            terrainNo: 'VSxxxxxxxx',
-            terrainName: 'XXX地理空间数据',
-            terrainType: '地理空间数据',
-            terrainStatus: '有效状态',
+            landNo: 'VSxxxxxxxx',
+            landName: 'XXX土地资源数据',
+            landType: '土地资源数据',
+            landStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            terrainNo: 'VSxxxxxxxx',
-            terrainName: 'XXX地理空间数据',
-            terrainType: '地理空间数据',
-            terrainStatus: '有效状态',
+            landNo: 'VSxxxxxxxx',
+            landName: 'XXX土地资源数据',
+            landType: '土地资源数据',
+            landStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            terrainNo: 'VSxxxxxxxx',
-            terrainName: 'XXX地理空间数据',
-            terrainType: '地理空间数据',
-            terrainStatus: '有效状态',
+            landNo: 'VSxxxxxxxx',
+            landName: 'XXX土地资源数据',
+            landType: '土地资源数据',
+            landStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            terrainNo: 'VSxxxxxxxx',
-            terrainName: 'XXX数字高程模型',
-            terrainType: '数字高程模型',
-            terrainStatus: '失效状态',
+            landNo: 'VSxxxxxxxx',
+            landName: 'XXX地质矿产资源数据',
+            landType: '地质矿产资源数据',
+            landStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            terrainNo: 'VSxxxxxxxx',
-            terrainName: 'XXX数字高程模型',
-            terrainType: '数字高程模型',
-            terrainStatus: '有效状态',
+            landNo: 'VSxxxxxxxx',
+            landName: 'XXX地质矿产资源数据',
+            landType: '地质矿产资源数据',
+            landStatus: '有效状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑地形数据'
-        this.editForm.terrainNo = row.terrainNo
-        this.editForm.terrainName = row.terrainName
-        this.editForm.terrainStatus = row.terrainStatus
-        this.editForm.terrainType = row.terrainType
+        this.title = '编辑国土数据'
+        this.editForm.landNo = row.landNo
+        this.editForm.landName = row.landName
+        this.editForm.landStatus = row.landStatus
+        this.editForm.landType = row.landType
       } else {
-        this.title = '添加地形数据'
-        this.editForm.terrainNo = ''
-        this.editForm.terrainName = ''
-        this.editForm.terrainStatus = ''
-        this.editForm.terrainType =''
+        this.title = '添加国土数据'
+        this.editForm.landNo = ''
+        this.editForm.landName = ''
+        this.editForm.landStatus = ''
+        this.editForm.landType =''
       }
     },
     // 编辑、增加页面保存方法
