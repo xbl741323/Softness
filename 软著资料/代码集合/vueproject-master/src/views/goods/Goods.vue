@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>国土数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">PLC控制模块</el-breadcrumb-item>
+      <el-breadcrumb-item>输入输出模块管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.landName" placeholder="请输入国土数据编号"></el-input>
+        <el-input size="small" v-model="formInline.iocName" placeholder="请输入输入输出模块编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.landName" placeholder="请输入国土数据名称"></el-input>
+        <el-input size="small" v-model="formInline.iocName" placeholder="请输入输入输出模块名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.landStatus" placeholder="请选择国土数据类型">
+        <el-select size="small" v-model="formInline.iocStatus" placeholder="请选择输入输出模块类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="landNo" label="国土数据编号">
+      <el-table-column sortable prop="iocNo" label="输入输出模块编号">
       </el-table-column>
-      <el-table-column sortable prop="landName" label="国土数据名称">
+      <el-table-column sortable prop="iocName" label="输入输出模块名称">
       </el-table-column>
-      <el-table-column sortable prop="landType" label="国土数据类型">
+      <el-table-column sortable prop="iocType" label="输入输出模块类型">
       </el-table-column>
-      <el-table-column sortable prop="landStatus" label="国土数据状态" >
+      <el-table-column sortable prop="iocStatus" label="输入输出模块状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="国土数据编号" prop="landNo">
-          <el-input size="small" v-model="editForm.landNo" auto-complete="off" placeholder="请输入国土数据编号"></el-input>
+        <el-form-item label="输入输出模块编号" prop="iocNo">
+          <el-input size="small" v-model="editForm.iocNo" auto-complete="off" placeholder="请输入输入输出模块编号"></el-input>
         </el-form-item>
-        <el-form-item label="国土数据名称" prop="landName">
-          <el-input size="small" v-model="editForm.landName" auto-complete="off" placeholder="请输入国土数据名称"></el-input>
+        <el-form-item label="输入输出模块名称" prop="iocName">
+          <el-input size="small" v-model="editForm.iocName" auto-complete="off" placeholder="请输入输入输出模块名称"></el-input>
         </el-form-item>
-        <el-form-item label="国土数据类型" prop="landType">
-          <el-select size="small" v-model="editForm.landType" auto-complete="off" placeholder="请选择国土数据类型">
-            <el-option label="土地资源数据" value="1"></el-option>
+        <el-form-item label="输入输出模块类型" prop="iocType">
+          <el-select size="small" v-model="editForm.iocType" auto-complete="off" placeholder="请选择输入输出模块类型">
+            <el-option label="数字输入输出模块" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="国土数据状态" prop="landStatus">
-          <el-select size="small" v-model="editForm.landStatus" auto-complete="off" placeholder="请选择国土数据状态">
-            <el-option label="有效状态" value="1"></el-option>
+        <el-form-item label="输入输出模块状态" prop="iocStatus">
+          <el-select size="small" v-model="editForm.iocStatus" auto-complete="off" placeholder="请选择输入输出模块状态">
+            <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        landNo: '',
-        landName: '',
-        landType:'',
+        iocNo: '',
+        iocName: '',
+        iocType:'',
         status:'',
-        landStatus: '',
+        iocStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        landNo: [
-          { required: true, message: '请输入国土数据编号', trigger: 'blur' }
+        iocNo: [
+          { required: true, message: '请输入输入输出模块编号', trigger: 'blur' }
         ],
-        landName: [
-          { required: true, message: '请输入国土数据名称', trigger: 'blur' }
+        iocName: [
+          { required: true, message: '请输入输入输出模块名称', trigger: 'blur' }
         ],
-        landType: [
-          { required: true, message: '请选择国土数据类型', trigger: 'blur' }
+        iocType: [
+          { required: true, message: '请选择输入输出模块类型', trigger: 'blur' }
         ],
-        landStatus: [
-          { required: true, message: '请选择国土数据状态', trigger: 'blur' }
+        iocStatus: [
+          { required: true, message: '请选择输入输出模块状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            landNo: 'VSxxxxxxxx',
-            landName: 'XXX土地资源数据',
-            landType: '土地资源数据',
-            landStatus: '有效状态',
+            iocNo: 'VSxxxxxxxx',
+            iocName: 'XXX数字输入输出模块',
+            iocType: '数字输入输出模块',
+            iocStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            landNo: 'VSxxxxxxxx',
-            landName: 'XXX土地资源数据',
-            landType: '土地资源数据',
-            landStatus: '有效状态',
+            iocNo: 'VSxxxxxxxx',
+            iocName: 'XXX数字输入输出模块',
+            iocType: '数字输入输出模块',
+            iocStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            landNo: 'VSxxxxxxxx',
-            landName: 'XXX土地资源数据',
-            landType: '土地资源数据',
-            landStatus: '有效状态',
+            iocNo: 'VSxxxxxxxx',
+            iocName: 'XXX数字输入输出模块',
+            iocType: '数字输入输出模块',
+            iocStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            landNo: 'VSxxxxxxxx',
-            landName: 'XXX地质矿产资源数据',
-            landType: '地质矿产资源数据',
-            landStatus: '失效状态',
+            iocNo: 'VSxxxxxxxx',
+            iocName: 'XXX高速计数器/编码器模块',
+            iocType: '高速计数器/编码器模块',
+            iocStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            landNo: 'VSxxxxxxxx',
-            landName: 'XXX地质矿产资源数据',
-            landType: '地质矿产资源数据',
-            landStatus: '有效状态',
+            iocNo: 'VSxxxxxxxx',
+            iocName: 'XXX高速计数器/编码器模块',
+            iocType: '高速计数器/编码器模块',
+            iocStatus: '运行中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑国土数据'
-        this.editForm.landNo = row.landNo
-        this.editForm.landName = row.landName
-        this.editForm.landStatus = row.landStatus
-        this.editForm.landType = row.landType
+        this.title = '编辑输入输出模块'
+        this.editForm.iocNo = row.iocNo
+        this.editForm.iocName = row.iocName
+        this.editForm.iocStatus = row.iocStatus
+        this.editForm.iocType = row.iocType
       } else {
-        this.title = '添加国土数据'
-        this.editForm.landNo = ''
-        this.editForm.landName = ''
-        this.editForm.landStatus = ''
-        this.editForm.landType =''
+        this.title = '添加输入输出模块'
+        this.editForm.iocNo = ''
+        this.editForm.iocName = ''
+        this.editForm.iocStatus = ''
+        this.editForm.iocType =''
       }
     },
     // 编辑、增加页面保存方法

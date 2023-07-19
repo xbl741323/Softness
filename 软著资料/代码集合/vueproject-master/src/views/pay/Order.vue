@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>空间数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">PLC控制模块</el-breadcrumb-item>
+      <el-breadcrumb-item>中央处理器管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.spaceNo" placeholder="请输入空间数据编号"></el-input>
+        <el-input size="small" v-model="formInline.cpuNo" placeholder="请输入中央处理器编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.spaceName" placeholder="请输入空间数据名称"></el-input>
+        <el-input size="small" v-model="formInline.cpuName" placeholder="请输入中央处理器名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.spaceType" placeholder="请选择空间数据类型"></el-select>
+        <el-select size="small" v-model="formInline.cpuType" placeholder="请选择中央处理器类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="spaceNo" label="空间数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="cpuNo" label="中央处理器编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="spaceName" label="空间数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="cpuName" label="中央处理器名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="spaceType" label="空间数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="cpuType" label="中央处理器类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="spaceStatus" label="空间数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="cpuStatus" label="中央处理器状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="空间数据编号" prop="spaceNo">
-          <el-input size="small" v-model="addForm.spaceNo" auto-complete="off" placeholder="请输入空间数据编号"></el-input>
+        <el-form-item label="中央处理器编号" prop="cpuNo">
+          <el-input size="small" v-model="addForm.cpuNo" auto-complete="off" placeholder="请输入中央处理器编号"></el-input>
         </el-form-item>
-        <el-form-item label="空间数据名称" prop="spaceName">
-          <el-input size="small" v-model="addForm.spaceName" auto-complete="off" placeholder="请输入空间数据名称"></el-input>
+        <el-form-item label="中央处理器名称" prop="cpuName">
+          <el-input size="small" v-model="addForm.cpuName" auto-complete="off" placeholder="请输入中央处理器名称"></el-input>
         </el-form-item>
-        <el-form-item label="空间数据类型" prop="spaceType">
-          <el-select size="small" v-model="addForm.spaceType" auto-complete="off" placeholder="请选择空间数据类型">
-            <el-option label="空间数据" value="1"></el-option>
+        <el-form-item label="中央处理器类型" prop="cpuType">
+          <el-select size="small" v-model="addForm.cpuType" auto-complete="off" placeholder="请选择中央处理器类型">
+            <el-option label="ARM处理器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="空间数据状态" prop="spaceStatus">
-          <el-select size="small" v-model="addForm.spaceStatus" auto-complete="off" placeholder="请选择空间数据状态">
-            <el-option label="有效状态" value="1"></el-option>
+        <el-form-item label="中央处理器状态" prop="cpuStatus">
+          <el-select size="small" v-model="addForm.cpuStatus" auto-complete="off" placeholder="请选择中央处理器状态">
+            <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       spaceNo:'',
-       spaceName:'',
-       spaceType:'',
+       cpuNo:'',
+       cpuName:'',
+       cpuType:'',
        address:'',
-       spaceGender:'',
+       cpuGender:'',
        age:'',
-       spaceStatus:''
+       cpuStatus:''
       },
       rules: {
-        spaceNo: [
-          { required: true, message: '请输入空间数据编号', trigger: 'blur' }
+        cpuNo: [
+          { required: true, message: '请输入中央处理器编号', trigger: 'blur' }
         ],
-        spaceName: [
-          { required: true, message: '请输入空间数据名称', trigger: 'blur' }
+        cpuName: [
+          { required: true, message: '请输入中央处理器名称', trigger: 'blur' }
         ],
-        spaceType: [
-          { required: true, message: '请选择空间数据类型', trigger: 'blur' }
+        cpuType: [
+          { required: true, message: '请选择中央处理器类型', trigger: 'blur' }
         ],
-        spaceStatus: [
-          { required: true, message: '请选择空间数据状态', trigger: 'blur' }
+        cpuStatus: [
+          { required: true, message: '请选择中央处理器状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        spaceName: '',
+        cpuName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            spaceNo:'VCxxxxxx',
-            spaceName:'xxx空间数据',
-            spaceType:'空间数据',
-            spaceStatus:"有效状态",
+            cpuNo:'VCxxxxxx',
+            cpuName:'xxxARM处理器',
+            cpuType:'ARM处理器',
+            cpuStatus:"运行中",
             createTime: "2020-08-12"
           },
           {
-            spaceNo:'VCxxxxxx',
-            spaceName:'xxx空间数据',
-            spaceType:'空间数据',
-            spaceStatus:"有效状态",
+            cpuNo:'VCxxxxxx',
+            cpuName:'xxxARM处理器',
+            cpuType:'ARM处理器',
+            cpuStatus:"运行中",
             createTime: "2022-10-24"
           },
           {
-            spaceNo:'VCxxxxxx',
-            spaceName:'xxx空间数据',
-            spaceType:'空间数据',
-            spaceStatus:"有效状态",
+            cpuNo:'VCxxxxxx',
+            cpuName:'xxxARM处理器',
+            cpuType:'ARM处理器',
+            cpuStatus:"运行中",
             createTime: "2022-01-12"
           },
           {
-            spaceNo:'VCxxxxxx',
-            spaceName:'xxx地形地貌数据',
-            spaceType:'地形地貌数据',
-            spaceStatus:"失效状态",
+            cpuNo:'VCxxxxxx',
+            cpuName:'xxxFPGA处理器',
+            cpuType:'FPGA处理器',
+            cpuStatus:"维护中",
             createTime: "2022-05-17"
           },
           {
-            spaceNo:'VCxxxxxx',
-            spaceName:'xxx地形地貌数据',
-            spaceType:'地形地貌数据',
-            spaceStatus:"有效状态",
+            cpuNo:'VCxxxxxx',
+            cpuName:'xxxFPGA处理器',
+            cpuType:'FPGA处理器',
+            cpuStatus:"运行中",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑空间数据'
-        this.addForm.spaceNo = row.spaceNo
-        this.addForm.spaceName = row.spaceName
-        this.addForm.spaceType = row.spaceType
-        this.addForm.spaceStatus = row.spaceStatus
+        this.title='编辑中央处理器'
+        this.addForm.cpuNo = row.cpuNo
+        this.addForm.cpuName = row.cpuName
+        this.addForm.cpuType = row.cpuType
+        this.addForm.cpuStatus = row.cpuStatus
       }else{
-        this.title='添加空间数据'
-        this.addForm.spaceNo = ''
-        this.addForm.spaceName = ''
-        this.addForm.spaceType = ''
-        this.addForm.spaceStatus = ''
+        this.title='添加中央处理器'
+        this.addForm.cpuNo = ''
+        this.addForm.cpuName = ''
+        this.addForm.cpuType = ''
+        this.addForm.cpuStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formspaceName) {
+    closeDialog(formcpuName) {
       this.editFormVisible = false
-      this.$refs[formspaceName].resetFields()
+      this.$refs[formcpuName].resetFields()
     }
   }
 }

@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据管理模块',
+          menuname: 'PLC控制模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '国土数据管理',
+              menuname: '输入输出模块管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '空间数据管理',
+              menuname: '中央处理器管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据更新管理',
+              menuname: '存储器管理',
               hasThird: 'N',
               url: 'pay/Order111',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据备份管理',
+              menuname: '通信模块管理',
               hasThird: 'N',
               url: 'pay/Order111',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据安全管理',
+              menuname: '编程接口管理',
               hasThird: 'N',
               url: 'pay/Order111',
               menus: null
@@ -109,7 +109,7 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据采集模块',
+          menuname: '机器视觉模块',
           hasThird: null,
           url: null,
           menus: [
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据处理模块',
+          menuname: '人机界面模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '决策支持模块',
+          menuname: '远程监控与管理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据分析模块',
+          menuname: '数据分析与优化模块',
           hasThird: null,
           url: null,
           menus: [
