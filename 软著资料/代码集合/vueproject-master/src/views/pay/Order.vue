@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">控制与调节模块</el-breadcrumb-item>
-      <el-breadcrumb-item>控制器管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">广播频道管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>频道信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.controllerNo" placeholder="请输入控制器编号"></el-input>
+        <el-input size="small" v-model="formInline.channelNo" placeholder="请输入频道信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.controllerName" placeholder="请输入控制器名称"></el-input>
+        <el-input size="small" v-model="formInline.channelName" placeholder="请输入频道信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.controllerType" placeholder="请选择控制器类型"></el-select>
+        <el-select size="small" v-model="formInline.channelType" placeholder="请选择频道信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="controllerNo" label="控制器编号" show-overflow-tooltip>
+      <el-table-column sortable prop="channelNo" label="频道信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="controllerName" label="控制器名称" show-overflow-tooltip>
+      <el-table-column sortable prop="channelName" label="频道信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="controllerType" label="控制器类型" show-overflow-tooltip>
+      <el-table-column sortable prop="channelType" label="频道信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="controllerStatus" label="控制器状态" show-overflow-tooltip>
+      <el-table-column sortable prop="channelStatus" label="频道信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="控制器编号" prop="controllerNo">
-          <el-input size="small" v-model="addForm.controllerNo" auto-complete="off" placeholder="请输入控制器编号"></el-input>
+        <el-form-item label="频道信息编号" prop="channelNo">
+          <el-input size="small" v-model="addForm.channelNo" auto-complete="off" placeholder="请输入频道信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="控制器名称" prop="controllerName">
-          <el-input size="small" v-model="addForm.controllerName" auto-complete="off" placeholder="请输入控制器名称"></el-input>
+        <el-form-item label="频道信息名称" prop="channelName">
+          <el-input size="small" v-model="addForm.channelName" auto-complete="off" placeholder="请输入频道信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="控制器类型" prop="controllerType">
-          <el-select size="small" v-model="addForm.controllerType" auto-complete="off" placeholder="请选择控制器类型">
-            <el-option label="谐波监测控制器" value="1"></el-option>
+        <el-form-item label="频道信息类型" prop="channelType">
+          <el-select size="small" v-model="addForm.channelType" auto-complete="off" placeholder="请选择频道信息类型">
+            <el-option label="音乐频道" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="控制器状态" prop="controllerStatus">
-          <el-select size="small" v-model="addForm.controllerStatus" auto-complete="off" placeholder="请选择控制器状态">
-            <el-option label="运行中" value="1"></el-option>
+        <el-form-item label="频道信息状态" prop="channelStatus">
+          <el-select size="small" v-model="addForm.channelStatus" auto-complete="off" placeholder="请选择频道信息状态">
+            <el-option label="正常" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       controllerNo:'',
-       controllerName:'',
-       controllerType:'',
+       channelNo:'',
+       channelName:'',
+       channelType:'',
        address:'',
-       controllerGender:'',
+       channelGender:'',
        age:'',
-       controllerStatus:''
+       channelStatus:''
       },
       rules: {
-        controllerNo: [
-          { required: true, message: '请输入控制器编号', trigger: 'blur' }
+        channelNo: [
+          { required: true, message: '请输入频道信息编号', trigger: 'blur' }
         ],
-        controllerName: [
-          { required: true, message: '请输入控制器名称', trigger: 'blur' }
+        channelName: [
+          { required: true, message: '请输入频道信息名称', trigger: 'blur' }
         ],
-        controllerType: [
-          { required: true, message: '请选择控制器类型', trigger: 'blur' }
+        channelType: [
+          { required: true, message: '请选择频道信息类型', trigger: 'blur' }
         ],
-        controllerStatus: [
-          { required: true, message: '请选择控制器状态', trigger: 'blur' }
+        channelStatus: [
+          { required: true, message: '请选择频道信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        controllerName: '',
+        channelName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            controllerNo:'VCxxxxxx',
-            controllerName:'xxx谐波监测控制器',
-            controllerType:'谐波监测控制器',
-            controllerStatus:"运行中",
+            channelNo:'VCxxxxxx',
+            channelName:'xxx音乐频道',
+            channelType:'音乐频道',
+            channelStatus:"正常",
             createTime: "2020-08-12"
           },
           {
-            controllerNo:'VCxxxxxx',
-            controllerName:'xxx谐波监测控制器',
-            controllerType:'谐波监测控制器',
-            controllerStatus:"运行中",
+            channelNo:'VCxxxxxx',
+            channelName:'xxx音乐频道',
+            channelType:'音乐频道',
+            channelStatus:"正常",
             createTime: "2022-10-24"
           },
           {
-            controllerNo:'VCxxxxxx',
-            controllerName:'xxx谐波监测控制器',
-            controllerType:'谐波监测控制器',
-            controllerStatus:"运行中",
+            channelNo:'VCxxxxxx',
+            channelName:'xxx音乐频道',
+            channelType:'音乐频道',
+            channelStatus:"正常",
             createTime: "2022-01-12"
           },
           {
-            controllerNo:'VCxxxxxx',
-            controllerName:'xxx谐波分析与诊断控制器',
-            controllerType:'谐波分析与诊断控制器',
-            controllerStatus:"维护中",
+            channelNo:'VCxxxxxx',
+            channelName:'xxx新闻频道',
+            channelType:'新闻频道',
+            channelStatus:"已下线",
             createTime: "2022-05-17"
           },
           {
-            controllerNo:'VCxxxxxx',
-            controllerName:'xxx谐波分析与诊断控制器',
-            controllerType:'谐波分析与诊断控制器',
-            controllerStatus:"运行中",
+            channelNo:'VCxxxxxx',
+            channelName:'xxx新闻频道',
+            channelType:'新闻频道',
+            channelStatus:"已下线",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑控制器'
-        this.addForm.controllerNo = row.controllerNo
-        this.addForm.controllerName = row.controllerName
-        this.addForm.controllerType = row.controllerType
-        this.addForm.controllerStatus = row.controllerStatus
+        this.title='编辑频道信息'
+        this.addForm.channelNo = row.channelNo
+        this.addForm.channelName = row.channelName
+        this.addForm.channelType = row.channelType
+        this.addForm.channelStatus = row.channelStatus
       }else{
-        this.title='添加控制器'
-        this.addForm.controllerNo = ''
-        this.addForm.controllerName = ''
-        this.addForm.controllerType = ''
-        this.addForm.controllerStatus = ''
+        this.title='添加频道信息'
+        this.addForm.channelNo = ''
+        this.addForm.channelName = ''
+        this.addForm.channelType = ''
+        this.addForm.channelStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formcontrollerName) {
+    closeDialog(formchannelName) {
       this.editFormVisible = false
-      this.$refs[formcontrollerName].resetFields()
+      this.$refs[formchannelName].resetFields()
     }
   }
 }
