@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: 'PLC控制模块',
+          menuname: '谐波管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '输入输出模块管理',
+              menuname: '谐波数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,33 +75,33 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '中央处理器管理',
+              menuname: '谐波问题评估管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order1',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '存储器管理',
+              menuname: '故障识别与排除管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '通信模块管理',
+              menuname: '建议和控制措施管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '编程接口管理',
+              menuname: '报警和通知管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
           ]
@@ -109,48 +109,48 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '机器视觉模块',
+          menuname: '控制与调节模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据录入表单设计管理',
+              menuname: '控制器管理',
               hasThird: 'N',
-              url: 'pay/Order1',
+              url: 'pay/Order',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据录入界面管理',
+              menuname: '控制算法管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据验证和校验管理',
+              menuname: '谐波滤波器控制管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据批量导入管理',
+              menuname: '响应时间控制管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据附件和图片上传管理',
+              menuname: '通信接口管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
           ]
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '人机界面模块',
+          menuname: '数据采集模块',
           hasThird: null,
           url: null,
           menus: [
@@ -167,7 +167,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '数据共享设置管理',
               hasThird: 'N',
-              url: 'pay/Order11',
+              url: 'pay/Order111',
               menus: null
             },
             {
@@ -175,7 +175,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '数据分享管理',
               hasThird: 'N',
-              url: 'pay/Order1111199',
+              url: 'pay/Order11111199',
               menus: null
             },
             {
@@ -183,7 +183,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '数据访问控制管理',
               hasThird: 'N',
-              url: 'pay/Order1111199',
+              url: 'pay/Order11111199',
               menus: null
             },
             {
@@ -191,7 +191,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '数据协作管理',
               hasThird: 'N',
-              url: 'pay/Order1111199',
+              url: 'pay/Order11111199',
               menus: null
             },
             {
@@ -199,7 +199,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '数据隐私保护管理',
               hasThird: 'N',
-              url: 'pay/Order1111199',
+              url: 'pay/Order11111199',
               menus: null
             },
           ]
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '远程监控与管理模块',
+          menuname: '数据存储与报告模块',
           hasThird: null,
           url: null,
           menus: [
@@ -216,7 +216,7 @@ export default {
               icon: 'icon-provider-manage',
               menuname: '讲解和导引管理',
               hasThird: 'N',
-              url: 'pay/Order1111',
+              url: 'pay/Order11111',
               menus: null
             },
           ]
@@ -224,7 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据分析与优化模块',
+          menuname: '数据统计分析模块',
           hasThird: null,
           url: null,
           menus: [

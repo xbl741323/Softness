@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">PLC控制模块</el-breadcrumb-item>
-      <el-breadcrumb-item>中央处理器管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">控制与调节模块</el-breadcrumb-item>
+      <el-breadcrumb-item>控制器管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.cpuNo" placeholder="请输入中央处理器编号"></el-input>
+        <el-input size="small" v-model="formInline.controllerNo" placeholder="请输入控制器编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.cpuName" placeholder="请输入中央处理器名称"></el-input>
+        <el-input size="small" v-model="formInline.controllerName" placeholder="请输入控制器名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.cpuType" placeholder="请选择中央处理器类型"></el-select>
+        <el-select size="small" v-model="formInline.controllerType" placeholder="请选择控制器类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="cpuNo" label="中央处理器编号" show-overflow-tooltip>
+      <el-table-column sortable prop="controllerNo" label="控制器编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="cpuName" label="中央处理器名称" show-overflow-tooltip>
+      <el-table-column sortable prop="controllerName" label="控制器名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="cpuType" label="中央处理器类型" show-overflow-tooltip>
+      <el-table-column sortable prop="controllerType" label="控制器类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="cpuStatus" label="中央处理器状态" show-overflow-tooltip>
+      <el-table-column sortable prop="controllerStatus" label="控制器状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="中央处理器编号" prop="cpuNo">
-          <el-input size="small" v-model="addForm.cpuNo" auto-complete="off" placeholder="请输入中央处理器编号"></el-input>
+        <el-form-item label="控制器编号" prop="controllerNo">
+          <el-input size="small" v-model="addForm.controllerNo" auto-complete="off" placeholder="请输入控制器编号"></el-input>
         </el-form-item>
-        <el-form-item label="中央处理器名称" prop="cpuName">
-          <el-input size="small" v-model="addForm.cpuName" auto-complete="off" placeholder="请输入中央处理器名称"></el-input>
+        <el-form-item label="控制器名称" prop="controllerName">
+          <el-input size="small" v-model="addForm.controllerName" auto-complete="off" placeholder="请输入控制器名称"></el-input>
         </el-form-item>
-        <el-form-item label="中央处理器类型" prop="cpuType">
-          <el-select size="small" v-model="addForm.cpuType" auto-complete="off" placeholder="请选择中央处理器类型">
-            <el-option label="ARM处理器" value="1"></el-option>
+        <el-form-item label="控制器类型" prop="controllerType">
+          <el-select size="small" v-model="addForm.controllerType" auto-complete="off" placeholder="请选择控制器类型">
+            <el-option label="谐波监测控制器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="中央处理器状态" prop="cpuStatus">
-          <el-select size="small" v-model="addForm.cpuStatus" auto-complete="off" placeholder="请选择中央处理器状态">
+        <el-form-item label="控制器状态" prop="controllerStatus">
+          <el-select size="small" v-model="addForm.controllerStatus" auto-complete="off" placeholder="请选择控制器状态">
             <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       cpuNo:'',
-       cpuName:'',
-       cpuType:'',
+       controllerNo:'',
+       controllerName:'',
+       controllerType:'',
        address:'',
-       cpuGender:'',
+       controllerGender:'',
        age:'',
-       cpuStatus:''
+       controllerStatus:''
       },
       rules: {
-        cpuNo: [
-          { required: true, message: '请输入中央处理器编号', trigger: 'blur' }
+        controllerNo: [
+          { required: true, message: '请输入控制器编号', trigger: 'blur' }
         ],
-        cpuName: [
-          { required: true, message: '请输入中央处理器名称', trigger: 'blur' }
+        controllerName: [
+          { required: true, message: '请输入控制器名称', trigger: 'blur' }
         ],
-        cpuType: [
-          { required: true, message: '请选择中央处理器类型', trigger: 'blur' }
+        controllerType: [
+          { required: true, message: '请选择控制器类型', trigger: 'blur' }
         ],
-        cpuStatus: [
-          { required: true, message: '请选择中央处理器状态', trigger: 'blur' }
+        controllerStatus: [
+          { required: true, message: '请选择控制器状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        cpuName: '',
+        controllerName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            cpuNo:'VCxxxxxx',
-            cpuName:'xxxARM处理器',
-            cpuType:'ARM处理器',
-            cpuStatus:"运行中",
+            controllerNo:'VCxxxxxx',
+            controllerName:'xxx谐波监测控制器',
+            controllerType:'谐波监测控制器',
+            controllerStatus:"运行中",
             createTime: "2020-08-12"
           },
           {
-            cpuNo:'VCxxxxxx',
-            cpuName:'xxxARM处理器',
-            cpuType:'ARM处理器',
-            cpuStatus:"运行中",
+            controllerNo:'VCxxxxxx',
+            controllerName:'xxx谐波监测控制器',
+            controllerType:'谐波监测控制器',
+            controllerStatus:"运行中",
             createTime: "2022-10-24"
           },
           {
-            cpuNo:'VCxxxxxx',
-            cpuName:'xxxARM处理器',
-            cpuType:'ARM处理器',
-            cpuStatus:"运行中",
+            controllerNo:'VCxxxxxx',
+            controllerName:'xxx谐波监测控制器',
+            controllerType:'谐波监测控制器',
+            controllerStatus:"运行中",
             createTime: "2022-01-12"
           },
           {
-            cpuNo:'VCxxxxxx',
-            cpuName:'xxxFPGA处理器',
-            cpuType:'FPGA处理器',
-            cpuStatus:"维护中",
+            controllerNo:'VCxxxxxx',
+            controllerName:'xxx谐波分析与诊断控制器',
+            controllerType:'谐波分析与诊断控制器',
+            controllerStatus:"维护中",
             createTime: "2022-05-17"
           },
           {
-            cpuNo:'VCxxxxxx',
-            cpuName:'xxxFPGA处理器',
-            cpuType:'FPGA处理器',
-            cpuStatus:"运行中",
+            controllerNo:'VCxxxxxx',
+            controllerName:'xxx谐波分析与诊断控制器',
+            controllerType:'谐波分析与诊断控制器',
+            controllerStatus:"运行中",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑中央处理器'
-        this.addForm.cpuNo = row.cpuNo
-        this.addForm.cpuName = row.cpuName
-        this.addForm.cpuType = row.cpuType
-        this.addForm.cpuStatus = row.cpuStatus
+        this.title='编辑控制器'
+        this.addForm.controllerNo = row.controllerNo
+        this.addForm.controllerName = row.controllerName
+        this.addForm.controllerType = row.controllerType
+        this.addForm.controllerStatus = row.controllerStatus
       }else{
-        this.title='添加中央处理器'
-        this.addForm.cpuNo = ''
-        this.addForm.cpuName = ''
-        this.addForm.cpuType = ''
-        this.addForm.cpuStatus = ''
+        this.title='添加控制器'
+        this.addForm.controllerNo = ''
+        this.addForm.controllerName = ''
+        this.addForm.controllerType = ''
+        this.addForm.controllerStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formcpuName) {
+    closeDialog(formcontrollerName) {
       this.editFormVisible = false
-      this.$refs[formcpuName].resetFields()
+      this.$refs[formcontrollerName].resetFields()
     }
   }
 }
