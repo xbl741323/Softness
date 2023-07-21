@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '广播内容管理模块',
+          menuname: '设备识别和存储模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '音频文件管理',
+              menuname: '设备信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '内容分类和排序管理',
+              menuname: '扫描和识别管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '编辑和剪辑管理',
+              menuname: '配置文件管理',
+              hasThird: 'N',
+              url: 'pay/Order',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '配置文件版本控制管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -91,15 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '定时播放管理',
-              hasThird: 'N',
-              url: 'pay/Order1111',
-              menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '审核和发布管理',
+              menuname: '配置文件比对管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -107,7 +107,7 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '删除和归档管理',
+              menuname: '设备拓扑图展示管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -117,7 +117,7 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '广播频道管理模块',
+          menuname: '配置核查和比对模块',
           hasThird: null,
           url: null,
           menus: [
@@ -126,7 +126,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '频道信息管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order1',
               menus: null
             },
             {
@@ -166,7 +166,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '广播推荐模块',
+          menuname: '安全审计模块',
           hasThird: null,
           url: null,
           menus: [
@@ -215,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '多媒体互动模块',
+          menuname: '日志和报告模块',
           hasThird: null,
           url: null,
           menus: [

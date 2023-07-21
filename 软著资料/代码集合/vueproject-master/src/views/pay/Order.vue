@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">广播频道管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>频道信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">设备识别和存储模块</el-breadcrumb-item>
+      <el-breadcrumb-item>配置文件管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.channelNo" placeholder="请输入频道信息编号"></el-input>
+        <el-input size="small" v-model="formInline.profileNo" placeholder="请输入配置文件编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.channelName" placeholder="请输入频道信息名称"></el-input>
+        <el-input size="small" v-model="formInline.profileName" placeholder="请输入配置文件名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.channelType" placeholder="请选择频道信息类型"></el-select>
+        <el-select size="small" v-model="formInline.profileType" placeholder="请选择配置文件类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="channelNo" label="频道信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="profileNo" label="配置文件编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="channelName" label="频道信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="profileName" label="配置文件名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="channelType" label="频道信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="profileType" label="配置文件类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="channelStatus" label="频道信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="profileStatus" label="配置文件状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="频道信息编号" prop="channelNo">
-          <el-input size="small" v-model="addForm.channelNo" auto-complete="off" placeholder="请输入频道信息编号"></el-input>
+        <el-form-item label="配置文件编号" prop="profileNo">
+          <el-input size="small" v-model="addForm.profileNo" auto-complete="off" placeholder="请输入配置文件编号"></el-input>
         </el-form-item>
-        <el-form-item label="频道信息名称" prop="channelName">
-          <el-input size="small" v-model="addForm.channelName" auto-complete="off" placeholder="请输入频道信息名称"></el-input>
+        <el-form-item label="配置文件名称" prop="profileName">
+          <el-input size="small" v-model="addForm.profileName" auto-complete="off" placeholder="请输入配置文件名称"></el-input>
         </el-form-item>
-        <el-form-item label="频道信息类型" prop="channelType">
-          <el-select size="small" v-model="addForm.channelType" auto-complete="off" placeholder="请选择频道信息类型">
-            <el-option label="音乐频道" value="1"></el-option>
+        <el-form-item label="配置文件类型" prop="profileType">
+          <el-select size="small" v-model="addForm.profileType" auto-complete="off" placeholder="请选择配置文件类型">
+            <el-option label="路由和交换配置文件" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="频道信息状态" prop="channelStatus">
-          <el-select size="small" v-model="addForm.channelStatus" auto-complete="off" placeholder="请选择频道信息状态">
-            <el-option label="正常" value="1"></el-option>
+        <el-form-item label="配置文件状态" prop="profileStatus">
+          <el-select size="small" v-model="addForm.profileStatus" auto-complete="off" placeholder="请选择配置文件状态">
+            <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       channelNo:'',
-       channelName:'',
-       channelType:'',
+       profileNo:'',
+       profileName:'',
+       profileType:'',
        address:'',
-       channelGender:'',
+       profileGender:'',
        age:'',
-       channelStatus:''
+       profileStatus:''
       },
       rules: {
-        channelNo: [
-          { required: true, message: '请输入频道信息编号', trigger: 'blur' }
+        profileNo: [
+          { required: true, message: '请输入配置文件编号', trigger: 'blur' }
         ],
-        channelName: [
-          { required: true, message: '请输入频道信息名称', trigger: 'blur' }
+        profileName: [
+          { required: true, message: '请输入配置文件名称', trigger: 'blur' }
         ],
-        channelType: [
-          { required: true, message: '请选择频道信息类型', trigger: 'blur' }
+        profileType: [
+          { required: true, message: '请选择配置文件类型', trigger: 'blur' }
         ],
-        channelStatus: [
-          { required: true, message: '请选择频道信息状态', trigger: 'blur' }
+        profileStatus: [
+          { required: true, message: '请选择配置文件状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        channelName: '',
+        profileName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            channelNo:'VCxxxxxx',
-            channelName:'xxx音乐频道',
-            channelType:'音乐频道',
-            channelStatus:"正常",
+            profileNo:'VCxxxxxx',
+            profileName:'xxx路由和交换配置文件',
+            profileType:'路由和交换配置文件',
+            profileStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            channelNo:'VCxxxxxx',
-            channelName:'xxx音乐频道',
-            channelType:'音乐频道',
-            channelStatus:"正常",
+            profileNo:'VCxxxxxx',
+            profileName:'xxx路由和交换配置文件',
+            profileType:'路由和交换配置文件',
+            profileStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            channelNo:'VCxxxxxx',
-            channelName:'xxx音乐频道',
-            channelType:'音乐频道',
-            channelStatus:"正常",
+            profileNo:'VCxxxxxx',
+            profileName:'xxx路由和交换配置文件',
+            profileType:'路由和交换配置文件',
+            profileStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            channelNo:'VCxxxxxx',
-            channelName:'xxx新闻频道',
-            channelType:'新闻频道',
-            channelStatus:"已下线",
+            profileNo:'VCxxxxxx',
+            profileName:'xxx安全策略配置文件',
+            profileType:'安全策略配置文件',
+            profileStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            channelNo:'VCxxxxxx',
-            channelName:'xxx新闻频道',
-            channelType:'新闻频道',
-            channelStatus:"已下线",
+            profileNo:'VCxxxxxx',
+            profileName:'xxx安全策略配置文件',
+            profileType:'安全策略配置文件',
+            profileStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑频道信息'
-        this.addForm.channelNo = row.channelNo
-        this.addForm.channelName = row.channelName
-        this.addForm.channelType = row.channelType
-        this.addForm.channelStatus = row.channelStatus
+        this.title='编辑配置文件'
+        this.addForm.profileNo = row.profileNo
+        this.addForm.profileName = row.profileName
+        this.addForm.profileType = row.profileType
+        this.addForm.profileStatus = row.profileStatus
       }else{
-        this.title='添加频道信息'
-        this.addForm.channelNo = ''
-        this.addForm.channelName = ''
-        this.addForm.channelType = ''
-        this.addForm.channelStatus = ''
+        this.title='添加配置文件'
+        this.addForm.profileNo = ''
+        this.addForm.profileName = ''
+        this.addForm.profileType = ''
+        this.addForm.profileStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formchannelName) {
+    closeDialog(formprofileName) {
       this.editFormVisible = false
-      this.$refs[formchannelName].resetFields()
+      this.$refs[formprofileName].resetFields()
     }
   }
 }
