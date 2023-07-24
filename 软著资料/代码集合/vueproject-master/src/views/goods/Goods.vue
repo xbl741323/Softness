@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">影像数据采集和输入模块</el-breadcrumb-item>
-      <el-breadcrumb-item>传感器信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">设备控制模块</el-breadcrumb-item>
+      <el-breadcrumb-item>智能控制器管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.sensorName" placeholder="请输入传感器信息编号"></el-input>
+        <el-input size="small" v-model="formInline.controllerName" placeholder="请输入智能控制器编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.sensorName" placeholder="请输入传感器信息名称"></el-input>
+        <el-input size="small" v-model="formInline.controllerName" placeholder="请输入智能控制器名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.sensorStatus" placeholder="请选择传感器信息类型">
+        <el-select size="small" v-model="formInline.controllerStatus" placeholder="请选择智能控制器类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="sensorNo" label="传感器信息编号">
+      <el-table-column sortable prop="controllerNo" label="智能控制器编号">
       </el-table-column>
-      <el-table-column sortable prop="sensorName" label="传感器信息名称">
+      <el-table-column sortable prop="controllerName" label="智能控制器名称">
       </el-table-column>
-      <el-table-column sortable prop="sensorType" label="传感器信息类型">
+      <el-table-column sortable prop="controllerType" label="智能控制器类型">
       </el-table-column>
-      <el-table-column sortable prop="sensorStatus" label="传感器信息状态" >
+      <el-table-column sortable prop="controllerStatus" label="智能控制器状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="传感器信息编号" prop="sensorNo">
-          <el-input size="small" v-model="editForm.sensorNo" auto-complete="off" placeholder="请输入传感器信息编号"></el-input>
+        <el-form-item label="智能控制器编号" prop="controllerNo">
+          <el-input size="small" v-model="editForm.controllerNo" auto-complete="off" placeholder="请输入智能控制器编号"></el-input>
         </el-form-item>
-        <el-form-item label="传感器信息名称" prop="sensorName">
-          <el-input size="small" v-model="editForm.sensorName" auto-complete="off" placeholder="请输入传感器信息名称"></el-input>
+        <el-form-item label="智能控制器名称" prop="controllerName">
+          <el-input size="small" v-model="editForm.controllerName" auto-complete="off" placeholder="请输入智能控制器名称"></el-input>
         </el-form-item>
-        <el-form-item label="传感器信息类型" prop="sensorType">
-          <el-select size="small" v-model="editForm.sensorType" auto-complete="off" placeholder="请选择传感器信息类型">
-            <el-option label="视频传感器" value="1"></el-option>
+        <el-form-item label="智能控制器类型" prop="controllerType">
+          <el-select size="small" v-model="editForm.controllerType" auto-complete="off" placeholder="请选择智能控制器类型">
+            <el-option label="逻辑控制器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="传感器信息状态" prop="sensorStatus">
-          <el-select size="small" v-model="editForm.sensorStatus" auto-complete="off" placeholder="请选择传感器信息状态">
+        <el-form-item label="智能控制器状态" prop="controllerStatus">
+          <el-select size="small" v-model="editForm.controllerStatus" auto-complete="off" placeholder="请选择智能控制器状态">
             <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        sensorNo: '',
-        sensorName: '',
-        sensorType:'',
+        controllerNo: '',
+        controllerName: '',
+        controllerType:'',
         status:'',
-        sensorStatus: '',
+        controllerStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        sensorNo: [
-          { required: true, message: '请输入传感器信息编号', trigger: 'blur' }
+        controllerNo: [
+          { required: true, message: '请输入智能控制器编号', trigger: 'blur' }
         ],
-        sensorName: [
-          { required: true, message: '请输入传感器信息名称', trigger: 'blur' }
+        controllerName: [
+          { required: true, message: '请输入智能控制器名称', trigger: 'blur' }
         ],
-        sensorType: [
-          { required: true, message: '请选择传感器信息类型', trigger: 'blur' }
+        controllerType: [
+          { required: true, message: '请选择智能控制器类型', trigger: 'blur' }
         ],
-        sensorStatus: [
-          { required: true, message: '请选择传感器信息状态', trigger: 'blur' }
+        controllerStatus: [
+          { required: true, message: '请选择智能控制器状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XXX视频传感器',
-            sensorType: '视频传感器',
-            sensorStatus: '运行中',
+            controllerNo: 'VSxxxxxxxx',
+            controllerName: 'XXX逻辑控制器',
+            controllerType: '逻辑控制器',
+            controllerStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XXX视频传感器',
-            sensorType: '视频传感器',
-            sensorStatus: '运行中',
+            controllerNo: 'VSxxxxxxxx',
+            controllerName: 'XXX逻辑控制器',
+            controllerType: '逻辑控制器',
+            controllerStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XXX视频传感器',
-            sensorType: '视频传感器',
-            sensorStatus: '运行中',
+            controllerNo: 'VSxxxxxxxx',
+            controllerName: 'XXX逻辑控制器',
+            controllerType: '逻辑控制器',
+            controllerStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XXX图像传感器',
-            sensorType: '图像传感器',
-            sensorStatus: '维护中',
+            controllerNo: 'VSxxxxxxxx',
+            controllerName: 'XXX单片机控制器',
+            controllerType: '单片机控制器',
+            controllerStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            sensorNo: 'VSxxxxxxxx',
-            sensorName: 'XXX图像传感器',
-            sensorType: '图像传感器',
-            sensorStatus: '运行中',
+            controllerNo: 'VSxxxxxxxx',
+            controllerName: 'XXX单片机控制器',
+            controllerType: '单片机控制器',
+            controllerStatus: '运行中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑传感器信息'
-        this.editForm.sensorNo = row.sensorNo
-        this.editForm.sensorName = row.sensorName
-        this.editForm.sensorStatus = row.sensorStatus
-        this.editForm.sensorType = row.sensorType
+        this.title = '编辑智能控制器'
+        this.editForm.controllerNo = row.controllerNo
+        this.editForm.controllerName = row.controllerName
+        this.editForm.controllerStatus = row.controllerStatus
+        this.editForm.controllerType = row.controllerType
       } else {
-        this.title = '添加传感器信息'
-        this.editForm.sensorNo = ''
-        this.editForm.sensorName = ''
-        this.editForm.sensorStatus = ''
-        this.editForm.sensorType =''
+        this.title = '添加智能控制器'
+        this.editForm.controllerNo = ''
+        this.editForm.controllerName = ''
+        this.editForm.controllerStatus = ''
+        this.editForm.controllerType =''
       }
     },
     // 编辑、增加页面保存方法
