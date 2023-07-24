@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '设备识别和存储模块',
+          menuname: '影像数据采集和输入模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备信息管理',
+              menuname: '传感器信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,15 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '扫描和识别管理',
-              hasThird: 'N',
-              url: 'pay/Order1',
-              menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '配置文件管理',
+              menuname: '影像数据管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -91,7 +83,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '配置文件版本控制管理',
+              menuname: '视频流或图像获取管理',
+              hasThird: 'N',
+              url: 'pay/Order1',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '影像数据校正与校验管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,15 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '配置文件比对管理',
-              hasThird: 'N',
-              url: 'pay/Order1111',
-              menus: null
-            },
-             {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '设备拓扑图展示管理',
+              menuname: '实时流处理管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -117,7 +109,7 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '配置核查和比对模块',
+          menuname: '影像解码与预处理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -166,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '安全审计模块',
+          menuname: '物体识别与检测模块',
           hasThird: null,
           url: null,
           menus: [
@@ -215,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '日志和报告模块',
+          menuname: '特征提取与描述模块',
           hasThird: null,
           url: null,
           menus: [
@@ -232,7 +224,24 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据统计分析模块',
+          menuname: '实时监测与分析模块',
+          hasThird: null,
+          url: null,
+          menus: [
+            {
+              menuid: 129,
+              icon: 'icon-provider-manage',
+              menuname: '头戴式显示器管理',
+              hasThird: 'N',
+              url: 'machine/MachineConfig',
+              menus: null
+            },
+          ]
+        },
+        {
+          menuid: 128,
+          icon: 'li-icon-xiangmuguanli',
+          menuname: '大数据分析模块',
           hasThird: null,
           url: null,
           menus: [

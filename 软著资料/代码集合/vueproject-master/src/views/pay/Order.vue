@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">设备识别和存储模块</el-breadcrumb-item>
-      <el-breadcrumb-item>配置文件管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">影像数据采集和输入模块</el-breadcrumb-item>
+      <el-breadcrumb-item>影像数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.profileNo" placeholder="请输入配置文件编号"></el-input>
+        <el-input size="small" v-model="formInline.imageNo" placeholder="请输入影像数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.profileName" placeholder="请输入配置文件名称"></el-input>
+        <el-input size="small" v-model="formInline.imageName" placeholder="请输入影像数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.profileType" placeholder="请选择配置文件类型"></el-select>
+        <el-select size="small" v-model="formInline.imageType" placeholder="请选择影像数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="profileNo" label="配置文件编号" show-overflow-tooltip>
+      <el-table-column sortable prop="imageNo" label="影像数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="profileName" label="配置文件名称" show-overflow-tooltip>
+      <el-table-column sortable prop="imageName" label="影像数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="profileType" label="配置文件类型" show-overflow-tooltip>
+      <el-table-column sortable prop="imageType" label="影像数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="profileStatus" label="配置文件状态" show-overflow-tooltip>
+      <el-table-column sortable prop="imageStatus" label="影像数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="配置文件编号" prop="profileNo">
-          <el-input size="small" v-model="addForm.profileNo" auto-complete="off" placeholder="请输入配置文件编号"></el-input>
+        <el-form-item label="影像数据编号" prop="imageNo">
+          <el-input size="small" v-model="addForm.imageNo" auto-complete="off" placeholder="请输入影像数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="配置文件名称" prop="profileName">
-          <el-input size="small" v-model="addForm.profileName" auto-complete="off" placeholder="请输入配置文件名称"></el-input>
+        <el-form-item label="影像数据名称" prop="imageName">
+          <el-input size="small" v-model="addForm.imageName" auto-complete="off" placeholder="请输入影像数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="配置文件类型" prop="profileType">
-          <el-select size="small" v-model="addForm.profileType" auto-complete="off" placeholder="请选择配置文件类型">
-            <el-option label="路由和交换配置文件" value="1"></el-option>
+        <el-form-item label="影像数据类型" prop="imageType">
+          <el-select size="small" v-model="addForm.imageType" auto-complete="off" placeholder="请选择影像数据类型">
+            <el-option label="可见光影像" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="配置文件状态" prop="profileStatus">
-          <el-select size="small" v-model="addForm.profileStatus" auto-complete="off" placeholder="请选择配置文件状态">
+        <el-form-item label="影像数据状态" prop="imageStatus">
+          <el-select size="small" v-model="addForm.imageStatus" auto-complete="off" placeholder="请选择影像数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       profileNo:'',
-       profileName:'',
-       profileType:'',
+       imageNo:'',
+       imageName:'',
+       imageType:'',
        address:'',
-       profileGender:'',
+       imageGender:'',
        age:'',
-       profileStatus:''
+       imageStatus:''
       },
       rules: {
-        profileNo: [
-          { required: true, message: '请输入配置文件编号', trigger: 'blur' }
+        imageNo: [
+          { required: true, message: '请输入影像数据编号', trigger: 'blur' }
         ],
-        profileName: [
-          { required: true, message: '请输入配置文件名称', trigger: 'blur' }
+        imageName: [
+          { required: true, message: '请输入影像数据名称', trigger: 'blur' }
         ],
-        profileType: [
-          { required: true, message: '请选择配置文件类型', trigger: 'blur' }
+        imageType: [
+          { required: true, message: '请选择影像数据类型', trigger: 'blur' }
         ],
-        profileStatus: [
-          { required: true, message: '请选择配置文件状态', trigger: 'blur' }
+        imageStatus: [
+          { required: true, message: '请选择影像数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        profileName: '',
+        imageName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            profileNo:'VCxxxxxx',
-            profileName:'xxx路由和交换配置文件',
-            profileType:'路由和交换配置文件',
-            profileStatus:"有效",
+            imageNo:'VCxxxxxx',
+            imageName:'xxx可见光影像',
+            imageType:'可见光影像',
+            imageStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            profileNo:'VCxxxxxx',
-            profileName:'xxx路由和交换配置文件',
-            profileType:'路由和交换配置文件',
-            profileStatus:"有效",
+            imageNo:'VCxxxxxx',
+            imageName:'xxx可见光影像',
+            imageType:'可见光影像',
+            imageStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            profileNo:'VCxxxxxx',
-            profileName:'xxx路由和交换配置文件',
-            profileType:'路由和交换配置文件',
-            profileStatus:"有效",
+            imageNo:'VCxxxxxx',
+            imageName:'xxx可见光影像',
+            imageType:'可见光影像',
+            imageStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            profileNo:'VCxxxxxx',
-            profileName:'xxx安全策略配置文件',
-            profileType:'安全策略配置文件',
-            profileStatus:"已失效",
+            imageNo:'VCxxxxxx',
+            imageName:'xxx热红外影像',
+            imageType:'热红外影像',
+            imageStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            profileNo:'VCxxxxxx',
-            profileName:'xxx安全策略配置文件',
-            profileType:'安全策略配置文件',
-            profileStatus:"已失效",
+            imageNo:'VCxxxxxx',
+            imageName:'xxx热红外影像',
+            imageType:'热红外影像',
+            imageStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑配置文件'
-        this.addForm.profileNo = row.profileNo
-        this.addForm.profileName = row.profileName
-        this.addForm.profileType = row.profileType
-        this.addForm.profileStatus = row.profileStatus
+        this.title='编辑影像数据'
+        this.addForm.imageNo = row.imageNo
+        this.addForm.imageName = row.imageName
+        this.addForm.imageType = row.imageType
+        this.addForm.imageStatus = row.imageStatus
       }else{
-        this.title='添加配置文件'
-        this.addForm.profileNo = ''
-        this.addForm.profileName = ''
-        this.addForm.profileType = ''
-        this.addForm.profileStatus = ''
+        this.title='添加影像数据'
+        this.addForm.imageNo = ''
+        this.addForm.imageName = ''
+        this.addForm.imageType = ''
+        this.addForm.imageStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formprofileName) {
+    closeDialog(formimageName) {
       this.editFormVisible = false
-      this.$refs[formprofileName].resetFields()
+      this.$refs[formimageName].resetFields()
     }
   }
 }

@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">设备识别和存储模块</el-breadcrumb-item>
-      <el-breadcrumb-item>设备信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">影像数据采集和输入模块</el-breadcrumb-item>
+      <el-breadcrumb-item>传感器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息编号"></el-input>
+        <el-input size="small" v-model="formInline.sensorName" placeholder="请输入传感器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入设备信息名称"></el-input>
+        <el-input size="small" v-model="formInline.sensorName" placeholder="请输入传感器信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.deviceStatus" placeholder="请选择设备信息类型">
+        <el-select size="small" v-model="formInline.sensorStatus" placeholder="请选择传感器信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="deviceNo" label="设备信息编号">
+      <el-table-column sortable prop="sensorNo" label="传感器信息编号">
       </el-table-column>
-      <el-table-column sortable prop="deviceName" label="设备信息名称">
+      <el-table-column sortable prop="sensorName" label="传感器信息名称">
       </el-table-column>
-      <el-table-column sortable prop="deviceType" label="设备信息类型">
+      <el-table-column sortable prop="sensorType" label="传感器信息类型">
       </el-table-column>
-      <el-table-column sortable prop="deviceStatus" label="设备信息状态" >
+      <el-table-column sortable prop="sensorStatus" label="传感器信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="设备信息编号" prop="deviceNo">
-          <el-input size="small" v-model="editForm.deviceNo" auto-complete="off" placeholder="请输入设备信息编号"></el-input>
+        <el-form-item label="传感器信息编号" prop="sensorNo">
+          <el-input size="small" v-model="editForm.sensorNo" auto-complete="off" placeholder="请输入传感器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="设备信息名称" prop="deviceName">
-          <el-input size="small" v-model="editForm.deviceName" auto-complete="off" placeholder="请输入设备信息名称"></el-input>
+        <el-form-item label="传感器信息名称" prop="sensorName">
+          <el-input size="small" v-model="editForm.sensorName" auto-complete="off" placeholder="请输入传感器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="设备信息类型" prop="deviceType">
-          <el-select size="small" v-model="editForm.deviceType" auto-complete="off" placeholder="请选择设备信息类型">
-            <el-option label="Cisco设备" value="1"></el-option>
+        <el-form-item label="传感器信息类型" prop="sensorType">
+          <el-select size="small" v-model="editForm.sensorType" auto-complete="off" placeholder="请选择传感器信息类型">
+            <el-option label="视频传感器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="设备信息状态" prop="deviceStatus">
-          <el-select size="small" v-model="editForm.deviceStatus" auto-complete="off" placeholder="请选择设备信息状态">
+        <el-form-item label="传感器信息状态" prop="sensorStatus">
+          <el-select size="small" v-model="editForm.sensorStatus" auto-complete="off" placeholder="请选择传感器信息状态">
             <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        deviceNo: '',
-        deviceName: '',
-        deviceType:'',
+        sensorNo: '',
+        sensorName: '',
+        sensorType:'',
         status:'',
-        deviceStatus: '',
+        sensorStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        deviceNo: [
-          { required: true, message: '请输入设备信息编号', trigger: 'blur' }
+        sensorNo: [
+          { required: true, message: '请输入传感器信息编号', trigger: 'blur' }
         ],
-        deviceName: [
-          { required: true, message: '请输入设备信息名称', trigger: 'blur' }
+        sensorName: [
+          { required: true, message: '请输入传感器信息名称', trigger: 'blur' }
         ],
-        deviceType: [
-          { required: true, message: '请选择设备信息类型', trigger: 'blur' }
+        sensorType: [
+          { required: true, message: '请选择传感器信息类型', trigger: 'blur' }
         ],
-        deviceStatus: [
-          { required: true, message: '请选择设备信息状态', trigger: 'blur' }
+        sensorStatus: [
+          { required: true, message: '请选择传感器信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXXCisco设备',
-            deviceType: 'Cisco设备',
-            deviceStatus: '运行中',
+            sensorNo: 'VSxxxxxxxx',
+            sensorName: 'XXX视频传感器',
+            sensorType: '视频传感器',
+            sensorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXXCisco设备',
-            deviceType: 'Cisco设备',
-            deviceStatus: '运行中',
+            sensorNo: 'VSxxxxxxxx',
+            sensorName: 'XXX视频传感器',
+            sensorType: '视频传感器',
+            sensorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXXCisco设备',
-            deviceType: 'Cisco设备',
-            deviceStatus: '运行中',
+            sensorNo: 'VSxxxxxxxx',
+            sensorName: 'XXX视频传感器',
+            sensorType: '视频传感器',
+            sensorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXXJuniper设备',
-            deviceType: 'Juniper设备',
-            deviceStatus: '维护中',
+            sensorNo: 'VSxxxxxxxx',
+            sensorName: 'XXX图像传感器',
+            sensorType: '图像传感器',
+            sensorStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXXJuniper设备',
-            deviceType: 'Juniper设备',
-            deviceStatus: '运行中',
+            sensorNo: 'VSxxxxxxxx',
+            sensorName: 'XXX图像传感器',
+            sensorType: '图像传感器',
+            sensorStatus: '运行中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑设备信息'
-        this.editForm.deviceNo = row.deviceNo
-        this.editForm.deviceName = row.deviceName
-        this.editForm.deviceStatus = row.deviceStatus
-        this.editForm.deviceType = row.deviceType
+        this.title = '编辑传感器信息'
+        this.editForm.sensorNo = row.sensorNo
+        this.editForm.sensorName = row.sensorName
+        this.editForm.sensorStatus = row.sensorStatus
+        this.editForm.sensorType = row.sensorType
       } else {
-        this.title = '添加设备信息'
-        this.editForm.deviceNo = ''
-        this.editForm.deviceName = ''
-        this.editForm.deviceStatus = ''
-        this.editForm.deviceType =''
+        this.title = '添加传感器信息'
+        this.editForm.sensorNo = ''
+        this.editForm.sensorName = ''
+        this.editForm.sensorStatus = ''
+        this.editForm.sensorType =''
       }
     },
     // 编辑、增加页面保存方法
