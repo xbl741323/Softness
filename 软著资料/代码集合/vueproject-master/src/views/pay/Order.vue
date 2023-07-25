@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据分析模块</el-breadcrumb-item>
-      <el-breadcrumb-item>数据统计分析管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">舆情数据分析模块</el-breadcrumb-item>
+      <el-breadcrumb-item>舆情主题分析管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.dataAnalysisNo" placeholder="请输入数据统计分析编号"></el-input>
+        <el-input size="small" v-model="formInline.opinionThemeNo" placeholder="请输入舆情主题编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.dataAnalysisName" placeholder="请输入数据统计分析名称"></el-input>
+        <el-input size="small" v-model="formInline.opinionThemeName" placeholder="请输入舆情主题名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.dataAnalysisType" placeholder="请选择数据统计分析类型"></el-select>
+        <el-select size="small" v-model="formInline.opinionThemeType" placeholder="请选择舆情主题类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="dataAnalysisNo" label="数据统计分析编号" show-overflow-tooltip>
+      <el-table-column sortable prop="opinionThemeNo" label="舆情主题编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="dataAnalysisName" label="数据统计分析名称" show-overflow-tooltip>
+      <el-table-column sortable prop="opinionThemeName" label="舆情主题名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="dataAnalysisType" label="数据统计分析类型" show-overflow-tooltip>
+      <el-table-column sortable prop="opinionThemeType" label="舆情主题类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="dataAnalysisStatus" label="数据统计分析状态" show-overflow-tooltip>
+      <el-table-column sortable prop="opinionThemeStatus" label="舆情主题状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="数据统计分析编号" prop="dataAnalysisNo">
-          <el-input size="small" v-model="addForm.dataAnalysisNo" auto-complete="off" placeholder="请输入数据统计分析编号"></el-input>
+        <el-form-item label="舆情主题编号" prop="opinionThemeNo">
+          <el-input size="small" v-model="addForm.opinionThemeNo" auto-complete="off" placeholder="请输入舆情主题编号"></el-input>
         </el-form-item>
-        <el-form-item label="数据统计分析名称" prop="dataAnalysisName">
-          <el-input size="small" v-model="addForm.dataAnalysisName" auto-complete="off" placeholder="请输入数据统计分析名称"></el-input>
+        <el-form-item label="舆情主题名称" prop="opinionThemeName">
+          <el-input size="small" v-model="addForm.opinionThemeName" auto-complete="off" placeholder="请输入舆情主题名称"></el-input>
         </el-form-item>
-        <el-form-item label="数据统计分析类型" prop="dataAnalysisType">
-          <el-select size="small" v-model="addForm.dataAnalysisType" auto-complete="off" placeholder="请选择数据统计分析类型">
-            <el-option label="描述统计" value="1"></el-option>
+        <el-form-item label="舆情主题类型" prop="opinionThemeType">
+          <el-select size="small" v-model="addForm.opinionThemeType" auto-complete="off" placeholder="请选择舆情主题类型">
+            <el-option label="政治类舆情" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="数据统计分析状态" prop="dataAnalysisStatus">
-          <el-select size="small" v-model="addForm.dataAnalysisStatus" auto-complete="off" placeholder="请选择数据统计分析状态">
+        <el-form-item label="舆情主题状态" prop="opinionThemeStatus">
+          <el-select size="small" v-model="addForm.opinionThemeStatus" auto-complete="off" placeholder="请选择舆情主题状态">
             <el-option label="处理中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       dataAnalysisNo:'',
-       dataAnalysisName:'',
-       dataAnalysisType:'',
+       opinionThemeNo:'',
+       opinionThemeName:'',
+       opinionThemeType:'',
        address:'',
-       dataAnalysisGender:'',
+       opinionThemeGender:'',
        age:'',
-       dataAnalysisStatus:''
+       opinionThemeStatus:''
       },
       rules: {
-        dataAnalysisNo: [
-          { required: true, message: '请输入数据统计分析编号', trigger: 'blur' }
+        opinionThemeNo: [
+          { required: true, message: '请输入舆情主题编号', trigger: 'blur' }
         ],
-        dataAnalysisName: [
-          { required: true, message: '请输入数据统计分析名称', trigger: 'blur' }
+        opinionThemeName: [
+          { required: true, message: '请输入舆情主题名称', trigger: 'blur' }
         ],
-        dataAnalysisType: [
-          { required: true, message: '请选择数据统计分析类型', trigger: 'blur' }
+        opinionThemeType: [
+          { required: true, message: '请选择舆情主题类型', trigger: 'blur' }
         ],
-        dataAnalysisStatus: [
-          { required: true, message: '请选择数据统计分析状态', trigger: 'blur' }
+        opinionThemeStatus: [
+          { required: true, message: '请选择舆情主题状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        dataAnalysisName: '',
+        opinionThemeName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            dataAnalysisNo:'VCxxxxxx',
-            dataAnalysisName:'xxx描述统计',
-            dataAnalysisType:'描述统计',
-            dataAnalysisStatus:"处理中",
+            opinionThemeNo:'VCxxxxxx',
+            opinionThemeName:'xxx政治类舆情',
+            opinionThemeType:'政治类舆情',
+            opinionThemeStatus:"处理中",
             createTime: "2020-08-12"
           },
           {
-            dataAnalysisNo:'VCxxxxxx',
-            dataAnalysisName:'xxx描述统计',
-            dataAnalysisType:'描述统计',
-            dataAnalysisStatus:"处理中",
+            opinionThemeNo:'VCxxxxxx',
+            opinionThemeName:'xxx政治类舆情',
+            opinionThemeType:'政治类舆情',
+            opinionThemeStatus:"处理中",
             createTime: "2022-10-24"
           },
           {
-            dataAnalysisNo:'VCxxxxxx',
-            dataAnalysisName:'xxx描述统计',
-            dataAnalysisType:'描述统计',
-            dataAnalysisStatus:"处理中",
+            opinionThemeNo:'VCxxxxxx',
+            opinionThemeName:'xxx政治类舆情',
+            opinionThemeType:'政治类舆情',
+            opinionThemeStatus:"处理中",
             createTime: "2022-01-12"
           },
           {
-            dataAnalysisNo:'VCxxxxxx',
-            dataAnalysisName:'xxx回归分析',
-            dataAnalysisType:'回归分析',
-            dataAnalysisStatus:"待处理",
+            opinionThemeNo:'VCxxxxxx',
+            opinionThemeName:'xxx社会类舆情',
+            opinionThemeType:'社会类舆情',
+            opinionThemeStatus:"待处理",
             createTime: "2022-05-17"
           },
           {
-            dataAnalysisNo:'VCxxxxxx',
-            dataAnalysisName:'xxx回归分析',
-            dataAnalysisType:'回归分析',
-            dataAnalysisStatus:"待处理",
+            opinionThemeNo:'VCxxxxxx',
+            opinionThemeName:'xxx社会类舆情',
+            opinionThemeType:'社会类舆情',
+            opinionThemeStatus:"待处理",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑数据统计分析'
-        this.addForm.dataAnalysisNo = row.dataAnalysisNo
-        this.addForm.dataAnalysisName = row.dataAnalysisName
-        this.addForm.dataAnalysisType = row.dataAnalysisType
-        this.addForm.dataAnalysisStatus = row.dataAnalysisStatus
+        this.title='编辑舆情主题数据'
+        this.addForm.opinionThemeNo = row.opinionThemeNo
+        this.addForm.opinionThemeName = row.opinionThemeName
+        this.addForm.opinionThemeType = row.opinionThemeType
+        this.addForm.opinionThemeStatus = row.opinionThemeStatus
       }else{
-        this.title='添加数据统计分析'
-        this.addForm.dataAnalysisNo = ''
-        this.addForm.dataAnalysisName = ''
-        this.addForm.dataAnalysisType = ''
-        this.addForm.dataAnalysisStatus = ''
+        this.title='添加舆情主题数据'
+        this.addForm.opinionThemeNo = ''
+        this.addForm.opinionThemeName = ''
+        this.addForm.opinionThemeType = ''
+        this.addForm.opinionThemeStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formdataAnalysisName) {
+    closeDialog(formopinionThemeName) {
       this.editFormVisible = false
-      this.$refs[formdataAnalysisName].resetFields()
+      this.$refs[formopinionThemeName].resetFields()
     }
   }
 }
