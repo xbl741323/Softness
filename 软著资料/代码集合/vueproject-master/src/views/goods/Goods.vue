@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">设备控制模块</el-breadcrumb-item>
-      <el-breadcrumb-item>智能控制器管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
+      <el-breadcrumb-item>数据采集设备管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.controllerName" placeholder="请输入智能控制器编号"></el-input>
+        <el-input size="small" v-model="formInline.collectingDeviceName" placeholder="请输入数据采集设备编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.controllerName" placeholder="请输入智能控制器名称"></el-input>
+        <el-input size="small" v-model="formInline.collectingDeviceName" placeholder="请输入数据采集设备名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.controllerStatus" placeholder="请选择智能控制器类型">
+        <el-select size="small" v-model="formInline.collectingDeviceStatus" placeholder="请选择数据采集设备类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="controllerNo" label="智能控制器编号">
+      <el-table-column sortable prop="collectingDeviceNo" label="数据采集设备编号">
       </el-table-column>
-      <el-table-column sortable prop="controllerName" label="智能控制器名称">
+      <el-table-column sortable prop="collectingDeviceName" label="数据采集设备名称">
       </el-table-column>
-      <el-table-column sortable prop="controllerType" label="智能控制器类型">
+      <el-table-column sortable prop="collectingDeviceType" label="数据采集设备类型">
       </el-table-column>
-      <el-table-column sortable prop="controllerStatus" label="智能控制器状态" >
+      <el-table-column sortable prop="collectingDeviceStatus" label="数据采集设备状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="智能控制器编号" prop="controllerNo">
-          <el-input size="small" v-model="editForm.controllerNo" auto-complete="off" placeholder="请输入智能控制器编号"></el-input>
+        <el-form-item label="数据采集设备编号" prop="collectingDeviceNo">
+          <el-input size="small" v-model="editForm.collectingDeviceNo" auto-complete="off" placeholder="请输入数据采集设备编号"></el-input>
         </el-form-item>
-        <el-form-item label="智能控制器名称" prop="controllerName">
-          <el-input size="small" v-model="editForm.controllerName" auto-complete="off" placeholder="请输入智能控制器名称"></el-input>
+        <el-form-item label="数据采集设备名称" prop="collectingDeviceName">
+          <el-input size="small" v-model="editForm.collectingDeviceName" auto-complete="off" placeholder="请输入数据采集设备名称"></el-input>
         </el-form-item>
-        <el-form-item label="智能控制器类型" prop="controllerType">
-          <el-select size="small" v-model="editForm.controllerType" auto-complete="off" placeholder="请选择智能控制器类型">
-            <el-option label="逻辑控制器" value="1"></el-option>
+        <el-form-item label="数据采集设备类型" prop="collectingDeviceType">
+          <el-select size="small" v-model="editForm.collectingDeviceType" auto-complete="off" placeholder="请选择数据采集设备类型">
+            <el-option label="传感器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="智能控制器状态" prop="controllerStatus">
-          <el-select size="small" v-model="editForm.controllerStatus" auto-complete="off" placeholder="请选择智能控制器状态">
+        <el-form-item label="数据采集设备状态" prop="collectingDeviceStatus">
+          <el-select size="small" v-model="editForm.collectingDeviceStatus" auto-complete="off" placeholder="请选择数据采集设备状态">
             <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        controllerNo: '',
-        controllerName: '',
-        controllerType:'',
+        collectingDeviceNo: '',
+        collectingDeviceName: '',
+        collectingDeviceType:'',
         status:'',
-        controllerStatus: '',
+        collectingDeviceStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        controllerNo: [
-          { required: true, message: '请输入智能控制器编号', trigger: 'blur' }
+        collectingDeviceNo: [
+          { required: true, message: '请输入数据采集设备编号', trigger: 'blur' }
         ],
-        controllerName: [
-          { required: true, message: '请输入智能控制器名称', trigger: 'blur' }
+        collectingDeviceName: [
+          { required: true, message: '请输入数据采集设备名称', trigger: 'blur' }
         ],
-        controllerType: [
-          { required: true, message: '请选择智能控制器类型', trigger: 'blur' }
+        collectingDeviceType: [
+          { required: true, message: '请选择数据采集设备类型', trigger: 'blur' }
         ],
-        controllerStatus: [
-          { required: true, message: '请选择智能控制器状态', trigger: 'blur' }
+        collectingDeviceStatus: [
+          { required: true, message: '请选择数据采集设备状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            controllerNo: 'VSxxxxxxxx',
-            controllerName: 'XXX逻辑控制器',
-            controllerType: '逻辑控制器',
-            controllerStatus: '运行中',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX传感器',
+            collectingDeviceType: '传感器',
+            collectingDeviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            controllerNo: 'VSxxxxxxxx',
-            controllerName: 'XXX逻辑控制器',
-            controllerType: '逻辑控制器',
-            controllerStatus: '运行中',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX传感器',
+            collectingDeviceType: '传感器',
+            collectingDeviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            controllerNo: 'VSxxxxxxxx',
-            controllerName: 'XXX逻辑控制器',
-            controllerType: '逻辑控制器',
-            controllerStatus: '运行中',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX传感器',
+            collectingDeviceType: '传感器',
+            collectingDeviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            controllerNo: 'VSxxxxxxxx',
-            controllerName: 'XXX单片机控制器',
-            controllerType: '单片机控制器',
-            controllerStatus: '维护中',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX电子测量仪器',
+            collectingDeviceType: '电子测量仪器',
+            collectingDeviceStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            controllerNo: 'VSxxxxxxxx',
-            controllerName: 'XXX单片机控制器',
-            controllerType: '单片机控制器',
-            controllerStatus: '运行中',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX电子测量仪器',
+            collectingDeviceType: '电子测量仪器',
+            collectingDeviceStatus: '运行中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑智能控制器'
-        this.editForm.controllerNo = row.controllerNo
-        this.editForm.controllerName = row.controllerName
-        this.editForm.controllerStatus = row.controllerStatus
-        this.editForm.controllerType = row.controllerType
+        this.title = '编辑数据采集设备'
+        this.editForm.collectingDeviceNo = row.collectingDeviceNo
+        this.editForm.collectingDeviceName = row.collectingDeviceName
+        this.editForm.collectingDeviceStatus = row.collectingDeviceStatus
+        this.editForm.collectingDeviceType = row.collectingDeviceType
       } else {
-        this.title = '添加智能控制器'
-        this.editForm.controllerNo = ''
-        this.editForm.controllerName = ''
-        this.editForm.controllerStatus = ''
-        this.editForm.controllerType =''
+        this.title = '添加数据采集设备'
+        this.editForm.collectingDeviceNo = ''
+        this.editForm.collectingDeviceName = ''
+        this.editForm.collectingDeviceStatus = ''
+        this.editForm.collectingDeviceType =''
       }
     },
     // 编辑、增加页面保存方法

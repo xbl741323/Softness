@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">设备报警模块</el-breadcrumb-item>
-      <el-breadcrumb-item>声光报警器管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据分析模块</el-breadcrumb-item>
+      <el-breadcrumb-item>数据统计分析管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.alarmNo" placeholder="请输入声光报警器编号"></el-input>
+        <el-input size="small" v-model="formInline.dataAnalysisNo" placeholder="请输入数据统计分析编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.alarmName" placeholder="请输入声光报警器名称"></el-input>
+        <el-input size="small" v-model="formInline.dataAnalysisName" placeholder="请输入数据统计分析名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.alarmType" placeholder="请选择声光报警器类型"></el-select>
+        <el-select size="small" v-model="formInline.dataAnalysisType" placeholder="请选择数据统计分析类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="alarmNo" label="声光报警器编号" show-overflow-tooltip>
+      <el-table-column sortable prop="dataAnalysisNo" label="数据统计分析编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="alarmName" label="声光报警器名称" show-overflow-tooltip>
+      <el-table-column sortable prop="dataAnalysisName" label="数据统计分析名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="alarmType" label="声光报警器类型" show-overflow-tooltip>
+      <el-table-column sortable prop="dataAnalysisType" label="数据统计分析类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="alarmStatus" label="声光报警器状态" show-overflow-tooltip>
+      <el-table-column sortable prop="dataAnalysisStatus" label="数据统计分析状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="声光报警器编号" prop="alarmNo">
-          <el-input size="small" v-model="addForm.alarmNo" auto-complete="off" placeholder="请输入声光报警器编号"></el-input>
+        <el-form-item label="数据统计分析编号" prop="dataAnalysisNo">
+          <el-input size="small" v-model="addForm.dataAnalysisNo" auto-complete="off" placeholder="请输入数据统计分析编号"></el-input>
         </el-form-item>
-        <el-form-item label="声光报警器名称" prop="alarmName">
-          <el-input size="small" v-model="addForm.alarmName" auto-complete="off" placeholder="请输入声光报警器名称"></el-input>
+        <el-form-item label="数据统计分析名称" prop="dataAnalysisName">
+          <el-input size="small" v-model="addForm.dataAnalysisName" auto-complete="off" placeholder="请输入数据统计分析名称"></el-input>
         </el-form-item>
-        <el-form-item label="声光报警器类型" prop="alarmType">
-          <el-select size="small" v-model="addForm.alarmType" auto-complete="off" placeholder="请选择声光报警器类型">
-            <el-option label="火灾声光报警器" value="1"></el-option>
+        <el-form-item label="数据统计分析类型" prop="dataAnalysisType">
+          <el-select size="small" v-model="addForm.dataAnalysisType" auto-complete="off" placeholder="请选择数据统计分析类型">
+            <el-option label="描述统计" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="声光报警器状态" prop="alarmStatus">
-          <el-select size="small" v-model="addForm.alarmStatus" auto-complete="off" placeholder="请选择声光报警器状态">
-            <el-option label="运行中" value="1"></el-option>
+        <el-form-item label="数据统计分析状态" prop="dataAnalysisStatus">
+          <el-select size="small" v-model="addForm.dataAnalysisStatus" auto-complete="off" placeholder="请选择数据统计分析状态">
+            <el-option label="处理中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       alarmNo:'',
-       alarmName:'',
-       alarmType:'',
+       dataAnalysisNo:'',
+       dataAnalysisName:'',
+       dataAnalysisType:'',
        address:'',
-       alarmGender:'',
+       dataAnalysisGender:'',
        age:'',
-       alarmStatus:''
+       dataAnalysisStatus:''
       },
       rules: {
-        alarmNo: [
-          { required: true, message: '请输入声光报警器编号', trigger: 'blur' }
+        dataAnalysisNo: [
+          { required: true, message: '请输入数据统计分析编号', trigger: 'blur' }
         ],
-        alarmName: [
-          { required: true, message: '请输入声光报警器名称', trigger: 'blur' }
+        dataAnalysisName: [
+          { required: true, message: '请输入数据统计分析名称', trigger: 'blur' }
         ],
-        alarmType: [
-          { required: true, message: '请选择声光报警器类型', trigger: 'blur' }
+        dataAnalysisType: [
+          { required: true, message: '请选择数据统计分析类型', trigger: 'blur' }
         ],
-        alarmStatus: [
-          { required: true, message: '请选择声光报警器状态', trigger: 'blur' }
+        dataAnalysisStatus: [
+          { required: true, message: '请选择数据统计分析状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        alarmName: '',
+        dataAnalysisName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            alarmNo:'VCxxxxxx',
-            alarmName:'xxx火灾声光报警器',
-            alarmType:'火灾声光报警器',
-            alarmStatus:"运行中",
+            dataAnalysisNo:'VCxxxxxx',
+            dataAnalysisName:'xxx描述统计',
+            dataAnalysisType:'描述统计',
+            dataAnalysisStatus:"处理中",
             createTime: "2020-08-12"
           },
           {
-            alarmNo:'VCxxxxxx',
-            alarmName:'xxx火灾声光报警器',
-            alarmType:'火灾声光报警器',
-            alarmStatus:"运行中",
+            dataAnalysisNo:'VCxxxxxx',
+            dataAnalysisName:'xxx描述统计',
+            dataAnalysisType:'描述统计',
+            dataAnalysisStatus:"处理中",
             createTime: "2022-10-24"
           },
           {
-            alarmNo:'VCxxxxxx',
-            alarmName:'xxx火灾声光报警器',
-            alarmType:'火灾声光报警器',
-            alarmStatus:"运行中",
+            dataAnalysisNo:'VCxxxxxx',
+            dataAnalysisName:'xxx描述统计',
+            dataAnalysisType:'描述统计',
+            dataAnalysisStatus:"处理中",
             createTime: "2022-01-12"
           },
           {
-            alarmNo:'VCxxxxxx',
-            alarmName:'xxx报警防盗声光报警器',
-            alarmType:'报警防盗声光报警器',
-            alarmStatus:"维护中",
+            dataAnalysisNo:'VCxxxxxx',
+            dataAnalysisName:'xxx回归分析',
+            dataAnalysisType:'回归分析',
+            dataAnalysisStatus:"待处理",
             createTime: "2022-05-17"
           },
           {
-            alarmNo:'VCxxxxxx',
-            alarmName:'xxx报警防盗声光报警器',
-            alarmType:'报警防盗声光报警器',
-            alarmStatus:"维护中",
+            dataAnalysisNo:'VCxxxxxx',
+            dataAnalysisName:'xxx回归分析',
+            dataAnalysisType:'回归分析',
+            dataAnalysisStatus:"待处理",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑声光报警器'
-        this.addForm.alarmNo = row.alarmNo
-        this.addForm.alarmName = row.alarmName
-        this.addForm.alarmType = row.alarmType
-        this.addForm.alarmStatus = row.alarmStatus
+        this.title='编辑数据统计分析'
+        this.addForm.dataAnalysisNo = row.dataAnalysisNo
+        this.addForm.dataAnalysisName = row.dataAnalysisName
+        this.addForm.dataAnalysisType = row.dataAnalysisType
+        this.addForm.dataAnalysisStatus = row.dataAnalysisStatus
       }else{
-        this.title='添加声光报警器'
-        this.addForm.alarmNo = ''
-        this.addForm.alarmName = ''
-        this.addForm.alarmType = ''
-        this.addForm.alarmStatus = ''
+        this.title='添加数据统计分析'
+        this.addForm.dataAnalysisNo = ''
+        this.addForm.dataAnalysisName = ''
+        this.addForm.dataAnalysisType = ''
+        this.addForm.dataAnalysisStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '维护中删除'
+            message: '待处理删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formalarmName) {
+    closeDialog(formdataAnalysisName) {
       this.editFormVisible = false
-      this.$refs[formalarmName].resetFields()
+      this.$refs[formdataAnalysisName].resetFields()
     }
   }
 }
