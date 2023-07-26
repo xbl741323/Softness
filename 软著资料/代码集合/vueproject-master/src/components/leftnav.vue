@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '变流器控制模块',
+          menuname: '农场数据采集模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '变流器信息管理',
+              menuname: '农场采集数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '功率调节管理',
+              menuname: '数据采集装置管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '过电流保护管理',
+              menuname: '传感器接口管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '过温保护管理',
+              menuname: '数据采集软件管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,7 +99,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '移相控制管理',
+              menuname: '气象监测设备管理',
+              hasThird: 'N',
+              url: 'pay/Order1111',
+              menus: null
+            },
+             {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '数据传输管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -109,14 +117,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '差动保护模块',
+          menuname: '农场数据监测模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '电流检测信息管理',
+              menuname: '作物监测数据管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +132,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '零序电流检测管理',
+              menuname: '环境监测数据管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -132,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '比较计算管理',
+              menuname: '水肥监测数据管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -140,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '动作保护管理',
+              menuname: '报警与提醒管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -148,7 +156,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '参数设置管理',
+              menuname: '实时数据显示管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -158,7 +166,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '长延时保护模块',
+          menuname: '决策支持模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '通信模块',
+          menuname: '远程控制模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +232,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '监测与诊断模块',
+          menuname: '农场数据分析与处理模块',
           hasThird: null,
           url: null,
           menus: [
