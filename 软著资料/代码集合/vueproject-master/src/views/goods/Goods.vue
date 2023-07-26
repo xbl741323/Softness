@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">舆情数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>舆情数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">变流器控制模块</el-breadcrumb-item>
+      <el-breadcrumb-item>变流器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.opinionDataName" placeholder="请输入舆情数据编号"></el-input>
+        <el-input size="small" v-model="formInline.converterName" placeholder="请输入变流器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.opinionDataName" placeholder="请输入舆情数据名称"></el-input>
+        <el-input size="small" v-model="formInline.converterName" placeholder="请输入变流器信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.opinionDataStatus" placeholder="请选择舆情数据类型">
+        <el-select size="small" v-model="formInline.converterStatus" placeholder="请选择变流器信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="opinionDataNo" label="舆情数据编号">
+      <el-table-column sortable prop="converterNo" label="变流器信息编号">
       </el-table-column>
-      <el-table-column sortable prop="opinionDataName" label="舆情数据名称">
+      <el-table-column sortable prop="converterName" label="变流器信息名称">
       </el-table-column>
-      <el-table-column sortable prop="opinionDataType" label="舆情数据类型">
+      <el-table-column sortable prop="converterType" label="变流器信息类型">
       </el-table-column>
-      <el-table-column sortable prop="opinionDataStatus" label="舆情数据状态" >
+      <el-table-column sortable prop="converterStatus" label="变流器信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="舆情数据编号" prop="opinionDataNo">
-          <el-input size="small" v-model="editForm.opinionDataNo" auto-complete="off" placeholder="请输入舆情数据编号"></el-input>
+        <el-form-item label="变流器信息编号" prop="converterNo">
+          <el-input size="small" v-model="editForm.converterNo" auto-complete="off" placeholder="请输入变流器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="舆情数据名称" prop="opinionDataName">
-          <el-input size="small" v-model="editForm.opinionDataName" auto-complete="off" placeholder="请输入舆情数据名称"></el-input>
+        <el-form-item label="变流器信息名称" prop="converterName">
+          <el-input size="small" v-model="editForm.converterName" auto-complete="off" placeholder="请输入变流器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="舆情数据类型" prop="opinionDataType">
-          <el-select size="small" v-model="editForm.opinionDataType" auto-complete="off" placeholder="请选择舆情数据类型">
-            <el-option label="新闻媒体报道" value="1"></el-option>
+        <el-form-item label="变流器信息类型" prop="converterType">
+          <el-select size="small" v-model="editForm.converterType" auto-complete="off" placeholder="请选择变流器信息类型">
+            <el-option label="直流变流器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="舆情数据状态" prop="opinionDataStatus">
-          <el-select size="small" v-model="editForm.opinionDataStatus" auto-complete="off" placeholder="请选择舆情数据状态">
-            <el-option label="处理中" value="1"></el-option>
+        <el-form-item label="变流器信息状态" prop="converterStatus">
+          <el-select size="small" v-model="editForm.converterStatus" auto-complete="off" placeholder="请选择变流器信息状态">
+            <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        opinionDataNo: '',
-        opinionDataName: '',
-        opinionDataType:'',
+        converterNo: '',
+        converterName: '',
+        converterType:'',
         status:'',
-        opinionDataStatus: '',
+        converterStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        opinionDataNo: [
-          { required: true, message: '请输入舆情数据编号', trigger: 'blur' }
+        converterNo: [
+          { required: true, message: '请输入变流器信息编号', trigger: 'blur' }
         ],
-        opinionDataName: [
-          { required: true, message: '请输入舆情数据名称', trigger: 'blur' }
+        converterName: [
+          { required: true, message: '请输入变流器信息名称', trigger: 'blur' }
         ],
-        opinionDataType: [
-          { required: true, message: '请选择舆情数据类型', trigger: 'blur' }
+        converterType: [
+          { required: true, message: '请选择变流器信息类型', trigger: 'blur' }
         ],
-        opinionDataStatus: [
-          { required: true, message: '请选择舆情数据状态', trigger: 'blur' }
+        converterStatus: [
+          { required: true, message: '请选择变流器信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            opinionDataNo: 'VSxxxxxxxx',
-            opinionDataName: 'XXX新闻媒体报道',
-            opinionDataType: '新闻媒体报道',
-            opinionDataStatus: '处理中',
+            converterNo: 'VSxxxxxxxx',
+            converterName: 'XXX直流变流器',
+            converterType: '直流变流器',
+            converterStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            opinionDataNo: 'VSxxxxxxxx',
-            opinionDataName: 'XXX新闻媒体报道',
-            opinionDataType: '新闻媒体报道',
-            opinionDataStatus: '处理中',
+            converterNo: 'VSxxxxxxxx',
+            converterName: 'XXX直流变流器',
+            converterType: '直流变流器',
+            converterStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            opinionDataNo: 'VSxxxxxxxx',
-            opinionDataName: 'XXX新闻媒体报道',
-            opinionDataType: '新闻媒体报道',
-            opinionDataStatus: '处理中',
+            converterNo: 'VSxxxxxxxx',
+            converterName: 'XXX直流变流器',
+            converterType: '直流变流器',
+            converterStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            opinionDataNo: 'VSxxxxxxxx',
-            opinionDataName: 'XXX社交媒体数据',
-            opinionDataType: '社交媒体数据',
-            opinionDataStatus: '待处理',
+            converterNo: 'VSxxxxxxxx',
+            converterName: 'XXX交流变流器',
+            converterType: '交流变流器',
+            converterStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            opinionDataNo: 'VSxxxxxxxx',
-            opinionDataName: 'XXX社交媒体数据',
-            opinionDataType: '社交媒体数据',
-            opinionDataStatus: '处理中',
+            converterNo: 'VSxxxxxxxx',
+            converterName: 'XXX交流变流器',
+            converterType: '交流变流器',
+            converterStatus: '运行中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑舆情数据'
-        this.editForm.opinionDataNo = row.opinionDataNo
-        this.editForm.opinionDataName = row.opinionDataName
-        this.editForm.opinionDataStatus = row.opinionDataStatus
-        this.editForm.opinionDataType = row.opinionDataType
+        this.title = '编辑变流器信息'
+        this.editForm.converterNo = row.converterNo
+        this.editForm.converterName = row.converterName
+        this.editForm.converterStatus = row.converterStatus
+        this.editForm.converterType = row.converterType
       } else {
-        this.title = '添加舆情数据'
-        this.editForm.opinionDataNo = ''
-        this.editForm.opinionDataName = ''
-        this.editForm.opinionDataStatus = ''
-        this.editForm.opinionDataType =''
+        this.title = '添加变流器信息'
+        this.editForm.converterNo = ''
+        this.editForm.converterName = ''
+        this.editForm.converterStatus = ''
+        this.editForm.converterType =''
       }
     },
     // 编辑、增加页面保存方法

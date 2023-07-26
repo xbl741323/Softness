@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">舆情数据分析模块</el-breadcrumb-item>
-      <el-breadcrumb-item>舆情主题分析管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">差动保护模块</el-breadcrumb-item>
+      <el-breadcrumb-item>电流检测信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.opinionThemeNo" placeholder="请输入舆情主题编号"></el-input>
+        <el-input size="small" v-model="formInline.electricityNo" placeholder="请输入电流检测信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.opinionThemeName" placeholder="请输入舆情主题名称"></el-input>
+        <el-input size="small" v-model="formInline.electricityName" placeholder="请输入电流检测信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.opinionThemeType" placeholder="请选择舆情主题类型"></el-select>
+        <el-select size="small" v-model="formInline.electricityType" placeholder="请选择电流检测信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="opinionThemeNo" label="舆情主题编号" show-overflow-tooltip>
+      <el-table-column sortable prop="electricityNo" label="电流检测信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="opinionThemeName" label="舆情主题名称" show-overflow-tooltip>
+      <el-table-column sortable prop="electricityName" label="电流检测信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="opinionThemeType" label="舆情主题类型" show-overflow-tooltip>
+      <el-table-column sortable prop="electricityType" label="电流检测信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="opinionThemeStatus" label="舆情主题状态" show-overflow-tooltip>
+      <el-table-column sortable prop="electricityStatus" label="电流检测信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="舆情主题编号" prop="opinionThemeNo">
-          <el-input size="small" v-model="addForm.opinionThemeNo" auto-complete="off" placeholder="请输入舆情主题编号"></el-input>
+        <el-form-item label="电流检测信息编号" prop="electricityNo">
+          <el-input size="small" v-model="addForm.electricityNo" auto-complete="off" placeholder="请输入电流检测信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="舆情主题名称" prop="opinionThemeName">
-          <el-input size="small" v-model="addForm.opinionThemeName" auto-complete="off" placeholder="请输入舆情主题名称"></el-input>
+        <el-form-item label="电流检测信息名称" prop="electricityName">
+          <el-input size="small" v-model="addForm.electricityName" auto-complete="off" placeholder="请输入电流检测信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="舆情主题类型" prop="opinionThemeType">
-          <el-select size="small" v-model="addForm.opinionThemeType" auto-complete="off" placeholder="请选择舆情主题类型">
-            <el-option label="政治类舆情" value="1"></el-option>
+        <el-form-item label="电流检测信息类型" prop="electricityType">
+          <el-select size="small" v-model="addForm.electricityType" auto-complete="off" placeholder="请选择电流检测信息类型">
+            <el-option label="非线性电流" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="舆情主题状态" prop="opinionThemeStatus">
-          <el-select size="small" v-model="addForm.opinionThemeStatus" auto-complete="off" placeholder="请选择舆情主题状态">
-            <el-option label="处理中" value="1"></el-option>
+        <el-form-item label="电流检测信息状态" prop="electricityStatus">
+          <el-select size="small" v-model="addForm.electricityStatus" auto-complete="off" placeholder="请选择电流检测信息状态">
+            <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       opinionThemeNo:'',
-       opinionThemeName:'',
-       opinionThemeType:'',
+       electricityNo:'',
+       electricityName:'',
+       electricityType:'',
        address:'',
-       opinionThemeGender:'',
+       electricityGender:'',
        age:'',
-       opinionThemeStatus:''
+       electricityStatus:''
       },
       rules: {
-        opinionThemeNo: [
-          { required: true, message: '请输入舆情主题编号', trigger: 'blur' }
+        electricityNo: [
+          { required: true, message: '请输入电流检测信息编号', trigger: 'blur' }
         ],
-        opinionThemeName: [
-          { required: true, message: '请输入舆情主题名称', trigger: 'blur' }
+        electricityName: [
+          { required: true, message: '请输入电流检测信息名称', trigger: 'blur' }
         ],
-        opinionThemeType: [
-          { required: true, message: '请选择舆情主题类型', trigger: 'blur' }
+        electricityType: [
+          { required: true, message: '请选择电流检测信息类型', trigger: 'blur' }
         ],
-        opinionThemeStatus: [
-          { required: true, message: '请选择舆情主题状态', trigger: 'blur' }
+        electricityStatus: [
+          { required: true, message: '请选择电流检测信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        opinionThemeName: '',
+        electricityName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            opinionThemeNo:'VCxxxxxx',
-            opinionThemeName:'xxx政治类舆情',
-            opinionThemeType:'政治类舆情',
-            opinionThemeStatus:"处理中",
+            electricityNo:'VCxxxxxx',
+            electricityName:'xxx非线性电流',
+            electricityType:'非线性电流',
+            electricityStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            opinionThemeNo:'VCxxxxxx',
-            opinionThemeName:'xxx政治类舆情',
-            opinionThemeType:'政治类舆情',
-            opinionThemeStatus:"处理中",
+            electricityNo:'VCxxxxxx',
+            electricityName:'xxx非线性电流',
+            electricityType:'非线性电流',
+            electricityStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            opinionThemeNo:'VCxxxxxx',
-            opinionThemeName:'xxx政治类舆情',
-            opinionThemeType:'政治类舆情',
-            opinionThemeStatus:"处理中",
+            electricityNo:'VCxxxxxx',
+            electricityName:'xxx非线性电流',
+            electricityType:'非线性电流',
+            electricityStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            opinionThemeNo:'VCxxxxxx',
-            opinionThemeName:'xxx社会类舆情',
-            opinionThemeType:'社会类舆情',
-            opinionThemeStatus:"待处理",
+            electricityNo:'VCxxxxxx',
+            electricityName:'xxx谐波电流',
+            electricityType:'谐波电流',
+            electricityStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            opinionThemeNo:'VCxxxxxx',
-            opinionThemeName:'xxx社会类舆情',
-            opinionThemeType:'社会类舆情',
-            opinionThemeStatus:"待处理",
+            electricityNo:'VCxxxxxx',
+            electricityName:'xxx谐波电流',
+            electricityType:'谐波电流',
+            electricityStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑舆情主题数据'
-        this.addForm.opinionThemeNo = row.opinionThemeNo
-        this.addForm.opinionThemeName = row.opinionThemeName
-        this.addForm.opinionThemeType = row.opinionThemeType
-        this.addForm.opinionThemeStatus = row.opinionThemeStatus
+        this.title='编辑电流检测信息'
+        this.addForm.electricityNo = row.electricityNo
+        this.addForm.electricityName = row.electricityName
+        this.addForm.electricityType = row.electricityType
+        this.addForm.electricityStatus = row.electricityStatus
       }else{
-        this.title='添加舆情主题数据'
-        this.addForm.opinionThemeNo = ''
-        this.addForm.opinionThemeName = ''
-        this.addForm.opinionThemeType = ''
-        this.addForm.opinionThemeStatus = ''
+        this.title='添加电流检测信息'
+        this.addForm.electricityNo = ''
+        this.addForm.electricityName = ''
+        this.addForm.electricityType = ''
+        this.addForm.electricityStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '待处理删除'
+            message: '已失效删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formopinionThemeName) {
+    closeDialog(formelectricityName) {
       this.editFormVisible = false
-      this.$refs[formopinionThemeName].resetFields()
+      this.$refs[formelectricityName].resetFields()
     }
   }
 }

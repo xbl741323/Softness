@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '舆情数据采集模块',
+          menuname: '变流器控制模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '舆情数据管理',
+              menuname: '变流器信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '新闻爬取管理',
+              menuname: '功率调节管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '网络爬虫管理',
+              menuname: '过电流保护管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '微博/微信公众号抓取管理',
+              menuname: '过温保护管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '论坛帖子采集管理',
+              menuname: '移相控制管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -109,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '舆情数据分析模块',
+          menuname: '差动保护模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '舆情主题分析管理',
+              menuname: '电流检测信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '舆情情感分析管理',
+              menuname: '零序电流检测管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '舆情关联分析管理',
+              menuname: '比较计算管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '用户画像分析管理',
+              menuname: '动作保护管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '时间序列分析管理',
+              menuname: '参数设置管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '舆情数据处理模块',
+          menuname: '长延时保护模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '舆情监测模块',
+          menuname: '通信模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '决策支持模块',
+          menuname: '监测与诊断模块',
           hasThird: null,
           url: null,
           menus: [
