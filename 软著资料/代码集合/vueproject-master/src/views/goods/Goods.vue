@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">医疗数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>医疗数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据采集与整合模块</el-breadcrumb-item>
+      <el-breadcrumb-item>土壤污染数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.medicalDataName" placeholder="请输入医疗数据编号"></el-input>
+        <el-input size="small" v-model="formInline.pollutionDataName" placeholder="请输入土壤污染数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.medicalDataName" placeholder="请输入医疗数据名称"></el-input>
+        <el-input size="small" v-model="formInline.pollutionDataName" placeholder="请输入土壤污染数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.medicalDataStatus" placeholder="请选择医疗数据类型">
+        <el-select size="small" v-model="formInline.pollutionDataStatus" placeholder="请选择土壤污染数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="medicalDataNo" label="医疗数据编号">
+      <el-table-column sortable prop="pollutionDataNo" label="土壤污染数据编号">
       </el-table-column>
-      <el-table-column sortable prop="medicalDataName" label="医疗数据名称">
+      <el-table-column sortable prop="pollutionDataName" label="土壤污染数据名称">
       </el-table-column>
-      <el-table-column sortable prop="medicalDataType" label="医疗数据类型">
+      <el-table-column sortable prop="pollutionDataType" label="土壤污染数据类型">
       </el-table-column>
-      <el-table-column sortable prop="medicalDataStatus" label="医疗数据状态" >
+      <el-table-column sortable prop="pollutionDataStatus" label="土壤污染数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="医疗数据编号" prop="medicalDataNo">
-          <el-input size="small" v-model="editForm.medicalDataNo" auto-complete="off" placeholder="请输入医疗数据编号"></el-input>
+        <el-form-item label="土壤污染数据编号" prop="pollutionDataNo">
+          <el-input size="small" v-model="editForm.pollutionDataNo" auto-complete="off" placeholder="请输入土壤污染数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="医疗数据名称" prop="medicalDataName">
-          <el-input size="small" v-model="editForm.medicalDataName" auto-complete="off" placeholder="请输入医疗数据名称"></el-input>
+        <el-form-item label="土壤污染数据名称" prop="pollutionDataName">
+          <el-input size="small" v-model="editForm.pollutionDataName" auto-complete="off" placeholder="请输入土壤污染数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="医疗数据类型" prop="medicalDataType">
-          <el-select size="small" v-model="editForm.medicalDataType" auto-complete="off" placeholder="请选择医疗数据类型">
-            <el-option label="电子病历数据" value="1"></el-option>
+        <el-form-item label="土壤污染数据类型" prop="pollutionDataType">
+          <el-select size="small" v-model="editForm.pollutionDataType" auto-complete="off" placeholder="请选择土壤污染数据类型">
+            <el-option label="重金属元素污染数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="医疗数据状态" prop="medicalDataStatus">
-          <el-select size="small" v-model="editForm.medicalDataStatus" auto-complete="off" placeholder="请选择医疗数据状态">
+        <el-form-item label="土壤污染数据状态" prop="pollutionDataStatus">
+          <el-select size="small" v-model="editForm.pollutionDataStatus" auto-complete="off" placeholder="请选择土壤污染数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        medicalDataNo: '',
-        medicalDataName: '',
-        medicalDataType:'',
+        pollutionDataNo: '',
+        pollutionDataName: '',
+        pollutionDataType:'',
         status:'',
-        medicalDataStatus: '',
+        pollutionDataStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        medicalDataNo: [
-          { required: true, message: '请输入医疗数据编号', trigger: 'blur' }
+        pollutionDataNo: [
+          { required: true, message: '请输入土壤污染数据编号', trigger: 'blur' }
         ],
-        medicalDataName: [
-          { required: true, message: '请输入医疗数据名称', trigger: 'blur' }
+        pollutionDataName: [
+          { required: true, message: '请输入土壤污染数据名称', trigger: 'blur' }
         ],
-        medicalDataType: [
-          { required: true, message: '请选择医疗数据类型', trigger: 'blur' }
+        pollutionDataType: [
+          { required: true, message: '请选择土壤污染数据类型', trigger: 'blur' }
         ],
-        medicalDataStatus: [
-          { required: true, message: '请选择医疗数据状态', trigger: 'blur' }
+        pollutionDataStatus: [
+          { required: true, message: '请选择土壤污染数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            medicalDataNo: 'VSxxxxxxxx',
-            medicalDataName: 'XXX电子病历数据',
-            medicalDataType: '电子病历数据',
-            medicalDataStatus: '有效',
+            pollutionDataNo: 'VSxxxxxxxx',
+            pollutionDataName: 'XXX重金属元素污染数据',
+            pollutionDataType: '重金属元素污染数据',
+            pollutionDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            medicalDataNo: 'VSxxxxxxxx',
-            medicalDataName: 'XXX电子病历数据',
-            medicalDataType: '电子病历数据',
-            medicalDataStatus: '有效',
+            pollutionDataNo: 'VSxxxxxxxx',
+            pollutionDataName: 'XXX重金属元素污染数据',
+            pollutionDataType: '重金属元素污染数据',
+            pollutionDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            medicalDataNo: 'VSxxxxxxxx',
-            medicalDataName: 'XXX电子病历数据',
-            medicalDataType: '电子病历数据',
-            medicalDataStatus: '有效',
+            pollutionDataNo: 'VSxxxxxxxx',
+            pollutionDataName: 'XXX重金属元素污染数据',
+            pollutionDataType: '重金属元素污染数据',
+            pollutionDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            medicalDataNo: 'VSxxxxxxxx',
-            medicalDataName: 'XXX医学影像数据',
-            medicalDataType: '医学影像数据',
-            medicalDataStatus: '已失效',
+            pollutionDataNo: 'VSxxxxxxxx',
+            pollutionDataName: 'XXX有机物污染数据',
+            pollutionDataType: '有机物污染数据',
+            pollutionDataStatus: '已失效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            medicalDataNo: 'VSxxxxxxxx',
-            medicalDataName: 'XXX医学影像数据',
-            medicalDataType: '医学影像数据',
-            medicalDataStatus: '有效',
+            pollutionDataNo: 'VSxxxxxxxx',
+            pollutionDataName: 'XXX有机物污染数据',
+            pollutionDataType: '有机物污染数据',
+            pollutionDataStatus: '有效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑医疗数据'
-        this.editForm.medicalDataNo = row.medicalDataNo
-        this.editForm.medicalDataName = row.medicalDataName
-        this.editForm.medicalDataStatus = row.medicalDataStatus
-        this.editForm.medicalDataType = row.medicalDataType
+        this.title = '编辑土壤污染数据'
+        this.editForm.pollutionDataNo = row.pollutionDataNo
+        this.editForm.pollutionDataName = row.pollutionDataName
+        this.editForm.pollutionDataStatus = row.pollutionDataStatus
+        this.editForm.pollutionDataType = row.pollutionDataType
       } else {
-        this.title = '添加医疗数据'
-        this.editForm.medicalDataNo = ''
-        this.editForm.medicalDataName = ''
-        this.editForm.medicalDataStatus = ''
-        this.editForm.medicalDataType =''
+        this.title = '添加土壤污染数据'
+        this.editForm.pollutionDataNo = ''
+        this.editForm.pollutionDataName = ''
+        this.editForm.pollutionDataStatus = ''
+        this.editForm.pollutionDataType =''
       }
     },
     // 编辑、增加页面保存方法
