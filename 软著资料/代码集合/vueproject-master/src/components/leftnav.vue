@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '农场数据采集模块',
+          menuname: '医疗数据采集模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '农场采集数据管理',
+              menuname: '医疗数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据采集装置管理',
+              menuname: '医疗数据源连接管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '传感器接口管理',
+              menuname: '医疗数据提取管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据采集软件管理',
+              menuname: '医疗数据质量检查管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,15 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '气象监测设备管理',
-              hasThird: 'N',
-              url: 'pay/Order1111',
-              menus: null
-            },
-             {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '数据传输管理',
+              menuname: '批量医疗数据导入管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -117,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '农场数据监测模块',
+          menuname: '医疗数据质量评测模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '作物监测数据管理',
+              menuname: '医疗数据质量评测信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -132,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '环境监测数据管理',
+              menuname: '医疗数据完整性评测管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -140,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '水肥监测数据管理',
+              menuname: '医疗数据准确性评测管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -148,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '报警与提醒管理',
+              menuname: '医疗数据一致性评测管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -156,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '实时数据显示管理',
+              menuname: '医疗数据质量报告管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -166,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '决策支持模块',
+          menuname: '医疗数据治理流程监控模块',
           hasThird: null,
           url: null,
           menus: [
@@ -215,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '远程控制模块',
+          menuname: '数据安全和隐私保护模块',
           hasThird: null,
           url: null,
           menus: [
@@ -232,7 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '农场数据分析与处理模块',
+          menuname: '医疗数据处理与分析管理',
           hasThird: null,
           url: null,
           menus: [

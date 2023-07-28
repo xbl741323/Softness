@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">农场数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>农场采集数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">医疗数据采集模块</el-breadcrumb-item>
+      <el-breadcrumb-item>医疗数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.farmDataName" placeholder="请输入农场采集数据编号"></el-input>
+        <el-input size="small" v-model="formInline.medicalDataName" placeholder="请输入医疗数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.farmDataName" placeholder="请输入农场采集数据名称"></el-input>
+        <el-input size="small" v-model="formInline.medicalDataName" placeholder="请输入医疗数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.farmDataStatus" placeholder="请选择农场采集数据类型">
+        <el-select size="small" v-model="formInline.medicalDataStatus" placeholder="请选择医疗数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="farmDataNo" label="农场采集数据编号">
+      <el-table-column sortable prop="medicalDataNo" label="医疗数据编号">
       </el-table-column>
-      <el-table-column sortable prop="farmDataName" label="农场采集数据名称">
+      <el-table-column sortable prop="medicalDataName" label="医疗数据名称">
       </el-table-column>
-      <el-table-column sortable prop="farmDataType" label="农场采集数据类型">
+      <el-table-column sortable prop="medicalDataType" label="医疗数据类型">
       </el-table-column>
-      <el-table-column sortable prop="farmDataStatus" label="农场采集数据状态" >
+      <el-table-column sortable prop="medicalDataStatus" label="医疗数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="农场采集数据编号" prop="farmDataNo">
-          <el-input size="small" v-model="editForm.farmDataNo" auto-complete="off" placeholder="请输入农场采集数据编号"></el-input>
+        <el-form-item label="医疗数据编号" prop="medicalDataNo">
+          <el-input size="small" v-model="editForm.medicalDataNo" auto-complete="off" placeholder="请输入医疗数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="农场采集数据名称" prop="farmDataName">
-          <el-input size="small" v-model="editForm.farmDataName" auto-complete="off" placeholder="请输入农场采集数据名称"></el-input>
+        <el-form-item label="医疗数据名称" prop="medicalDataName">
+          <el-input size="small" v-model="editForm.medicalDataName" auto-complete="off" placeholder="请输入医疗数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="农场采集数据类型" prop="farmDataType">
-          <el-select size="small" v-model="editForm.farmDataType" auto-complete="off" placeholder="请选择农场采集数据类型">
-            <el-option label="农作物生长数据" value="1"></el-option>
+        <el-form-item label="医疗数据类型" prop="medicalDataType">
+          <el-select size="small" v-model="editForm.medicalDataType" auto-complete="off" placeholder="请选择医疗数据类型">
+            <el-option label="电子病历数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="农场采集数据状态" prop="farmDataStatus">
-          <el-select size="small" v-model="editForm.farmDataStatus" auto-complete="off" placeholder="请选择农场采集数据状态">
+        <el-form-item label="医疗数据状态" prop="medicalDataStatus">
+          <el-select size="small" v-model="editForm.medicalDataStatus" auto-complete="off" placeholder="请选择医疗数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        farmDataNo: '',
-        farmDataName: '',
-        farmDataType:'',
+        medicalDataNo: '',
+        medicalDataName: '',
+        medicalDataType:'',
         status:'',
-        farmDataStatus: '',
+        medicalDataStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        farmDataNo: [
-          { required: true, message: '请输入农场采集数据编号', trigger: 'blur' }
+        medicalDataNo: [
+          { required: true, message: '请输入医疗数据编号', trigger: 'blur' }
         ],
-        farmDataName: [
-          { required: true, message: '请输入农场采集数据名称', trigger: 'blur' }
+        medicalDataName: [
+          { required: true, message: '请输入医疗数据名称', trigger: 'blur' }
         ],
-        farmDataType: [
-          { required: true, message: '请选择农场采集数据类型', trigger: 'blur' }
+        medicalDataType: [
+          { required: true, message: '请选择医疗数据类型', trigger: 'blur' }
         ],
-        farmDataStatus: [
-          { required: true, message: '请选择农场采集数据状态', trigger: 'blur' }
+        medicalDataStatus: [
+          { required: true, message: '请选择医疗数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            farmDataNo: 'VSxxxxxxxx',
-            farmDataName: 'XXX农作物生长数据',
-            farmDataType: '农作物生长数据',
-            farmDataStatus: '有效',
+            medicalDataNo: 'VSxxxxxxxx',
+            medicalDataName: 'XXX电子病历数据',
+            medicalDataType: '电子病历数据',
+            medicalDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            farmDataNo: 'VSxxxxxxxx',
-            farmDataName: 'XXX农作物生长数据',
-            farmDataType: '农作物生长数据',
-            farmDataStatus: '有效',
+            medicalDataNo: 'VSxxxxxxxx',
+            medicalDataName: 'XXX电子病历数据',
+            medicalDataType: '电子病历数据',
+            medicalDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            farmDataNo: 'VSxxxxxxxx',
-            farmDataName: 'XXX农作物生长数据',
-            farmDataType: '农作物生长数据',
-            farmDataStatus: '有效',
+            medicalDataNo: 'VSxxxxxxxx',
+            medicalDataName: 'XXX电子病历数据',
+            medicalDataType: '电子病历数据',
+            medicalDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            farmDataNo: 'VSxxxxxxxx',
-            farmDataName: 'XXX土壤数据',
-            farmDataType: '土壤数据',
-            farmDataStatus: '已失效',
+            medicalDataNo: 'VSxxxxxxxx',
+            medicalDataName: 'XXX医学影像数据',
+            medicalDataType: '医学影像数据',
+            medicalDataStatus: '已失效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            farmDataNo: 'VSxxxxxxxx',
-            farmDataName: 'XXX土壤数据',
-            farmDataType: '土壤数据',
-            farmDataStatus: '有效',
+            medicalDataNo: 'VSxxxxxxxx',
+            medicalDataName: 'XXX医学影像数据',
+            medicalDataType: '医学影像数据',
+            medicalDataStatus: '有效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑农场采集数据'
-        this.editForm.farmDataNo = row.farmDataNo
-        this.editForm.farmDataName = row.farmDataName
-        this.editForm.farmDataStatus = row.farmDataStatus
-        this.editForm.farmDataType = row.farmDataType
+        this.title = '编辑医疗数据'
+        this.editForm.medicalDataNo = row.medicalDataNo
+        this.editForm.medicalDataName = row.medicalDataName
+        this.editForm.medicalDataStatus = row.medicalDataStatus
+        this.editForm.medicalDataType = row.medicalDataType
       } else {
-        this.title = '添加农场采集数据'
-        this.editForm.farmDataNo = ''
-        this.editForm.farmDataName = ''
-        this.editForm.farmDataStatus = ''
-        this.editForm.farmDataType =''
+        this.title = '添加医疗数据'
+        this.editForm.medicalDataNo = ''
+        this.editForm.medicalDataName = ''
+        this.editForm.medicalDataStatus = ''
+        this.editForm.medicalDataType =''
       }
     },
     // 编辑、增加页面保存方法

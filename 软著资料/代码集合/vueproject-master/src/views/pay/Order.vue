@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">农场数据监测模块</el-breadcrumb-item>
-      <el-breadcrumb-item>作物监测数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">医疗数据质量评测模块</el-breadcrumb-item>
+      <el-breadcrumb-item>医疗数据质量评测信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.cropMonitoringNo" placeholder="请输入作物监测数据编号"></el-input>
+        <el-input size="small" v-model="formInline.qualityEvaluationNo" placeholder="请输入医疗数据质量评测信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.cropMonitoringName" placeholder="请输入作物监测数据名称"></el-input>
+        <el-input size="small" v-model="formInline.qualityEvaluationName" placeholder="请输入医疗数据质量评测信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.cropMonitoringType" placeholder="请选择作物监测数据类型"></el-select>
+        <el-select size="small" v-model="formInline.qualityEvaluationType" placeholder="请选择医疗数据质量评测信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="cropMonitoringNo" label="作物监测数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="qualityEvaluationNo" label="医疗数据质量评测信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="cropMonitoringName" label="作物监测数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="qualityEvaluationName" label="医疗数据质量评测信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="cropMonitoringType" label="作物监测数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="qualityEvaluationType" label="医疗数据质量评测信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="cropMonitoringStatus" label="作物监测数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="qualityEvaluationStatus" label="医疗数据质量评测信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -47,20 +47,20 @@
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
-      <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="作物监测数据编号" prop="cropMonitoringNo">
-          <el-input size="small" v-model="addForm.cropMonitoringNo" auto-complete="off" placeholder="请输入作物监测数据编号"></el-input>
+      <el-form label-width="200px" :model="addForm" :rules="rules" ref="editForm">
+        <el-form-item label="医疗数据质量评测信息编号" prop="qualityEvaluationNo">
+          <el-input size="small" v-model="addForm.qualityEvaluationNo" auto-complete="off" placeholder="请输入医疗数据质量评测信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="作物监测数据名称" prop="cropMonitoringName">
-          <el-input size="small" v-model="addForm.cropMonitoringName" auto-complete="off" placeholder="请输入作物监测数据名称"></el-input>
+        <el-form-item label="医疗数据质量评测信息名称" prop="qualityEvaluationName">
+          <el-input size="small" v-model="addForm.qualityEvaluationName" auto-complete="off" placeholder="请输入医疗数据质量评测信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="作物监测数据类型" prop="cropMonitoringType">
-          <el-select size="small" v-model="addForm.cropMonitoringType" auto-complete="off" placeholder="请选择作物监测数据类型">
-            <el-option label="生长状况数据" value="1"></el-option>
+        <el-form-item label="医疗数据质量评测信息类型" prop="qualityEvaluationType">
+          <el-select size="small" v-model="addForm.qualityEvaluationType" auto-complete="off" placeholder="请选择医疗数据质量评测信息类型">
+            <el-option label="健康管理评测数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="作物监测数据状态" prop="cropMonitoringStatus">
-          <el-select size="small" v-model="addForm.cropMonitoringStatus" auto-complete="off" placeholder="请选择作物监测数据状态">
+        <el-form-item label="医疗数据质量评测信息状态" prop="qualityEvaluationStatus">
+          <el-select size="small" v-model="addForm.qualityEvaluationStatus" auto-complete="off" placeholder="请选择医疗数据质量评测信息状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       cropMonitoringNo:'',
-       cropMonitoringName:'',
-       cropMonitoringType:'',
+       qualityEvaluationNo:'',
+       qualityEvaluationName:'',
+       qualityEvaluationType:'',
        address:'',
-       cropMonitoringGender:'',
+       qualityEvaluationGender:'',
        age:'',
-       cropMonitoringStatus:''
+       qualityEvaluationStatus:''
       },
       rules: {
-        cropMonitoringNo: [
-          { required: true, message: '请输入作物监测数据编号', trigger: 'blur' }
+        qualityEvaluationNo: [
+          { required: true, message: '请输入医疗数据质量评测信息编号', trigger: 'blur' }
         ],
-        cropMonitoringName: [
-          { required: true, message: '请输入作物监测数据名称', trigger: 'blur' }
+        qualityEvaluationName: [
+          { required: true, message: '请输入医疗数据质量评测信息名称', trigger: 'blur' }
         ],
-        cropMonitoringType: [
-          { required: true, message: '请选择作物监测数据类型', trigger: 'blur' }
+        qualityEvaluationType: [
+          { required: true, message: '请选择医疗数据质量评测信息类型', trigger: 'blur' }
         ],
-        cropMonitoringStatus: [
-          { required: true, message: '请选择作物监测数据状态', trigger: 'blur' }
+        qualityEvaluationStatus: [
+          { required: true, message: '请选择医疗数据质量评测信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        cropMonitoringName: '',
+        qualityEvaluationName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            cropMonitoringNo:'VCxxxxxx',
-            cropMonitoringName:'xxx生长状况数据',
-            cropMonitoringType:'生长状况数据',
-            cropMonitoringStatus:"有效",
+            qualityEvaluationNo:'VCxxxxxx',
+            qualityEvaluationName:'xxx健康管理评测数据',
+            qualityEvaluationType:'健康管理评测数据',
+            qualityEvaluationStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            cropMonitoringNo:'VCxxxxxx',
-            cropMonitoringName:'xxx生长状况数据',
-            cropMonitoringType:'生长状况数据',
-            cropMonitoringStatus:"有效",
+            qualityEvaluationNo:'VCxxxxxx',
+            qualityEvaluationName:'xxx健康管理评测数据',
+            qualityEvaluationType:'健康管理评测数据',
+            qualityEvaluationStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            cropMonitoringNo:'VCxxxxxx',
-            cropMonitoringName:'xxx生长状况数据',
-            cropMonitoringType:'生长状况数据',
-            cropMonitoringStatus:"有效",
+            qualityEvaluationNo:'VCxxxxxx',
+            qualityEvaluationName:'xxx健康管理评测数据',
+            qualityEvaluationType:'健康管理评测数据',
+            qualityEvaluationStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            cropMonitoringNo:'VCxxxxxx',
-            cropMonitoringName:'xxx作物产量数据',
-            cropMonitoringType:'作物产量数据',
-            cropMonitoringStatus:"已失效",
+            qualityEvaluationNo:'VCxxxxxx',
+            qualityEvaluationName:'xxx生命体征评测数据',
+            qualityEvaluationType:'生命体征评测数据',
+            qualityEvaluationStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            cropMonitoringNo:'VCxxxxxx',
-            cropMonitoringName:'xxx作物产量数据',
-            cropMonitoringType:'作物产量数据',
-            cropMonitoringStatus:"已失效",
+            qualityEvaluationNo:'VCxxxxxx',
+            qualityEvaluationName:'xxx生命体征评测数据',
+            qualityEvaluationType:'生命体征评测数据',
+            qualityEvaluationStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑作物监测数据'
-        this.addForm.cropMonitoringNo = row.cropMonitoringNo
-        this.addForm.cropMonitoringName = row.cropMonitoringName
-        this.addForm.cropMonitoringType = row.cropMonitoringType
-        this.addForm.cropMonitoringStatus = row.cropMonitoringStatus
+        this.title='编辑医疗数据质量评测信息'
+        this.addForm.qualityEvaluationNo = row.qualityEvaluationNo
+        this.addForm.qualityEvaluationName = row.qualityEvaluationName
+        this.addForm.qualityEvaluationType = row.qualityEvaluationType
+        this.addForm.qualityEvaluationStatus = row.qualityEvaluationStatus
       }else{
-        this.title='添加作物监测数据'
-        this.addForm.cropMonitoringNo = ''
-        this.addForm.cropMonitoringName = ''
-        this.addForm.cropMonitoringType = ''
-        this.addForm.cropMonitoringStatus = ''
+        this.title='添加医疗数据质量评测信息'
+        this.addForm.qualityEvaluationNo = ''
+        this.addForm.qualityEvaluationName = ''
+        this.addForm.qualityEvaluationType = ''
+        this.addForm.qualityEvaluationStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formcropMonitoringName) {
+    closeDialog(formqualityEvaluationName) {
       this.editFormVisible = false
-      this.$refs[formcropMonitoringName].resetFields()
+      this.$refs[formqualityEvaluationName].resetFields()
     }
   }
 }
