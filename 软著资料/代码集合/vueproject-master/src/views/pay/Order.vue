@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据分析与评估模块</el-breadcrumb-item>
-      <el-breadcrumb-item>土壤污染程度评估信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据采集和监测模块</el-breadcrumb-item>
+      <el-breadcrumb-item>环境监测数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.assessmentNo" placeholder="请输入土壤污染程度评估信息编号"></el-input>
+        <el-input size="small" v-model="formInline.environmentalDataNo" placeholder="请输入环境监测数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.assessmentName" placeholder="请输入土壤污染程度评估信息名称"></el-input>
+        <el-input size="small" v-model="formInline.environmentalDataName" placeholder="请输入环境监测数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.assessmentType" placeholder="请选择土壤污染程度评估信息类型"></el-select>
+        <el-select size="small" v-model="formInline.environmentalDataType" placeholder="请选择环境监测数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="assessmentNo" label="土壤污染程度评估信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="environmentalDataNo" label="环境监测数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="assessmentName" label="土壤污染程度评估信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="environmentalDataName" label="环境监测数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="assessmentType" label="土壤污染程度评估信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="environmentalDataType" label="环境监测数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="assessmentStatus" label="土壤污染程度评估信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="environmentalDataStatus" label="环境监测数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="200px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="土壤污染程度评估信息编号" prop="assessmentNo">
-          <el-input size="small" v-model="addForm.assessmentNo" auto-complete="off" placeholder="请输入土壤污染程度评估信息编号"></el-input>
+        <el-form-item label="环境监测数据编号" prop="environmentalDataNo">
+          <el-input size="small" v-model="addForm.environmentalDataNo" auto-complete="off" placeholder="请输入环境监测数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="土壤污染程度评估信息名称" prop="assessmentName">
-          <el-input size="small" v-model="addForm.assessmentName" auto-complete="off" placeholder="请输入土壤污染程度评估信息名称"></el-input>
+        <el-form-item label="环境监测数据名称" prop="environmentalDataName">
+          <el-input size="small" v-model="addForm.environmentalDataName" auto-complete="off" placeholder="请输入环境监测数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="土壤污染程度评估信息类型" prop="assessmentType">
-          <el-select size="small" v-model="addForm.assessmentType" auto-complete="off" placeholder="请选择土壤污染程度评估信息类型">
-            <el-option label="重金属污染" value="1"></el-option>
+        <el-form-item label="环境监测数据类型" prop="environmentalDataType">
+          <el-select size="small" v-model="addForm.environmentalDataType" auto-complete="off" placeholder="请选择环境监测数据类型">
+            <el-option label="温度数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="土壤污染程度评估信息状态" prop="assessmentStatus">
-          <el-select size="small" v-model="addForm.assessmentStatus" auto-complete="off" placeholder="请选择土壤污染程度评估信息状态">
+        <el-form-item label="环境监测数据状态" prop="environmentalDataStatus">
+          <el-select size="small" v-model="addForm.environmentalDataStatus" auto-complete="off" placeholder="请选择环境监测数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       assessmentNo:'',
-       assessmentName:'',
-       assessmentType:'',
+       environmentalDataNo:'',
+       environmentalDataName:'',
+       environmentalDataType:'',
        address:'',
-       assessmentGender:'',
+       environmentalDataGender:'',
        age:'',
-       assessmentStatus:''
+       environmentalDataStatus:''
       },
       rules: {
-        assessmentNo: [
-          { required: true, message: '请输入土壤污染程度评估信息编号', trigger: 'blur' }
+        environmentalDataNo: [
+          { required: true, message: '请输入环境监测数据编号', trigger: 'blur' }
         ],
-        assessmentName: [
-          { required: true, message: '请输入土壤污染程度评估信息名称', trigger: 'blur' }
+        environmentalDataName: [
+          { required: true, message: '请输入环境监测数据名称', trigger: 'blur' }
         ],
-        assessmentType: [
-          { required: true, message: '请选择土壤污染程度评估信息类型', trigger: 'blur' }
+        environmentalDataType: [
+          { required: true, message: '请选择环境监测数据类型', trigger: 'blur' }
         ],
-        assessmentStatus: [
-          { required: true, message: '请选择土壤污染程度评估信息状态', trigger: 'blur' }
+        environmentalDataStatus: [
+          { required: true, message: '请选择环境监测数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        assessmentName: '',
+        environmentalDataName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            assessmentNo:'VCxxxxxx',
-            assessmentName:'xxx重金属污染',
-            assessmentType:'重金属污染',
-            assessmentStatus:"有效",
+            environmentalDataNo:'VCxxxxxx',
+            environmentalDataName:'xxx温度数据',
+            environmentalDataType:'温度数据',
+            environmentalDataStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            assessmentNo:'VCxxxxxx',
-            assessmentName:'xxx重金属污染',
-            assessmentType:'重金属污染',
-            assessmentStatus:"有效",
+            environmentalDataNo:'VCxxxxxx',
+            environmentalDataName:'xxx温度数据',
+            environmentalDataType:'温度数据',
+            environmentalDataStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            assessmentNo:'VCxxxxxx',
-            assessmentName:'xxx重金属污染',
-            assessmentType:'重金属污染',
-            assessmentStatus:"有效",
+            environmentalDataNo:'VCxxxxxx',
+            environmentalDataName:'xxx温度数据',
+            environmentalDataType:'温度数据',
+            environmentalDataStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            assessmentNo:'VCxxxxxx',
-            assessmentName:'xxx有机污染',
-            assessmentType:'有机污染',
-            assessmentStatus:"已失效",
+            environmentalDataNo:'VCxxxxxx',
+            environmentalDataName:'xxx水质监测数据',
+            environmentalDataType:'水质监测数据',
+            environmentalDataStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            assessmentNo:'VCxxxxxx',
-            assessmentName:'xxx有机污染',
-            assessmentType:'有机污染',
-            assessmentStatus:"已失效",
+            environmentalDataNo:'VCxxxxxx',
+            environmentalDataName:'xxx水质监测数据',
+            environmentalDataType:'水质监测数据',
+            environmentalDataStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑土壤污染程度评估信息'
-        this.addForm.assessmentNo = row.assessmentNo
-        this.addForm.assessmentName = row.assessmentName
-        this.addForm.assessmentType = row.assessmentType
-        this.addForm.assessmentStatus = row.assessmentStatus
+        this.title='编辑环境监测数据'
+        this.addForm.environmentalDataNo = row.environmentalDataNo
+        this.addForm.environmentalDataName = row.environmentalDataName
+        this.addForm.environmentalDataType = row.environmentalDataType
+        this.addForm.environmentalDataStatus = row.environmentalDataStatus
       }else{
-        this.title='添加土壤污染程度评估信息'
-        this.addForm.assessmentNo = ''
-        this.addForm.assessmentName = ''
-        this.addForm.assessmentType = ''
-        this.addForm.assessmentStatus = ''
+        this.title='添加环境监测数据'
+        this.addForm.environmentalDataNo = ''
+        this.addForm.environmentalDataName = ''
+        this.addForm.environmentalDataType = ''
+        this.addForm.environmentalDataStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formassessmentName) {
+    closeDialog(formenvironmentalDataName) {
       this.editFormVisible = false
-      this.$refs[formassessmentName].resetFields()
+      this.$refs[formenvironmentalDataName].resetFields()
     }
   }
 }

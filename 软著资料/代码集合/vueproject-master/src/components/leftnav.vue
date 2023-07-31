@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据采集与整合模块',
+          menuname: '数据采集和监测模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '土壤污染数据管理',
+              menuname: '动物监测数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '遥感数据采集管理',
+              menuname: '环境监测数据管理',
+              hasThird: 'N',
+              url: 'pay/Order',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '设备状态监测数据管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,15 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '传感器部署管理',
-              hasThird: 'N',
-              url: 'pay/Order1',
-              menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '污染源数据整合管理',
+              menuname: '饲料消耗监测数据管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据质量控制管理',
+              menuname: '监测传感器信息管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -109,7 +109,7 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据分析与评估模块',
+          menuname: '动物健康监测模块',
           hasThird: null,
           url: null,
           menus: [
@@ -118,7 +118,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '土壤污染程度评估信息管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order1',
               menus: null
             },
             {
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '决策支持模块',
+          menuname: '养殖过程优化模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '风险预警与监测模块',
+          menuname: '远程监控和管理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据共享与交流模块',
+          menuname: '数据分析和预测模块',
           hasThird: null,
           url: null,
           menus: [
