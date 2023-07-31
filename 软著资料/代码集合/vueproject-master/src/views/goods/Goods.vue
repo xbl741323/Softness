@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据采集和监测模块</el-breadcrumb-item>
-      <el-breadcrumb-item>动物监测数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
+      <el-breadcrumb-item>数据源信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.animalDataName" placeholder="请输入动物监测数据编号"></el-input>
+        <el-input size="small" v-model="formInline.dataSourceName" placeholder="请输入数据源信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.animalDataName" placeholder="请输入动物监测数据名称"></el-input>
+        <el-input size="small" v-model="formInline.dataSourceName" placeholder="请输入数据源信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.animalDataStatus" placeholder="请选择动物监测数据类型">
+        <el-select size="small" v-model="formInline.dataSourceStatus" placeholder="请选择数据源信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="animalDataNo" label="动物监测数据编号">
+      <el-table-column sortable prop="dataSourceNo" label="数据源信息编号">
       </el-table-column>
-      <el-table-column sortable prop="animalDataName" label="动物监测数据名称">
+      <el-table-column sortable prop="dataSourceName" label="数据源信息名称">
       </el-table-column>
-      <el-table-column sortable prop="animalDataType" label="动物监测数据类型">
+      <el-table-column sortable prop="dataSourceType" label="数据源信息类型">
       </el-table-column>
-      <el-table-column sortable prop="animalDataStatus" label="动物监测数据状态" >
+      <el-table-column sortable prop="dataSourceStatus" label="数据源信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="动物监测数据编号" prop="animalDataNo">
-          <el-input size="small" v-model="editForm.animalDataNo" auto-complete="off" placeholder="请输入动物监测数据编号"></el-input>
+        <el-form-item label="数据源信息编号" prop="dataSourceNo">
+          <el-input size="small" v-model="editForm.dataSourceNo" auto-complete="off" placeholder="请输入数据源信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="动物监测数据名称" prop="animalDataName">
-          <el-input size="small" v-model="editForm.animalDataName" auto-complete="off" placeholder="请输入动物监测数据名称"></el-input>
+        <el-form-item label="数据源信息名称" prop="dataSourceName">
+          <el-input size="small" v-model="editForm.dataSourceName" auto-complete="off" placeholder="请输入数据源信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="动物监测数据类型" prop="animalDataType">
-          <el-select size="small" v-model="editForm.animalDataType" auto-complete="off" placeholder="请选择动物监测数据类型">
-            <el-option label="疾病指标数据" value="1"></el-option>
+        <el-form-item label="数据源信息类型" prop="dataSourceType">
+          <el-select size="small" v-model="editForm.dataSourceType" auto-complete="off" placeholder="请选择数据源信息类型">
+            <el-option label="专利数据库" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="动物监测数据状态" prop="animalDataStatus">
-          <el-select size="small" v-model="editForm.animalDataStatus" auto-complete="off" placeholder="请选择动物监测数据状态">
+        <el-form-item label="数据源信息状态" prop="dataSourceStatus">
+          <el-select size="small" v-model="editForm.dataSourceStatus" auto-complete="off" placeholder="请选择数据源信息状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        animalDataNo: '',
-        animalDataName: '',
-        animalDataType:'',
+        dataSourceNo: '',
+        dataSourceName: '',
+        dataSourceType:'',
         status:'',
-        animalDataStatus: '',
+        dataSourceStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        animalDataNo: [
-          { required: true, message: '请输入动物监测数据编号', trigger: 'blur' }
+        dataSourceNo: [
+          { required: true, message: '请输入数据源信息编号', trigger: 'blur' }
         ],
-        animalDataName: [
-          { required: true, message: '请输入动物监测数据名称', trigger: 'blur' }
+        dataSourceName: [
+          { required: true, message: '请输入数据源信息名称', trigger: 'blur' }
         ],
-        animalDataType: [
-          { required: true, message: '请选择动物监测数据类型', trigger: 'blur' }
+        dataSourceType: [
+          { required: true, message: '请选择数据源信息类型', trigger: 'blur' }
         ],
-        animalDataStatus: [
-          { required: true, message: '请选择动物监测数据状态', trigger: 'blur' }
+        dataSourceStatus: [
+          { required: true, message: '请选择数据源信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            animalDataNo: 'VSxxxxxxxx',
-            animalDataName: 'XXX疾病指标数据',
-            animalDataType: '疾病指标数据',
-            animalDataStatus: '有效',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX专利数据库',
+            dataSourceType: '专利数据库',
+            dataSourceStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            animalDataNo: 'VSxxxxxxxx',
-            animalDataName: 'XXX疾病指标数据',
-            animalDataType: '疾病指标数据',
-            animalDataStatus: '有效',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX专利数据库',
+            dataSourceType: '专利数据库',
+            dataSourceStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            animalDataNo: 'VSxxxxxxxx',
-            animalDataName: 'XXX疾病指标数据',
-            animalDataType: '疾病指标数据',
-            animalDataStatus: '有效',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX专利数据库',
+            dataSourceType: '专利数据库',
+            dataSourceStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            animalDataNo: 'VSxxxxxxxx',
-            animalDataName: 'XXX基本生理数据',
-            animalDataType: '基本生理数据',
-            animalDataStatus: '已失效',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX技术文献数据库',
+            dataSourceType: '技术文献数据库',
+            dataSourceStatus: '已失效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            animalDataNo: 'VSxxxxxxxx',
-            animalDataName: 'XXX基本生理数据',
-            animalDataType: '基本生理数据',
-            animalDataStatus: '有效',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX技术文献数据库',
+            dataSourceType: '技术文献数据库',
+            dataSourceStatus: '有效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑动物监测数据'
-        this.editForm.animalDataNo = row.animalDataNo
-        this.editForm.animalDataName = row.animalDataName
-        this.editForm.animalDataStatus = row.animalDataStatus
-        this.editForm.animalDataType = row.animalDataType
+        this.title = '编辑数据源信息'
+        this.editForm.dataSourceNo = row.dataSourceNo
+        this.editForm.dataSourceName = row.dataSourceName
+        this.editForm.dataSourceStatus = row.dataSourceStatus
+        this.editForm.dataSourceType = row.dataSourceType
       } else {
-        this.title = '添加动物监测数据'
-        this.editForm.animalDataNo = ''
-        this.editForm.animalDataName = ''
-        this.editForm.animalDataStatus = ''
-        this.editForm.animalDataType =''
+        this.title = '添加数据源信息'
+        this.editForm.dataSourceNo = ''
+        this.editForm.dataSourceName = ''
+        this.editForm.dataSourceStatus = ''
+        this.editForm.dataSourceType =''
       }
     },
     // 编辑、增加页面保存方法

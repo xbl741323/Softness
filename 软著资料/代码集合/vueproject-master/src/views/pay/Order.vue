@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据采集和监测模块</el-breadcrumb-item>
-      <el-breadcrumb-item>环境监测数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">侵权检测模块</el-breadcrumb-item>
+      <el-breadcrumb-item>技术特征数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.environmentalDataNo" placeholder="请输入环境监测数据编号"></el-input>
+        <el-input size="small" v-model="formInline.technicalDataNo" placeholder="请输入技术特征数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.environmentalDataName" placeholder="请输入环境监测数据名称"></el-input>
+        <el-input size="small" v-model="formInline.technicalDataName" placeholder="请输入技术特征数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.environmentalDataType" placeholder="请选择环境监测数据类型"></el-select>
+        <el-select size="small" v-model="formInline.technicalDataType" placeholder="请选择技术特征数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="environmentalDataNo" label="环境监测数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="technicalDataNo" label="技术特征数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="environmentalDataName" label="环境监测数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="technicalDataName" label="技术特征数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="environmentalDataType" label="环境监测数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="technicalDataType" label="技术特征数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="environmentalDataStatus" label="环境监测数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="technicalDataStatus" label="技术特征数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="200px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="环境监测数据编号" prop="environmentalDataNo">
-          <el-input size="small" v-model="addForm.environmentalDataNo" auto-complete="off" placeholder="请输入环境监测数据编号"></el-input>
+        <el-form-item label="技术特征数据编号" prop="technicalDataNo">
+          <el-input size="small" v-model="addForm.technicalDataNo" auto-complete="off" placeholder="请输入技术特征数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="环境监测数据名称" prop="environmentalDataName">
-          <el-input size="small" v-model="addForm.environmentalDataName" auto-complete="off" placeholder="请输入环境监测数据名称"></el-input>
+        <el-form-item label="技术特征数据名称" prop="technicalDataName">
+          <el-input size="small" v-model="addForm.technicalDataName" auto-complete="off" placeholder="请输入技术特征数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="环境监测数据类型" prop="environmentalDataType">
-          <el-select size="small" v-model="addForm.environmentalDataType" auto-complete="off" placeholder="请选择环境监测数据类型">
-            <el-option label="温度数据" value="1"></el-option>
+        <el-form-item label="技术特征数据类型" prop="technicalDataType">
+          <el-select size="small" v-model="addForm.technicalDataType" auto-complete="off" placeholder="请选择技术特征数据类型">
+            <el-option label="技术分类数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="环境监测数据状态" prop="environmentalDataStatus">
-          <el-select size="small" v-model="addForm.environmentalDataStatus" auto-complete="off" placeholder="请选择环境监测数据状态">
+        <el-form-item label="技术特征数据状态" prop="technicalDataStatus">
+          <el-select size="small" v-model="addForm.technicalDataStatus" auto-complete="off" placeholder="请选择技术特征数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       environmentalDataNo:'',
-       environmentalDataName:'',
-       environmentalDataType:'',
+       technicalDataNo:'',
+       technicalDataName:'',
+       technicalDataType:'',
        address:'',
-       environmentalDataGender:'',
+       technicalDataGender:'',
        age:'',
-       environmentalDataStatus:''
+       technicalDataStatus:''
       },
       rules: {
-        environmentalDataNo: [
-          { required: true, message: '请输入环境监测数据编号', trigger: 'blur' }
+        technicalDataNo: [
+          { required: true, message: '请输入技术特征数据编号', trigger: 'blur' }
         ],
-        environmentalDataName: [
-          { required: true, message: '请输入环境监测数据名称', trigger: 'blur' }
+        technicalDataName: [
+          { required: true, message: '请输入技术特征数据名称', trigger: 'blur' }
         ],
-        environmentalDataType: [
-          { required: true, message: '请选择环境监测数据类型', trigger: 'blur' }
+        technicalDataType: [
+          { required: true, message: '请选择技术特征数据类型', trigger: 'blur' }
         ],
-        environmentalDataStatus: [
-          { required: true, message: '请选择环境监测数据状态', trigger: 'blur' }
+        technicalDataStatus: [
+          { required: true, message: '请选择技术特征数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        environmentalDataName: '',
+        technicalDataName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            environmentalDataNo:'VCxxxxxx',
-            environmentalDataName:'xxx温度数据',
-            environmentalDataType:'温度数据',
-            environmentalDataStatus:"有效",
+            technicalDataNo:'VCxxxxxx',
+            technicalDataName:'xxx技术分类数据',
+            technicalDataType:'技术分类数据',
+            technicalDataStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            environmentalDataNo:'VCxxxxxx',
-            environmentalDataName:'xxx温度数据',
-            environmentalDataType:'温度数据',
-            environmentalDataStatus:"有效",
+            technicalDataNo:'VCxxxxxx',
+            technicalDataName:'xxx技术分类数据',
+            technicalDataType:'技术分类数据',
+            technicalDataStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            environmentalDataNo:'VCxxxxxx',
-            environmentalDataName:'xxx温度数据',
-            environmentalDataType:'温度数据',
-            environmentalDataStatus:"有效",
+            technicalDataNo:'VCxxxxxx',
+            technicalDataName:'xxx技术分类数据',
+            technicalDataType:'技术分类数据',
+            technicalDataStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            environmentalDataNo:'VCxxxxxx',
-            environmentalDataName:'xxx水质监测数据',
-            environmentalDataType:'水质监测数据',
-            environmentalDataStatus:"已失效",
+            technicalDataNo:'VCxxxxxx',
+            technicalDataName:'xxx技术特性数据',
+            technicalDataType:'技术特性数据',
+            technicalDataStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            environmentalDataNo:'VCxxxxxx',
-            environmentalDataName:'xxx水质监测数据',
-            environmentalDataType:'水质监测数据',
-            environmentalDataStatus:"已失效",
+            technicalDataNo:'VCxxxxxx',
+            technicalDataName:'xxx技术特性数据',
+            technicalDataType:'技术特性数据',
+            technicalDataStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑环境监测数据'
-        this.addForm.environmentalDataNo = row.environmentalDataNo
-        this.addForm.environmentalDataName = row.environmentalDataName
-        this.addForm.environmentalDataType = row.environmentalDataType
-        this.addForm.environmentalDataStatus = row.environmentalDataStatus
+        this.title='编辑技术特征数据'
+        this.addForm.technicalDataNo = row.technicalDataNo
+        this.addForm.technicalDataName = row.technicalDataName
+        this.addForm.technicalDataType = row.technicalDataType
+        this.addForm.technicalDataStatus = row.technicalDataStatus
       }else{
-        this.title='添加环境监测数据'
-        this.addForm.environmentalDataNo = ''
-        this.addForm.environmentalDataName = ''
-        this.addForm.environmentalDataType = ''
-        this.addForm.environmentalDataStatus = ''
+        this.title='添加技术特征数据'
+        this.addForm.technicalDataNo = ''
+        this.addForm.technicalDataName = ''
+        this.addForm.technicalDataType = ''
+        this.addForm.technicalDataStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formenvironmentalDataName) {
+    closeDialog(formtechnicalDataName) {
       this.editFormVisible = false
-      this.$refs[formenvironmentalDataName].resetFields()
+      this.$refs[formtechnicalDataName].resetFields()
     }
   }
 }

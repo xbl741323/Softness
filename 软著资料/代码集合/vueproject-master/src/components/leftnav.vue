@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据采集和监测模块',
+          menuname: '数据采集模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '动物监测数据管理',
+              menuname: '数据源信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,15 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '环境监测数据管理',
-              hasThird: 'N',
-              url: 'pay/Order',
-              menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '设备状态监测数据管理',
+              menuname: '数据采集频率管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -91,7 +83,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '饲料消耗监测数据管理',
+              menuname: '数据过滤和清洗管理',
+              hasThird: 'N',
+              url: 'pay/Order1',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '数据同步更新管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '监测传感器信息管理',
+              menuname: '数据质量监控管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -109,22 +109,22 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '动物健康监测模块',
+          menuname: '侵权检测模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '土壤污染程度评估信息管理',
+              menuname: '技术特征数据管理',
               hasThird: 'N',
-              url: 'pay/Order1',
+              url: 'pay/Order',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '污染源溯源管理',
+              menuname: '专利数据预处理管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '潜在风险预警管理',
+              menuname: '侵权比对算法管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据挖掘和模式识别管理',
+              menuname: '侵权行为识别管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据可视化与报告生成管理',
+              menuname: '匹配结果生成管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '养殖过程优化模块',
+          menuname: '数据分析模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '远程监控和管理模块',
+          menuname: '用途评估模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据分析和预测模块',
+          menuname: '预警提示模块',
           hasThird: null,
           url: null,
           menus: [
