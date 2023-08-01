@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">5G数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>用户行为数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">学习评价模块</el-breadcrumb-item>
+      <el-breadcrumb-item>学习档案信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.userBehaviorNo" placeholder="请输入用户行为数据编号"></el-input>
+        <el-input size="small" v-model="formInline.learningProfileNo" placeholder="请输入学习档案信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.userBehaviorName" placeholder="请输入用户行为数据名称"></el-input>
+        <el-input size="small" v-model="formInline.learningProfileName" placeholder="请输入学习档案信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.userBehaviorType" placeholder="请选择用户行为数据类型"></el-select>
+        <el-select size="small" v-model="formInline.learningProfileType" placeholder="请选择学习档案信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="userBehaviorNo" label="用户行为数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="learningProfileNo" label="学习档案信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="userBehaviorName" label="用户行为数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="learningProfileName" label="学习档案信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="userBehaviorType" label="用户行为数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="learningProfileType" label="学习档案信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="userBehaviorStatus" label="用户行为数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="learningProfileStatus" label="学习档案信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="200px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="用户行为数据编号" prop="userBehaviorNo">
-          <el-input size="small" v-model="addForm.userBehaviorNo" auto-complete="off" placeholder="请输入用户行为数据编号"></el-input>
+        <el-form-item label="学习档案信息编号" prop="learningProfileNo">
+          <el-input size="small" v-model="addForm.learningProfileNo" auto-complete="off" placeholder="请输入学习档案信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="用户行为数据名称" prop="userBehaviorName">
-          <el-input size="small" v-model="addForm.userBehaviorName" auto-complete="off" placeholder="请输入用户行为数据名称"></el-input>
+        <el-form-item label="学习档案信息名称" prop="learningProfileName">
+          <el-input size="small" v-model="addForm.learningProfileName" auto-complete="off" placeholder="请输入学习档案信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="用户行为数据类型" prop="userBehaviorType">
-          <el-select size="small" v-model="addForm.userBehaviorType" auto-complete="off" placeholder="请选择用户行为数据类型">
-            <el-option label="浏览行为数据" value="1"></el-option>
+        <el-form-item label="学习档案信息类型" prop="learningProfileType">
+          <el-select size="small" v-model="addForm.learningProfileType" auto-complete="off" placeholder="请选择学习档案信息类型">
+            <el-option label="学习成绩信息" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="用户行为数据状态" prop="userBehaviorStatus">
-          <el-select size="small" v-model="addForm.userBehaviorStatus" auto-complete="off" placeholder="请选择用户行为数据状态">
+        <el-form-item label="学习档案信息状态" prop="learningProfileStatus">
+          <el-select size="small" v-model="addForm.learningProfileStatus" auto-complete="off" placeholder="请选择学习档案信息状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       userBehaviorNo:'',
-       userBehaviorName:'',
-       userBehaviorType:'',
+       learningProfileNo:'',
+       learningProfileName:'',
+       learningProfileType:'',
        address:'',
-       userBehaviorGender:'',
+       learningProfileGender:'',
        age:'',
-       userBehaviorStatus:''
+       learningProfileStatus:''
       },
       rules: {
-        userBehaviorNo: [
-          { required: true, message: '请输入用户行为数据编号', trigger: 'blur' }
+        learningProfileNo: [
+          { required: true, message: '请输入学习档案信息编号', trigger: 'blur' }
         ],
-        userBehaviorName: [
-          { required: true, message: '请输入用户行为数据名称', trigger: 'blur' }
+        learningProfileName: [
+          { required: true, message: '请输入学习档案信息名称', trigger: 'blur' }
         ],
-        userBehaviorType: [
-          { required: true, message: '请选择用户行为数据类型', trigger: 'blur' }
+        learningProfileType: [
+          { required: true, message: '请选择学习档案信息类型', trigger: 'blur' }
         ],
-        userBehaviorStatus: [
-          { required: true, message: '请选择用户行为数据状态', trigger: 'blur' }
+        learningProfileStatus: [
+          { required: true, message: '请选择学习档案信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        userBehaviorName: '',
+        learningProfileName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            userBehaviorNo:'VCxxxxxx',
-            userBehaviorName:'xxx浏览行为数据',
-            userBehaviorType:'浏览行为数据',
-            userBehaviorStatus:"有效",
+            learningProfileNo:'VCxxxxxx',
+            learningProfileName:'xxx学习成绩信息',
+            learningProfileType:'学习成绩信息',
+            learningProfileStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            userBehaviorNo:'VCxxxxxx',
-            userBehaviorName:'xxx浏览行为数据',
-            userBehaviorType:'浏览行为数据',
-            userBehaviorStatus:"有效",
+            learningProfileNo:'VCxxxxxx',
+            learningProfileName:'xxx学习成绩信息',
+            learningProfileType:'学习成绩信息',
+            learningProfileStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            userBehaviorNo:'VCxxxxxx',
-            userBehaviorName:'xxx浏览行为数据',
-            userBehaviorType:'浏览行为数据',
-            userBehaviorStatus:"有效",
+            learningProfileNo:'VCxxxxxx',
+            learningProfileName:'xxx学习成绩信息',
+            learningProfileType:'学习成绩信息',
+            learningProfileStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            userBehaviorNo:'VCxxxxxx',
-            userBehaviorName:'xxx使用时长和频率数据',
-            userBehaviorType:'使用时长和频率数据',
-            userBehaviorStatus:"已失效",
+            learningProfileNo:'VCxxxxxx',
+            learningProfileName:'xxx学习计划信息',
+            learningProfileType:'学习计划信息',
+            learningProfileStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            userBehaviorNo:'VCxxxxxx',
-            userBehaviorName:'xxx使用时长和频率数据',
-            userBehaviorType:'使用时长和频率数据',
-            userBehaviorStatus:"已失效",
+            learningProfileNo:'VCxxxxxx',
+            learningProfileName:'xxx学习计划信息',
+            learningProfileType:'学习计划信息',
+            learningProfileStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑用户行为数据'
-        this.addForm.userBehaviorNo = row.userBehaviorNo
-        this.addForm.userBehaviorName = row.userBehaviorName
-        this.addForm.userBehaviorType = row.userBehaviorType
-        this.addForm.userBehaviorStatus = row.userBehaviorStatus
+        this.title='编辑学习档案信息'
+        this.addForm.learningProfileNo = row.learningProfileNo
+        this.addForm.learningProfileName = row.learningProfileName
+        this.addForm.learningProfileType = row.learningProfileType
+        this.addForm.learningProfileStatus = row.learningProfileStatus
       }else{
-        this.title='添加用户行为数据'
-        this.addForm.userBehaviorNo = ''
-        this.addForm.userBehaviorName = ''
-        this.addForm.userBehaviorType = ''
-        this.addForm.userBehaviorStatus = ''
+        this.title='添加学习档案信息'
+        this.addForm.learningProfileNo = ''
+        this.addForm.learningProfileName = ''
+        this.addForm.learningProfileType = ''
+        this.addForm.learningProfileStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formuserBehaviorName) {
+    closeDialog(formlearningProfileName) {
       this.editFormVisible = false
-      this.$refs[formuserBehaviorName].resetFields()
+      this.$refs[formlearningProfileName].resetFields()
     }
   }
 }
