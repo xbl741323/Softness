@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">侵权检测模块</el-breadcrumb-item>
-      <el-breadcrumb-item>技术特征数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据处理与分析模块</el-breadcrumb-item>
+      <el-breadcrumb-item>电路解析数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.technicalDataNo" placeholder="请输入技术特征数据编号"></el-input>
+        <el-input size="small" v-model="formInline.circuitAnalysisNo" placeholder="请输入电路解析数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.technicalDataName" placeholder="请输入技术特征数据名称"></el-input>
+        <el-input size="small" v-model="formInline.circuitAnalysisName" placeholder="请输入电路解析数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.technicalDataType" placeholder="请选择技术特征数据类型"></el-select>
+        <el-select size="small" v-model="formInline.circuitAnalysisType" placeholder="请选择电路解析数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="technicalDataNo" label="技术特征数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="circuitAnalysisNo" label="电路解析数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="technicalDataName" label="技术特征数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="circuitAnalysisName" label="电路解析数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="technicalDataType" label="技术特征数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="circuitAnalysisType" label="电路解析数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="technicalDataStatus" label="技术特征数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="circuitAnalysisStatus" label="电路解析数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="200px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="技术特征数据编号" prop="technicalDataNo">
-          <el-input size="small" v-model="addForm.technicalDataNo" auto-complete="off" placeholder="请输入技术特征数据编号"></el-input>
+        <el-form-item label="电路解析数据编号" prop="circuitAnalysisNo">
+          <el-input size="small" v-model="addForm.circuitAnalysisNo" auto-complete="off" placeholder="请输入电路解析数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="技术特征数据名称" prop="technicalDataName">
-          <el-input size="small" v-model="addForm.technicalDataName" auto-complete="off" placeholder="请输入技术特征数据名称"></el-input>
+        <el-form-item label="电路解析数据名称" prop="circuitAnalysisName">
+          <el-input size="small" v-model="addForm.circuitAnalysisName" auto-complete="off" placeholder="请输入电路解析数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="技术特征数据类型" prop="technicalDataType">
-          <el-select size="small" v-model="addForm.technicalDataType" auto-complete="off" placeholder="请选择技术特征数据类型">
-            <el-option label="技术分类数据" value="1"></el-option>
+        <el-form-item label="电路解析数据类型" prop="circuitAnalysisType">
+          <el-select size="small" v-model="addForm.circuitAnalysisType" auto-complete="off" placeholder="请选择电路解析数据类型">
+            <el-option label="电源和功耗信息" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="技术特征数据状态" prop="technicalDataStatus">
-          <el-select size="small" v-model="addForm.technicalDataStatus" auto-complete="off" placeholder="请选择技术特征数据状态">
+        <el-form-item label="电路解析数据状态" prop="circuitAnalysisStatus">
+          <el-select size="small" v-model="addForm.circuitAnalysisStatus" auto-complete="off" placeholder="请选择电路解析数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       technicalDataNo:'',
-       technicalDataName:'',
-       technicalDataType:'',
+       circuitAnalysisNo:'',
+       circuitAnalysisName:'',
+       circuitAnalysisType:'',
        address:'',
-       technicalDataGender:'',
+       circuitAnalysisGender:'',
        age:'',
-       technicalDataStatus:''
+       circuitAnalysisStatus:''
       },
       rules: {
-        technicalDataNo: [
-          { required: true, message: '请输入技术特征数据编号', trigger: 'blur' }
+        circuitAnalysisNo: [
+          { required: true, message: '请输入电路解析数据编号', trigger: 'blur' }
         ],
-        technicalDataName: [
-          { required: true, message: '请输入技术特征数据名称', trigger: 'blur' }
+        circuitAnalysisName: [
+          { required: true, message: '请输入电路解析数据名称', trigger: 'blur' }
         ],
-        technicalDataType: [
-          { required: true, message: '请选择技术特征数据类型', trigger: 'blur' }
+        circuitAnalysisType: [
+          { required: true, message: '请选择电路解析数据类型', trigger: 'blur' }
         ],
-        technicalDataStatus: [
-          { required: true, message: '请选择技术特征数据状态', trigger: 'blur' }
+        circuitAnalysisStatus: [
+          { required: true, message: '请选择电路解析数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        technicalDataName: '',
+        circuitAnalysisName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            technicalDataNo:'VCxxxxxx',
-            technicalDataName:'xxx技术分类数据',
-            technicalDataType:'技术分类数据',
-            technicalDataStatus:"有效",
+            circuitAnalysisNo:'VCxxxxxx',
+            circuitAnalysisName:'xxx电源和功耗信息',
+            circuitAnalysisType:'电源和功耗信息',
+            circuitAnalysisStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            technicalDataNo:'VCxxxxxx',
-            technicalDataName:'xxx技术分类数据',
-            technicalDataType:'技术分类数据',
-            technicalDataStatus:"有效",
+            circuitAnalysisNo:'VCxxxxxx',
+            circuitAnalysisName:'xxx电源和功耗信息',
+            circuitAnalysisType:'电源和功耗信息',
+            circuitAnalysisStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            technicalDataNo:'VCxxxxxx',
-            technicalDataName:'xxx技术分类数据',
-            technicalDataType:'技术分类数据',
-            technicalDataStatus:"有效",
+            circuitAnalysisNo:'VCxxxxxx',
+            circuitAnalysisName:'xxx电源和功耗信息',
+            circuitAnalysisType:'电源和功耗信息',
+            circuitAnalysisStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            technicalDataNo:'VCxxxxxx',
-            technicalDataName:'xxx技术特性数据',
-            technicalDataType:'技术特性数据',
-            technicalDataStatus:"已失效",
+            circuitAnalysisNo:'VCxxxxxx',
+            circuitAnalysisName:'xxx信号完整性信息',
+            circuitAnalysisType:'信号完整性信息',
+            circuitAnalysisStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            technicalDataNo:'VCxxxxxx',
-            technicalDataName:'xxx技术特性数据',
-            technicalDataType:'技术特性数据',
-            technicalDataStatus:"已失效",
+            circuitAnalysisNo:'VCxxxxxx',
+            circuitAnalysisName:'xxx信号完整性信息',
+            circuitAnalysisType:'信号完整性信息',
+            circuitAnalysisStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑技术特征数据'
-        this.addForm.technicalDataNo = row.technicalDataNo
-        this.addForm.technicalDataName = row.technicalDataName
-        this.addForm.technicalDataType = row.technicalDataType
-        this.addForm.technicalDataStatus = row.technicalDataStatus
+        this.title='编辑电路解析数据'
+        this.addForm.circuitAnalysisNo = row.circuitAnalysisNo
+        this.addForm.circuitAnalysisName = row.circuitAnalysisName
+        this.addForm.circuitAnalysisType = row.circuitAnalysisType
+        this.addForm.circuitAnalysisStatus = row.circuitAnalysisStatus
       }else{
-        this.title='添加技术特征数据'
-        this.addForm.technicalDataNo = ''
-        this.addForm.technicalDataName = ''
-        this.addForm.technicalDataType = ''
-        this.addForm.technicalDataStatus = ''
+        this.title='添加电路解析数据'
+        this.addForm.circuitAnalysisNo = ''
+        this.addForm.circuitAnalysisName = ''
+        this.addForm.circuitAnalysisType = ''
+        this.addForm.circuitAnalysisStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formtechnicalDataName) {
+    closeDialog(formcircuitAnalysisName) {
       this.editFormVisible = false
-      this.$refs[formtechnicalDataName].resetFields()
+      this.$refs[formcircuitAnalysisName].resetFields()
     }
   }
 }
