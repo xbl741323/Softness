@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>采样点数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">5G数据采集模块</el-breadcrumb-item>
+      <el-breadcrumb-item>5G数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.samplingName" placeholder="请输入采样点数据编号"></el-input>
+        <el-input size="small" v-model="formInline.fgDataName" placeholder="请输入5G数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.samplingName" placeholder="请输入采样点数据名称"></el-input>
+        <el-input size="small" v-model="formInline.fgDataName" placeholder="请输入5G数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.samplingStatus" placeholder="请选择采样点数据类型">
+        <el-select size="small" v-model="formInline.fgDataStatus" placeholder="请选择5G数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="samplingNo" label="采样点数据编号">
+      <el-table-column sortable prop="fgDataNo" label="5G数据编号">
       </el-table-column>
-      <el-table-column sortable prop="samplingName" label="采样点数据名称">
+      <el-table-column sortable prop="fgDataName" label="5G数据名称">
       </el-table-column>
-      <el-table-column sortable prop="samplingType" label="采样点数据类型">
+      <el-table-column sortable prop="fgDataType" label="5G数据类型">
       </el-table-column>
-      <el-table-column sortable prop="samplingStatus" label="采样点数据状态" >
+      <el-table-column sortable prop="fgDataStatus" label="5G数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="采样点数据编号" prop="samplingNo">
-          <el-input size="small" v-model="editForm.samplingNo" auto-complete="off" placeholder="请输入采样点数据编号"></el-input>
+        <el-form-item label="5G数据编号" prop="fgDataNo">
+          <el-input size="small" v-model="editForm.fgDataNo" auto-complete="off" placeholder="请输入5G数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="采样点数据名称" prop="samplingName">
-          <el-input size="small" v-model="editForm.samplingName" auto-complete="off" placeholder="请输入采样点数据名称"></el-input>
+        <el-form-item label="5G数据名称" prop="fgDataName">
+          <el-input size="small" v-model="editForm.fgDataName" auto-complete="off" placeholder="请输入5G数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="采样点数据类型" prop="samplingType">
-          <el-select size="small" v-model="editForm.samplingType" auto-complete="off" placeholder="请选择采样点数据类型">
-            <el-option label="采样点数据" value="1"></el-option>
+        <el-form-item label="5G数据类型" prop="fgDataType">
+          <el-select size="small" v-model="editForm.fgDataType" auto-complete="off" placeholder="请选择5G数据类型">
+            <el-option label="5G流量数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="采样点数据状态" prop="samplingStatus">
-          <el-select size="small" v-model="editForm.samplingStatus" auto-complete="off" placeholder="请选择采样点数据状态">
+        <el-form-item label="5G数据状态" prop="fgDataStatus">
+          <el-select size="small" v-model="editForm.fgDataStatus" auto-complete="off" placeholder="请选择5G数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        samplingNo: '',
-        samplingName: '',
-        samplingType:'',
+        fgDataNo: '',
+        fgDataName: '',
+        fgDataType:'',
         status:'',
-        samplingStatus: '',
+        fgDataStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        samplingNo: [
-          { required: true, message: '请输入采样点数据编号', trigger: 'blur' }
+        fgDataNo: [
+          { required: true, message: '请输入5G数据编号', trigger: 'blur' }
         ],
-        samplingName: [
-          { required: true, message: '请输入采样点数据名称', trigger: 'blur' }
+        fgDataName: [
+          { required: true, message: '请输入5G数据名称', trigger: 'blur' }
         ],
-        samplingType: [
-          { required: true, message: '请选择采样点数据类型', trigger: 'blur' }
+        fgDataType: [
+          { required: true, message: '请选择5G数据类型', trigger: 'blur' }
         ],
-        samplingStatus: [
-          { required: true, message: '请选择采样点数据状态', trigger: 'blur' }
+        fgDataStatus: [
+          { required: true, message: '请选择5G数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            samplingNo: 'VSxxxxxxxx',
-            samplingName: 'XXX采样点数据',
-            samplingType: '采样点数据',
-            samplingStatus: '有效',
+            fgDataNo: 'VSxxxxxxxx',
+            fgDataName: 'XXX5G流量数据',
+            fgDataType: '5G流量数据',
+            fgDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            samplingNo: 'VSxxxxxxxx',
-            samplingName: 'XXX采样点数据',
-            samplingType: '采样点数据',
-            samplingStatus: '有效',
+            fgDataNo: 'VSxxxxxxxx',
+            fgDataName: 'XXX5G流量数据',
+            fgDataType: '5G流量数据',
+            fgDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            samplingNo: 'VSxxxxxxxx',
-            samplingName: 'XXX采样点数据',
-            samplingType: '采样点数据',
-            samplingStatus: '有效',
+            fgDataNo: 'VSxxxxxxxx',
+            fgDataName: 'XXX5G流量数据',
+            fgDataType: '5G流量数据',
+            fgDataStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            samplingNo: 'VSxxxxxxxx',
-            samplingName: 'XXX采样时间戳数据',
-            samplingType: '采样时间戳数据',
-            samplingStatus: '已失效',
+            fgDataNo: 'VSxxxxxxxx',
+            fgDataName: 'XXX5G网络参数数据',
+            fgDataType: '5G网络参数数据',
+            fgDataStatus: '已失效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            samplingNo: 'VSxxxxxxxx',
-            samplingName: 'XXX采样时间戳数据',
-            samplingType: '采样时间戳数据',
-            samplingStatus: '有效',
+            fgDataNo: 'VSxxxxxxxx',
+            fgDataName: 'XXX5G网络参数数据',
+            fgDataType: '5G网络参数数据',
+            fgDataStatus: '有效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑采样点数据'
-        this.editForm.samplingNo = row.samplingNo
-        this.editForm.samplingName = row.samplingName
-        this.editForm.samplingStatus = row.samplingStatus
-        this.editForm.samplingType = row.samplingType
+        this.title = '编辑5G数据'
+        this.editForm.fgDataNo = row.fgDataNo
+        this.editForm.fgDataName = row.fgDataName
+        this.editForm.fgDataStatus = row.fgDataStatus
+        this.editForm.fgDataType = row.fgDataType
       } else {
-        this.title = '添加采样点数据'
-        this.editForm.samplingNo = ''
-        this.editForm.samplingName = ''
-        this.editForm.samplingStatus = ''
-        this.editForm.samplingType =''
+        this.title = '添加5G数据'
+        this.editForm.fgDataNo = ''
+        this.editForm.fgDataName = ''
+        this.editForm.fgDataStatus = ''
+        this.editForm.fgDataType =''
       }
     },
     // 编辑、增加页面保存方法

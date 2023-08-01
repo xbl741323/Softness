@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据采集模块',
+          menuname: '5G数据采集模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '信号采样信息管理',
+              menuname: '5G数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '时序控制管理',
+              menuname: '用户行为数据管理',
+              hasThird: 'N',
+              url: 'pay/Order',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '设备接口信息管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,15 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据格式转换管理',
-              hasThird: 'N',
-              url: 'pay/Order1',
-              menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '数据存储管理',
+              menuname: '流量数据管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据传输管理',
+              menuname: '性能指标数据管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -109,22 +109,22 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据处理与分析模块',
+          menuname: '5G数据处理与分析模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '电路解析数据管理',
+              menuname: '数据清洗与预处理管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order1',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '逻辑分析管理',
+              menuname: '数据分析与挖掘管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '时序分析管理',
+              menuname: '数据转换与整合管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '功耗分析管理',
+              menuname: '数据可视化展示与报表生成管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -148,7 +148,15 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据可视化管理',
+              menuname: '决策支持与智能推荐管理',
+              hasThird: 'N',
+              url: 'pay/Order1111',
+              menus: null
+            },
+             {
+              menuid: 34,
+              icon: 'icon-order-manage',
+              menuname: '统计报表和图表管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -158,7 +166,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '接口模块',
+          menuname: '用户行为分析模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '安全模块',
+          menuname: '5G数据安全模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +232,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '存储和管理模块',
+          menuname: '性能评估与优化模块',
           hasThird: null,
           url: null,
           menus: [
