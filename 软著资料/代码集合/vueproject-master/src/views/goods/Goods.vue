@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">教学资源管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>教学课程资源管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据采集与监测模块</el-breadcrumb-item>
+      <el-breadcrumb-item>光伏检测数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.courseResourceName" placeholder="请输入教学课程资源编号"></el-input>
+        <el-input size="small" v-model="formInline.pvDetectionName" placeholder="请输入光伏检测数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.courseResourceName" placeholder="请输入教学课程资源名称"></el-input>
+        <el-input size="small" v-model="formInline.pvDetectionName" placeholder="请输入光伏检测数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.courseResourceStatus" placeholder="请选择教学课程资源类型">
+        <el-select size="small" v-model="formInline.pvDetectionStatus" placeholder="请选择光伏检测数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="courseResourceNo" label="教学课程资源编号">
+      <el-table-column sortable prop="pvDetectionNo" label="光伏检测数据编号">
       </el-table-column>
-      <el-table-column sortable prop="courseResourceName" label="教学课程资源名称">
+      <el-table-column sortable prop="pvDetectionName" label="光伏检测数据名称">
       </el-table-column>
-      <el-table-column sortable prop="courseResourceType" label="教学课程资源类型">
+      <el-table-column sortable prop="pvDetectionType" label="光伏检测数据类型">
       </el-table-column>
-      <el-table-column sortable prop="courseResourceStatus" label="教学课程资源状态" >
+      <el-table-column sortable prop="pvDetectionStatus" label="光伏检测数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="教学课程资源编号" prop="courseResourceNo">
-          <el-input size="small" v-model="editForm.courseResourceNo" auto-complete="off" placeholder="请输入教学课程资源编号"></el-input>
+        <el-form-item label="光伏检测数据编号" prop="pvDetectionNo">
+          <el-input size="small" v-model="editForm.pvDetectionNo" auto-complete="off" placeholder="请输入光伏检测数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="教学课程资源名称" prop="courseResourceName">
-          <el-input size="small" v-model="editForm.courseResourceName" auto-complete="off" placeholder="请输入教学课程资源名称"></el-input>
+        <el-form-item label="光伏检测数据名称" prop="pvDetectionName">
+          <el-input size="small" v-model="editForm.pvDetectionName" auto-complete="off" placeholder="请输入光伏检测数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="教学课程资源类型" prop="courseResourceType">
-          <el-select size="small" v-model="editForm.courseResourceType" auto-complete="off" placeholder="请选择教学课程资源类型">
-            <el-option label="课程教材资源" value="1"></el-option>
+        <el-form-item label="光伏检测数据类型" prop="pvDetectionType">
+          <el-select size="small" v-model="editForm.pvDetectionType" auto-complete="off" placeholder="请选择光伏检测数据类型">
+            <el-option label="光照强度数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="教学课程资源状态" prop="courseResourceStatus">
-          <el-select size="small" v-model="editForm.courseResourceStatus" auto-complete="off" placeholder="请选择教学课程资源状态">
+        <el-form-item label="光伏检测数据状态" prop="pvDetectionStatus">
+          <el-select size="small" v-model="editForm.pvDetectionStatus" auto-complete="off" placeholder="请选择光伏检测数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        courseResourceNo: '',
-        courseResourceName: '',
-        courseResourceType:'',
+        pvDetectionNo: '',
+        pvDetectionName: '',
+        pvDetectionType:'',
         status:'',
-        courseResourceStatus: '',
+        pvDetectionStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        courseResourceNo: [
-          { required: true, message: '请输入教学课程资源编号', trigger: 'blur' }
+        pvDetectionNo: [
+          { required: true, message: '请输入光伏检测数据编号', trigger: 'blur' }
         ],
-        courseResourceName: [
-          { required: true, message: '请输入教学课程资源名称', trigger: 'blur' }
+        pvDetectionName: [
+          { required: true, message: '请输入光伏检测数据名称', trigger: 'blur' }
         ],
-        courseResourceType: [
-          { required: true, message: '请选择教学课程资源类型', trigger: 'blur' }
+        pvDetectionType: [
+          { required: true, message: '请选择光伏检测数据类型', trigger: 'blur' }
         ],
-        courseResourceStatus: [
-          { required: true, message: '请选择教学课程资源状态', trigger: 'blur' }
+        pvDetectionStatus: [
+          { required: true, message: '请选择光伏检测数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            courseResourceNo: 'VSxxxxxxxx',
-            courseResourceName: 'XXX课程教材资源',
-            courseResourceType: '课程教材资源',
-            courseResourceStatus: '有效',
+            pvDetectionNo: 'VSxxxxxxxx',
+            pvDetectionName: 'XXX光照强度数据',
+            pvDetectionType: '光照强度数据',
+            pvDetectionStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            courseResourceNo: 'VSxxxxxxxx',
-            courseResourceName: 'XXX课程教材资源',
-            courseResourceType: '课程教材资源',
-            courseResourceStatus: '有效',
+            pvDetectionNo: 'VSxxxxxxxx',
+            pvDetectionName: 'XXX光照强度数据',
+            pvDetectionType: '光照强度数据',
+            pvDetectionStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            courseResourceNo: 'VSxxxxxxxx',
-            courseResourceName: 'XXX课程教材资源',
-            courseResourceType: '课程教材资源',
-            courseResourceStatus: '有效',
+            pvDetectionNo: 'VSxxxxxxxx',
+            pvDetectionName: 'XXX光照强度数据',
+            pvDetectionType: '光照强度数据',
+            pvDetectionStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            courseResourceNo: 'VSxxxxxxxx',
-            courseResourceName: 'XXX教学视频资源',
-            courseResourceType: '教学视频资源',
-            courseResourceStatus: '已失效',
+            pvDetectionNo: 'VSxxxxxxxx',
+            pvDetectionName: 'XXX故障和警报数据',
+            pvDetectionType: '故障和警报数据',
+            pvDetectionStatus: '已失效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            courseResourceNo: 'VSxxxxxxxx',
-            courseResourceName: 'XXX教学视频资源',
-            courseResourceType: '教学视频资源',
-            courseResourceStatus: '有效',
+            pvDetectionNo: 'VSxxxxxxxx',
+            pvDetectionName: 'XXX故障和警报数据',
+            pvDetectionType: '故障和警报数据',
+            pvDetectionStatus: '有效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑教学课程资源'
-        this.editForm.courseResourceNo = row.courseResourceNo
-        this.editForm.courseResourceName = row.courseResourceName
-        this.editForm.courseResourceStatus = row.courseResourceStatus
-        this.editForm.courseResourceType = row.courseResourceType
+        this.title = '编辑光伏检测数据'
+        this.editForm.pvDetectionNo = row.pvDetectionNo
+        this.editForm.pvDetectionName = row.pvDetectionName
+        this.editForm.pvDetectionStatus = row.pvDetectionStatus
+        this.editForm.pvDetectionType = row.pvDetectionType
       } else {
-        this.title = '添加教学课程资源'
-        this.editForm.courseResourceNo = ''
-        this.editForm.courseResourceName = ''
-        this.editForm.courseResourceStatus = ''
-        this.editForm.courseResourceType =''
+        this.title = '添加光伏检测数据'
+        this.editForm.pvDetectionNo = ''
+        this.editForm.pvDetectionName = ''
+        this.editForm.pvDetectionStatus = ''
+        this.editForm.pvDetectionType =''
       }
     },
     // 编辑、增加页面保存方法

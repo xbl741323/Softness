@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '教学资源管理模块',
+          menuname: '数据采集与监测模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '教学课程资源管理',
+              menuname: '光伏检测数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '教学资源共享和协作管理',
+              menuname: '光伏发电参数管理',
+              hasThird: 'N',
+              url: 'pay/Order',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '传感器信息管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,15 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '教学资源评价与反馈管理',
-              hasThird: 'N',
-              url: 'pay/Order1',
-              menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '教学资源推荐与分享管理',
+              menuname: '数据采集设备管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,7 +99,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '教学资源备份与恢复管理',
+              menuname: '数据监测设备管理',
+              hasThird: 'N',
+              url: 'pay/Order1111',
+              menus: null
+            },
+             {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '通信模块管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -109,22 +117,22 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '学习评价模块',
+          menuname: '性能评估与优化模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '学习档案信息管理',
+              menuname: '性能评估指标管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order1',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '作业提交与批改管理',
+              menuname: '优化建议与策略管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -132,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '考试管理',
+              menuname: '历史数据分析与回溯管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -140,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '成绩管理',
+              menuname: '优化策略与调整管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -148,15 +156,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '用户满意度评估管理',
-              hasThird: 'N',
-              url: 'pay/Order1111',
-              menus: null
-            },
-             {
-              menuid: 34,
-              icon: 'icon-order-manage',
-              menuname: '评估和反馈管理',
+              menuname: '性能分析与诊断管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -166,7 +166,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '互动交流管理模块',
+          menuname: '故障诊断与预警模块',
           hasThird: null,
           url: null,
           menus: [
@@ -215,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '学习报告模块',
+          menuname: '数据存储与共享模块',
           hasThird: null,
           url: null,
           menus: [
@@ -232,7 +232,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '智能学习辅助模块',
+          menuname: '数据处理与分析模块',
           hasThird: null,
           url: null,
           menus: [
