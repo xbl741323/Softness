@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据采集与监测模块</el-breadcrumb-item>
-      <el-breadcrumb-item>光伏发电参数管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">根瘤菌培养模块</el-breadcrumb-item>
+      <el-breadcrumb-item>培养基配制信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.pvPowerNo" placeholder="请输入光伏发电参数编号"></el-input>
+        <el-input size="small" v-model="formInline.mediaPreparationNo" placeholder="请输入培养基配制信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.pvPowerName" placeholder="请输入光伏发电参数名称"></el-input>
+        <el-input size="small" v-model="formInline.mediaPreparationName" placeholder="请输入培养基配制信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.pvPowerType" placeholder="请选择光伏发电参数类型"></el-select>
+        <el-select size="small" v-model="formInline.mediaPreparationType" placeholder="请选择培养基配制信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="pvPowerNo" label="光伏发电参数编号" show-overflow-tooltip>
+      <el-table-column sortable prop="mediaPreparationNo" label="培养基配制信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="pvPowerName" label="光伏发电参数名称" show-overflow-tooltip>
+      <el-table-column sortable prop="mediaPreparationName" label="培养基配制信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="pvPowerType" label="光伏发电参数类型" show-overflow-tooltip>
+      <el-table-column sortable prop="mediaPreparationType" label="培养基配制信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="pvPowerStatus" label="光伏发电参数状态" show-overflow-tooltip>
+      <el-table-column sortable prop="mediaPreparationStatus" label="培养基配制信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="光伏发电参数编号" prop="pvPowerNo">
-          <el-input size="small" v-model="addForm.pvPowerNo" auto-complete="off" placeholder="请输入光伏发电参数编号"></el-input>
+        <el-form-item label="培养基配制信息编号" prop="mediaPreparationNo">
+          <el-input size="small" v-model="addForm.mediaPreparationNo" auto-complete="off" placeholder="请输入培养基配制信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="光伏发电参数名称" prop="pvPowerName">
-          <el-input size="small" v-model="addForm.pvPowerName" auto-complete="off" placeholder="请输入光伏发电参数名称"></el-input>
+        <el-form-item label="培养基配制信息名称" prop="mediaPreparationName">
+          <el-input size="small" v-model="addForm.mediaPreparationName" auto-complete="off" placeholder="请输入培养基配制信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="光伏发电参数类型" prop="pvPowerType">
-          <el-select size="small" v-model="addForm.pvPowerType" auto-complete="off" placeholder="请选择光伏发电参数类型">
-            <el-option label="光伏阵列数据" value="1"></el-option>
+        <el-form-item label="培养基配制信息类型" prop="mediaPreparationType">
+          <el-select size="small" v-model="addForm.mediaPreparationType" auto-complete="off" placeholder="请选择培养基配制信息类型">
+            <el-option label="基本成分信息" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="光伏发电参数状态" prop="pvPowerStatus">
-          <el-select size="small" v-model="addForm.pvPowerStatus" auto-complete="off" placeholder="请选择光伏发电参数状态">
+        <el-form-item label="培养基配制信息状态" prop="mediaPreparationStatus">
+          <el-select size="small" v-model="addForm.mediaPreparationStatus" auto-complete="off" placeholder="请选择培养基配制信息状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       pvPowerNo:'',
-       pvPowerName:'',
-       pvPowerType:'',
+       mediaPreparationNo:'',
+       mediaPreparationName:'',
+       mediaPreparationType:'',
        address:'',
-       pvPowerGender:'',
+       mediaPreparationGender:'',
        age:'',
-       pvPowerStatus:''
+       mediaPreparationStatus:''
       },
       rules: {
-        pvPowerNo: [
-          { required: true, message: '请输入光伏发电参数编号', trigger: 'blur' }
+        mediaPreparationNo: [
+          { required: true, message: '请输入培养基配制信息编号', trigger: 'blur' }
         ],
-        pvPowerName: [
-          { required: true, message: '请输入光伏发电参数名称', trigger: 'blur' }
+        mediaPreparationName: [
+          { required: true, message: '请输入培养基配制信息名称', trigger: 'blur' }
         ],
-        pvPowerType: [
-          { required: true, message: '请选择光伏发电参数类型', trigger: 'blur' }
+        mediaPreparationType: [
+          { required: true, message: '请选择培养基配制信息类型', trigger: 'blur' }
         ],
-        pvPowerStatus: [
-          { required: true, message: '请选择光伏发电参数状态', trigger: 'blur' }
+        mediaPreparationStatus: [
+          { required: true, message: '请选择培养基配制信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        pvPowerName: '',
+        mediaPreparationName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            pvPowerNo:'VCxxxxxx',
-            pvPowerName:'xxx光伏阵列数据',
-            pvPowerType:'光伏阵列数据',
-            pvPowerStatus:"有效",
+            mediaPreparationNo:'VCxxxxxx',
+            mediaPreparationName:'xxx基本成分信息',
+            mediaPreparationType:'基本成分信息',
+            mediaPreparationStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            pvPowerNo:'VCxxxxxx',
-            pvPowerName:'xxx光伏阵列数据',
-            pvPowerType:'光伏阵列数据',
-            pvPowerStatus:"有效",
+            mediaPreparationNo:'VCxxxxxx',
+            mediaPreparationName:'xxx基本成分信息',
+            mediaPreparationType:'基本成分信息',
+            mediaPreparationStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            pvPowerNo:'VCxxxxxx',
-            pvPowerName:'xxx光伏阵列数据',
-            pvPowerType:'光伏阵列数据',
-            pvPowerStatus:"有效",
+            mediaPreparationNo:'VCxxxxxx',
+            mediaPreparationName:'xxx基本成分信息',
+            mediaPreparationType:'基本成分信息',
+            mediaPreparationStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            pvPowerNo:'VCxxxxxx',
-            pvPowerName:'xxx辐照度数据',
-            pvPowerType:'辐照度数据',
-            pvPowerStatus:"已失效",
+            mediaPreparationNo:'VCxxxxxx',
+            mediaPreparationName:'xxx氧气含量信息',
+            mediaPreparationType:'氧气含量信息',
+            mediaPreparationStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            pvPowerNo:'VCxxxxxx',
-            pvPowerName:'xxx辐照度数据',
-            pvPowerType:'辐照度数据',
-            pvPowerStatus:"已失效",
+            mediaPreparationNo:'VCxxxxxx',
+            mediaPreparationName:'xxx氧气含量信息',
+            mediaPreparationType:'氧气含量信息',
+            mediaPreparationStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑光伏发电参数数据'
-        this.addForm.pvPowerNo = row.pvPowerNo
-        this.addForm.pvPowerName = row.pvPowerName
-        this.addForm.pvPowerType = row.pvPowerType
-        this.addForm.pvPowerStatus = row.pvPowerStatus
+        this.title='编辑培养基配制信息'
+        this.addForm.mediaPreparationNo = row.mediaPreparationNo
+        this.addForm.mediaPreparationName = row.mediaPreparationName
+        this.addForm.mediaPreparationType = row.mediaPreparationType
+        this.addForm.mediaPreparationStatus = row.mediaPreparationStatus
       }else{
-        this.title='添加光伏发电参数数据'
-        this.addForm.pvPowerNo = ''
-        this.addForm.pvPowerName = ''
-        this.addForm.pvPowerType = ''
-        this.addForm.pvPowerStatus = ''
+        this.title='添加培养基配制信息'
+        this.addForm.mediaPreparationNo = ''
+        this.addForm.mediaPreparationName = ''
+        this.addForm.mediaPreparationType = ''
+        this.addForm.mediaPreparationStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formpvPowerName) {
+    closeDialog(formmediaPreparationName) {
       this.editFormVisible = false
-      this.$refs[formpvPowerName].resetFields()
+      this.$refs[formmediaPreparationName].resetFields()
     }
   }
 }

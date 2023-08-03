@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据采集与监测模块</el-breadcrumb-item>
-      <el-breadcrumb-item>光伏检测数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">根瘤菌管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>菌株信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.pvDetectionName" placeholder="请输入光伏检测数据编号"></el-input>
+        <el-input size="small" v-model="formInline.strainInfoName" placeholder="请输入菌株信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.pvDetectionName" placeholder="请输入光伏检测数据名称"></el-input>
+        <el-input size="small" v-model="formInline.strainInfoName" placeholder="请输入菌株信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.pvDetectionStatus" placeholder="请选择光伏检测数据类型">
+        <el-select size="small" v-model="formInline.strainInfoStatus" placeholder="请选择菌株信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="pvDetectionNo" label="光伏检测数据编号">
+      <el-table-column sortable prop="strainInfoNo" label="菌株信息编号">
       </el-table-column>
-      <el-table-column sortable prop="pvDetectionName" label="光伏检测数据名称">
+      <el-table-column sortable prop="strainInfoName" label="菌株信息名称">
       </el-table-column>
-      <el-table-column sortable prop="pvDetectionType" label="光伏检测数据类型">
+      <el-table-column sortable prop="strainInfoType" label="菌株信息类型">
       </el-table-column>
-      <el-table-column sortable prop="pvDetectionStatus" label="光伏检测数据状态" >
+      <el-table-column sortable prop="strainInfoStatus" label="菌株信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="光伏检测数据编号" prop="pvDetectionNo">
-          <el-input size="small" v-model="editForm.pvDetectionNo" auto-complete="off" placeholder="请输入光伏检测数据编号"></el-input>
+        <el-form-item label="菌株信息编号" prop="strainInfoNo">
+          <el-input size="small" v-model="editForm.strainInfoNo" auto-complete="off" placeholder="请输入菌株信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="光伏检测数据名称" prop="pvDetectionName">
-          <el-input size="small" v-model="editForm.pvDetectionName" auto-complete="off" placeholder="请输入光伏检测数据名称"></el-input>
+        <el-form-item label="菌株信息名称" prop="strainInfoName">
+          <el-input size="small" v-model="editForm.strainInfoName" auto-complete="off" placeholder="请输入菌株信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="光伏检测数据类型" prop="pvDetectionType">
-          <el-select size="small" v-model="editForm.pvDetectionType" auto-complete="off" placeholder="请选择光伏检测数据类型">
-            <el-option label="光照强度数据" value="1"></el-option>
+        <el-form-item label="菌株信息类型" prop="strainInfoType">
+          <el-select size="small" v-model="editForm.strainInfoType" auto-complete="off" placeholder="请选择菌株信息类型">
+            <el-option label="豆科根瘤菌菌株" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="光伏检测数据状态" prop="pvDetectionStatus">
-          <el-select size="small" v-model="editForm.pvDetectionStatus" auto-complete="off" placeholder="请选择光伏检测数据状态">
+        <el-form-item label="菌株信息状态" prop="strainInfoStatus">
+          <el-select size="small" v-model="editForm.strainInfoStatus" auto-complete="off" placeholder="请选择菌株信息状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        pvDetectionNo: '',
-        pvDetectionName: '',
-        pvDetectionType:'',
+        strainInfoNo: '',
+        strainInfoName: '',
+        strainInfoType:'',
         status:'',
-        pvDetectionStatus: '',
+        strainInfoStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        pvDetectionNo: [
-          { required: true, message: '请输入光伏检测数据编号', trigger: 'blur' }
+        strainInfoNo: [
+          { required: true, message: '请输入菌株信息编号', trigger: 'blur' }
         ],
-        pvDetectionName: [
-          { required: true, message: '请输入光伏检测数据名称', trigger: 'blur' }
+        strainInfoName: [
+          { required: true, message: '请输入菌株信息名称', trigger: 'blur' }
         ],
-        pvDetectionType: [
-          { required: true, message: '请选择光伏检测数据类型', trigger: 'blur' }
+        strainInfoType: [
+          { required: true, message: '请选择菌株信息类型', trigger: 'blur' }
         ],
-        pvDetectionStatus: [
-          { required: true, message: '请选择光伏检测数据状态', trigger: 'blur' }
+        strainInfoStatus: [
+          { required: true, message: '请选择菌株信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            pvDetectionNo: 'VSxxxxxxxx',
-            pvDetectionName: 'XXX光照强度数据',
-            pvDetectionType: '光照强度数据',
-            pvDetectionStatus: '有效',
+            strainInfoNo: 'VSxxxxxxxx',
+            strainInfoName: 'XXX豆科根瘤菌菌株',
+            strainInfoType: '豆科根瘤菌菌株',
+            strainInfoStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            pvDetectionNo: 'VSxxxxxxxx',
-            pvDetectionName: 'XXX光照强度数据',
-            pvDetectionType: '光照强度数据',
-            pvDetectionStatus: '有效',
+            strainInfoNo: 'VSxxxxxxxx',
+            strainInfoName: 'XXX豆科根瘤菌菌株',
+            strainInfoType: '豆科根瘤菌菌株',
+            strainInfoStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            pvDetectionNo: 'VSxxxxxxxx',
-            pvDetectionName: 'XXX光照强度数据',
-            pvDetectionType: '光照强度数据',
-            pvDetectionStatus: '有效',
+            strainInfoNo: 'VSxxxxxxxx',
+            strainInfoName: 'XXX豆科根瘤菌菌株',
+            strainInfoType: '豆科根瘤菌菌株',
+            strainInfoStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            pvDetectionNo: 'VSxxxxxxxx',
-            pvDetectionName: 'XXX故障和警报数据',
-            pvDetectionType: '故障和警报数据',
-            pvDetectionStatus: '已失效',
+            strainInfoNo: 'VSxxxxxxxx',
+            strainInfoName: 'XXX菌细根瘤菌菌株',
+            strainInfoType: '菌细根瘤菌菌株',
+            strainInfoStatus: '已失效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            pvDetectionNo: 'VSxxxxxxxx',
-            pvDetectionName: 'XXX故障和警报数据',
-            pvDetectionType: '故障和警报数据',
-            pvDetectionStatus: '有效',
+            strainInfoNo: 'VSxxxxxxxx',
+            strainInfoName: 'XXX菌细根瘤菌菌株',
+            strainInfoType: '菌细根瘤菌菌株',
+            strainInfoStatus: '有效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑光伏检测数据'
-        this.editForm.pvDetectionNo = row.pvDetectionNo
-        this.editForm.pvDetectionName = row.pvDetectionName
-        this.editForm.pvDetectionStatus = row.pvDetectionStatus
-        this.editForm.pvDetectionType = row.pvDetectionType
+        this.title = '编辑菌株信息'
+        this.editForm.strainInfoNo = row.strainInfoNo
+        this.editForm.strainInfoName = row.strainInfoName
+        this.editForm.strainInfoStatus = row.strainInfoStatus
+        this.editForm.strainInfoType = row.strainInfoType
       } else {
-        this.title = '添加光伏检测数据'
-        this.editForm.pvDetectionNo = ''
-        this.editForm.pvDetectionName = ''
-        this.editForm.pvDetectionStatus = ''
-        this.editForm.pvDetectionType =''
+        this.title = '添加菌株信息'
+        this.editForm.strainInfoNo = ''
+        this.editForm.strainInfoName = ''
+        this.editForm.strainInfoStatus = ''
+        this.editForm.strainInfoType =''
       }
     },
     // 编辑、增加页面保存方法

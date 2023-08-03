@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据采集与监测模块',
+          menuname: '根瘤菌管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '光伏检测数据管理',
+              menuname: '菌株信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,15 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '光伏发电参数管理',
-              hasThird: 'N',
-              url: 'pay/Order',
-              menus: null
-            },
-            {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '传感器信息管理',
+              menuname: '菌株鉴定标准信息管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -91,7 +83,15 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据采集设备管理',
+              menuname: '菌种管理记录管理',
+              hasThird: 'N',
+              url: 'pay/Order1',
+              menus: null
+            },
+            {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '菌株配制和接种管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,40 +99,32 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据监测设备管理',
+              menuname: '菌株传代和保持管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
-            },
-             {
-              menuid: 2,
-              icon: 'icon-cat-skuQuery',
-              menuname: '通信模块管理',
-              hasThird: 'N',
-              url: 'pay/Order1111',
-              menus: null
-            },
+            }
           ]
         },
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '性能评估与优化模块',
+          menuname: '根瘤菌培养模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '性能评估指标管理',
+              menuname: '培养基配制信息管理',
               hasThird: 'N',
-              url: 'pay/Order1',
+              url: 'pay/Order',
               menus: null
             },
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '优化建议与策略管理',
+              menuname: '培养条件控制管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -140,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '历史数据分析与回溯管理',
+              menuname: '培养时间和方式管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -148,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '优化策略与调整管理',
+              menuname: '菌种接种管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -156,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '性能分析与诊断管理',
+              menuname: '菌株存储管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -166,14 +158,14 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '故障诊断与预警模块',
+          menuname: '根瘤菌数量评价模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据共享设置管理',
+              menuname: '样品采集和样品处理管理',
               hasThird: 'N',
               url: 'pay/Order111',
               menus: null
@@ -181,7 +173,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据分享管理',
+              menuname: '根瘤菌分离和培养管理',
               hasThird: 'N',
               url: 'pay/Order11111199',
               menus: null
@@ -189,7 +181,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据访问控制管理',
+              menuname: '总菌量测定管理',
               hasThird: 'N',
               url: 'pay/Order11111199',
               menus: null
@@ -197,7 +189,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据协作管理',
+              menuname: '存活率评估管理',
               hasThird: 'N',
               url: 'pay/Order11111199',
               menus: null
@@ -205,7 +197,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据隐私保护管理',
+              menuname: '培养评价记录管理',
               hasThird: 'N',
               url: 'pay/Order11111199',
               menus: null
@@ -215,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据存储与共享模块',
+          menuname: '根瘤菌数量评价模块',
           hasThird: null,
           url: null,
           menus: [
@@ -230,6 +222,23 @@ export default {
           ]
         },
         {
+          menuid: 128,
+          icon: 'li-icon-xiangmuguanli',
+          menuname: '植物生长评价模块',
+          hasThird: null,
+          url: null,
+          menus: [
+            {
+              menuid: 129,
+              icon: 'icon-provider-manage',
+              menuname: '头戴式显示器管理',
+              hasThird: 'N',
+              url: 'machine/MachineConfig',
+              menus: null
+            },
+          ]
+        },
+         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
           menuname: '数据处理与分析模块',
