@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '根瘤菌管理模块',
+          menuname: '安全芯片管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '菌株信息管理',
+              menuname: '安全芯片信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '菌株鉴定标准信息管理',
+              menuname: '随机数生成器管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '菌种管理记录管理',
+              menuname: '物理安全防护管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '菌株配制和接种管理',
+              menuname: '安全接口与通信管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -99,7 +99,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '菌株传代和保持管理',
+              menuname: '防篡改与安全检测管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -109,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '根瘤菌培养模块',
+          menuname: '量子加密模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '培养基配制信息管理',
+              menuname: '量子态生成器信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '培养条件控制管理',
+              menuname: '量子比特操作器管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '培养时间和方式管理',
+              menuname: '量子加密算法管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '菌种接种管理',
+              menuname: '量子通信接口管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '菌株存储管理',
+              menuname: '密钥生成与分发管理',
               hasThird: 'N',
               url: 'pay/Order1111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '根瘤菌数量评价模块',
+          menuname: '密钥管理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '根瘤菌数量评价模块',
+          menuname: '安全认证模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,24 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '植物生长评价模块',
-          hasThird: null,
-          url: null,
-          menus: [
-            {
-              menuid: 129,
-              icon: 'icon-provider-manage',
-              menuname: '头戴式显示器管理',
-              hasThird: 'N',
-              url: 'machine/MachineConfig',
-              menus: null
-            },
-          ]
-        },
-         {
-          menuid: 128,
-          icon: 'li-icon-xiangmuguanli',
-          menuname: '数据处理与分析模块',
+          menuname: '量子通信模块',
           hasThird: null,
           url: null,
           menus: [
