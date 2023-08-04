@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">根瘤菌培养模块</el-breadcrumb-item>
-      <el-breadcrumb-item>培养基配制信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">资产管理</el-breadcrumb-item>
+      <el-breadcrumb-item>资产登记管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.mediaPreparationNo" placeholder="请输入培养基配制信息编号"></el-input>
+        <el-input size="small" v-model="formInline.propertyNo" placeholder="请输入资产信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.mediaPreparationName" placeholder="请输入培养基配制信息名称"></el-input>
+        <el-input size="small" v-model="formInline.propertyName" placeholder="请输入资产信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.mediaPreparationType" placeholder="请选择培养基配制信息类型"></el-select>
+        <el-select size="small" v-model="formInline.propertyType" placeholder="请选择资产信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="mediaPreparationNo" label="培养基配制信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="propertyNo" label="资产信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="mediaPreparationName" label="培养基配制信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="propertyName" label="资产信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="mediaPreparationType" label="培养基配制信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="propertyType" label="资产信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="mediaPreparationStatus" label="培养基配制信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="propertyStatus" label="资产信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="培养基配制信息编号" prop="mediaPreparationNo">
-          <el-input size="small" v-model="addForm.mediaPreparationNo" auto-complete="off" placeholder="请输入培养基配制信息编号"></el-input>
+        <el-form-item label="资产信息编号" prop="propertyNo">
+          <el-input size="small" v-model="addForm.propertyNo" auto-complete="off" placeholder="请输入资产信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="培养基配制信息名称" prop="mediaPreparationName">
-          <el-input size="small" v-model="addForm.mediaPreparationName" auto-complete="off" placeholder="请输入培养基配制信息名称"></el-input>
+        <el-form-item label="资产信息名称" prop="propertyName">
+          <el-input size="small" v-model="addForm.propertyName" auto-complete="off" placeholder="请输入资产信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="培养基配制信息类型" prop="mediaPreparationType">
-          <el-select size="small" v-model="addForm.mediaPreparationType" auto-complete="off" placeholder="请选择培养基配制信息类型">
-            <el-option label="基本成分信息" value="1"></el-option>
+        <el-form-item label="资产信息类型" prop="propertyType">
+          <el-select size="small" v-model="addForm.propertyType" auto-complete="off" placeholder="请选择资产信息类型">
+            <el-option label="有形资产" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="培养基配制信息状态" prop="mediaPreparationStatus">
-          <el-select size="small" v-model="addForm.mediaPreparationStatus" auto-complete="off" placeholder="请选择培养基配制信息状态">
+        <el-form-item label="资产信息状态" prop="propertyStatus">
+          <el-select size="small" v-model="addForm.propertyStatus" auto-complete="off" placeholder="请选择资产信息状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       mediaPreparationNo:'',
-       mediaPreparationName:'',
-       mediaPreparationType:'',
+       propertyNo:'',
+       propertyName:'',
+       propertyType:'',
        address:'',
-       mediaPreparationGender:'',
+       propertyGender:'',
        age:'',
-       mediaPreparationStatus:''
+       propertyStatus:''
       },
       rules: {
-        mediaPreparationNo: [
-          { required: true, message: '请输入培养基配制信息编号', trigger: 'blur' }
+        propertyNo: [
+          { required: true, message: '请输入资产信息编号', trigger: 'blur' }
         ],
-        mediaPreparationName: [
-          { required: true, message: '请输入培养基配制信息名称', trigger: 'blur' }
+        propertyName: [
+          { required: true, message: '请输入资产信息名称', trigger: 'blur' }
         ],
-        mediaPreparationType: [
-          { required: true, message: '请选择培养基配制信息类型', trigger: 'blur' }
+        propertyType: [
+          { required: true, message: '请选择资产信息类型', trigger: 'blur' }
         ],
-        mediaPreparationStatus: [
-          { required: true, message: '请选择培养基配制信息状态', trigger: 'blur' }
+        propertyStatus: [
+          { required: true, message: '请选择资产信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        mediaPreparationName: '',
+        propertyName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            mediaPreparationNo:'VCxxxxxx',
-            mediaPreparationName:'xxx基本成分信息',
-            mediaPreparationType:'基本成分信息',
-            mediaPreparationStatus:"有效",
+            propertyNo:'VCxxxxxx',
+            propertyName:'xxx有形资产',
+            propertyType:'有形资产',
+            propertyStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            mediaPreparationNo:'VCxxxxxx',
-            mediaPreparationName:'xxx基本成分信息',
-            mediaPreparationType:'基本成分信息',
-            mediaPreparationStatus:"有效",
+            propertyNo:'VCxxxxxx',
+            propertyName:'xxx有形资产',
+            propertyType:'有形资产',
+            propertyStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            mediaPreparationNo:'VCxxxxxx',
-            mediaPreparationName:'xxx基本成分信息',
-            mediaPreparationType:'基本成分信息',
-            mediaPreparationStatus:"有效",
+            propertyNo:'VCxxxxxx',
+            propertyName:'xxx有形资产',
+            propertyType:'有形资产',
+            propertyStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            mediaPreparationNo:'VCxxxxxx',
-            mediaPreparationName:'xxx氧气含量信息',
-            mediaPreparationType:'氧气含量信息',
-            mediaPreparationStatus:"已失效",
+            propertyNo:'VCxxxxxx',
+            propertyName:'xxx无形资产',
+            propertyType:'无形资产',
+            propertyStatus:"已失效",
             createTime: "2022-05-17"
           },
           {
-            mediaPreparationNo:'VCxxxxxx',
-            mediaPreparationName:'xxx氧气含量信息',
-            mediaPreparationType:'氧气含量信息',
-            mediaPreparationStatus:"已失效",
+            propertyNo:'VCxxxxxx',
+            propertyName:'xxx无形资产',
+            propertyType:'无形资产',
+            propertyStatus:"已失效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑培养基配制信息'
-        this.addForm.mediaPreparationNo = row.mediaPreparationNo
-        this.addForm.mediaPreparationName = row.mediaPreparationName
-        this.addForm.mediaPreparationType = row.mediaPreparationType
-        this.addForm.mediaPreparationStatus = row.mediaPreparationStatus
+        this.title='编辑资产信息'
+        this.addForm.propertyNo = row.propertyNo
+        this.addForm.propertyName = row.propertyName
+        this.addForm.propertyType = row.propertyType
+        this.addForm.propertyStatus = row.propertyStatus
       }else{
-        this.title='添加培养基配制信息'
-        this.addForm.mediaPreparationNo = ''
-        this.addForm.mediaPreparationName = ''
-        this.addForm.mediaPreparationType = ''
-        this.addForm.mediaPreparationStatus = ''
+        this.title='添加资产信息'
+        this.addForm.propertyNo = ''
+        this.addForm.propertyName = ''
+        this.addForm.propertyType = ''
+        this.addForm.propertyStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formmediaPreparationName) {
+    closeDialog(formpropertyName) {
       this.editFormVisible = false
-      this.$refs[formmediaPreparationName].resetFields()
+      this.$refs[formpropertyName].resetFields()
     }
   }
 }
