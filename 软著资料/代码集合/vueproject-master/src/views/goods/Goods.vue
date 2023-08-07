@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">安全芯片管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>安全芯片信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>土地数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.securityChipName" placeholder="请输入安全芯片信息编号"></el-input>
+        <el-input size="small" v-model="formInline.securityChipName" placeholder="请输入土地数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.securityChipName" placeholder="请输入安全芯片信息名称"></el-input>
+        <el-input size="small" v-model="formInline.securityChipName" placeholder="请输入土地数据名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.securityChipStatus" placeholder="请选择安全芯片信息类型">
+        <el-select size="small" v-model="formInline.securityChipStatus" placeholder="请选择土地数据类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="securityChipNo" label="安全芯片信息编号">
+      <el-table-column sortable prop="securityChipNo" label="土地数据编号">
       </el-table-column>
-      <el-table-column sortable prop="securityChipName" label="安全芯片信息名称">
+      <el-table-column sortable prop="securityChipName" label="土地数据名称">
       </el-table-column>
-      <el-table-column sortable prop="securityChipType" label="安全芯片信息类型">
+      <el-table-column sortable prop="securityChipType" label="土地数据类型">
       </el-table-column>
-      <el-table-column sortable prop="securityChipStatus" label="安全芯片信息状态" >
+      <el-table-column sortable prop="securityChipStatus" label="土地数据状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="安全芯片信息编号" prop="securityChipNo">
-          <el-input size="small" v-model="editForm.securityChipNo" auto-complete="off" placeholder="请输入安全芯片信息编号"></el-input>
+        <el-form-item label="土地数据编号" prop="securityChipNo">
+          <el-input size="small" v-model="editForm.securityChipNo" auto-complete="off" placeholder="请输入土地数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="安全芯片信息名称" prop="securityChipName">
-          <el-input size="small" v-model="editForm.securityChipName" auto-complete="off" placeholder="请输入安全芯片信息名称"></el-input>
+        <el-form-item label="土地数据名称" prop="securityChipName">
+          <el-input size="small" v-model="editForm.securityChipName" auto-complete="off" placeholder="请输入土地数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="安全芯片信息类型" prop="securityChipType">
-          <el-select size="small" v-model="editForm.securityChipType" auto-complete="off" placeholder="请选择安全芯片信息类型">
-            <el-option label="安全存储芯片" value="1"></el-option>
+        <el-form-item label="土地数据类型" prop="securityChipType">
+          <el-select size="small" v-model="editForm.securityChipType" auto-complete="off" placeholder="请选择土地数据类型">
+            <el-option label="土地环境数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="安全芯片信息状态" prop="securityChipStatus">
-          <el-select size="small" v-model="editForm.securityChipStatus" auto-complete="off" placeholder="请选择安全芯片信息状态">
+        <el-form-item label="土地数据状态" prop="securityChipStatus">
+          <el-select size="small" v-model="editForm.securityChipStatus" auto-complete="off" placeholder="请选择土地数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -98,16 +98,16 @@ export default {
       // rules表单验证
       rules: {
         securityChipNo: [
-          { required: true, message: '请输入安全芯片信息编号', trigger: 'blur' }
+          { required: true, message: '请输入土地数据编号', trigger: 'blur' }
         ],
         securityChipName: [
-          { required: true, message: '请输入安全芯片信息名称', trigger: 'blur' }
+          { required: true, message: '请输入土地数据名称', trigger: 'blur' }
         ],
         securityChipType: [
-          { required: true, message: '请选择安全芯片信息类型', trigger: 'blur' }
+          { required: true, message: '请选择土地数据类型', trigger: 'blur' }
         ],
         securityChipStatus: [
-          { required: true, message: '请选择安全芯片信息状态', trigger: 'blur' }
+          { required: true, message: '请选择土地数据状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -162,40 +162,40 @@ export default {
             creator: 'xxx',
             createime: '2022-12-23',
             securityChipNo: 'VSxxxxxxxx',
-            securityChipName: 'XXX安全存储芯片',
-            securityChipType: '安全存储芯片',
+            securityChipName: 'XXX土地环境数据',
+            securityChipType: '土地环境数据',
             securityChipStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
             securityChipNo: 'VSxxxxxxxx',
-            securityChipName: 'XXX安全存储芯片',
-            securityChipType: '安全存储芯片',
+            securityChipName: 'XXX土地环境数据',
+            securityChipType: '土地环境数据',
             securityChipStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
             securityChipNo: 'VSxxxxxxxx',
-            securityChipName: 'XXX安全存储芯片',
-            securityChipType: '安全存储芯片',
+            securityChipName: 'XXX土地环境数据',
+            securityChipType: '土地环境数据',
             securityChipStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
             securityChipNo: 'VSxxxxxxxx',
-            securityChipName: 'XXX加密芯片',
-            securityChipType: '加密芯片',
+            securityChipName: 'XXX土地地形地貌数据',
+            securityChipType: '土地地形地貌数据',
             securityChipStatus: '已失效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
             securityChipNo: 'VSxxxxxxxx',
-            securityChipName: 'XXX加密芯片',
-            securityChipType: '加密芯片',
+            securityChipName: 'XXX土地地形地貌数据',
+            securityChipType: '土地地形地貌数据',
             securityChipStatus: '有效',
           }
         ]
@@ -245,13 +245,13 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑安全芯片信息'
+        this.title = '编辑土地数据'
         this.editForm.securityChipNo = row.securityChipNo
         this.editForm.securityChipName = row.securityChipName
         this.editForm.securityChipStatus = row.securityChipStatus
         this.editForm.securityChipType = row.securityChipType
       } else {
-        this.title = '添加安全芯片信息'
+        this.title = '添加土地数据'
         this.editForm.securityChipNo = ''
         this.editForm.securityChipName = ''
         this.editForm.securityChipStatus = ''
