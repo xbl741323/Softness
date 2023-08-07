@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据管理模块',
+          menuname: '土壤数据采集与管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '土地数据管理',
+              menuname: '土壤监测数据管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,33 +75,41 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '空间数据管理',
+              menuname: '农田投入品数据管理',
               hasThird: 'N',
-              url: 'pay/Order1',
+              url: 'pay/Order',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据更新管理',
+              menuname: '传感器与设备信息管理',
               hasThird: 'N',
-              url: 'pay/Order1',
+              url: 'pay/Order11',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据备份管理',
+              menuname: '土壤数据采集与传输管理',
               hasThird: 'N',
-              url: 'pay/Order1111',
+              url: 'pay/Order11111',
+              menus: null
+            },
+             {
+              menuid: 2,
+              icon: 'icon-cat-skuQuery',
+              menuname: '土壤数据质量控制管理',
+              hasThird: 'N',
+              url: 'pay/Order11111',
               menus: null
             },
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据安全管理',
+              menuname: '土壤数据备份和恢复管理',
               hasThird: 'N',
-              url: 'pay/Order1111',
+              url: 'pay/Order11111',
               menus: null
             }
           ]
@@ -109,7 +117,7 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据采集模块',
+          menuname: '土壤数据分析与处理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -118,7 +126,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '量子态生成器信息管理',
               hasThird: 'N',
-              url: 'pay/Order',
+              url: 'pay/Order1',
               menus: null
             },
             {
@@ -126,7 +134,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '量子比特操作器管理',
               hasThird: 'N',
-              url: 'pay/Order1111',
+              url: 'pay/Order11111',
               menus: null
             },
              {
@@ -134,7 +142,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '量子加密算法管理',
               hasThird: 'N',
-              url: 'pay/Order1111',
+              url: 'pay/Order11111',
               menus: null
             },
              {
@@ -142,7 +150,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '量子通信接口管理',
               hasThird: 'N',
-              url: 'pay/Order1111',
+              url: 'pay/Order11111',
               menus: null
             },
              {
@@ -150,7 +158,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '密钥生成与分发管理',
               hasThird: 'N',
-              url: 'pay/Order1111',
+              url: 'pay/Order11111',
               menus: null
             },
           ]
@@ -158,7 +166,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据处理模块',
+          menuname: '病虫害预防和控制模块',
           hasThird: null,
           url: null,
           menus: [
@@ -167,7 +175,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '样品采集和样品处理管理',
               hasThird: 'N',
-              url: 'pay/Order111',
+              url: 'pay/Order1111',
               menus: null
             },
             {
@@ -175,7 +183,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '根瘤菌分离和培养管理',
               hasThird: 'N',
-              url: 'pay/Order11111199',
+              url: 'pay/Order111111199',
               menus: null
             },
             {
@@ -183,7 +191,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '总菌量测定管理',
               hasThird: 'N',
-              url: 'pay/Order11111199',
+              url: 'pay/Order111111199',
               menus: null
             },
             {
@@ -191,7 +199,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '存活率评估管理',
               hasThird: 'N',
-              url: 'pay/Order11111199',
+              url: 'pay/Order111111199',
               menus: null
             },
             {
@@ -199,7 +207,7 @@ export default {
               icon: 'icon-order-manage',
               menuname: '培养评价记录管理',
               hasThird: 'N',
-              url: 'pay/Order11111199',
+              url: 'pay/Order111111199',
               menus: null
             },
           ]
@@ -207,7 +215,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '决策支持模块',
+          menuname: '决策支持与服务模块',
           hasThird: null,
           url: null,
           menus: [
@@ -216,7 +224,7 @@ export default {
               icon: 'icon-provider-manage',
               menuname: '讲解和导引管理',
               hasThird: 'N',
-              url: 'pay/Order11111',
+              url: 'pay/Order111111',
               menus: null
             },
           ]
@@ -224,7 +232,24 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据分析模块',
+          menuname: '土壤调查和评估模块',
+          hasThird: null,
+          url: null,
+          menus: [
+            {
+              menuid: 129,
+              icon: 'icon-provider-manage',
+              menuname: '头戴式显示器管理',
+              hasThird: 'N',
+              url: 'machine/MachineConfig',
+              menus: null
+            },
+          ]
+        },
+        {
+          menuid: 128,
+          icon: 'li-icon-xiangmuguanli',
+          menuname: '可视化展示与报表生成模块',
           hasThird: null,
           url: null,
           menus: [
