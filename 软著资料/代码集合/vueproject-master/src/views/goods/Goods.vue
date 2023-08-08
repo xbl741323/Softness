@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">土壤数据采集与管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>土壤监测数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">空气净化模块</el-breadcrumb-item>
+      <el-breadcrumb-item>空气过滤器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.soilMonitoringName" placeholder="请输入土壤监测数据编号"></el-input>
+        <el-input size="small" v-model="formInline.airFilterName" placeholder="请输入空气过滤器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.soilMonitoringName" placeholder="请输入土壤监测数据名称"></el-input>
+        <el-input size="small" v-model="formInline.airFilterName" placeholder="请输入空气过滤器信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.soilMonitoringStatus" placeholder="请选择土壤监测数据类型">
+        <el-select size="small" v-model="formInline.airFilterStatus" placeholder="请选择空气过滤器信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="soilMonitoringNo" label="土壤监测数据编号">
+      <el-table-column sortable prop="airFilterNo" label="空气过滤器信息编号">
       </el-table-column>
-      <el-table-column sortable prop="soilMonitoringName" label="土壤监测数据名称">
+      <el-table-column sortable prop="airFilterName" label="空气过滤器信息名称">
       </el-table-column>
-      <el-table-column sortable prop="soilMonitoringType" label="土壤监测数据类型">
+      <el-table-column sortable prop="airFilterType" label="空气过滤器信息类型">
       </el-table-column>
-      <el-table-column sortable prop="soilMonitoringStatus" label="土壤监测数据状态" >
+      <el-table-column sortable prop="airFilterStatus" label="空气过滤器信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -50,21 +50,21 @@
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
-      <el-form label-width="140px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="土壤监测数据编号" prop="soilMonitoringNo">
-          <el-input size="small" v-model="editForm.soilMonitoringNo" auto-complete="off" placeholder="请输入土壤监测数据编号"></el-input>
+      <el-form label-width="170px" :model="editForm" :rules="rules" ref="editForm">
+        <el-form-item label="空气过滤器信息编号" prop="airFilterNo">
+          <el-input size="small" v-model="editForm.airFilterNo" auto-complete="off" placeholder="请输入空气过滤器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="土壤监测数据名称" prop="soilMonitoringName">
-          <el-input size="small" v-model="editForm.soilMonitoringName" auto-complete="off" placeholder="请输入土壤监测数据名称"></el-input>
+        <el-form-item label="空气过滤器信息名称" prop="airFilterName">
+          <el-input size="small" v-model="editForm.airFilterName" auto-complete="off" placeholder="请输入空气过滤器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="土壤监测数据类型" prop="soilMonitoringType">
-          <el-select size="small" v-model="editForm.soilMonitoringType" auto-complete="off" placeholder="请选择土壤监测数据类型">
-            <el-option label="土壤水分含量数据" value="1"></el-option>
+        <el-form-item label="空气过滤器信息类型" prop="airFilterType">
+          <el-select size="small" v-model="editForm.airFilterType" auto-complete="off" placeholder="请选择空气过滤器信息类型">
+            <el-option label="HEPA过滤器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="土壤监测数据状态" prop="soilMonitoringStatus">
-          <el-select size="small" v-model="editForm.soilMonitoringStatus" auto-complete="off" placeholder="请选择土壤监测数据状态">
-            <el-option label="有效" value="1"></el-option>
+        <el-form-item label="空气过滤器信息状态" prop="airFilterStatus">
+          <el-select size="small" v-model="editForm.airFilterStatus" auto-complete="off" placeholder="请选择空气过滤器信息状态">
+            <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        soilMonitoringNo: '',
-        soilMonitoringName: '',
-        soilMonitoringType:'',
+        airFilterNo: '',
+        airFilterName: '',
+        airFilterType:'',
         status:'',
-        soilMonitoringStatus: '',
+        airFilterStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        soilMonitoringNo: [
-          { required: true, message: '请输入土壤监测数据编号', trigger: 'blur' }
+        airFilterNo: [
+          { required: true, message: '请输入空气过滤器信息编号', trigger: 'blur' }
         ],
-        soilMonitoringName: [
-          { required: true, message: '请输入土壤监测数据名称', trigger: 'blur' }
+        airFilterName: [
+          { required: true, message: '请输入空气过滤器信息名称', trigger: 'blur' }
         ],
-        soilMonitoringType: [
-          { required: true, message: '请选择土壤监测数据类型', trigger: 'blur' }
+        airFilterType: [
+          { required: true, message: '请选择空气过滤器信息类型', trigger: 'blur' }
         ],
-        soilMonitoringStatus: [
-          { required: true, message: '请选择土壤监测数据状态', trigger: 'blur' }
+        airFilterStatus: [
+          { required: true, message: '请选择空气过滤器信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            soilMonitoringNo: 'VSxxxxxxxx',
-            soilMonitoringName: 'XXX土壤水分含量数据',
-            soilMonitoringType: '土壤水分含量数据',
-            soilMonitoringStatus: '有效',
+            airFilterNo: 'VSxxxxxxxx',
+            airFilterName: 'XXXHEPA过滤器',
+            airFilterType: 'HEPA过滤器',
+            airFilterStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            soilMonitoringNo: 'VSxxxxxxxx',
-            soilMonitoringName: 'XXX土壤水分含量数据',
-            soilMonitoringType: '土壤水分含量数据',
-            soilMonitoringStatus: '有效',
+            airFilterNo: 'VSxxxxxxxx',
+            airFilterName: 'XXXHEPA过滤器',
+            airFilterType: 'HEPA过滤器',
+            airFilterStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            soilMonitoringNo: 'VSxxxxxxxx',
-            soilMonitoringName: 'XXX土壤水分含量数据',
-            soilMonitoringType: '土壤水分含量数据',
-            soilMonitoringStatus: '有效',
+            airFilterNo: 'VSxxxxxxxx',
+            airFilterName: 'XXXHEPA过滤器',
+            airFilterType: 'HEPA过滤器',
+            airFilterStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            soilMonitoringNo: 'VSxxxxxxxx',
-            soilMonitoringName: 'XXX土壤有机质含量数据',
-            soilMonitoringType: '土壤有机质含量数据',
-            soilMonitoringStatus: '已失效',
+            airFilterNo: 'VSxxxxxxxx',
+            airFilterName: 'XXX活性炭过滤器',
+            airFilterType: '活性炭过滤器',
+            airFilterStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            soilMonitoringNo: 'VSxxxxxxxx',
-            soilMonitoringName: 'XXX土壤有机质含量数据',
-            soilMonitoringType: '土壤有机质含量数据',
-            soilMonitoringStatus: '有效',
+            airFilterNo: 'VSxxxxxxxx',
+            airFilterName: 'XXX活性炭过滤器',
+            airFilterType: '活性炭过滤器',
+            airFilterStatus: '运行中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑土壤监测数据'
-        this.editForm.soilMonitoringNo = row.soilMonitoringNo
-        this.editForm.soilMonitoringName = row.soilMonitoringName
-        this.editForm.soilMonitoringStatus = row.soilMonitoringStatus
-        this.editForm.soilMonitoringType = row.soilMonitoringType
+        this.title = '编辑空气过滤器信息'
+        this.editForm.airFilterNo = row.airFilterNo
+        this.editForm.airFilterName = row.airFilterName
+        this.editForm.airFilterStatus = row.airFilterStatus
+        this.editForm.airFilterType = row.airFilterType
       } else {
-        this.title = '添加土壤监测数据'
-        this.editForm.soilMonitoringNo = ''
-        this.editForm.soilMonitoringName = ''
-        this.editForm.soilMonitoringStatus = ''
-        this.editForm.soilMonitoringType =''
+        this.title = '添加空气过滤器信息'
+        this.editForm.airFilterNo = ''
+        this.editForm.airFilterName = ''
+        this.editForm.airFilterStatus = ''
+        this.editForm.airFilterType =''
       }
     },
     // 编辑、增加页面保存方法

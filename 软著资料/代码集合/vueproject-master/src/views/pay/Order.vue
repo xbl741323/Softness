@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">土壤数据采集与管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>农田投入品数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">温湿度控制模块</el-breadcrumb-item>
+      <el-breadcrumb-item>温湿度控制器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.farmlandInputNo" placeholder="请输入农田投入品数据编号"></el-input>
+        <el-input size="small" v-model="formInline.thcInfoNo" placeholder="请输入温湿度控制器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.farmlandInputName" placeholder="请输入农田投入品数据名称"></el-input>
+        <el-input size="small" v-model="formInline.thcInfoName" placeholder="请输入温湿度控制器信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.farmlandInputType" placeholder="请选择农田投入品数据类型"></el-select>
+        <el-select size="small" v-model="formInline.thcInfoType" placeholder="请选择温湿度控制器信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="farmlandInputNo" label="农田投入品数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="thcInfoNo" label="温湿度控制器信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="farmlandInputName" label="农田投入品数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="thcInfoName" label="温湿度控制器信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="farmlandInputType" label="农田投入品数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="thcInfoType" label="温湿度控制器信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="farmlandInputStatus" label="农田投入品数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="thcInfoStatus" label="温湿度控制器信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="农田投入品数据编号" prop="farmlandInputNo">
-          <el-input size="small" v-model="addForm.farmlandInputNo" auto-complete="off" placeholder="请输入农田投入品数据编号"></el-input>
+        <el-form-item label="温湿度控制器信息编号" prop="thcInfoNo">
+          <el-input size="small" v-model="addForm.thcInfoNo" auto-complete="off" placeholder="请输入温湿度控制器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="农田投入品数据名称" prop="farmlandInputName">
-          <el-input size="small" v-model="addForm.farmlandInputName" auto-complete="off" placeholder="请输入农田投入品数据名称"></el-input>
+        <el-form-item label="温湿度控制器信息名称" prop="thcInfoName">
+          <el-input size="small" v-model="addForm.thcInfoName" auto-complete="off" placeholder="请输入温湿度控制器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="农田投入品数据类型" prop="farmlandInputType">
-          <el-select size="small" v-model="addForm.farmlandInputType" auto-complete="off" placeholder="请选择农田投入品数据类型">
-            <el-option label="肥料使用数据" value="1"></el-option>
+        <el-form-item label="温湿度控制器信息类型" prop="thcInfoType">
+          <el-select size="small" v-model="addForm.thcInfoType" auto-complete="off" placeholder="请选择温湿度控制器信息类型">
+            <el-option label="PID控制器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="农田投入品数据状态" prop="farmlandInputStatus">
-          <el-select size="small" v-model="addForm.farmlandInputStatus" auto-complete="off" placeholder="请选择农田投入品数据状态">
-            <el-option label="有效" value="1"></el-option>
+        <el-form-item label="温湿度控制器信息状态" prop="thcInfoStatus">
+          <el-select size="small" v-model="addForm.thcInfoStatus" auto-complete="off" placeholder="请选择温湿度控制器信息状态">
+            <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       farmlandInputNo:'',
-       farmlandInputName:'',
-       farmlandInputType:'',
+       thcInfoNo:'',
+       thcInfoName:'',
+       thcInfoType:'',
        address:'',
-       farmlandInputGender:'',
+       thcInfoGender:'',
        age:'',
-       farmlandInputStatus:''
+       thcInfoStatus:''
       },
       rules: {
-        farmlandInputNo: [
-          { required: true, message: '请输入农田投入品数据编号', trigger: 'blur' }
+        thcInfoNo: [
+          { required: true, message: '请输入温湿度控制器信息编号', trigger: 'blur' }
         ],
-        farmlandInputName: [
-          { required: true, message: '请输入农田投入品数据名称', trigger: 'blur' }
+        thcInfoName: [
+          { required: true, message: '请输入温湿度控制器信息名称', trigger: 'blur' }
         ],
-        farmlandInputType: [
-          { required: true, message: '请选择农田投入品数据类型', trigger: 'blur' }
+        thcInfoType: [
+          { required: true, message: '请选择温湿度控制器信息类型', trigger: 'blur' }
         ],
-        farmlandInputStatus: [
-          { required: true, message: '请选择农田投入品数据状态', trigger: 'blur' }
+        thcInfoStatus: [
+          { required: true, message: '请选择温湿度控制器信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        farmlandInputName: '',
+        thcInfoName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            farmlandInputNo:'VCxxxxxx',
-            farmlandInputName:'xxx肥料使用数据',
-            farmlandInputType:'肥料使用数据',
-            farmlandInputStatus:"有效",
+            thcInfoNo:'VCxxxxxx',
+            thcInfoName:'xxxPID控制器',
+            thcInfoType:'PID控制器',
+            thcInfoStatus:"运行中",
             createTime: "2020-08-12"
           },
           {
-            farmlandInputNo:'VCxxxxxx',
-            farmlandInputName:'xxx肥料使用数据',
-            farmlandInputType:'肥料使用数据',
-            farmlandInputStatus:"有效",
+            thcInfoNo:'VCxxxxxx',
+            thcInfoName:'xxxPID控制器',
+            thcInfoType:'PID控制器',
+            thcInfoStatus:"运行中",
             createTime: "2022-10-24"
           },
           {
-            farmlandInputNo:'VCxxxxxx',
-            farmlandInputName:'xxx肥料使用数据',
-            farmlandInputType:'肥料使用数据',
-            farmlandInputStatus:"有效",
+            thcInfoNo:'VCxxxxxx',
+            thcInfoName:'xxxPID控制器',
+            thcInfoType:'PID控制器',
+            thcInfoStatus:"运行中",
             createTime: "2022-01-12"
           },
           {
-            farmlandInputNo:'VCxxxxxx',
-            farmlandInputName:'xxx农药使用数据',
-            farmlandInputType:'农药使用数据',
-            farmlandInputStatus:"已失效",
+            thcInfoNo:'VCxxxxxx',
+            thcInfoName:'xxxPLC控制器',
+            thcInfoType:'PLC控制器',
+            thcInfoStatus:"维护中",
             createTime: "2022-05-17"
           },
           {
-            farmlandInputNo:'VCxxxxxx',
-            farmlandInputName:'xxx农药使用数据',
-            farmlandInputType:'农药使用数据',
-            farmlandInputStatus:"已失效",
+            thcInfoNo:'VCxxxxxx',
+            thcInfoName:'xxxPLC控制器',
+            thcInfoType:'PLC控制器',
+            thcInfoStatus:"维护中",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑农田投入品数据'
-        this.addForm.farmlandInputNo = row.farmlandInputNo
-        this.addForm.farmlandInputName = row.farmlandInputName
-        this.addForm.farmlandInputType = row.farmlandInputType
-        this.addForm.farmlandInputStatus = row.farmlandInputStatus
+        this.title='编辑温湿度控制器信息'
+        this.addForm.thcInfoNo = row.thcInfoNo
+        this.addForm.thcInfoName = row.thcInfoName
+        this.addForm.thcInfoType = row.thcInfoType
+        this.addForm.thcInfoStatus = row.thcInfoStatus
       }else{
-        this.title='添加农田投入品数据'
-        this.addForm.farmlandInputNo = ''
-        this.addForm.farmlandInputName = ''
-        this.addForm.farmlandInputType = ''
-        this.addForm.farmlandInputStatus = ''
+        this.title='添加温湿度控制器信息'
+        this.addForm.thcInfoNo = ''
+        this.addForm.thcInfoName = ''
+        this.addForm.thcInfoType = ''
+        this.addForm.thcInfoStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '已失效删除'
+            message: '维护中删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formfarmlandInputName) {
+    closeDialog(formthcInfoName) {
       this.editFormVisible = false
-      this.$refs[formfarmlandInputName].resetFields()
+      this.$refs[formthcInfoName].resetFields()
     }
   }
 }
