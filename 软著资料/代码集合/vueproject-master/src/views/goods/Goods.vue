@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">空气净化模块</el-breadcrumb-item>
-      <el-breadcrumb-item>空气过滤器信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">信号生成模块</el-breadcrumb-item>
+      <el-breadcrumb-item>信号生成器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.airFilterName" placeholder="请输入空气过滤器信息编号"></el-input>
+        <el-input size="small" v-model="formInline.signalGeneratorName" placeholder="请输入信号生成器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.airFilterName" placeholder="请输入空气过滤器信息名称"></el-input>
+        <el-input size="small" v-model="formInline.signalGeneratorName" placeholder="请输入信号生成器信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.airFilterStatus" placeholder="请选择空气过滤器信息类型">
+        <el-select size="small" v-model="formInline.signalGeneratorStatus" placeholder="请选择信号生成器信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="airFilterNo" label="空气过滤器信息编号">
+      <el-table-column sortable prop="signalGeneratorNo" label="信号生成器信息编号">
       </el-table-column>
-      <el-table-column sortable prop="airFilterName" label="空气过滤器信息名称">
+      <el-table-column sortable prop="signalGeneratorName" label="信号生成器信息名称">
       </el-table-column>
-      <el-table-column sortable prop="airFilterType" label="空气过滤器信息类型">
+      <el-table-column sortable prop="signalGeneratorType" label="信号生成器信息类型">
       </el-table-column>
-      <el-table-column sortable prop="airFilterStatus" label="空气过滤器信息状态" >
+      <el-table-column sortable prop="signalGeneratorStatus" label="信号生成器信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="170px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="空气过滤器信息编号" prop="airFilterNo">
-          <el-input size="small" v-model="editForm.airFilterNo" auto-complete="off" placeholder="请输入空气过滤器信息编号"></el-input>
+        <el-form-item label="信号生成器信息编号" prop="signalGeneratorNo">
+          <el-input size="small" v-model="editForm.signalGeneratorNo" auto-complete="off" placeholder="请输入信号生成器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="空气过滤器信息名称" prop="airFilterName">
-          <el-input size="small" v-model="editForm.airFilterName" auto-complete="off" placeholder="请输入空气过滤器信息名称"></el-input>
+        <el-form-item label="信号生成器信息名称" prop="signalGeneratorName">
+          <el-input size="small" v-model="editForm.signalGeneratorName" auto-complete="off" placeholder="请输入信号生成器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="空气过滤器信息类型" prop="airFilterType">
-          <el-select size="small" v-model="editForm.airFilterType" auto-complete="off" placeholder="请选择空气过滤器信息类型">
-            <el-option label="HEPA过滤器" value="1"></el-option>
+        <el-form-item label="信号生成器信息类型" prop="signalGeneratorType">
+          <el-select size="small" v-model="editForm.signalGeneratorType" auto-complete="off" placeholder="请选择信号生成器信息类型">
+            <el-option label="数字信号生成器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="空气过滤器信息状态" prop="airFilterStatus">
-          <el-select size="small" v-model="editForm.airFilterStatus" auto-complete="off" placeholder="请选择空气过滤器信息状态">
+        <el-form-item label="信号生成器信息状态" prop="signalGeneratorStatus">
+          <el-select size="small" v-model="editForm.signalGeneratorStatus" auto-complete="off" placeholder="请选择信号生成器信息状态">
             <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        airFilterNo: '',
-        airFilterName: '',
-        airFilterType:'',
+        signalGeneratorNo: '',
+        signalGeneratorName: '',
+        signalGeneratorType:'',
         status:'',
-        airFilterStatus: '',
+        signalGeneratorStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        airFilterNo: [
-          { required: true, message: '请输入空气过滤器信息编号', trigger: 'blur' }
+        signalGeneratorNo: [
+          { required: true, message: '请输入信号生成器信息编号', trigger: 'blur' }
         ],
-        airFilterName: [
-          { required: true, message: '请输入空气过滤器信息名称', trigger: 'blur' }
+        signalGeneratorName: [
+          { required: true, message: '请输入信号生成器信息名称', trigger: 'blur' }
         ],
-        airFilterType: [
-          { required: true, message: '请选择空气过滤器信息类型', trigger: 'blur' }
+        signalGeneratorType: [
+          { required: true, message: '请选择信号生成器信息类型', trigger: 'blur' }
         ],
-        airFilterStatus: [
-          { required: true, message: '请选择空气过滤器信息状态', trigger: 'blur' }
+        signalGeneratorStatus: [
+          { required: true, message: '请选择信号生成器信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            airFilterNo: 'VSxxxxxxxx',
-            airFilterName: 'XXXHEPA过滤器',
-            airFilterType: 'HEPA过滤器',
-            airFilterStatus: '运行中',
+            signalGeneratorNo: 'VSxxxxxxxx',
+            signalGeneratorName: 'XXX数字信号生成器',
+            signalGeneratorType: '数字信号生成器',
+            signalGeneratorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            airFilterNo: 'VSxxxxxxxx',
-            airFilterName: 'XXXHEPA过滤器',
-            airFilterType: 'HEPA过滤器',
-            airFilterStatus: '运行中',
+            signalGeneratorNo: 'VSxxxxxxxx',
+            signalGeneratorName: 'XXX数字信号生成器',
+            signalGeneratorType: '数字信号生成器',
+            signalGeneratorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            airFilterNo: 'VSxxxxxxxx',
-            airFilterName: 'XXXHEPA过滤器',
-            airFilterType: 'HEPA过滤器',
-            airFilterStatus: '运行中',
+            signalGeneratorNo: 'VSxxxxxxxx',
+            signalGeneratorName: 'XXX数字信号生成器',
+            signalGeneratorType: '数字信号生成器',
+            signalGeneratorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            airFilterNo: 'VSxxxxxxxx',
-            airFilterName: 'XXX活性炭过滤器',
-            airFilterType: '活性炭过滤器',
-            airFilterStatus: '运行中',
+            signalGeneratorNo: 'VSxxxxxxxx',
+            signalGeneratorName: 'XXX调制信号生成器',
+            signalGeneratorType: '调制信号生成器',
+            signalGeneratorStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            airFilterNo: 'VSxxxxxxxx',
-            airFilterName: 'XXX活性炭过滤器',
-            airFilterType: '活性炭过滤器',
-            airFilterStatus: '运行中',
+            signalGeneratorNo: 'VSxxxxxxxx',
+            signalGeneratorName: 'XXX调制信号生成器',
+            signalGeneratorType: '调制信号生成器',
+            signalGeneratorStatus: '维护中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑空气过滤器信息'
-        this.editForm.airFilterNo = row.airFilterNo
-        this.editForm.airFilterName = row.airFilterName
-        this.editForm.airFilterStatus = row.airFilterStatus
-        this.editForm.airFilterType = row.airFilterType
+        this.title = '编辑信号生成器信息'
+        this.editForm.signalGeneratorNo = row.signalGeneratorNo
+        this.editForm.signalGeneratorName = row.signalGeneratorName
+        this.editForm.signalGeneratorStatus = row.signalGeneratorStatus
+        this.editForm.signalGeneratorType = row.signalGeneratorType
       } else {
-        this.title = '添加空气过滤器信息'
-        this.editForm.airFilterNo = ''
-        this.editForm.airFilterName = ''
-        this.editForm.airFilterStatus = ''
-        this.editForm.airFilterType =''
+        this.title = '添加信号生成器信息'
+        this.editForm.signalGeneratorNo = ''
+        this.editForm.signalGeneratorName = ''
+        this.editForm.signalGeneratorStatus = ''
+        this.editForm.signalGeneratorType =''
       }
     },
     // 编辑、增加页面保存方法

@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">温湿度控制模块</el-breadcrumb-item>
-      <el-breadcrumb-item>温湿度控制器信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">信号处理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>信号滤波器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.thcInfoNo" placeholder="请输入温湿度控制器信息编号"></el-input>
+        <el-input size="small" v-model="formInline.signalFilterNo" placeholder="请输入信号滤波器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.thcInfoName" placeholder="请输入温湿度控制器信息名称"></el-input>
+        <el-input size="small" v-model="formInline.signalFilterName" placeholder="请输入信号滤波器信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.thcInfoType" placeholder="请选择温湿度控制器信息类型"></el-select>
+        <el-select size="small" v-model="formInline.signalFilterType" placeholder="请选择信号滤波器信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="thcInfoNo" label="温湿度控制器信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="signalFilterNo" label="信号滤波器信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="thcInfoName" label="温湿度控制器信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="signalFilterName" label="信号滤波器信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="thcInfoType" label="温湿度控制器信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="signalFilterType" label="信号滤波器信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="thcInfoStatus" label="温湿度控制器信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="signalFilterStatus" label="信号滤波器信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="温湿度控制器信息编号" prop="thcInfoNo">
-          <el-input size="small" v-model="addForm.thcInfoNo" auto-complete="off" placeholder="请输入温湿度控制器信息编号"></el-input>
+        <el-form-item label="信号滤波器信息编号" prop="signalFilterNo">
+          <el-input size="small" v-model="addForm.signalFilterNo" auto-complete="off" placeholder="请输入信号滤波器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="温湿度控制器信息名称" prop="thcInfoName">
-          <el-input size="small" v-model="addForm.thcInfoName" auto-complete="off" placeholder="请输入温湿度控制器信息名称"></el-input>
+        <el-form-item label="信号滤波器信息名称" prop="signalFilterName">
+          <el-input size="small" v-model="addForm.signalFilterName" auto-complete="off" placeholder="请输入信号滤波器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="温湿度控制器信息类型" prop="thcInfoType">
-          <el-select size="small" v-model="addForm.thcInfoType" auto-complete="off" placeholder="请选择温湿度控制器信息类型">
-            <el-option label="PID控制器" value="1"></el-option>
+        <el-form-item label="信号滤波器信息类型" prop="signalFilterType">
+          <el-select size="small" v-model="addForm.signalFilterType" auto-complete="off" placeholder="请选择信号滤波器信息类型">
+            <el-option label="数字滤波器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="温湿度控制器信息状态" prop="thcInfoStatus">
-          <el-select size="small" v-model="addForm.thcInfoStatus" auto-complete="off" placeholder="请选择温湿度控制器信息状态">
+        <el-form-item label="信号滤波器信息状态" prop="signalFilterStatus">
+          <el-select size="small" v-model="addForm.signalFilterStatus" auto-complete="off" placeholder="请选择信号滤波器信息状态">
             <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       thcInfoNo:'',
-       thcInfoName:'',
-       thcInfoType:'',
+       signalFilterNo:'',
+       signalFilterName:'',
+       signalFilterType:'',
        address:'',
-       thcInfoGender:'',
+       signalFilterGender:'',
        age:'',
-       thcInfoStatus:''
+       signalFilterStatus:''
       },
       rules: {
-        thcInfoNo: [
-          { required: true, message: '请输入温湿度控制器信息编号', trigger: 'blur' }
+        signalFilterNo: [
+          { required: true, message: '请输入信号滤波器信息编号', trigger: 'blur' }
         ],
-        thcInfoName: [
-          { required: true, message: '请输入温湿度控制器信息名称', trigger: 'blur' }
+        signalFilterName: [
+          { required: true, message: '请输入信号滤波器信息名称', trigger: 'blur' }
         ],
-        thcInfoType: [
-          { required: true, message: '请选择温湿度控制器信息类型', trigger: 'blur' }
+        signalFilterType: [
+          { required: true, message: '请选择信号滤波器信息类型', trigger: 'blur' }
         ],
-        thcInfoStatus: [
-          { required: true, message: '请选择温湿度控制器信息状态', trigger: 'blur' }
+        signalFilterStatus: [
+          { required: true, message: '请选择信号滤波器信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        thcInfoName: '',
+        signalFilterName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            thcInfoNo:'VCxxxxxx',
-            thcInfoName:'xxxPID控制器',
-            thcInfoType:'PID控制器',
-            thcInfoStatus:"运行中",
+            signalFilterNo:'VCxxxxxx',
+            signalFilterName:'xxx数字滤波器',
+            signalFilterType:'数字滤波器',
+            signalFilterStatus:"运行中",
             createTime: "2020-08-12"
           },
           {
-            thcInfoNo:'VCxxxxxx',
-            thcInfoName:'xxxPID控制器',
-            thcInfoType:'PID控制器',
-            thcInfoStatus:"运行中",
+            signalFilterNo:'VCxxxxxx',
+            signalFilterName:'xxx数字滤波器',
+            signalFilterType:'数字滤波器',
+            signalFilterStatus:"运行中",
             createTime: "2022-10-24"
           },
           {
-            thcInfoNo:'VCxxxxxx',
-            thcInfoName:'xxxPID控制器',
-            thcInfoType:'PID控制器',
-            thcInfoStatus:"运行中",
+            signalFilterNo:'VCxxxxxx',
+            signalFilterName:'xxx数字滤波器',
+            signalFilterType:'数字滤波器',
+            signalFilterStatus:"运行中",
             createTime: "2022-01-12"
           },
           {
-            thcInfoNo:'VCxxxxxx',
-            thcInfoName:'xxxPLC控制器',
-            thcInfoType:'PLC控制器',
-            thcInfoStatus:"维护中",
+            signalFilterNo:'VCxxxxxx',
+            signalFilterName:'xxx高通滤波器',
+            signalFilterType:'高通滤波器',
+            signalFilterStatus:"维护中",
             createTime: "2022-05-17"
           },
           {
-            thcInfoNo:'VCxxxxxx',
-            thcInfoName:'xxxPLC控制器',
-            thcInfoType:'PLC控制器',
-            thcInfoStatus:"维护中",
+            signalFilterNo:'VCxxxxxx',
+            signalFilterName:'xxx高通滤波器',
+            signalFilterType:'高通滤波器',
+            signalFilterStatus:"维护中",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑温湿度控制器信息'
-        this.addForm.thcInfoNo = row.thcInfoNo
-        this.addForm.thcInfoName = row.thcInfoName
-        this.addForm.thcInfoType = row.thcInfoType
-        this.addForm.thcInfoStatus = row.thcInfoStatus
+        this.title='编辑信号滤波器信息'
+        this.addForm.signalFilterNo = row.signalFilterNo
+        this.addForm.signalFilterName = row.signalFilterName
+        this.addForm.signalFilterType = row.signalFilterType
+        this.addForm.signalFilterStatus = row.signalFilterStatus
       }else{
-        this.title='添加温湿度控制器信息'
-        this.addForm.thcInfoNo = ''
-        this.addForm.thcInfoName = ''
-        this.addForm.thcInfoType = ''
-        this.addForm.thcInfoStatus = ''
+        this.title='添加信号滤波器信息'
+        this.addForm.signalFilterNo = ''
+        this.addForm.signalFilterName = ''
+        this.addForm.signalFilterType = ''
+        this.addForm.signalFilterStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formthcInfoName) {
+    closeDialog(formsignalFilterName) {
       this.editFormVisible = false
-      this.$refs[formthcInfoName].resetFields()
+      this.$refs[formsignalFilterName].resetFields()
     }
   }
 }

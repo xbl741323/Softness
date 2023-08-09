@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '空气净化模块',
+          menuname: '信号生成模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '空气过滤器信息管理',
+              menuname: '信号生成器信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '负离子发生器管理',
+              menuname: '信号编码管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '紫外线杀菌灯管理',
+              menuname: '信号调制管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '离子发生器管理',
+              menuname: '信号序列生成管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -99,7 +99,7 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '消毒器管理',
+              menuname: '信号混合管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -109,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '温湿度控制模块',
+          menuname: '信号处理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '温湿度控制器信息管理',
+              menuname: '信号滤波器信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '温湿度传感器信息管理',
+              menuname: '编码与解码管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '加热器和冷凝器管理',
+              menuname: '时频域变换管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '加热和制冷设备管理',
+              menuname: '信号压缩与解压缩管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '加湿和除湿设备管理',
+              menuname: '误码控制管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '负压控制模块',
+          menuname: '信道模拟模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '智能监控和警报模块',
+          menuname: '控制参数调整模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据记录和分析模块',
+          menuname: '信号数据记录和分析模块',
           hasThird: null,
           url: null,
           menus: [
