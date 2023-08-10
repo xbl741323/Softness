@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
     <el-form label-position="left" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm login-container">
-      <h3 class="title">测绘地理遥感信息技术服务系统</h3>
+      <h3 class="title">华凯7.5MW双向变流器水冷系统控制保护软件</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="ruleForm.username" auto-complete="off" placeholder="请输入账号"></el-input>
       </el-form-item>
@@ -153,6 +153,7 @@ export default {
   margin: 0px auto 40px auto;
   text-align: center;
   color: #505458;
+  font-size: 17px;
 }
 .remember {
   margin: 0px 0px 35px 0px;

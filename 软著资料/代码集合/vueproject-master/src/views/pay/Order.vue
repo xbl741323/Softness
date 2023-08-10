@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">信号处理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>信号滤波器信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">实时监测模块</el-breadcrumb-item>
+      <el-breadcrumb-item>变流器监测数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.signalFilterNo" placeholder="请输入信号滤波器信息编号"></el-input>
+        <el-input size="small" v-model="formInline.converterMonitoringNo" placeholder="请输入变流器监测数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.signalFilterName" placeholder="请输入信号滤波器信息名称"></el-input>
+        <el-input size="small" v-model="formInline.converterMonitoringName" placeholder="请输入变流器监测数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.signalFilterType" placeholder="请选择信号滤波器信息类型"></el-select>
+        <el-select size="small" v-model="formInline.converterMonitoringType" placeholder="请选择变流器监测数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="signalFilterNo" label="信号滤波器信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="converterMonitoringNo" label="变流器监测数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="signalFilterName" label="信号滤波器信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="converterMonitoringName" label="变流器监测数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="signalFilterType" label="信号滤波器信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="converterMonitoringType" label="变流器监测数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="signalFilterStatus" label="信号滤波器信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="converterMonitoringStatus" label="变流器监测数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -47,21 +47,21 @@
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
-      <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="信号滤波器信息编号" prop="signalFilterNo">
-          <el-input size="small" v-model="addForm.signalFilterNo" auto-complete="off" placeholder="请输入信号滤波器信息编号"></el-input>
+      <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
+        <el-form-item label="变流器监测数据编号" prop="converterMonitoringNo">
+          <el-input size="small" v-model="addForm.converterMonitoringNo" auto-complete="off" placeholder="请输入变流器监测数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="信号滤波器信息名称" prop="signalFilterName">
-          <el-input size="small" v-model="addForm.signalFilterName" auto-complete="off" placeholder="请输入信号滤波器信息名称"></el-input>
+        <el-form-item label="变流器监测数据名称" prop="converterMonitoringName">
+          <el-input size="small" v-model="addForm.converterMonitoringName" auto-complete="off" placeholder="请输入变流器监测数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="信号滤波器信息类型" prop="signalFilterType">
-          <el-select size="small" v-model="addForm.signalFilterType" auto-complete="off" placeholder="请选择信号滤波器信息类型">
-            <el-option label="数字滤波器" value="1"></el-option>
+        <el-form-item label="变流器监测数据类型" prop="converterMonitoringType">
+          <el-select size="small" v-model="addForm.converterMonitoringType" auto-complete="off" placeholder="请选择变流器监测数据类型">
+            <el-option label="电气参数数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="信号滤波器信息状态" prop="signalFilterStatus">
-          <el-select size="small" v-model="addForm.signalFilterStatus" auto-complete="off" placeholder="请选择信号滤波器信息状态">
-            <el-option label="运行中" value="1"></el-option>
+        <el-form-item label="变流器监测数据状态" prop="converterMonitoringStatus">
+          <el-select size="small" v-model="addForm.converterMonitoringStatus" auto-complete="off" placeholder="请选择变流器监测数据状态">
+            <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       signalFilterNo:'',
-       signalFilterName:'',
-       signalFilterType:'',
+       converterMonitoringNo:'',
+       converterMonitoringName:'',
+       converterMonitoringType:'',
        address:'',
-       signalFilterGender:'',
+       converterMonitoringGender:'',
        age:'',
-       signalFilterStatus:''
+       converterMonitoringStatus:''
       },
       rules: {
-        signalFilterNo: [
-          { required: true, message: '请输入信号滤波器信息编号', trigger: 'blur' }
+        converterMonitoringNo: [
+          { required: true, message: '请输入变流器监测数据编号', trigger: 'blur' }
         ],
-        signalFilterName: [
-          { required: true, message: '请输入信号滤波器信息名称', trigger: 'blur' }
+        converterMonitoringName: [
+          { required: true, message: '请输入变流器监测数据名称', trigger: 'blur' }
         ],
-        signalFilterType: [
-          { required: true, message: '请选择信号滤波器信息类型', trigger: 'blur' }
+        converterMonitoringType: [
+          { required: true, message: '请选择变流器监测数据类型', trigger: 'blur' }
         ],
-        signalFilterStatus: [
-          { required: true, message: '请选择信号滤波器信息状态', trigger: 'blur' }
+        converterMonitoringStatus: [
+          { required: true, message: '请选择变流器监测数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        signalFilterName: '',
+        converterMonitoringName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            signalFilterNo:'VCxxxxxx',
-            signalFilterName:'xxx数字滤波器',
-            signalFilterType:'数字滤波器',
-            signalFilterStatus:"运行中",
+            converterMonitoringNo:'VCxxxxxx',
+            converterMonitoringName:'xxx电气参数数据',
+            converterMonitoringType:'电气参数数据',
+            converterMonitoringStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            signalFilterNo:'VCxxxxxx',
-            signalFilterName:'xxx数字滤波器',
-            signalFilterType:'数字滤波器',
-            signalFilterStatus:"运行中",
+            converterMonitoringNo:'VCxxxxxx',
+            converterMonitoringName:'xxx电气参数数据',
+            converterMonitoringType:'电气参数数据',
+            converterMonitoringStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            signalFilterNo:'VCxxxxxx',
-            signalFilterName:'xxx数字滤波器',
-            signalFilterType:'数字滤波器',
-            signalFilterStatus:"运行中",
+            converterMonitoringNo:'VCxxxxxx',
+            converterMonitoringName:'xxx电气参数数据',
+            converterMonitoringType:'电气参数数据',
+            converterMonitoringStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            signalFilterNo:'VCxxxxxx',
-            signalFilterName:'xxx高通滤波器',
-            signalFilterType:'高通滤波器',
-            signalFilterStatus:"维护中",
+            converterMonitoringNo:'VCxxxxxx',
+            converterMonitoringName:'xxx频率参数数据',
+            converterMonitoringType:'频率参数数据',
+            converterMonitoringStatus:"无效",
             createTime: "2022-05-17"
           },
           {
-            signalFilterNo:'VCxxxxxx',
-            signalFilterName:'xxx高通滤波器',
-            signalFilterType:'高通滤波器',
-            signalFilterStatus:"维护中",
+            converterMonitoringNo:'VCxxxxxx',
+            converterMonitoringName:'xxx频率参数数据',
+            converterMonitoringType:'频率参数数据',
+            converterMonitoringStatus:"无效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑信号滤波器信息'
-        this.addForm.signalFilterNo = row.signalFilterNo
-        this.addForm.signalFilterName = row.signalFilterName
-        this.addForm.signalFilterType = row.signalFilterType
-        this.addForm.signalFilterStatus = row.signalFilterStatus
+        this.title='编辑变流器监测数据'
+        this.addForm.converterMonitoringNo = row.converterMonitoringNo
+        this.addForm.converterMonitoringName = row.converterMonitoringName
+        this.addForm.converterMonitoringType = row.converterMonitoringType
+        this.addForm.converterMonitoringStatus = row.converterMonitoringStatus
       }else{
-        this.title='添加信号滤波器信息'
-        this.addForm.signalFilterNo = ''
-        this.addForm.signalFilterName = ''
-        this.addForm.signalFilterType = ''
-        this.addForm.signalFilterStatus = ''
+        this.title='添加变流器监测数据'
+        this.addForm.converterMonitoringNo = ''
+        this.addForm.converterMonitoringName = ''
+        this.addForm.converterMonitoringType = ''
+        this.addForm.converterMonitoringStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '维护中删除'
+            message: '无效删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formsignalFilterName) {
+    closeDialog(formconverterMonitoringName) {
       this.editFormVisible = false
-      this.$refs[formsignalFilterName].resetFields()
+      this.$refs[formconverterMonitoringName].resetFields()
     }
   }
 }

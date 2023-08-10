@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '信号生成模块',
+          menuname: '通信模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '信号生成器信息管理',
+              menuname: '通信接口信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '信号编码管理',
+              menuname: '通信协议信息管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '信号调制管理',
+              menuname: '数据传输管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '信号序列生成管理',
+              menuname: '数据解析与封装管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -99,7 +99,7 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '信号混合管理',
+              menuname: '异常处理与错误检测管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -109,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '信号处理模块',
+          menuname: '实时监测模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '信号滤波器信息管理',
+              menuname: '变流器监测数据管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '编码与解码管理',
+              menuname: '系统状态监测管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '时频域变换管理',
+              menuname: '报警与提醒管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '信号压缩与解压缩管理',
+              menuname: '参数调整和设定管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '误码控制管理',
+              menuname: '数据显示和报警管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '信道模拟模块',
+          menuname: '控制模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '控制参数调整模块',
+          menuname: '故障检测和诊断模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +224,7 @@ export default {
         {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '信号数据记录和分析模块',
+          menuname: '数据记录和分析模块',
           hasThird: null,
           url: null,
           menus: [
