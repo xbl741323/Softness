@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '通信模块',
+          menuname: '参数设置模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '通信接口信息管理',
+              menuname: '测试参数信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '通信协议信息管理',
+              menuname: '测试类型选择管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据传输管理',
+              menuname: '测试样本设置管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据解析与封装管理',
+              menuname: '数据采集间隔设置管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -99,7 +99,7 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '异常处理与错误检测管理',
+              menuname: '报警设置管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -116,7 +116,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '变流器监测数据管理',
+              menuname: '电流监测数据管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '系统状态监测管理',
+              menuname: '压力监测数据管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '报警与提醒管理',
+              menuname: '温度监测数据管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '参数调整和设定管理',
+              menuname: '状态监测数据管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '数据显示和报警管理',
+              menuname: '流量监测数据管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null

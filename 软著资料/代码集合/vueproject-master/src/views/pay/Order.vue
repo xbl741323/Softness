@@ -3,18 +3,18 @@
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">实时监测模块</el-breadcrumb-item>
-      <el-breadcrumb-item>变流器监测数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item>电流监测数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.converterMonitoringNo" placeholder="请输入变流器监测数据编号"></el-input>
+        <el-input size="small" v-model="formInline.currentMonitoringNo" placeholder="请输入电流监测数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.converterMonitoringName" placeholder="请输入变流器监测数据名称"></el-input>
+        <el-input size="small" v-model="formInline.currentMonitoringName" placeholder="请输入电流监测数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.converterMonitoringType" placeholder="请选择变流器监测数据类型"></el-select>
+        <el-select size="small" v-model="formInline.currentMonitoringType" placeholder="请选择电流监测数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="converterMonitoringNo" label="变流器监测数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="currentMonitoringNo" label="电流监测数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="converterMonitoringName" label="变流器监测数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="currentMonitoringName" label="电流监测数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="converterMonitoringType" label="变流器监测数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="currentMonitoringType" label="电流监测数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="converterMonitoringStatus" label="变流器监测数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="currentMonitoringStatus" label="电流监测数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="变流器监测数据编号" prop="converterMonitoringNo">
-          <el-input size="small" v-model="addForm.converterMonitoringNo" auto-complete="off" placeholder="请输入变流器监测数据编号"></el-input>
+        <el-form-item label="电流监测数据编号" prop="currentMonitoringNo">
+          <el-input size="small" v-model="addForm.currentMonitoringNo" auto-complete="off" placeholder="请输入电流监测数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="变流器监测数据名称" prop="converterMonitoringName">
-          <el-input size="small" v-model="addForm.converterMonitoringName" auto-complete="off" placeholder="请输入变流器监测数据名称"></el-input>
+        <el-form-item label="电流监测数据名称" prop="currentMonitoringName">
+          <el-input size="small" v-model="addForm.currentMonitoringName" auto-complete="off" placeholder="请输入电流监测数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="变流器监测数据类型" prop="converterMonitoringType">
-          <el-select size="small" v-model="addForm.converterMonitoringType" auto-complete="off" placeholder="请选择变流器监测数据类型">
-            <el-option label="电气参数数据" value="1"></el-option>
+        <el-form-item label="电流监测数据类型" prop="currentMonitoringType">
+          <el-select size="small" v-model="addForm.currentMonitoringType" auto-complete="off" placeholder="请选择电流监测数据类型">
+            <el-option label="阀组电流数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="变流器监测数据状态" prop="converterMonitoringStatus">
-          <el-select size="small" v-model="addForm.converterMonitoringStatus" auto-complete="off" placeholder="请选择变流器监测数据状态">
+        <el-form-item label="电流监测数据状态" prop="currentMonitoringStatus">
+          <el-select size="small" v-model="addForm.currentMonitoringStatus" auto-complete="off" placeholder="请选择电流监测数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       converterMonitoringNo:'',
-       converterMonitoringName:'',
-       converterMonitoringType:'',
+       currentMonitoringNo:'',
+       currentMonitoringName:'',
+       currentMonitoringType:'',
        address:'',
-       converterMonitoringGender:'',
+       currentMonitoringGender:'',
        age:'',
-       converterMonitoringStatus:''
+       currentMonitoringStatus:''
       },
       rules: {
-        converterMonitoringNo: [
-          { required: true, message: '请输入变流器监测数据编号', trigger: 'blur' }
+        currentMonitoringNo: [
+          { required: true, message: '请输入电流监测数据编号', trigger: 'blur' }
         ],
-        converterMonitoringName: [
-          { required: true, message: '请输入变流器监测数据名称', trigger: 'blur' }
+        currentMonitoringName: [
+          { required: true, message: '请输入电流监测数据名称', trigger: 'blur' }
         ],
-        converterMonitoringType: [
-          { required: true, message: '请选择变流器监测数据类型', trigger: 'blur' }
+        currentMonitoringType: [
+          { required: true, message: '请选择电流监测数据类型', trigger: 'blur' }
         ],
-        converterMonitoringStatus: [
-          { required: true, message: '请选择变流器监测数据状态', trigger: 'blur' }
+        currentMonitoringStatus: [
+          { required: true, message: '请选择电流监测数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        converterMonitoringName: '',
+        currentMonitoringName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            converterMonitoringNo:'VCxxxxxx',
-            converterMonitoringName:'xxx电气参数数据',
-            converterMonitoringType:'电气参数数据',
-            converterMonitoringStatus:"有效",
+            currentMonitoringNo:'VCxxxxxx',
+            currentMonitoringName:'xxx阀组电流数据',
+            currentMonitoringType:'阀组电流数据',
+            currentMonitoringStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            converterMonitoringNo:'VCxxxxxx',
-            converterMonitoringName:'xxx电气参数数据',
-            converterMonitoringType:'电气参数数据',
-            converterMonitoringStatus:"有效",
+            currentMonitoringNo:'VCxxxxxx',
+            currentMonitoringName:'xxx阀组电流数据',
+            currentMonitoringType:'阀组电流数据',
+            currentMonitoringStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            converterMonitoringNo:'VCxxxxxx',
-            converterMonitoringName:'xxx电气参数数据',
-            converterMonitoringType:'电气参数数据',
-            converterMonitoringStatus:"有效",
+            currentMonitoringNo:'VCxxxxxx',
+            currentMonitoringName:'xxx阀组电流数据',
+            currentMonitoringType:'阀组电流数据',
+            currentMonitoringStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            converterMonitoringNo:'VCxxxxxx',
-            converterMonitoringName:'xxx频率参数数据',
-            converterMonitoringType:'频率参数数据',
-            converterMonitoringStatus:"无效",
+            currentMonitoringNo:'VCxxxxxx',
+            currentMonitoringName:'xxx输出电流数据',
+            currentMonitoringType:'输出电流数据',
+            currentMonitoringStatus:"无效",
             createTime: "2022-05-17"
           },
           {
-            converterMonitoringNo:'VCxxxxxx',
-            converterMonitoringName:'xxx频率参数数据',
-            converterMonitoringType:'频率参数数据',
-            converterMonitoringStatus:"无效",
+            currentMonitoringNo:'VCxxxxxx',
+            currentMonitoringName:'xxx输出电流数据',
+            currentMonitoringType:'输出电流数据',
+            currentMonitoringStatus:"无效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑变流器监测数据'
-        this.addForm.converterMonitoringNo = row.converterMonitoringNo
-        this.addForm.converterMonitoringName = row.converterMonitoringName
-        this.addForm.converterMonitoringType = row.converterMonitoringType
-        this.addForm.converterMonitoringStatus = row.converterMonitoringStatus
+        this.title='编辑电流监测数据'
+        this.addForm.currentMonitoringNo = row.currentMonitoringNo
+        this.addForm.currentMonitoringName = row.currentMonitoringName
+        this.addForm.currentMonitoringType = row.currentMonitoringType
+        this.addForm.currentMonitoringStatus = row.currentMonitoringStatus
       }else{
-        this.title='添加变流器监测数据'
-        this.addForm.converterMonitoringNo = ''
-        this.addForm.converterMonitoringName = ''
-        this.addForm.converterMonitoringType = ''
-        this.addForm.converterMonitoringStatus = ''
+        this.title='添加电流监测数据'
+        this.addForm.currentMonitoringNo = ''
+        this.addForm.currentMonitoringName = ''
+        this.addForm.currentMonitoringType = ''
+        this.addForm.currentMonitoringStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formconverterMonitoringName) {
+    closeDialog(formcurrentMonitoringName) {
       this.editFormVisible = false
-      this.$refs[formconverterMonitoringName].resetFields()
+      this.$refs[formcurrentMonitoringName].resetFields()
     }
   }
 }

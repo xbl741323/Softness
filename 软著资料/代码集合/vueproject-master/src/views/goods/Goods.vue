@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">通信模块</el-breadcrumb-item>
-      <el-breadcrumb-item>通信接口信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">参数设置模块</el-breadcrumb-item>
+      <el-breadcrumb-item>测试参数信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.communicationInterfaceName" placeholder="请输入通信接口信息编号"></el-input>
+        <el-input size="small" v-model="formInline.parameterSettingName" placeholder="请输入测试参数信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.communicationInterfaceName" placeholder="请输入通信接口信息名称"></el-input>
+        <el-input size="small" v-model="formInline.parameterSettingName" placeholder="请输入测试参数信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.communicationInterfaceStatus" placeholder="请选择通信接口信息类型">
+        <el-select size="small" v-model="formInline.parameterSettingStatus" placeholder="请选择测试参数信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="communicationInterfaceNo" label="通信接口信息编号">
+      <el-table-column sortable prop="parameterSettingNo" label="测试参数信息编号">
       </el-table-column>
-      <el-table-column sortable prop="communicationInterfaceName" label="通信接口信息名称">
+      <el-table-column sortable prop="parameterSettingName" label="测试参数信息名称">
       </el-table-column>
-      <el-table-column sortable prop="communicationInterfaceType" label="通信接口信息类型">
+      <el-table-column sortable prop="parameterSettingType" label="测试参数信息类型">
       </el-table-column>
-      <el-table-column sortable prop="communicationInterfaceStatus" label="通信接口信息状态" >
+      <el-table-column sortable prop="parameterSettingStatus" label="测试参数信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="150px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="通信接口信息编号" prop="communicationInterfaceNo">
-          <el-input size="small" v-model="editForm.communicationInterfaceNo" auto-complete="off" placeholder="请输入通信接口信息编号"></el-input>
+        <el-form-item label="测试参数信息编号" prop="parameterSettingNo">
+          <el-input size="small" v-model="editForm.parameterSettingNo" auto-complete="off" placeholder="请输入测试参数信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="通信接口信息名称" prop="communicationInterfaceName">
-          <el-input size="small" v-model="editForm.communicationInterfaceName" auto-complete="off" placeholder="请输入通信接口信息名称"></el-input>
+        <el-form-item label="测试参数信息名称" prop="parameterSettingName">
+          <el-input size="small" v-model="editForm.parameterSettingName" auto-complete="off" placeholder="请输入测试参数信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="通信接口信息类型" prop="communicationInterfaceType">
-          <el-select size="small" v-model="editForm.communicationInterfaceType" auto-complete="off" placeholder="请选择通信接口信息类型">
-            <el-option label="有线接口" value="1"></el-option>
+        <el-form-item label="测试参数信息类型" prop="parameterSettingType">
+          <el-select size="small" v-model="editForm.parameterSettingType" auto-complete="off" placeholder="请选择测试参数信息类型">
+            <el-option label="测试条件参数" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="通信接口信息状态" prop="communicationInterfaceStatus">
-          <el-select size="small" v-model="editForm.communicationInterfaceStatus" auto-complete="off" placeholder="请选择通信接口信息状态">
+        <el-form-item label="测试参数信息状态" prop="parameterSettingStatus">
+          <el-select size="small" v-model="editForm.parameterSettingStatus" auto-complete="off" placeholder="请选择测试参数信息状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        communicationInterfaceNo: '',
-        communicationInterfaceName: '',
-        communicationInterfaceType:'',
+        parameterSettingNo: '',
+        parameterSettingName: '',
+        parameterSettingType:'',
         status:'',
-        communicationInterfaceStatus: '',
+        parameterSettingStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        communicationInterfaceNo: [
-          { required: true, message: '请输入通信接口信息编号', trigger: 'blur' }
+        parameterSettingNo: [
+          { required: true, message: '请输入测试参数信息编号', trigger: 'blur' }
         ],
-        communicationInterfaceName: [
-          { required: true, message: '请输入通信接口信息名称', trigger: 'blur' }
+        parameterSettingName: [
+          { required: true, message: '请输入测试参数信息名称', trigger: 'blur' }
         ],
-        communicationInterfaceType: [
-          { required: true, message: '请选择通信接口信息类型', trigger: 'blur' }
+        parameterSettingType: [
+          { required: true, message: '请选择测试参数信息类型', trigger: 'blur' }
         ],
-        communicationInterfaceStatus: [
-          { required: true, message: '请选择通信接口信息状态', trigger: 'blur' }
+        parameterSettingStatus: [
+          { required: true, message: '请选择测试参数信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            communicationInterfaceNo: 'VSxxxxxxxx',
-            communicationInterfaceName: 'XXX有线接口',
-            communicationInterfaceType: '有线接口',
-            communicationInterfaceStatus: '有效',
+            parameterSettingNo: 'VSxxxxxxxx',
+            parameterSettingName: 'XXX测试条件参数',
+            parameterSettingType: '测试条件参数',
+            parameterSettingStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            communicationInterfaceNo: 'VSxxxxxxxx',
-            communicationInterfaceName: 'XXX有线接口',
-            communicationInterfaceType: '有线接口',
-            communicationInterfaceStatus: '有效',
+            parameterSettingNo: 'VSxxxxxxxx',
+            parameterSettingName: 'XXX测试条件参数',
+            parameterSettingType: '测试条件参数',
+            parameterSettingStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            communicationInterfaceNo: 'VSxxxxxxxx',
-            communicationInterfaceName: 'XXX有线接口',
-            communicationInterfaceType: '有线接口',
-            communicationInterfaceStatus: '有效',
+            parameterSettingNo: 'VSxxxxxxxx',
+            parameterSettingName: 'XXX测试条件参数',
+            parameterSettingType: '测试条件参数',
+            parameterSettingStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            communicationInterfaceNo: 'VSxxxxxxxx',
-            communicationInterfaceName: 'XXX无线接口',
-            communicationInterfaceType: '无线接口',
-            communicationInterfaceStatus: '无效',
+            parameterSettingNo: 'VSxxxxxxxx',
+            parameterSettingName: 'XXX均流测试参数',
+            parameterSettingType: '均流测试参数',
+            parameterSettingStatus: '无效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            communicationInterfaceNo: 'VSxxxxxxxx',
-            communicationInterfaceName: 'XXX无线接口',
-            communicationInterfaceType: '无线接口',
-            communicationInterfaceStatus: '无效',
+            parameterSettingNo: 'VSxxxxxxxx',
+            parameterSettingName: 'XXX均流测试参数',
+            parameterSettingType: '均流测试参数',
+            parameterSettingStatus: '无效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑通信接口信息'
-        this.editForm.communicationInterfaceNo = row.communicationInterfaceNo
-        this.editForm.communicationInterfaceName = row.communicationInterfaceName
-        this.editForm.communicationInterfaceStatus = row.communicationInterfaceStatus
-        this.editForm.communicationInterfaceType = row.communicationInterfaceType
+        this.title = '编辑测试参数信息'
+        this.editForm.parameterSettingNo = row.parameterSettingNo
+        this.editForm.parameterSettingName = row.parameterSettingName
+        this.editForm.parameterSettingStatus = row.parameterSettingStatus
+        this.editForm.parameterSettingType = row.parameterSettingType
       } else {
-        this.title = '添加通信接口信息'
-        this.editForm.communicationInterfaceNo = ''
-        this.editForm.communicationInterfaceName = ''
-        this.editForm.communicationInterfaceStatus = ''
-        this.editForm.communicationInterfaceType =''
+        this.title = '添加测试参数信息'
+        this.editForm.parameterSettingNo = ''
+        this.editForm.parameterSettingName = ''
+        this.editForm.parameterSettingStatus = ''
+        this.editForm.parameterSettingType =''
       }
     },
     // 编辑、增加页面保存方法
