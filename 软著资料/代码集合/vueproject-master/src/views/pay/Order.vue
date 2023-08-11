@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">3D打印参数设置模块</el-breadcrumb-item>
-      <el-breadcrumb-item>打印参数信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">图像采集模块</el-breadcrumb-item>
+      <el-breadcrumb-item>图像采集数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.currentMonitoringNo" placeholder="请输入打印参数信息编号"></el-input>
+        <el-input size="small" v-model="formInline.imageAcquisitionNo" placeholder="请输入图像采集数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.currentMonitoringName" placeholder="请输入打印参数信息名称"></el-input>
+        <el-input size="small" v-model="formInline.imageAcquisitionName" placeholder="请输入图像采集数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.currentMonitoringType" placeholder="请选择打印参数信息类型"></el-select>
+        <el-select size="small" v-model="formInline.imageAcquisitionType" placeholder="请选择图像采集数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="currentMonitoringNo" label="打印参数信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="imageAcquisitionNo" label="图像采集数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="currentMonitoringName" label="打印参数信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="imageAcquisitionName" label="图像采集数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="currentMonitoringType" label="打印参数信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="imageAcquisitionType" label="图像采集数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="currentMonitoringStatus" label="打印参数信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="imageAcquisitionStatus" label="图像采集数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="打印参数信息编号" prop="currentMonitoringNo">
-          <el-input size="small" v-model="addForm.currentMonitoringNo" auto-complete="off" placeholder="请输入打印参数信息编号"></el-input>
+        <el-form-item label="图像采集数据编号" prop="imageAcquisitionNo">
+          <el-input size="small" v-model="addForm.imageAcquisitionNo" auto-complete="off" placeholder="请输入图像采集数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="打印参数信息名称" prop="currentMonitoringName">
-          <el-input size="small" v-model="addForm.currentMonitoringName" auto-complete="off" placeholder="请输入打印参数信息名称"></el-input>
+        <el-form-item label="图像采集数据名称" prop="imageAcquisitionName">
+          <el-input size="small" v-model="addForm.imageAcquisitionName" auto-complete="off" placeholder="请输入图像采集数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="打印参数信息类型" prop="currentMonitoringType">
-          <el-select size="small" v-model="addForm.currentMonitoringType" auto-complete="off" placeholder="请选择打印参数信息类型">
-            <el-option label="基底和支撑参数" value="1"></el-option>
+        <el-form-item label="图像采集数据类型" prop="imageAcquisitionType">
+          <el-select size="small" v-model="addForm.imageAcquisitionType" auto-complete="off" placeholder="请选择图像采集数据类型">
+            <el-option label="RGB图像数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="打印参数信息状态" prop="currentMonitoringStatus">
-          <el-select size="small" v-model="addForm.currentMonitoringStatus" auto-complete="off" placeholder="请选择打印参数信息状态">
+        <el-form-item label="图像采集数据状态" prop="imageAcquisitionStatus">
+          <el-select size="small" v-model="addForm.imageAcquisitionStatus" auto-complete="off" placeholder="请选择图像采集数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       currentMonitoringNo:'',
-       currentMonitoringName:'',
-       currentMonitoringType:'',
+       imageAcquisitionNo:'',
+       imageAcquisitionName:'',
+       imageAcquisitionType:'',
        address:'',
-       currentMonitoringGender:'',
+       imageAcquisitionGender:'',
        age:'',
-       currentMonitoringStatus:''
+       imageAcquisitionStatus:''
       },
       rules: {
-        currentMonitoringNo: [
-          { required: true, message: '请输入打印参数信息编号', trigger: 'blur' }
+        imageAcquisitionNo: [
+          { required: true, message: '请输入图像采集数据编号', trigger: 'blur' }
         ],
-        currentMonitoringName: [
-          { required: true, message: '请输入打印参数信息名称', trigger: 'blur' }
+        imageAcquisitionName: [
+          { required: true, message: '请输入图像采集数据名称', trigger: 'blur' }
         ],
-        currentMonitoringType: [
-          { required: true, message: '请选择打印参数信息类型', trigger: 'blur' }
+        imageAcquisitionType: [
+          { required: true, message: '请选择图像采集数据类型', trigger: 'blur' }
         ],
-        currentMonitoringStatus: [
-          { required: true, message: '请选择打印参数信息状态', trigger: 'blur' }
+        imageAcquisitionStatus: [
+          { required: true, message: '请选择图像采集数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        currentMonitoringName: '',
+        imageAcquisitionName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            currentMonitoringNo:'VCxxxxxx',
-            currentMonitoringName:'xxx基底和支撑参数',
-            currentMonitoringType:'基底和支撑参数',
-            currentMonitoringStatus:"有效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxxRGB图像数据',
+            imageAcquisitionType:'RGB图像数据',
+            imageAcquisitionStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            currentMonitoringNo:'VCxxxxxx',
-            currentMonitoringName:'xxx基底和支撑参数',
-            currentMonitoringType:'基底和支撑参数',
-            currentMonitoringStatus:"有效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxxRGB图像数据',
+            imageAcquisitionType:'RGB图像数据',
+            imageAcquisitionStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            currentMonitoringNo:'VCxxxxxx',
-            currentMonitoringName:'xxx基底和支撑参数',
-            currentMonitoringType:'基底和支撑参数',
-            currentMonitoringStatus:"有效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxxRGB图像数据',
+            imageAcquisitionType:'RGB图像数据',
+            imageAcquisitionStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            currentMonitoringNo:'VCxxxxxx',
-            currentMonitoringName:'xxx材料参数',
-            currentMonitoringType:'材料参数',
-            currentMonitoringStatus:"无效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxx红外图像数据',
+            imageAcquisitionType:'红外图像数据',
+            imageAcquisitionStatus:"无效",
             createTime: "2022-05-17"
           },
           {
-            currentMonitoringNo:'VCxxxxxx',
-            currentMonitoringName:'xxx材料参数',
-            currentMonitoringType:'材料参数',
-            currentMonitoringStatus:"无效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxx红外图像数据',
+            imageAcquisitionType:'红外图像数据',
+            imageAcquisitionStatus:"无效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑打印参数信息'
-        this.addForm.currentMonitoringNo = row.currentMonitoringNo
-        this.addForm.currentMonitoringName = row.currentMonitoringName
-        this.addForm.currentMonitoringType = row.currentMonitoringType
-        this.addForm.currentMonitoringStatus = row.currentMonitoringStatus
+        this.title='编辑图像采集数据'
+        this.addForm.imageAcquisitionNo = row.imageAcquisitionNo
+        this.addForm.imageAcquisitionName = row.imageAcquisitionName
+        this.addForm.imageAcquisitionType = row.imageAcquisitionType
+        this.addForm.imageAcquisitionStatus = row.imageAcquisitionStatus
       }else{
-        this.title='添加打印参数信息'
-        this.addForm.currentMonitoringNo = ''
-        this.addForm.currentMonitoringName = ''
-        this.addForm.currentMonitoringType = ''
-        this.addForm.currentMonitoringStatus = ''
+        this.title='添加图像采集数据'
+        this.addForm.imageAcquisitionNo = ''
+        this.addForm.imageAcquisitionName = ''
+        this.addForm.imageAcquisitionType = ''
+        this.addForm.imageAcquisitionStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formcurrentMonitoringName) {
+    closeDialog(formimageAcquisitionName) {
       this.editFormVisible = false
-      this.$refs[formcurrentMonitoringName].resetFields()
+      this.$refs[formimageAcquisitionName].resetFields()
     }
   }
 }
