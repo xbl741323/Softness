@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '参数设置模块',
+          menuname: '3D打印设备管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '测试参数信息管理',
+              menuname: '3D打印设备信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '测试类型选择管理',
+              menuname: '3D打印设备连接管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '测试样本设置管理',
+              menuname: '3D打印设备参数配置管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据采集间隔设置管理',
+              menuname: '3D打印设备维护管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -99,7 +99,7 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '报警设置管理',
+              menuname: '3D打印设备日志与报告管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -109,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '实时监测模块',
+          menuname: '3D打印参数设置模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '电流监测数据管理',
+              menuname: '打印参数信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '压力监测数据管理',
+              menuname: '打印速度设置管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '温度监测数据管理',
+              menuname: '打印质量优化管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '状态监测数据管理',
+              menuname: '填充密度设置管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '流量监测数据管理',
+              menuname: '材料选择管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '控制模块',
+          menuname: '文件管理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '故障检测和诊断模块',
+          menuname: '3D打印进程监控模块',
           hasThird: null,
           url: null,
           menus: [
