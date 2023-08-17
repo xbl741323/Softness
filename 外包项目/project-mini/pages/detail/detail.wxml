@@ -1,0 +1,5 @@
+<!--pages/detail/detail.wxml-->
+<view class="detail-contain">
+  <text>{{info.title}}</text>
+  <image mode="aspectFit" class="img-sty" src="{{baseUrl+info.imgUrl}}" mode="" />
+</view>

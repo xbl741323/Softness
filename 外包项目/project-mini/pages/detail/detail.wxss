@@ -1,0 +1,19 @@
+/* pages/detail/detail.wxss */
+
+.detail-contain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rpx;
+}
+
+.detail-contain text {
+  color: #4a4a4de1;
+}
+
+.img-sty {
+  margin-top: 40rpx;
+  width: 600rpx;
+  height: 1000rpx;
+}

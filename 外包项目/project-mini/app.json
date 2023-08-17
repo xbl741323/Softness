@@ -1,0 +1,48 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/detail/detail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "烟草工具书",
+        "navigationBarTextStyle": "black"
+    },
+    "lazyCodeLoading": "requiredComponents",
+    "usingComponents": {
+        "van-card": "@vant/weapp/card/index",
+        "van-button": "@vant/weapp/button/index",
+        "van-config-provider": "@vant/weapp/config-provider/index",
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index",
+        "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+        "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+        "van-checkbox": "@vant/weapp/checkbox/index",
+        "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+        "van-stepper": "@vant/weapp/stepper/index",
+        "van-search": "@vant/weapp/search/index",
+        "van-action-sheet": "@vant/weapp/action-sheet/index",
+        "van-overlay": "@vant/weapp/overlay/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-field": "@vant/weapp/field/index",
+        "van-calendar": "@vant/weapp/calendar/index",
+        "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+        "van-uploader": "@vant/weapp/uploader/index",
+        "van-steps": "@vant/weapp/steps/index",
+        "van-toast": "@vant/weapp/toast/index",
+        "van-switch": "@vant/weapp/switch/index",
+        "van-dialog": "@vant/weapp/dialog/index",
+        "van-tree-select": "@vant/weapp/tree-select/index",
+        "van-loading": "@vant/weapp/loading/index",
+        "van-radio": "@vant/weapp/radio/index",
+        "van-radio-group": "@vant/weapp/radio-group/index",
+        "van-picker": "@vant/weapp/picker/index",
+        "van-skeleton": "@vant/weapp/skeleton/index"
+    },
+    "sitemapLocation": "sitemap.json"
+}

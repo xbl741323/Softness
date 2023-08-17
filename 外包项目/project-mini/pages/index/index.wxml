@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 搜索区域 -->
+  <view class="search-head">
+    <image class="banner-sty" src="../../image/bg.png"></image>
+    <view class="input-contain">
+      <view class="search-main">
+        <text>名称</text>
+        <text class="lang-sty"></text>
+        <van-icon class="search-sty" name="search" />
+        <input value="{{keyWords}}" bindinput="changeInput" bindconfirm="onSearch" class="input-sty" placeholder="请输入关键词" placeholder-class="holder-sty" type="text" />
+      </view>
+      <van-icon class="scan-sty" name="scan" bindtap="scanChange" />
+    </view>
+  </view>
+
+  <!-- 按钮区域 -->
+  <view class="search-btn" bindtap="onClick">查询</view>
+
+  <!-- 展示结果区域 -->
+  <view class="result-list">
+    <view wx:for="{{dataList}}" wx:key="index" class="result-item" bindtap="setInfo" data-info="{{item}}">{{item.name}}</view>
+    <view class="text-sty" wx:if="{{(total!==0)&&(total == dataList.length)}}">到底了，亲！</view>
+    <view class="text-sty" wx:if="{{(total==0)}}">结果为空，可以换个关键词试试哦！</view>
+  </view>
+</view>

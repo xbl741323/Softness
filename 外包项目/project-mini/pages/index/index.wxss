@@ -1,0 +1,121 @@
+/**index.wxss**/
+
+.container {
+  padding-bottom: 100rpx;
+}
+
+/* 搜索区域 */
+.search-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+  position: relative;
+  margin-bottom: 100rpx;
+}
+
+.banner-sty {
+  width: 100%;
+  height: 268rpx;
+}
+
+.input-contain {
+  top: 242rpx;
+  left: 45rpx;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.search-main {
+  width: 563rpx;
+  height: 80rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  border: 4rpx solid #1172f3;
+  border-radius: 6px;
+  box-shadow: 0px 6rpx 16rpx 0px rgba(21, 64, 164, 0.32);
+}
+
+.search-main>text:nth-of-type(1) {
+  font-size: 27rpx;
+  margin: 0 12rpx 0 24rpx;
+  color: #323233;
+}
+
+.lang-sty {
+  display: inline-block;
+  width: 0px;
+  height: 42rpx;
+  border: 2rpx solid #1172f3;
+}
+
+.search-sty {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin: 0 8rpx 0 20rpx;
+}
+
+
+.holder-sty {
+  color: #C8C9CC;
+  font-size: 28rpx;
+}
+
+.search-input-sty {
+  width: 600rpx;
+}
+
+.scan-sty {
+  font-size: 80rpx;
+  margin-left: 19rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #ffffff;
+  border: 4rpx solid #1172f3;
+  border-radius: 10rpx;
+  box-shadow: 0px 5rpx 10rpx 0px rgba(21, 64, 164, 0.30);
+}
+
+/* 按钮区域 */
+.search-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 616rpx;
+  height: 99rpx;
+  background: #1172f3;
+  color: #FFFFFF;
+  font-size: 34rpx;
+  margin-left: 66rpx;
+}
+
+/* 展示结果区域 */
+.result-list {
+  margin-top: 27rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 27rpx;
+  width: 616rpx;
+  height: 115rpx;
+  background: linear-gradient(274deg, #e8f3ff 3%, #ffffff 97%);
+  border: 2rpx solid rgba(17, 114, 243, 0.43);
+  border-radius: 12rpx;
+  box-shadow: 0px 5rpx 10rpx 0px rgba(43, 88, 178, 0.32);
+  color: #000000;
+  font-size: 31rpx;
+  font-weight: bold;
+}
+
+.text-sty {
+  color: #717172e1;
+}
