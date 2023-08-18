@@ -1,5 +1,8 @@
 <!--pages/detail/detail.wxml-->
 <view class="detail-contain">
-  <text>{{info.title}}</text>
-  <image mode="aspectFit" class="img-sty" src="{{baseUrl+info.imgUrl}}" mode="" />
+  <view>{{info.title}}</view>
+  <van-image bindtap="previewImg" class="img-sty" width="600rpx" height="1000rpx" fit="widthFix" lazy-load src="{{baseUrl+info.imgUrl}}" use-error-slot use-loading-slot>
+    <text slot="error">加载失败</text>
+    <van-loading slot="loading" size="20" color='#1172f3' vertical>图片加载中</van-loading>
+  </van-image>
 </view>

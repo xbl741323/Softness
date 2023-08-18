@@ -9,6 +9,7 @@
         <text class="lang-sty"></text>
         <van-icon class="search-sty" name="search" />
         <input value="{{keyWords}}" bindinput="changeInput" bindconfirm="onSearch" class="input-sty" placeholder="请输入关键词" placeholder-class="holder-sty" type="text" />
+        <van-icon wx:if="{{keyWords!==''}}" bindtap="clearKey" class="close-sty" name="close" />
       </view>
       <van-icon class="scan-sty" name="scan" bindtap="scanChange" />
     </view>

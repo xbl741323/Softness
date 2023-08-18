@@ -17,6 +17,13 @@ Page({
       imgUrl: ''
     }
   },
+  // 清空关键字信息
+  clearKey() {
+    this.setData({
+      keyWords: ''
+    })
+    this.getAllList()
+  },
   // 获取第一页列表数据
   getAllList() {
     this.setData({
@@ -47,6 +54,7 @@ Page({
   // 获取扫码查询详情数据
   getDetail() {
     let id = this.data.id
+    let that = this
     getInfo(id).then(res => {
       if (res.code == 0) {
         let result = res.data
@@ -56,7 +64,18 @@ Page({
         this.setData({
           info: info
         })
-        this.toDetail()
+        wx.showToast({
+          icon: 'loading',
+          title: '扫码成功！',
+        })
+        setTimeout(() => {
+          that.toDetail()
+        }, 500)
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: '查询结果为空！',
+        })
       }
     })
   },
@@ -65,12 +84,19 @@ Page({
     let that = this
     wx.scanCode({
       success(res) {
+        console.log(res, 'res')
         if (res.result) {
           that.setData({
             id: res.result
           })
           that.getDetail()
         }
+      },
+      fail(err) {
+        wx.showToast({
+          icon: 'none',
+          title: '扫码失败，请确认条形码是否正确！',
+        })
       }
     })
   },
@@ -125,6 +151,20 @@ Page({
         pageNum: pageNum + 1,
       })
       this.getList()
+    }
+  },
+  // 转发给朋友
+  onShareAppMessage(res) {
+    return {
+      title: "烟草工具书", //默认小程序标题
+      path: '/pages/index/index'
+    }
+  },
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: "烟草工具书", //默认小程序标题
+      path: '/pages/index/index'
     }
   },
 })

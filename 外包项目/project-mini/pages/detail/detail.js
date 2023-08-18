@@ -5,11 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    baseUrl:'http://192.168.1.84:8080/file/picture/',
+    baseUrl: 'http://119.45.131.191:8080/file/picture/',
     info: {
       title: '',
       imgUrl: ''
     }
+  },
+  // 预览图片
+  previewImg() {
+    wx.previewImage({
+      urls: [this.data.baseUrl + this.data.info.imgUrl],
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -20,7 +26,7 @@ Page({
       this.setData({
         info: info
       })
-      console.log(this.data.info,'ddd');
+      console.log(this.data.info, 'ddd');
     }
   },
 

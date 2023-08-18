@@ -66,16 +66,14 @@ export default {
 }
 </script>
 <style scoped>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  border: none;
-}
 .submenu {
   float: right;
 }
 .buttonimg {
   height: 60px;
   background-color: transparent;
-  border: none;
+  /* border: none; */
+  color: #334157;
 }
 .showimg {
   width: 26px;
@@ -83,8 +81,5 @@ export default {
   position: absolute;
   top: 17px;
   left: 17px;
-}
-.showimg:active {
-  border: none;
 }
 </style>

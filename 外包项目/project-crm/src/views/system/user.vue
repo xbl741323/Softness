@@ -6,10 +6,10 @@
       <el-input size="small" disabled v-model.trim="userInfo.userName" auto-complete="off" placeholder="请输入用户名"></el-input>
     </el-form-item>
     <el-form-item label="原密码" prop="password">
-      <el-input @change="userInfo.password = oninputForPhone(userInfo.password)" @keyup.native="userInfo.password = oninputForPhone(userInfo.password)" maxlength="10" size="small" type="number" v-model.trim="userInfo.password" auto-complete="off" placeholder="请输入原密码" show-password></el-input>
+      <el-input @change="userInfo.password = oninputForPhone(userInfo.password)" @keyup.native="userInfo.password = oninputForPhone(userInfo.password)" maxlength="10" size="small" type="number" v-model.trim="userInfo.password" auto-complete="off" placeholder="请输入原密码，密码格式仅支持数字" show-password></el-input>
     </el-form-item>
     <el-form-item label="新密码" prop="newPassword">
-      <el-input @change="userInfo.newPassword = oninputForPhone(userInfo.newPassword)" @keyup.native="userInfo.newPassword = oninputForPhone(userInfo.newPassword)" maxlength="10" size="small" type="number" v-model.trim="userInfo.newPassword" auto-complete="off" placeholder="请输入新密码" show-password></el-input>
+      <el-input @change="userInfo.newPassword = oninputForPhone(userInfo.newPassword)" @keyup.native="userInfo.newPassword = oninputForPhone(userInfo.newPassword)" maxlength="10" size="small" type="number" v-model.trim="userInfo.newPassword" auto-complete="off" placeholder="请输入新密码，密码格式仅支持数字" show-password></el-input>
     </el-form-item>
   </el-form>
   <div class="user-foot">
@@ -20,8 +20,9 @@
 </template>
 
 <script>
-import { updatePwd, logout } from '../../api/admin'
-import md5 from 'js-md5'
+import { updatePwd, logout } from "../../api/admin";
+import { throttle } from "../../utils/util";
+import md5 from "js-md5";
 export default {
   data() {
     return {
@@ -36,54 +37,56 @@ export default {
         ],
         password: [
           { required: true, message: "请输入原密码", trigger: "blur" },
+          { min: 6, max: 10, message: '密码格式仅支持数字，长度需在6到10个字符', trigger: 'blur' }
         ],
         newPassword: [
           { required: true, message: "请输入新密码", trigger: "blur" },
+          { min: 6, max: 10, message: '密码格式仅支持数字，长度需在6到10个字符', trigger: 'blur' }
         ],
       },
     };
   },
   methods: {
     // 校验手机号
-    oninputForPhone(value){
+    oninputForPhone(value) {
       return value.replace(/[^\d-+]/g, "");
     },
-    userExit(){
-      logout().then(res=>{
-        if(res.code == 200){
-          sessionStorage.clear()
+    userExit() {
+      logout().then((res) => {
+        if (res.code == 200) {
+          sessionStorage.clear();
           setTimeout(() => {
-            this.$store.commit('logout', 'false')
-            this.$router.push({ path: '/login' })
-        }, 1000)
-        }
-      })
-    },
-    // 编辑用户信息
-    submitForm() {
-      this.$refs["userInfo"].validate((valid) => {
-        if (valid) {
-          let params = new FormData()
-          params.append('oldPassword',md5(this.userInfo.password))
-          params.append('newPassword',md5(this.userInfo.newPassword))
-          updatePwd(params).then(res=>{
-            if(res.code == 0){
-              this.$message({
-                type:'success',
-                message:'密码修改成功，请重新登录！'
-              })
-              this.clearData()
-              this.userExit()
-            }else{
-              this.$message({
-                type:'warning',
-                message:res.msg
-              })
-            }
-          })
+            this.$store.commit("logout", "false");
+            this.$router.push({ path: "/login" });
+          }, 1000);
         }
       });
     },
+    // 编辑用户信息
+    submitForm: throttle(function () {
+      this.$refs["userInfo"].validate((valid) => {
+        if (valid) {
+          let params = new FormData();
+          params.append("oldPassword", md5(this.userInfo.password));
+          params.append("newPassword", md5(this.userInfo.newPassword));
+          updatePwd(params).then((res) => {
+            if (res.code == 0) {
+              this.$message({
+                type: "success",
+                message: "密码修改成功，请重新登录！",
+              });
+              this.clearData();
+              this.userExit();
+            } else {
+              this.$message({
+                type: "warning",
+                message: res.msg,
+              });
+            }
+          });
+        }
+      });
+    }, 2000),
     clearData() {
       this.userInfo.password = "";
       this.userInfo.newPassword = "";

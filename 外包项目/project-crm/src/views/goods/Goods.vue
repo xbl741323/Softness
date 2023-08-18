@@ -49,7 +49,7 @@
          :limit='1'
          class="upload-demo"
          accept=".jpg,.jpeg,.png,.gif"
-         action="http://192.168.1.84:8080/file/upload"
+         action="http://119.45.131.191:8080/file/upload"
          :before-upload="beforeUpload"
          :on-preview="handlePreview"
          :on-remove="handleRemove"
@@ -74,12 +74,13 @@
 
 <script>
 import { productList, setProduct, delProduct } from "../../api/admin";
+import { throttle } from "../../utils/util";
 import Pagination from "../../components/Pagination";
 export default {
   data() {
     return {
-      baseUrl:'http://192.168.1.84:8080/file/picture/',
-      previewImg:'',
+      baseUrl: "http://119.45.131.191:8080/file/picture/",
+      previewImg: "",
       operateStatus: true, // true-添加 false-编辑
       fileList: [],
       nshow: true, //switch开启
@@ -136,13 +137,13 @@ export default {
     this.getList();
   },
   methods: {
-    previewImage(row){
-      this.previewImg = this.baseUrl + row.descUrl
-      this.$refs['locationImage'].clickHandler()
+    previewImage(row) {
+      this.previewImg = this.baseUrl + row.descUrl;
+      this.$refs["locationImage"].clickHandler();
     },
-    dateFormat(row){
-      let result = this.$moment(row.createTime).format("YYYY-MM-DD HH:mm:ss")
-      return result
+    dateFormat(row) {
+      let result = this.$moment(row.createTime).format("YYYY-MM-DD HH:mm:ss");
+      return result;
     },
     beforeUpload(file) {
       if (file.size / 1024 / 1024 > 1) {
@@ -150,7 +151,7 @@ export default {
           type: "warning",
           message: "图片大小不能超过10MB!",
         });
-        return false
+        return false;
       }
     },
     handleSuccess(res, file) {
@@ -174,7 +175,7 @@ export default {
         if (res.code == 0) {
           this.$message({
             type: "success",
-            message: this.operateStatus? "添加成功！":"修改成功！",
+            message: this.operateStatus ? "添加成功！" : "修改成功！",
           });
           this.editFormVisible = false;
           this.editForm.profuctName = "";
@@ -234,14 +235,14 @@ export default {
         this.editForm.productUrl = "";
       }
     },
-    // 编辑、增加页面保存方法
-    submitForm(editData) {
+    // 编辑、增加页面保存方法 + 防重复提交
+    submitForm: throttle(function (editData) {
       this.$refs[editData].validate((valid) => {
         if (valid) {
           this.setProInfo();
         }
       });
-    },
+    }, 2000),
     // 删除
     deleteUser(row) {
       this.$confirm("确定要删除吗?", "提示", {
@@ -249,26 +250,25 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        delProduct(row.id)
-          .then((res) => {
-            if (res.code == 0) {
-              this.$message({
-                type: "success",
-                message: "删除成功!",
-              });
-              this.getAllList();
-            } else {
-              this.$message({
-                type: "warning",
-                message: res.msg,
-              });
-            }
-          })
+        delProduct(row.id).then((res) => {
+          if (res.code == 0) {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.getAllList();
+          } else {
+            this.$message({
+              type: "warning",
+              message: res.msg,
+            });
+          }
+        });
       });
     },
     // 关闭编辑、增加弹出框
     closeDialog() {
-      this.$refs['editForm'].clearValidate()
+      this.$refs["editForm"].clearValidate();
       this.editFormVisible = false;
       this.fileList = [];
     },
@@ -283,12 +283,12 @@ export default {
 .userRole {
   width: 100%;
 }
-.dialog-footer{
+.dialog-footer {
   display: flex;
   justify-content: center;
   margin-top: -20px;
 }
-.right-sty{
+.right-sty {
   margin-right: 100px;
 }
 </style>

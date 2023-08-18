@@ -12,7 +12,7 @@
       </template>
       <el-menu-item-group>
         <el-menu-item v-for="chmenu in menu.menus" :index="'/'+chmenu.url" :key="chmenu.menuid">
-          <i class="iconfont" :class="chmenu.icon"></i>
+          <!-- <i class="iconfont" :class="chmenu.icon"></i> -->
           <span>{{chmenu.menuname}}</span>
         </el-menu-item>
       </el-menu-item-group>

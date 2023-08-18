@@ -8,12 +8,15 @@
   padding-top: 20rpx;
 }
 
-.detail-contain text {
-  color: #4a4a4de1;
+.detail-contain view {
+  text-align: center;
+  width: 600rpx;
+  color: #262627e1;
+  font-size: 32rpx;
+  font-weight: bold;
 }
 
 .img-sty {
-  margin-top: 40rpx;
-  width: 600rpx;
-  height: 1000rpx;
+  padding-top: 50rpx;
+  margin: 0 auto;
 }
