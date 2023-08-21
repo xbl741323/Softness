@@ -3,18 +3,18 @@
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>采集设备信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item>数据采集器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入采集设备信息编号"></el-input>
+        <el-input size="small" v-model="formInline.dataCollectorName" placeholder="请输入数据采集器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入采集设备信息名称"></el-input>
+        <el-input size="small" v-model="formInline.dataCollectorName" placeholder="请输入数据采集器信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.deviceStatus" placeholder="请选择采集设备信息类型">
+        <el-select size="small" v-model="formInline.dataCollectorStatus" placeholder="请选择数据采集器信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="deviceNo" label="采集设备信息编号">
+      <el-table-column sortable prop="dataCollectorNo" label="数据采集器信息编号">
       </el-table-column>
-      <el-table-column sortable prop="deviceName" label="采集设备信息名称">
+      <el-table-column sortable prop="dataCollectorName" label="数据采集器信息名称">
       </el-table-column>
-      <el-table-column sortable prop="deviceType" label="采集设备信息类型">
+      <el-table-column sortable prop="dataCollectorType" label="数据采集器信息类型">
       </el-table-column>
-      <el-table-column sortable prop="deviceStatus" label="采集设备信息状态" >
+      <el-table-column sortable prop="dataCollectorStatus" label="数据采集器信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="采集设备信息编号" prop="deviceNo">
-          <el-input size="small" v-model="editForm.deviceNo" auto-complete="off" placeholder="请输入采集设备信息编号"></el-input>
+        <el-form-item label="数据采集器信息编号" prop="dataCollectorNo">
+          <el-input size="small" v-model="editForm.dataCollectorNo" auto-complete="off" placeholder="请输入数据采集器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="采集设备信息名称" prop="deviceName">
-          <el-input size="small" v-model="editForm.deviceName" auto-complete="off" placeholder="请输入采集设备信息名称"></el-input>
+        <el-form-item label="数据采集器信息名称" prop="dataCollectorName">
+          <el-input size="small" v-model="editForm.dataCollectorName" auto-complete="off" placeholder="请输入数据采集器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="采集设备信息类型" prop="deviceType">
-          <el-select size="small" v-model="editForm.deviceType" auto-complete="off" placeholder="请选择采集设备信息类型">
-            <el-option label="OBD扫描仪" value="1"></el-option>
+        <el-form-item label="数据采集器信息类型" prop="dataCollectorType">
+          <el-select size="small" v-model="editForm.dataCollectorType" auto-complete="off" placeholder="请选择数据采集器信息类型">
+            <el-option label="传感器接口采集器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="采集设备信息状态" prop="deviceStatus">
-          <el-select size="small" v-model="editForm.deviceStatus" auto-complete="off" placeholder="请选择采集设备信息状态">
+        <el-form-item label="数据采集器信息状态" prop="dataCollectorStatus">
+          <el-select size="small" v-model="editForm.dataCollectorStatus" auto-complete="off" placeholder="请选择数据采集器信息状态">
             <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        deviceNo: '',
-        deviceName: '',
-        deviceType:'',
+        dataCollectorNo: '',
+        dataCollectorName: '',
+        dataCollectorType:'',
         status:'',
-        deviceStatus: '',
+        dataCollectorStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        deviceNo: [
-          { required: true, message: '请输入采集设备信息编号', trigger: 'blur' }
+        dataCollectorNo: [
+          { required: true, message: '请输入数据采集器信息编号', trigger: 'blur' }
         ],
-        deviceName: [
-          { required: true, message: '请输入采集设备信息名称', trigger: 'blur' }
+        dataCollectorName: [
+          { required: true, message: '请输入数据采集器信息名称', trigger: 'blur' }
         ],
-        deviceType: [
-          { required: true, message: '请选择采集设备信息类型', trigger: 'blur' }
+        dataCollectorType: [
+          { required: true, message: '请选择数据采集器信息类型', trigger: 'blur' }
         ],
-        deviceStatus: [
-          { required: true, message: '请选择采集设备信息状态', trigger: 'blur' }
+        dataCollectorStatus: [
+          { required: true, message: '请选择数据采集器信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXXOBD扫描仪',
-            deviceType: 'OBD扫描仪',
-            deviceStatus: '运行中',
+            dataCollectorNo: 'VSxxxxxxxx',
+            dataCollectorName: 'XXX传感器接口采集器',
+            dataCollectorType: '传感器接口采集器',
+            dataCollectorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXXOBD扫描仪',
-            deviceType: 'OBD扫描仪',
-            deviceStatus: '运行中',
+            dataCollectorNo: 'VSxxxxxxxx',
+            dataCollectorName: 'XXX传感器接口采集器',
+            dataCollectorType: '传感器接口采集器',
+            dataCollectorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXXOBD扫描仪',
-            deviceType: 'OBD扫描仪',
-            deviceStatus: '运行中',
+            dataCollectorNo: 'VSxxxxxxxx',
+            dataCollectorName: 'XXX传感器接口采集器',
+            dataCollectorType: '传感器接口采集器',
+            dataCollectorStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXX读码器',
-            deviceType: '读码器',
-            deviceStatus: '维护中',
+            dataCollectorNo: 'VSxxxxxxxx',
+            dataCollectorName: 'XXX仪器设备接口采集器',
+            dataCollectorType: '仪器设备接口采集器',
+            dataCollectorStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            deviceNo: 'VSxxxxxxxx',
-            deviceName: 'XXX读码器',
-            deviceType: '读码器',
-            deviceStatus: '维护中',
+            dataCollectorNo: 'VSxxxxxxxx',
+            dataCollectorName: 'XXX仪器设备接口采集器',
+            dataCollectorType: '仪器设备接口采集器',
+            dataCollectorStatus: '维护中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑采集设备信息'
-        this.editForm.deviceNo = row.deviceNo
-        this.editForm.deviceName = row.deviceName
-        this.editForm.deviceStatus = row.deviceStatus
-        this.editForm.deviceType = row.deviceType
+        this.title = '编辑数据采集器信息'
+        this.editForm.dataCollectorNo = row.dataCollectorNo
+        this.editForm.dataCollectorName = row.dataCollectorName
+        this.editForm.dataCollectorStatus = row.dataCollectorStatus
+        this.editForm.dataCollectorType = row.dataCollectorType
       } else {
-        this.title = '添加采集设备信息'
-        this.editForm.deviceNo = ''
-        this.editForm.deviceName = ''
-        this.editForm.deviceStatus = ''
-        this.editForm.deviceType =''
+        this.title = '添加数据采集器信息'
+        this.editForm.dataCollectorNo = ''
+        this.editForm.dataCollectorName = ''
+        this.editForm.dataCollectorStatus = ''
+        this.editForm.dataCollectorType =''
       }
     },
     // 编辑、增加页面保存方法
