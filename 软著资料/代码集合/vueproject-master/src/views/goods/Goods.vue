@@ -3,18 +3,18 @@
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>混凝反应矾花信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item>采集设备信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.coagulantSedimentationName" placeholder="请输入混凝反应矾花信息编号"></el-input>
+        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入采集设备信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.coagulantSedimentationName" placeholder="请输入混凝反应矾花信息名称"></el-input>
+        <el-input size="small" v-model="formInline.deviceName" placeholder="请输入采集设备信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.coagulantSedimentationStatus" placeholder="请选择混凝反应矾花信息类型">
+        <el-select size="small" v-model="formInline.deviceStatus" placeholder="请选择采集设备信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="coagulantSedimentationNo" label="混凝反应矾花信息编号">
+      <el-table-column sortable prop="deviceNo" label="采集设备信息编号">
       </el-table-column>
-      <el-table-column sortable prop="coagulantSedimentationName" label="混凝反应矾花信息名称">
+      <el-table-column sortable prop="deviceName" label="采集设备信息名称">
       </el-table-column>
-      <el-table-column sortable prop="coagulantSedimentationType" label="混凝反应矾花信息类型">
+      <el-table-column sortable prop="deviceType" label="采集设备信息类型">
       </el-table-column>
-      <el-table-column sortable prop="coagulantSedimentationStatus" label="混凝反应矾花信息状态" >
+      <el-table-column sortable prop="deviceStatus" label="采集设备信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="混凝反应矾花信息编号" prop="coagulantSedimentationNo">
-          <el-input size="small" v-model="editForm.coagulantSedimentationNo" auto-complete="off" placeholder="请输入混凝反应矾花信息编号"></el-input>
+        <el-form-item label="采集设备信息编号" prop="deviceNo">
+          <el-input size="small" v-model="editForm.deviceNo" auto-complete="off" placeholder="请输入采集设备信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="混凝反应矾花信息名称" prop="coagulantSedimentationName">
-          <el-input size="small" v-model="editForm.coagulantSedimentationName" auto-complete="off" placeholder="请输入混凝反应矾花信息名称"></el-input>
+        <el-form-item label="采集设备信息名称" prop="deviceName">
+          <el-input size="small" v-model="editForm.deviceName" auto-complete="off" placeholder="请输入采集设备信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="混凝反应矾花信息类型" prop="coagulantSedimentationType">
-          <el-select size="small" v-model="editForm.coagulantSedimentationType" auto-complete="off" placeholder="请选择混凝反应矾花信息类型">
-            <el-option label="球状矾花" value="1"></el-option>
+        <el-form-item label="采集设备信息类型" prop="deviceType">
+          <el-select size="small" v-model="editForm.deviceType" auto-complete="off" placeholder="请选择采集设备信息类型">
+            <el-option label="OBD扫描仪" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="混凝反应矾花信息状态" prop="coagulantSedimentationStatus">
-          <el-select size="small" v-model="editForm.coagulantSedimentationStatus" auto-complete="off" placeholder="请选择混凝反应矾花信息状态">
-            <el-option label="有效" value="1"></el-option>
+        <el-form-item label="采集设备信息状态" prop="deviceStatus">
+          <el-select size="small" v-model="editForm.deviceStatus" auto-complete="off" placeholder="请选择采集设备信息状态">
+            <el-option label="运行中" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        coagulantSedimentationNo: '',
-        coagulantSedimentationName: '',
-        coagulantSedimentationType:'',
+        deviceNo: '',
+        deviceName: '',
+        deviceType:'',
         status:'',
-        coagulantSedimentationStatus: '',
+        deviceStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        coagulantSedimentationNo: [
-          { required: true, message: '请输入混凝反应矾花信息编号', trigger: 'blur' }
+        deviceNo: [
+          { required: true, message: '请输入采集设备信息编号', trigger: 'blur' }
         ],
-        coagulantSedimentationName: [
-          { required: true, message: '请输入混凝反应矾花信息名称', trigger: 'blur' }
+        deviceName: [
+          { required: true, message: '请输入采集设备信息名称', trigger: 'blur' }
         ],
-        coagulantSedimentationType: [
-          { required: true, message: '请选择混凝反应矾花信息类型', trigger: 'blur' }
+        deviceType: [
+          { required: true, message: '请选择采集设备信息类型', trigger: 'blur' }
         ],
-        coagulantSedimentationStatus: [
-          { required: true, message: '请选择混凝反应矾花信息状态', trigger: 'blur' }
+        deviceStatus: [
+          { required: true, message: '请选择采集设备信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            coagulantSedimentationNo: 'VSxxxxxxxx',
-            coagulantSedimentationName: 'XXX球状矾花',
-            coagulantSedimentationType: '球状矾花',
-            coagulantSedimentationStatus: '有效',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXXOBD扫描仪',
+            deviceType: 'OBD扫描仪',
+            deviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            coagulantSedimentationNo: 'VSxxxxxxxx',
-            coagulantSedimentationName: 'XXX球状矾花',
-            coagulantSedimentationType: '球状矾花',
-            coagulantSedimentationStatus: '有效',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXXOBD扫描仪',
+            deviceType: 'OBD扫描仪',
+            deviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            coagulantSedimentationNo: 'VSxxxxxxxx',
-            coagulantSedimentationName: 'XXX球状矾花',
-            coagulantSedimentationType: '球状矾花',
-            coagulantSedimentationStatus: '有效',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXXOBD扫描仪',
+            deviceType: 'OBD扫描仪',
+            deviceStatus: '运行中',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            coagulantSedimentationNo: 'VSxxxxxxxx',
-            coagulantSedimentationName: 'XXX针状矾花',
-            coagulantSedimentationType: '针状矾花',
-            coagulantSedimentationStatus: '无效',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXX读码器',
+            deviceType: '读码器',
+            deviceStatus: '维护中',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            coagulantSedimentationNo: 'VSxxxxxxxx',
-            coagulantSedimentationName: 'XXX针状矾花',
-            coagulantSedimentationType: '针状矾花',
-            coagulantSedimentationStatus: '无效',
+            deviceNo: 'VSxxxxxxxx',
+            deviceName: 'XXX读码器',
+            deviceType: '读码器',
+            deviceStatus: '维护中',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑混凝反应矾花信息'
-        this.editForm.coagulantSedimentationNo = row.coagulantSedimentationNo
-        this.editForm.coagulantSedimentationName = row.coagulantSedimentationName
-        this.editForm.coagulantSedimentationStatus = row.coagulantSedimentationStatus
-        this.editForm.coagulantSedimentationType = row.coagulantSedimentationType
+        this.title = '编辑采集设备信息'
+        this.editForm.deviceNo = row.deviceNo
+        this.editForm.deviceName = row.deviceName
+        this.editForm.deviceStatus = row.deviceStatus
+        this.editForm.deviceType = row.deviceType
       } else {
-        this.title = '添加混凝反应矾花信息'
-        this.editForm.coagulantSedimentationNo = ''
-        this.editForm.coagulantSedimentationName = ''
-        this.editForm.coagulantSedimentationStatus = ''
-        this.editForm.coagulantSedimentationType =''
+        this.title = '添加采集设备信息'
+        this.editForm.deviceNo = ''
+        this.editForm.deviceName = ''
+        this.editForm.deviceStatus = ''
+        this.editForm.deviceType =''
       }
     },
     // 编辑、增加页面保存方法

@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
     <el-form label-position="left" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm login-container">
-      <h3 class="title">华凯全功率试验平台控制保护软件</h3>
+      <h3 class="title">汽车钥匙主板信息采集系统</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="ruleForm.username" auto-complete="off" placeholder="请输入账号"></el-input>
       </el-form-item>
@@ -153,7 +153,7 @@ export default {
   margin: 0px auto 40px auto;
   text-align: center;
   color: #505458;
-  font-size: 17px;
+  /* font-size: 17px; */
 }
 .remember {
   margin: 0px 0px 35px 0px;
