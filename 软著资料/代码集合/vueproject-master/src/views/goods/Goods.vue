@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>数据采集器信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">门禁管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>门禁卡信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.dataCollectorName" placeholder="请输入数据采集器信息编号"></el-input>
+        <el-input size="small" v-model="formInline.accessCardName" placeholder="请输入门禁卡信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.dataCollectorName" placeholder="请输入数据采集器信息名称"></el-input>
+        <el-input size="small" v-model="formInline.accessCardName" placeholder="请输入门禁卡信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.dataCollectorStatus" placeholder="请选择数据采集器信息类型">
+        <el-select size="small" v-model="formInline.accessCardStatus" placeholder="请选择门禁卡信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="dataCollectorNo" label="数据采集器信息编号">
+      <el-table-column sortable prop="accessCardNo" label="门禁卡信息编号">
       </el-table-column>
-      <el-table-column sortable prop="dataCollectorName" label="数据采集器信息名称">
+      <el-table-column sortable prop="accessCardName" label="门禁卡信息名称">
       </el-table-column>
-      <el-table-column sortable prop="dataCollectorType" label="数据采集器信息类型">
+      <el-table-column sortable prop="accessCardType" label="门禁卡信息类型">
       </el-table-column>
-      <el-table-column sortable prop="dataCollectorStatus" label="数据采集器信息状态" >
+      <el-table-column sortable prop="accessCardStatus" label="门禁卡信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="数据采集器信息编号" prop="dataCollectorNo">
-          <el-input size="small" v-model="editForm.dataCollectorNo" auto-complete="off" placeholder="请输入数据采集器信息编号"></el-input>
+        <el-form-item label="门禁卡信息编号" prop="accessCardNo">
+          <el-input size="small" v-model="editForm.accessCardNo" auto-complete="off" placeholder="请输入门禁卡信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="数据采集器信息名称" prop="dataCollectorName">
-          <el-input size="small" v-model="editForm.dataCollectorName" auto-complete="off" placeholder="请输入数据采集器信息名称"></el-input>
+        <el-form-item label="门禁卡信息名称" prop="accessCardName">
+          <el-input size="small" v-model="editForm.accessCardName" auto-complete="off" placeholder="请输入门禁卡信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="数据采集器信息类型" prop="dataCollectorType">
-          <el-select size="small" v-model="editForm.dataCollectorType" auto-complete="off" placeholder="请选择数据采集器信息类型">
-            <el-option label="传感器接口采集器" value="1"></el-option>
+        <el-form-item label="门禁卡信息类型" prop="accessCardType">
+          <el-select size="small" v-model="editForm.accessCardType" auto-complete="off" placeholder="请选择门禁卡信息类型">
+            <el-option label="高频门禁卡" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="数据采集器信息状态" prop="dataCollectorStatus">
-          <el-select size="small" v-model="editForm.dataCollectorStatus" auto-complete="off" placeholder="请选择数据采集器信息状态">
-            <el-option label="运行中" value="1"></el-option>
+        <el-form-item label="门禁卡信息状态" prop="accessCardStatus">
+          <el-select size="small" v-model="editForm.accessCardStatus" auto-complete="off" placeholder="请选择门禁卡信息状态">
+            <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        dataCollectorNo: '',
-        dataCollectorName: '',
-        dataCollectorType:'',
+        accessCardNo: '',
+        accessCardName: '',
+        accessCardType:'',
         status:'',
-        dataCollectorStatus: '',
+        accessCardStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        dataCollectorNo: [
-          { required: true, message: '请输入数据采集器信息编号', trigger: 'blur' }
+        accessCardNo: [
+          { required: true, message: '请输入门禁卡信息编号', trigger: 'blur' }
         ],
-        dataCollectorName: [
-          { required: true, message: '请输入数据采集器信息名称', trigger: 'blur' }
+        accessCardName: [
+          { required: true, message: '请输入门禁卡信息名称', trigger: 'blur' }
         ],
-        dataCollectorType: [
-          { required: true, message: '请选择数据采集器信息类型', trigger: 'blur' }
+        accessCardType: [
+          { required: true, message: '请选择门禁卡信息类型', trigger: 'blur' }
         ],
-        dataCollectorStatus: [
-          { required: true, message: '请选择数据采集器信息状态', trigger: 'blur' }
+        accessCardStatus: [
+          { required: true, message: '请选择门禁卡信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            dataCollectorNo: 'VSxxxxxxxx',
-            dataCollectorName: 'XXX传感器接口采集器',
-            dataCollectorType: '传感器接口采集器',
-            dataCollectorStatus: '运行中',
+            accessCardNo: 'VSxxxxxxxx',
+            accessCardName: 'XXX高频门禁卡',
+            accessCardType: '高频门禁卡',
+            accessCardStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            dataCollectorNo: 'VSxxxxxxxx',
-            dataCollectorName: 'XXX传感器接口采集器',
-            dataCollectorType: '传感器接口采集器',
-            dataCollectorStatus: '运行中',
+            accessCardNo: 'VSxxxxxxxx',
+            accessCardName: 'XXX高频门禁卡',
+            accessCardType: '高频门禁卡',
+            accessCardStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            dataCollectorNo: 'VSxxxxxxxx',
-            dataCollectorName: 'XXX传感器接口采集器',
-            dataCollectorType: '传感器接口采集器',
-            dataCollectorStatus: '运行中',
+            accessCardNo: 'VSxxxxxxxx',
+            accessCardName: 'XXX高频门禁卡',
+            accessCardType: '高频门禁卡',
+            accessCardStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            dataCollectorNo: 'VSxxxxxxxx',
-            dataCollectorName: 'XXX仪器设备接口采集器',
-            dataCollectorType: '仪器设备接口采集器',
-            dataCollectorStatus: '维护中',
+            accessCardNo: 'VSxxxxxxxx',
+            accessCardName: 'XXXUHF门禁卡',
+            accessCardType: 'UHF门禁卡',
+            accessCardStatus: '无效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            dataCollectorNo: 'VSxxxxxxxx',
-            dataCollectorName: 'XXX仪器设备接口采集器',
-            dataCollectorType: '仪器设备接口采集器',
-            dataCollectorStatus: '维护中',
+            accessCardNo: 'VSxxxxxxxx',
+            accessCardName: 'XXXUHF门禁卡',
+            accessCardType: 'UHF门禁卡',
+            accessCardStatus: '无效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑数据采集器信息'
-        this.editForm.dataCollectorNo = row.dataCollectorNo
-        this.editForm.dataCollectorName = row.dataCollectorName
-        this.editForm.dataCollectorStatus = row.dataCollectorStatus
-        this.editForm.dataCollectorType = row.dataCollectorType
+        this.title = '编辑门禁卡信息'
+        this.editForm.accessCardNo = row.accessCardNo
+        this.editForm.accessCardName = row.accessCardName
+        this.editForm.accessCardStatus = row.accessCardStatus
+        this.editForm.accessCardType = row.accessCardType
       } else {
-        this.title = '添加数据采集器信息'
-        this.editForm.dataCollectorNo = ''
-        this.editForm.dataCollectorName = ''
-        this.editForm.dataCollectorStatus = ''
-        this.editForm.dataCollectorType =''
+        this.title = '添加门禁卡信息'
+        this.editForm.accessCardNo = ''
+        this.editForm.accessCardName = ''
+        this.editForm.accessCardStatus = ''
+        this.editForm.accessCardType =''
       }
     },
     // 编辑、增加页面保存方法

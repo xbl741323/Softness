@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据记录与存储模块</el-breadcrumb-item>
-      <el-breadcrumb-item>封装监测数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">设备控制模块</el-breadcrumb-item>
+      <el-breadcrumb-item>实验仪器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.monitorNo" placeholder="请输入封装监测数据编号"></el-input>
+        <el-input size="small" v-model="formInline.instrumentNo" placeholder="请输入实验仪器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.monitorName" placeholder="请输入封装监测数据名称"></el-input>
+        <el-input size="small" v-model="formInline.instrumentName" placeholder="请输入实验仪器信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.monitorType" placeholder="请选择封装监测数据类型"></el-select>
+        <el-select size="small" v-model="formInline.instrumentType" placeholder="请选择实验仪器信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="monitorNo" label="封装监测数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="instrumentNo" label="实验仪器信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="monitorName" label="封装监测数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="instrumentName" label="实验仪器信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="monitorType" label="封装监测数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="instrumentType" label="实验仪器信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="monitorStatus" label="封装监测数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="instrumentStatus" label="实验仪器信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="封装监测数据编号" prop="monitorNo">
-          <el-input size="small" v-model="addForm.monitorNo" auto-complete="off" placeholder="请输入封装监测数据编号"></el-input>
+        <el-form-item label="实验仪器信息编号" prop="instrumentNo">
+          <el-input size="small" v-model="addForm.instrumentNo" auto-complete="off" placeholder="请输入实验仪器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="封装监测数据名称" prop="monitorName">
-          <el-input size="small" v-model="addForm.monitorName" auto-complete="off" placeholder="请输入封装监测数据名称"></el-input>
+        <el-form-item label="实验仪器信息名称" prop="instrumentName">
+          <el-input size="small" v-model="addForm.instrumentName" auto-complete="off" placeholder="请输入实验仪器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="封装监测数据类型" prop="monitorType">
-          <el-select size="small" v-model="addForm.monitorType" auto-complete="off" placeholder="请选择封装监测数据类型">
-            <el-option label="温度监测数据" value="1"></el-option>
+        <el-form-item label="实验仪器信息类型" prop="instrumentType">
+          <el-select size="small" v-model="addForm.instrumentType" auto-complete="off" placeholder="请选择实验仪器信息类型">
+            <el-option label="实验分析仪器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="封装监测数据状态" prop="monitorStatus">
-          <el-select size="small" v-model="addForm.monitorStatus" auto-complete="off" placeholder="请选择封装监测数据状态">
-            <el-option label="有效" value="1"></el-option>
+        <el-form-item label="实验仪器信息状态" prop="instrumentStatus">
+          <el-select size="small" v-model="addForm.instrumentStatus" auto-complete="off" placeholder="请选择实验仪器信息状态">
+            <el-option label="正常状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       monitorNo:'',
-       monitorName:'',
-       monitorType:'',
+       instrumentNo:'',
+       instrumentName:'',
+       instrumentType:'',
        address:'',
-       monitorGender:'',
+       instrumentGender:'',
        age:'',
-       monitorStatus:''
+       instrumentStatus:''
       },
       rules: {
-        monitorNo: [
-          { required: true, message: '请输入封装监测数据编号', trigger: 'blur' }
+        instrumentNo: [
+          { required: true, message: '请输入实验仪器信息编号', trigger: 'blur' }
         ],
-        monitorName: [
-          { required: true, message: '请输入封装监测数据名称', trigger: 'blur' }
+        instrumentName: [
+          { required: true, message: '请输入实验仪器信息名称', trigger: 'blur' }
         ],
-        monitorType: [
-          { required: true, message: '请选择封装监测数据类型', trigger: 'blur' }
+        instrumentType: [
+          { required: true, message: '请选择实验仪器信息类型', trigger: 'blur' }
         ],
-        monitorStatus: [
-          { required: true, message: '请选择封装监测数据状态', trigger: 'blur' }
+        instrumentStatus: [
+          { required: true, message: '请选择实验仪器信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        monitorName: '',
+        instrumentName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            monitorNo:'VCxxxxxx',
-            monitorName:'xxx温度监测数据',
-            monitorType:'温度监测数据',
-            monitorStatus:"有效",
+            instrumentNo:'VCxxxxxx',
+            instrumentName:'xxx实验分析仪器',
+            instrumentType:'实验分析仪器',
+            instrumentStatus:"正常状态",
             createTime: "2020-08-12"
           },
           {
-            monitorNo:'VCxxxxxx',
-            monitorName:'xxx温度监测数据',
-            monitorType:'温度监测数据',
-            monitorStatus:"有效",
+            instrumentNo:'VCxxxxxx',
+            instrumentName:'xxx实验分析仪器',
+            instrumentType:'实验分析仪器',
+            instrumentStatus:"正常状态",
             createTime: "2022-10-24"
           },
           {
-            monitorNo:'VCxxxxxx',
-            monitorName:'xxx温度监测数据',
-            monitorType:'温度监测数据',
-            monitorStatus:"有效",
+            instrumentNo:'VCxxxxxx',
+            instrumentName:'xxx实验分析仪器',
+            instrumentType:'实验分析仪器',
+            instrumentStatus:"正常状态",
             createTime: "2022-01-12"
           },
           {
-            monitorNo:'VCxxxxxx',
-            monitorName:'xxx化学参数监测数据',
-            monitorType:'化学参数监测数据',
-            monitorStatus:"无效",
+            instrumentNo:'VCxxxxxx',
+            instrumentName:'xxx实验测量仪器',
+            instrumentType:'实验测量仪器',
+            instrumentStatus:"维护状态",
             createTime: "2022-05-17"
           },
           {
-            monitorNo:'VCxxxxxx',
-            monitorName:'xxx化学参数监测数据',
-            monitorType:'化学参数监测数据',
-            monitorStatus:"无效",
+            instrumentNo:'VCxxxxxx',
+            instrumentName:'xxx实验测量仪器',
+            instrumentType:'实验测量仪器',
+            instrumentStatus:"维护状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑封装监测数据'
-        this.addForm.monitorNo = row.monitorNo
-        this.addForm.monitorName = row.monitorName
-        this.addForm.monitorType = row.monitorType
-        this.addForm.monitorStatus = row.monitorStatus
+        this.title='编辑实验仪器信息'
+        this.addForm.instrumentNo = row.instrumentNo
+        this.addForm.instrumentName = row.instrumentName
+        this.addForm.instrumentType = row.instrumentType
+        this.addForm.instrumentStatus = row.instrumentStatus
       }else{
-        this.title='添加封装监测数据'
-        this.addForm.monitorNo = ''
-        this.addForm.monitorName = ''
-        this.addForm.monitorType = ''
-        this.addForm.monitorStatus = ''
+        this.title='添加实验仪器信息'
+        this.addForm.instrumentNo = ''
+        this.addForm.instrumentName = ''
+        this.addForm.instrumentType = ''
+        this.addForm.instrumentStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '无效删除'
+            message: '维护状态删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formmonitorName) {
+    closeDialog(forminstrumentName) {
       this.editFormVisible = false
-      this.$refs[formmonitorName].resetFields()
+      this.$refs[forminstrumentName].resetFields()
     }
   }
 }
