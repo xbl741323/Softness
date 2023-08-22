@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '投料设备管理模块',
+          menuname: '直线加速器管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '投料设备信息管理',
+              menuname: '直线加速器信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '投料计划设置管理',
+              menuname: '直线加速器控制管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '投料策略调整管理',
+              menuname: '直线加速器状态记录管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备维修管理',
+              menuname: '直线加速器故障诊断管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -99,7 +99,7 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '设备维护信息管理',
+              menuname: '直线加速器维护管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -109,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '投料控制管理模块',
+          menuname: '影像数据采集模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投料饲料信息管理',
+              menuname: '影像采集数据管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投料时间设置管理',
+              menuname: '影像传感器管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投料模式选择管理',
+              menuname: '影像信号采集器管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投料记录与统计管理',
+              menuname: '模数转换器管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '投料频率控制管理',
+              menuname: '滤波器管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '环境监测模块',
+          menuname: '采集控制模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +224,7 @@ export default {
          {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据处理与分析模块',
+          menuname: '影像数据处理与分析模块',
           hasThird: null,
           url: null,
           menus: [

@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">投料控制管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>投料饲料信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">影像数据采集模块</el-breadcrumb-item>
+      <el-breadcrumb-item>影像采集数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.feedFeedingNo" placeholder="请输入投料饲料信息编号"></el-input>
+        <el-input size="small" v-model="formInline.imageAcquisitionNo" placeholder="请输入影像采集数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.feedFeedingName" placeholder="请输入投料饲料信息名称"></el-input>
+        <el-input size="small" v-model="formInline.imageAcquisitionName" placeholder="请输入影像采集数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.feedFeedingType" placeholder="请选择投料饲料信息类型"></el-select>
+        <el-select size="small" v-model="formInline.imageAcquisitionType" placeholder="请选择影像采集数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="feedFeedingNo" label="投料饲料信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="imageAcquisitionNo" label="影像采集数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="feedFeedingName" label="投料饲料信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="imageAcquisitionName" label="影像采集数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="feedFeedingType" label="投料饲料信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="imageAcquisitionType" label="影像采集数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="feedFeedingStatus" label="投料饲料信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="imageAcquisitionStatus" label="影像采集数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="投料饲料信息编号" prop="feedFeedingNo">
-          <el-input size="small" v-model="addForm.feedFeedingNo" auto-complete="off" placeholder="请输入投料饲料信息编号"></el-input>
+        <el-form-item label="影像采集数据编号" prop="imageAcquisitionNo">
+          <el-input size="small" v-model="addForm.imageAcquisitionNo" auto-complete="off" placeholder="请输入影像采集数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="投料饲料信息名称" prop="feedFeedingName">
-          <el-input size="small" v-model="addForm.feedFeedingName" auto-complete="off" placeholder="请输入投料饲料信息名称"></el-input>
+        <el-form-item label="影像采集数据名称" prop="imageAcquisitionName">
+          <el-input size="small" v-model="addForm.imageAcquisitionName" auto-complete="off" placeholder="请输入影像采集数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="投料饲料信息类型" prop="feedFeedingType">
-          <el-select size="small" v-model="addForm.feedFeedingType" auto-complete="off" placeholder="请选择投料饲料信息类型">
-            <el-option label="植物性饲料" value="1"></el-option>
+        <el-form-item label="影像采集数据类型" prop="imageAcquisitionType">
+          <el-select size="small" v-model="addForm.imageAcquisitionType" auto-complete="off" placeholder="请选择影像采集数据类型">
+            <el-option label="治疗计划影像数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="投料饲料信息状态" prop="feedFeedingStatus">
-          <el-select size="small" v-model="addForm.feedFeedingStatus" auto-complete="off" placeholder="请选择投料饲料信息状态">
+        <el-form-item label="影像采集数据状态" prop="imageAcquisitionStatus">
+          <el-select size="small" v-model="addForm.imageAcquisitionStatus" auto-complete="off" placeholder="请选择影像采集数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       feedFeedingNo:'',
-       feedFeedingName:'',
-       feedFeedingType:'',
+       imageAcquisitionNo:'',
+       imageAcquisitionName:'',
+       imageAcquisitionType:'',
        address:'',
-       feedFeedingGender:'',
+       imageAcquisitionGender:'',
        age:'',
-       feedFeedingStatus:''
+       imageAcquisitionStatus:''
       },
       rules: {
-        feedFeedingNo: [
-          { required: true, message: '请输入投料饲料信息编号', trigger: 'blur' }
+        imageAcquisitionNo: [
+          { required: true, message: '请输入影像采集数据编号', trigger: 'blur' }
         ],
-        feedFeedingName: [
-          { required: true, message: '请输入投料饲料信息名称', trigger: 'blur' }
+        imageAcquisitionName: [
+          { required: true, message: '请输入影像采集数据名称', trigger: 'blur' }
         ],
-        feedFeedingType: [
-          { required: true, message: '请选择投料饲料信息类型', trigger: 'blur' }
+        imageAcquisitionType: [
+          { required: true, message: '请选择影像采集数据类型', trigger: 'blur' }
         ],
-        feedFeedingStatus: [
-          { required: true, message: '请选择投料饲料信息状态', trigger: 'blur' }
+        imageAcquisitionStatus: [
+          { required: true, message: '请选择影像采集数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        feedFeedingName: '',
+        imageAcquisitionName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            feedFeedingNo:'VCxxxxxx',
-            feedFeedingName:'xxx植物性饲料',
-            feedFeedingType:'植物性饲料',
-            feedFeedingStatus:"有效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxx治疗计划影像数据',
+            imageAcquisitionType:'治疗计划影像数据',
+            imageAcquisitionStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            feedFeedingNo:'VCxxxxxx',
-            feedFeedingName:'xxx植物性饲料',
-            feedFeedingType:'植物性饲料',
-            feedFeedingStatus:"有效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxx治疗计划影像数据',
+            imageAcquisitionType:'治疗计划影像数据',
+            imageAcquisitionStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            feedFeedingNo:'VCxxxxxx',
-            feedFeedingName:'xxx植物性饲料',
-            feedFeedingType:'植物性饲料',
-            feedFeedingStatus:"有效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxx治疗计划影像数据',
+            imageAcquisitionType:'治疗计划影像数据',
+            imageAcquisitionStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            feedFeedingNo:'VCxxxxxx',
-            feedFeedingName:'xxx复合饲料',
-            feedFeedingType:'复合饲料',
-            feedFeedingStatus:"无效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxx定位影像数据',
+            imageAcquisitionType:'定位影像数据',
+            imageAcquisitionStatus:"无效",
             createTime: "2022-05-17"
           },
           {
-            feedFeedingNo:'VCxxxxxx',
-            feedFeedingName:'xxx复合饲料',
-            feedFeedingType:'复合饲料',
-            feedFeedingStatus:"无效",
+            imageAcquisitionNo:'VCxxxxxx',
+            imageAcquisitionName:'xxx定位影像数据',
+            imageAcquisitionType:'定位影像数据',
+            imageAcquisitionStatus:"无效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑投料饲料信息'
-        this.addForm.feedFeedingNo = row.feedFeedingNo
-        this.addForm.feedFeedingName = row.feedFeedingName
-        this.addForm.feedFeedingType = row.feedFeedingType
-        this.addForm.feedFeedingStatus = row.feedFeedingStatus
+        this.title='编辑影像采集数据'
+        this.addForm.imageAcquisitionNo = row.imageAcquisitionNo
+        this.addForm.imageAcquisitionName = row.imageAcquisitionName
+        this.addForm.imageAcquisitionType = row.imageAcquisitionType
+        this.addForm.imageAcquisitionStatus = row.imageAcquisitionStatus
       }else{
-        this.title='添加投料饲料信息'
-        this.addForm.feedFeedingNo = ''
-        this.addForm.feedFeedingName = ''
-        this.addForm.feedFeedingType = ''
-        this.addForm.feedFeedingStatus = ''
+        this.title='添加影像采集数据'
+        this.addForm.imageAcquisitionNo = ''
+        this.addForm.imageAcquisitionName = ''
+        this.addForm.imageAcquisitionType = ''
+        this.addForm.imageAcquisitionStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formfeedFeedingName) {
+    closeDialog(formimageAcquisitionName) {
       this.editFormVisible = false
-      this.$refs[formfeedFeedingName].resetFields()
+      this.$refs[formimageAcquisitionName].resetFields()
     }
   }
 }

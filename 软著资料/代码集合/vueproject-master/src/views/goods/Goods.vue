@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">投料设备管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>投料设备信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">直线加速器管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>直线加速器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.feedingDeviceName" placeholder="请输入投料设备信息编号"></el-input>
+        <el-input size="small" v-model="formInline.linearAcceleratorName" placeholder="请输入直线加速器信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.feedingDeviceName" placeholder="请输入投料设备信息名称"></el-input>
+        <el-input size="small" v-model="formInline.linearAcceleratorName" placeholder="请输入直线加速器信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.feedingDeviceStatus" placeholder="请选择投料设备信息类型">
+        <el-select size="small" v-model="formInline.linearAcceleratorStatus" placeholder="请选择直线加速器信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="feedingDeviceNo" label="投料设备信息编号">
+      <el-table-column sortable prop="linearAcceleratorNo" label="直线加速器信息编号">
       </el-table-column>
-      <el-table-column sortable prop="feedingDeviceName" label="投料设备信息名称">
+      <el-table-column sortable prop="linearAcceleratorName" label="直线加速器信息名称">
       </el-table-column>
-      <el-table-column sortable prop="feedingDeviceType" label="投料设备信息类型">
+      <el-table-column sortable prop="linearAcceleratorType" label="直线加速器信息类型">
       </el-table-column>
-      <el-table-column sortable prop="feedingDeviceStatus" label="投料设备信息状态" >
+      <el-table-column sortable prop="linearAcceleratorStatus" label="直线加速器信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,19 +51,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="投料设备信息编号" prop="feedingDeviceNo">
-          <el-input size="small" v-model="editForm.feedingDeviceNo" auto-complete="off" placeholder="请输入投料设备信息编号"></el-input>
+        <el-form-item label="直线加速器信息编号" prop="linearAcceleratorNo">
+          <el-input size="small" v-model="editForm.linearAcceleratorNo" auto-complete="off" placeholder="请输入直线加速器信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="投料设备信息名称" prop="feedingDeviceName">
-          <el-input size="small" v-model="editForm.feedingDeviceName" auto-complete="off" placeholder="请输入投料设备信息名称"></el-input>
+        <el-form-item label="直线加速器信息名称" prop="linearAcceleratorName">
+          <el-input size="small" v-model="editForm.linearAcceleratorName" auto-complete="off" placeholder="请输入直线加速器信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="投料设备信息类型" prop="feedingDeviceType">
-          <el-select size="small" v-model="editForm.feedingDeviceType" auto-complete="off" placeholder="请选择投料设备信息类型">
-            <el-option label="整舍投料设备" value="1"></el-option>
+        <el-form-item label="直线加速器信息类型" prop="linearAcceleratorType">
+          <el-select size="small" v-model="editForm.linearAcceleratorType" auto-complete="off" placeholder="请选择直线加速器信息类型">
+            <el-option label="电子直线加速器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="投料设备信息状态" prop="feedingDeviceStatus">
-          <el-select size="small" v-model="editForm.feedingDeviceStatus" auto-complete="off" placeholder="请选择投料设备信息状态">
+        <el-form-item label="直线加速器信息状态" prop="linearAcceleratorStatus">
+          <el-select size="small" v-model="editForm.linearAcceleratorStatus" auto-complete="off" placeholder="请选择直线加速器信息状态">
             <el-option label="正常状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        feedingDeviceNo: '',
-        feedingDeviceName: '',
-        feedingDeviceType:'',
+        linearAcceleratorNo: '',
+        linearAcceleratorName: '',
+        linearAcceleratorType:'',
         status:'',
-        feedingDeviceStatus: '',
+        linearAcceleratorStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        feedingDeviceNo: [
-          { required: true, message: '请输入投料设备信息编号', trigger: 'blur' }
+        linearAcceleratorNo: [
+          { required: true, message: '请输入直线加速器信息编号', trigger: 'blur' }
         ],
-        feedingDeviceName: [
-          { required: true, message: '请输入投料设备信息名称', trigger: 'blur' }
+        linearAcceleratorName: [
+          { required: true, message: '请输入直线加速器信息名称', trigger: 'blur' }
         ],
-        feedingDeviceType: [
-          { required: true, message: '请选择投料设备信息类型', trigger: 'blur' }
+        linearAcceleratorType: [
+          { required: true, message: '请选择直线加速器信息类型', trigger: 'blur' }
         ],
-        feedingDeviceStatus: [
-          { required: true, message: '请选择投料设备信息状态', trigger: 'blur' }
+        linearAcceleratorStatus: [
+          { required: true, message: '请选择直线加速器信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            feedingDeviceNo: 'VSxxxxxxxx',
-            feedingDeviceName: 'XXX整舍投料设备',
-            feedingDeviceType: '整舍投料设备',
-            feedingDeviceStatus: '正常状态',
+            linearAcceleratorNo: 'VSxxxxxxxx',
+            linearAcceleratorName: 'XXX电子直线加速器',
+            linearAcceleratorType: '电子直线加速器',
+            linearAcceleratorStatus: '正常状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            feedingDeviceNo: 'VSxxxxxxxx',
-            feedingDeviceName: 'XXX整舍投料设备',
-            feedingDeviceType: '整舍投料设备',
-            feedingDeviceStatus: '正常状态',
+            linearAcceleratorNo: 'VSxxxxxxxx',
+            linearAcceleratorName: 'XXX电子直线加速器',
+            linearAcceleratorType: '电子直线加速器',
+            linearAcceleratorStatus: '正常状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            feedingDeviceNo: 'VSxxxxxxxx',
-            feedingDeviceName: 'XXX整舍投料设备',
-            feedingDeviceType: '整舍投料设备',
-            feedingDeviceStatus: '正常状态',
+            linearAcceleratorNo: 'VSxxxxxxxx',
+            linearAcceleratorName: 'XXX电子直线加速器',
+            linearAcceleratorType: '电子直线加速器',
+            linearAcceleratorStatus: '正常状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            feedingDeviceNo: 'VSxxxxxxxx',
-            feedingDeviceName: 'XXX分区投料设备',
-            feedingDeviceType: '分区投料设备',
-            feedingDeviceStatus: '维护状态',
+            linearAcceleratorNo: 'VSxxxxxxxx',
+            linearAcceleratorName: 'XXX重离子直线加速器',
+            linearAcceleratorType: '重离子直线加速器',
+            linearAcceleratorStatus: '维护状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            feedingDeviceNo: 'VSxxxxxxxx',
-            feedingDeviceName: 'XXX分区投料设备',
-            feedingDeviceType: '分区投料设备',
-            feedingDeviceStatus: '维护状态',
+            linearAcceleratorNo: 'VSxxxxxxxx',
+            linearAcceleratorName: 'XXX重离子直线加速器',
+            linearAcceleratorType: '重离子直线加速器',
+            linearAcceleratorStatus: '维护状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑投料设备信息'
-        this.editForm.feedingDeviceNo = row.feedingDeviceNo
-        this.editForm.feedingDeviceName = row.feedingDeviceName
-        this.editForm.feedingDeviceStatus = row.feedingDeviceStatus
-        this.editForm.feedingDeviceType = row.feedingDeviceType
+        this.title = '编辑直线加速器信息'
+        this.editForm.linearAcceleratorNo = row.linearAcceleratorNo
+        this.editForm.linearAcceleratorName = row.linearAcceleratorName
+        this.editForm.linearAcceleratorStatus = row.linearAcceleratorStatus
+        this.editForm.linearAcceleratorType = row.linearAcceleratorType
       } else {
-        this.title = '添加投料设备信息'
-        this.editForm.feedingDeviceNo = ''
-        this.editForm.feedingDeviceName = ''
-        this.editForm.feedingDeviceStatus = ''
-        this.editForm.feedingDeviceType =''
+        this.title = '添加直线加速器信息'
+        this.editForm.linearAcceleratorNo = ''
+        this.editForm.linearAcceleratorName = ''
+        this.editForm.linearAcceleratorStatus = ''
+        this.editForm.linearAcceleratorType =''
       }
     },
     // 编辑、增加页面保存方法
