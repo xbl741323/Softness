@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">风险分析和建模模块</el-breadcrumb-item>
-      <el-breadcrumb-item>市场波动性分析数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">电镀质量控制模块</el-breadcrumb-item>
+      <el-breadcrumb-item>电镀质量数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.instrumentNo" placeholder="请输入市场波动性分析数据编号"></el-input>
+        <el-input size="small" v-model="formInline.electroplatingQualityNo" placeholder="请输入电镀质量数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.instrumentName" placeholder="请输入市场波动性分析数据名称"></el-input>
+        <el-input size="small" v-model="formInline.electroplatingQualityName" placeholder="请输入电镀质量数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.instrumentType" placeholder="请选择市场波动性分析数据类型"></el-select>
+        <el-select size="small" v-model="formInline.electroplatingQualityType" placeholder="请选择电镀质量数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="instrumentNo" label="市场波动性分析数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="electroplatingQualityNo" label="电镀质量数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="instrumentName" label="市场波动性分析数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="electroplatingQualityName" label="电镀质量数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="instrumentType" label="市场波动性分析数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="electroplatingQualityType" label="电镀质量数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="instrumentStatus" label="市场波动性分析数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="electroplatingQualityStatus" label="电镀质量数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="市场波动性分析数据编号" prop="instrumentNo">
-          <el-input size="small" v-model="addForm.instrumentNo" auto-complete="off" placeholder="请输入市场波动性分析数据编号"></el-input>
+        <el-form-item label="电镀质量数据编号" prop="electroplatingQualityNo">
+          <el-input size="small" v-model="addForm.electroplatingQualityNo" auto-complete="off" placeholder="请输入电镀质量数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="市场波动性分析数据名称" prop="instrumentName">
-          <el-input size="small" v-model="addForm.instrumentName" auto-complete="off" placeholder="请输入市场波动性分析数据名称"></el-input>
+        <el-form-item label="电镀质量数据名称" prop="electroplatingQualityName">
+          <el-input size="small" v-model="addForm.electroplatingQualityName" auto-complete="off" placeholder="请输入电镀质量数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="市场波动性分析数据类型" prop="instrumentType">
-          <el-select size="small" v-model="addForm.instrumentType" auto-complete="off" placeholder="请选择市场波动性分析数据类型">
-            <el-option label="历史波动性数据" value="1"></el-option>
+        <el-form-item label="电镀质量数据类型" prop="electroplatingQualityType">
+          <el-select size="small" v-model="addForm.electroplatingQualityType" auto-complete="off" placeholder="请选择电镀质量数据类型">
+            <el-option label="外观质量数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="市场波动性分析数据状态" prop="instrumentStatus">
-          <el-select size="small" v-model="addForm.instrumentStatus" auto-complete="off" placeholder="请选择市场波动性分析数据状态">
+        <el-form-item label="电镀质量数据状态" prop="electroplatingQualityStatus">
+          <el-select size="small" v-model="addForm.electroplatingQualityStatus" auto-complete="off" placeholder="请选择电镀质量数据状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       instrumentNo:'',
-       instrumentName:'',
-       instrumentType:'',
+       electroplatingQualityNo:'',
+       electroplatingQualityName:'',
+       electroplatingQualityType:'',
        address:'',
-       instrumentGender:'',
+       electroplatingQualityGender:'',
        age:'',
-       instrumentStatus:''
+       electroplatingQualityStatus:''
       },
       rules: {
-        instrumentNo: [
-          { required: true, message: '请输入市场波动性分析数据编号', trigger: 'blur' }
+        electroplatingQualityNo: [
+          { required: true, message: '请输入电镀质量数据编号', trigger: 'blur' }
         ],
-        instrumentName: [
-          { required: true, message: '请输入市场波动性分析数据名称', trigger: 'blur' }
+        electroplatingQualityName: [
+          { required: true, message: '请输入电镀质量数据名称', trigger: 'blur' }
         ],
-        instrumentType: [
-          { required: true, message: '请选择市场波动性分析数据类型', trigger: 'blur' }
+        electroplatingQualityType: [
+          { required: true, message: '请选择电镀质量数据类型', trigger: 'blur' }
         ],
-        instrumentStatus: [
-          { required: true, message: '请选择市场波动性分析数据状态', trigger: 'blur' }
+        electroplatingQualityStatus: [
+          { required: true, message: '请选择电镀质量数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        instrumentName: '',
+        electroplatingQualityName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            instrumentNo:'VCxxxxxx',
-            instrumentName:'xxx历史波动性数据',
-            instrumentType:'历史波动性数据',
-            instrumentStatus:"有效状态",
+            electroplatingQualityNo:'VCxxxxxx',
+            electroplatingQualityName:'xxx外观质量数据',
+            electroplatingQualityType:'外观质量数据',
+            electroplatingQualityStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            instrumentNo:'VCxxxxxx',
-            instrumentName:'xxx历史波动性数据',
-            instrumentType:'历史波动性数据',
-            instrumentStatus:"有效状态",
+            electroplatingQualityNo:'VCxxxxxx',
+            electroplatingQualityName:'xxx外观质量数据',
+            electroplatingQualityType:'外观质量数据',
+            electroplatingQualityStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            instrumentNo:'VCxxxxxx',
-            instrumentName:'xxx历史波动性数据',
-            instrumentType:'历史波动性数据',
-            instrumentStatus:"有效状态",
+            electroplatingQualityNo:'VCxxxxxx',
+            electroplatingQualityName:'xxx外观质量数据',
+            electroplatingQualityType:'外观质量数据',
+            electroplatingQualityStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            instrumentNo:'VCxxxxxx',
-            instrumentName:'xxx隐含波动性数据',
-            instrumentType:'隐含波动性数据',
-            instrumentStatus:"无效状态",
+            electroplatingQualityNo:'VCxxxxxx',
+            electroplatingQualityName:'xxx厚度质量数据',
+            electroplatingQualityType:'厚度质量数据',
+            electroplatingQualityStatus:"无效状态",
             createTime: "2022-05-17"
           },
           {
-            instrumentNo:'VCxxxxxx',
-            instrumentName:'xxx隐含波动性数据',
-            instrumentType:'隐含波动性数据',
-            instrumentStatus:"无效状态",
+            electroplatingQualityNo:'VCxxxxxx',
+            electroplatingQualityName:'xxx厚度质量数据',
+            electroplatingQualityType:'厚度质量数据',
+            electroplatingQualityStatus:"无效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑市场波动性分析数据'
-        this.addForm.instrumentNo = row.instrumentNo
-        this.addForm.instrumentName = row.instrumentName
-        this.addForm.instrumentType = row.instrumentType
-        this.addForm.instrumentStatus = row.instrumentStatus
+        this.title='编辑电镀质量数据'
+        this.addForm.electroplatingQualityNo = row.electroplatingQualityNo
+        this.addForm.electroplatingQualityName = row.electroplatingQualityName
+        this.addForm.electroplatingQualityType = row.electroplatingQualityType
+        this.addForm.electroplatingQualityStatus = row.electroplatingQualityStatus
       }else{
-        this.title='添加市场波动性分析数据'
-        this.addForm.instrumentNo = ''
-        this.addForm.instrumentName = ''
-        this.addForm.instrumentType = ''
-        this.addForm.instrumentStatus = ''
+        this.title='添加电镀质量数据'
+        this.addForm.electroplatingQualityNo = ''
+        this.addForm.electroplatingQualityName = ''
+        this.addForm.electroplatingQualityType = ''
+        this.addForm.electroplatingQualityStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(forminstrumentName) {
+    closeDialog(formelectroplatingQualityName) {
       this.editFormVisible = false
-      this.$refs[forminstrumentName].resetFields()
+      this.$refs[formelectroplatingQualityName].resetFields()
     }
   }
 }
