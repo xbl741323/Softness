@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">影像数据采集模块</el-breadcrumb-item>
-      <el-breadcrumb-item>影像采集数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>毛利数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.imageAcquisitionNo" placeholder="请输入影像采集数据编号"></el-input>
+        <el-input size="small" v-model="formInline.grossProfitNo" placeholder="请输入毛利数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.imageAcquisitionName" placeholder="请输入影像采集数据名称"></el-input>
+        <el-input size="small" v-model="formInline.grossProfitName" placeholder="请输入毛利数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.imageAcquisitionType" placeholder="请选择影像采集数据类型"></el-select>
+        <el-select size="small" v-model="formInline.grossProfitType" placeholder="请选择毛利数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="imageAcquisitionNo" label="影像采集数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="grossProfitNo" label="毛利数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="imageAcquisitionName" label="影像采集数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="grossProfitName" label="毛利数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="imageAcquisitionType" label="影像采集数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="grossProfitType" label="毛利数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="imageAcquisitionStatus" label="影像采集数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="grossProfitStatus" label="毛利数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="影像采集数据编号" prop="imageAcquisitionNo">
-          <el-input size="small" v-model="addForm.imageAcquisitionNo" auto-complete="off" placeholder="请输入影像采集数据编号"></el-input>
+        <el-form-item label="毛利数据编号" prop="grossProfitNo">
+          <el-input size="small" v-model="addForm.grossProfitNo" auto-complete="off" placeholder="请输入毛利数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="影像采集数据名称" prop="imageAcquisitionName">
-          <el-input size="small" v-model="addForm.imageAcquisitionName" auto-complete="off" placeholder="请输入影像采集数据名称"></el-input>
+        <el-form-item label="毛利数据名称" prop="grossProfitName">
+          <el-input size="small" v-model="addForm.grossProfitName" auto-complete="off" placeholder="请输入毛利数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="影像采集数据类型" prop="imageAcquisitionType">
-          <el-select size="small" v-model="addForm.imageAcquisitionType" auto-complete="off" placeholder="请选择影像采集数据类型">
-            <el-option label="治疗计划影像数据" value="1"></el-option>
+        <el-form-item label="毛利数据类型" prop="grossProfitType">
+          <el-select size="small" v-model="addForm.grossProfitType" auto-complete="off" placeholder="请选择毛利数据类型">
+            <el-option label="销售收入" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="影像采集数据状态" prop="imageAcquisitionStatus">
-          <el-select size="small" v-model="addForm.imageAcquisitionStatus" auto-complete="off" placeholder="请选择影像采集数据状态">
+        <el-form-item label="毛利数据状态" prop="grossProfitStatus">
+          <el-select size="small" v-model="addForm.grossProfitStatus" auto-complete="off" placeholder="请选择毛利数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       imageAcquisitionNo:'',
-       imageAcquisitionName:'',
-       imageAcquisitionType:'',
+       grossProfitNo:'',
+       grossProfitName:'',
+       grossProfitType:'',
        address:'',
-       imageAcquisitionGender:'',
+       grossProfitGender:'',
        age:'',
-       imageAcquisitionStatus:''
+       grossProfitStatus:''
       },
       rules: {
-        imageAcquisitionNo: [
-          { required: true, message: '请输入影像采集数据编号', trigger: 'blur' }
+        grossProfitNo: [
+          { required: true, message: '请输入毛利数据编号', trigger: 'blur' }
         ],
-        imageAcquisitionName: [
-          { required: true, message: '请输入影像采集数据名称', trigger: 'blur' }
+        grossProfitName: [
+          { required: true, message: '请输入毛利数据名称', trigger: 'blur' }
         ],
-        imageAcquisitionType: [
-          { required: true, message: '请选择影像采集数据类型', trigger: 'blur' }
+        grossProfitType: [
+          { required: true, message: '请选择毛利数据类型', trigger: 'blur' }
         ],
-        imageAcquisitionStatus: [
-          { required: true, message: '请选择影像采集数据状态', trigger: 'blur' }
+        grossProfitStatus: [
+          { required: true, message: '请选择毛利数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        imageAcquisitionName: '',
+        grossProfitName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            imageAcquisitionNo:'VCxxxxxx',
-            imageAcquisitionName:'xxx治疗计划影像数据',
-            imageAcquisitionType:'治疗计划影像数据',
-            imageAcquisitionStatus:"有效",
+            grossProfitNo:'VCxxxxxx',
+            grossProfitName:'xxx销售收入',
+            grossProfitType:'销售收入',
+            grossProfitStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            imageAcquisitionNo:'VCxxxxxx',
-            imageAcquisitionName:'xxx治疗计划影像数据',
-            imageAcquisitionType:'治疗计划影像数据',
-            imageAcquisitionStatus:"有效",
+            grossProfitNo:'VCxxxxxx',
+            grossProfitName:'xxx销售收入',
+            grossProfitType:'销售收入',
+            grossProfitStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            imageAcquisitionNo:'VCxxxxxx',
-            imageAcquisitionName:'xxx治疗计划影像数据',
-            imageAcquisitionType:'治疗计划影像数据',
-            imageAcquisitionStatus:"有效",
+            grossProfitNo:'VCxxxxxx',
+            grossProfitName:'xxx销售收入',
+            grossProfitType:'销售收入',
+            grossProfitStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            imageAcquisitionNo:'VCxxxxxx',
-            imageAcquisitionName:'xxx定位影像数据',
-            imageAcquisitionType:'定位影像数据',
-            imageAcquisitionStatus:"无效",
+            grossProfitNo:'VCxxxxxx',
+            grossProfitName:'xxx成本费用',
+            grossProfitType:'成本费用',
+            grossProfitStatus:"无效",
             createTime: "2022-05-17"
           },
           {
-            imageAcquisitionNo:'VCxxxxxx',
-            imageAcquisitionName:'xxx定位影像数据',
-            imageAcquisitionType:'定位影像数据',
-            imageAcquisitionStatus:"无效",
+            grossProfitNo:'VCxxxxxx',
+            grossProfitName:'xxx成本费用',
+            grossProfitType:'成本费用',
+            grossProfitStatus:"无效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑影像采集数据'
-        this.addForm.imageAcquisitionNo = row.imageAcquisitionNo
-        this.addForm.imageAcquisitionName = row.imageAcquisitionName
-        this.addForm.imageAcquisitionType = row.imageAcquisitionType
-        this.addForm.imageAcquisitionStatus = row.imageAcquisitionStatus
+        this.title='编辑毛利数据'
+        this.addForm.grossProfitNo = row.grossProfitNo
+        this.addForm.grossProfitName = row.grossProfitName
+        this.addForm.grossProfitType = row.grossProfitType
+        this.addForm.grossProfitStatus = row.grossProfitStatus
       }else{
-        this.title='添加影像采集数据'
-        this.addForm.imageAcquisitionNo = ''
-        this.addForm.imageAcquisitionName = ''
-        this.addForm.imageAcquisitionType = ''
-        this.addForm.imageAcquisitionStatus = ''
+        this.title='添加毛利数据'
+        this.addForm.grossProfitNo = ''
+        this.addForm.grossProfitName = ''
+        this.addForm.grossProfitType = ''
+        this.addForm.grossProfitStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formimageAcquisitionName) {
+    closeDialog(formgrossProfitName) {
       this.editFormVisible = false
-      this.$refs[formimageAcquisitionName].resetFields()
+      this.$refs[formgrossProfitName].resetFields()
     }
   }
 }

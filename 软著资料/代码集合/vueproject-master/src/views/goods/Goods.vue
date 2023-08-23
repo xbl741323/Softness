@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">直线加速器管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>直线加速器信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">数据收集模块</el-breadcrumb-item>
+      <el-breadcrumb-item>数据源信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.linearAcceleratorName" placeholder="请输入直线加速器信息编号"></el-input>
+        <el-input size="small" v-model="formInline.dataSourceName" placeholder="请输入数据源信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.linearAcceleratorName" placeholder="请输入直线加速器信息名称"></el-input>
+        <el-input size="small" v-model="formInline.dataSourceName" placeholder="请输入数据源信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" v-model="formInline.linearAcceleratorStatus" placeholder="请选择直线加速器信息类型">
+        <el-select size="small" v-model="formInline.dataSourceStatus" placeholder="请选择数据源信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="linearAcceleratorNo" label="直线加速器信息编号">
+      <el-table-column sortable prop="dataSourceNo" label="数据源信息编号">
       </el-table-column>
-      <el-table-column sortable prop="linearAcceleratorName" label="直线加速器信息名称">
+      <el-table-column sortable prop="dataSourceName" label="数据源信息名称">
       </el-table-column>
-      <el-table-column sortable prop="linearAcceleratorType" label="直线加速器信息类型">
+      <el-table-column sortable prop="dataSourceType" label="数据源信息类型">
       </el-table-column>
-      <el-table-column sortable prop="linearAcceleratorStatus" label="直线加速器信息状态" >
+      <el-table-column sortable prop="dataSourceStatus" label="数据源信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="直线加速器信息编号" prop="linearAcceleratorNo">
-          <el-input size="small" v-model="editForm.linearAcceleratorNo" auto-complete="off" placeholder="请输入直线加速器信息编号"></el-input>
+        <el-form-item label="数据源信息编号" prop="dataSourceNo">
+          <el-input size="small" v-model="editForm.dataSourceNo" auto-complete="off" placeholder="请输入数据源信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="直线加速器信息名称" prop="linearAcceleratorName">
-          <el-input size="small" v-model="editForm.linearAcceleratorName" auto-complete="off" placeholder="请输入直线加速器信息名称"></el-input>
+        <el-form-item label="数据源信息名称" prop="dataSourceName">
+          <el-input size="small" v-model="editForm.dataSourceName" auto-complete="off" placeholder="请输入数据源信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="直线加速器信息类型" prop="linearAcceleratorType">
-          <el-select size="small" v-model="editForm.linearAcceleratorType" auto-complete="off" placeholder="请选择直线加速器信息类型">
-            <el-option label="电子直线加速器" value="1"></el-option>
+        <el-form-item label="数据源信息类型" prop="dataSourceType">
+          <el-select size="small" v-model="editForm.dataSourceType" auto-complete="off" placeholder="请选择数据源信息类型">
+            <el-option label="在线数据源" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="直线加速器信息状态" prop="linearAcceleratorStatus">
-          <el-select size="small" v-model="editForm.linearAcceleratorStatus" auto-complete="off" placeholder="请选择直线加速器信息状态">
-            <el-option label="正常状态" value="1"></el-option>
+        <el-form-item label="数据源信息状态" prop="dataSourceStatus">
+          <el-select size="small" v-model="editForm.dataSourceStatus" auto-complete="off" placeholder="请选择数据源信息状态">
+            <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        linearAcceleratorNo: '',
-        linearAcceleratorName: '',
-        linearAcceleratorType:'',
+        dataSourceNo: '',
+        dataSourceName: '',
+        dataSourceType:'',
         status:'',
-        linearAcceleratorStatus: '',
+        dataSourceStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        linearAcceleratorNo: [
-          { required: true, message: '请输入直线加速器信息编号', trigger: 'blur' }
+        dataSourceNo: [
+          { required: true, message: '请输入数据源信息编号', trigger: 'blur' }
         ],
-        linearAcceleratorName: [
-          { required: true, message: '请输入直线加速器信息名称', trigger: 'blur' }
+        dataSourceName: [
+          { required: true, message: '请输入数据源信息名称', trigger: 'blur' }
         ],
-        linearAcceleratorType: [
-          { required: true, message: '请选择直线加速器信息类型', trigger: 'blur' }
+        dataSourceType: [
+          { required: true, message: '请选择数据源信息类型', trigger: 'blur' }
         ],
-        linearAcceleratorStatus: [
-          { required: true, message: '请选择直线加速器信息状态', trigger: 'blur' }
+        dataSourceStatus: [
+          { required: true, message: '请选择数据源信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            linearAcceleratorNo: 'VSxxxxxxxx',
-            linearAcceleratorName: 'XXX电子直线加速器',
-            linearAcceleratorType: '电子直线加速器',
-            linearAcceleratorStatus: '正常状态',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX在线数据源',
+            dataSourceType: '在线数据源',
+            dataSourceStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            linearAcceleratorNo: 'VSxxxxxxxx',
-            linearAcceleratorName: 'XXX电子直线加速器',
-            linearAcceleratorType: '电子直线加速器',
-            linearAcceleratorStatus: '正常状态',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX在线数据源',
+            dataSourceType: '在线数据源',
+            dataSourceStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            linearAcceleratorNo: 'VSxxxxxxxx',
-            linearAcceleratorName: 'XXX电子直线加速器',
-            linearAcceleratorType: '电子直线加速器',
-            linearAcceleratorStatus: '正常状态',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX在线数据源',
+            dataSourceType: '在线数据源',
+            dataSourceStatus: '有效',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            linearAcceleratorNo: 'VSxxxxxxxx',
-            linearAcceleratorName: 'XXX重离子直线加速器',
-            linearAcceleratorType: '重离子直线加速器',
-            linearAcceleratorStatus: '维护状态',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX外部数据源',
+            dataSourceType: '外部数据源',
+            dataSourceStatus: '无效',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            linearAcceleratorNo: 'VSxxxxxxxx',
-            linearAcceleratorName: 'XXX重离子直线加速器',
-            linearAcceleratorType: '重离子直线加速器',
-            linearAcceleratorStatus: '维护状态',
+            dataSourceNo: 'VSxxxxxxxx',
+            dataSourceName: 'XXX外部数据源',
+            dataSourceType: '外部数据源',
+            dataSourceStatus: '无效',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑直线加速器信息'
-        this.editForm.linearAcceleratorNo = row.linearAcceleratorNo
-        this.editForm.linearAcceleratorName = row.linearAcceleratorName
-        this.editForm.linearAcceleratorStatus = row.linearAcceleratorStatus
-        this.editForm.linearAcceleratorType = row.linearAcceleratorType
+        this.title = '编辑数据源信息'
+        this.editForm.dataSourceNo = row.dataSourceNo
+        this.editForm.dataSourceName = row.dataSourceName
+        this.editForm.dataSourceStatus = row.dataSourceStatus
+        this.editForm.dataSourceType = row.dataSourceType
       } else {
-        this.title = '添加直线加速器信息'
-        this.editForm.linearAcceleratorNo = ''
-        this.editForm.linearAcceleratorName = ''
-        this.editForm.linearAcceleratorStatus = ''
-        this.editForm.linearAcceleratorType =''
+        this.title = '添加数据源信息'
+        this.editForm.dataSourceNo = ''
+        this.editForm.dataSourceName = ''
+        this.editForm.dataSourceStatus = ''
+        this.editForm.dataSourceType =''
       }
     },
     // 编辑、增加页面保存方法
