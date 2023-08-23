@@ -72,7 +72,7 @@ export default {
 .buttonimg {
   height: 60px;
   background-color: transparent;
-  /* border: none; */
+  border: none;
   color: #334157;
 }
 .showimg {

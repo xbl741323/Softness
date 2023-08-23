@@ -14,13 +14,13 @@ App({
     var env = __wxConfig.envVersion;
     switch (env) {
       case "develop": // 本地开发环境
-        this.globalData.baseURL = "http://119.45.131.191:8080";
+        this.globalData.baseURL = "https://www.xzycshouce.com/api";
         break;
       case "trial": // 测试环境
-        this.globalData.baseURL = "http://119.45.131.191:8080";
+        this.globalData.baseURL = "https://www.xzycshouce.com/api";
         break;
       case "release": // 线上环境
-        this.globalData.baseURL = "http://119.45.131.191:8080";
+        this.globalData.baseURL = "https://www.xzycshouce.com/api";
         break;
     }
   },

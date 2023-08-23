@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    baseUrl: 'http://119.45.131.191:8080/file/picture/',
+    baseUrl: 'https://www.xzycshouce.com/api/file/picture/',
     info: {
       title: '',
       imgUrl: ''

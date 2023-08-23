@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let baseUrl = 'http://119.45.131.191:8080'
+let baseUrl = 'https://www.xzycshouce.com/api'
 
 // 登录请求方法
 const loginreq = (method, url, params) => {

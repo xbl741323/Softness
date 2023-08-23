@@ -6,7 +6,7 @@ import store from '../vuex/store';
 // 创建axios实例
 const request = axios.create({
   // baseURL: 'https://www.hnxmsq.cn/service',// 设置统一的请求地址前缀
-  baseURL: 'http://119.45.131.191:8080',// 设置统一的请求地址前缀
+  baseURL: 'https://www.xzycshouce.com/api',// 设置统一的请求地址前缀
   // baseURL: import.meta.env.VITE_API_URL,// 设置统一的请求地址前缀
   timeout: 50000, // 设置超时时间（毫秒）
   // withCredentials: true,// 异步请求携带cookie

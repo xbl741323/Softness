@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">数据管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>毛利数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">3D点云数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>3D点云数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.grossProfitNo" placeholder="请输入毛利数据编号"></el-input>
+        <el-input size="small" v-model="formInline.pointCloudNo" placeholder="请输入3D点云数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.grossProfitName" placeholder="请输入毛利数据名称"></el-input>
+        <el-input size="small" v-model="formInline.pointCloudName" placeholder="请输入3D点云数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.grossProfitType" placeholder="请选择毛利数据类型"></el-select>
+        <el-select size="small" v-model="formInline.pointCloudType" placeholder="请选择3D点云数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="grossProfitNo" label="毛利数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="pointCloudNo" label="3D点云数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="grossProfitName" label="毛利数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="pointCloudName" label="3D点云数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="grossProfitType" label="毛利数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="pointCloudType" label="3D点云数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="grossProfitStatus" label="毛利数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="pointCloudStatus" label="3D点云数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="毛利数据编号" prop="grossProfitNo">
-          <el-input size="small" v-model="addForm.grossProfitNo" auto-complete="off" placeholder="请输入毛利数据编号"></el-input>
+        <el-form-item label="3D点云数据编号" prop="pointCloudNo">
+          <el-input size="small" v-model="addForm.pointCloudNo" auto-complete="off" placeholder="请输入3D点云数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="毛利数据名称" prop="grossProfitName">
-          <el-input size="small" v-model="addForm.grossProfitName" auto-complete="off" placeholder="请输入毛利数据名称"></el-input>
+        <el-form-item label="3D点云数据名称" prop="pointCloudName">
+          <el-input size="small" v-model="addForm.pointCloudName" auto-complete="off" placeholder="请输入3D点云数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="毛利数据类型" prop="grossProfitType">
-          <el-select size="small" v-model="addForm.grossProfitType" auto-complete="off" placeholder="请选择毛利数据类型">
-            <el-option label="销售收入" value="1"></el-option>
+        <el-form-item label="3D点云数据类型" prop="pointCloudType">
+          <el-select size="small" v-model="addForm.pointCloudType" auto-complete="off" placeholder="请选择3D点云数据类型">
+            <el-option label="激光雷达点云数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="毛利数据状态" prop="grossProfitStatus">
-          <el-select size="small" v-model="addForm.grossProfitStatus" auto-complete="off" placeholder="请选择毛利数据状态">
+        <el-form-item label="3D点云数据状态" prop="pointCloudStatus">
+          <el-select size="small" v-model="addForm.pointCloudStatus" auto-complete="off" placeholder="请选择3D点云数据状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       grossProfitNo:'',
-       grossProfitName:'',
-       grossProfitType:'',
+       pointCloudNo:'',
+       pointCloudName:'',
+       pointCloudType:'',
        address:'',
-       grossProfitGender:'',
+       pointCloudGender:'',
        age:'',
-       grossProfitStatus:''
+       pointCloudStatus:''
       },
       rules: {
-        grossProfitNo: [
-          { required: true, message: '请输入毛利数据编号', trigger: 'blur' }
+        pointCloudNo: [
+          { required: true, message: '请输入3D点云数据编号', trigger: 'blur' }
         ],
-        grossProfitName: [
-          { required: true, message: '请输入毛利数据名称', trigger: 'blur' }
+        pointCloudName: [
+          { required: true, message: '请输入3D点云数据名称', trigger: 'blur' }
         ],
-        grossProfitType: [
-          { required: true, message: '请选择毛利数据类型', trigger: 'blur' }
+        pointCloudType: [
+          { required: true, message: '请选择3D点云数据类型', trigger: 'blur' }
         ],
-        grossProfitStatus: [
-          { required: true, message: '请选择毛利数据状态', trigger: 'blur' }
+        pointCloudStatus: [
+          { required: true, message: '请选择3D点云数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        grossProfitName: '',
+        pointCloudName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            grossProfitNo:'VCxxxxxx',
-            grossProfitName:'xxx销售收入',
-            grossProfitType:'销售收入',
-            grossProfitStatus:"有效",
+            pointCloudNo:'VCxxxxxx',
+            pointCloudName:'xxx激光雷达点云数据',
+            pointCloudType:'激光雷达点云数据',
+            pointCloudStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            grossProfitNo:'VCxxxxxx',
-            grossProfitName:'xxx销售收入',
-            grossProfitType:'销售收入',
-            grossProfitStatus:"有效",
+            pointCloudNo:'VCxxxxxx',
+            pointCloudName:'xxx激光雷达点云数据',
+            pointCloudType:'激光雷达点云数据',
+            pointCloudStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            grossProfitNo:'VCxxxxxx',
-            grossProfitName:'xxx销售收入',
-            grossProfitType:'销售收入',
-            grossProfitStatus:"有效",
+            pointCloudNo:'VCxxxxxx',
+            pointCloudName:'xxx激光雷达点云数据',
+            pointCloudType:'激光雷达点云数据',
+            pointCloudStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            grossProfitNo:'VCxxxxxx',
-            grossProfitName:'xxx成本费用',
-            grossProfitType:'成本费用',
-            grossProfitStatus:"无效",
+            pointCloudNo:'VCxxxxxx',
+            pointCloudName:'xxx结构光点云数据',
+            pointCloudType:'结构光点云数据',
+            pointCloudStatus:"无效",
             createTime: "2022-05-17"
           },
           {
-            grossProfitNo:'VCxxxxxx',
-            grossProfitName:'xxx成本费用',
-            grossProfitType:'成本费用',
-            grossProfitStatus:"无效",
+            pointCloudNo:'VCxxxxxx',
+            pointCloudName:'xxx结构光点云数据',
+            pointCloudType:'结构光点云数据',
+            pointCloudStatus:"无效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑毛利数据'
-        this.addForm.grossProfitNo = row.grossProfitNo
-        this.addForm.grossProfitName = row.grossProfitName
-        this.addForm.grossProfitType = row.grossProfitType
-        this.addForm.grossProfitStatus = row.grossProfitStatus
+        this.title='编辑3D点云数据'
+        this.addForm.pointCloudNo = row.pointCloudNo
+        this.addForm.pointCloudName = row.pointCloudName
+        this.addForm.pointCloudType = row.pointCloudType
+        this.addForm.pointCloudStatus = row.pointCloudStatus
       }else{
-        this.title='添加毛利数据'
-        this.addForm.grossProfitNo = ''
-        this.addForm.grossProfitName = ''
-        this.addForm.grossProfitType = ''
-        this.addForm.grossProfitStatus = ''
+        this.title='添加3D点云数据'
+        this.addForm.pointCloudNo = ''
+        this.addForm.pointCloudName = ''
+        this.addForm.pointCloudType = ''
+        this.addForm.pointCloudStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formgrossProfitName) {
+    closeDialog(formpointCloudName) {
       this.editFormVisible = false
-      this.$refs[formgrossProfitName].resetFields()
+      this.$refs[formpointCloudName].resetFields()
     }
   }
 }

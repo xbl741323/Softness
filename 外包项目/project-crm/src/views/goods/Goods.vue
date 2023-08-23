@@ -49,7 +49,7 @@
          :limit='1'
          class="upload-demo"
          accept=".jpg,.jpeg,.png,.gif"
-         action="http://119.45.131.191:8080/file/upload"
+         action="https://www.xzycshouce.com/api/file/upload"
          :before-upload="beforeUpload"
          :on-preview="handlePreview"
          :on-remove="handleRemove"
@@ -79,7 +79,7 @@ import Pagination from "../../components/Pagination";
 export default {
   data() {
     return {
-      baseUrl: "http://119.45.131.191:8080/file/picture/",
+      baseUrl: "https://www.xzycshouce.com/api/file/picture/",
       previewImg: "",
       operateStatus: true, // true-添加 false-编辑
       fileList: [],
