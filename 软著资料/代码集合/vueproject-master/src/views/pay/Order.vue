@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">3D点云数据管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>3D点云数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">关键词提取模块</el-breadcrumb-item>
+      <el-breadcrumb-item>提取关键词信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.pointCloudNo" placeholder="请输入3D点云数据编号"></el-input>
+        <el-input size="small" v-model="formInline.extractKeywordNo" placeholder="请输入提取关键词信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.pointCloudName" placeholder="请输入3D点云数据名称"></el-input>
+        <el-input size="small" v-model="formInline.extractKeywordName" placeholder="请输入提取关键词信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.pointCloudType" placeholder="请选择3D点云数据类型"></el-select>
+        <el-select size="small" v-model="formInline.extractKeywordType" placeholder="请选择提取关键词信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="pointCloudNo" label="3D点云数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="extractKeywordNo" label="提取关键词信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="pointCloudName" label="3D点云数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="extractKeywordName" label="提取关键词信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="pointCloudType" label="3D点云数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="extractKeywordType" label="提取关键词信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="pointCloudStatus" label="3D点云数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="extractKeywordStatus" label="提取关键词信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="3D点云数据编号" prop="pointCloudNo">
-          <el-input size="small" v-model="addForm.pointCloudNo" auto-complete="off" placeholder="请输入3D点云数据编号"></el-input>
+        <el-form-item label="提取关键词信息编号" prop="extractKeywordNo">
+          <el-input size="small" v-model="addForm.extractKeywordNo" auto-complete="off" placeholder="请输入提取关键词信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="3D点云数据名称" prop="pointCloudName">
-          <el-input size="small" v-model="addForm.pointCloudName" auto-complete="off" placeholder="请输入3D点云数据名称"></el-input>
+        <el-form-item label="提取关键词信息名称" prop="extractKeywordName">
+          <el-input size="small" v-model="addForm.extractKeywordName" auto-complete="off" placeholder="请输入提取关键词信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="3D点云数据类型" prop="pointCloudType">
-          <el-select size="small" v-model="addForm.pointCloudType" auto-complete="off" placeholder="请选择3D点云数据类型">
-            <el-option label="激光雷达点云数据" value="1"></el-option>
+        <el-form-item label="提取关键词信息类型" prop="extractKeywordType">
+          <el-select size="small" v-model="addForm.extractKeywordType" auto-complete="off" placeholder="请选择提取关键词信息类型">
+            <el-option label="敏感关键词" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="3D点云数据状态" prop="pointCloudStatus">
-          <el-select size="small" v-model="addForm.pointCloudStatus" auto-complete="off" placeholder="请选择3D点云数据状态">
+        <el-form-item label="提取关键词信息状态" prop="extractKeywordStatus">
+          <el-select size="small" v-model="addForm.extractKeywordStatus" auto-complete="off" placeholder="请选择提取关键词信息状态">
             <el-option label="有效" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       pointCloudNo:'',
-       pointCloudName:'',
-       pointCloudType:'',
+       extractKeywordNo:'',
+       extractKeywordName:'',
+       extractKeywordType:'',
        address:'',
-       pointCloudGender:'',
+       extractKeywordGender:'',
        age:'',
-       pointCloudStatus:''
+       extractKeywordStatus:''
       },
       rules: {
-        pointCloudNo: [
-          { required: true, message: '请输入3D点云数据编号', trigger: 'blur' }
+        extractKeywordNo: [
+          { required: true, message: '请输入提取关键词信息编号', trigger: 'blur' }
         ],
-        pointCloudName: [
-          { required: true, message: '请输入3D点云数据名称', trigger: 'blur' }
+        extractKeywordName: [
+          { required: true, message: '请输入提取关键词信息名称', trigger: 'blur' }
         ],
-        pointCloudType: [
-          { required: true, message: '请选择3D点云数据类型', trigger: 'blur' }
+        extractKeywordType: [
+          { required: true, message: '请选择提取关键词信息类型', trigger: 'blur' }
         ],
-        pointCloudStatus: [
-          { required: true, message: '请选择3D点云数据状态', trigger: 'blur' }
+        extractKeywordStatus: [
+          { required: true, message: '请选择提取关键词信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        pointCloudName: '',
+        extractKeywordName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            pointCloudNo:'VCxxxxxx',
-            pointCloudName:'xxx激光雷达点云数据',
-            pointCloudType:'激光雷达点云数据',
-            pointCloudStatus:"有效",
+            extractKeywordNo:'VCxxxxxx',
+            extractKeywordName:'xxx敏感关键词',
+            extractKeywordType:'敏感关键词',
+            extractKeywordStatus:"有效",
             createTime: "2020-08-12"
           },
           {
-            pointCloudNo:'VCxxxxxx',
-            pointCloudName:'xxx激光雷达点云数据',
-            pointCloudType:'激光雷达点云数据',
-            pointCloudStatus:"有效",
+            extractKeywordNo:'VCxxxxxx',
+            extractKeywordName:'xxx敏感关键词',
+            extractKeywordType:'敏感关键词',
+            extractKeywordStatus:"有效",
             createTime: "2022-10-24"
           },
           {
-            pointCloudNo:'VCxxxxxx',
-            pointCloudName:'xxx激光雷达点云数据',
-            pointCloudType:'激光雷达点云数据',
-            pointCloudStatus:"有效",
+            extractKeywordNo:'VCxxxxxx',
+            extractKeywordName:'xxx敏感关键词',
+            extractKeywordType:'敏感关键词',
+            extractKeywordStatus:"有效",
             createTime: "2022-01-12"
           },
           {
-            pointCloudNo:'VCxxxxxx',
-            pointCloudName:'xxx结构光点云数据',
-            pointCloudType:'结构光点云数据',
-            pointCloudStatus:"无效",
+            extractKeywordNo:'VCxxxxxx',
+            extractKeywordName:'xxx法律关键词',
+            extractKeywordType:'法律关键词',
+            extractKeywordStatus:"无效",
             createTime: "2022-05-17"
           },
           {
-            pointCloudNo:'VCxxxxxx',
-            pointCloudName:'xxx结构光点云数据',
-            pointCloudType:'结构光点云数据',
-            pointCloudStatus:"无效",
+            extractKeywordNo:'VCxxxxxx',
+            extractKeywordName:'xxx法律关键词',
+            extractKeywordType:'法律关键词',
+            extractKeywordStatus:"无效",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑3D点云数据'
-        this.addForm.pointCloudNo = row.pointCloudNo
-        this.addForm.pointCloudName = row.pointCloudName
-        this.addForm.pointCloudType = row.pointCloudType
-        this.addForm.pointCloudStatus = row.pointCloudStatus
+        this.title='编辑提取关键词信息'
+        this.addForm.extractKeywordNo = row.extractKeywordNo
+        this.addForm.extractKeywordName = row.extractKeywordName
+        this.addForm.extractKeywordType = row.extractKeywordType
+        this.addForm.extractKeywordStatus = row.extractKeywordStatus
       }else{
-        this.title='添加3D点云数据'
-        this.addForm.pointCloudNo = ''
-        this.addForm.pointCloudName = ''
-        this.addForm.pointCloudType = ''
-        this.addForm.pointCloudStatus = ''
+        this.title='添加提取关键词信息'
+        this.addForm.extractKeywordNo = ''
+        this.addForm.extractKeywordName = ''
+        this.addForm.extractKeywordType = ''
+        this.addForm.extractKeywordStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formpointCloudName) {
+    closeDialog(formextractKeywordName) {
       this.editFormVisible = false
-      this.$refs[formpointCloudName].resetFields()
+      this.$refs[formextractKeywordName].resetFields()
     }
   }
 }
