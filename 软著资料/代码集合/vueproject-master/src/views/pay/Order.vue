@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">塑壳断路器管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>塑壳断路器信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">测试监测数据管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>测试监测数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.mccbNo" placeholder="请输入塑壳断路器编号"></el-input>
+        <el-input size="small" v-model="formInline.testMonitoringNo" placeholder="请输入测试监测数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.mccbName" placeholder="请输入塑壳断路器名称"></el-input>
+        <el-input size="small" v-model="formInline.testMonitoringName" placeholder="请输入测试监测数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.mccbType" placeholder="请选择塑壳断路器类型"></el-select>
+        <el-select size="small" v-model="formInline.testMonitoringType" placeholder="请选择测试监测数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="mccbNo" label="塑壳断路器编号" show-overflow-tooltip>
+      <el-table-column sortable prop="testMonitoringNo" label="测试监测数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="mccbName" label="塑壳断路器名称" show-overflow-tooltip>
+      <el-table-column sortable prop="testMonitoringName" label="测试监测数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="mccbType" label="塑壳断路器类型" show-overflow-tooltip>
+      <el-table-column sortable prop="testMonitoringType" label="测试监测数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="mccbStatus" label="塑壳断路器状态" show-overflow-tooltip>
+      <el-table-column sortable prop="testMonitoringStatus" label="测试监测数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="塑壳断路器编号" prop="mccbNo">
-          <el-input size="small" v-model="addForm.mccbNo" auto-complete="off" placeholder="请输入塑壳断路器编号"></el-input>
+        <el-form-item label="测试监测数据编号" prop="testMonitoringNo">
+          <el-input size="small" v-model="addForm.testMonitoringNo" auto-complete="off" placeholder="请输入测试监测数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="塑壳断路器名称" prop="mccbName">
-          <el-input size="small" v-model="addForm.mccbName" auto-complete="off" placeholder="请输入塑壳断路器名称"></el-input>
+        <el-form-item label="测试监测数据名称" prop="testMonitoringName">
+          <el-input size="small" v-model="addForm.testMonitoringName" auto-complete="off" placeholder="请输入测试监测数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="塑壳断路器类型" prop="mccbType">
-          <el-select size="small" v-model="addForm.mccbType" auto-complete="off" placeholder="请选择塑壳断路器类型">
-            <el-option label="过载保护断路器" value="1"></el-option>
+        <el-form-item label="测试监测数据类型" prop="testMonitoringType">
+          <el-select size="small" v-model="addForm.testMonitoringType" auto-complete="off" placeholder="请选择测试监测数据类型">
+            <el-option label="温度监测数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="塑壳断路器状态" prop="mccbStatus">
-          <el-select size="small" v-model="addForm.mccbStatus" auto-complete="off" placeholder="请选择塑壳断路器状态">
+        <el-form-item label="测试监测数据状态" prop="testMonitoringStatus">
+          <el-select size="small" v-model="addForm.testMonitoringStatus" auto-complete="off" placeholder="请选择测试监测数据状态">
             <el-option label="正常状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       mccbNo:'',
-       mccbName:'',
-       mccbType:'',
+       testMonitoringNo:'',
+       testMonitoringName:'',
+       testMonitoringType:'',
        address:'',
-       mccbGender:'',
+       testMonitoringGender:'',
        age:'',
-       mccbStatus:''
+       testMonitoringStatus:''
       },
       rules: {
-        mccbNo: [
-          { required: true, message: '请输入塑壳断路器编号', trigger: 'blur' }
+        testMonitoringNo: [
+          { required: true, message: '请输入测试监测数据编号', trigger: 'blur' }
         ],
-        mccbName: [
-          { required: true, message: '请输入塑壳断路器名称', trigger: 'blur' }
+        testMonitoringName: [
+          { required: true, message: '请输入测试监测数据名称', trigger: 'blur' }
         ],
-        mccbType: [
-          { required: true, message: '请选择塑壳断路器类型', trigger: 'blur' }
+        testMonitoringType: [
+          { required: true, message: '请选择测试监测数据类型', trigger: 'blur' }
         ],
-        mccbStatus: [
-          { required: true, message: '请选择塑壳断路器状态', trigger: 'blur' }
+        testMonitoringStatus: [
+          { required: true, message: '请选择测试监测数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        mccbName: '',
+        testMonitoringName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            mccbNo:'VCxxxxxx',
-            mccbName:'xxx过载保护断路器',
-            mccbType:'过载保护断路器',
-            mccbStatus:"正常状态",
+            testMonitoringNo:'VCxxxxxx',
+            testMonitoringName:'xxx测试仪器类设备',
+            testMonitoringType:'测试仪器类设备',
+            testMonitoringStatus:"正常状态",
             createTime: "2020-08-12"
           },
           {
-            mccbNo:'VCxxxxxx',
-            mccbName:'xxx过载保护断路器',
-            mccbType:'过载保护断路器',
-            mccbStatus:"正常状态",
+            testMonitoringNo:'VCxxxxxx',
+            testMonitoringName:'xxx测试仪器类设备',
+            testMonitoringType:'测试仪器类设备',
+            testMonitoringStatus:"正常状态",
             createTime: "2022-10-24"
           },
           {
-            mccbNo:'VCxxxxxx',
-            mccbName:'xxx过载保护断路器',
-            mccbType:'过载保护断路器',
-            mccbStatus:"正常状态",
+            testMonitoringNo:'VCxxxxxx',
+            testMonitoringName:'xxx测试仪器类设备',
+            testMonitoringType:'测试仪器类设备',
+            testMonitoringStatus:"正常状态",
             createTime: "2022-01-12"
           },
           {
-            mccbNo:'VCxxxxxx',
-            mccbName:'xxx油浸断路器',
-            mccbType:'油浸断路器',
-            mccbStatus:"维护状态",
+            testMonitoringNo:'VCxxxxxx',
+            testMonitoringName:'xxx故障诊断设备',
+            testMonitoringType:'故障诊断设备',
+            testMonitoringStatus:"维护状态",
             createTime: "2022-05-17"
           },
           {
-            mccbNo:'VCxxxxxx',
-            mccbName:'xxx油浸断路器',
-            mccbType:'油浸断路器',
-            mccbStatus:"维护状态",
+            testMonitoringNo:'VCxxxxxx',
+            testMonitoringName:'xxx故障诊断设备',
+            testMonitoringType:'故障诊断设备',
+            testMonitoringStatus:"维护状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑塑壳断路器信息'
-        this.addForm.mccbNo = row.mccbNo
-        this.addForm.mccbName = row.mccbName
-        this.addForm.mccbType = row.mccbType
-        this.addForm.mccbStatus = row.mccbStatus
+        this.title='编辑测试监测数据数据'
+        this.addForm.testMonitoringNo = row.testMonitoringNo
+        this.addForm.testMonitoringName = row.testMonitoringName
+        this.addForm.testMonitoringType = row.testMonitoringType
+        this.addForm.testMonitoringStatus = row.testMonitoringStatus
       }else{
-        this.title='添加塑壳断路器信息'
-        this.addForm.mccbNo = ''
-        this.addForm.mccbName = ''
-        this.addForm.mccbType = ''
-        this.addForm.mccbStatus = ''
+        this.title='添加测试监测数据数据'
+        this.addForm.testMonitoringNo = ''
+        this.addForm.testMonitoringName = ''
+        this.addForm.testMonitoringType = ''
+        this.addForm.testMonitoringStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formmccbName) {
+    closeDialog(formtestMonitoringName) {
       this.editFormVisible = false
-      this.$refs[formmccbName].resetFields()
+      this.$refs[formtestMonitoringName].resetFields()
     }
   }
 }

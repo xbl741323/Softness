@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">库存管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>库存信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">灭火设备参数设置管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>模拟场景效果评估信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.inventoryNo" placeholder="请输入库存信息编号"></el-input>
+        <el-input size="small" v-model="formInline.scenarioEffectNo" placeholder="请输入模拟场景效果评估信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.inventoryName" placeholder="请输入库存信息名称"></el-input>
+        <el-input size="small" v-model="formInline.scenarioEffectName" placeholder="请输入模拟场景效果评估信息名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.inventoryType" placeholder="请选择库存信息类型"></el-select>
+        <el-select size="small" v-model="formInline.scenarioEffectType" placeholder="请选择模拟场景效果评估信息类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="inventoryNo" label="库存信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="scenarioEffectNo" label="模拟场景效果评估信息编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="inventoryName" label="库存信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="scenarioEffectName" label="模拟场景效果评估信息名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="inventoryType" label="库存信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="scenarioEffectType" label="模拟场景效果评估信息类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="inventoryStatus" label="库存信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="scenarioEffectStatus" label="模拟场景效果评估信息状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,19 +48,19 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="140px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="库存信息编号" prop="inventoryNo">
-          <el-input size="small" v-model="addForm.inventoryNo" auto-complete="off" placeholder="请输入库存信息编号"></el-input>
+        <el-form-item label="模拟场景效果评估信息编号" prop="scenarioEffectNo">
+          <el-input size="small" v-model="addForm.scenarioEffectNo" auto-complete="off" placeholder="请输入模拟场景效果评估信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="库存信息名称" prop="inventoryName">
-          <el-input size="small" v-model="addForm.inventoryName" auto-complete="off" placeholder="请输入库存信息名称"></el-input>
+        <el-form-item label="模拟场景效果评估信息名称" prop="scenarioEffectName">
+          <el-input size="small" v-model="addForm.scenarioEffectName" auto-complete="off" placeholder="请输入模拟场景效果评估信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="库存信息类型" prop="inventoryType">
-          <el-select size="small" v-model="addForm.inventoryType" auto-complete="off" placeholder="请选择库存信息类型">
-            <el-option label="原材料库存" value="1"></el-option>
+        <el-form-item label="模拟场景效果评估信息类型" prop="scenarioEffectType">
+          <el-select size="small" v-model="addForm.scenarioEffectType" auto-complete="off" placeholder="请选择模拟场景效果评估信息类型">
+            <el-option label="有效场景" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="库存信息状态" prop="inventoryStatus">
-          <el-select size="small" v-model="addForm.inventoryStatus" auto-complete="off" placeholder="请选择库存信息状态">
+        <el-form-item label="模拟场景效果评估信息状态" prop="scenarioEffectStatus">
+          <el-select size="small" v-model="addForm.scenarioEffectStatus" auto-complete="off" placeholder="请选择模拟场景效果评估信息状态">
             <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       inventoryNo:'',
-       inventoryName:'',
-       inventoryType:'',
+       scenarioEffectNo:'',
+       scenarioEffectName:'',
+       scenarioEffectType:'',
        address:'',
-       inventoryGender:'',
+       scenarioEffectGender:'',
        age:'',
-       inventoryStatus:''
+       scenarioEffectStatus:''
       },
       rules: {
-        inventoryNo: [
-          { required: true, message: '请输入库存信息编号', trigger: 'blur' }
+        scenarioEffectNo: [
+          { required: true, message: '请输入模拟场景效果评估信息编号', trigger: 'blur' }
         ],
-        inventoryName: [
-          { required: true, message: '请输入库存信息名称', trigger: 'blur' }
+        scenarioEffectName: [
+          { required: true, message: '请输入模拟场景效果评估信息名称', trigger: 'blur' }
         ],
-        inventoryType: [
-          { required: true, message: '请选择库存信息类型', trigger: 'blur' }
+        scenarioEffectType: [
+          { required: true, message: '请选择模拟场景效果评估信息类型', trigger: 'blur' }
         ],
-        inventoryStatus: [
-          { required: true, message: '请选择库存信息状态', trigger: 'blur' }
+        scenarioEffectStatus: [
+          { required: true, message: '请选择模拟场景效果评估信息状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        inventoryName: '',
+        scenarioEffectName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            inventoryNo:'VDxxxxxx',
-            inventoryName:'xxx原材料库存',
-            inventoryType:'原材料库存',
-            inventoryStatus:"有效状态",
+            scenarioEffectNo:'VDxxxxxx',
+            scenarioEffectName:'xxx原材料库存',
+            scenarioEffectType:'原材料库存',
+            scenarioEffectStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            inventoryNo:'VDxxxxxx',
-            inventoryName:'xxx原材料库存',
-            inventoryType:'原材料库存',
-            inventoryStatus:"有效状态",
+            scenarioEffectNo:'VDxxxxxx',
+            scenarioEffectName:'xxx原材料库存',
+            scenarioEffectType:'原材料库存',
+            scenarioEffectStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            inventoryNo:'VDxxxxxx',
-            inventoryName:'xxx原材料库存',
-            inventoryType:'原材料库存',
-            inventoryStatus:"有效状态",
+            scenarioEffectNo:'VDxxxxxx',
+            scenarioEffectName:'xxx原材料库存',
+            scenarioEffectType:'原材料库存',
+            scenarioEffectStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            inventoryNo:'VDxxxxxx',
-            inventoryName:'xxx成品库存',
-            inventoryType:'成品库存',
-            inventoryStatus:"失效状态",
+            scenarioEffectNo:'VDxxxxxx',
+            scenarioEffectName:'xxx成品库存',
+            scenarioEffectType:'成品库存',
+            scenarioEffectStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            inventoryNo:'VDxxxxxx',
-            inventoryName:'xxx成品库存',
-            inventoryType:'成品库存',
-            inventoryStatus:"有效状态",
+            scenarioEffectNo:'VDxxxxxx',
+            scenarioEffectName:'xxx成品库存',
+            scenarioEffectType:'成品库存',
+            scenarioEffectStatus:"有效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑库存信息'
-        this.addForm.inventoryNo = row.inventoryNo
-        this.addForm.inventoryName = row.inventoryName
-        this.addForm.inventoryType = row.inventoryType
-        this.addForm.inventoryStatus = row.inventoryStatus
+        this.title='编辑模拟场景效果评估信息'
+        this.addForm.scenarioEffectNo = row.scenarioEffectNo
+        this.addForm.scenarioEffectName = row.scenarioEffectName
+        this.addForm.scenarioEffectType = row.scenarioEffectType
+        this.addForm.scenarioEffectStatus = row.scenarioEffectStatus
       }else{
-        this.title='添加库存信息'
-        this.addForm.inventoryNo = ''
-        this.addForm.inventoryName = ''
-        this.addForm.inventoryType = ''
-        this.addForm.inventoryStatus = ''
+        this.title='添加模拟场景效果评估信息'
+        this.addForm.scenarioEffectNo = ''
+        this.addForm.scenarioEffectName = ''
+        this.addForm.scenarioEffectType = ''
+        this.addForm.scenarioEffectStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -294,7 +294,7 @@ export default {
             .catch(err => {
               this.editFormVisible = false
               this.loading = false
-              this.$message.error('支付配置信息保存失败，请稍后再试！')
+              this.$message.error('保存失败，请稍后再试！')
             })
         } else {
           return false
@@ -326,7 +326,7 @@ export default {
             })
             .catch(err => {
               this.loading = false
-              this.$message.error('支付配置信息删除失败，请稍后再试！')
+              this.$message.error('删除失败，请稍后再试！')
             })
         })
         .catch(() => {
@@ -337,9 +337,9 @@ export default {
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(forminventoryName) {
+    closeDialog(formscenarioEffectName) {
       this.editFormVisible = false
-      this.$refs[forminventoryName].resetFields()
+      this.$refs[formscenarioEffectName].resetFields()
     }
   }
 }

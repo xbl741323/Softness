@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '生产数据采集模块',
+          menuname: '汽车关键部件管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据采集设备信息管理',
+              menuname: '汽车关键部件信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据通信管理',
+              menuname: '汽车关键部件库存管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '数据存储设备管理',
+              menuname: '汽车关键部件追溯与溯源管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '传感器信息管理',
+              menuname: '汽车关键部件故障与维修管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -99,7 +99,7 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '通信接口管理',
+              menuname: '汽车关键部件检测计划管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -109,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '塑壳断路器管理模块',
+          menuname: '检测设备管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '塑壳断路器信息管理',
+              menuname: '检测设备信息管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '塑壳断路器识别与追踪管理',
+              menuname: '检测设备状态监测管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '工艺控制与调整管理',
+              menuname: '检测设备维护与保养管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '故障诊断与维护管理',
+              menuname: '检测设备校准与调试管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '生产计划与排程管理',
+              menuname: '检测设备故障与维修管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '生产控制模块',
+          menuname: '控制与调试模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '监控和故障处理模块',
+          menuname: '监控与异常处理模块',
           hasThird: null,
           url: null,
           menus: [
@@ -224,7 +224,7 @@ export default {
          {
           menuid: 128,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '数据处理和分析模块',
+          menuname: '检测数据处理和分析模块',
           hasThird: null,
           url: null,
           menus: [
