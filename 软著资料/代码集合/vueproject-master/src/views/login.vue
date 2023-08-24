@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
     <el-form label-position="left" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm login-container">
-      <h3 class="title">检测认证文本辅助检测系统</h3>
+      <h3 class="title">时速针织圆机智能收纬系统</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="ruleForm.username" auto-complete="off" placeholder="请输入账号"></el-input>
       </el-form-item>
