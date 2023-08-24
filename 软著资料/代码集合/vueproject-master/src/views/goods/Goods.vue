@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">文本管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>认证文本数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">生产数据采集模块</el-breadcrumb-item>
+      <el-breadcrumb-item>数据采集设备信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" class="input-sty" v-model="formInline.authenticationTextName" placeholder="请输入认证文本数据编号"></el-input>
+        <el-input size="small" class="input-sty" v-model="formInline.collectingDeviceName" placeholder="请输入数据采集设备编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" class="input-sty" v-model="formInline.authenticationTextName" placeholder="请输入认证文本数据名称"></el-input>
+        <el-input size="small" class="input-sty" v-model="formInline.collectingDeviceName" placeholder="请输入数据采集设备名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" class="input-sty" v-model="formInline.authenticationTextStatus" placeholder="请选择认证文本数据类型">
+        <el-select size="small" class="input-sty" v-model="formInline.collectingDeviceStatus" placeholder="请选择数据采集设备类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="authenticationTextNo" label="认证文本数据编号">
+      <el-table-column sortable prop="collectingDeviceNo" label="数据采集设备编号">
       </el-table-column>
-      <el-table-column sortable prop="authenticationTextName" label="认证文本数据名称">
+      <el-table-column sortable prop="collectingDeviceName" label="数据采集设备名称">
       </el-table-column>
-      <el-table-column sortable prop="authenticationTextType" label="认证文本数据类型">
+      <el-table-column sortable prop="collectingDeviceType" label="数据采集设备类型">
       </el-table-column>
-      <el-table-column sortable prop="authenticationTextStatus" label="认证文本数据状态" >
+      <el-table-column sortable prop="collectingDeviceStatus" label="数据采集设备状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -50,21 +50,21 @@
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
-      <el-form label-width="180px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="认证文本数据编号" prop="authenticationTextNo">
-          <el-input size="small" v-model="editForm.authenticationTextNo" auto-complete="off" placeholder="请输入认证文本数据编号"></el-input>
+      <el-form label-width="160px" :model="editForm" :rules="rules" ref="editForm">
+        <el-form-item label="数据采集设备编号" prop="collectingDeviceNo">
+          <el-input size="small" v-model="editForm.collectingDeviceNo" auto-complete="off" placeholder="请输入数据采集设备编号"></el-input>
         </el-form-item>
-        <el-form-item label="认证文本数据名称" prop="authenticationTextName">
-          <el-input size="small" v-model="editForm.authenticationTextName" auto-complete="off" placeholder="请输入认证文本数据名称"></el-input>
+        <el-form-item label="数据采集设备名称" prop="collectingDeviceName">
+          <el-input size="small" v-model="editForm.collectingDeviceName" auto-complete="off" placeholder="请输入数据采集设备名称"></el-input>
         </el-form-item>
-        <el-form-item label="认证文本数据类型" prop="authenticationTextType">
-          <el-select size="small" v-model="editForm.authenticationTextType" auto-complete="off" placeholder="请选择认证文本数据类型">
-            <el-option label="社交媒体数据" value="1"></el-option>
+        <el-form-item label="数据采集设备类型" prop="collectingDeviceType">
+          <el-select size="small" v-model="editForm.collectingDeviceType" auto-complete="off" placeholder="请选择数据采集设备类型">
+            <el-option label="数据采集卡" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="认证文本数据状态" prop="authenticationTextStatus">
-          <el-select size="small" v-model="editForm.authenticationTextStatus" auto-complete="off" placeholder="请选择认证文本数据状态">
-            <el-option label="有效" value="1"></el-option>
+        <el-form-item label="数据采集设备状态" prop="collectingDeviceStatus">
+          <el-select size="small" v-model="editForm.collectingDeviceStatus" auto-complete="off" placeholder="请选择数据采集设备状态">
+            <el-option label="正常状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        authenticationTextNo: '',
-        authenticationTextName: '',
-        authenticationTextType:'',
+        collectingDeviceNo: '',
+        collectingDeviceName: '',
+        collectingDeviceType:'',
         status:'',
-        authenticationTextStatus: '',
+        collectingDeviceStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        authenticationTextNo: [
-          { required: true, message: '请输入认证文本数据编号', trigger: 'blur' }
+        collectingDeviceNo: [
+          { required: true, message: '请输入数据采集设备编号', trigger: 'blur' }
         ],
-        authenticationTextName: [
-          { required: true, message: '请输入认证文本数据名称', trigger: 'blur' }
+        collectingDeviceName: [
+          { required: true, message: '请输入数据采集设备名称', trigger: 'blur' }
         ],
-        authenticationTextType: [
-          { required: true, message: '请选择认证文本数据类型', trigger: 'blur' }
+        collectingDeviceType: [
+          { required: true, message: '请选择数据采集设备类型', trigger: 'blur' }
         ],
-        authenticationTextStatus: [
-          { required: true, message: '请选择认证文本数据状态', trigger: 'blur' }
+        collectingDeviceStatus: [
+          { required: true, message: '请选择数据采集设备状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            authenticationTextNo: 'VSxxxxxxxx',
-            authenticationTextName: 'XXX社交媒体数据',
-            authenticationTextType: '社交媒体数据',
-            authenticationTextStatus: '有效',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX数据采集卡',
+            collectingDeviceType: '数据采集卡',
+            collectingDeviceStatus: '正常状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            authenticationTextNo: 'VSxxxxxxxx',
-            authenticationTextName: 'XXX社交媒体数据',
-            authenticationTextType: '社交媒体数据',
-            authenticationTextStatus: '有效',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX数据采集卡',
+            collectingDeviceType: '数据采集卡',
+            collectingDeviceStatus: '正常状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            authenticationTextNo: 'VSxxxxxxxx',
-            authenticationTextName: 'XXX社交媒体数据',
-            authenticationTextType: '社交媒体数据',
-            authenticationTextStatus: '有效',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX数据采集卡',
+            collectingDeviceType: '数据采集卡',
+            collectingDeviceStatus: '正常状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            authenticationTextNo: 'VSxxxxxxxx',
-            authenticationTextName: 'XXX专业文献数据',
-            authenticationTextType: '专业文献数据',
-            authenticationTextStatus: '失效',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX无线传输设备',
+            collectingDeviceType: '无线传输设备',
+            collectingDeviceStatus: '维护状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            authenticationTextNo: 'VSxxxxxxxx',
-            authenticationTextName: 'XXX专业文献数据',
-            authenticationTextType: '专业文献数据',
-            authenticationTextStatus: '失效',
+            collectingDeviceNo: 'VSxxxxxxxx',
+            collectingDeviceName: 'XXX无线传输设备',
+            collectingDeviceType: '无线传输设备',
+            collectingDeviceStatus: '维护状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑认证文本数据'
-        this.editForm.authenticationTextNo = row.authenticationTextNo
-        this.editForm.authenticationTextName = row.authenticationTextName
-        this.editForm.authenticationTextStatus = row.authenticationTextStatus
-        this.editForm.authenticationTextType = row.authenticationTextType
+        this.title = '编辑数据采集设备信息'
+        this.editForm.collectingDeviceNo = row.collectingDeviceNo
+        this.editForm.collectingDeviceName = row.collectingDeviceName
+        this.editForm.collectingDeviceStatus = row.collectingDeviceStatus
+        this.editForm.collectingDeviceType = row.collectingDeviceType
       } else {
-        this.title = '添加认证文本数据'
-        this.editForm.authenticationTextNo = ''
-        this.editForm.authenticationTextName = ''
-        this.editForm.authenticationTextStatus = ''
-        this.editForm.authenticationTextType =''
+        this.title = '添加数据采集设备信息'
+        this.editForm.collectingDeviceNo = ''
+        this.editForm.collectingDeviceName = ''
+        this.editForm.collectingDeviceStatus = ''
+        this.editForm.collectingDeviceType =''
       }
     },
     // 编辑、增加页面保存方法

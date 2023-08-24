@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">关键词提取模块</el-breadcrumb-item>
-      <el-breadcrumb-item>提取关键词信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">塑壳断路器管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>塑壳断路器信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.extractKeywordNo" placeholder="请输入提取关键词信息编号"></el-input>
+        <el-input size="small" v-model="formInline.mccbNo" placeholder="请输入塑壳断路器编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.extractKeywordName" placeholder="请输入提取关键词信息名称"></el-input>
+        <el-input size="small" v-model="formInline.mccbName" placeholder="请输入塑壳断路器名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.extractKeywordType" placeholder="请选择提取关键词信息类型"></el-select>
+        <el-select size="small" v-model="formInline.mccbType" placeholder="请选择塑壳断路器类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="extractKeywordNo" label="提取关键词信息编号" show-overflow-tooltip>
+      <el-table-column sortable prop="mccbNo" label="塑壳断路器编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="extractKeywordName" label="提取关键词信息名称" show-overflow-tooltip>
+      <el-table-column sortable prop="mccbName" label="塑壳断路器名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="extractKeywordType" label="提取关键词信息类型" show-overflow-tooltip>
+      <el-table-column sortable prop="mccbType" label="塑壳断路器类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="extractKeywordStatus" label="提取关键词信息状态" show-overflow-tooltip>
+      <el-table-column sortable prop="mccbStatus" label="塑壳断路器状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -47,21 +47,21 @@
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
-      <el-form label-width="180px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="提取关键词信息编号" prop="extractKeywordNo">
-          <el-input size="small" v-model="addForm.extractKeywordNo" auto-complete="off" placeholder="请输入提取关键词信息编号"></el-input>
+      <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
+        <el-form-item label="塑壳断路器编号" prop="mccbNo">
+          <el-input size="small" v-model="addForm.mccbNo" auto-complete="off" placeholder="请输入塑壳断路器编号"></el-input>
         </el-form-item>
-        <el-form-item label="提取关键词信息名称" prop="extractKeywordName">
-          <el-input size="small" v-model="addForm.extractKeywordName" auto-complete="off" placeholder="请输入提取关键词信息名称"></el-input>
+        <el-form-item label="塑壳断路器名称" prop="mccbName">
+          <el-input size="small" v-model="addForm.mccbName" auto-complete="off" placeholder="请输入塑壳断路器名称"></el-input>
         </el-form-item>
-        <el-form-item label="提取关键词信息类型" prop="extractKeywordType">
-          <el-select size="small" v-model="addForm.extractKeywordType" auto-complete="off" placeholder="请选择提取关键词信息类型">
-            <el-option label="敏感关键词" value="1"></el-option>
+        <el-form-item label="塑壳断路器类型" prop="mccbType">
+          <el-select size="small" v-model="addForm.mccbType" auto-complete="off" placeholder="请选择塑壳断路器类型">
+            <el-option label="过载保护断路器" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="提取关键词信息状态" prop="extractKeywordStatus">
-          <el-select size="small" v-model="addForm.extractKeywordStatus" auto-complete="off" placeholder="请选择提取关键词信息状态">
-            <el-option label="有效" value="1"></el-option>
+        <el-form-item label="塑壳断路器状态" prop="mccbStatus">
+          <el-select size="small" v-model="addForm.mccbStatus" auto-complete="off" placeholder="请选择塑壳断路器状态">
+            <el-option label="正常状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       extractKeywordNo:'',
-       extractKeywordName:'',
-       extractKeywordType:'',
+       mccbNo:'',
+       mccbName:'',
+       mccbType:'',
        address:'',
-       extractKeywordGender:'',
+       mccbGender:'',
        age:'',
-       extractKeywordStatus:''
+       mccbStatus:''
       },
       rules: {
-        extractKeywordNo: [
-          { required: true, message: '请输入提取关键词信息编号', trigger: 'blur' }
+        mccbNo: [
+          { required: true, message: '请输入塑壳断路器编号', trigger: 'blur' }
         ],
-        extractKeywordName: [
-          { required: true, message: '请输入提取关键词信息名称', trigger: 'blur' }
+        mccbName: [
+          { required: true, message: '请输入塑壳断路器名称', trigger: 'blur' }
         ],
-        extractKeywordType: [
-          { required: true, message: '请选择提取关键词信息类型', trigger: 'blur' }
+        mccbType: [
+          { required: true, message: '请选择塑壳断路器类型', trigger: 'blur' }
         ],
-        extractKeywordStatus: [
-          { required: true, message: '请选择提取关键词信息状态', trigger: 'blur' }
+        mccbStatus: [
+          { required: true, message: '请选择塑壳断路器状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        extractKeywordName: '',
+        mccbName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            extractKeywordNo:'VCxxxxxx',
-            extractKeywordName:'xxx敏感关键词',
-            extractKeywordType:'敏感关键词',
-            extractKeywordStatus:"有效",
+            mccbNo:'VCxxxxxx',
+            mccbName:'xxx过载保护断路器',
+            mccbType:'过载保护断路器',
+            mccbStatus:"正常状态",
             createTime: "2020-08-12"
           },
           {
-            extractKeywordNo:'VCxxxxxx',
-            extractKeywordName:'xxx敏感关键词',
-            extractKeywordType:'敏感关键词',
-            extractKeywordStatus:"有效",
+            mccbNo:'VCxxxxxx',
+            mccbName:'xxx过载保护断路器',
+            mccbType:'过载保护断路器',
+            mccbStatus:"正常状态",
             createTime: "2022-10-24"
           },
           {
-            extractKeywordNo:'VCxxxxxx',
-            extractKeywordName:'xxx敏感关键词',
-            extractKeywordType:'敏感关键词',
-            extractKeywordStatus:"有效",
+            mccbNo:'VCxxxxxx',
+            mccbName:'xxx过载保护断路器',
+            mccbType:'过载保护断路器',
+            mccbStatus:"正常状态",
             createTime: "2022-01-12"
           },
           {
-            extractKeywordNo:'VCxxxxxx',
-            extractKeywordName:'xxx法律关键词',
-            extractKeywordType:'法律关键词',
-            extractKeywordStatus:"无效",
+            mccbNo:'VCxxxxxx',
+            mccbName:'xxx油浸断路器',
+            mccbType:'油浸断路器',
+            mccbStatus:"维护状态",
             createTime: "2022-05-17"
           },
           {
-            extractKeywordNo:'VCxxxxxx',
-            extractKeywordName:'xxx法律关键词',
-            extractKeywordType:'法律关键词',
-            extractKeywordStatus:"无效",
+            mccbNo:'VCxxxxxx',
+            mccbName:'xxx油浸断路器',
+            mccbType:'油浸断路器',
+            mccbStatus:"维护状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑提取关键词信息'
-        this.addForm.extractKeywordNo = row.extractKeywordNo
-        this.addForm.extractKeywordName = row.extractKeywordName
-        this.addForm.extractKeywordType = row.extractKeywordType
-        this.addForm.extractKeywordStatus = row.extractKeywordStatus
+        this.title='编辑塑壳断路器信息'
+        this.addForm.mccbNo = row.mccbNo
+        this.addForm.mccbName = row.mccbName
+        this.addForm.mccbType = row.mccbType
+        this.addForm.mccbStatus = row.mccbStatus
       }else{
-        this.title='添加提取关键词信息'
-        this.addForm.extractKeywordNo = ''
-        this.addForm.extractKeywordName = ''
-        this.addForm.extractKeywordType = ''
-        this.addForm.extractKeywordStatus = ''
+        this.title='添加塑壳断路器信息'
+        this.addForm.mccbNo = ''
+        this.addForm.mccbName = ''
+        this.addForm.mccbType = ''
+        this.addForm.mccbStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '无效删除'
+            message: '维护状态删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formextractKeywordName) {
+    closeDialog(formmccbName) {
       this.editFormVisible = false
-      this.$refs[formextractKeywordName].resetFields()
+      this.$refs[formmccbName].resetFields()
     }
   }
 }
