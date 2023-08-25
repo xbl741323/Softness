@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">异常检测与报警管理管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>异常检测与报警管理信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">活性剂管理模块</el-breadcrumb-item>
+      <el-breadcrumb-item>活性剂信息管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
        <el-form-item label="搜索：">
-        <el-input size="small" class="input-sty" v-model="formInline.anomalyDetectionName" placeholder="请输入异常检测与报警管理编号"></el-input>
+        <el-input size="small" class="input-sty" v-model="formInline.activeAgentName" placeholder="请输入活性剂信息编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" class="input-sty" v-model="formInline.anomalyDetectionName" placeholder="请输入异常检测与报警管理名称"></el-input>
+        <el-input size="small" class="input-sty" v-model="formInline.activeAgentName" placeholder="请输入活性剂信息名称"></el-input>
       </el-form-item>
       <el-form-item label="">
-        <el-select size="small" class="input-sty" v-model="formInline.anomalyDetectionStatus" placeholder="请选择异常检测与报警管理类型">
+        <el-select size="small" class="input-sty" v-model="formInline.activeAgentStatus" placeholder="请选择活性剂信息类型">
           <el-option></el-option>
         </el-select>
       </el-form-item>
@@ -27,13 +27,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="selection" width="60">
       </el-table-column>
-      <el-table-column sortable prop="anomalyDetectionNo" label="异常检测与报警管理编号">
+      <el-table-column sortable prop="activeAgentNo" label="活性剂信息编号">
       </el-table-column>
-      <el-table-column sortable prop="anomalyDetectionName" label="异常检测与报警管理名称">
+      <el-table-column sortable prop="activeAgentName" label="活性剂信息名称">
       </el-table-column>
-      <el-table-column sortable prop="anomalyDetectionType" label="异常检测与报警管理类型">
+      <el-table-column sortable prop="activeAgentType" label="活性剂信息类型">
       </el-table-column>
-      <el-table-column sortable prop="anomalyDetectionStatus" label="异常检测与报警管理状态" >
+      <el-table-column sortable prop="activeAgentStatus" label="活性剂信息状态" >
       </el-table-column>
       <el-table-column sortable prop="createime" label="创建时间">
       </el-table-column>
@@ -51,20 +51,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="editFormVisible" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="editForm" :rules="rules" ref="editForm">
-        <el-form-item label="异常检测与报警管理编号" prop="anomalyDetectionNo">
-          <el-input size="small" v-model="editForm.anomalyDetectionNo" auto-complete="off" placeholder="请输入异常检测与报警管理编号"></el-input>
+        <el-form-item label="活性剂信息编号" prop="activeAgentNo">
+          <el-input size="small" v-model="editForm.activeAgentNo" auto-complete="off" placeholder="请输入活性剂信息编号"></el-input>
         </el-form-item>
-        <el-form-item label="异常检测与报警管理名称" prop="anomalyDetectionName">
-          <el-input size="small" v-model="editForm.anomalyDetectionName" auto-complete="off" placeholder="请输入异常检测与报警管理名称"></el-input>
+        <el-form-item label="活性剂信息名称" prop="activeAgentName">
+          <el-input size="small" v-model="editForm.activeAgentName" auto-complete="off" placeholder="请输入活性剂信息名称"></el-input>
         </el-form-item>
-        <el-form-item label="异常检测与报警管理类型" prop="anomalyDetectionType">
-          <el-select size="small" v-model="editForm.anomalyDetectionType" auto-complete="off" placeholder="请选择异常检测与报警管理类型">
-            <el-option label="耐磨度受损异常" value="1"></el-option>
+        <el-form-item label="活性剂信息类型" prop="activeAgentType">
+          <el-select size="small" v-model="editForm.activeAgentType" auto-complete="off" placeholder="请选择活性剂信息类型">
+            <el-option label="洗涤剂用活性剂" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="异常检测与报警管理状态" prop="anomalyDetectionStatus">
-          <el-select size="small" v-model="editForm.anomalyDetectionStatus" auto-complete="off" placeholder="请选择异常检测与报警管理状态">
-            <el-option label="正常状态" value="1"></el-option>
+        <el-form-item label="活性剂信息状态" prop="activeAgentStatus">
+          <el-select size="small" v-model="editForm.activeAgentStatus" auto-complete="off" placeholder="请选择活性剂信息状态">
+            <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -88,26 +88,26 @@ export default {
       editFormVisible: false, //控制编辑页面显示与隐藏
       title: '',
       editForm: {
-        anomalyDetectionNo: '',
-        anomalyDetectionName: '',
-        anomalyDetectionType:'',
+        activeAgentNo: '',
+        activeAgentName: '',
+        activeAgentType:'',
         status:'',
-        anomalyDetectionStatus: '',
+        activeAgentStatus: '',
         token: localStorage.getItem('logintoken')
       },
       // rules表单验证
       rules: {
-        anomalyDetectionNo: [
-          { required: true, message: '请输入异常检测与报警管理编号', trigger: 'blur' }
+        activeAgentNo: [
+          { required: true, message: '请输入活性剂信息编号', trigger: 'blur' }
         ],
-        anomalyDetectionName: [
-          { required: true, message: '请输入异常检测与报警管理名称', trigger: 'blur' }
+        activeAgentName: [
+          { required: true, message: '请输入活性剂信息名称', trigger: 'blur' }
         ],
-        anomalyDetectionType: [
-          { required: true, message: '请选择异常检测与报警管理类型', trigger: 'blur' }
+        activeAgentType: [
+          { required: true, message: '请选择活性剂信息类型', trigger: 'blur' }
         ],
-        anomalyDetectionStatus: [
-          { required: true, message: '请选择异常检测与报警管理状态', trigger: 'blur' }
+        activeAgentStatus: [
+          { required: true, message: '请选择活性剂信息状态', trigger: 'blur' }
         ],
       },
       formInline: {
@@ -161,42 +161,42 @@ export default {
           {
             creator: 'xxx',
             createime: '2022-12-23',
-            anomalyDetectionNo: 'VSxxxxxxxx',
-            anomalyDetectionName: 'XXX汽车发动机部件',
-            anomalyDetectionType: '汽车发动机部件',
-            anomalyDetectionStatus: '正常状态',
+            activeAgentNo: 'VSxxxxxxxx',
+            activeAgentName: 'XXX洗涤剂用活性剂',
+            activeAgentType: '洗涤剂用活性剂',
+            activeAgentStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-10-05',
-            anomalyDetectionNo: 'VSxxxxxxxx',
-            anomalyDetectionName: 'XXX汽车发动机部件',
-            anomalyDetectionType: '汽车发动机部件',
-            anomalyDetectionStatus: '正常状态',
+            activeAgentNo: 'VSxxxxxxxx',
+            activeAgentName: 'XXX洗涤剂用活性剂',
+            activeAgentType: '洗涤剂用活性剂',
+            activeAgentStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2021-11-13',
-            anomalyDetectionNo: 'VSxxxxxxxx',
-            anomalyDetectionName: 'XXX汽车发动机部件',
-            anomalyDetectionType: '汽车发动机部件',
-            anomalyDetectionStatus: '正常状态',
+            activeAgentNo: 'VSxxxxxxxx',
+            activeAgentName: 'XXX洗涤剂用活性剂',
+            activeAgentType: '洗涤剂用活性剂',
+            activeAgentStatus: '有效状态',
           },
           {
             creator: 'xxx',
             createime: '2020-08-21',
-            anomalyDetectionNo: 'VSxxxxxxxx',
-            anomalyDetectionName: 'XXX汽车刹车盘部件',
-            anomalyDetectionType: '汽车刹车盘部件',
-            anomalyDetectionStatus: '维护状态',
+            activeAgentNo: 'VSxxxxxxxx',
+            activeAgentName: 'XXX工业清洗用活性剂',
+            activeAgentType: '工业清洗用活性剂',
+            activeAgentStatus: '失效状态',
           },
           {
             creator: 'xxx',
             createime: '2022-02-23',
-            anomalyDetectionNo: 'VSxxxxxxxx',
-            anomalyDetectionName: 'XXX汽车刹车盘部件',
-            anomalyDetectionType: '汽车刹车盘部件',
-            anomalyDetectionStatus: '维护状态',
+            activeAgentNo: 'VSxxxxxxxx',
+            activeAgentName: 'XXX工业清洗用活性剂',
+            activeAgentType: '工业清洗用活性剂',
+            activeAgentStatus: '失效状态',
           }
         ]
       }
@@ -245,17 +245,17 @@ export default {
     handleEdit: function(index, row) {
       this.editFormVisible = true
       if (row != undefined && row != 'undefined') {
-        this.title = '编辑异常检测与报警管理信息'
-        this.editForm.anomalyDetectionNo = row.anomalyDetectionNo
-        this.editForm.anomalyDetectionName = row.anomalyDetectionName
-        this.editForm.anomalyDetectionStatus = row.anomalyDetectionStatus
-        this.editForm.anomalyDetectionType = row.anomalyDetectionType
+        this.title = '编辑活性剂信息'
+        this.editForm.activeAgentNo = row.activeAgentNo
+        this.editForm.activeAgentName = row.activeAgentName
+        this.editForm.activeAgentStatus = row.activeAgentStatus
+        this.editForm.activeAgentType = row.activeAgentType
       } else {
-        this.title = '添加异常检测与报警管理信息'
-        this.editForm.anomalyDetectionNo = ''
-        this.editForm.anomalyDetectionName = ''
-        this.editForm.anomalyDetectionStatus = ''
-        this.editForm.anomalyDetectionType =''
+        this.title = '添加活性剂信息'
+        this.editForm.activeAgentNo = ''
+        this.editForm.activeAgentName = ''
+        this.editForm.activeAgentStatus = ''
+        this.editForm.activeAgentType =''
       }
     },
     // 编辑、增加页面保存方法

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.StudentsMapper">
+    
+    <resultMap type="Students" id="StudentsResult">
+        <result property="studentId"    column="student_id"    />
+        <result property="firstName"    column="first_name"    />
+        <result property="lastName"    column="last_name"    />
+        <result property="gender"    column="gender"    />
+        <result property="dateOfBirth"    column="date_of_birth"    />
+        <result property="address"    column="address"    />
+        <result property="phoneNumber"    column="phone_number"    />
+        <result property="email"    column="email"    />
+        <result property="nationality"    column="nationality"    />
+        <result property="guardianName"    column="guardian_name"    />
+        <result property="guardianPhoneNumber"    column="guardian_phone_number"    />
+        <result property="admissionDate"    column="admission_date"    />
+        <result property="graduationDate"    column="graduation_date"    />
+        <result property="department"    column="department"    />
+        <result property="major"    column="major"    />
+        <result property="className"    column="class_name"    />
+        <result property="enrollmentStatus"    column="enrollment_status"    />
+        <result property="academicAdvisor"    column="academic_advisor"    />
+        <result property="dormitoryNumber"    column="dormitory_number"    />
+        <result property="emergencyContactName"    column="emergency_contact_name"    />
+        <result property="emergencyContactNumber"    column="emergency_contact_number"    />
+    </resultMap>
+
+    <sql id="selectStudentsVo">
+        select student_id, first_name, last_name, gender, date_of_birth, address, phone_number, email, nationality, guardian_name, guardian_phone_number, admission_date, graduation_date, department, major, class_name, enrollment_status, academic_advisor, dormitory_number, emergency_contact_name, emergency_contact_number from students
+    </sql>
+
+    <select id="selectStudentsList" parameterType="Students" resultMap="StudentsResult">
+        <include refid="selectStudentsVo"/>
+        <where>  
+            <if test="firstName != null  and firstName != ''"> and first_name like concat('%', #{firstName}, '%')</if>
+            <if test="lastName != null  and lastName != ''"> and last_name like concat('%', #{lastName}, '%')</if>
+            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+            <if test="dateOfBirth != null "> and date_of_birth = #{dateOfBirth}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="phoneNumber != null  and phoneNumber != ''"> and phone_number = #{phoneNumber}</if>
+            <if test="email != null  and email != ''"> and email = #{email}</if>
+            <if test="nationality != null  and nationality != ''"> and nationality = #{nationality}</if>
+            <if test="guardianName != null  and guardianName != ''"> and guardian_name like concat('%', #{guardianName}, '%')</if>
+            <if test="guardianPhoneNumber != null  and guardianPhoneNumber != ''"> and guardian_phone_number = #{guardianPhoneNumber}</if>
+            <if test="admissionDate != null "> and admission_date = #{admissionDate}</if>
+            <if test="graduationDate != null "> and graduation_date = #{graduationDate}</if>
+            <if test="department != null  and department != ''"> and department = #{department}</if>
+            <if test="major != null  and major != ''"> and major = #{major}</if>
+            <if test="className != null  and className != ''"> and class_name like concat('%', #{className}, '%')</if>
+            <if test="enrollmentStatus != null  and enrollmentStatus != ''"> and enrollment_status = #{enrollmentStatus}</if>
+            <if test="academicAdvisor != null  and academicAdvisor != ''"> and academic_advisor = #{academicAdvisor}</if>
+            <if test="dormitoryNumber != null  and dormitoryNumber != ''"> and dormitory_number = #{dormitoryNumber}</if>
+            <if test="emergencyContactName != null  and emergencyContactName != ''"> and emergency_contact_name like concat('%', #{emergencyContactName}, '%')</if>
+            <if test="emergencyContactNumber != null  and emergencyContactNumber != ''"> and emergency_contact_number = #{emergencyContactNumber}</if>
+        </where>
+    </select>
+    
+    <select id="selectStudentsByStudentId" parameterType="Long" resultMap="StudentsResult">
+        <include refid="selectStudentsVo"/>
+        where student_id = #{studentId}
+    </select>
+        
+    <insert id="insertStudents" parameterType="Students">
+        insert into students
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="studentId != null">student_id,</if>
+            <if test="firstName != null and firstName != ''">first_name,</if>
+            <if test="lastName != null and lastName != ''">last_name,</if>
+            <if test="gender != null">gender,</if>
+            <if test="dateOfBirth != null">date_of_birth,</if>
+            <if test="address != null">address,</if>
+            <if test="phoneNumber != null">phone_number,</if>
+            <if test="email != null">email,</if>
+            <if test="nationality != null">nationality,</if>
+            <if test="guardianName != null">guardian_name,</if>
+            <if test="guardianPhoneNumber != null">guardian_phone_number,</if>
+            <if test="admissionDate != null">admission_date,</if>
+            <if test="graduationDate != null">graduation_date,</if>
+            <if test="department != null">department,</if>
+            <if test="major != null">major,</if>
+            <if test="className != null">class_name,</if>
+            <if test="enrollmentStatus != null">enrollment_status,</if>
+            <if test="academicAdvisor != null">academic_advisor,</if>
+            <if test="dormitoryNumber != null">dormitory_number,</if>
+            <if test="emergencyContactName != null">emergency_contact_name,</if>
+            <if test="emergencyContactNumber != null">emergency_contact_number,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="studentId != null">#{studentId},</if>
+            <if test="firstName != null and firstName != ''">#{firstName},</if>
+            <if test="lastName != null and lastName != ''">#{lastName},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="dateOfBirth != null">#{dateOfBirth},</if>
+            <if test="address != null">#{address},</if>
+            <if test="phoneNumber != null">#{phoneNumber},</if>
+            <if test="email != null">#{email},</if>
+            <if test="nationality != null">#{nationality},</if>
+            <if test="guardianName != null">#{guardianName},</if>
+            <if test="guardianPhoneNumber != null">#{guardianPhoneNumber},</if>
+            <if test="admissionDate != null">#{admissionDate},</if>
+            <if test="graduationDate != null">#{graduationDate},</if>
+            <if test="department != null">#{department},</if>
+            <if test="major != null">#{major},</if>
+            <if test="className != null">#{className},</if>
+            <if test="enrollmentStatus != null">#{enrollmentStatus},</if>
+            <if test="academicAdvisor != null">#{academicAdvisor},</if>
+            <if test="dormitoryNumber != null">#{dormitoryNumber},</if>
+            <if test="emergencyContactName != null">#{emergencyContactName},</if>
+            <if test="emergencyContactNumber != null">#{emergencyContactNumber},</if>
+         </trim>
+    </insert>
+
+    <update id="updateStudents" parameterType="Students">
+        update students
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="firstName != null and firstName != ''">first_name = #{firstName},</if>
+            <if test="lastName != null and lastName != ''">last_name = #{lastName},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="dateOfBirth != null">date_of_birth = #{dateOfBirth},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="nationality != null">nationality = #{nationality},</if>
+            <if test="guardianName != null">guardian_name = #{guardianName},</if>
+            <if test="guardianPhoneNumber != null">guardian_phone_number = #{guardianPhoneNumber},</if>
+            <if test="admissionDate != null">admission_date = #{admissionDate},</if>
+            <if test="graduationDate != null">graduation_date = #{graduationDate},</if>
+            <if test="department != null">department = #{department},</if>
+            <if test="major != null">major = #{major},</if>
+            <if test="className != null">class_name = #{className},</if>
+            <if test="enrollmentStatus != null">enrollment_status = #{enrollmentStatus},</if>
+            <if test="academicAdvisor != null">academic_advisor = #{academicAdvisor},</if>
+            <if test="dormitoryNumber != null">dormitory_number = #{dormitoryNumber},</if>
+            <if test="emergencyContactName != null">emergency_contact_name = #{emergencyContactName},</if>
+            <if test="emergencyContactNumber != null">emergency_contact_number = #{emergencyContactNumber},</if>
+        </trim>
+        where student_id = #{studentId}
+    </update>
+
+    <delete id="deleteStudentsByStudentId" parameterType="Long">
+        delete from students where student_id = #{studentId}
+    </delete>
+
+    <delete id="deleteStudentsByStudentIds" parameterType="String">
+        delete from students where student_id in 
+        <foreach item="studentId" collection="array" open="(" separator="," close=")">
+            #{studentId}
+        </foreach>
+    </delete>
+</mapper>

@@ -60,14 +60,14 @@ export default {
         {
           menuid: 1,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '汽车关键部件管理模块',
+          menuname: '活性剂管理模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '汽车关键部件信息管理',
+              menuname: '活性剂信息管理',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
@@ -75,7 +75,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '汽车关键部件库存管理',
+              menuname: '活性剂输送管理',
               hasThird: 'N',
               url: 'pay/Order1',
               menus: null
@@ -83,7 +83,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '汽车关键部件追溯与溯源管理',
+              menuname: '活性剂检测管理',
               hasThird: 'N',
               url: 'pay/Order11',
               menus: null
@@ -91,7 +91,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '汽车关键部件故障与维修管理',
+              menuname: '活性剂存储管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -99,7 +99,7 @@ export default {
              {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '汽车关键部件检测计划管理',
+              menuname: '活性剂补充管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -109,14 +109,14 @@ export default {
         {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '检测设备管理模块',
+          menuname: '配比控制模块',
           hasThird: null,
           url: null,
           menus: [
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '检测设备信息管理',
+              menuname: '配比数据管理',
               hasThird: 'N',
               url: 'pay/Order',
               menus: null
@@ -124,7 +124,7 @@ export default {
             {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '检测设备状态监测管理',
+              menuname: '配比计算管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -132,7 +132,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '检测设备维护与保养管理',
+              menuname: '流量控制管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -140,7 +140,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '检测设备校准与调试管理',
+              menuname: '自我修正管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -148,7 +148,7 @@ export default {
              {
               menuid: 34,
               icon: 'icon-order-manage',
-              menuname: '检测设备故障与维修管理',
+              menuname: '传感器控制管理',
               hasThird: 'N',
               url: 'pay/Order11111',
               menus: null
@@ -158,7 +158,7 @@ export default {
          {
           menuid: 33,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '控制与调试模块',
+          menuname: '显示和操作模块',
           hasThird: null,
           url: null,
           menus: [
@@ -207,7 +207,7 @@ export default {
         {
           menuid: 150,
           icon: 'li-icon-xiangmuguanli',
-          menuname: '监控与异常处理模块',
+          menuname: '安全保护模块',
           hasThird: null,
           url: null,
           menus: [
@@ -221,23 +221,23 @@ export default {
             },
           ]
         },
-         {
-          menuid: 128,
-          icon: 'li-icon-xiangmuguanli',
-          menuname: '检测数据处理和分析模块',
-          hasThird: null,
-          url: null,
-          menus: [
-            {
-              menuid: 129,
-              icon: 'icon-provider-manage',
-              menuname: '头戴式显示器管理',
-              hasThird: 'N',
-              url: 'machine/MachineConfig',
-              menus: null
-            },
-          ]
-        },
+        //  {
+        //   menuid: 128,
+        //   icon: 'li-icon-xiangmuguanli',
+        //   menuname: '检测数据处理和分析模块',
+        //   hasThird: null,
+        //   url: null,
+        //   menus: [
+        //     {
+        //       menuid: 129,
+        //       icon: 'icon-provider-manage',
+        //       menuname: '头戴式显示器管理',
+        //       hasThird: 'N',
+        //       url: 'machine/MachineConfig',
+        //       menus: null
+        //     },
+        //   ]
+        // },
         // {
         //   menuid: 128,
         //   icon: 'li-icon-xiangmuguanli',

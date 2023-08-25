@@ -2,19 +2,19 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">测试监测数据管理模块</el-breadcrumb-item>
-      <el-breadcrumb-item>测试监测数据管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">配比控制模块</el-breadcrumb-item>
+      <el-breadcrumb-item>配比数据管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 搜索筛选 -->
     <el-form :inline="true" :model="formInline" class="user-search">
       <el-form-item label="搜索：">
-        <el-input size="small" v-model="formInline.testMonitoringNo" placeholder="请输入测试监测数据编号"></el-input>
+        <el-input size="small" v-model="formInline.proportioningDataNo" placeholder="请输入配比数据编号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input size="small" v-model="formInline.testMonitoringName" placeholder="请输入测试监测数据名称"></el-input>
+        <el-input size="small" v-model="formInline.proportioningDataName" placeholder="请输入配比数据名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-select size="small" v-model="formInline.testMonitoringType" placeholder="请选择测试监测数据类型"></el-select>
+        <el-select size="small" v-model="formInline.proportioningDataType" placeholder="请选择配比数据类型"></el-select>
       </el-form-item>
 
       <el-form-item>
@@ -26,13 +26,13 @@
     <el-table size="small" :data="listData" highlight-current-row v-loading="loading" border element-loading-text="拼命加载中" style="width: 100%;">
       <el-table-column align="center" type="index" width="60">
       </el-table-column>
-      <el-table-column sortable prop="testMonitoringNo" label="测试监测数据编号" show-overflow-tooltip>
+      <el-table-column sortable prop="proportioningDataNo" label="配比数据编号" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="testMonitoringName" label="测试监测数据名称" show-overflow-tooltip>
+      <el-table-column sortable prop="proportioningDataName" label="配比数据名称" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="testMonitoringType" label="测试监测数据类型" show-overflow-tooltip>
+      <el-table-column sortable prop="proportioningDataType" label="配比数据类型" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column sortable prop="testMonitoringStatus" label="测试监测数据状态" show-overflow-tooltip>
+      <el-table-column sortable prop="proportioningDataStatus" label="配比数据状态" show-overflow-tooltip>
       </el-table-column>
       <el-table-column sortable prop="createTime" label="创建时间" show-overflow-tooltip>
       </el-table-column>
@@ -48,20 +48,20 @@
     <!-- 编辑界面 -->
       <el-dialog :title="title" :visible.sync="addVisiable" width="30%" @click="closeDialog">
       <el-form label-width="160px" :model="addForm" :rules="rules" ref="editForm">
-        <el-form-item label="测试监测数据编号" prop="testMonitoringNo">
-          <el-input size="small" v-model="addForm.testMonitoringNo" auto-complete="off" placeholder="请输入测试监测数据编号"></el-input>
+        <el-form-item label="配比数据编号" prop="proportioningDataNo">
+          <el-input size="small" v-model="addForm.proportioningDataNo" auto-complete="off" placeholder="请输入配比数据编号"></el-input>
         </el-form-item>
-        <el-form-item label="测试监测数据名称" prop="testMonitoringName">
-          <el-input size="small" v-model="addForm.testMonitoringName" auto-complete="off" placeholder="请输入测试监测数据名称"></el-input>
+        <el-form-item label="配比数据名称" prop="proportioningDataName">
+          <el-input size="small" v-model="addForm.proportioningDataName" auto-complete="off" placeholder="请输入配比数据名称"></el-input>
         </el-form-item>
-        <el-form-item label="测试监测数据类型" prop="testMonitoringType">
-          <el-select size="small" v-model="addForm.testMonitoringType" auto-complete="off" placeholder="请选择测试监测数据类型">
-            <el-option label="温度监测数据" value="1"></el-option>
+        <el-form-item label="配比数据类型" prop="proportioningDataType">
+          <el-select size="small" v-model="addForm.proportioningDataType" auto-complete="off" placeholder="请选择配比数据类型">
+            <el-option label="浓度数据" value="1"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="测试监测数据状态" prop="testMonitoringStatus">
-          <el-select size="small" v-model="addForm.testMonitoringStatus" auto-complete="off" placeholder="请选择测试监测数据状态">
-            <el-option label="正常状态" value="1"></el-option>
+        <el-form-item label="配比数据状态" prop="proportioningDataStatus">
+          <el-select size="small" v-model="addForm.proportioningDataStatus" auto-complete="off" placeholder="请选择配比数据状态">
+            <el-option label="有效状态" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -82,26 +82,26 @@ export default {
       title:'',
       addVisiable: false,
        addForm:{
-       testMonitoringNo:'',
-       testMonitoringName:'',
-       testMonitoringType:'',
+       proportioningDataNo:'',
+       proportioningDataName:'',
+       proportioningDataType:'',
        address:'',
-       testMonitoringGender:'',
+       proportioningDataGender:'',
        age:'',
-       testMonitoringStatus:''
+       proportioningDataStatus:''
       },
       rules: {
-        testMonitoringNo: [
-          { required: true, message: '请输入测试监测数据编号', trigger: 'blur' }
+        proportioningDataNo: [
+          { required: true, message: '请输入配比数据编号', trigger: 'blur' }
         ],
-        testMonitoringName: [
-          { required: true, message: '请输入测试监测数据名称', trigger: 'blur' }
+        proportioningDataName: [
+          { required: true, message: '请输入配比数据名称', trigger: 'blur' }
         ],
-        testMonitoringType: [
-          { required: true, message: '请选择测试监测数据类型', trigger: 'blur' }
+        proportioningDataType: [
+          { required: true, message: '请选择配比数据类型', trigger: 'blur' }
         ],
-        testMonitoringStatus: [
-          { required: true, message: '请选择测试监测数据状态', trigger: 'blur' }
+        proportioningDataStatus: [
+          { required: true, message: '请选择配比数据状态', trigger: 'blur' }
         ],
       },
       loading: false, //是显示加载
@@ -109,7 +109,7 @@ export default {
       title: '预览',
       editForm: {
         id: '',
-        testMonitoringName: '',
+        proportioningDataName: '',
         payType: 1,
         partner: '',
         subMchId: '',
@@ -175,38 +175,38 @@ export default {
         count: 5,
         data: [
           {
-            testMonitoringNo:'VCxxxxxx',
-            testMonitoringName:'xxx测试仪器类设备',
-            testMonitoringType:'测试仪器类设备',
-            testMonitoringStatus:"正常状态",
+            proportioningDataNo:'VCxxxxxx',
+            proportioningDataName:'xxx浓度数据',
+            proportioningDataType:'浓度数据',
+            proportioningDataStatus:"有效状态",
             createTime: "2020-08-12"
           },
           {
-            testMonitoringNo:'VCxxxxxx',
-            testMonitoringName:'xxx测试仪器类设备',
-            testMonitoringType:'测试仪器类设备',
-            testMonitoringStatus:"正常状态",
+            proportioningDataNo:'VCxxxxxx',
+            proportioningDataName:'xxx浓度数据',
+            proportioningDataType:'浓度数据',
+            proportioningDataStatus:"有效状态",
             createTime: "2022-10-24"
           },
           {
-            testMonitoringNo:'VCxxxxxx',
-            testMonitoringName:'xxx测试仪器类设备',
-            testMonitoringType:'测试仪器类设备',
-            testMonitoringStatus:"正常状态",
+            proportioningDataNo:'VCxxxxxx',
+            proportioningDataName:'xxx浓度数据',
+            proportioningDataType:'浓度数据',
+            proportioningDataStatus:"有效状态",
             createTime: "2022-01-12"
           },
           {
-            testMonitoringNo:'VCxxxxxx',
-            testMonitoringName:'xxx故障诊断设备',
-            testMonitoringType:'故障诊断设备',
-            testMonitoringStatus:"维护状态",
+            proportioningDataNo:'VCxxxxxx',
+            proportioningDataName:'xxx酸碱度数据',
+            proportioningDataType:'酸碱度数据',
+            proportioningDataStatus:"失效状态",
             createTime: "2022-05-17"
           },
           {
-            testMonitoringNo:'VCxxxxxx',
-            testMonitoringName:'xxx故障诊断设备',
-            testMonitoringType:'故障诊断设备',
-            testMonitoringStatus:"维护状态",
+            proportioningDataNo:'VCxxxxxx',
+            proportioningDataName:'xxx酸碱度数据',
+            proportioningDataType:'酸碱度数据',
+            proportioningDataStatus:"失效状态",
             createTime: "2021-09-12"
           },
         ]
@@ -257,17 +257,17 @@ export default {
     handleEdit: function(row) {
       this.addVisiable = true
       if(row!=null){
-        this.title='编辑测试监测数据数据'
-        this.addForm.testMonitoringNo = row.testMonitoringNo
-        this.addForm.testMonitoringName = row.testMonitoringName
-        this.addForm.testMonitoringType = row.testMonitoringType
-        this.addForm.testMonitoringStatus = row.testMonitoringStatus
+        this.title='编辑配比数据'
+        this.addForm.proportioningDataNo = row.proportioningDataNo
+        this.addForm.proportioningDataName = row.proportioningDataName
+        this.addForm.proportioningDataType = row.proportioningDataType
+        this.addForm.proportioningDataStatus = row.proportioningDataStatus
       }else{
-        this.title='添加测试监测数据数据'
-        this.addForm.testMonitoringNo = ''
-        this.addForm.testMonitoringName = ''
-        this.addForm.testMonitoringType = ''
-        this.addForm.testMonitoringStatus = ''
+        this.title='添加配比数据'
+        this.addForm.proportioningDataNo = ''
+        this.addForm.proportioningDataName = ''
+        this.addForm.proportioningDataType = ''
+        this.addForm.proportioningDataStatus = ''
       }
     },
     // 编辑、增加页面保存方法
@@ -332,14 +332,14 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '维护状态删除'
+            message: '失效状态删除'
           })
         })
     },
     // 关闭编辑、增加弹出框
-    closeDialog(formtestMonitoringName) {
+    closeDialog(formproportioningDataName) {
       this.editFormVisible = false
-      this.$refs[formtestMonitoringName].resetFields()
+      this.$refs[formproportioningDataName].resetFields()
     }
   }
 }
