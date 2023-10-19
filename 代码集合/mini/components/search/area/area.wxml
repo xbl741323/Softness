@@ -1,7 +1,0 @@
-<!--components/search/area/area.wxml-->
-<view class="scroll-item"  bindtap="changeProvince">
-  <text class="{{newIndex == provinceId? 'active-scroll-sty':''}}">{{province}}</text>
-</view>
-<view class="scroll-item" wx:for="{{areaList}}" wx:key="index" bindtap="changeNew" data-type="{{item}}">
-  <text class="{{newIndex == item.no? 'active-scroll-sty':''}}">{{item.name}}</text>
-</view>

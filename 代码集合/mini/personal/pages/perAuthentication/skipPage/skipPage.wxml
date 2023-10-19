@@ -1,7 +1,0 @@
-<!--personal/pages/perAuthentication/skipPage/skipPage.wxml-->
-<view class="bao-pay">
-  <view>请长按网址复制后使用浏览器访问，进行认证</view>
-  <view class="pay-contain">
-    <text>{{skipUrl}}</text>
-  </view>
-</view>

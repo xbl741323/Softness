@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "服务分类",
-  "usingComponents": {
-    "otherItem": "/components/classify/otherItem/otherItem",
-    "areaItem": "/components/index/areaItem/areaItem"
-  }
-}

@@ -1,4 +1,0 @@
-<!--components/common/top/top.wxml-->
-<view wx:if="{{showTop}}">
-    <image class="toTop" bindtap="toTop" src="/image/common/icon_back@2x.png" />
-</view>

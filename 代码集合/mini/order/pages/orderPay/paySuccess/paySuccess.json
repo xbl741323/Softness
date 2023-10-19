@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "支付反馈",
-  "usingComponents": {
-    "wxFocus":"/components/common/wxFocus/wxFocus"
-  }
-}

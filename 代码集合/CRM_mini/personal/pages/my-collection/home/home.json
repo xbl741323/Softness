@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "我的回款",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "empty-page": "/personal/components/empty-page/empty-page",
-    "collection-records": "/personal/components/my-collection/collection-records/collection-records",
-    "money-item":"/personal/components/my-collection/money-item/money-item"
-  }
-}

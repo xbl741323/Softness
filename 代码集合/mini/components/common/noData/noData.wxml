@@ -1,8 +1,0 @@
-<!--components/noData/noData.wxml-->
-<view class="no-data">
-  <image src="/image/nodata/nodata_home@3x.png"></image>
-  <view wx:if="{{refundStatus}}" class="nodata-text">
-    <text>该功能尚未开放，如有需要请联系客服处理</text>
-  </view>
-  <view wx:else class="nodata-text">啊哦~暂无相关数据...</view>
-</view>

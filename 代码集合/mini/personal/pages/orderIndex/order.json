@@ -1,9 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "navBar":"/components/common/navBar/navBar",
-    "course":"/components/order/course/orderList",
-    "product":"/components/order/product/orderP",
-    "top":"/components/common/top/top"
-  }
-}

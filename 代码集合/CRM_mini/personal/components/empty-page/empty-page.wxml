@@ -1,7 +1,0 @@
-<!--personal/components/empty-page/empty-page.wxml-->
-<view class="empty-page {{pageForm == 1?'active-empty-sty':''}}">
-  <image src="/personal/image/my-clue/icon_ineffectiveness@2x.png"></image>
-  <text>未搜索到相关数据</text>
-  <text wx:if="{{pageForm == 0}}">可以尝试以下操作</text>
-  <view bindtap="toClueDetail" wx:if="{{addPermissions && pageForm == 0}}">新建线索</view>
-</view>

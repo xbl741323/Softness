@@ -1,7 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "head":"/components/common/head/head",
-    "slider":"/components/common/slider/slider"
-  }
-}

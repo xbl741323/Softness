@@ -1,7 +1,0 @@
-<!--components/search/maskView/maskView.wxml-->
-<view class="popup">
-  <view class="mask" catchtouchmove="preventTouchMove" catchtap="closePop"></view>
-  <view class="popup_main">
-  9999999
-  </view>
-</view>

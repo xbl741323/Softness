@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "产品管理",
-  "usingComponents": {
-    "otherItem": "/components/product/otherItem/otherItem",
-    "areaItem": "/components/product/areaItem/areaItem"
-  }
-}

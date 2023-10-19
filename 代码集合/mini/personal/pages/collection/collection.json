@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "head":"/components/common/head/head",
-    "classItem":"/components/personal/collection/classItem/classItem",
-    "supItem":"/components/personal/collection/supItem/supItem",
-    "infoItem":"/components/personal/collection/infoItem/infoItem"
-  },
-  "navigationStyle": "custom"
-}

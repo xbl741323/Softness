@@ -1,9 +1,0 @@
-<!--components/personal/collection/infoItem/infoItem.wxml-->
-<view class="infoItem" bindtap="toDetail">
-  <view class="infoItem-title">
-    {{(productInfo.type == 1 ? '【通知公告】': productInfo.type == 2 ? '【行业资讯】' : '【卧涛文档】' ) + productInfo.title}}
-  </view>
-  <view class="infoItem-time">
-    {{productInfo.createTime}}
-  </view>
-</view>

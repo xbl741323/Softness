@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "selector":"/personal/components/my-order/selector/selector"
-  }
-}

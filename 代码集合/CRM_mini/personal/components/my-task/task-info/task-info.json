@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "empty-page": "/personal/components/empty-page/empty-page"
-  }
-}

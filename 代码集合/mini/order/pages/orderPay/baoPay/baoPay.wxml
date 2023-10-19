@@ -1,7 +1,0 @@
-<!--personal/pages/baoPay/baoPay.wxml-->
-<view class="bao-pay">
-  <view>请点击网址复制后使用浏览器访问，进行支付</view>
-  <view bindtap="copyText" class="pay-contain">
-    <text>{{cPay}}</text>
-  </view>
-</view>

@@ -1,4 +1,0 @@
-<!--components/search/sort/sort.wxml-->
-<view class="scroll-item" wx:for="{{sortList}}" wx:key="index" bindtap="changeNew" data-type="{{item}}">
-  <text class="{{newIndex == item.type? 'active-scroll-sty':''}}">{{item.title}}</text>
-</view>

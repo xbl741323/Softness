@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "订单详情",
-  "usingComponents": {
-    "addressItem":"/components/personal/addressInfo/addressInfo",
-    "wxFocus":"/components/common/wxFocus/wxFocus"
-  }
-}

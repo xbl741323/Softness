@@ -1,2 +1,0 @@
-<!--personal/pages/my-order/detail/show-contract/show-contract.wxml-->
-<web-view src="{{contractUrl}}"></web-view>

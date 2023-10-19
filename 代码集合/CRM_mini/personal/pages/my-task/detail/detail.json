@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "任务详情",
-  "usingComponents": {
-    "task-info": "/personal/components/my-task/task-info/task-info",
-    "indent-item": "/personal/components/my-task/indent-item/indent-item",
-    "maintenance-item": "/personal/components/my-task/maintenance-item/maintenance-item",
-    "mission-item": "/personal/components/my-task/mission-item/mission-item"
-  }
-}

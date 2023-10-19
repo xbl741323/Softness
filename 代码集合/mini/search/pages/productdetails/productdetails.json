@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "产品详情",
-  "usingComponents": {
-    "footBar":"/components/product/footBar/footBar",
-    "otherItem": "/components/index/otherItem/otherItem"
-  }
-}

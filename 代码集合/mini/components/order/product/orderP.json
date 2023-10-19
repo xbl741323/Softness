@@ -1,9 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "projectorder":"/components/personal/myorder/projectorder/projectorder",  
-    "noData":"/components/common/noData/noData",
-    "navBar":"/components/common/navBar/navBar",
-    "refund":"/components/personal/myorder/refundorder/refundorder"
-  }
-}

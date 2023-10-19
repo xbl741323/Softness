@@ -1,4 +1,0 @@
-<!--components/search/type/type.wxml-->
-<view class="scroll-item" wx:for="{{typeList}}" wx:key="index" bindtap="changeNew" data-type="{{item}}">
-  <text class="{{newIndex == item.type? 'active-scroll-sty':''}}">{{item.title}}</text>
-</view>

@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "选择实名认证",
-  "usingComponents": {
-    "wxFocus":"/components/common/wxFocus/wxFocus"
-  }
-}

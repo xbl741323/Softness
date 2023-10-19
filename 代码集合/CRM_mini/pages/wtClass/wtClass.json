@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "卧涛课堂",
-  "usingComponents": {
-    "courseItem": "/components/wtClass/courseItem/courseItem"
-  },
-  "onReachBottomDistance": 100
-}

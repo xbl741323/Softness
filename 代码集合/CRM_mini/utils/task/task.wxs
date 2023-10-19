@@ -1,7 +1,0 @@
-// 任务专利申请号返回
-function filterPatentNo(val) {
-  return Number(val) == 0 ? '-' : val
-}
-module.exports = {
-  filterPatentNo: filterPatentNo,
-}

@@ -1,7 +1,0 @@
-{
-  "enablePullDownRefresh": true,
-  "navigationBarTitleText": "我的用户",
-  "usingComponents": {
-    "empty-page": "/personal/components/empty-page/empty-page"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "head":"/components/common/head/head",
-    "richText":"/components/questions/richText/richText"
-  },
-  "navigationStyle": "custom"
-}

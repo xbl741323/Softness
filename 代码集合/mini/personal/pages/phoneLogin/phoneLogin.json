@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "登录",
-  "usingComponents": {
-    "Tips":"/components/personal/rzTip/rzTip",
-    "accountLogin":"/components/personal/accountLogin/accountLogin"
-  }
-}

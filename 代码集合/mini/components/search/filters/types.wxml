@@ -1,5 +1,0 @@
-<!--components/search/filters/types.wxml-->
-<view class="scroll-item" wx:for="{{newList}}" wx:key="index" bindtap="changeNew" data-type="{{item}}">
-  <text class="{{newIndex == item.type? 'active-scroll-sty':''}}">{{item.title}}</text>
-  <!-- <text wx:if="{{newIndex == item.type}}"></text> -->
-</view>
